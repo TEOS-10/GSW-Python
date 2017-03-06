@@ -1,291 +1,108 @@
+"""
+Functions for taking apart the function declarations in gswteos-10.h.
+"""
+
 import re
 
-fname = "src/c_gsw/gswteos-10.h"
+def get_signatures(strip_extern=True):
+    """
+    Return a list of C function declarations.
+    """
+    fname = "src/c_gsw/gswteos-10.h"
 
-with open(fname) as f:
-    for line in f:
-        if 'Prototypes' in line:
-            break
-    sigs = []
-    started = False
-    for line in f:
-        line = line.strip()
-        if line.startswith('extern'):
-            sigs.append(line)
-            if not line.endswith(';'):
-                started = True
-        elif started:
-            sigs[-1] += line
-            if line.endswith(';'):
-                started = False
+    with open(fname) as f:
+        for line in f:
+            if 'Prototypes' in line:
+                break
+        sigs = []
+        started = False
+        for line in f:
+            line = line.strip()
+            if line.startswith('extern'):
+                sigs.append(line)
+                if not line.endswith(';'):
+                    started = True
+            elif started:
+                sigs[-1] += line
+                if line.endswith(';'):
+                    started = False
+    if strip_extern:
+        sigs = [s[7:].strip() for s in sigs]  # probably don't need strip()
+    return sigs
 
-#print('\n'.join(sigs))
 
-argsets = dict()
+def parse_signature(sig):
+    # grab the part inside parentheses: the arguments (single group)
+    arglistpat = re.compile(r'.*\((.*)\);')
 
-argpat = re.compile(r'.*\((.*)\);')
+    # the return type and asterisk if any, and name (3 groups)
+    retpat = re.compile(r'^(\w+)\s+(\**)gsw_(\w+)')
 
-retpat = re.compile(r'extern\s+(\w+)\s+(\**)gsw_(\w+)')
+    # in an argument specification, get the type, asterisk if any, name (3)
+    argpat = re.compile(r'(\w+)\s+(\**)(\w+)')
 
-for sig in sigs:
-    argstr = argpat.match(sig).groups()[0]
+    # Get the full argument list string.
+    argstr = arglistpat.match(sig).groups()[0]
+
+    # Make a tuple with an entry for each argument, e.g., 'double p'.
     argtup = tuple([a.strip() for a in argstr.split(',')])
+
+    argtypes = []
+    argnames = []
+    for arg in argtup:
+        parts = argpat.match(arg).groups()
+        argtypes.append(parts[0] + parts[1])
+        argnames.append(parts[2])
+
     retgroups = retpat.match(sig).groups()
     ret = retgroups[0] + retgroups[1]
-    ret_argtup = (ret, argtup)
-    #print(retgroups[2], ret_argtup)
-    if ret_argtup in argsets:
-        argsets[ret_argtup].append(retgroups[2])
-    else:
-        argsets[ret_argtup] = [retgroups[2]]
+    funcname = retgroups[2]
 
-#for key, value in argsets.items():
-#    print(key, value)
+    return dict(name=funcname,
+                returntype=ret,
+                argtypes=tuple(argtypes),
+                argnames=tuple(argnames),
+                argstring=argstr,
+                argtuple=argtup,
+                )
 
-# argcategories will hold cases where some number of double arguments
-# return a double.  These are the easiest to deal with in bulk.
-#  (I need to make a modified version that gives all arg categories,
-#  not just the simple ones.  Then we can see how many other cases
-#  must be handled.)
-argcategories = dict()
+def parse_signatures(sigs):
+    """
+    Given the default list of signatures from get_signatures,
+    return a dictionary with function names as keys, and with
+    each entry being the (dictionary) output of parse_signature.
+    """
+    sigdict = {}
+    for sig in sigs:
+        psig = parse_signature(sig)
+        sigdict[psig['name']] = psig
+    return sigdict
 
-skip = False
-for arginfo, names in argsets.items():
-    if arginfo[0] != 'double':
-        continue
-    for arg in arginfo[1]:
-        a0, a1 = arg.split()
-        print(a0, a1)
-        if a0 != 'double' or a1.startswith('*'):
-            print('not double')
-            skip = True
-            break
-    if skip:
-        skip = False
-        continue
-    key = len(arginfo[1])
-    if key in argcategories:
-        argcategories[key].extend(names)
-    else:
-        argcategories[key] = names
+def simple_sigs(sigdict):
+    """
+    Given the dict output of parse_signatures, return a dict
+    with the number of inputs as key, and a list of names as the value.
+    Only functions returning a double, and with double arguments
+    are included.
+    """
+    simple = {}
+    for psig in sigdict.values():
+        if (psig['returntype'] == 'double' and
+                all([t == 'double' for t in psig['argtypes']])):
+            n = len(psig['argtypes'])
+            if n in simple:
+                simple[n].append(psig['name'])
+            else:
+                simple[n] = [psig['name']]
+    for key, value in simple.items():
+        value.sort()
 
-for key, value in argcategories.items():
-    print(key, value)
+    return simple
 
-for key, value in argcategories.items():
-    print(key, len(value))
-
-simplefuncs = []
-for value in argcategories.values():
-    simplefuncs.extend(value)
-
-allfuncs = set()
-for value in argsets.values():
-    allfuncs.update(value)
-
-complexfuncs = [f for f in allfuncs if f not in simplefuncs]
-
-
-
-modfile_head = """
-/* This is python 3-only (for simplicity).
-*/
-
-#include "Python.h"
-#include "math.h"
-#include "numpy/ndarraytypes.h"
-#include "numpy/ufuncobject.h"
-#include "numpy/npy_3kcompat.h"
-#include "gswteos-10.h"
-
-static PyMethodDef GswMethods[] = {
-        {NULL, NULL, 0, NULL}
-};
-
-
-static void loop1d_dd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
-{
-    npy_intp i;
-    npy_intp n = dimensions[0];
-    char *in1 = args[0];
-    char *in2 = args[1];
-    char *out = args[2];
-    npy_intp in_step1 = steps[0];
-    npy_intp in_step2 = steps[1];
-    npy_intp out_step = steps[2];
-    double (*func)(double, double);
-    func = data;
-
-    for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2);
-
-        in1 += in_step1;
-        in2 += in_step2;
-        out += out_step;
-    }
-}
-
-static void loop1d_ddd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
-{
-    npy_intp i;
-    npy_intp n = dimensions[0];
-    char *in1 = args[0];
-    char *in2 = args[1];
-    char *in3 = args[2];
-    char *out = args[3];
-    npy_intp in_step1 = steps[0];
-    npy_intp in_step2 = steps[1];
-    npy_intp in_step3 = steps[2];
-    npy_intp out_step = steps[3];
-    double (*func)(double, double, double);
-    func = data;
-
-    for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2,
-                                *(double *)in3);
-
-        in1 += in_step1;
-        in2 += in_step2;
-        in3 += in_step3;
-        out += out_step;
-    }
-}
-
-static void loop1d_dddd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
-{
-    npy_intp i;
-    npy_intp n = dimensions[0];
-    char *in1 = args[0];
-    char *in2 = args[1];
-    char *in3 = args[2];
-    char *in4 = args[3];
-    char *out = args[4];
-    npy_intp in_step1 = steps[0];
-    npy_intp in_step2 = steps[1];
-    npy_intp in_step3 = steps[2];
-    npy_intp in_step4 = steps[3];
-    npy_intp out_step = steps[4];
-    double (*func)(double, double, double, double);
-    func = data;
-
-    for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2,
-                                *(double *)in3,
-                                *(double *)in4);
-
-        in1 += in_step1;
-        in2 += in_step2;
-        in3 += in_step3;
-        in4 += in_step4;
-        out += out_step;
-    }
-}
-
-
-
-
-static PyUFuncGenericFunction funcs_dd_d[] = {&loop1d_dd_d};
-static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
-static PyUFuncGenericFunction funcs_dddd_d[] = {&loop1d_dddd_d};
-
-/* These are the input and return dtypes.*/
-static char types_dd_d[] = {
-                       NPY_DOUBLE, NPY_DOUBLE,
-                       NPY_DOUBLE,
-};
-
-static char types_ddd_d[] = {
-                       NPY_DOUBLE, NPY_DOUBLE,
-                       NPY_DOUBLE, NPY_DOUBLE,
-};
-
-static char types_dddd_d[] = {
-                       NPY_DOUBLE, NPY_DOUBLE,
-                       NPY_DOUBLE, NPY_DOUBLE,
-                       NPY_DOUBLE,
-};
-
-/* The next thing is generic: */
-
-static struct PyModuleDef moduledef = {
-    PyModuleDef_HEAD_INIT,
-    "npufunc",
-    NULL,
-    -1,
-    GswMethods,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-};
-"""    # modfile_head
-
-modfile_tail = """
-
-    return m;
-}
-"""
-
-modfile_middle = """
-PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
-{
-    PyObject *m, *d;
-
-    PyObject *ufunc_ptr;
-
-    m = PyModule_Create(&moduledef);
-    if (!m) {
-        return NULL;
-    }
-
-    d = PyModule_GetDict(m);
-
-    import_array();
-    import_umath();
-"""
-
-def modfile_array_entry(funcname):
-    return "static void *data_%s[] = {&gsw_%s};\n" % (funcname, funcname)
-
-_init_entry = """
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(nd)s_d,
-                                    data_%(funcname)s,
-                                    types_%(nd)s_d,
-                                    1, %(nin)d, 1,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "%(funcname)s",
-                                    "%(funcname)s_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "%(funcname)s", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-"""
-
-def modfile_init_entry(funcname, nin):
-    return _init_entry % dict(funcname=funcname, nin=nin, nd='d'*nin)
-
-def write_modfile():
-    chunks = [modfile_head]
-    for nin in [2, 3, 4]:
-        for funcname in argcategories[nin]:
-            chunks.append(modfile_array_entry(funcname))
-
-    chunks.append(modfile_middle)
-
-    for nin in [2, 3, 4]:
-        for funcname in argcategories[nin]:
-            chunks.append(modfile_init_entry(funcname, nin))
-
-    chunks.append(modfile_tail)
-
-    with open('src/_ufuncs.c', 'w') as f:
-        f.write(''.join(chunks))
-
+def get_simple_sig_dict():
+    sigs = get_signatures()
+    sigdict = parse_signatures(sigs)
+    simple = simple_sigs(sigdict)
+    return simple
 
 
