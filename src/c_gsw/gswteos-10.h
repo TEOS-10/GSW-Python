@@ -1,6 +1,6 @@
 /*
-**  $Id: gswteos-10.h,v 6eb35717b8e3 2015/08/26 22:02:27 fdelahoyde $
-**  $Version: 3.05.0-1 $
+**  $Id: gswteos-10.h,v 045882f2da27 2015/09/13 23:47:38 fdelahoyde $
+**  $Version: 3.05.0-2 $
 **
 **  GSW TEOS-10 V3.05 definitions and prototypes.
 */
@@ -283,6 +283,8 @@ extern void   gsw_turner_rsubrho(double *sa, double *ct, double *p, int nz,
 extern int    gsw_util_indx(double *x, int n, double z);
 extern double *gsw_util_interp1q_int(int nx, double *x, int *iy, int nxi,
 		double *x_i, double *y_i);
+extern double *gsw_util_linear_interp(int nx, double *x, int ny, double *y,
+		int nxi, double *x_i, double *y_i);
 extern void   gsw_util_sort_real(double *rarray, int nx, int *iarray);
 extern double gsw_util_xinterp1(double *x, double *y, int n, double x0);
 extern double gsw_z_from_p(double p, double lat);

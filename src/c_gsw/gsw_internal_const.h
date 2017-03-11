@@ -1,13 +1,23 @@
 /*
-**  $Id: gsw_internal_const.h,v 74146d753a77 2015/08/09 18:29:40 fdelahoyde $
+**  $Id: gsw_internal_const.h,v a1406e71e2a9 2016/01/08 08:01:43 fdelahoyde $
 **
 **  Internal constants for GSW-TEOS-10 V3.05.
 */
 #ifndef GSW_INTERNAL_CONST_H
 #define GSW_INTERNAL_CONST_H
 
+/*
+** The following hack is used to ensure that gcc (and gcc emulating compilers
+** such as Macosx clang) do not emit unused variable warning messages.
+*/
+#ifdef __GNUC__
+#define UNUSED __attribute__ ((unused))
+#else
+#define UNUSED
+#endif
+
 #define GSW_TEOS10_CONSTANTS \
-double  db2pa = 1.0e4, \
+UNUSED double  db2pa = 1.0e4, \
 	rec_db2pa = 1.0e-4, \
 	pa2db = 1.0e-4, \
 	rec_pa2db = 1.0e4, \
@@ -66,7 +76,7 @@ double  db2pa = 1.0e4, \
 
 
 #define GSW_SPECVOL_COEFFICIENTS \
-double  a000 = -1.56497346750e-5, \
+UNUSED double  a000 = -1.56497346750e-5, \
 	a001 =  1.85057654290e-5, \
 	a002 = -1.17363867310e-6, \
 	a003 = -3.65270065530e-7, \
@@ -365,7 +375,7 @@ double  a000 = -1.56497346750e-5, \
 	v600 =  2.0543094268e-7
 
 #define GSW_SP_COEFFICIENTS \
-double  a0 =  0.0080, \
+UNUSED double  a0 =  0.0080, \
 	a1 = -0.1692, \
 	a2 = 25.3851, \
 	a3 = 14.0941, \
@@ -392,12 +402,12 @@ double  a0 =  0.0080, \
 	k  =  0.0162
 
 #define GSW_SAAR_DATA \
-int	deli[4] = {0,1,1,0}, delj[4] = {0,0,1,1}, npan = 6; \
-double	longs_pan[6] = { 260.00, 272.59, 276.50, 278.65, 280.73, 292.0 }, \
+UNUSED int	deli[4] = {0,1,1,0}, delj[4] = {0,0,1,1}, npan = 6; \
+UNUSED double	longs_pan[6] = {260.00, 272.59, 276.50, 278.65, 280.73, 292.0},\
 	lats_pan[6] = { 19.55,  13.97,   9.60,   8.10,   9.33,   3.4}
 
 #define GSW_GIBBS_ICE_COEFFICIENTS \
-double complex t1 =( 3.68017112855051e-2+ 5.10878114959572e-2*I), \
+UNUSED double complex t1 =( 3.68017112855051e-2+ 5.10878114959572e-2*I), \
 	t2 =( 3.37315741065416e-1+ 3.35449415919309e-1*I), \
 	r1 =( 4.47050716285388e1+  6.56876847463481e1*I), \
 	r20 =(-7.25974574329220e1+ -7.81008427112870e1*I), \
@@ -406,7 +416,7 @@ double complex t1 =( 3.68017112855051e-2+ 5.10878114959572e-2*I), \
 /*\
 ! 1./Pt, where Pt = 611.657;  Experimental triple-point pressure in Pa.\
 */\
-double  rec_pt = 1.634903221903779e-3, \
+UNUSED double  rec_pt = 1.634903221903779e-3, \
 	tt = 273.16, /*Triple-point temperature, kelvin (K).*/ \
 	rec_tt = 3.660858105139845e-3,   /*= 1/tt */ \
 	g00 = -6.32020233335886e5, \
@@ -417,7 +427,7 @@ double  rec_pt = 1.634903221903779e-3, \
 
 
 #define GSW_FREEZING_POLY_COEFFICIENTS \
-double	c0  =  0.017947064327968736, \
+UNUSED double	c0  =  0.017947064327968736, \
 	c1 =  -6.076099099929818, \
 	c2 =   4.883198653547851, \
 	c3 =  -11.88081601230542, \
@@ -474,7 +484,7 @@ double	c0  =  0.017947064327968736, \
 /*\
 ! Coordinate data for the Baltic Sea\
 */\
-double	xb_left[3]={12.6,  7.0, 26.0},\
+UNUSED double	xb_left[3]={12.6,  7.0, 26.0},\
 	yb_left[3]={50.0, 59.0, 69.0},\
 	xb_right[2]={45.0, 26.0},\
 	yb_right[2]={50.0, 69.0}

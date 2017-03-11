@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include <gswteos-10.h>
-#include <gsw_check_data.c>
+#include "gswteos-10.h"
+#include "gsw_check_data.c"
 
 #define test_func(name, arglist, value, var) \
 	for (i=0; i<count; i++) { \
@@ -74,7 +74,7 @@ typedef struct gsw_error_info {
 		limit,
 		rlimit;
 }	gsw_error_info;
-	
+
 void report(char *funcname, char *varname, gsw_error_info *errs);
 void check_accuracy(char *funcname, double accuracy, char *varname,
 			int count, double *calcval, double *refval);

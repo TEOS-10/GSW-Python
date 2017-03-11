@@ -2,7 +2,7 @@
 #  $Id: Makefile,v 1e5e75c749c2 2015/08/08 22:03:51 fdelahoyde $
 #
                CFLAGS:=	-O3
-            CINCLUDES:=	-I.
+            CINCLUDES:=
               Library:=	libgswteos-10.so
               Program:=	gsw_check
       $(Program)_SRCS:=	gsw_check_functions.c \
