@@ -12,6 +12,17 @@ This is python 3-only (for simplicity) to begin with.
 #include "numpy/npy_3kcompat.h"
 #include "gswteos-10.h"
 
+/* possible hack for MSVC: */
+#ifndef NAN
+#   static double NAN = 0.0/0.0;
+#endif
+
+#ifndef isnan
+#   define isnan(x) ((x) != (x))
+#endif
+
+#define CONVERT_INVALID(x) ((x == GSW_INVALID_VALUE)? NAN: x)
+
 static PyMethodDef GswMethods[] = {
         {NULL, NULL, 0, NULL}
 };
@@ -27,10 +38,12 @@ static void loop1d_d_d(char **args, npy_intp *dimensions,
     npy_intp in_step1 = steps[0];
     npy_intp out_step = steps[1];
     double (*func)(double);
+    double outd;
     func = data;
 
     for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1);
+        outd = func(*(double *)in1);
+        *((double *)out) = CONVERT_INVALID(outd);
 
         in1 += in_step1;
         out += out_step;
@@ -51,11 +64,13 @@ static void loop1d_dd_d(char **args, npy_intp *dimensions,
     npy_intp in_step2 = steps[1];
     npy_intp out_step = steps[2];
     double (*func)(double, double);
+    double outd;
     func = data;
 
     for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2);
+        outd = func(*(double *)in1,
+                    *(double *)in2);
+        *((double *)out) = CONVERT_INVALID(outd);
 
         in1 += in_step1;
         in2 += in_step2;
@@ -77,12 +92,14 @@ static void loop1d_ddd_d(char **args, npy_intp *dimensions,
     npy_intp in_step3 = steps[2];
     npy_intp out_step = steps[3];
     double (*func)(double, double, double);
+    double outd;
     func = data;
 
     for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2,
-                                *(double *)in3);
+        outd = func(*(double *)in1,
+                    *(double *)in2,
+                    *(double *)in3);
+        *((double *)out) = CONVERT_INVALID(outd);
 
         in1 += in_step1;
         in2 += in_step2;
@@ -107,13 +124,15 @@ static void loop1d_dddd_d(char **args, npy_intp *dimensions,
     npy_intp in_step4 = steps[3];
     npy_intp out_step = steps[4];
     double (*func)(double, double, double, double);
+    double outd;
     func = data;
 
     for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2,
-                                *(double *)in3,
-                                *(double *)in4);
+        outd = func(*(double *)in1,
+                    *(double *)in2,
+                    *(double *)in3,
+                    *(double *)in4);
+        *((double *)out) = CONVERT_INVALID(outd);
 
         in1 += in_step1;
         in2 += in_step2;
@@ -142,14 +161,16 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
     npy_intp in_step5 = steps[4];
     npy_intp out_step = steps[5];
     double (*func)(double, double, double, double, double);
+    double outd;
     func = data;
 
     for (i = 0; i < n; i++) {
-        *((double *)out) = func(*(double *)in1,
-                                *(double *)in2,
-                                *(double *)in3,
-                                *(double *)in4,
-                                *(double *)in5);
+        outd = func(*(double *)in1,
+                    *(double *)in2,
+                    *(double *)in3,
+                    *(double *)in4,
+                    *(double *)in5);
+        *((double *)out) = CONVERT_INVALID(outd);
 
         in1 += in_step1;
         in2 += in_step2;
