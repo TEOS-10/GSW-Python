@@ -1,9 +1,11 @@
 """
-Generate the _ufuncs.c file to turn the scalar C functions
-into numpy ufuncs.
+Generate the src/_ufuncs.c file to turn the scalar C functions
+into numpy ufuncs.  Also writes ufuncs.list as a record of the
+ufunc names.
 """
 
 from parse_declarations import get_simple_sig_dict
+
 
 modfile_head = """
 /*
@@ -168,7 +170,6 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
 }
 
 
-
 static PyUFuncGenericFunction funcs_d_d[] = {&loop1d_d_d};
 static PyUFuncGenericFunction funcs_dd_d[] = {&loop1d_dd_d};
 static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
@@ -203,7 +204,6 @@ static char types_ddddd_d[] = {
 };
 
 
-
 /* The next thing is generic: */
 
 static struct PyModuleDef moduledef = {
@@ -219,11 +219,13 @@ static struct PyModuleDef moduledef = {
 };
 """    # modfile_head
 
+
 modfile_tail = """
 
     return m;
 }
 """
+
 
 modfile_middle = """
 PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
@@ -243,8 +245,10 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     import_umath();
 """
 
+
 def modfile_array_entry(funcname):
     return "static void *data_%s[] = {&gsw_%s};\n" % (funcname, funcname)
+
 
 _init_entry = """
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(nd)s_d,
@@ -260,16 +264,20 @@ _init_entry = """
     Py_DECREF(ufunc_ptr);
 """
 
+
 def modfile_init_entry(funcname, nin):
     return _init_entry % dict(funcname=funcname, nin=nin, nd='d'*nin)
+
 
 def write_modfile():
     argcategories = get_simple_sig_dict()
     chunks = [modfile_head]
+    funcnamelist = []
     nins = range(1, 6)
     for nin in nins:
         for funcname in argcategories[nin]:
             chunks.append(modfile_array_entry(funcname))
+            funcnamelist.append(funcname)
 
     chunks.append(modfile_middle)
 
@@ -282,6 +290,10 @@ def write_modfile():
     with open('src/_ufuncs.c', 'w') as f:
         f.write(''.join(chunks))
 
+    funcnamelist.sort()
+    with open('ufuncs.list', 'w') as f:
+        f.write('\n'.join(funcnamelist))
+
+
 if __name__ == '__main__':
     write_modfile()
-

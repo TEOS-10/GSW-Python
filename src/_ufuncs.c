@@ -161,7 +161,6 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
 }
 
 
-
 static PyUFuncGenericFunction funcs_d_d[] = {&loop1d_d_d};
 static PyUFuncGenericFunction funcs_dd_d[] = {&loop1d_dd_d};
 static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
@@ -194,7 +193,6 @@ static char types_ddddd_d[] = {
                        NPY_DOUBLE, NPY_DOUBLE,
                        NPY_DOUBLE, NPY_DOUBLE,
 };
-
 
 
 /* The next thing is generic: */

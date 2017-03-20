@@ -36,6 +36,14 @@ def list_functions(matdir=gsw_matlab_dir):
 
     return signatures, rejects
 
+def get_all_signatures():
+    signatures, _ = list_functions()
+    for subdir in gsw_matlab_subdirs:
+        path = os.path.join(gsw_matlab_dir, subdir)
+        s, _ = list_functions(path)
+        signatures.extend(s)
+    return signatures
+
 def to_sigdict(signatures):
     sigdict = dict()
     for s in signatures:
@@ -46,6 +54,9 @@ def to_sigdict(signatures):
                      path=_m)
         sigdict[_funcname.lower()] = sdict
     return sigdict
+
+def get_complete_sigdict():
+    return to_sigdict(get_all_signatures())
 
 
 def variables_from_signatures(signatures):
@@ -102,3 +113,7 @@ def help_text_to_dict(help):
     if started and blocklines:
         hdict[key] = blocklines
     return hdict
+
+
+def get_helpdict(fname):
+    return help_text_to_dict(get_help_text(fname))

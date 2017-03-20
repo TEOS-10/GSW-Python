@@ -1,1 +1,2 @@
-from ._gsw_ufuncs import *
+#from ._gsw_ufuncs import *
+from ._wrapped_ufuncs import *
