@@ -8,6 +8,13 @@
 #include "gsw_internal_const.h"
 #include "gsw_saar_data.c"
 
+#ifdef _MSC_VER
+#   include <float.h>
+#   if _MSC_VER < 1900
+#       define isnan(x) _isnan(x)
+#   endif
+#endif
+
 static double
 gsw_sum(double *x, int n)
 {
@@ -46,6 +53,9 @@ gsw_saar(double p, double lon, double lat)
 
 
 	return_value	 = GSW_INVALID_VALUE;
+
+    if (isnan(lat) || isnan(lon) || isnan(p))
+        return (return_value);
 
 	if (lat  <  -86.0  ||  lat  >  90.0)
 	    return (return_value);
@@ -161,6 +171,9 @@ gsw_deltasa_atlas(double p, double lon, double lat)
 	double	r1, s1, t1, ndepth_max;
 
 	return_value	= GSW_INVALID_VALUE;
+
+    if (isnan(lat) || isnan(lon) || isnan(p))
+        return (return_value);
 
 	if (lat < -86.0  ||  lat  >  90.0)
 	    return (return_value);
