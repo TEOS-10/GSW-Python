@@ -3,6 +3,7 @@ from pycurrents.system import Bunch
 
 from matlab_parser import get_complete_sigdict, get_helpdict
 from parse_declarations import get_signatures, parse_signatures
+from docstring_parts import parameters
 
 wrapmod = 'gsw/_wrapped_ufuncs.py'
 
@@ -40,7 +41,7 @@ def %(funcname)s(%(args)s):
 '''
 
 
-def uf_wrapper(ufname):
+def get_argnames(ufname):
     try:
         msig = Bunch(msigdict[ufname])
         csig = Bunch(csigdict[ufname])
@@ -63,7 +64,34 @@ def uf_wrapper(ufname):
         else:
             raise RuntimeError("arg mismatch: %s, %s" % (
                                 csig.argnames, msig.argnames))
+    return argnames
+
+def get_argname_set():
+    argset = set()
+    for ufname in ufunclist:
+        args = get_argnames(ufname)
+        if args is not None:
+            argset.update(args)
+    return argset
+
+def get_ufnames_by_arg():
+    argdict = dict()
+    for ufname in ufunclist:
+        args = get_argnames(ufname)
+        if args is None:
+            continue
+        for arg in args:
+            if arg in argdict:
+                argdict[arg].append(ufname)
+            else:
+                argdict[arg] = [ufname]
+    return argdict
+
+def uf_wrapper(ufname):
+    argnames = get_argnames(ufname)
     argstr = ', '.join(argnames)
+    msig = Bunch(msigdict[ufname])
+
     subs = dict(ufuncname=ufname,
                 funcname=msig['name'],
                 args=argstr,
@@ -71,9 +99,16 @@ def uf_wrapper(ufname):
     helpdict = get_helpdict(msig['path'])
     try:
         desclist = helpdict['DESCRIPTION']
-        subs['doc'] = '\n    '.join(desclist)
+        doc = '\n   '.join(desclist)
+        pdoclist = ['\n    Parameters\n    ----------']
+        for arg in argnames:
+            pdoclist.append('    %s : array-like' % arg)
+            for line in parameters[arg].split('\n'):
+                pdoclist.append("        %s" % line)
+        doc = doc + '\n'.join(pdoclist)
     except KeyError:
-        subs['doc'] = "(no description available)"
+        doc = "(no description available)"
+    subs['doc'] = doc
     return wrapper_template % subs
 
 if __name__ == '__main__':
