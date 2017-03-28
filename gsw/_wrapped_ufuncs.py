@@ -5,9 +5,10 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 
 #from ._wrapped_ufuncs import *
 from . import _gsw_ufuncs
+from ._utilities import match_args_return
 
 
-# Maybe a decorator will go here...
+@match_args_return
 def adiabatic_lapse_rate_from_CT(SA, CT, p):
     """
      Calculates the adiabatic lapse rate of sea water from Conservative
@@ -24,7 +25,7 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
     """
     return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def adiabatic_lapse_rate_ice(t, p):
     """
      Calculates the adiabatic lapse rate of ice.
@@ -38,7 +39,7 @@ def adiabatic_lapse_rate_ice(t, p):
     """
     return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def alpha(SA, CT, p):
     """
      Calculates the thermal expansion coefficient of seawater with respect to
@@ -62,7 +63,7 @@ def alpha(SA, CT, p):
     """
     return _gsw_ufuncs.alpha(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def alpha_on_beta(SA, CT, p):
     """
      Calculates alpha divided by beta, where alpha is the thermal expansion
@@ -88,7 +89,7 @@ def alpha_on_beta(SA, CT, p):
     """
     return _gsw_ufuncs.alpha_on_beta(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def alpha_wrt_t_exact(SA, t, p):
     """
      Calculates the thermal expansion coefficient of seawater with respect to
@@ -105,7 +106,7 @@ def alpha_wrt_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def alpha_wrt_t_ice(t, p):
     """
      Calculates the thermal expansion coefficient of ice with respect to
@@ -120,7 +121,7 @@ def alpha_wrt_t_ice(t, p):
     """
     return _gsw_ufuncs.alpha_wrt_t_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def beta(SA, CT, p):
     """
      Calculates the saline (i.e. haline) contraction coefficient of seawater
@@ -145,7 +146,7 @@ def beta(SA, CT, p):
     """
     return _gsw_ufuncs.beta(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def beta_const_t_exact(SA, t, p):
     """
      Calculates the saline (i.e. haline) contraction coefficient of seawater
@@ -162,7 +163,7 @@ def beta_const_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.beta_const_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def C_from_SP(SP, t, p):
     """
      Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
@@ -197,7 +198,7 @@ def C_from_SP(SP, t, p):
     """
     return _gsw_ufuncs.c_from_sp(SP, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def cabbeling(SA, CT, p):
     """
      Calculates the cabbeling coefficient of seawater with respect to
@@ -222,7 +223,7 @@ def cabbeling(SA, CT, p):
     """
     return _gsw_ufuncs.cabbeling(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def chem_potential_water_ice(t, p):
     """
      Calculates the chemical potential of water in ice from in-situ
@@ -237,7 +238,7 @@ def chem_potential_water_ice(t, p):
     """
     return _gsw_ufuncs.chem_potential_water_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def chem_potential_water_t_exact(SA, t, p):
     """
      Calculates the chemical potential of water in seawater.
@@ -253,7 +254,7 @@ def chem_potential_water_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def cp_ice(t, p):
     """
      Calculates the isobaric heat capacity of seawater.
@@ -267,7 +268,7 @@ def cp_ice(t, p):
     """
     return _gsw_ufuncs.cp_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def cp_t_exact(SA, t, p):
     """
      Calculates the isobaric heat capacity of seawater.
@@ -283,7 +284,7 @@ def cp_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.cp_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_freezing(SA, p, saturation_fraction):
     """
      Calculates the Conservative Temperature at which seawater freezes.  The
@@ -307,7 +308,7 @@ def CT_freezing(SA, p, saturation_fraction):
     """
     return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_freezing_poly(SA, p, saturation_fraction):
     """
      Calculates the Conservative Temperature at which seawater freezes.
@@ -329,7 +330,7 @@ def CT_freezing_poly(SA, p, saturation_fraction):
     """
     return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_from_enthalpy(SA, h, p):
     """
      Calculates the Conservative Temperature of seawater, given the Absolute
@@ -355,7 +356,7 @@ def CT_from_enthalpy(SA, h, p):
     """
     return _gsw_ufuncs.ct_from_enthalpy(SA, h, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_from_enthalpy_exact(SA, h, p):
     """
      Calculates the Conservative Temperature of seawater, given the Absolute
@@ -380,7 +381,7 @@ def CT_from_enthalpy_exact(SA, h, p):
     """
     return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_from_entropy(SA, entropy):
     """
      Calculates Conservative Temperature with entropy as an input variable.
@@ -394,7 +395,7 @@ def CT_from_entropy(SA, entropy):
     """
     return _gsw_ufuncs.ct_from_entropy(SA, entropy)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_from_pt(SA, pt):
     """
      Calculates Conservative Temperature of seawater from potential
@@ -409,7 +410,7 @@ def CT_from_pt(SA, pt):
     """
     return _gsw_ufuncs.ct_from_pt(SA, pt)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_from_t(SA, t, p):
     """
      Calculates Conservative Temperature of seawater from in-situ
@@ -426,7 +427,7 @@ def CT_from_t(SA, t, p):
     """
     return _gsw_ufuncs.ct_from_t(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def CT_maxdensity(SA, p):
     """
      Calculates the Conservative Temperature of maximum density of seawater.
@@ -451,7 +452,7 @@ def CT_maxdensity(SA, p):
     """
     return _gsw_ufuncs.ct_maxdensity(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def deltaSA_atlas(p, lon, lat):
     """
      Calculates the Absolute Salinity Anomaly atlas value, SA - SR, in
@@ -475,7 +476,7 @@ def deltaSA_atlas(p, lon, lat):
     """
     return _gsw_ufuncs.deltasa_atlas(p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def deltaSA_from_SP(SP, p, lon, lat):
     """
      Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
@@ -495,7 +496,7 @@ def deltaSA_from_SP(SP, p, lon, lat):
     """
     return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def dilution_coefficient_t_exact(SA, t, p):
     """
      Calculates the dilution coefficient of seawater.  The dilution
@@ -514,7 +515,7 @@ def dilution_coefficient_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def dynamic_enthalpy(SA, CT, p):
     """
      Calculates dynamic enthalpy of seawater using the computationally-
@@ -539,7 +540,7 @@ def dynamic_enthalpy(SA, CT, p):
     """
     return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy(SA, CT, p):
     """
      Calculates specific enthalpy of seawater using the computationally-
@@ -563,7 +564,7 @@ def enthalpy(SA, CT, p):
     """
     return _gsw_ufuncs.enthalpy(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy_CT_exact(SA, CT, p):
     """
      Calculates specific enthalpy of seawater from Absolute Salinity and
@@ -585,7 +586,7 @@ def enthalpy_CT_exact(SA, CT, p):
     """
     return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy_diff(SA, CT, p_shallow, p_deep):
     """
      Calculates the difference of the specific enthalpy of seawater between
@@ -615,7 +616,7 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     """
     return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy_ice(t, p):
     """
      Calculates the specific enthalpy of ice (h_Ih).
@@ -629,14 +630,14 @@ def enthalpy_ice(t, p):
     """
     return _gsw_ufuncs.enthalpy_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy_SSO_0(p):
     """
     (no description available)
     """
     return _gsw_ufuncs.enthalpy_sso_0(p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def enthalpy_t_exact(SA, t, p):
     """
      Calculates the specific enthalpy of seawater.
@@ -652,7 +653,7 @@ def enthalpy_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.enthalpy_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def entropy_from_pt(SA, pt):
     """
      Calculates specific entropy of seawater as a function of potential
@@ -667,7 +668,7 @@ def entropy_from_pt(SA, pt):
     """
     return _gsw_ufuncs.entropy_from_pt(SA, pt)
 
-# Maybe a decorator will go here...
+@match_args_return
 def entropy_from_t(SA, t, p):
     """
      Calculates specific entropy of seawater from in-situ temperature.
@@ -683,7 +684,7 @@ def entropy_from_t(SA, t, p):
     """
     return _gsw_ufuncs.entropy_from_t(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def entropy_ice(t, p):
     """
      Calculates specific entropy of ice.
@@ -697,21 +698,21 @@ def entropy_ice(t, p):
     """
     return _gsw_ufuncs.entropy_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def entropy_part(SA, t, p):
     """
     (no description available)
     """
     return _gsw_ufuncs.entropy_part(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def entropy_part_zerop(SA, pt0):
     """
     (no description available)
     """
     return _gsw_ufuncs.entropy_part_zerop(SA, pt0)
 
-# Maybe a decorator will go here...
+@match_args_return
 def Fdelta(p, lon, lat):
     """
      Calculates Fdelta from the Absolute Salinity Anomaly Ratio (SAAR).  It
@@ -736,7 +737,7 @@ def Fdelta(p, lon, lat):
     """
     return _gsw_ufuncs.fdelta(p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def gibbs_ice_part_t(t, p):
     """
      part of the the first temperature derivative of Gibbs energy of ice
@@ -751,7 +752,7 @@ def gibbs_ice_part_t(t, p):
     """
     return _gsw_ufuncs.gibbs_ice_part_t(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def gibbs_ice_pt0(pt0):
     """
      part of the the first temperature derivative of Gibbs energy of ice
@@ -764,7 +765,7 @@ def gibbs_ice_pt0(pt0):
     """
     return _gsw_ufuncs.gibbs_ice_pt0(pt0)
 
-# Maybe a decorator will go here...
+@match_args_return
 def gibbs_ice_pt0_pt0(pt0):
     """
      The second temperature derivative of Gibbs energy of ice at the
@@ -778,14 +779,14 @@ def gibbs_ice_pt0_pt0(pt0):
     """
     return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0)
 
-# Maybe a decorator will go here...
+@match_args_return
 def gibbs_pt0_pt0(SA, pt0):
     """
     (no description available)
     """
     return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0)
 
-# Maybe a decorator will go here...
+@match_args_return
 def grav(lat, p):
     """
      Calculates acceleration due to gravity as a function of latitude and as
@@ -800,7 +801,7 @@ def grav(lat, p):
     """
     return _gsw_ufuncs.grav(lat, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def Helmholtz_energy_ice(t, p):
     """
      Calculates the Helmholtz energy of ice.
@@ -814,7 +815,7 @@ def Helmholtz_energy_ice(t, p):
     """
     return _gsw_ufuncs.helmholtz_energy_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def Hill_ratio_at_SP2(t):
     """
      Calculates the Hill ratio, which is the adjustment needed to apply for
@@ -831,7 +832,7 @@ def Hill_ratio_at_SP2(t):
     """
     return _gsw_ufuncs.hill_ratio_at_sp2(t)
 
-# Maybe a decorator will go here...
+@match_args_return
 def internal_energy(SA, CT, p):
     """
      Calculates specific internal energy of seawater using the
@@ -855,7 +856,7 @@ def internal_energy(SA, CT, p):
     """
     return _gsw_ufuncs.internal_energy(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def internal_energy_ice(t, p):
     """
      Calculates the specific internal energy of ice.
@@ -869,7 +870,7 @@ def internal_energy_ice(t, p):
     """
     return _gsw_ufuncs.internal_energy_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def kappa(SA, CT, p):
     """
      Calculates the isentropic compressibility of seawater.  This function
@@ -894,7 +895,7 @@ def kappa(SA, CT, p):
     """
     return _gsw_ufuncs.kappa(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def kappa_const_t_ice(t, p):
     """
      Calculates isothermal compressibility of ice.
@@ -910,7 +911,7 @@ def kappa_const_t_ice(t, p):
     """
     return _gsw_ufuncs.kappa_const_t_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def kappa_ice(t, p):
     """
      Calculates the isentropic compressibility of ice.
@@ -924,7 +925,7 @@ def kappa_ice(t, p):
     """
     return _gsw_ufuncs.kappa_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def kappa_t_exact(SA, t, p):
     """
      Calculates the isentropic compressibility of seawater.
@@ -940,7 +941,7 @@ def kappa_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.kappa_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def latentheat_evap_CT(SA, CT):
     """
      Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
@@ -958,7 +959,7 @@ def latentheat_evap_CT(SA, CT):
     """
     return _gsw_ufuncs.latentheat_evap_ct(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def latentheat_evap_t(SA, t):
     """
      Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
@@ -975,7 +976,7 @@ def latentheat_evap_t(SA, t):
     """
     return _gsw_ufuncs.latentheat_evap_t(SA, t)
 
-# Maybe a decorator will go here...
+@match_args_return
 def latentheat_melting(SA, p):
     """
      Calculates latent heat, or enthalpy, of melting.  It is defined in terms
@@ -993,7 +994,7 @@ def latentheat_melting(SA, p):
     """
     return _gsw_ufuncs.latentheat_melting(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_ice_equilibrium_SA_CT_ratio(SA, p):
     """
      Calculates the ratio of SA to CT changes when ice melts into seawater
@@ -1019,7 +1020,7 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
     """
     return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     """
      Calculates the ratio of SA to CT changes when ice melts into seawater
@@ -1051,7 +1052,7 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     """
     return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     """
      Calculates the ratio of SA to CT changes when ice melts into seawater.
@@ -1076,7 +1077,7 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     """
     return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     """
      Calculates the ratio of SA to CT changes when ice melts into seawater.
@@ -1107,7 +1108,7 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     """
     return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
     """
      Calculates the ratio of SA to CT changes when sea ice melts into
@@ -1139,7 +1140,7 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
     """
     return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     """
      Calculates the ratio of SA to CT changes when sea ice melts into
@@ -1177,7 +1178,7 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     """
     return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
     """
      Calculates the ratio of SA to CT changes when sea ice melts into
@@ -1220,7 +1221,7 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
     """
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     """
      Calculates the ratio of SA to CT changes when sea ice melts into
@@ -1269,7 +1270,7 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     """
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pot_enthalpy_from_pt_ice(pt0_ice):
     """
      Calculates the potential enthalpy of ice from potential temperature of
@@ -1282,7 +1283,7 @@ def pot_enthalpy_from_pt_ice(pt0_ice):
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pot_enthalpy_from_pt_ice_poly(pt0_ice):
     """
      Calculates the potential enthalpy of ice from potential temperature of
@@ -1297,7 +1298,7 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice):
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pot_enthalpy_ice_freezing(SA, p):
     """
      Calculates the potential enthalpy of ice at which seawater freezes.
@@ -1311,7 +1312,7 @@ def pot_enthalpy_ice_freezing(SA, p):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pot_enthalpy_ice_freezing_poly(SA, p):
     """
      Calculates the potential enthalpy of ice at which seawater freezes.
@@ -1334,7 +1335,7 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pot_rho_t_exact(SA, t, p, p_ref):
     """
      Calculates potential density of seawater.  Note. This function outputs
@@ -1354,7 +1355,7 @@ def pot_rho_t_exact(SA, t, p, p_ref):
     """
     return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pressure_coefficient_ice(t, p):
     """
      Calculates pressure coefficient of ice.
@@ -1368,7 +1369,7 @@ def pressure_coefficient_ice(t, p):
     """
     return _gsw_ufuncs.pressure_coefficient_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pressure_freezing_CT(SA, CT, saturation_fraction):
     """
      Calculates the pressure (in dbar) of seawater at the freezing
@@ -1390,7 +1391,7 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
     """
     return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt0_from_t(SA, t, p):
     """
      Calculates potential temperature with reference pressure, p_ref = 0 dbar.
@@ -1411,7 +1412,7 @@ def pt0_from_t(SA, t, p):
     """
     return _gsw_ufuncs.pt0_from_t(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt0_from_t_ice(t, p):
     """
      Calculates potential temperature of ice Ih with a reference pressure of
@@ -1426,7 +1427,7 @@ def pt0_from_t_ice(t, p):
     """
     return _gsw_ufuncs.pt0_from_t_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_CT(SA, CT):
     """
      Calculates potential temperature (with a reference sea pressure of
@@ -1444,7 +1445,7 @@ def pt_from_CT(SA, CT):
     """
     return _gsw_ufuncs.pt_from_ct(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_entropy(SA, entropy):
     """
      Calculates potential temperature with reference pressure p_ref = 0 dbar
@@ -1459,7 +1460,7 @@ def pt_from_entropy(SA, entropy):
     """
     return _gsw_ufuncs.pt_from_entropy(SA, entropy)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
     """
      Calculates the potential temperature of ice from the potential enthalpy
@@ -1473,7 +1474,7 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
     """
      Calculates the potential temperature of ice (whose reference sea
@@ -1488,7 +1489,7 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_t(SA, t, p, p_ref):
     """
      Calculates potential temperature with the general reference pressure,
@@ -1511,7 +1512,7 @@ def pt_from_t(SA, t, p, p_ref):
     """
     return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref)
 
-# Maybe a decorator will go here...
+@match_args_return
 def pt_from_t_ice(t, p, p_ref):
     """
      Calculates potential temperature of ice Ih with the general reference
@@ -1531,7 +1532,7 @@ def pt_from_t_ice(t, p, p_ref):
     """
     return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref)
 
-# Maybe a decorator will go here...
+@match_args_return
 def rho(SA, CT, p):
     """
      Calculates in-situ density from Absolute Salinity and Conservative
@@ -1559,7 +1560,7 @@ def rho(SA, CT, p):
     """
     return _gsw_ufuncs.rho(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def rho_ice(t, p):
     """
      Calculates in-situ density of ice from in-situ temperature and pressure.
@@ -1575,7 +1576,7 @@ def rho_ice(t, p):
     """
     return _gsw_ufuncs.rho_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def rho_t_exact(SA, t, p):
     """
      Calculates in-situ density of seawater from Absolute Salinity and
@@ -1593,7 +1594,7 @@ def rho_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.rho_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_freezing_from_CT(CT, p, saturation_fraction):
     """
      Calculates the Absolute Salinity of seawater at the freezing temperature.
@@ -1615,7 +1616,7 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
     """
     return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
     """
      Calculates the Absolute Salinity of seawater at the freezing temperature.
@@ -1636,7 +1637,7 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
     """
     return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_freezing_from_t(t, p, saturation_fraction):
     """
      Calculates the Absolute Salinity of seawater at the freezing temperature.
@@ -1657,7 +1658,7 @@ def SA_freezing_from_t(t, p, saturation_fraction):
     """
     return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_freezing_from_t_poly(t, p, saturation_fraction):
     """
      Calculates the Absolute Salinity of seawater at the freezing temperature.
@@ -1678,7 +1679,7 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
     """
     return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_from_rho(rho, CT, p):
     """
      Calculates the Absolute Salinity of a seawater sample, for given values
@@ -1703,7 +1704,7 @@ def SA_from_rho(rho, CT, p):
     """
     return _gsw_ufuncs.sa_from_rho(rho, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_from_SP(SP, p, lon, lat):
     """
      Calculates Absolute Salinity from Practical Salinity.  Since SP is
@@ -1723,7 +1724,7 @@ def SA_from_SP(SP, p, lon, lat):
     """
     return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_from_SP_Baltic(SP, lon, lat):
     """
      Calculates Absolute Salinity in the Baltic Sea, from Practical Salinity.
@@ -1743,7 +1744,7 @@ def SA_from_SP_Baltic(SP, lon, lat):
     """
     return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SA_from_Sstar(Sstar, p, lon, lat):
     """
      Calculates Absolute Salinity from Preformed Salinity.
@@ -1761,7 +1762,7 @@ def SA_from_Sstar(Sstar, p, lon, lat):
     """
     return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SAAR(p, lon, lat):
     """
      Calculates the Absolute Salinity Anomaly Ratio, SAAR, in the open ocean
@@ -1787,7 +1788,7 @@ def SAAR(p, lon, lat):
     """
     return _gsw_ufuncs.saar(p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sigma0(SA, CT):
     """
      Calculates potential density anomaly with reference pressure of 0 dbar,
@@ -1811,7 +1812,7 @@ def sigma0(SA, CT):
     """
     return _gsw_ufuncs.sigma0(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sigma1(SA, CT):
     """
      Calculates potential density anomaly with reference pressure of 1000
@@ -1836,7 +1837,7 @@ def sigma1(SA, CT):
     """
     return _gsw_ufuncs.sigma1(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sigma2(SA, CT):
     """
      Calculates potential density anomaly with reference pressure of 2000
@@ -1860,7 +1861,7 @@ def sigma2(SA, CT):
     """
     return _gsw_ufuncs.sigma2(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sigma3(SA, CT):
     """
      Calculates potential density anomaly with reference pressure of 3000
@@ -1884,7 +1885,7 @@ def sigma3(SA, CT):
     """
     return _gsw_ufuncs.sigma3(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sigma4(SA, CT):
     """
      Calculates potential density anomaly with reference pressure of 4000
@@ -1908,7 +1909,7 @@ def sigma4(SA, CT):
     """
     return _gsw_ufuncs.sigma4(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sound_speed(SA, CT, p):
     """
      Calculates the speed of sound in seawater.  This function has inputs of
@@ -1933,7 +1934,7 @@ def sound_speed(SA, CT, p):
     """
     return _gsw_ufuncs.sound_speed(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sound_speed_ice(t, p):
     """
      Calculates the compression speed of sound in ice.
@@ -1947,7 +1948,7 @@ def sound_speed_ice(t, p):
     """
     return _gsw_ufuncs.sound_speed_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def sound_speed_t_exact(SA, t, p):
     """
      Calculates the speed of sound in seawater.
@@ -1963,7 +1964,7 @@ def sound_speed_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.sound_speed_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_C(C, t, p):
     """
      Calculates Practical Salinity, SP, from conductivity, C, primarily using
@@ -1987,7 +1988,7 @@ def SP_from_C(C, t, p):
     """
     return _gsw_ufuncs.sp_from_c(C, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_SA(SA, p, lon, lat):
     """
      Calculates Practical Salinity from Absolute Salinity.
@@ -2005,7 +2006,7 @@ def SP_from_SA(SA, p, lon, lat):
     """
     return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_SA_Baltic(SA, lon, lat):
     """
      Calculates Practical Salinity for the Baltic Sea, from a value computed
@@ -2024,7 +2025,7 @@ def SP_from_SA_Baltic(SA, lon, lat):
     """
     return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_SK(SK):
     """
      Calculates Practical Salinity from Knudsen Salinity.
@@ -2036,7 +2037,7 @@ def SP_from_SK(SK):
     """
     return _gsw_ufuncs.sp_from_sk(SK)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_SR(SR):
     """
      Calculates Practical Salinity from Reference Salinity.
@@ -2048,7 +2049,7 @@ def SP_from_SR(SR):
     """
     return _gsw_ufuncs.sp_from_sr(SR)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SP_from_Sstar(Sstar, p, lon, lat):
     """
      Calculates Practical Salinity from Preformed Salinity.
@@ -2066,7 +2067,7 @@ def SP_from_Sstar(Sstar, p, lon, lat):
     """
     return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def specvol(SA, CT, p):
     """
      Calculates specific volume from Absolute Salinity, Conservative
@@ -2090,7 +2091,7 @@ def specvol(SA, CT, p):
     """
     return _gsw_ufuncs.specvol(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def specvol_anom_standard(SA, CT, p):
     """
      Calculates specific volume anomaly from Absolute Salinity, Conservative
@@ -2117,7 +2118,7 @@ def specvol_anom_standard(SA, CT, p):
     """
     return _gsw_ufuncs.specvol_anom_standard(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def specvol_ice(t, p):
     """
      Calculates the specific volume of ice.
@@ -2131,14 +2132,14 @@ def specvol_ice(t, p):
     """
     return _gsw_ufuncs.specvol_ice(t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def specvol_SSO_0(p):
     """
     (no description available)
     """
     return _gsw_ufuncs.specvol_sso_0(p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def specvol_t_exact(SA, t, p):
     """
      Calculates the specific volume of seawater.
@@ -2154,7 +2155,7 @@ def specvol_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.specvol_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def spiciness0(SA, CT):
     """
      Calculates spiciness from Absolute Salinity and Conservative
@@ -2178,7 +2179,7 @@ def spiciness0(SA, CT):
     """
     return _gsw_ufuncs.spiciness0(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def spiciness1(SA, CT):
     """
      Calculates spiciness from Absolute Salinity and Conservative
@@ -2202,7 +2203,7 @@ def spiciness1(SA, CT):
     """
     return _gsw_ufuncs.spiciness1(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def spiciness2(SA, CT):
     """
      Calculates spiciness from Absolute Salinity and Conservative
@@ -2226,7 +2227,7 @@ def spiciness2(SA, CT):
     """
     return _gsw_ufuncs.spiciness2(SA, CT)
 
-# Maybe a decorator will go here...
+@match_args_return
 def SR_from_SP(SP):
     """
      Calculates Reference Salinity from Practical Salinity.
@@ -2238,7 +2239,7 @@ def SR_from_SP(SP):
     """
     return _gsw_ufuncs.sr_from_sp(SP)
 
-# Maybe a decorator will go here...
+@match_args_return
 def Sstar_from_SA(SA, p, lon, lat):
     """
      Converts Preformed Salinity from Absolute Salinity.
@@ -2256,7 +2257,7 @@ def Sstar_from_SA(SA, p, lon, lat):
     """
     return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def Sstar_from_SP(SP, p, lon, lat):
     """
      Calculates Preformed Salinity from Absolute Salinity.
@@ -2276,7 +2277,7 @@ def Sstar_from_SP(SP, p, lon, lat):
     """
     return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat)
 
-# Maybe a decorator will go here...
+@match_args_return
 def t_deriv_chem_potential_water_t_exact(SA, t, p):
     """
      Calculates the temperature derivative of the chemical potential of water
@@ -2293,7 +2294,7 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p):
     """
     return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def t_freezing(SA, p, saturation_fraction):
     """
      Calculates the in-situ temperature at which seawater freezes. The
@@ -2317,7 +2318,7 @@ def t_freezing(SA, p, saturation_fraction):
     """
     return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction)
 
-# Maybe a decorator will go here...
+@match_args_return
 def t_from_CT(SA, CT, p):
     """
      Calculates in-situ temperature from the Conservative Temperature of
@@ -2334,7 +2335,7 @@ def t_from_CT(SA, CT, p):
     """
     return _gsw_ufuncs.t_from_ct(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def t_from_pt0_ice(pt0_ice, p):
     """
      Calculates in-situ temperature from the potential temperature of ice Ih
@@ -2350,7 +2351,7 @@ def t_from_pt0_ice(pt0_ice, p):
     """
     return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def thermobaric(SA, CT, p):
     """
      Calculates the thermobaric coefficient of seawater with respect to
@@ -2375,7 +2376,7 @@ def thermobaric(SA, CT, p):
     """
     return _gsw_ufuncs.thermobaric(SA, CT, p)
 
-# Maybe a decorator will go here...
+@match_args_return
 def z_from_p(p, lat):
     """
      Calculates height from sea pressure using the computationally-efficient

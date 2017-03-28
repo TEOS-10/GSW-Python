@@ -28,11 +28,12 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 
 #from ._wrapped_ufuncs import *
 from . import _gsw_ufuncs
+from ._utilities import match_args_return
 
 '''
 
 wrapper_template = '''
-# Maybe a decorator will go here...
+@match_args_return
 def %(funcname)s(%(args)s):
     """
     %(doc)s
