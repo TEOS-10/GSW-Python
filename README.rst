@@ -10,6 +10,8 @@ C implementation (GSW-C).
 **Warning: this is in an early development stage.  If it
 proceeds, the repo will probably be renamed and moved.**
 
+**Warning: this is presently for Python 3 only.**
+
 **Warning:** the only official TEOS-10 implementations are
 provided as zipfiles at <http://www.teos-10.org/software.htm>.
 
