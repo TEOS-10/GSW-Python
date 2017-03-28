@@ -1,3 +1,4 @@
+import re
 
 from pycurrents.system import Bunch
 
@@ -88,6 +89,61 @@ def get_ufnames_by_arg():
                 argdict[arg] = [ufname]
     return argdict
 
+
+def get_outnames(ufname):
+    try:
+        msig = Bunch(msigdict[ufname])
+    except KeyError:
+        return None
+    mnames = msig.outnames[:]
+
+    outnames = []
+    for am in mnames:
+        if am == 'long':
+            am = 'lon'
+        outnames.append(am)
+    return outnames
+
+def get_outname_set():
+    argset = set()
+    for ufname in ufunclist:
+        args = get_outnames(ufname)
+        if args is not None:
+            argset.update(args)
+    return argset
+
+def paragraphs(linelist):
+    plist = []
+    newlinelist = []
+    for line in linelist:
+        line = line.strip()
+        if line:
+            newlinelist.append(line)
+        elif newlinelist:
+            plist.append(newlinelist)
+            newlinelist = []
+    if newlinelist:
+        plist.append(newlinelist)
+    return plist
+
+def fix_outputs_doc(lines):
+    for i, line in enumerate(list(lines)):
+        match = re.search(r'(.*)\[(.*)\]', line)
+        if match is not None:
+            units = match.group(2).strip()
+            remainder = match.group(1).strip()
+            lines[i] = remainder
+        else:
+            lines[i] = line.strip()
+
+    outname, remainder = lines[0].split('=')
+    outlines = ['%s : array-like, %s' % (outname.strip(), units)]
+    # FIXME: we need to assemble the rest into a single line
+    # and then break it into lines of appropriate length.
+    for line in lines[1:]:
+        outlines.append('    ' + line)
+    return outlines
+
 def uf_wrapper(ufname):
     argnames = get_argnames(ufname)
     argstr = ', '.join(argnames)
@@ -99,14 +155,25 @@ def uf_wrapper(ufname):
                 )
     helpdict = get_helpdict(msig['path'])
     try:
-        desclist = helpdict['DESCRIPTION']
-        doc = '\n   '.join(desclist)
-        pdoclist = ['\n    Parameters\n    ----------']
+        desclist = paragraphs(helpdict['DESCRIPTION'])[0]
+        doc = '\n    '.join(desclist)
+
+        pdoclist = ['\n\n    Parameters\n    ----------']
         for arg in argnames:
             pdoclist.append('    %s : array-like' % arg)
             for line in parameters[arg].split('\n'):
                 pdoclist.append("        %s" % line)
-        doc = doc + '\n'.join(pdoclist)
+        doc = doc + '\n'.join(pdoclist) + '\n'
+
+        if 'OUTPUT' in helpdict:
+            outdoc = helpdict['OUTPUT']
+            doc = doc + '\n    Returns\n    -------'
+            # Temporary Q&D:
+            outdoc = fix_outputs_doc(outdoc)
+            for line in outdoc:
+                doc = doc + '\n    %s' % line
+            doc = doc + '\n'
+
     except KeyError:
         doc = "(no description available)"
     subs['doc'] = doc
