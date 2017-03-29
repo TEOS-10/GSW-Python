@@ -105,4 +105,16 @@ def get_simple_sig_dict():
     simple = simple_sigs(sigdict)
     return simple
 
+def complex_sigdict(sigdict):
+    out = {}
+    for key, psig in sigdict.items():
+        if (psig['returntype'] == 'double' and
+                all([t == 'double' for t in psig['argtypes']])):
+            continue
+        out[key] = psig
+    return out
 
+def get_complex_sigdict():
+    sigs = get_signatures()
+    sigdict = parse_signatures(sigs)
+    return complex_sigdict(sigdict)
