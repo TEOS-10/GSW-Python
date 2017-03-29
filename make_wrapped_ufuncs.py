@@ -1,9 +1,14 @@
+"""
+Script that generates _wrapped_ufuncs.py based on the output
+of make_ufuncs.py.
+"""
+
 import re
 
 from pycurrents.system import Bunch
 
 from matlab_parser import get_complete_sigdict, get_helpdict
-from parse_declarations import get_signatures, parse_signatures
+from c_header_parser import get_signatures, parse_signatures
 from docstring_parts import parameters
 
 wrapmod = 'gsw/_wrapped_ufuncs.py'

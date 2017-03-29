@@ -4,8 +4,9 @@ into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
 """
 
-from parse_declarations import get_simple_sig_dict
+from c_header_parser import get_simple_sig_dict
 
+modfile_name = 'src/_ufuncs.c'
 
 modfile_head = """
 /*
@@ -290,7 +291,7 @@ def modfile_init_entry(funcname, nin):
     return _init_entry % dict(funcname=funcname, nin=nin, nd='d'*nin)
 
 
-def write_modfile():
+def write_modfile(modfile_name):
     argcategories = get_simple_sig_dict()
     chunks = [modfile_head]
     funcnamelist = []
@@ -308,7 +309,7 @@ def write_modfile():
 
     chunks.append(modfile_tail)
 
-    with open('src/_ufuncs.c', 'w') as f:
+    with open(modfile_name, 'w') as f:
         f.write(''.join(chunks))
 
     funcnamelist.sort()
@@ -317,4 +318,4 @@ def write_modfile():
 
 
 if __name__ == '__main__':
-    write_modfile()
+    write_modfile(modfile_name)
