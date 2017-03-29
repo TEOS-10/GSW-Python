@@ -36,8 +36,7 @@ from ._utilities import match_args_return
 wrapper_template = '''
 @match_args_return
 def %(funcname)s(%(args)s):
-    """
-    %(doc)s
+    """%(doc)s
     """
     return _gsw_ufuncs.%(ufuncname)s(%(args)s)
 '''
@@ -141,8 +140,42 @@ def fix_outputs_doc(lines):
     # FIXME: we need to assemble the rest into a single line
     # and then break it into lines of appropriate length.
     for line in lines[1:]:
-        outlines.append('    ' + line)
+        if line:
+            outlines.append('    ' + line)
     return outlines
+
+def docstring_from_sections(sections):
+    """
+    sections is a dictionary containing numpydoc text sections,
+    without their headers.  Everything above the Parameters is
+    considered Head; it does not have to follow the standard of
+    having a single line "short summary", etc.  Each section
+    must be a list of lines without newlines, and with
+    indentation only relative to the edge of the docstring.
+
+    We start with only 3 sections: Head, Parameters, and Returns;
+    others may be added as options later.
+
+    """
+    doclines = ['']
+    doclines.extend(sections['Head'])
+    doclines.append('')
+    doclines.append('Parameters')
+    doclines.append('----------')
+    doclines.extend(sections['Parameters'])
+    doclines.append('')
+    doclines.append('Returns')
+    doclines.append('-------')
+    doclines.extend(sections['Returns'])
+
+    for i, line in enumerate(list(doclines)):
+        if line:
+            doclines[i] = '    %s\n' % line
+        else:
+            doclines[i] = '\n'
+
+    return ''.join(doclines)
+
 
 def uf_wrapper(ufname):
     argnames = get_argnames(ufname)
@@ -154,26 +187,25 @@ def uf_wrapper(ufname):
                 args=argstr,
                 )
     helpdict = get_helpdict(msig['path'])
+
     try:
         desclist = paragraphs(helpdict['DESCRIPTION'])[0]
-        doc = '\n    '.join(desclist)
-
-        pdoclist = ['\n\n    Parameters\n    ----------']
+        sections = dict(Head=desclist)
+        plist = []
         for arg in argnames:
-            pdoclist.append('    %s : array-like' % arg)
+            plist.append('%s : array-like' % arg)
             for line in parameters[arg].split('\n'):
-                pdoclist.append("        %s" % line)
-        doc = doc + '\n'.join(pdoclist) + '\n'
+                plist.append("    %s" % line)
+        sections['Parameters'] = plist
 
+        # I think we can assume OUTPUT will be present, but just
+        # in case, we check for it.  Maybe remove this later.
         if 'OUTPUT' in helpdict:
-            outdoc = helpdict['OUTPUT']
-            doc = doc + '\n    Returns\n    -------'
-            # Temporary Q&D:
-            outdoc = fix_outputs_doc(outdoc)
-            for line in outdoc:
-                doc = doc + '\n    %s' % line
-            doc = doc + '\n'
-
+            outdoc = fix_outputs_doc(helpdict['OUTPUT'])
+        else:
+            outdoc = ['None']
+        sections['Returns'] = outdoc
+        doc = docstring_from_sections(sections)
     except KeyError:
         doc = "(no description available)"
     subs['doc'] = doc
