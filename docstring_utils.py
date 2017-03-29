@@ -5,6 +5,9 @@ Functions for assembling a docstring from various sources.
 import re
 
 def paragraphs(linelist):
+    """
+    Break a list of lines at blank lines into a list of line-lists.
+    """
     plist = []
     newlinelist = []
     for line in linelist:
@@ -17,6 +20,7 @@ def paragraphs(linelist):
     if newlinelist:
         plist.append(newlinelist)
     return plist
+
 
 def fix_outputs_doc(lines):
     """
@@ -41,6 +45,7 @@ def fix_outputs_doc(lines):
             outlines.append('    ' + line)
     return outlines
 
+
 def docstring_from_sections(sections):
     """
     sections is a dictionary containing numpydoc text sections,
@@ -50,20 +55,25 @@ def docstring_from_sections(sections):
     must be a list of lines without newlines, and with
     indentation only relative to the edge of the docstring.
 
-    We start with only 3 sections: Head, Parameters, and Returns;
-    others may be added as options later.
+    Only the Head is required.
 
     """
     doclines = ['']
     doclines.extend(sections['Head'])
-    doclines.append('')
-    doclines.append('Parameters')
-    doclines.append('----------')
-    doclines.extend(sections['Parameters'])
-    doclines.append('')
-    doclines.append('Returns')
-    doclines.append('-------')
-    doclines.extend(sections['Returns'])
+    for name in ['Parameters',
+                 'Returns',
+                 'Other Parameters',
+                 'Raises',
+                 'See Also',
+                 'Notes',
+                 'References',
+                 'Examples',
+                 ]:
+        if name in sections:
+            doclines.extend(['',
+                             name,
+                             '-' * len(name),])
+            doclines.extend(sections[name])
 
     for i, line in enumerate(list(doclines)):
         if line:
