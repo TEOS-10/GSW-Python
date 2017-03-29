@@ -5,7 +5,7 @@ of make_ufuncs.py.
 
 import re
 
-from pycurrents.system import Bunch
+from gsw._utilities import Bunch
 
 from matlab_parser import get_complete_sigdict, get_helpdict
 from c_header_parser import get_signatures, parse_signatures
