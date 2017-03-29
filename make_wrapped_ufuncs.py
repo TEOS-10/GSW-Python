@@ -155,6 +155,7 @@ def uf_wrapper(ufname):
     return wrapper_template % subs
 
 if __name__ == '__main__':
+    wrapped_ufnames = []
     with open(wrapmod, 'w') as f:
         f.write(wrapper_head)
         for ufname in ufunclist:
@@ -166,3 +167,7 @@ if __name__ == '__main__':
                 print("failed:", ufname)
             else:
                 f.write(wrapped)
+                wrapped_ufnames.append(ufname)
+    wrapped_ufnames.sort()
+    with open('wrapped_ufuncs.list', 'w') as f:
+        f.write('\n'.join(wrapped_ufnames) + '\n')
