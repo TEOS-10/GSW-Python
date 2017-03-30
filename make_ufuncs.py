@@ -7,6 +7,8 @@ ufunc names.
 from c_header_parser import (get_simple_sig_dict,
                             get_complex_scalar_dict_by_nargs_nreturns)
 
+blacklist = ['add_barrier']
+
 modfile_name = 'src/_ufuncs.c'
 
 modfile_head_top = """
@@ -174,10 +176,13 @@ def modfile_init_entry(funcname, nin, nout):
 
 def write_modfile(modfile_name):
     argcategories1 = get_simple_sig_dict()
+    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns()
+
     funcnamelist1 = []
+    funcnamelist2 = []
 
     nins = range(1, 6)
-    artups = [(2, 2), (3, 2), (3, 3)]
+    artups = [(2, 2), (3, 2), (3, 3), (6, 2), (2, 3), (4, 3), (5, 3), (3, 5)]
 
     modfile_head_parts = [modfile_head_top]
     for nin in nins:
@@ -191,13 +196,15 @@ def write_modfile(modfile_name):
 
     for nin in nins:
         for funcname in argcategories1[nin]:
+            if funcname in blacklist:
+                continue
             chunks.append(modfile_array_entry(funcname))
             funcnamelist1.append(funcname)
 
-    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns()
-    funcnamelist2 = []
     for artup in artups:
         for funcname in argcategories2[artup]:
+            if funcname in blacklist:
+                continue
             chunks.append(modfile_array_entry(funcname))
             funcnamelist2.append(funcname)
 
@@ -205,10 +212,14 @@ def write_modfile(modfile_name):
 
     for nin in nins:
         for funcname in argcategories1[nin]:
+            if funcname in blacklist:
+                continue
             chunks.append(modfile_init_entry(funcname, nin, 1))
 
     for artup in artups:
         for funcname in argcategories2[artup]:
+            if funcname in blacklist:
+                continue
             chunks.append(modfile_init_entry(funcname, *artup))
 
 

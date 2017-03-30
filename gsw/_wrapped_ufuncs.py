@@ -709,6 +709,51 @@ def CT_maxdensity(SA, p):
     return _gsw_ufuncs.ct_maxdensity(SA, p)
 
 @match_args_return
+def CT_second_derivatives(SA, pt):
+    """
+    Calculates the following three, second-order derivatives of Conservative
+    Temperature
+    (1) CT_SA_SA, the second derivative with respect to Absolute Salinity
+    at constant potential temperature (with p_ref = 0 dbar),
+    (2) CT_SA_pt, the derivative with respect to potential temperature
+    (the regular potential temperature which is referenced to 0 dbar)
+    and Absolute Salinity, and
+    (3) CT_pt_pt, the second derivative with respect to potential
+    temperature (the regular potential temperature which is referenced
+    to 0 dbar) at constant Absolute Salinity.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    pt : array-like
+        Potential temperature referenced to a sea pressure, degrees C
+
+    Returns
+    -------
+    CT_SA_SA : array-like, K/((g/kg)^2)
+        The second derivative of Conservative Temperature with
+        respect to Absolute Salinity at constant potential
+        temperature (the regular potential temperature which
+        has reference sea pressure of 0 dbar).
+        CT_SA_SA has units of:
+    CT_SA_pt : array-like, 
+        The derivative of Conservative Temperature with
+        respect to potential temperature (the regular one with
+    p_ref : array-like, 1/(g/kg)
+        0 dbar) and Absolute Salinity.
+        CT_SA_pt has units of:
+    CT_pt_pt : array-like, 
+        The second derivative of Conservative Temperature with
+        respect to potential temperature (the regular one with
+    p_ref : array-like, 1/K
+        0 dbar) at constant SA.
+        CT_pt_pt has units of:
+
+    """
+    return _gsw_ufuncs.ct_second_derivatives(SA, pt)
+
+@match_args_return
 def deltaSA_atlas(p, lon, lat):
     """
     Calculates the Absolute Salinity Anomaly atlas value, SA - SR, in
@@ -1187,6 +1232,44 @@ def entropy_part_zerop(SA, pt0):
     return _gsw_ufuncs.entropy_part_zerop(SA, pt0)
 
 @match_args_return
+def entropy_second_derivatives(SA, CT):
+    """
+    Calculates the following three second-order partial derivatives of
+    specific entropy (eta)
+    (1) eta_SA_SA, the second derivative with respect to Absolute
+    Salinity at constant Conservative Temperature, and
+    (2) eta_SA_CT, the derivative with respect to Absolute Salinity and
+    Conservative Temperature.
+    (3) eta_CT_CT, the second derivative with respect to Conservative
+    Temperature at constant Absolute Salinity.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+
+    Returns
+    -------
+    eta_SA_SA : array-like, J/(kg K(g/kg)^2)
+        The second derivative of specific entropy with respect
+        to Absolute Salinity (in units of g kg^-1) at constant
+        Conservative Temperature.
+        eta_SA_SA has units of:
+    eta_SA_CT : array-like, J/(kg (g/kg) K^2)
+        The second derivative of specific entropy with respect
+        to Conservative Temperature at constant Absolute
+        Salinity. eta_SA_CT has units of:
+    eta_CT_CT : array-like, J/(kg K^3)
+        The second derivative of specific entropy with respect
+        to Conservative Temperature at constant Absolute
+        Salinity.  eta_CT_CT has units of:
+
+    """
+    return _gsw_ufuncs.entropy_second_derivatives(SA, CT)
+
+@match_args_return
 def Fdelta(p, lon, lat):
     """
     Calculates Fdelta from the Absolute Salinity Anomaly Ratio (SAAR).  It
@@ -1369,6 +1452,47 @@ def Hill_ratio_at_SP2(t):
 
     """
     return _gsw_ufuncs.hill_ratio_at_sp2(t)
+
+@match_args_return
+def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
+    """
+    Calculates the mass fraction of ice (mass of ice divided by mass of ice
+    plus seawater), which, when melted into seawater having (SA,CT,p) causes
+    the final dilute seawater to be at the freezing temperature.  The other
+    outputs are the Absolute Salinity and Conservative Temperature of the
+    final diluted seawater.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    t_Ih : array-like
+        In-situ temperature of ice (ITS-90), degrees C
+
+    Returns
+    -------
+    SA_freeze : array-like, g/kg
+        Absolute Salinity of seawater after the mass fraction of
+        ice, ice_fraction, at temperature t_Ih has melted into the
+        original seawater, and the final mixture is at the freezing
+        temperature of seawater.
+    CT_freeze : array-like, deg C
+        Conservative Temperature of seawater after the mass
+        fraction, w_Ih, of ice at temperature t_Ih has melted into
+        the original seawater, and the final mixture is at the
+        freezing temperature of seawater.
+    w_Ih : array-like, unitless
+        mass fraction of ice, having in-situ temperature t_Ih,
+        which, when melted into seawater at (SA,CT,p) leads to the
+        final diluted seawater being at the freezing temperature.
+        This output must be between 0 and 1.
+
+    """
+    return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih)
 
 @match_args_return
 def internal_energy(SA, CT, p):
@@ -1640,6 +1764,12 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p)
 
 @match_args_return
+def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
+    """(no description available)
+    """
+    return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih)
+
+@match_args_return
 def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater.
@@ -1758,6 +1888,12 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
 
     """
     return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p)
+
+@match_args_return
+def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
+    """(no description available)
+    """
+    return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice)
 
 @match_args_return
 def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
@@ -2271,6 +2407,47 @@ def pt_from_t_ice(t, p, p_ref):
     return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref)
 
 @match_args_return
+def pt_second_derivatives(SA, CT):
+    """
+    Calculates the following three second-order derivatives of potential
+    temperature (the regular potential temperature which has a reference
+    sea pressure of 0 dbar),
+    (1) pt_SA_SA, the second derivative with respect to Absolute Salinity
+    at constant Conservative Temperature,
+    (2) pt_SA_CT, the derivative with respect to Conservative Temperature
+    and Absolute Salinity, and
+    (3) pt_CT_CT, the second derivative with respect to Conservative
+    Temperature at constant Absolute Salinity.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+
+    Returns
+    -------
+    pt_SA_SA : array-like, K/((g/kg)^2)
+        The second derivative of potential temperature (the
+        regular potential temperature which has reference sea
+        pressure of 0 dbar) with respect to Absolute Salinity
+        at constant Conservative Temperature.
+        pt_SA_SA has units of:
+    pt_SA_CT : array-like, 1/(g/kg)
+        The derivative of potential temperature with respect
+        to Absolute Salinity and Conservative Temperature.
+        pt_SA_CT has units of:
+    pt_CT_CT : array-like, 1/K
+        The second derivative of potential temperature (the
+        regular one with p_ref = 0 dbar) with respect to
+        Conservative Temperature at constant SA.
+        pt_CT_CT has units of:
+
+    """
+    return _gsw_ufuncs.pt_second_derivatives(SA, CT)
+
+@match_args_return
 def rho(SA, CT, p):
     """
     Calculates in-situ density from Absolute Salinity and Conservative
@@ -2412,6 +2589,51 @@ def rho_ice(t, p):
 
     """
     return _gsw_ufuncs.rho_ice(t, p)
+
+@match_args_return
+def rho_second_derivatives(SA, CT, p):
+    """
+    Calculates the following five second-order derivatives of rho,
+    (1) rho_SA_SA, second-order derivative with respect to Absolute
+    Salinity at constant CT & p.
+    (2) rho_SA_CT, second-order derivative with respect to SA & CT at
+    constant p.
+    (3) rho_CT_CT, second-order derivative with respect to CT at
+    constant SA & p.
+    (4) rho_SA_P, second-order derivative with respect to SA & P at
+    constant CT.
+    (5) rho_CT_P, second-order derivative with respect to CT & P at
+    constant SA.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    rho_SA_SA : array-like, (kg/m^3)(g/kg)^-2
+        The second-order derivative of rho with respect to
+        Absolute Salinity at constant CT & p.
+    rho_SA_CT : array-like, (kg/m^3)(g/kg)^-1 K^-1
+        The second-order derivative of rho with respect to
+        SA and CT at constant p.
+    rho_CT_CT : array-like, (kg/m^3) K^-2
+        The second-order derivative of rho with respect to CT at
+        constant SA & p
+    rho_SA_P : array-like, (kg/m^3)(g/kg)^-1 Pa^-1
+        The second-order derivative with respect to SA & P at
+        constant CT.
+    rho_CT_P : array-like, (kg/m^3) K^-1 Pa^-1
+        The second-order derivative with respect to CT & P at
+        constant SA.
+
+    """
+    return _gsw_ufuncs.rho_second_derivatives(SA, CT, p)
 
 @match_args_return
 def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
@@ -2734,6 +2956,50 @@ def SAAR(p, lon, lat):
 
     """
     return _gsw_ufuncs.saar(p, lon, lat)
+
+@match_args_return
+def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
+    """
+    Calculates the mass fraction of sea ice (mass of sea ice divided by mass
+    of sea ice plus seawater), which, when melted into seawater having the
+    properties (SA,CT,p) causes the final seawater to be at the freezing
+    temperature.  The other outputs are the Absolute Salinity and
+    Conservative Temperature of the final seawater.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    SA_seaice : array-like
+        Absolute Salinity of sea ice: the mass fraction of salt
+        in sea ice, expressed in g of salt per kg of sea ice.
+    t_seaice : array-like
+        In-situ temperature of the sea ice at pressure p (ITS-90), degrees C
+
+    Returns
+    -------
+    SA_freeze : array-like, g/kg
+        Absolute Salinity of seawater after the mass fraction of
+        sea ice, w_seaice, at temperature t_seaice has melted into
+        the original seawater, and the final mixture is at the
+        freezing temperature of seawater.
+    CT_freeze : array-like, deg C
+        Conservative Temperature of seawater after the mass
+        fraction, w_seaice, of sea ice at temperature t_seaice has
+        melted into the original seawater, and the final mixture
+        is at the freezing temperature of seawater.
+    w_seaice : array-like, unitless
+        mass fraction of sea ice, at SA_seaice and t_seaice,
+        which, when melted into seawater at (SA,CT,p) leads to the
+        final mixed seawater being at the freezing temperature.
+        This output is between 0 and 1.
+
+    """
+    return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice)
 
 @match_args_return
 def sigma0(SA, CT):
@@ -3253,6 +3519,52 @@ def specvol_ice(t, p):
 
     """
     return _gsw_ufuncs.specvol_ice(t, p)
+
+@match_args_return
+def specvol_second_derivatives(SA, CT, p):
+    """
+    Calculates the following five second-order derivatives of specific
+    volume (v),
+    (1) v_SA_SA, second-order derivative with respect to Absolute Salinity
+    at constant CT & p.
+    (2) v_SA_CT, second-order derivative with respect to SA & CT at
+    constant p.
+    (3) v_CT_CT, second-order derivative with respect to CT at constant SA
+    and p.
+    (4) v_SA_P, second-order derivative with respect to SA & P at
+    constant CT.
+    (5) v_CT_P, second-order derivative with respect to CT & P at
+    constant SA.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    v_SA_SA : array-like, (m^3/kg)(g/kg)^-2
+        The second derivative of specific volume with respect to
+        Absolute Salinity at constant CT & p.
+    v_SA_CT : array-like, (m^3/kg)(g/kg)^-1 K^-1
+        The second derivative of specific volume with respect to
+        SA and CT at constant p.
+    v_CT_CT : array-like, (m^3/kg) K^-2)
+        The second derivative of specific volume with respect to
+        CT at constant SA and p.
+    v_SA_P : array-like, (m^3/kg) Pa^-1
+        The second derivative of specific volume with respect to
+        SA and P at constant CT.
+    v_CT_P : array-like, (m^3/kg) K^-1 Pa^-1
+        The second derivative of specific volume with respect to
+        CT and P at constant SA.
+
+    """
+    return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p)
 
 @match_args_return
 def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
