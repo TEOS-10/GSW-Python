@@ -387,6 +387,10 @@ def write_modfile(modfile_name):
     with open('ufuncs2.list', 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
+    funcnamelist = funcnamelist1 + funcnamelist2
+    funcnamelist.sort()
+    with open('ufuncs.list', 'w') as f:
+        f.write('\n'.join(funcnamelist))
 
 if __name__ == '__main__':
     write_modfile(modfile_name)

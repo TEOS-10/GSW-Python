@@ -26,6 +26,7 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
     Returns
     -------
     adiabatic_lapse_rate : array-like, K/Pa
+        adiabatic lapse rate
         Note.  The output is in unit of degress Celsius per Pa,
         (or equivilently K/Pa) not in units of K/dbar.
 
@@ -47,6 +48,7 @@ def adiabatic_lapse_rate_ice(t, p):
     Returns
     -------
     adiabatic_lapse_rate_ice : array-like, K/Pa
+        adiabatic lapse rate
         Note.  The output is in unit of degress Celsius per Pa,
         (or equivilently K/Pa) not in units of K/dbar.
 
@@ -72,6 +74,7 @@ def alpha(SA, CT, p):
     Returns
     -------
     alpha : array-like, 1/K
+        thermal expansion coefficient
         with respect to Conservative Temperature
 
     """
@@ -98,6 +101,7 @@ def alpha_on_beta(SA, CT, p):
     Returns
     -------
     alpha_on_beta : array-like, kg g^-1 K^-1
+        thermal expansion coefficient with respect to
         Conservative Temperature divided by the saline
         contraction coefficient at constant Conservative
         Temperature
@@ -123,6 +127,7 @@ def alpha_wrt_t_exact(SA, t, p):
     Returns
     -------
     alpha_wrt_t_exact : array-like, 1/K
+        thermal expansion coefficient
         with respect to in-situ temperature
 
     """
@@ -144,6 +149,7 @@ def alpha_wrt_t_ice(t, p):
     Returns
     -------
     alpha_wrt_t_ice : array-like, 1/K
+        thermal expansion coefficient of ice with respect
         to in-situ temperature
 
     """
@@ -169,6 +175,7 @@ def beta(SA, CT, p):
     Returns
     -------
     beta : array-like, kg/g
+        saline contraction coefficient
         at constant Conservative Temperature
 
     """
@@ -192,6 +199,7 @@ def beta_const_t_exact(SA, t, p):
     Returns
     -------
     beta_const_t_exact : array-like, kg/g
+        saline contraction coefficient
         at constant in-situ temperature
 
     """
@@ -218,6 +226,7 @@ def C_from_SP(SP, t, p):
     Returns
     -------
     C : array-like, mS/cm
+        conductivity
 
     """
     return _gsw_ufuncs.c_from_sp(SP, t, p)
@@ -242,6 +251,7 @@ def cabbeling(SA, CT, p):
     Returns
     -------
     cabbeling : array-like, 1/K^2
+        cabbeling coefficient with respect to
         Conservative Temperature.
 
     """
@@ -263,6 +273,7 @@ def chem_potential_water_ice(t, p):
     Returns
     -------
     chem_potential_water_ice : array-like, J/kg
+        chemical potential of ice
 
     """
     return _gsw_ufuncs.chem_potential_water_ice(t, p)
@@ -284,6 +295,7 @@ def chem_potential_water_t_exact(SA, t, p):
     Returns
     -------
     chem_potential_water_t_exact : array-like, J/g
+        chemical potential of water in seawater
 
     """
     return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p)
@@ -303,6 +315,7 @@ def cp_ice(t, p):
     Returns
     -------
     cp_ice : array-like, J kg^-1 K^-1
+        heat capacity of ice
 
     """
     return _gsw_ufuncs.cp_ice(t, p)
@@ -324,9 +337,49 @@ def cp_t_exact(SA, t, p):
     Returns
     -------
     cp_t_exact : array-like, J/(kg*K)
+        heat capacity of seawater
 
     """
     return _gsw_ufuncs.cp_t_exact(SA, t, p)
+
+@match_args_return
+def CT_first_derivatives_wrt_t_exact(SA, t, p):
+    """
+    Calculates the following three derivatives of Conservative Temperature.
+    These derivatives are done with respect to in-situ temperature t (in the
+    case of CT_T_wrt_t) or at constant in-situ tempertature (in the cases of
+    CT_SA_wrt_t and CT_P_wrt_t).
+    (1) CT_SA_wrt_t, the derivative of CT with respect to Absolute Salinity
+    at constant t and p, and
+    (2) CT_T_wrt_t, derivative of CT with respect to in-situ temperature t
+    at constant SA and p.
+    (3) CT_P_wrt_t, derivative of CT with respect to pressure P (in Pa) at
+    constant SA and t.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    t : array-like
+        In-situ temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    CT_SA_wrt_t : array-like, K kg/g
+        The first derivative of Conservative Temperature with
+        respect to Absolute Salinity at constant t and p.
+        [ K/(g/kg)]  i.e.
+    CT_T_wrt_t : array-like, unitless
+        The first derivative of Conservative Temperature with
+        respect to in-situ temperature, t, at constant SA and p.
+    CT_P_wrt_t : array-like, K/Pa
+        The first derivative of Conservative Temperature with
+        respect to pressure P (in Pa) at constant SA and t.
+
+    """
+    return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p)
 
 @match_args_return
 def CT_freezing(SA, p, saturation_fraction):
@@ -349,6 +402,7 @@ def CT_freezing(SA, p, saturation_fraction):
     Returns
     -------
     CT_freezing : array-like, deg C
+        Conservative Temperature at freezing of seawater
         That is, the freezing temperature expressed in terms of
         Conservative Temperature (ITS-90).
 
@@ -378,6 +432,7 @@ def CT_freezing_poly(SA, p, saturation_fraction):
     Returns
     -------
     CT_freezing : array-like, deg C
+        Conservative Temperature at freezing of seawater
         That is, the freezing temperature expressed in
         terms of Conservative Temperature (ITS-90).
 
@@ -405,6 +460,7 @@ def CT_from_enthalpy(SA, h, p):
     Returns
     -------
     CT : array-like, deg C
+        Conservative Temperature ( ITS-90)
 
     """
     return _gsw_ufuncs.ct_from_enthalpy(SA, h, p)
@@ -429,6 +485,7 @@ def CT_from_enthalpy_exact(SA, h, p):
     Returns
     -------
     CT : array-like, deg C
+        Conservative Temperature ( ITS-90)
 
     """
     return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p)
@@ -448,6 +505,7 @@ def CT_from_entropy(SA, entropy):
     Returns
     -------
     CT : array-like, deg C
+        Conservative Temperature (ITS-90)
 
     """
     return _gsw_ufuncs.ct_from_entropy(SA, entropy)
@@ -468,6 +526,7 @@ def CT_from_pt(SA, pt):
     Returns
     -------
     CT : array-like, deg C
+        Conservative Temperature (ITS-90)
 
     """
     return _gsw_ufuncs.ct_from_pt(SA, pt)
@@ -490,6 +549,7 @@ def CT_from_t(SA, t, p):
     Returns
     -------
     CT : array-like, deg C
+        Conservative Temperature (ITS-90)
 
     """
     return _gsw_ufuncs.ct_from_t(SA, t, p)
@@ -514,6 +574,7 @@ def CT_maxdensity(SA, p):
     Returns
     -------
     CT_maxdensity : array-like, deg C
+        Conservative Temperature at which
         the density of seawater is a maximum for
         given Absolute Salinity and pressure.
 
@@ -539,7 +600,9 @@ def deltaSA_atlas(p, lon, lat):
     Returns
     -------
     deltaSA_atlas : array-like, g/kg
-        in_ocean        =  0, if long and lat are a long way from the ocean
+        Absolute Salinity Anomaly atlas value
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -569,6 +632,7 @@ def deltaSA_from_SP(SP, p, lon, lat):
     Returns
     -------
     deltaSA : array-like, g/kg
+        Absolute Salinity Anomaly
 
     """
     return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat)
@@ -593,6 +657,7 @@ def dilution_coefficient_t_exact(SA, t, p):
     Returns
     -------
     dilution_coefficient_t_exact : array-like, (J/kg)(kg/g)
+        dilution coefficient
 
     """
     return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p)
@@ -617,6 +682,7 @@ def dynamic_enthalpy(SA, CT, p):
     Returns
     -------
     dynamic_enthalpy : array-like, J/kg
+        dynamic enthalpy
 
     """
     return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p)
@@ -640,6 +706,7 @@ def enthalpy(SA, CT, p):
     Returns
     -------
     enthalpy : array-like, J/kg
+        specific enthalpy
 
     """
     return _gsw_ufuncs.enthalpy(SA, CT, p)
@@ -662,6 +729,7 @@ def enthalpy_CT_exact(SA, CT, p):
     Returns
     -------
     enthalpy_CT_exact : array-like, J/kg
+        specific enthalpy
 
     """
     return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p)
@@ -691,6 +759,7 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     Returns
     -------
     enthalpy_diff : array-like, J/kg
+        difference of specific enthalpy
         (deep minus shallow)
 
     """
@@ -711,9 +780,83 @@ def enthalpy_ice(t, p):
     Returns
     -------
     enthalpy_ice : array-like, J/kg
+        specific enthalpy of ice
 
     """
     return _gsw_ufuncs.enthalpy_ice(t, p)
+
+@match_args_return
+def enthalpy_second_derivatives(SA, CT, p):
+    """
+    Calculates the following three second-order derivatives of specific
+    enthalpy (h),using the computationally-efficient expression for
+    specific volume in terms of SA, CT and p (Roquet et al., 2015).
+    (1) h_SA_SA, second-order derivative with respect to Absolute Salinity
+    at constant CT & p.
+    (2) h_SA_CT, second-order derivative with respect to SA & CT at
+    constant p.
+    (3) h_CT_CT, second-order derivative with respect to CT at constant SA
+    and p.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    h_SA_SA : array-like, J/(kg (g/kg)^2)
+        The second derivative of specific enthalpy with respect to
+        Absolute Salinity at constant CT & p.
+    h_SA_CT : array-like, J/(kg K(g/kg))
+        The second derivative of specific enthalpy with respect to
+        SA and CT at constant p.
+    h_CT_CT : array-like, J/(kg K^2)
+        The second derivative of specific enthalpy with respect to
+        CT at constant SA and p.
+
+    """
+    return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p)
+
+@match_args_return
+def enthalpy_second_derivatives_CT_exact(SA, CT, p):
+    """
+    Calculates the following three second-order derivatives of specific
+    enthalpy (h),
+    (1) h_SA_SA, second-order derivative with respect to Absolute Salinity
+    at constant CT & p.
+    (2) h_SA_CT, second-order derivative with respect to SA & CT at
+    constant p.
+    (3) h_CT_CT, second-order derivative with respect to CT at constant SA
+    and p.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    h_SA_SA : array-like, J/(kg (g/kg)^2)
+        The second derivative of specific enthalpy with respect to
+        Absolute Salinity at constant CT & p.
+    h_SA_CT : array-like, J/(kg K(g/kg))
+        The second derivative of specific enthalpy with respect to
+        SA and CT at constant p.
+    h_CT_CT : array-like, J/(kg K^2)
+        The second derivative of specific enthalpy with respect to
+        CT at constant SA and p.
+
+    """
+    return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p)
 
 @match_args_return
 def enthalpy_SSO_0(p):
@@ -738,6 +881,7 @@ def enthalpy_t_exact(SA, t, p):
     Returns
     -------
     enthalpy_t_exact : array-like, J/kg
+        specific enthalpy
 
     """
     return _gsw_ufuncs.enthalpy_t_exact(SA, t, p)
@@ -758,6 +902,7 @@ def entropy_from_pt(SA, pt):
     Returns
     -------
     entropy : array-like, J/(kg*K)
+        specific entropy
 
     """
     return _gsw_ufuncs.entropy_from_pt(SA, pt)
@@ -779,6 +924,7 @@ def entropy_from_t(SA, t, p):
     Returns
     -------
     entropy : array-like, J/(kg*K)
+        specific entropy
 
     """
     return _gsw_ufuncs.entropy_from_t(SA, t, p)
@@ -798,6 +944,7 @@ def entropy_ice(t, p):
     Returns
     -------
     ice_entropy : array-like, J kg^-1 K^-1
+        specific entropy of ice
 
     """
     return _gsw_ufuncs.entropy_ice(t, p)
@@ -833,9 +980,40 @@ def Fdelta(p, lon, lat):
     Returns
     -------
     Fdelta : array-like, unitless
+        ratio of SA to Sstar, minus 1
 
     """
     return _gsw_ufuncs.fdelta(p, lon, lat)
+
+@match_args_return
+def frazil_properties(SA_bulk, h_bulk, p):
+    """(no description available)
+    """
+    return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p)
+
+@match_args_return
+def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
+    """(no description available)
+    """
+    return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p)
+
+@match_args_return
+def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
+    """(no description available)
+    """
+    return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p)
+
+@match_args_return
+def frazil_ratios_adiabatic(SA, p, w_Ih):
+    """(no description available)
+    """
+    return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih)
+
+@match_args_return
+def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
+    """(no description available)
+    """
+    return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih)
 
 @match_args_return
 def gibbs_ice_part_t(t, p):
@@ -853,6 +1031,7 @@ def gibbs_ice_part_t(t, p):
     Returns
     -------
     gibbs_ice_part_t : array-like, J kg^-1 K^-1
+        part of temperature derivative
 
     """
     return _gsw_ufuncs.gibbs_ice_part_t(t, p)
@@ -871,6 +1050,7 @@ def gibbs_ice_pt0(pt0):
     Returns
     -------
     gibbs_ice_part_pt0 : array-like, J kg^-1 K^-1
+        part of temperature derivative
 
     """
     return _gsw_ufuncs.gibbs_ice_pt0(pt0)
@@ -890,6 +1070,7 @@ def gibbs_ice_pt0_pt0(pt0):
     Returns
     -------
     gibbs_ice_pt0_pt0 : array-like, J kg^-1 K^-2
+        temperature second derivative at pt0
 
     """
     return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0)
@@ -916,6 +1097,7 @@ def grav(lat, p):
     Returns
     -------
     grav : array-like, m s^-2
+        gravitational acceleration
 
     """
     return _gsw_ufuncs.grav(lat, p)
@@ -935,6 +1117,7 @@ def Helmholtz_energy_ice(t, p):
     Returns
     -------
     Helmholtz_energy_ice : array-like, J/kg
+        Helmholtz energy of ice
 
     """
     return _gsw_ufuncs.helmholtz_energy_ice(t, p)
@@ -957,6 +1140,7 @@ def Hill_ratio_at_SP2(t):
     Returns
     -------
     Hill_ratio : array-like, unitless
+        Hill ratio at SP of 2
 
     """
     return _gsw_ufuncs.hill_ratio_at_sp2(t)
@@ -980,6 +1164,7 @@ def internal_energy(SA, CT, p):
     Returns
     -------
     internal_energy : array-like, J/kg
+        specific internal energy
 
     """
     return _gsw_ufuncs.internal_energy(SA, CT, p)
@@ -999,6 +1184,7 @@ def internal_energy_ice(t, p):
     Returns
     -------
     internal_energy_ice : array-like, J/kg
+        specific internal energy (u)
 
     """
     return _gsw_ufuncs.internal_energy_ice(t, p)
@@ -1023,6 +1209,7 @@ def kappa(SA, CT, p):
     Returns
     -------
     kappa : array-like, 1/Pa
+        isentropic compressibility of seawater
 
     """
     return _gsw_ufuncs.kappa(SA, CT, p)
@@ -1044,6 +1231,7 @@ def kappa_const_t_ice(t, p):
     Returns
     -------
     kappa_const_t_ice : array-like, 1/Pa
+        isothermal compressibility
         Note. The output units are 1/Pa not 1/dbar.
 
     """
@@ -1064,6 +1252,7 @@ def kappa_ice(t, p):
     Returns
     -------
     kappa_ice : array-like, 1/Pa
+        isentropic compressibility
         Note. The output units are 1/Pa not 1/dbar.
 
     """
@@ -1086,6 +1275,7 @@ def kappa_t_exact(SA, t, p):
     Returns
     -------
     kappa_t_exact : array-like, 1/Pa
+        isentropic compressibility
         Note. The output units are 1/Pa not 1/dbar.
 
     """
@@ -1110,6 +1300,7 @@ def latentheat_evap_CT(SA, CT):
     Returns
     -------
     latentheat_evap : array-like, J/kg
+        latent heat of evaporation
 
     """
     return _gsw_ufuncs.latentheat_evap_ct(SA, CT)
@@ -1132,6 +1323,7 @@ def latentheat_evap_t(SA, t):
     Returns
     -------
     latentheat_evap : array-like, J/kg
+        latent heat of evaporation
 
     """
     return _gsw_ufuncs.latentheat_evap_t(SA, t)
@@ -1155,6 +1347,7 @@ def latentheat_melting(SA, p):
     Returns
     -------
     latentheat_melting : array-like, J/kg
+        latent heat of melting
 
     """
     return _gsw_ufuncs.latentheat_melting(SA, p)
@@ -1182,6 +1375,7 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
     Returns
     -------
     melting_ice_equilibrium_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT
         changes when ice melts into seawater, with
         the seawater and seaice being close to the
         freezing temperature.
@@ -1212,6 +1406,7 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     Returns
     -------
     melting_ice_equilibrium_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT
         changes when ice melts into seawater, with
         the seawater and seaice being close to the
         freezing temperature.
@@ -1241,6 +1436,7 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     Returns
     -------
     melting_ice_SA_CT_ratio : array-like, g kg^-1 K^-1
+        the ratio of SA to CT changes when ice melts
         into a large mass of seawater
 
     """
@@ -1268,6 +1464,7 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     Returns
     -------
     melting_ice_SA_CT_ratio : array-like, g kg^-1 K^-1
+        the ratio of SA to CT changes when ice melts
         into a large mass of seawater
 
     """
@@ -1297,6 +1494,7 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
     Returns
     -------
     melting_seaice_equilibrium_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT
         changes when sea ice melts into seawater, with
         the seawater and sea ice being close to the
         freezing temperature.
@@ -1328,6 +1526,7 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     Returns
     -------
     melting_seaice_equilibrium_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT
         changes when sea ice melts into seawater, with
         the seawater and sea ice being close to the
         freezing temperature.
@@ -1360,6 +1559,7 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
     Returns
     -------
     melting_seaice_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT changes when
         sea ice melts into a large mass of seawater
 
     """
@@ -1390,6 +1590,7 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     Returns
     -------
     melting_seaice_SA_CT_ratio : array-like, g/(kg K)
+        the ratio dSA/dCT of SA to CT changes when
         sea ice melts into a large mass of seawater
 
     """
@@ -1409,6 +1610,7 @@ def pot_enthalpy_from_pt_ice(pt0_ice):
     Returns
     -------
     pot_enthalpy_ice : array-like, J/kg
+        potential enthalpy of ice
 
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice)
@@ -1429,6 +1631,7 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice):
     Returns
     -------
     pot_enthalpy_ice : array-like, J/kg
+        potential enthalpy of ice
 
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice)
@@ -1448,6 +1651,7 @@ def pot_enthalpy_ice_freezing(SA, p):
     Returns
     -------
     pot_enthalpy_ice_freezing : array-like, J/kg
+        potential enthalpy of ice at freezing
         of seawater
 
     """
@@ -1477,6 +1681,7 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
     Returns
     -------
     pot_enthalpy_ice_freezing : array-like, J/kg
+        potential enthalpy of ice at freezing
         of seawater
 
     """
@@ -1503,6 +1708,7 @@ def pot_rho_t_exact(SA, t, p, p_ref):
     Returns
     -------
     pot_rho_t_exact : array-like, kg/m^3
+        potential density (not potential density anomaly)
 
     """
     return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref)
@@ -1522,6 +1728,7 @@ def pressure_coefficient_ice(t, p):
     Returns
     -------
     pressure_coefficient_ice : array-like, Pa/K
+        pressure coefficient of ice
         Note. The output units are Pa/K NOT dbar/K.
 
     """
@@ -1550,6 +1757,7 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
     Returns
     -------
     pressure_freezing : array-like, dbar
+        sea pressure at which the seawater freezes
         ( i.e. absolute pressure - 10.1325 dbar )
 
     """
@@ -1577,6 +1785,7 @@ def pt0_from_t(SA, t, p):
     Returns
     -------
     pt0 : array-like, deg C
+        potential temperature
         with reference sea pressure (p_ref) = 0 dbar.
         Note. The reference sea pressure of the output, pt0, is zero dbar.
 
@@ -1599,6 +1808,7 @@ def pt0_from_t_ice(t, p):
     Returns
     -------
     pt0_ice : array-like, deg C
+        potential temperature of ice Ih with reference pressure of
         zero dbar (ITS-90)
 
     """
@@ -1623,6 +1833,7 @@ def pt_from_CT(SA, CT):
     Returns
     -------
     pt : array-like, deg C
+        potential temperature referenced to a sea pressure
         of zero dbar (ITS-90)
 
     """
@@ -1644,6 +1855,7 @@ def pt_from_entropy(SA, entropy):
     Returns
     -------
     pt : array-like, deg C
+        potential temperature
         with reference sea pressure (p_ref) = 0 dbar.
         Note. The reference sea pressure of the output, pt, is zero dbar.
 
@@ -1665,6 +1877,7 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
     Returns
     -------
     pt0_ice : array-like, deg C
+        potential temperature of ice (ITS-90)
 
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice)
@@ -1685,6 +1898,7 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
     Returns
     -------
     pt0_ice : array-like, deg C
+        potential temperature of ice (ITS-90)
 
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice)
@@ -1713,6 +1927,7 @@ def pt_from_t(SA, t, p, p_ref):
     Returns
     -------
     pt : array-like, deg C
+        potential temperature with reference pressure, p_ref, on the
         ITS-90 temperature scale
 
     """
@@ -1736,6 +1951,7 @@ def pt_from_t_ice(t, p, p_ref):
     Returns
     -------
     pt_ice : array-like, deg C
+        potential temperature of ice Ih with reference pressure,
         p_ref, on the ITS-90 temperature scale
 
     """
@@ -1760,9 +1976,76 @@ def rho(SA, CT, p):
     Returns
     -------
     rho : array-like, kg/m
+        in-situ density
 
     """
     return _gsw_ufuncs.rho(SA, CT, p)
+
+@match_args_return
+def rho_alpha_beta(SA, CT, p):
+    """
+    Calculates in-situ density, the appropiate thermal expansion coefficient
+    and the appropriate saline contraction coefficient of seawater from
+    Absolute Salinity and Conservative Temperature.  This function uses the
+    computationally-efficient expression for specific volume in terms of
+    SA, CT and p (Roquet et al., 2015).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    rho : array-like, kg/m
+        in-situ density
+    alpha : array-like, 1/K
+        thermal expansion coefficient
+        with respect to Conservative Temperature
+    beta : array-like, kg/g
+        saline (i.e. haline) contraction
+        coefficient at constant Conservative Temperature
+
+    """
+    return _gsw_ufuncs.rho_alpha_beta(SA, CT, p)
+
+@match_args_return
+def rho_first_derivatives(SA, CT, p):
+    """
+    Calculates the three (3) partial derivatives of in-situ density with
+    respect to Absolute Salinity, Conservative Temperature and pressure.
+    Note that the pressure derivative is done with respect to pressure in
+    Pa, not dbar.  This function uses the computationally-efficient
+    expression for specific volume in terms of SA, CT and p (Roquet et al.,
+    2015).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    rho_SA : array-like, (kg/m^3)(g/kg)^-1
+        partial derivative of density
+        with respect to Absolute Salinity
+    rho_CT : array-like, kg/(m^3 K)
+        partial derivative of density
+        with respect to Conservative Temperature
+    rho_P : array-like, kg/(m^3 Pa)
+        partial derivative of density
+        with respect to pressure in Pa
+
+    """
+    return _gsw_ufuncs.rho_first_derivatives(SA, CT, p)
 
 @match_args_return
 def rho_ice(t, p):
@@ -1781,9 +2064,46 @@ def rho_ice(t, p):
     Returns
     -------
     rho_ice : array-like, kg/m^3
+        in-situ density of ice (not density anomaly)
 
     """
     return _gsw_ufuncs.rho_ice(t, p)
+
+@match_args_return
+def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
+    """
+    Calculates the following three second-order derivatives of rho with
+    respect to enthalpy,
+    (1) rho_SA_SA, second-order derivative with respect to Absolute Salinity
+    at constant h & p.
+    (2) rho_SA_h, second-order derivative with respect to SA & h at
+    constant p.
+    (3) rho_h_h, second-order derivative with respect to h at
+    constant SA & p.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    rho_SA_SA : array-like, J/(kg (g/kg)^2)
+        The second-order derivative of rho with respect to
+        Absolute Salinity at constant h & p.
+    rho_SA_h : array-like, J/(kg K(g/kg))
+        The second-order derivative of rho with respect to
+        SA and h at constant p.
+    rho_h_h : array-like, 
+        The second-order derivative of rho with respect to h at
+        constant SA & p
+
+    """
+    return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p)
 
 @match_args_return
 def rho_t_exact(SA, t, p):
@@ -1804,6 +2124,7 @@ def rho_t_exact(SA, t, p):
     Returns
     -------
     rho_t_exact : array-like, kg/m^3
+        in-situ density (not density anomaly)
 
     """
     return _gsw_ufuncs.rho_t_exact(SA, t, p)
@@ -1831,6 +2152,7 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
     Returns
     -------
     SA_freezing : array-like, g/kg
+        Absolute Salinity of seawater when it freezes, for
         given input values of its Conservative Temperature,
         pressure and air saturation fraction.
 
@@ -1859,6 +2181,7 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
     Returns
     -------
     SA_freezing : array-like, g/kg
+        Absolute Salinity of seawater when it freezes, for
         given input values of Conservative Temperature
         pressure and air saturation fraction.
 
@@ -1887,6 +2210,7 @@ def SA_freezing_from_t(t, p, saturation_fraction):
     Returns
     -------
     SA_freezing : array-like, g/kg
+        Absolute Salinity of seawater when it freezes, for
         given input values of in situ temperature, pressure and
         air saturation fraction.
 
@@ -1915,6 +2239,7 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
     Returns
     -------
     SA_freezing : array-like, g/kg
+        Absolute Salinity of seawater when it freezes, for
         given input values of in situ temperature, pressure and
         air saturation fraction.
 
@@ -1941,6 +2266,7 @@ def SA_from_rho(rho, CT, p):
     Returns
     -------
     SA : array-like, g/kg
+        Absolute Salinity.
         Note. This is expressed on the Reference-Composition Salinity
         Scale of Millero et al. (2008).
 
@@ -1968,7 +2294,9 @@ def SA_from_SP(SP, p, lon, lat):
     Returns
     -------
     SA : array-like, g/kg
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Absolute Salinity
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -1998,6 +2326,7 @@ def SA_from_SP_Baltic(SP, lon, lat):
     Returns
     -------
     SA_baltic : array-like, g kg^-1
+        Absolute Salinity in the Baltic Sea
 
     """
     return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat)
@@ -2021,7 +2350,9 @@ def SA_from_Sstar(Sstar, p, lon, lat):
     Returns
     -------
     SA : array-like, g/kg
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Absolute Salinity
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2049,7 +2380,9 @@ def SAAR(p, lon, lat):
     Returns
     -------
     SAAR : array-like, unitless
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Absolute Salinity Anomaly Ratio
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in or near the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2077,6 +2410,7 @@ def sigma0(SA, CT):
     Returns
     -------
     sigma0 : array-like, kg/m^3
+        potential density anomaly with
         respect to a reference pressure of 0 dbar,
         that is, this potential density - 1000 kg/m^3.
 
@@ -2103,6 +2437,7 @@ def sigma1(SA, CT):
     Returns
     -------
     sigma1 : array-like, kg/m^3
+        potential density anomaly with
         respect to a reference pressure of 1000 dbar,
         that is, this potential density - 1000 kg/m^3.
 
@@ -2128,6 +2463,7 @@ def sigma2(SA, CT):
     Returns
     -------
     sigma2 : array-like, kg/m^3
+        potential density anomaly with
         respect to a reference pressure of 2000 dbar,
         that is, this potential density - 1000 kg/m^3.
 
@@ -2153,6 +2489,7 @@ def sigma3(SA, CT):
     Returns
     -------
     sigma3 : array-like, kg/m^3
+        potential density anomaly with
         respect to a reference pressure of 3000 dbar,
         that is, this potential density - 1000 kg/m^3.
 
@@ -2178,6 +2515,7 @@ def sigma4(SA, CT):
     Returns
     -------
     sigma4 : array-like, kg/m^3
+        potential density anomaly with
         respect to a reference pressure of 4000 dbar,
         that is, this potential density - 1000 kg/m^3.
 
@@ -2204,6 +2542,7 @@ def sound_speed(SA, CT, p):
     Returns
     -------
     sound_speed : array-like, m/s
+        speed of sound in seawater
 
     """
     return _gsw_ufuncs.sound_speed(SA, CT, p)
@@ -2223,6 +2562,7 @@ def sound_speed_ice(t, p):
     Returns
     -------
     sound_speed_ice : array-like, m/s
+        compression speed of sound in ice
 
     """
     return _gsw_ufuncs.sound_speed_ice(t, p)
@@ -2244,6 +2584,7 @@ def sound_speed_t_exact(SA, t, p):
     Returns
     -------
     sound_speed_t_exact : array-like, m/s
+        speed of sound in seawater
 
     """
     return _gsw_ufuncs.sound_speed_t_exact(SA, t, p)
@@ -2273,6 +2614,7 @@ def SP_from_C(C, t, p):
     Returns
     -------
     SP : array-like, unitless
+        Practical Salinity on the PSS-78 scale
 
     """
     return _gsw_ufuncs.sp_from_c(C, t, p)
@@ -2296,7 +2638,9 @@ def SP_from_SA(SA, p, lon, lat):
     Returns
     -------
     SP : array-like, unitless
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Practical Salinity  (PSS-78)
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2325,6 +2669,7 @@ def SP_from_SA_Baltic(SA, lon, lat):
     Returns
     -------
     SP_baltic : array-like, unitless
+        Practical Salinity
 
     """
     return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat)
@@ -2342,6 +2687,7 @@ def SP_from_SK(SK):
     Returns
     -------
     SP : array-like, unitless
+        Practical Salinity  (PSS-78)
 
     """
     return _gsw_ufuncs.sp_from_sk(SK)
@@ -2359,6 +2705,7 @@ def SP_from_SR(SR):
     Returns
     -------
     SP : array-like, unitless
+        Practical Salinity  (PSS-78)
 
     """
     return _gsw_ufuncs.sp_from_sr(SR)
@@ -2382,7 +2729,9 @@ def SP_from_Sstar(Sstar, p, lon, lat):
     Returns
     -------
     SP : array-like, unitless
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Practical Salinity  (PSS-78)
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2410,9 +2759,42 @@ def specvol(SA, CT, p):
     Returns
     -------
     specvol : array-like, m^3/kg
+        specific volume
 
     """
     return _gsw_ufuncs.specvol(SA, CT, p)
+
+@match_args_return
+def specvol_alpha_beta(SA, CT, p):
+    """
+    Calculates specific volume, the appropiate thermal expansion coefficient
+    and the appropriate saline contraction coefficient of seawater from
+    Absolute Salinity and Conservative Temperature.  This function uses the
+    computationally-efficient expression for specific volume in terms of
+    SA, CT and p (Roquet et al., 2015).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    specvol : array-like, m/kg
+        specific volume
+    alpha : array-like, 1/K
+        thermal expansion coefficient
+        with respect to Conservative Temperature
+    beta : array-like, kg/g
+        saline (i.e. haline) contraction
+        coefficient at constant Conservative Temperature
+
+    """
+    return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p)
 
 @match_args_return
 def specvol_anom_standard(SA, CT, p):
@@ -2436,9 +2818,46 @@ def specvol_anom_standard(SA, CT, p):
     Returns
     -------
     specvol_anom : array-like, m^3/kg
+        specific volume anomaly
 
     """
     return _gsw_ufuncs.specvol_anom_standard(SA, CT, p)
+
+@match_args_return
+def specvol_first_derivatives(SA, CT, p):
+    """
+    Calculates the following three first-order derivatives of specific
+    volume (v),
+    (1) v_SA, first-order derivative with respect to Absolute Salinity
+    at constant CT & p.
+    (2) v_CT, first-order derivative with respect to CT at
+    constant SA & p.
+    (3) v_P, first-order derivative with respect to P at constant SA
+    and CT.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    v_SA : array-like, (m^3/kg)(g/kg)^-1
+        The first derivative of specific volume with respect to
+        Absolute Salinity at constant CT & p.
+    v_CT : array-like, m^3/(K kg)
+        The first derivative of specific volume with respect to
+        CT at constant SA and p.
+    v_P : array-like, m^3/(Pa kg)
+        The first derivative of specific volume with respect to
+        P at constant SA and CT.
+
+    """
+    return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p)
 
 @match_args_return
 def specvol_ice(t, p):
@@ -2455,9 +2874,46 @@ def specvol_ice(t, p):
     Returns
     -------
     specvol_ice : array-like, m^3/kg
+        specific volume
 
     """
     return _gsw_ufuncs.specvol_ice(t, p)
+
+@match_args_return
+def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
+    """
+    Calculates the following three first-order derivatives of specific
+    volume (v) with respect to enthalpy,
+    (1) v_SA_SA_wrt_h, second-order derivative with respect to Absolute Salinity
+    at constant h & p.
+    (2) v_SA_h, second-order derivative with respect to SA & h at
+    constant p.
+    (3) v_h_h, second-order derivative with respect to h at
+    constant SA & p.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    v_SA_SA_wrt_h : array-like, (m^3/kg)(g/kg)^-2 (J/kg)^-1
+        The second-order derivative of specific volume with
+        respect to Absolute Salinity at constant h & p.
+    v_SA_h : array-like, (m^3/kg)(g/kg)^-1 (J/kg)^-1
+        The second-order derivative of specific volume with respect to
+        SA and h at constant p.
+    v_h_h : array-like, (m^3/kg)(J/kg)^-2
+        The second-order derivative with respect to h at
+        constant SA & p.
+
+    """
+    return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p)
 
 @match_args_return
 def specvol_SSO_0(p):
@@ -2482,6 +2938,7 @@ def specvol_t_exact(SA, t, p):
     Returns
     -------
     specvol_t_exact : array-like, m^3/kg
+        specific volume
 
     """
     return _gsw_ufuncs.specvol_t_exact(SA, t, p)
@@ -2505,6 +2962,7 @@ def spiciness0(SA, CT):
     Returns
     -------
     spiciness0 : array-like, kg/m^3
+        spiciness referenced to a pressure of 0 dbar,
         i.e. the surface
 
     """
@@ -2529,6 +2987,7 @@ def spiciness1(SA, CT):
     Returns
     -------
     spiciness1 : array-like, kg/m^3
+        spiciness referenced to a pressure of 1000 dbar
 
     """
     return _gsw_ufuncs.spiciness1(SA, CT)
@@ -2552,6 +3011,7 @@ def spiciness2(SA, CT):
     Returns
     -------
     spiciness2 : array-like, kg/m^3
+        spiciness referenced to a pressure of 2000 dbar
 
     """
     return _gsw_ufuncs.spiciness2(SA, CT)
@@ -2569,6 +3029,7 @@ def SR_from_SP(SP):
     Returns
     -------
     SR : array-like, g/kg
+        Reference Salinity
 
     """
     return _gsw_ufuncs.sr_from_sp(SP)
@@ -2592,7 +3053,9 @@ def Sstar_from_SA(SA, p, lon, lat):
     Returns
     -------
     Sstar : array-like, g/kg
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Preformed Salinity
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2622,7 +3085,9 @@ def Sstar_from_SP(SP, p, lon, lat):
     Returns
     -------
     Sstar : array-like, g/kg
-        in_ocean  =  0, if long and lat are a long way from the ocean
+        Preformed Salinity
+    in_ocean : array-like, 
+        0, if long and lat are a long way from the ocean
         =  1, if long and lat are in the ocean
         Note. This flag is only set when the observation is well and truly on
         dry land; often the warning flag is not set until one is several
@@ -2649,6 +3114,7 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p):
     Returns
     -------
     chem_potential_water_dt : array-like, J g^-1 K^-1
+        temperature derivative of the chemical
         potential of water in seawater
 
     """
@@ -2675,6 +3141,7 @@ def t_freezing(SA, p, saturation_fraction):
     Returns
     -------
     t_freezing : array-like, deg C
+        in-situ temperature at which seawater freezes.
         (ITS-90)
 
     """
@@ -2698,6 +3165,7 @@ def t_from_CT(SA, CT, p):
     Returns
     -------
     t : array-like, deg C
+        in-situ temperature (ITS-90)
 
     """
     return _gsw_ufuncs.t_from_ct(SA, CT, p)
@@ -2719,6 +3187,7 @@ def t_from_pt0_ice(pt0_ice, p):
     Returns
     -------
     t : array-like, deg C
+        in-situ temperature (ITS-90)
 
     """
     return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p)
@@ -2743,6 +3212,7 @@ def thermobaric(SA, CT, p):
     Returns
     -------
     thermobaric : array-like, 1/(K Pa)
+        thermobaric coefficient with
         respect to Conservative Temperature.
         Note. The pressure derivative is taken with respect to
         pressure in Pa not dbar.
@@ -2770,6 +3240,7 @@ def z_from_p(p, lat):
     Returns
     -------
     z : array-like, m
+        height
         Note. At sea level z = 0, and since z (HEIGHT) is defined to be
         positive upwards, it follows that while z is positive in the
         atmosphere, it is NEGATIVE in the ocean.
