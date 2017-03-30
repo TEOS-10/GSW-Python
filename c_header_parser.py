@@ -144,3 +144,10 @@ def get_complex_scalar_dict_by_nargs_nreturns():
         else:
             names_by_sigtup[sigtup] = [k]
     return names_by_sigtup
+
+def print_complex_names_by_nargs_nreturns():
+    d = get_complex_scalar_dict_by_nargs_nreturns()
+    for k, v in d.items():
+        print(k, len(v))
+        for name in v:
+            print('    %s' % name)

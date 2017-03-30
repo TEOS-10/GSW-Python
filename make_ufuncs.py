@@ -38,6 +38,7 @@ static PyMethodDef GswMethods[] = {
         {NULL, NULL, 0, NULL}
 };
 
+/* Single output */
 
 static void loop1d_d_d(char **args, npy_intp *dimensions,
                           npy_intp* steps, void* data)
@@ -191,7 +192,80 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
         out += out_step;
     }
 }
+/* Multiple outputs */
 
+/* 2 in, 2 out */
+static void loop1d_dd_dd(char **args, npy_intp *dimensions,
+                          npy_intp* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in1 = args[0];
+    char *in2 = args[1];
+    char *out1 = args[2];
+    char *out2 = args[3];
+    npy_intp in_step1 = steps[0];
+    npy_intp in_step2 = steps[1];
+    npy_intp out_step1 = steps[2];
+    npy_intp out_step2 = steps[3];
+    void (*func)(double, double, double *, double *);
+    double outd1, outd2;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        func(*(double *)in1,
+             *(double *)in2,
+             &outd1, &outd2
+             );
+        *((double *)out1) = CONVERT_INVALID(outd1);
+        *((double *)out2) = CONVERT_INVALID(outd2);
+
+        in1 += in_step1;
+        in2 += in_step2;
+        out1 += out_step1;
+        out2 += out_step2;
+    }
+}
+
+/* 3 in, 2 out */
+static void loop1d_ddd_dd(char **args, npy_intp *dimensions,
+                          npy_intp* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in1 = args[0];
+    char *in2 = args[1];
+    char *in3 = args[2];
+    char *out1 = args[3];
+    char *out2 = args[4];
+    npy_intp in_step1 = steps[0];
+    npy_intp in_step2 = steps[1];
+    npy_intp in_step3 = steps[2];
+    npy_intp out_step1 = steps[3];
+    npy_intp out_step2 = steps[4];
+    void (*func)(double, double, double, double *, double *);
+    double outd1, outd2;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        func(*(double *)in1,
+             *(double *)in2,
+             *(double *)in3,
+             &outd1, &outd2
+             );
+        *((double *)out1) = CONVERT_INVALID(outd1);
+        *((double *)out2) = CONVERT_INVALID(outd2);
+
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        out1 += out_step1;
+        out2 += out_step2;
+    }
+}
+
+
+/* 3 in, 3 out */
 static void loop1d_ddd_ddd(char **args, npy_intp *dimensions,
                           npy_intp* steps, void* data)
 {
@@ -241,6 +315,9 @@ static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
 static PyUFuncGenericFunction funcs_dddd_d[] = {&loop1d_dddd_d};
 static PyUFuncGenericFunction funcs_ddddd_d[] = {&loop1d_ddddd_d};
 
+static PyUFuncGenericFunction funcs_dd_dd[] = {&loop1d_dd_dd};
+static PyUFuncGenericFunction funcs_ddd_dd[] = {&loop1d_ddd_dd};
+
 static PyUFuncGenericFunction funcs_ddd_ddd[] = {&loop1d_ddd_ddd};
 
 
@@ -269,6 +346,17 @@ static char types_ddddd_d[] = {
                        NPY_DOUBLE, NPY_DOUBLE,
                        NPY_DOUBLE, NPY_DOUBLE,
                        NPY_DOUBLE, NPY_DOUBLE,
+};
+
+static char types_dd_dd[] = {
+                       NPY_DOUBLE, NPY_DOUBLE,
+                       NPY_DOUBLE, NPY_DOUBLE,
+};
+
+static char types_ddd_dd[] = {
+                       NPY_DOUBLE, NPY_DOUBLE,
+                       NPY_DOUBLE, NPY_DOUBLE,
+                       NPY_DOUBLE,
 };
 
 
@@ -351,6 +439,8 @@ def write_modfile(modfile_name):
     funcnamelist1 = []
 
     nins = range(1, 6)
+    artups = [(2, 2), (3, 2), (3, 3)]
+
     for nin in nins:
         for funcname in argcategories1[nin]:
             chunks.append(modfile_array_entry(funcname))
@@ -358,7 +448,7 @@ def write_modfile(modfile_name):
 
     argcategories2 = get_complex_scalar_dict_by_nargs_nreturns()
     funcnamelist2 = []
-    for artup in [(3, 3),]:
+    for artup in artups:
         for funcname in argcategories2[artup]:
             chunks.append(modfile_array_entry(funcname))
             funcnamelist2.append(funcname)
@@ -369,7 +459,7 @@ def write_modfile(modfile_name):
         for funcname in argcategories1[nin]:
             chunks.append(modfile_init_entry(funcname, nin, 1))
 
-    for artup in [(3, 3),]:
+    for artup in artups:
         for funcname in argcategories2[artup]:
             chunks.append(modfile_init_entry(funcname, *artup))
 
