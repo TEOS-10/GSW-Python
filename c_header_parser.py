@@ -118,3 +118,29 @@ def get_complex_sigdict():
     sigs = get_signatures()
     sigdict = parse_signatures(sigs)
     return complex_sigdict(sigdict)
+
+def get_complex_scalar_sigdict():
+    cd = get_complex_sigdict()
+    scalar_dict = {}
+    for k, v in cd.items():
+        if v['returntype'] == 'void' and 'int' not in v['argtypes']:
+            scalar_dict[k] = v
+    return scalar_dict
+
+def get_complex_scalar_dict_by_nargs_nreturns():
+    sd = get_complex_scalar_sigdict()
+    names_by_sigtup = {}
+    for k, v in sd.items():
+        nargs = 0
+        nrets = 0
+        for arg in v['argtuple']:
+            if '*' in arg:
+                nrets += 1
+            else:
+                nargs += 1
+        sigtup = (nargs, nrets)
+        if sigtup in names_by_sigtup:
+            names_by_sigtup[sigtup].append(k)
+        else:
+            names_by_sigtup[sigtup] = [k]
+    return names_by_sigtup

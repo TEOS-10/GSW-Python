@@ -32,7 +32,7 @@ def match_args_return(f):
         def fixup(ret):
             if ismasked:
                 ret = np.ma.masked_invalid(ret)
-            if not isarray:
+            if not isarray and isinstance(ret, np.ndarray):
                 ret = ret[0]
             return ret
 
@@ -55,6 +55,15 @@ def match_args_return(f):
     wrapper.__wrapped__ = f
     return wrapper
 
+
+def axis_slicer(n, sl, axis):
+    """
+    Return an indexing tuple for an array with `n` dimensions,
+    with slice `sl` taken on `axis`.
+    """
+    itup = [slice(None)] * n
+    itup[axis] = sl
+    return tuple(itup)
 
 # This is straight from pycurrents.system.  We can trim out
 # the parts we don't need, but there is no rush to do so.

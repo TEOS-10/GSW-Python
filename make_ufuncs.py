@@ -4,7 +4,8 @@ into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
 """
 
-from c_header_parser import get_simple_sig_dict
+from c_header_parser import (get_simple_sig_dict,
+                            get_complex_scalar_dict_by_nargs_nreturns)
 
 modfile_name = 'src/_ufuncs.c'
 
@@ -191,12 +192,57 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
     }
 }
 
+static void loop1d_ddd_ddd(char **args, npy_intp *dimensions,
+                          npy_intp* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in1 = args[0];
+    char *in2 = args[1];
+    char *in3 = args[2];
+    char *out1 = args[3];
+    char *out2 = args[4];
+    char *out3 = args[5];
+    npy_intp in_step1 = steps[0];
+    npy_intp in_step2 = steps[1];
+    npy_intp in_step3 = steps[2];
+    npy_intp out_step1 = steps[3];
+    npy_intp out_step2 = steps[4];
+    npy_intp out_step3 = steps[4];
+    void (*func)(double, double, double, double *, double *, double *);
+    double outd1, outd2, outd3;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        func(*(double *)in1,
+             *(double *)in2,
+             *(double *)in3,
+             &outd1, &outd2, &outd3
+             );
+        *((double *)out1) = CONVERT_INVALID(outd1);
+        *((double *)out2) = CONVERT_INVALID(outd2);
+        *((double *)out3) = CONVERT_INVALID(outd3);
+
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        out1 += out_step1;
+        out2 += out_step2;
+        out3 += out_step3;
+    }
+}
+
+
+
 
 static PyUFuncGenericFunction funcs_d_d[] = {&loop1d_d_d};
 static PyUFuncGenericFunction funcs_dd_d[] = {&loop1d_dd_d};
 static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
 static PyUFuncGenericFunction funcs_dddd_d[] = {&loop1d_dddd_d};
 static PyUFuncGenericFunction funcs_ddddd_d[] = {&loop1d_ddddd_d};
+
+static PyUFuncGenericFunction funcs_ddd_ddd[] = {&loop1d_ddd_ddd};
+
 
 /* These are the input and return dtypes.*/
 static char types_d_d[] = {
@@ -220,6 +266,13 @@ static char types_dddd_d[] = {
 };
 
 static char types_ddddd_d[] = {
+                       NPY_DOUBLE, NPY_DOUBLE,
+                       NPY_DOUBLE, NPY_DOUBLE,
+                       NPY_DOUBLE, NPY_DOUBLE,
+};
+
+
+static char types_ddd_ddd[] = {
                        NPY_DOUBLE, NPY_DOUBLE,
                        NPY_DOUBLE, NPY_DOUBLE,
                        NPY_DOUBLE, NPY_DOUBLE,
@@ -273,10 +326,10 @@ def modfile_array_entry(funcname):
 
 
 _init_entry = """
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(nd)s_d,
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(ndin)s_%(ndout)s,
                                     data_%(funcname)s,
-                                    types_%(nd)s_d,
-                                    1, %(nin)d, 1,  // ndatatypes, nin, nout
+                                    types_%(ndin)s_%(ndout)s,
+                                    1, %(nin)d, %(nout)d,  // ndatatypes, nin, nout
                                     PyUFunc_None,
                                     "%(funcname)s",
                                     "%(funcname)s_docstring",
@@ -287,34 +340,52 @@ _init_entry = """
 """
 
 
-def modfile_init_entry(funcname, nin):
-    return _init_entry % dict(funcname=funcname, nin=nin, nd='d'*nin)
+def modfile_init_entry(funcname, nin, nout):
+    return _init_entry % dict(funcname=funcname, nin=nin, nout=nout,
+                              ndin='d'*nin, ndout='d'*nout)
 
 
 def write_modfile(modfile_name):
-    argcategories = get_simple_sig_dict()
+    argcategories1 = get_simple_sig_dict()
     chunks = [modfile_head]
-    funcnamelist = []
+    funcnamelist1 = []
+
     nins = range(1, 6)
     for nin in nins:
-        for funcname in argcategories[nin]:
+        for funcname in argcategories1[nin]:
             chunks.append(modfile_array_entry(funcname))
-            funcnamelist.append(funcname)
+            funcnamelist1.append(funcname)
+
+    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns()
+    funcnamelist2 = []
+    for artup in [(3, 3),]:
+        for funcname in argcategories2[artup]:
+            chunks.append(modfile_array_entry(funcname))
+            funcnamelist2.append(funcname)
 
     chunks.append(modfile_middle)
 
     for nin in nins:
-        for funcname in argcategories[nin]:
-            chunks.append(modfile_init_entry(funcname, nin))
+        for funcname in argcategories1[nin]:
+            chunks.append(modfile_init_entry(funcname, nin, 1))
+
+    for artup in [(3, 3),]:
+        for funcname in argcategories2[artup]:
+            chunks.append(modfile_init_entry(funcname, *artup))
+
 
     chunks.append(modfile_tail)
 
     with open(modfile_name, 'w') as f:
         f.write(''.join(chunks))
 
-    funcnamelist.sort()
-    with open('ufuncs.list', 'w') as f:
-        f.write('\n'.join(funcnamelist))
+    funcnamelist1.sort()
+    with open('ufuncs1.list', 'w') as f:
+        f.write('\n'.join(funcnamelist1))
+
+    funcnamelist2.sort()
+    with open('ufuncs2.list', 'w') as f:
+        f.write('\n'.join(funcnamelist2))
 
 
 if __name__ == '__main__':
