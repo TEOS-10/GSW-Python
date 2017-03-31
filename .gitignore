@@ -26,6 +26,7 @@
 build
 # sphinx build directory
 doc/_build
+docs/_build
 # setup.py dist directory
 dist
 # Egg metadata

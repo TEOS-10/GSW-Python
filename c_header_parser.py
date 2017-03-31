@@ -151,3 +151,11 @@ def print_complex_names_by_nargs_nreturns():
         print(k, len(v))
         for name in v:
             print('    %s' % name)
+
+def print_non_wrappable():
+    csd = get_complex_sigdict()
+    scd = get_complex_scalar_sigdict()
+    others = [f for f in csd if f not in scd]
+    othersd = {k : csd[k] for k in others}
+    for k, v in othersd.items():
+        print(k, v['argstring'], v['returntype'])
