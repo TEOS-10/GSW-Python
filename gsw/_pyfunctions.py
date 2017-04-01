@@ -60,7 +60,7 @@ def Turner_Rsubrho(SA, CT, p, axis=0):
 
     _, alpha, beta = specvol_alpha_beta(SA_mid, CT_mid, p_mid)
 
-    Tu = np.atan2((alpha*dCT + beta*dSA), (alpha*dCT - beta*dSA))
+    Tu = np.arctan2((alpha*dCT + beta*dSA), (alpha*dCT - beta*dSA))
     Tu = np.degrees(Tu)
 
     igood = (dSA != 0)
