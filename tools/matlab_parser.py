@@ -22,7 +22,7 @@ mfunc_topline2 = re.compile(r"^function \[(?P<output>.*)\]\s*=\s*"
                             r"\((?P<input>.*)\)")
 
 
-def list_functions(matdir=gsw_matlab_dir):
+def list_functions(matdir=gsw_matlab_dir, subdir=''):
     rawlist = glob.glob(os.path.join(matdir, '*.m'))
     signatures = []
     rejects = []
@@ -63,6 +63,13 @@ def to_sigdict(signatures):
 
 def get_complete_sigdict():
     return to_sigdict(get_all_signatures())
+
+
+def get_sigdicts_by_subdir():
+    out = dict(toolbox=to_sigdict(list_functions()[0]))
+    for subdir in gsw_matlab_subdirs:
+        out[subdir] = to_sigdict(list_functions(subdir=subdir)[0])
+    return out
 
 
 def variables_from_signatures(signatures):

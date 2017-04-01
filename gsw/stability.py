@@ -1,3 +1,19 @@
+"""
+Vertical stability functions.
+
+These work with ndarrays of profiles; use the `axis` keyword
+argument to specify the axis along which pressure varies.
+For example, the default, following the Matlab versions, is
+`axis=0`, meaning the pressure varies along the first dimension.
+Use `axis=-1` if pressure varies along the last dimension--that
+is, along a row, as the column index increases, in the 2-D case.
+
+Docstrings are not yet available; they will be added later via
+an automated mechanism.
+
+"""
+
+
 import numpy as np
 
 from ._utilities import match_args_return, axis_slicer
@@ -44,6 +60,7 @@ def Nsquared(SA, CT, p, lat=None, axis=0):
 
     return N2, p_mid
 
+
 @match_args_return
 def Turner_Rsubrho(SA, CT, p, axis=0):
     SA = np.clip(SA, 0, 50)
@@ -69,6 +86,7 @@ def Turner_Rsubrho(SA, CT, p, axis=0):
     Rsubrho[igood] = (alpha[igood]*dCT[igood])/(beta[igood]*dSA[igood])
 
     return Tu, Rsubrho, p_mid
+
 
 @match_args_return
 def IPV_vs_fNsquared_ratio(SA, CT, p, p_ref=0, axis=0):
