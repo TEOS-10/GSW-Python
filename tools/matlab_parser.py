@@ -1,8 +1,14 @@
+"""
+It may be necessary to edit the location of the GSW-Matlab directory.
+"""
+
 import os
 import glob
 import re
 
-gsw_matlab_dir = '../GSW-Matlab/Toolbox'
+basedir = os.path.join(os.path.dirname(__file__), '../')
+
+gsw_matlab_dir = os.path.join(basedir, '../GSW-Matlab/Toolbox')
 gsw_matlab_subdirs = ['library', 'thermodynamics_from_t']
 
 # pattern for functions returning one variable

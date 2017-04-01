@@ -3,13 +3,16 @@ Generate the src/_ufuncs.c file to turn the scalar C functions
 into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
 """
+import os
 
 from c_header_parser import (get_simple_sig_dict,
                             get_complex_scalar_dict_by_nargs_nreturns)
 
 blacklist = ['add_barrier']
 
-modfile_name = 'src/_ufuncs.c'
+basedir = os.path.join(os.path.dirname(__file__), '../')
+
+modfile_name = os.path.join(basedir, 'src/_ufuncs.c')
 
 modfile_head_top = """
 /*
@@ -27,7 +30,7 @@ This is python 3-only (for simplicity) to begin with.
 
 /* possible hack for MSVC: */
 #ifndef NAN
-#   static double NAN = 0.0/0.0;
+    static double NAN = 0.0/0.0;
 #endif
 
 #ifndef isnan

@@ -3,6 +3,7 @@ Script that generates _wrapped_ufuncs.py based on the output
 of make_ufuncs.py.
 """
 
+import os
 import re
 
 from _utilities import Bunch
@@ -14,9 +15,12 @@ from docstring_utils import (paragraphs,
                              fix_outputs_doc,
                              docstring_from_sections)
 
-wrapmod = 'gsw/_wrapped_ufuncs.py'
+basedir = os.path.join(os.path.dirname(__file__), '../')
 
-# Functions that are Matlab subroutines; we don't need to expose them.
+wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
+
+# Functions that are Matlab subroutines, or exclusive to
+# the C and not needed; we don't need to expose them.
 blacklist = {'ct_freezing_exact',
 'pt0_cold_ice_poly',
 'pt_from_pot_enthalpy_ice_poly_dh',

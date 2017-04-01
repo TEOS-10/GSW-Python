@@ -14,7 +14,7 @@ This is python 3-only (for simplicity) to begin with.
 
 /* possible hack for MSVC: */
 #ifndef NAN
-#   static double NAN = 0.0/0.0;
+    static double NAN = 0.0/0.0;
 #endif
 
 #ifndef isnan
@@ -693,34 +693,34 @@ static void *data_sstar_from_sa[] = {&gsw_sstar_from_sa};
 static void *data_sstar_from_sp[] = {&gsw_sstar_from_sp};
 static void *data_melting_seaice_sa_ct_ratio[] = {&gsw_melting_seaice_sa_ct_ratio};
 static void *data_melting_seaice_sa_ct_ratio_poly[] = {&gsw_melting_seaice_sa_ct_ratio_poly};
-static void *data_pot_enthalpy_ice_freezing_first_derivatives[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives};
+static void *data_entropy_first_derivatives[] = {&gsw_entropy_first_derivatives};
 static void *data_ct_first_derivatives[] = {&gsw_ct_first_derivatives};
 static void *data_pt_first_derivatives[] = {&gsw_pt_first_derivatives};
-static void *data_entropy_first_derivatives[] = {&gsw_entropy_first_derivatives};
+static void *data_pot_enthalpy_ice_freezing_first_derivatives[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives};
 static void *data_pot_enthalpy_ice_freezing_first_derivatives_poly[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives_poly};
 static void *data_specvol_first_derivatives_wrt_enthalpy[] = {&gsw_specvol_first_derivatives_wrt_enthalpy};
-static void *data_ct_from_rho[] = {&gsw_ct_from_rho};
 static void *data_ct_freezing_first_derivatives_poly[] = {&gsw_ct_freezing_first_derivatives_poly};
-static void *data_ct_freezing_first_derivatives[] = {&gsw_ct_freezing_first_derivatives};
-static void *data_t_freezing_first_derivatives[] = {&gsw_t_freezing_first_derivatives};
 static void *data_t_freezing_first_derivatives_poly[] = {&gsw_t_freezing_first_derivatives_poly};
-static void *data_enthalpy_first_derivatives[] = {&gsw_enthalpy_first_derivatives};
+static void *data_ct_from_rho[] = {&gsw_ct_from_rho};
 static void *data_enthalpy_first_derivatives_ct_exact[] = {&gsw_enthalpy_first_derivatives_ct_exact};
 static void *data_rho_first_derivatives_wrt_enthalpy[] = {&gsw_rho_first_derivatives_wrt_enthalpy};
-static void *data_ct_first_derivatives_wrt_t_exact[] = {&gsw_ct_first_derivatives_wrt_t_exact};
-static void *data_frazil_properties_potential_poly[] = {&gsw_frazil_properties_potential_poly};
-static void *data_frazil_ratios_adiabatic_poly[] = {&gsw_frazil_ratios_adiabatic_poly};
+static void *data_enthalpy_first_derivatives[] = {&gsw_enthalpy_first_derivatives};
+static void *data_ct_freezing_first_derivatives[] = {&gsw_ct_freezing_first_derivatives};
+static void *data_t_freezing_first_derivatives[] = {&gsw_t_freezing_first_derivatives};
 static void *data_frazil_properties[] = {&gsw_frazil_properties};
-static void *data_specvol_second_derivatives_wrt_enthalpy[] = {&gsw_specvol_second_derivatives_wrt_enthalpy};
-static void *data_specvol_alpha_beta[] = {&gsw_specvol_alpha_beta};
-static void *data_enthalpy_second_derivatives_ct_exact[] = {&gsw_enthalpy_second_derivatives_ct_exact};
+static void *data_ct_first_derivatives_wrt_t_exact[] = {&gsw_ct_first_derivatives_wrt_t_exact};
 static void *data_rho_alpha_beta[] = {&gsw_rho_alpha_beta};
+static void *data_enthalpy_second_derivatives_ct_exact[] = {&gsw_enthalpy_second_derivatives_ct_exact};
+static void *data_frazil_properties_potential_poly[] = {&gsw_frazil_properties_potential_poly};
 static void *data_frazil_ratios_adiabatic[] = {&gsw_frazil_ratios_adiabatic};
-static void *data_specvol_first_derivatives[] = {&gsw_specvol_first_derivatives};
-static void *data_rho_second_derivatives_wrt_enthalpy[] = {&gsw_rho_second_derivatives_wrt_enthalpy};
-static void *data_rho_first_derivatives[] = {&gsw_rho_first_derivatives};
-static void *data_frazil_properties_potential[] = {&gsw_frazil_properties_potential};
 static void *data_enthalpy_second_derivatives[] = {&gsw_enthalpy_second_derivatives};
+static void *data_specvol_second_derivatives_wrt_enthalpy[] = {&gsw_specvol_second_derivatives_wrt_enthalpy};
+static void *data_rho_second_derivatives_wrt_enthalpy[] = {&gsw_rho_second_derivatives_wrt_enthalpy};
+static void *data_specvol_alpha_beta[] = {&gsw_specvol_alpha_beta};
+static void *data_frazil_properties_potential[] = {&gsw_frazil_properties_potential};
+static void *data_rho_first_derivatives[] = {&gsw_rho_first_derivatives};
+static void *data_specvol_first_derivatives[] = {&gsw_specvol_first_derivatives};
+static void *data_frazil_ratios_adiabatic_poly[] = {&gsw_frazil_ratios_adiabatic_poly};
 static void *data_melting_seaice_into_seawater[] = {&gsw_melting_seaice_into_seawater};
 static void *data_entropy_second_derivatives[] = {&gsw_entropy_second_derivatives};
 static void *data_pt_second_derivatives[] = {&gsw_pt_second_derivatives};
@@ -728,8 +728,8 @@ static void *data_ct_second_derivatives[] = {&gsw_ct_second_derivatives};
 static void *data_ice_fraction_to_freeze_seawater[] = {&gsw_ice_fraction_to_freeze_seawater};
 static void *data_melting_ice_into_seawater[] = {&gsw_melting_ice_into_seawater};
 static void *data_seaice_fraction_to_freeze_seawater[] = {&gsw_seaice_fraction_to_freeze_seawater};
-static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
 static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
+static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
 
 PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
 {
@@ -2236,15 +2236,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
-                                    data_pot_enthalpy_ice_freezing_first_derivatives,
+                                    data_entropy_first_derivatives,
                                     types_dd_dd,
                                     1, 2, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "pot_enthalpy_ice_freezing_first_derivatives",
-                                    "pot_enthalpy_ice_freezing_first_derivatives_docstring",
+                                    "entropy_first_derivatives",
+                                    "entropy_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "pot_enthalpy_ice_freezing_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "entropy_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
@@ -2272,15 +2272,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
-                                    data_entropy_first_derivatives,
+                                    data_pot_enthalpy_ice_freezing_first_derivatives,
                                     types_dd_dd,
                                     1, 2, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "entropy_first_derivatives",
-                                    "entropy_first_derivatives_docstring",
+                                    "pot_enthalpy_ice_freezing_first_derivatives",
+                                    "pot_enthalpy_ice_freezing_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "entropy_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "pot_enthalpy_ice_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
@@ -2308,18 +2308,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_ct_from_rho,
-                                    types_ddd_dd,
-                                    1, 3, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "ct_from_rho",
-                                    "ct_from_rho_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "ct_from_rho", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
                                     data_ct_freezing_first_derivatives_poly,
                                     types_ddd_dd,
                                     1, 3, 2,  // ndatatypes, nin, nout
@@ -2329,30 +2317,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "ct_freezing_first_derivatives_poly", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_ct_freezing_first_derivatives,
-                                    types_ddd_dd,
-                                    1, 3, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "ct_freezing_first_derivatives",
-                                    "ct_freezing_first_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "ct_freezing_first_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_t_freezing_first_derivatives,
-                                    types_ddd_dd,
-                                    1, 3, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "t_freezing_first_derivatives",
-                                    "t_freezing_first_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "t_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
@@ -2368,15 +2332,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_enthalpy_first_derivatives,
+                                    data_ct_from_rho,
                                     types_ddd_dd,
                                     1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "enthalpy_first_derivatives",
-                                    "enthalpy_first_derivatives_docstring",
+                                    "ct_from_rho",
+                                    "ct_from_rho_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "enthalpy_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "ct_from_rho", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
@@ -2403,40 +2367,40 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     PyDict_SetItemString(d, "rho_first_derivatives_wrt_enthalpy", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_ct_first_derivatives_wrt_t_exact,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
+                                    data_enthalpy_first_derivatives,
+                                    types_ddd_dd,
+                                    1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "ct_first_derivatives_wrt_t_exact",
-                                    "ct_first_derivatives_wrt_t_exact_docstring",
+                                    "enthalpy_first_derivatives",
+                                    "enthalpy_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "ct_first_derivatives_wrt_t_exact", ufunc_ptr);
+    PyDict_SetItemString(d, "enthalpy_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_frazil_properties_potential_poly,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
+                                    data_ct_freezing_first_derivatives,
+                                    types_ddd_dd,
+                                    1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "frazil_properties_potential_poly",
-                                    "frazil_properties_potential_poly_docstring",
+                                    "ct_freezing_first_derivatives",
+                                    "ct_freezing_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "frazil_properties_potential_poly", ufunc_ptr);
+    PyDict_SetItemString(d, "ct_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_frazil_ratios_adiabatic_poly,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
+                                    data_t_freezing_first_derivatives,
+                                    types_ddd_dd,
+                                    1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "frazil_ratios_adiabatic_poly",
-                                    "frazil_ratios_adiabatic_poly_docstring",
+                                    "t_freezing_first_derivatives",
+                                    "t_freezing_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "frazil_ratios_adiabatic_poly", ufunc_ptr);
+    PyDict_SetItemString(d, "t_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2452,39 +2416,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_specvol_second_derivatives_wrt_enthalpy,
+                                    data_ct_first_derivatives_wrt_t_exact,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "specvol_second_derivatives_wrt_enthalpy",
-                                    "specvol_second_derivatives_wrt_enthalpy_docstring",
+                                    "ct_first_derivatives_wrt_t_exact",
+                                    "ct_first_derivatives_wrt_t_exact_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "specvol_second_derivatives_wrt_enthalpy", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_specvol_alpha_beta,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "specvol_alpha_beta",
-                                    "specvol_alpha_beta_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "specvol_alpha_beta", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_enthalpy_second_derivatives_ct_exact,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "enthalpy_second_derivatives_ct_exact",
-                                    "enthalpy_second_derivatives_ct_exact_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "enthalpy_second_derivatives_ct_exact", ufunc_ptr);
+    PyDict_SetItemString(d, "ct_first_derivatives_wrt_t_exact", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2500,6 +2440,30 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_enthalpy_second_derivatives_ct_exact,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "enthalpy_second_derivatives_ct_exact",
+                                    "enthalpy_second_derivatives_ct_exact_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "enthalpy_second_derivatives_ct_exact", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_frazil_properties_potential_poly,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "frazil_properties_potential_poly",
+                                    "frazil_properties_potential_poly_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "frazil_properties_potential_poly", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
                                     data_frazil_ratios_adiabatic,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
@@ -2512,15 +2476,27 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_specvol_first_derivatives,
+                                    data_enthalpy_second_derivatives,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "specvol_first_derivatives",
-                                    "specvol_first_derivatives_docstring",
+                                    "enthalpy_second_derivatives",
+                                    "enthalpy_second_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "specvol_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "enthalpy_second_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_specvol_second_derivatives_wrt_enthalpy,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "specvol_second_derivatives_wrt_enthalpy",
+                                    "specvol_second_derivatives_wrt_enthalpy_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "specvol_second_derivatives_wrt_enthalpy", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2536,15 +2512,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_rho_first_derivatives,
+                                    data_specvol_alpha_beta,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "rho_first_derivatives",
-                                    "rho_first_derivatives_docstring",
+                                    "specvol_alpha_beta",
+                                    "specvol_alpha_beta_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "rho_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "specvol_alpha_beta", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2560,15 +2536,39 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_enthalpy_second_derivatives,
+                                    data_rho_first_derivatives,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "enthalpy_second_derivatives",
-                                    "enthalpy_second_derivatives_docstring",
+                                    "rho_first_derivatives",
+                                    "rho_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "enthalpy_second_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "rho_first_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_specvol_first_derivatives,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "specvol_first_derivatives",
+                                    "specvol_first_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "specvol_first_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_frazil_ratios_adiabatic_poly,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "frazil_ratios_adiabatic_poly",
+                                    "frazil_ratios_adiabatic_poly_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "frazil_ratios_adiabatic_poly", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dddddd_dd,
@@ -2656,18 +2656,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
-                                    data_rho_second_derivatives,
-                                    types_ddd_ddddd,
-                                    1, 3, 5,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "rho_second_derivatives",
-                                    "rho_second_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "rho_second_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
                                     data_specvol_second_derivatives,
                                     types_ddd_ddddd,
                                     1, 3, 5,  // ndatatypes, nin, nout
@@ -2677,6 +2665,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "specvol_second_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
+                                    data_rho_second_derivatives,
+                                    types_ddd_ddddd,
+                                    1, 3, 5,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "rho_second_derivatives",
+                                    "rho_second_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "rho_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
 
