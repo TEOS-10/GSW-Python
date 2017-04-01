@@ -1039,7 +1039,7 @@ gsw_ct_first_derivatives_wrt_t_exact(double sa, double t, double p,
 !--------------------------------------------------------------------------
 
 !==========================================================================
-function gsw_ct_freezing(sa,p,saturation_fraction)  
+function gsw_ct_freezing(sa,p,saturation_fraction)
 !==========================================================================
 
 !  Calculates the Conservative Temperature at which seawater freezes.
@@ -1062,7 +1062,7 @@ function gsw_ct_freezing(sa,p,saturation_fraction)
 double
 gsw_ct_freezing(double sa, double p, double saturation_fraction)
 {
-	return (gsw_ct_freezing_poly(sa, p, saturation_fraction));
+	return (gsw_ct_freezing_exact(sa, p, saturation_fraction));
 }
 /*
 !==========================================================================
@@ -9997,10 +9997,10 @@ gsw_t_deriv_chem_potential_water_t_exact(double sa, double t, double p)
 }
 /*
 !==========================================================================
-function gsw_t_freezing(sa,p,saturation_fraction)  
+function gsw_t_freezing(sa,p,saturation_fraction)
 !==========================================================================
 
-! Calculates the in-situ temperature at which seawater freezes 
+! Calculates the in-situ temperature at which seawater freezes
 !
 ! sa     : Absolute Salinity                                 [g/kg]
 ! p      : sea pressure                                      [dbar]
@@ -10013,7 +10013,7 @@ function gsw_t_freezing(sa,p,saturation_fraction)
 double
 gsw_t_freezing(double sa, double p, double saturation_fraction)
 {
-	return (gsw_t_freezing_poly(sa,p,saturation_fraction,0));
+	return (gsw_t_freezing_exact(sa,p,saturation_fraction));
 }
 /*
 !==========================================================================
