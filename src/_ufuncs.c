@@ -43,8 +43,12 @@ static void loop1d_d_d(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        outd0 = func(*(double *)in0);
-        *((double *)out0) = CONVERT_INVALID(outd0);
+        if (isnan(*(double *)in0)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func(*(double *)in0);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
         in0 += in_step0;
         out0 += out_step0;
     }
@@ -74,8 +78,12 @@ static void loop1d_dd_d(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        outd0 = func(*(double *)in0, *(double *)in1);
-        *((double *)out0) = CONVERT_INVALID(outd0);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
         in0 += in_step0;
         in1 += in_step1;
         out0 += out_step0;
@@ -108,8 +116,12 @@ static void loop1d_ddd_d(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2);
-        *((double *)out0) = CONVERT_INVALID(outd0);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -145,8 +157,12 @@ static void loop1d_dddd_d(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3);
-        *((double *)out0) = CONVERT_INVALID(outd0);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -185,8 +201,12 @@ static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4);
-        *((double *)out0) = CONVERT_INVALID(outd0);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)||isnan(*(double *)in4)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -222,9 +242,13 @@ static void loop1d_dd_dd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, &outd0, &outd1);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, &outd0, &outd1);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+        }
         in0 += in_step0;
         in1 += in_step1;
         out0 += out_step0;
@@ -260,9 +284,13 @@ static void loop1d_ddd_dd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -301,10 +329,14 @@ static void loop1d_ddd_ddd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1, &outd2);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
-        *((double *)out2) = CONVERT_INVALID(outd2);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;*((double *)out2) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1, &outd2);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+            *((double *)out2) = CONVERT_INVALID(outd2);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -348,9 +380,13 @@ static void loop1d_dddddd_dd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4, *(double *)in5, &outd0, &outd1);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)||isnan(*(double *)in4)||isnan(*(double *)in5)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4, *(double *)in5, &outd0, &outd1);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -390,10 +426,14 @@ static void loop1d_dd_ddd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, &outd0, &outd1, &outd2);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
-        *((double *)out2) = CONVERT_INVALID(outd2);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;*((double *)out2) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, &outd0, &outd1, &outd2);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+            *((double *)out2) = CONVERT_INVALID(outd2);
+        }
         in0 += in_step0;
         in1 += in_step1;
         out0 += out_step0;
@@ -434,10 +474,14 @@ static void loop1d_dddd_ddd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, &outd0, &outd1, &outd2);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
-        *((double *)out2) = CONVERT_INVALID(outd2);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;*((double *)out2) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, &outd0, &outd1, &outd2);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+            *((double *)out2) = CONVERT_INVALID(outd2);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -482,10 +526,14 @@ static void loop1d_ddddd_ddd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4, &outd0, &outd1, &outd2);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
-        *((double *)out2) = CONVERT_INVALID(outd2);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)||isnan(*(double *)in4)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;*((double *)out2) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4, &outd0, &outd1, &outd2);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+            *((double *)out2) = CONVERT_INVALID(outd2);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -531,12 +579,16 @@ static void loop1d_ddd_ddddd(char **args, npy_intp *dimensions,
     func = data;
 
     for (i = 0; i < n; i++) {
-        func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1, &outd2, &outd3, &outd4);
-        *((double *)out0) = CONVERT_INVALID(outd0);
-        *((double *)out1) = CONVERT_INVALID(outd1);
-        *((double *)out2) = CONVERT_INVALID(outd2);
-        *((double *)out3) = CONVERT_INVALID(outd3);
-        *((double *)out4) = CONVERT_INVALID(outd4);
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)) {
+            *((double *)out0) = NAN;*((double *)out1) = NAN;*((double *)out2) = NAN;*((double *)out3) = NAN;*((double *)out4) = NAN;
+        } else {
+            func(*(double *)in0, *(double *)in1, *(double *)in2, &outd0, &outd1, &outd2, &outd3, &outd4);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+            *((double *)out1) = CONVERT_INVALID(outd1);
+            *((double *)out2) = CONVERT_INVALID(outd2);
+            *((double *)out3) = CONVERT_INVALID(outd3);
+            *((double *)out4) = CONVERT_INVALID(outd4);
+        }
         in0 += in_step0;
         in1 += in_step1;
         in2 += in_step2;
@@ -693,43 +745,43 @@ static void *data_sstar_from_sa[] = {&gsw_sstar_from_sa};
 static void *data_sstar_from_sp[] = {&gsw_sstar_from_sp};
 static void *data_melting_seaice_sa_ct_ratio[] = {&gsw_melting_seaice_sa_ct_ratio};
 static void *data_melting_seaice_sa_ct_ratio_poly[] = {&gsw_melting_seaice_sa_ct_ratio_poly};
-static void *data_entropy_first_derivatives[] = {&gsw_entropy_first_derivatives};
 static void *data_ct_first_derivatives[] = {&gsw_ct_first_derivatives};
-static void *data_pt_first_derivatives[] = {&gsw_pt_first_derivatives};
+static void *data_entropy_first_derivatives[] = {&gsw_entropy_first_derivatives};
 static void *data_pot_enthalpy_ice_freezing_first_derivatives[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives};
 static void *data_pot_enthalpy_ice_freezing_first_derivatives_poly[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives_poly};
-static void *data_specvol_first_derivatives_wrt_enthalpy[] = {&gsw_specvol_first_derivatives_wrt_enthalpy};
+static void *data_pt_first_derivatives[] = {&gsw_pt_first_derivatives};
+static void *data_ct_freezing_first_derivatives[] = {&gsw_ct_freezing_first_derivatives};
 static void *data_ct_freezing_first_derivatives_poly[] = {&gsw_ct_freezing_first_derivatives_poly};
-static void *data_t_freezing_first_derivatives_poly[] = {&gsw_t_freezing_first_derivatives_poly};
 static void *data_ct_from_rho[] = {&gsw_ct_from_rho};
+static void *data_enthalpy_first_derivatives[] = {&gsw_enthalpy_first_derivatives};
 static void *data_enthalpy_first_derivatives_ct_exact[] = {&gsw_enthalpy_first_derivatives_ct_exact};
 static void *data_rho_first_derivatives_wrt_enthalpy[] = {&gsw_rho_first_derivatives_wrt_enthalpy};
-static void *data_enthalpy_first_derivatives[] = {&gsw_enthalpy_first_derivatives};
-static void *data_ct_freezing_first_derivatives[] = {&gsw_ct_freezing_first_derivatives};
+static void *data_specvol_first_derivatives_wrt_enthalpy[] = {&gsw_specvol_first_derivatives_wrt_enthalpy};
 static void *data_t_freezing_first_derivatives[] = {&gsw_t_freezing_first_derivatives};
-static void *data_frazil_properties[] = {&gsw_frazil_properties};
+static void *data_t_freezing_first_derivatives_poly[] = {&gsw_t_freezing_first_derivatives_poly};
 static void *data_ct_first_derivatives_wrt_t_exact[] = {&gsw_ct_first_derivatives_wrt_t_exact};
-static void *data_rho_alpha_beta[] = {&gsw_rho_alpha_beta};
+static void *data_enthalpy_second_derivatives[] = {&gsw_enthalpy_second_derivatives};
 static void *data_enthalpy_second_derivatives_ct_exact[] = {&gsw_enthalpy_second_derivatives_ct_exact};
+static void *data_frazil_properties[] = {&gsw_frazil_properties};
+static void *data_frazil_properties_potential[] = {&gsw_frazil_properties_potential};
 static void *data_frazil_properties_potential_poly[] = {&gsw_frazil_properties_potential_poly};
 static void *data_frazil_ratios_adiabatic[] = {&gsw_frazil_ratios_adiabatic};
-static void *data_enthalpy_second_derivatives[] = {&gsw_enthalpy_second_derivatives};
-static void *data_specvol_second_derivatives_wrt_enthalpy[] = {&gsw_specvol_second_derivatives_wrt_enthalpy};
+static void *data_frazil_ratios_adiabatic_poly[] = {&gsw_frazil_ratios_adiabatic_poly};
+static void *data_rho_alpha_beta[] = {&gsw_rho_alpha_beta};
+static void *data_rho_first_derivatives[] = {&gsw_rho_first_derivatives};
 static void *data_rho_second_derivatives_wrt_enthalpy[] = {&gsw_rho_second_derivatives_wrt_enthalpy};
 static void *data_specvol_alpha_beta[] = {&gsw_specvol_alpha_beta};
-static void *data_frazil_properties_potential[] = {&gsw_frazil_properties_potential};
-static void *data_rho_first_derivatives[] = {&gsw_rho_first_derivatives};
 static void *data_specvol_first_derivatives[] = {&gsw_specvol_first_derivatives};
-static void *data_frazil_ratios_adiabatic_poly[] = {&gsw_frazil_ratios_adiabatic_poly};
+static void *data_specvol_second_derivatives_wrt_enthalpy[] = {&gsw_specvol_second_derivatives_wrt_enthalpy};
 static void *data_melting_seaice_into_seawater[] = {&gsw_melting_seaice_into_seawater};
+static void *data_ct_second_derivatives[] = {&gsw_ct_second_derivatives};
 static void *data_entropy_second_derivatives[] = {&gsw_entropy_second_derivatives};
 static void *data_pt_second_derivatives[] = {&gsw_pt_second_derivatives};
-static void *data_ct_second_derivatives[] = {&gsw_ct_second_derivatives};
 static void *data_ice_fraction_to_freeze_seawater[] = {&gsw_ice_fraction_to_freeze_seawater};
 static void *data_melting_ice_into_seawater[] = {&gsw_melting_ice_into_seawater};
 static void *data_seaice_fraction_to_freeze_seawater[] = {&gsw_seaice_fraction_to_freeze_seawater};
-static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
 static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
+static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
 
 PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
 {
@@ -2236,18 +2288,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
-                                    data_entropy_first_derivatives,
-                                    types_dd_dd,
-                                    1, 2, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "entropy_first_derivatives",
-                                    "entropy_first_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "entropy_first_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
                                     data_ct_first_derivatives,
                                     types_dd_dd,
                                     1, 2, 2,  // ndatatypes, nin, nout
@@ -2260,15 +2300,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
-                                    data_pt_first_derivatives,
+                                    data_entropy_first_derivatives,
                                     types_dd_dd,
                                     1, 2, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "pt_first_derivatives",
-                                    "pt_first_derivatives_docstring",
+                                    "entropy_first_derivatives",
+                                    "entropy_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "pt_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "entropy_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
@@ -2295,16 +2335,28 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     PyDict_SetItemString(d, "pot_enthalpy_ice_freezing_first_derivatives_poly", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
+                                    data_pt_first_derivatives,
+                                    types_dd_dd,
+                                    1, 2, 2,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "pt_first_derivatives",
+                                    "pt_first_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "pt_first_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_specvol_first_derivatives_wrt_enthalpy,
+                                    data_ct_freezing_first_derivatives,
                                     types_ddd_dd,
                                     1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "specvol_first_derivatives_wrt_enthalpy",
-                                    "specvol_first_derivatives_wrt_enthalpy_docstring",
+                                    "ct_freezing_first_derivatives",
+                                    "ct_freezing_first_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "specvol_first_derivatives_wrt_enthalpy", ufunc_ptr);
+    PyDict_SetItemString(d, "ct_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
@@ -2320,18 +2372,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_t_freezing_first_derivatives_poly,
-                                    types_ddd_dd,
-                                    1, 3, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "t_freezing_first_derivatives_poly",
-                                    "t_freezing_first_derivatives_poly_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "t_freezing_first_derivatives_poly", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
                                     data_ct_from_rho,
                                     types_ddd_dd,
                                     1, 3, 2,  // ndatatypes, nin, nout
@@ -2341,6 +2381,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "ct_from_rho", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
+                                    data_enthalpy_first_derivatives,
+                                    types_ddd_dd,
+                                    1, 3, 2,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "enthalpy_first_derivatives",
+                                    "enthalpy_first_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "enthalpy_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
@@ -2368,27 +2420,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_enthalpy_first_derivatives,
+                                    data_specvol_first_derivatives_wrt_enthalpy,
                                     types_ddd_dd,
                                     1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "enthalpy_first_derivatives",
-                                    "enthalpy_first_derivatives_docstring",
+                                    "specvol_first_derivatives_wrt_enthalpy",
+                                    "specvol_first_derivatives_wrt_enthalpy_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "enthalpy_first_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
-                                    data_ct_freezing_first_derivatives,
-                                    types_ddd_dd,
-                                    1, 3, 2,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "ct_freezing_first_derivatives",
-                                    "ct_freezing_first_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "ct_freezing_first_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "specvol_first_derivatives_wrt_enthalpy", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
@@ -2403,16 +2443,16 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     PyDict_SetItemString(d, "t_freezing_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_frazil_properties,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_dd,
+                                    data_t_freezing_first_derivatives_poly,
+                                    types_ddd_dd,
+                                    1, 3, 2,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "frazil_properties",
-                                    "frazil_properties_docstring",
+                                    "t_freezing_first_derivatives_poly",
+                                    "t_freezing_first_derivatives_poly_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "frazil_properties", ufunc_ptr);
+    PyDict_SetItemString(d, "t_freezing_first_derivatives_poly", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2428,15 +2468,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_rho_alpha_beta,
+                                    data_enthalpy_second_derivatives,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "rho_alpha_beta",
-                                    "rho_alpha_beta_docstring",
+                                    "enthalpy_second_derivatives",
+                                    "enthalpy_second_derivatives_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "rho_alpha_beta", ufunc_ptr);
+    PyDict_SetItemString(d, "enthalpy_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2449,6 +2489,30 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "enthalpy_second_derivatives_ct_exact", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_frazil_properties,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "frazil_properties",
+                                    "frazil_properties_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "frazil_properties", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_frazil_properties_potential,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "frazil_properties_potential",
+                                    "frazil_properties_potential_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "frazil_properties_potential", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2476,27 +2540,39 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_enthalpy_second_derivatives,
+                                    data_frazil_ratios_adiabatic_poly,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "enthalpy_second_derivatives",
-                                    "enthalpy_second_derivatives_docstring",
+                                    "frazil_ratios_adiabatic_poly",
+                                    "frazil_ratios_adiabatic_poly_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "enthalpy_second_derivatives", ufunc_ptr);
+    PyDict_SetItemString(d, "frazil_ratios_adiabatic_poly", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_specvol_second_derivatives_wrt_enthalpy,
+                                    data_rho_alpha_beta,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "specvol_second_derivatives_wrt_enthalpy",
-                                    "specvol_second_derivatives_wrt_enthalpy_docstring",
+                                    "rho_alpha_beta",
+                                    "rho_alpha_beta_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "specvol_second_derivatives_wrt_enthalpy", ufunc_ptr);
+    PyDict_SetItemString(d, "rho_alpha_beta", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
+                                    data_rho_first_derivatives,
+                                    types_ddd_ddd,
+                                    1, 3, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "rho_first_derivatives",
+                                    "rho_first_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "rho_first_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
@@ -2524,30 +2600,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_frazil_properties_potential,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "frazil_properties_potential",
-                                    "frazil_properties_potential_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "frazil_properties_potential", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_rho_first_derivatives,
-                                    types_ddd_ddd,
-                                    1, 3, 3,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "rho_first_derivatives",
-                                    "rho_first_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "rho_first_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
                                     data_specvol_first_derivatives,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
@@ -2560,15 +2612,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddd,
-                                    data_frazil_ratios_adiabatic_poly,
+                                    data_specvol_second_derivatives_wrt_enthalpy,
                                     types_ddd_ddd,
                                     1, 3, 3,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "frazil_ratios_adiabatic_poly",
-                                    "frazil_ratios_adiabatic_poly_docstring",
+                                    "specvol_second_derivatives_wrt_enthalpy",
+                                    "specvol_second_derivatives_wrt_enthalpy_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "frazil_ratios_adiabatic_poly", ufunc_ptr);
+    PyDict_SetItemString(d, "specvol_second_derivatives_wrt_enthalpy", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dddddd_dd,
@@ -2581,6 +2633,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "melting_seaice_into_seawater", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_ddd,
+                                    data_ct_second_derivatives,
+                                    types_dd_ddd,
+                                    1, 2, 3,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "ct_second_derivatives",
+                                    "ct_second_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "ct_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_ddd,
@@ -2605,18 +2669,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "pt_second_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_ddd,
-                                    data_ct_second_derivatives,
-                                    types_dd_ddd,
-                                    1, 2, 3,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "ct_second_derivatives",
-                                    "ct_second_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "ct_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dddd_ddd,
@@ -2656,18 +2708,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
-                                    data_specvol_second_derivatives,
-                                    types_ddd_ddddd,
-                                    1, 3, 5,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "specvol_second_derivatives",
-                                    "specvol_second_derivatives_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "specvol_second_derivatives", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
                                     data_rho_second_derivatives,
                                     types_ddd_ddddd,
                                     1, 3, 5,  // ndatatypes, nin, nout
@@ -2677,6 +2717,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "rho_second_derivatives", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_ddddd,
+                                    data_specvol_second_derivatives,
+                                    types_ddd_ddddd,
+                                    1, 3, 5,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "specvol_second_derivatives",
+                                    "specvol_second_derivatives_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "specvol_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
 

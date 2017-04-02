@@ -122,23 +122,32 @@ def modfile_loop_entry(nin, nout):
     '    func = data;',
     '',
     '    for (i = 0; i < n; i++) {'])
+    tests = []
     args = []
     for i in range(nin):
+        tests.append('isnan(*(double *)in%d)' % i)
         args.append('*(double *)in%d' % i)
+    linelist.append('        if (%s) {' % '||'.join(tests))
+    outs = []
+    for i in range(nout):
+        outs.append('*((double *)out%d) = NAN;' % i)
+    linelist.append('            %s' % ''.join(outs))
+    linelist.append('        } else {')
     if nout > 1:
         for i in range(nout):
             args.append('&outd%d' % i)
-        linelist.append('        func(%s);' % ', '.join(args))
+        linelist.append('            func(%s);' % ', '.join(args))
     else:
-        linelist.append('        outd0 = func(%s);' % ', '.join(args))
-
+        linelist.append('            outd0 = func(%s);' % ', '.join(args))
     for i in range(nout):
-        linelist.append('        *((double *)out%d)' % (i,)
+        linelist.append('            *((double *)out%d)' % (i,)
                         + ' = CONVERT_INVALID(outd%d);' % (i,))
+    linelist.append('        }')
     for i in range(nin):
         linelist.append('        in%d += in_step%d;' % (i, i))
     for i in range(nout):
         linelist.append('        out%d += out_step%d;' % (i, i))
+
     linelist.extend(['    }', '}', ''])
     linelist.append('static PyUFuncGenericFunction'
                     ' funcs_%s[] = {&loop1d_%s};' % (loop_id, loop_id))
@@ -198,14 +207,14 @@ def write_modfile(modfile_name):
     chunks = [modfile_head]
 
     for nin in nins:
-        for funcname in argcategories1[nin]:
+        for funcname in sorted(argcategories1[nin]):
             if funcname in blacklist:
                 continue
             chunks.append(modfile_array_entry(funcname))
             funcnamelist1.append(funcname)
 
     for artup in artups:
-        for funcname in argcategories2[artup]:
+        for funcname in sorted(argcategories2[artup]):
             if funcname in blacklist:
                 continue
             chunks.append(modfile_array_entry(funcname))
@@ -214,13 +223,13 @@ def write_modfile(modfile_name):
     chunks.append(modfile_middle)
 
     for nin in nins:
-        for funcname in argcategories1[nin]:
+        for funcname in sorted(argcategories1[nin]):
             if funcname in blacklist:
                 continue
             chunks.append(modfile_init_entry(funcname, nin, 1))
 
     for artup in artups:
-        for funcname in argcategories2[artup]:
+        for funcname in sorted(argcategories2[artup]):
             if funcname in blacklist:
                 continue
             chunks.append(modfile_init_entry(funcname, *artup))
