@@ -1,15 +1,60 @@
 '''
 Minimal setup.py for building gswc.
 '''
+import os
 
 import numpy
 from numpy.distutils.misc_util import Configuration
 from numpy.distutils.core import setup
+#from setuptools.command.test import test as TestCommand
 
+rootpath = os.path.abspath(os.path.dirname(__file__))
+
+
+
+#class PyTest(TestCommand):
+#    def finalize_options(self):
+#        TestCommand.finalize_options(self)
+#        self.verbose = True
+#
+#    def run_tests(self):
+#        import pytest
+#        errno = pytest.main(self.test_args)
+#        sys.exit(errno)
+
+
+def read(*parts):
+    return open(os.path.join(rootpath, *parts), 'r').read()
+
+
+def extract_version():
+    version = None
+    fname = os.path.join(rootpath, 'gsw', '__init__.py')
+    with open(fname) as f:
+        for line in f:
+            if (line.startswith('__version__')):
+                _, version = line.split('=')
+                version = version.strip()[1:-1]  # Remove quotation characters
+                break
+    return version
+
+LICENSE = read('LICENSE')
+long_description = read('README')
 
 attributes = dict(name='gsw',
-                  packages=['gsw'],
-                  description="Python-wrapped Gibbs Seawater Toolkit",
+                  version=extract_version(),
+                  packages=['gsw', 'gsw/tests', 'gsw/ice'],
+                  author=['Eric Firing', 'Filipe Fernandes'],
+                  author_email='efiring@hawaii.edu',
+                  description='Gibbs Seawater Oceanographic Package of TEOS-10',
+                  long_description=long_description,
+                  license=LICENSE,
+              #url='https://github.com/TEOS-10/python-gsw',
+              #download_url='https://pypi.python.org/pypi/gsw/',
+              platforms='any',
+              keywords=['oceanography', 'seawater', 'TEOS-10',],
+              #install_requires=['numpy'],
+              #tests_require=tests_require,
                   )
 
 def configuration(parent_package='', top_path=None):

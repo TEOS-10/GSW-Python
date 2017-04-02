@@ -33,6 +33,7 @@ dist
 *.egg-info
 # tox testing tool
 .tox
+MANIFEST
 
 # OS generated files #
 ######################

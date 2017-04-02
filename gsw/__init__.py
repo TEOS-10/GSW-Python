@@ -39,3 +39,5 @@ from . import stability
 from . import conversions
 
 from . import ice
+
+__version__ = "0.5.0"

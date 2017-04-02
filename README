@@ -1,0 +1,3 @@
+This Python implementation of the Thermodynamic Equation of
+Seawater 2010 (TEOS-10) is based on numpy ufunc wrappers of
+the GSW-C implementation.
