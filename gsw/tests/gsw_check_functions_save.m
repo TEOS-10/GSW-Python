@@ -618,7 +618,10 @@ if ~isempty(gsw_cf.Iu_sd)
     gsw_cf.gsw_chks = 0;
 end
 
-gsw_cf.CT_from_enthalpy = gsw_CT_from_enthalpy(gsw_cf.enthalpy,gsw_cv.SA_chck_cast,gsw_cv.p_chck_cast);
+%%% EF fix: swapped argument order between S and h
+%%%gsw_cf.CT_from_enthalpy = gsw_CT_from_enthalpy(gsw_cf.enthalpy,gsw_cv.SA_chck_cast,gsw_cv.p_chck_cast);
+
+gsw_cf.CT_from_enthalpy = gsw_CT_from_enthalpy(gsw_cv.SA_chck_cast,gsw_cf.enthalpy,gsw_cv.p_chck_cast);
 [gsw_cf.ICT_from_h] = find(abs(gsw_cv.CT_from_enthalpy - gsw_cf.CT_from_enthalpy) >= gsw_cv.CT_from_enthalpy_ca);
 if ~isempty(gsw_cf.ICT_from_h)
     fprintf(2,'gsw_CT_from_enthalpy:   Failed\n');
@@ -1018,7 +1021,7 @@ if ~isempty(gsw_cf.Imelting_ice_equilibrium_SA_CT_ratio)
     fprintf(2,'gsw_melting_ice_equilibrium_SA_CT_ratio:   Failed\n');
     gsw_chks = 0;
 end
-  
+
 gsw_cf.melting_ice_equilibrium_SA_CT_ratio_poly = gsw_melting_ice_equilibrium_SA_CT_ratio_poly(gsw_cv.SA_Arctic,gsw_cv.p_Arctic);
 [gsw_cf.Imelting_ice_equilibrium_SA_CT_ratio_poly] = find(abs(gsw_cv.melting_ice_equilibrium_SA_CT_ratio_poly - gsw_cf.melting_ice_equilibrium_SA_CT_ratio_poly) >= gsw_cv.melting_ice_equilibrium_SA_CT_ratio_poly_ca);
 if ~isempty(gsw_cf.Imelting_ice_equilibrium_SA_CT_ratio_poly)
@@ -1033,7 +1036,7 @@ if ~isempty(gsw_cf.Imelting_ice_into_seawater)
     fprintf(2,'gsw_melting_ice_into_seawater:   Failed\n');
     gsw_chks = 0;
 end
- 
+
 [gsw_cf.ice_fraction_to_freeze_seawater_SA_freeze, gsw_cf.ice_fraction_to_freeze_seawater_CT_freeze, gsw_cf.ice_fraction_to_freeze_seawater_w_Ih]  = gsw_ice_fraction_to_freeze_seawater(gsw_cv.SA_Arctic,gsw_cv.CT_Arctic,gsw_cv.p_Arctic,gsw_cv.t_ice);
 [gsw_cf.Iice_fraction_to_freeze_seawater] = find(abs(gsw_cv.ice_fraction_to_freeze_seawater_SA_freeze - gsw_cf.ice_fraction_to_freeze_seawater_SA_freeze) >= gsw_cv.ice_fraction_to_freeze_seawater_SA_freeze_ca | ...
     abs(gsw_cv.ice_fraction_to_freeze_seawater_CT_freeze - gsw_cf.ice_fraction_to_freeze_seawater_CT_freeze) >= gsw_cv.ice_fraction_to_freeze_seawater_CT_freeze_ca | ...
@@ -1051,7 +1054,7 @@ if ~isempty(gsw_cf.Ifrazil_ratios)
     fprintf(2,'gsw_frazil_ratios_adiabatic:   Failed\n');
     gsw_chks = 0;
 end
- 
+
 [gsw_cf.dSA_dCT_frazil_poly, gsw_cf.dSA_dP_frazil_poly, gsw_cf.dCT_dP_frazil_poly] = gsw_frazil_ratios_adiabatic_poly(gsw_cv.SA_Arctic,gsw_cv.p_Arctic,gsw_cv.w_ice);
 [gsw_cf.Ifrazil_ratios_poly] = find(abs(gsw_cv.dSA_dCT_frazil_poly - gsw_cf.dSA_dCT_frazil_poly) >= gsw_cv.dSA_dCT_frazil_poly_ca | ...
     abs(gsw_cv.dSA_dP_frazil_poly - gsw_cf.dSA_dP_frazil_poly) >= gsw_cv.dSA_dP_frazil_poly_ca | ...
@@ -1117,7 +1120,7 @@ if ~isempty(gsw_cf.Imelting_seaice_equilibrium_SA_CT_ratio_poly)
     fprintf(2,'gsw_melting_seaice_equilibrium_SA_CT_ratio_poly:   Failed\n');
     gsw_chks = 0;
 end
-                                         
+
 [gsw_cf.melting_seaice_into_seawater_SA_final, gsw_cf.melting_seaice_into_seawater_CT_final] = gsw_melting_seaice_into_seawater(gsw_cv.SA_Arctic,gsw_cv.CT_Arctic,gsw_cv.p_Arctic,gsw_cv.w_seaice,gsw_cv.SA_seaice,gsw_cv.t_seaice);
 [gsw_cf.Imelting_seaice_into_seawater] = find(abs(gsw_cv.melting_seaice_into_seawater_SA_final - gsw_cf.melting_seaice_into_seawater_SA_final) >= gsw_cv.melting_seaice_into_seawater_SA_final_ca | ...
     abs(gsw_cv.melting_seaice_into_seawater_CT_final - gsw_cf.melting_seaice_into_seawater_CT_final) >= gsw_cv.melting_seaice_into_seawater_CT_final_ca);
@@ -1125,7 +1128,7 @@ if ~isempty(gsw_cf.Imelting_seaice_into_seawater)
     fprintf(2,'gsw_melting_seaice_into_seawater:   Failed\n');
     gsw_chks = 0;
 end
- 
+
 [gsw_cf.seaice_fraction_to_freeze_seawater_SA_freeze, gsw_cf.seaice_fraction_to_freeze_seawater_CT_freeze, gsw_cf.seaice_fraction_to_freeze_seawater_w_Ih]  = gsw_seaice_fraction_to_freeze_seawater(gsw_cv.SA_Arctic,gsw_cv.CT_Arctic,gsw_cv.p_Arctic,gsw_cv.SA_seaice,gsw_cv.t_seaice);
 [gsw_cf.Iseaice_fraction_to_freeze_seawater] = find(abs(gsw_cv.seaice_fraction_to_freeze_seawater_SA_freeze - gsw_cf.seaice_fraction_to_freeze_seawater_SA_freeze) >= gsw_cv.seaice_fraction_to_freeze_seawater_SA_freeze_ca | ...
     abs(gsw_cv.seaice_fraction_to_freeze_seawater_CT_freeze - gsw_cf.seaice_fraction_to_freeze_seawater_CT_freeze) >= gsw_cv.seaice_fraction_to_freeze_seawater_CT_freeze_ca | ...
@@ -1276,7 +1279,7 @@ if ~isempty(gsw_cf.Ipt_from_pot_enthalpy_ice)
     fprintf(2,'gsw_pt_from_pot_enthalpy_ice:   Failed\n');
     gsw_chks = 0;
 end
- 
+
 gsw_cf.pot_enthalpy_from_pt_ice_poly = gsw_pot_enthalpy_from_pt_ice_poly(gsw_cv.pt0_from_t_ice);
 [gsw_cf.Ipot_enthalpy_from_pt_ice_poly] = find(abs(gsw_cv.pot_enthalpy_from_pt_ice_poly - gsw_cf.pot_enthalpy_from_pt_ice_poly) >= gsw_cv.pot_enthalpy_from_pt_ice_poly_ca);
 if ~isempty(gsw_cf.Ipot_enthalpy_from_pt_ice_poly)
@@ -1319,7 +1322,7 @@ if ~isempty(gsw_cf.Ispecvol_from_pot_enthalpy_ice_poly)
     gsw_chks = 0;
 end
 
-%% isobaric evaporation enthalpy 
+%% isobaric evaporation enthalpy
 
 gsw_cf.latentheat_evap_CT = gsw_latentheat_evap_CT(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast);
 [gsw_cf.Ilatentheat_evap_CT] = find(abs(gsw_cv.latentheat_evap_CT - gsw_cf.latentheat_evap_CT) >= gsw_cv.latentheat_evap_CT_ca);
@@ -1468,78 +1471,78 @@ if ~isempty(gsw_cf.IHesol)
     fprintf(2,'gsw_Hesol:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.Hesol_SP_pt = gsw_Hesol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t); 
+
+gsw_cf.Hesol_SP_pt = gsw_Hesol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 [gsw_cf.IHesol_SP_pt] = find(abs(gsw_cv.Hesol_SP_pt - gsw_cf.Hesol_SP_pt) >= gsw_cv.Hesol_SP_pt_ca);
 if ~isempty(gsw_cf.IHesol_SP_pt)
     fprintf(2,'gsw_Hesol_SP_pt:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.Krsol = gsw_Krsol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);  
+
+gsw_cf.Krsol = gsw_Krsol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);
 [gsw_cf.IKrsol] = find(abs(gsw_cv.Krsol - gsw_cf.Krsol) >= gsw_cv.Krsol_ca);
 if ~isempty(gsw_cf.IKrsol)
     fprintf(2,'gsw_Krsol:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.Krsol_SP_pt = gsw_Krsol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);   
+
+gsw_cf.Krsol_SP_pt = gsw_Krsol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 [gsw_cf.IKrsol_SP_pt] = find(abs(gsw_cv.Krsol_SP_pt - gsw_cf.Krsol_SP_pt) >= gsw_cv.Krsol_SP_pt_ca);
 if ~isempty(gsw_cf.IKrsol_SP_pt)
     fprintf(2,'gsw_Krsol_SP_pt:   Failed\n');
     gsw_chks = 0;
 end
- 
-% gsw_cf.N2Osol = gsw_N2Osol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);   
+
+% gsw_cf.N2Osol = gsw_N2Osol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);
 % [gsw_cf.IN2Osol] = find(abs(gsw_cv.N2Osol - gsw_cf.N2Osol) >= gsw_cv.N2Osol_ca);
 % if ~isempty(gsw_cf.IN2Osol)
 %     fprintf(2,'gsw_N2Osol:   Failed\n');
 %     gsw_chks = 0;
 % end
 
-% gsw_cf.N2Osol_SP_pt = gsw_N2Osol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t); 
+% gsw_cf.N2Osol_SP_pt = gsw_N2Osol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 % [gsw_cf.IN2Osol_SP_pt] = find(abs(gsw_cv.N2Osol_SP_pt - gsw_cf.N2Osol_SP_pt) >= gsw_cv.N2Osol_SP_pt_ca);
 % if ~isempty(gsw_cf.IN2Osol_SP_pt)
 %     fprintf(2,'gsw_N2Osol_SP_pt:   Failed\n');
 %     gsw_chks = 0;
 % end
- 
-gsw_cf.N2sol = gsw_N2sol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast); 
+
+gsw_cf.N2sol = gsw_N2sol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);
 [gsw_cf.IN2sol] = find(abs(gsw_cv.N2sol - gsw_cf.N2sol) >= gsw_cv.N2sol_ca);
 if ~isempty(gsw_cf.IN2sol)
     fprintf(2,'gsw_N2sol:   Failed\n');
     gsw_chks = 0;
 end
- 
+
 gsw_cf.N2sol_SP_pt = gsw_N2sol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 [gsw_cf.IN2sol_SP_pt] = find(abs(gsw_cv.N2sol_SP_pt - gsw_cf.N2sol_SP_pt) >= gsw_cv.N2sol_SP_pt_ca);
 if ~isempty(gsw_cf.IN2sol_SP_pt)
     fprintf(2,'gsw_N2sol_SP_pt:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.Nesol = gsw_Nesol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);   
+
+gsw_cf.Nesol = gsw_Nesol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);
 [gsw_cf.INesol] = find(abs(gsw_cv.Nesol - gsw_cf.Nesol) >= gsw_cv.Nesol_ca);
 if ~isempty(gsw_cf.INesol)
     fprintf(2,'gsw_Nesol:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.Nesol_SP_pt = gsw_Nesol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);  
+
+gsw_cf.Nesol_SP_pt = gsw_Nesol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 [gsw_cf.INesol_SP_pt] = find(abs(gsw_cv.Nesol_SP_pt - gsw_cf.Nesol_SP_pt) >= gsw_cv.Nesol_SP_pt_ca);
 if ~isempty(gsw_cf.INesol_SP_pt)
     fprintf(2,'gsw_Nesol_SP_pt:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.O2sol = gsw_O2sol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);  
+
+gsw_cf.O2sol = gsw_O2sol(gsw_cv.SA_chck_cast,gsw_cv.CT_chck_cast,gsw_cv.p_chck_cast,gsw_cv.long_chck_cast,gsw_cv.lat_chck_cast);
 [gsw_cf.IO2sol] = find(abs(gsw_cv.O2sol - gsw_cf.O2sol) >= gsw_cv.O2sol_ca);
 if ~isempty(gsw_cf.IO2sol)
     fprintf(2,'gsw_O2sol:   Failed\n');
     gsw_chks = 0;
 end
- 
-gsw_cf.O2sol_SP_pt = gsw_O2sol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);  
+
+gsw_cf.O2sol_SP_pt = gsw_O2sol_SP_pt(gsw_cv.SP_chck_cast,gsw_cv.pt0_from_t);
 [gsw_cf.IO2sol_SP_pt] = find(abs(gsw_cv.O2sol_SP_pt - gsw_cf.O2sol_SP_pt) >= gsw_cv.O2sol_SP_pt_ca);
 if ~isempty(gsw_cf.IO2sol_SP_pt)
     fprintf(2,'gsw_O2sol_SP_pt:   Failed\n');
@@ -2159,4 +2162,3 @@ else
     fprintf(1,'\n');
     save('gsw_cv_cf.mat', 'gsw_cv', 'gsw_cf', '-v6')
 end
-

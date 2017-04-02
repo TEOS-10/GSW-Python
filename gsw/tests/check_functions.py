@@ -9,6 +9,9 @@ in a "gsw_matlab_v3" directory which has been symlinked into
 the test directory.  Alternatively, you may specify the directory
 as an optional argument.
 
+## Correction: for now we are using our local copy of the matlab
+## check_functions because there is a bug in the official version.
+
 A primary use for this script is to see which functions are
 missing from python-gsw.
 
@@ -257,7 +260,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    mfile = os.path.join(args.mfiledir, "gsw_check_functions.m")
+#    mfile = os.path.join(args.mfiledir, "gsw_check_functions.m")
+
+    mfile = "gsw_check_functions_save.m"
     checks = parse_check_functions(mfile)
 
     #datadir = os.path.join(os.path.dirname(gsw.utilities.__file__), 'data')
