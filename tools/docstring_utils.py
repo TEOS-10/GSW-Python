@@ -59,17 +59,27 @@ def fix_outputs_doc(lines):
     Convert a list of lines from the Matlab OUTPUTS section
     into a list suitable for the numpydoc Returns section,
     handling multiple output variables if present.
+
+    Exception: we don't support the 'in_ocean' return, so
+    it is filtered out here.
     """
-    pat = r'^\s*\w+\s+='
+    pat = r'^\s*(\w+)\s+='
     istarts = []
     for i, line in enumerate(lines):
-        #if '=' in line:
-        if re.match(pat, line):
+        m = re.match(pat, line)
+        if m is not None and m.groups()[0] == 'in_ocean':
+            lines = lines[:i]
+            break
+        if m is not None:
             istarts.append(i)
     iends = istarts[1:] + [len(lines)]
     outlines = []
     for i0, i1 in zip(istarts, iends):
         outlines.extend(fix_one_output(lines[i0:i1]))
+    # Add a blank line if needed, as in the case where we toss the
+    # in_ocean chunk.  (Maybe we are losing this blank line somewhere else...)
+    if outlines[-1]:
+        outlines.append('')
     return outlines
 
 
