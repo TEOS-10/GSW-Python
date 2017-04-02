@@ -33,14 +33,22 @@ something can be improved or needs to be updated, it can be done
 in one place, and will then be propagated automatically as needed
 by the code generation tools.
 
+Three functions are presently implemented in Python: they are in
+the stability module.
+
 If this development is successful, it will replace
 `python-gsw <https://github.com/TEOS-10/python-gsw>`__ as the
 primary Python implementation of GSW.
 
-The eventual names of the repository and of the module it provides
-remain to be determined.  For now, the module is named `gswc`
-so that it can be installed next to the `gsw` from python-gsw
-without conflict, to facilitate development and testing.
-Ideally, it will take over the `gsw` name if and when it
-becomes sufficiently mature.
+Although the repository is "gswc", the package name is now "gsw".
 
+The package can be installed using `pip install .`.  It is not
+necessary to run the code generators; their output is
+included in the repo.
+
+The tests module does not yet support automated testing via py.test,
+but manually running check_functions.py results in 142 passes and 2 failures.
+I need to investigate these, but earlier failures turned out to be
+discrepancies between the C and the latest Matlab, and I suspect that
+will turn out to be the case here also.  (There are pull requests in
+GSW-C to fix the ones I have found so far.)

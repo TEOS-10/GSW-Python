@@ -31,8 +31,8 @@ import numpy as np
 #from gsw.gibbs import *
 #from gsw.utilities import Bunch
 
-from gswc import *
-from gswc._utilities import Bunch
+from gsw import *
+from gsw._utilities import Bunch
 
 # If we switch to using the logging module, uncomment:
 # import logging
@@ -312,5 +312,3 @@ if __name__ == '__main__':
         print("")
 
     checkbunch = Bunch([(c.name, c) for c in checks])
-
-
