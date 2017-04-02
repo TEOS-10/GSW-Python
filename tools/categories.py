@@ -22,3 +22,15 @@ def write_basic_conversions():
     out.append('')
     with open('basic_conversions.list', 'w') as f:
         f.write(',\n'.join(out))
+
+def write_freezing():
+    out = []
+    nlist = [n for n in uflist if 'freezing' in n]
+    for name in nlist:
+        try:
+            out.append(sigdicts['toolbox'][name]['name'])
+        except KeyError:
+            pass
+    out.append('')
+    with open('freezing.list', 'w') as f:
+        f.write(',\n'.join(out))

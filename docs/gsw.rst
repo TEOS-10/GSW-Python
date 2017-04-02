@@ -14,7 +14,7 @@ tab-completion in IPython.
 
 conversions
 ~~~~~~~~~~~
-.. automodule:: gswc.conversions
+.. automodule:: gsw.conversions
    :members:
    :undoc-members:
    :imported-members:
@@ -23,7 +23,15 @@ conversions
 
 stability
 ~~~~~~~~~
-.. automodule:: gswc.stability
+.. automodule:: gsw.stability
+   :members:
+   :undoc-members:
+   :imported-members:
+   :show-inheritance:
+
+ice
+~~~
+.. automodule:: gsw.ice
    :members:
    :undoc-members:
    :imported-members:
@@ -34,7 +42,7 @@ Module contents
 ---------------
 All available functions are available in the base module namespace.
 
-.. automodule:: gswc
+.. automodule:: gsw
     :members:
     :undoc-members:
     :imported-members:

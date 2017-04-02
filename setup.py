@@ -7,15 +7,14 @@ from numpy.distutils.misc_util import Configuration
 from numpy.distutils.core import setup
 
 
-attributes = dict(name='gswc',
-                  packages=['gswc'],
-                  package_dir={'gswc':'gsw'},
+attributes = dict(name='gsw',
+                  packages=['gsw'],
                   description="Python-wrapped Gibbs Seawater Toolkit",
                   )
 
 def configuration(parent_package='', top_path=None):
 
-    config = Configuration('gswc',
+    config = Configuration('gsw',
                            parent_package,
                            top_path,
                            **attributes)
@@ -32,4 +31,3 @@ def configuration(parent_package='', top_path=None):
 
 if __name__ == "__main__":
     setup(configuration=configuration)
-
