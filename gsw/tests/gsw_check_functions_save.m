@@ -1217,8 +1217,10 @@ if ~isempty(gsw_cf.Icp_ice)
     gsw_chks = 0;
 end
 
+%%% EF: another bug is fixed in the block below.
+
 gsw_cf.chem_potential_water_ice = gsw_chem_potential_water_ice(gsw_cv.t_seaice,gsw_cv.p_Arctic);
- [gsw_cf.Ichem_potential_water_ice] = find(abs(gsw_cv.chem_potential_water_ice - gsw_cf.chem_potential_water_ice) >= gsw_cv.kappa_const_t_ice_ca);
+ [gsw_cf.Ichem_potential_water_ice] = find(abs(gsw_cv.chem_potential_water_ice - gsw_cf.chem_potential_water_ice) >= gsw_cv.chem_potential_water_ice_ca);
 if ~isempty(gsw_cf.Ichem_potential_water_ice)
     fprintf(2,'gsw_chem_potential_water_ice:   Failed\n');
     gsw_chks = 0;
@@ -1231,8 +1233,9 @@ if ~isempty(gsw_cf.IHelmholtz_energy_ice)
     gsw_chks = 0;
 end
 
+%%% EF: and here
 gsw_cf.adiabatic_lapse_rate_ice = gsw_adiabatic_lapse_rate_ice(gsw_cv.t_seaice,gsw_cv.p_Arctic);
-[gsw_cf.Iadiabatic_lapse_rate_ice] = find(abs(gsw_cv.adiabatic_lapse_rate_ice - gsw_cf.adiabatic_lapse_rate_ice) >= gsw_cv.kappa_const_t_ice_ca);
+[gsw_cf.Iadiabatic_lapse_rate_ice] = find(abs(gsw_cv.adiabatic_lapse_rate_ice - gsw_cf.adiabatic_lapse_rate_ice) >= gsw_cv.adiabatic_lapse_rate_ice_ca);
 if ~isempty(gsw_cf.Iadiabatic_lapse_rate_ice)
     fprintf(2,'gsw_adiabatic_lapse_rate_ice:   Failed\n');
     gsw_chks = 0;
