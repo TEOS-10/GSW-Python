@@ -1,16 +1,9 @@
 """
-Script to generate tests directly from gsw_check_functions.m.
+Script to generate tests directly from our local version of
+gsw_check_functions.m.
 
 Usage (run from this test directory):
-    python check_functions.py [gsw_matlab_dir]
-
-At present, this assumes by default that the matlab code resides
-in a "gsw_matlab_v3" directory which has been symlinked into
-the test directory.  Alternatively, you may specify the directory
-as an optional argument.
-
-## Correction: for now we are using our local copy of the matlab
-## check_functions because there is a bug in the official version.
+    python check_functions.py
 
 A primary use for this script is to see which functions are
 missing from python-gsw.
@@ -22,6 +15,11 @@ or otherwise not functioning.
 
 For functions that run but yield results that fail the check,
 the error arrays are printed.
+
+This can be improved--we should get less information from the
+matlab script and more from our own functions.  We probably
+should not need the matlab script at all, or maybe use it only
+to extract the list of functions being tested in matlab.
 """
 
 from __future__ import print_function
@@ -250,8 +248,8 @@ if __name__ == '__main__':
                 description='Run checks from gsw_check_functions.m')
 
     parser.add_argument('--path', dest='mfiledir',
-                        default="gsw_matlab_v3",
-                       help='location of gsw_check_functions.m')
+                        default="",
+                       help='path to external gsw_check_functions.m')
     parser.add_argument('-v', '--verbose',
                         action='store_true',
                         help='print output mismatch arrays')
@@ -260,9 +258,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-#    mfile = os.path.join(args.mfiledir, "gsw_check_functions.m")
-
-    mfile = "gsw_check_functions_save.m"
+    if args.mfiledir:
+        mfile = os.path.join(args.mfiledir, "gsw_check_functions.m")
+    else:
+        mfile = "gsw_check_functions_save.m"
     checks = parse_check_functions(mfile)
 
     #datadir = os.path.join(os.path.dirname(gsw.utilities.__file__), 'data')

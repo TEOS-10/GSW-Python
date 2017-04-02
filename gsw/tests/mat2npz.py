@@ -13,7 +13,8 @@
 # obs:
 #
 
-from __future__ import print_function
+import os
+
 import numpy as np
 
 from pycurrents.file.matfile import loadmatbunch
@@ -22,10 +23,12 @@ from pycurrents.file.matfile import loadmatbunch
 # the original matfile from TEOS-10 has the same file name even
 # as its contents change.
 data_ver = 'v3_0'
-gsw_data = loadmatbunch('gsw_cv_cf.mat', masked=False)
+
+gsw_data_file = '../../../../gsw_matlab_v3_05_8/library/gsw_data_v3_0.mat'
+
+gsw_data = loadmatbunch(gsw_data_file, masked=False)
 
 # Save compare values `gsw_cv` in a separate file.
 cv_vars = gsw_data['gsw_cv']
+cv_vars.gsw_data_file = gsw_data_file
 np.savez("gsw_cv_%s" % data_ver, **cv_vars)
-cf_vars = gsw_data['gsw_cf']
-np.savez("gsw_cf_%s" % data_ver, **cv_vars)
