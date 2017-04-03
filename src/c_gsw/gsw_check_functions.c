@@ -92,6 +92,7 @@ double		tf[cast_m*cast_n];
 double		ctf_poly[cast_m*cast_n];
 double		tf_poly[cast_m*cast_n];
 double		h[cast_m*cast_n];
+double		z[cast_m*cast_n];
 
 int
 main(int argc, char **argv)
@@ -154,7 +155,8 @@ main(int argc, char **argv)
 	test_func(ct_from_pt, (sa[i],pt[i]), value,ct_from_pt);
 	test_func(pt0_from_t, (sa[i],t[i],p[i]), value,pt0_from_t);
 	test_func(pt_from_t, (sa[i],t[i],p[i],pref[0]), value,pt_from_t);
-	test_func(z_from_p, (p[i],lat[i]), value,z_from_p);
+	test_func(z_from_p, (p[i],lat[i]), z,z_from_p);
+	test_func(p_from_z, (z[i],lat[i]), value,p_from_z);
 	test_func(entropy_from_pt, (sa[i],pt[i]), entropy,entropy_from_pt);
 	test_func(pt_from_entropy, (sa[i],entropy[i]), value,pt_from_entropy);
 	test_func(ct_from_entropy, (sa[i],entropy[i]), value,ct_from_entropy);

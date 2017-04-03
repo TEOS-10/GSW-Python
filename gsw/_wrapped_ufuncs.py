@@ -2023,6 +2023,12 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice)
 
 @match_args_return
+def p_from_z(z, lat):
+    """(no description available)
+    """
+    return _gsw_ufuncs.p_from_z(z, lat)
+
+@match_args_return
 def pot_enthalpy_from_pt_ice(pt0_ice):
     """
     Calculates the potential enthalpy of ice from potential temperature of

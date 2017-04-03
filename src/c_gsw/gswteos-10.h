@@ -288,6 +288,7 @@ extern double *gsw_util_linear_interp(int nx, double *x, int ny, double *y,
 extern void   gsw_util_sort_real(double *rarray, int nx, int *iarray);
 extern double gsw_util_xinterp1(double *x, double *y, int n, double x0);
 extern double gsw_z_from_p(double p, double lat);
+extern double gsw_p_from_z(double z, double lat);
 
 #ifdef __cplusplus
 }

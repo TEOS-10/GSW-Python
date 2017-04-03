@@ -660,6 +660,7 @@ static void *data_melting_ice_equilibrium_sa_ct_ratio[] = {&gsw_melting_ice_equi
 static void *data_melting_ice_equilibrium_sa_ct_ratio_poly[] = {&gsw_melting_ice_equilibrium_sa_ct_ratio_poly};
 static void *data_melting_seaice_equilibrium_sa_ct_ratio[] = {&gsw_melting_seaice_equilibrium_sa_ct_ratio};
 static void *data_melting_seaice_equilibrium_sa_ct_ratio_poly[] = {&gsw_melting_seaice_equilibrium_sa_ct_ratio_poly};
+static void *data_p_from_z[] = {&gsw_p_from_z};
 static void *data_pot_enthalpy_ice_freezing[] = {&gsw_pot_enthalpy_ice_freezing};
 static void *data_pot_enthalpy_ice_freezing_poly[] = {&gsw_pot_enthalpy_ice_freezing_poly};
 static void *data_pressure_coefficient_ice[] = {&gsw_pressure_coefficient_ice};
@@ -1265,6 +1266,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "melting_seaice_equilibrium_sa_ct_ratio_poly", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
+                                    data_p_from_z,
+                                    types_dd_d,
+                                    1, 2, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "p_from_z",
+                                    "p_from_z_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "p_from_z", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
