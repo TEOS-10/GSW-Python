@@ -1,5 +1,5 @@
-include README.rst
+include README
 include LICENSE
-include src/c_gsw/LICENSE
+recursive-include src *
 include gsw/tests/*.npz
 # recursive-include docs *
