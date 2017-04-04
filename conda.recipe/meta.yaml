@@ -22,6 +22,5 @@ test:
   imports:
     - gsw
     - gsw.ice
-    - gsw.test
   commands:
     - python -c "import gsw; print(dir(gsw))"
