@@ -5,16 +5,10 @@ sudo: false
 matrix:
   fast_finish: true
   include:
-  - python: 2.7
-    env: TEST_TARGET=default NUMPY=1.11
-  - python: 2.7
-    env: TEST_TARGET=default NUMPY=1.12
   - python: 3.6
     env: TEST_TARGET=default NUMPY=1.11
   - python: 3.6
     env: TEST_TARGET=default NUMPY=1.12
-  - python: 3.6
-    env: TEST_TARGET=publish NUMPY=1.12
 
 before_install:
     - wget http://bit.ly/miniconda -O miniconda.sh
