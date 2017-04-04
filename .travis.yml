@@ -27,5 +27,5 @@ install:
 
 script:
     - if [[ $TEST_TARGET == "default" ]]; then
-        python -c "import gsw; print(dir(gsw))" ;
+        cd /tmp && python -c "import gsw; print(dir(gsw))" ;
       fi
