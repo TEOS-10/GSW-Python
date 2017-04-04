@@ -43,7 +43,7 @@ config = dict(
     keywords=['oceanography', 'seawater', 'TEOS-10'],
     setup_requires=['numpy'],
     ext_modules=[
-        Extension('gsw._gsw_ufuncs',
+        Extension('_gsw_ufuncs',
                   ['src/_ufuncs.c',
                    'src/c_gsw/gsw_oceanographic_toolbox.c',
                    'src/c_gsw/gsw_saar.c'])],
