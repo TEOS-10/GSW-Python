@@ -3998,6 +3998,31 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction)
 
 @match_args_return
+def t_freezing_poly(SA, p, saturation_fraction):
+    """
+    Calculates the in-situ temperature at which seawater freezes from a
+    comptationally efficient polynomial.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    saturation_fraction : array-like
+        Saturation fraction of dissolved air in seawater. (0..1)
+
+    Returns
+    -------
+    t_freezing : array-like, deg C
+        in-situ temperature at which seawater freezes.
+        (ITS-90)
+
+
+    """
+    return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction)
+
+@match_args_return
 def t_from_CT(SA, CT, p):
     """
     Calculates in-situ temperature from the Conservative Temperature of

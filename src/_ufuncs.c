@@ -691,7 +691,6 @@ static void *data_cabbeling[] = {&gsw_cabbeling};
 static void *data_chem_potential_water_t_exact[] = {&gsw_chem_potential_water_t_exact};
 static void *data_cp_t_exact[] = {&gsw_cp_t_exact};
 static void *data_ct_freezing[] = {&gsw_ct_freezing};
-static void *data_ct_freezing_exact[] = {&gsw_ct_freezing_exact};
 static void *data_ct_freezing_poly[] = {&gsw_ct_freezing_poly};
 static void *data_ct_from_enthalpy[] = {&gsw_ct_from_enthalpy};
 static void *data_ct_from_enthalpy_exact[] = {&gsw_ct_from_enthalpy_exact};
@@ -729,7 +728,7 @@ static void *data_specvol_anom_standard[] = {&gsw_specvol_anom_standard};
 static void *data_specvol_t_exact[] = {&gsw_specvol_t_exact};
 static void *data_t_deriv_chem_potential_water_t_exact[] = {&gsw_t_deriv_chem_potential_water_t_exact};
 static void *data_t_freezing[] = {&gsw_t_freezing};
-static void *data_t_freezing_exact[] = {&gsw_t_freezing_exact};
+static void *data_t_freezing_poly[] = {&gsw_t_freezing_poly};
 static void *data_t_from_ct[] = {&gsw_t_from_ct};
 static void *data_thermobaric[] = {&gsw_thermobaric};
 static void *data_deltasa_from_sp[] = {&gsw_deltasa_from_sp};
@@ -1641,18 +1640,6 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_d,
-                                    data_ct_freezing_exact,
-                                    types_ddd_d,
-                                    1, 3, 1,  // ndatatypes, nin, nout
-                                    PyUFunc_None,
-                                    "ct_freezing_exact",
-                                    "ct_freezing_exact_docstring",
-                                    0);
-
-    PyDict_SetItemString(d, "ct_freezing_exact", ufunc_ptr);
-    Py_DECREF(ufunc_ptr);
-
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_d,
                                     data_ct_freezing_poly,
                                     types_ddd_d,
                                     1, 3, 1,  // ndatatypes, nin, nout
@@ -2097,15 +2084,15 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_d,
-                                    data_t_freezing_exact,
+                                    data_t_freezing_poly,
                                     types_ddd_d,
                                     1, 3, 1,  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "t_freezing_exact",
-                                    "t_freezing_exact_docstring",
+                                    "t_freezing_poly",
+                                    "t_freezing_poly_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "t_freezing_exact", ufunc_ptr);
+    PyDict_SetItemString(d, "t_freezing_poly", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_d,
