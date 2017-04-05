@@ -48,8 +48,6 @@ extern void   gsw_ct_first_derivatives_wrt_t_exact(double sa, double t,
 		double p, double *ct_sa_wrt_t, double *ct_t_wrt_t,
 		double *ct_p_wrt_t);
 extern double gsw_ct_freezing(double sa, double p, double saturation_fraction);
-extern double gsw_ct_freezing_exact(double sa, double p,
-		double saturation_fraction);
 extern void   gsw_ct_freezing_first_derivatives(double sa, double p,
 		double saturation_fraction, double *ctfreezing_sa,
 		double *ctfreezing_p);
@@ -265,8 +263,6 @@ extern double gsw_sstar_from_sp(double sp, double p, double lon, double lat);
 extern double gsw_t_deriv_chem_potential_water_t_exact(double sa, double t,
 		double p);
 extern double gsw_t_freezing(double sa, double p, double saturation_fraction);
-extern double gsw_t_freezing_exact(double sa, double p,
-		double saturation_fraction);
 extern void   gsw_t_freezing_first_derivatives_poly(double sa, double p,
 		double saturation_fraction, double *tfreezing_sa,
 		double *tfreezing_p);
@@ -274,7 +270,7 @@ extern void   gsw_t_freezing_first_derivatives(double sa, double p,
 		double saturation_fraction, double *tfreezing_sa,
 		double *tfreezing_p);
 extern double gsw_t_freezing_poly(double sa, double p,
-		double saturation_fraction, int polynomial);
+		double saturation_fraction);
 extern double gsw_t_from_ct(double sa, double ct, double p);
 extern double gsw_t_from_pt0_ice(double pt0_ice, double p);
 extern double gsw_thermobaric(double sa, double ct, double p);

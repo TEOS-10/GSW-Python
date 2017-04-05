@@ -238,13 +238,13 @@ main(int argc, char **argv)
 
 	saturation_fraction = 0.5;
 
-	test_func(ct_freezing_exact,(sa[i],p[i],saturation_fraction),
+	test_func(ct_freezing,(sa[i],p[i],saturation_fraction),
 	    ctf,ct_freezing);
 	test_func(ct_freezing_poly, (sa[i],p[i],saturation_fraction), ctf_poly,
 	    ct_freezing_poly);
-	test_func(t_freezing_exact, (sa[i],p[i],saturation_fraction), tf,
+	test_func(t_freezing, (sa[i],p[i],saturation_fraction), tf,
 	    t_freezing);
-	test_func(t_freezing_poly, (sa[i],p[i],saturation_fraction, 0), tf_poly,
+	test_func(t_freezing_poly, (sa[i],p[i],saturation_fraction), tf_poly,
 	    t_freezing_poly);
 	test_func(pot_enthalpy_ice_freezing, (sa[i],p[i]), value,
 	    pot_enthalpy_ice_freezing);
