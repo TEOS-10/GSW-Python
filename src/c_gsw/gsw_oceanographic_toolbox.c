@@ -53,6 +53,7 @@
 #define _DOUBLE_COMPLEX _Dcomplex
 #else
 #define _DOUBLE_COMPLEX double complex
+#endif
 
 /*
 !==========================================================================
