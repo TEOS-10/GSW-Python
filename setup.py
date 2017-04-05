@@ -46,9 +46,8 @@ config = dict(
         Extension('gsw._gsw_ufuncs',
                   ['src/_ufuncs.c',
                    'src/c_gsw/gsw_oceanographic_toolbox.c',
-                   'src/c_gsw/gsw_saar.c'],
-                  language='c++')],
-        include_dirs=[np.get_include(),
+                   'src/c_gsw/gsw_saar.c'])],
+    include_dirs=[np.get_include(),
                   os.path.join(rootpath, 'src', 'c_gsw')],
 )
 
