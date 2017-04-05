@@ -1,0 +1,35 @@
+language: python
+
+sudo: false
+
+matrix:
+  fast_finish: true
+  include:
+  - python: 3.5
+    env: TEST_TARGET=default NUMPY=1.11
+  - python: 3.5
+    env: TEST_TARGET=default NUMPY=1.12
+  - python: 3.6
+    env: TEST_TARGET=default NUMPY=1.11
+  - python: 3.6
+    env: TEST_TARGET=default NUMPY=1.12
+
+before_install:
+    - wget http://bit.ly/miniconda -O miniconda.sh
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH="$HOME/miniconda/bin:$PATH"
+    - conda update conda --yes
+    - conda config --add channels conda-forge --force
+    - conda create --yes -n TEST python=$TRAVIS_PYTHON_VERSION
+    - source activate TEST
+    # Install after to ensure it will be downgraded when testing an older version.
+    - conda install --yes --quiet numpy=$NUMPY
+
+# Test source distribution.
+install:
+    - python setup.py sdist && version=$(python setup.py --version) && pushd dist  && pip install gsw-${version}.tar.gz && popd
+
+script:
+    - if [[ $TEST_TARGET == "default" ]]; then
+        cd /tmp && python -c "import gsw; print(dir(gsw))" ;
+      fi

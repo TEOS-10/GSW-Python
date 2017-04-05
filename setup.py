@@ -3,24 +3,11 @@ Minimal setup.py for building gswc.
 '''
 import os
 
-import numpy
-from numpy.distutils.misc_util import Configuration
-from numpy.distutils.core import setup
-#from setuptools.command.test import test as TestCommand
+from setuptools import Extension, setup
+
+import numpy as np
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
-
-
-
-#class PyTest(TestCommand):
-#    def finalize_options(self):
-#        TestCommand.finalize_options(self)
-#        self.verbose = True
-#
-#    def run_tests(self):
-#        import pytest
-#        errno = pytest.main(self.test_args)
-#        sys.exit(errno)
 
 
 def read(*parts):
@@ -41,38 +28,27 @@ def extract_version():
 LICENSE = read('LICENSE')
 long_description = read('README')
 
-attributes = dict(name='gsw',
-                  version=extract_version(),
-                  packages=['gsw', 'gsw/tests', 'gsw/ice'],
-                  author=['Eric Firing', 'Filipe Fernandes'],
-                  author_email='efiring@hawaii.edu',
-                  description='Gibbs Seawater Oceanographic Package of TEOS-10',
-                  long_description=long_description,
-                  license=LICENSE,
-              #url='https://github.com/TEOS-10/python-gsw',
-              #download_url='https://pypi.python.org/pypi/gsw/',
-              platforms='any',
-              keywords=['oceanography', 'seawater', 'TEOS-10',],
-              #install_requires=['numpy'],
-              #tests_require=tests_require,
-                  )
+config = dict(
+    name='gsw',
+    version=extract_version(),
+    packages=['gsw', 'gsw/tests', 'gsw/ice'],
+    author=['Eric Firing', 'Filipe Fernandes'],
+    author_email='efiring@hawaii.edu',
+    description='Gibbs Seawater Oceanographic Package of TEOS-10',
+    long_description=long_description,
+    license=LICENSE,
+    # url='https://github.com/TEOS-10/GSW-python',
+    # download_url='https://pypi.python.org/pypi/gsw/',
+    platforms='any',
+    keywords=['oceanography', 'seawater', 'TEOS-10'],
+    setup_requires=['numpy'],
+    ext_modules=[
+        Extension('gsw._gsw_ufuncs',
+                  ['src/_ufuncs.c',
+                   'src/c_gsw/gsw_oceanographic_toolbox.c',
+                   'src/c_gsw/gsw_saar.c'])],
+    include_dirs=[np.get_include(),
+                  os.path.join(rootpath, 'src', 'c_gsw')],
+)
 
-def configuration(parent_package='', top_path=None):
-
-    config = Configuration('gsw',
-                           parent_package,
-                           top_path,
-                           **attributes)
-
-    config.add_extension('_gsw_ufuncs',
-                         ['src/_ufuncs.c',
-                          'src/c_gsw/gsw_oceanographic_toolbox.c',
-                          'src/c_gsw/gsw_saar.c',
-                          ],
-                         include_dirs=['src/c_gsw'],
-                         )
-
-    return config
-
-if __name__ == "__main__":
-    setup(configuration=configuration)
+setup(**config)
