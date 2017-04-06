@@ -7,11 +7,11 @@ import os
 
 basedir = os.path.join(os.path.dirname(__file__), '../')
 
-def get_signatures(strip_extern=True):
+def get_signatures(strip_extern=True, srcdir='src'):
     """
     Return a list of C function declarations.
     """
-    fname = os.path.join(basedir, "src/c_gsw/gswteos-10.h")
+    fname = os.path.join(basedir, srcdir, "c_gsw/gswteos-10.h")
 
     with open(fname) as f:
         for line in f:
@@ -102,8 +102,8 @@ def simple_sigs(sigdict):
 
     return simple
 
-def get_simple_sig_dict():
-    sigs = get_signatures()
+def get_simple_sig_dict(srcdir='src'):
+    sigs = get_signatures(srcdir=srcdir)
     sigdict = parse_signatures(sigs)
     simple = simple_sigs(sigdict)
     return simple
@@ -117,21 +117,21 @@ def complex_sigdict(sigdict):
         out[key] = psig
     return out
 
-def get_complex_sigdict():
-    sigs = get_signatures()
+def get_complex_sigdict(srcdir='src'):
+    sigs = get_signatures(srcdir=srcdir)
     sigdict = parse_signatures(sigs)
     return complex_sigdict(sigdict)
 
-def get_complex_scalar_sigdict():
-    cd = get_complex_sigdict()
+def get_complex_scalar_sigdict(srcdir='src'):
+    cd = get_complex_sigdict(srcdir=srcdir)
     scalar_dict = {}
     for k, v in cd.items():
         if v['returntype'] == 'void' and 'int' not in v['argtypes']:
             scalar_dict[k] = v
     return scalar_dict
 
-def get_complex_scalar_dict_by_nargs_nreturns():
-    sd = get_complex_scalar_sigdict()
+def get_complex_scalar_dict_by_nargs_nreturns(srcdir='src'):
+    sd = get_complex_scalar_sigdict(srcdir=srcdir)
     names_by_sigtup = {}
     for k, v in sd.items():
         nargs = 0
@@ -148,16 +148,16 @@ def get_complex_scalar_dict_by_nargs_nreturns():
             names_by_sigtup[sigtup] = [k]
     return names_by_sigtup
 
-def print_complex_names_by_nargs_nreturns():
-    d = get_complex_scalar_dict_by_nargs_nreturns()
+def print_complex_names_by_nargs_nreturns(srcdir='src'):
+    d = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
     for k, v in d.items():
         print(k, len(v))
         for name in v:
             print('    %s' % name)
 
-def print_non_wrappable():
-    csd = get_complex_sigdict()
-    scd = get_complex_scalar_sigdict()
+def print_non_wrappable(srcdir='src'):
+    csd = get_complex_sigdict(srcdir=srcdir)
+    scd = get_complex_scalar_sigdict(srcdir=srcdir)
     others = [f for f in csd if f not in scd]
     othersd = {k : csd[k] for k in others}
     for k, v in othersd.items():

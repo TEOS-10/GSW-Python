@@ -1,11 +1,19 @@
 '''
 Minimal setup.py for building gswc.
 '''
-import os
+import os, sys
 
 from setuptools import Extension, setup
 
 import numpy as np
+
+if sys.platform == 'win32':
+    srcdir = 'src2'
+    c_ext = 'cpp'
+else:
+    srcdir = 'src'
+    c_ext = 'c'
+
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
@@ -44,11 +52,11 @@ config = dict(
     setup_requires=['numpy'],
     ext_modules=[
         Extension('gsw._gsw_ufuncs',
-                  ['src/_ufuncs.c',
-                   'src/c_gsw/gsw_oceanographic_toolbox.c',
-                   'src/c_gsw/gsw_saar.c'])],
+                  [srcdir + '/_ufuncs.c',
+                   srcdir + '/c_gsw/gsw_oceanographic_toolbox.' + c_ext,
+                   srcdir + '/c_gsw/gsw_saar.' + c_ext])],
     include_dirs=[np.get_include(),
-                  os.path.join(rootpath, 'src', 'c_gsw')],
+                  os.path.join(rootpath, srcdir, 'c_gsw')],
 )
 
 setup(**config)

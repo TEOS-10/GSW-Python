@@ -4,6 +4,7 @@ into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
 """
 import os
+import sys
 
 from c_header_parser import (get_simple_sig_dict,
                             get_complex_scalar_dict_by_nargs_nreturns)
@@ -11,8 +12,6 @@ from c_header_parser import (get_simple_sig_dict,
 blacklist = ['add_barrier']
 
 basedir = os.path.join(os.path.dirname(__file__), '../')
-
-modfile_name = os.path.join(basedir, 'src/_ufuncs.c')
 
 modfile_head_top = """
 /*
@@ -186,9 +185,9 @@ def modfile_init_entry(funcname, nin, nout):
                               ndin='d'*nin, ndout='d'*nout)
 
 
-def write_modfile(modfile_name):
-    argcategories1 = get_simple_sig_dict()
-    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns()
+def write_modfile(modfile_name, srcdir):
+    argcategories1 = get_simple_sig_dict(srcdir=srcdir)
+    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
 
     funcnamelist1 = []
     funcnamelist2 = []
@@ -241,17 +240,20 @@ def write_modfile(modfile_name):
         f.write(''.join(chunks))
 
     funcnamelist1.sort()
-    with open('ufuncs1.list', 'w') as f:
+    with open(srcdir + '_ufuncs1.list', 'w') as f:
         f.write('\n'.join(funcnamelist1))
 
     funcnamelist2.sort()
-    with open('ufuncs2.list', 'w') as f:
+    with open(srcdir + '_ufuncs2.list', 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
     funcnamelist = funcnamelist1 + funcnamelist2
     funcnamelist.sort()
-    with open('ufuncs.list', 'w') as f:
+    with open(srcdir + '_ufuncs.list', 'w') as f:
         f.write('\n'.join(funcnamelist))
 
 if __name__ == '__main__':
-    write_modfile(modfile_name)
+    srcdir = sys.argv[1]
+    modfile_name = os.path.join(basedir, srcdir, '_ufuncs.c')
+
+    write_modfile(modfile_name, srcdir=srcdir)
