@@ -2,6 +2,10 @@ language: python
 
 sudo: false
 
+env:
+  global:
+    - secure: "dBqRJobzAqQccuzXdxyp6MJYDK6wS2xAZ8ARDNYCWy8FIoc7ru2/LP3oz3moYAoqiBNB6JgZCudJYw9Jrl7v4K0nQHtWIqcIiQMgjEvg5Hgrxzu4G8AFLqY/TnxGToMLcIk07XGfUV2Y85vpoCkXquAAiYI5cYac533DcGmQ4Rv69t3k14raBSVgpXzwR+1/mhDh4al2cP+bzf8GKJ7+CsE693wcJYQT3HEjk9NfrItbb2y+aQ4O21HZA43Ztq4MUxgA+JW5MSDR4uFuHuV9kn617riUV97erZjONvwRqyZei1J2JlIT+cI80fpvI08jpj8ptdwfp0vDUFxUU6WXLL23O0U3u0ZRFUrF1YlYmALfM+9Eg1KMbOHupMRCbkcp+3osTYOh/kgLJtxvsJ1IBFbrS7WjhGlNJqqiiXyLYCd0mHY3ZASY7EEn2tkDl6XmpsgpL3r0/oVJ5bJ0QCW1RlLo8caJxHN2+5j30H1EpKYQjA78ELsOgmr+2v/1+FZZpLjIbqA31of5Fv3qVOVwZMmuO5bxKD0u6OPGuTf/ro2eNwGXasCt5omEKRy1P3msH4FPQGaVrm8qmlAbROVicLcIj62usSK5pYp2k7ii/YEgQ+vh/saNfixyu/hpUKH+XsGATfJI9Y+Wo7j0Ao4hzC+oVw/ah6KP2lU3OSKGEFA="
+
 matrix:
   fast_finish: true
   include:
@@ -13,6 +17,8 @@ matrix:
     env: TEST_TARGET=default NUMPY=1.11
   - python: 3.6
     env: TEST_TARGET=default NUMPY=1.12
+  - python: 3.6
+    env: TEST_TARGET=publish NUMPY=1.12
 
 before_install:
     - wget http://bit.ly/miniconda -O miniconda.sh
@@ -20,7 +26,7 @@ before_install:
     - export PATH="$HOME/miniconda/bin:$PATH"
     - conda update conda --yes
     - conda config --add channels conda-forge --force
-    - conda create --yes -n TEST python=$TRAVIS_PYTHON_VERSION
+    - conda create --yes -n TEST python=$TRAVIS_PYTHON_VERSION --file requirements-dev.txt
     - source activate TEST
     # Install after to ensure it will be downgraded when testing an older version.
     - conda install --yes --quiet numpy=$NUMPY
@@ -32,4 +38,12 @@ install:
 script:
     - if [[ $TEST_TARGET == "default" ]]; then
         cd /tmp && python -c "import gsw; print(dir(gsw))" ;
+      fi
+
+after_success:
+    - if [[ $TEST_TARGET == "publish" ]]; then
+        set -e ;
+        pip install doctr ;
+        pushd docs && make html && popd ;
+        doctr deploy --built-docs=docs/_build/html . ;
       fi
