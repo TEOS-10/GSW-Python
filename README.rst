@@ -1,11 +1,12 @@
 gswc
 ====
 
-This is the start of an *experimental* Python implementation
-of the Thermodynamic Equation Of Seawater - 2010
-(`TEOS-10 <http://www.teos-10.org/>`__) in which the *core*
-functionality is obtained by wrapping the functions from the
-C implementation (GSW-C).
+.. image:: https://travis-ci.org/efiring/python-gswc.svg?branch=master
+    :target: https://travis-ci.org/efiring/python-gswc
+
+This Python implementation of the Thermodynamic Equation of
+Seawater 2010 (TEOS-10) is based on numpy ufunc wrappers of
+the GSW-C implementation.
 
 **Warning: this is in an early development stage.  If it
 proceeds, the repo will probably be renamed and moved.**
