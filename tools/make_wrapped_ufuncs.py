@@ -4,6 +4,7 @@ of make_ufuncs.py.
 """
 
 import os
+import sys
 import re
 
 from _utilities import Bunch
@@ -17,7 +18,6 @@ from docstring_utils import (paragraphs,
 
 basedir = os.path.join(os.path.dirname(__file__), '../')
 
-wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
 
 # Functions that are Matlab subroutines, or exclusive to
 # the C and not needed; we don't need to expose them.
@@ -26,13 +26,6 @@ blacklist = {'ct_freezing_exact',
 'pt_from_pot_enthalpy_ice_poly_dh',
 't_freezing_exact',
 }
-
-with open('ufuncs.list') as f:
-    ufunclist = [name.strip() for name in f.readlines()]
-    ufunclist = [name for name in ufunclist if name not in blacklist]
-
-msigdict = get_complete_sigdict()
-csigdict = parse_signatures(get_signatures())
 
 wrapper_head = '''
 """
@@ -159,6 +152,17 @@ def uf_wrapper(ufname):
     return wrapper_template % subs
 
 if __name__ == '__main__':
+    srcdir = sys.argv[1]
+
+    wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
+
+    with open(srcdir + '_ufuncs.list') as f:
+        ufunclist = [name.strip() for name in f.readlines()]
+        ufunclist = [name for name in ufunclist if name not in blacklist]
+
+    msigdict = get_complete_sigdict()
+    csigdict = parse_signatures(get_signatures(srcdir=srcdir))
+
     wrapped_ufnames = []
     with open(wrapmod, 'w') as f:
         f.write(wrapper_head)
@@ -173,5 +177,5 @@ if __name__ == '__main__':
                 f.write(wrapped)
                 wrapped_ufnames.append(ufname)
     wrapped_ufnames.sort()
-    with open('wrapped_ufuncs.list', 'w') as f:
+    with open(srcdir + '_wrapped_ufuncs.list', 'w') as f:
         f.write('\n'.join(wrapped_ufnames) + '\n')
