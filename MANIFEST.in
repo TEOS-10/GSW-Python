@@ -1,5 +1,6 @@
 include README
 include LICENSE
 recursive-include src *
+recursive-include src2 *
 include gsw/tests/*.npz
 # recursive-include docs *
