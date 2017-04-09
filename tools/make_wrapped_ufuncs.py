@@ -128,6 +128,10 @@ def uf_wrapper(ufname):
                 )
     helpdict = get_helpdict(msig['path'])
 
+    # Filter out minimally documented library functions.
+    if 'DESCRIPTION' not in helpdict:
+        return None
+
     try:
         desclist = paragraphs(helpdict['DESCRIPTION'])[0]
         sections = dict(Head=desclist)
@@ -146,29 +150,35 @@ def uf_wrapper(ufname):
             outdoc = ['None']
         sections['Returns'] = outdoc
         doc = docstring_from_sections(sections)
-    except KeyError:
+    except KeyError as e:
+        print("KeyError for %s, %s" % (ufname, e))
         doc = "(no description available)"
     subs['doc'] = doc
     return wrapper_template % subs
 
 if __name__ == '__main__':
     srcdir = sys.argv[1]
+    if len(sys.argv) > 2:
+        ufunclist = sys.argv[2:]
+    else:
+        with open(srcdir + '_ufuncs.list') as f:
+            ufunclist = [name.strip() for name in f.readlines()]
+            ufunclist = [name for name in ufunclist if name not in blacklist]
 
     wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
-
-    with open(srcdir + '_ufuncs.list') as f:
-        ufunclist = [name.strip() for name in f.readlines()]
-        ufunclist = [name for name in ufunclist if name not in blacklist]
 
     msigdict = get_complete_sigdict()
     csigdict = parse_signatures(get_signatures(srcdir=srcdir))
 
     wrapped_ufnames = []
+
     with open(wrapmod, 'w') as f:
         f.write(wrapper_head)
         for ufname in ufunclist:
             try:
                 wrapped = uf_wrapper(ufname)
+                if wrapped is None:
+                    continue
             except RuntimeError as err:
                 print(ufname, err)
             if wrapped is None:
