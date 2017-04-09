@@ -20,11 +20,12 @@ This can be improved--we should get less information from the
 matlab script and more from our own functions.  We probably
 should not need the matlab script at all, or maybe use it only
 to extract the list of functions being tested in matlab.
+
 """
 
-from __future__ import print_function
 import os
 import sys
+import re
 
 import numpy as np
 
@@ -40,13 +41,17 @@ from gsw._utilities import Bunch
 # log = logging.getLogger()
 # logging.basicConfig()
 
-# There is probably a better way to handle the "invalid value"
-# problem, but for now we will ignore it.  (Nans in the test arrays...)
-np.seterr(invalid='ignore')
-
-# There are also divide-by-zero warnings, which we will leave in
-# place. (library.py lines 1238, 1239; maybe something should be
-# done to block this, so we don't get inf values.)
+#  The following re patterns are for the "alternative" parsing of
+#  the test line to support using numpy assert_allclose.  This is
+#  not presently in use, but aspects of this method, here and in
+#  _WIP_test_ufuncs.py, might replace some of the original code here.
+#
+# pattern for a single test line after it has been pre-processed to
+# remove spaces, the square brackets, and semicolon
+testlinepat = "(\w+\.\w+)=find\(\w*\((\w+\.\w+)-(\w+\.\w+)\)>=(\w+\.\w+)\)"
+#
+# pattern for the inner test when there is a sequence separated by '|'
+testpat = "\(+\w*\((\w+\.\w+)-(\w+\.\w+)\)+>=(\w+\.\w+)\)"
 
 
 def find(x):
@@ -107,6 +112,28 @@ class FunctionCheck(object):
         self.teststr = tail.strip()[:-1]   # argument of "find()"
         self.teststr = self.teststr.replace('abs(', 'np.abs(')
 
+        # alternative parsing of testline
+        testline = self.testline.replace(' ', '')
+        if '|' in testline:
+            diffstr, test_str = testline.split('=', 1)
+            # Chop off the leading 'find('.
+            tests = test_str[5:].split('|')
+            self.test_varstrings = [diffstr]
+            for test in tests:
+                m = re.match(testpat, test)
+                if m is None:
+                    print(self.name, testpat, test, m)
+                if m is not None:
+                    self.test_varstrings.extend(list(m.groups()))
+        else:
+            m = re.match(testlinepat, testline)
+            if m is not None:
+                self.test_varstrings =  m.groups()
+            else:
+                print("no match")
+                self.test_varstrings = None
+
+
         # To be set when run() is successful
         self.outlist = None
         self.result = None   # will be a reference to the cv.I* array
@@ -118,43 +145,59 @@ class FunctionCheck(object):
     def __str__(self):
         return self.runline
 
-    def record_details(self):
+    def record_details(self, evalargs):
         tline = self.testline
         i0 = 5 + tline.index('find(')
         tline = tline[i0:-1]
         checks = tline.split('|')
         parts = []
         for check in checks:
-            check = check.strip()
+            check = check.replace(' ', '')
             if check.startswith('('):
-                check = check[1:-1].strip()
+                check = check[1:-1]
             part = Bunch(check=check)
             LHS, RHS = check.split('>=')
-            part.tolerance = eval(RHS)
-            LHS = LHS.strip()[4:-1]  # chop off abs(...)
+            part.tolerance = eval(RHS, *evalargs)
+            # Sometimes there is an extra set of ().
+            if LHS.startswith('('):
+                LHS = LHS[1:-1]
+            LHS = LHS[4:-1]  # chop off abs(...)
             target, calculated = LHS.split('-')
-            part.checkval = eval(target)
-            part.val = eval(calculated)
+            part.checkval = eval(target, *evalargs)
+            part.val = eval(calculated, *evalargs)
             parts.append(part)
 
         self.details = parts
 
-    def run(self):
+    def run(self, locals=None):
         try:
-            exec(self.runline)
-            # In Matlab, the number of output arguments varies
-            # depending on the LHS of the assignment, but Python
-            # always returns the full set.  Here we handle the
-            # case where Python is returning 2 (or more) but
-            # the LHS is assigning only the first.
+            if locals is not None:
+                _globals = globals() #dict(**globals())
+                _globals.update(locals)
+                evalargs = (_globals,)
+            else:
+                evalargs = tuple()
+
+            # The following is needed for melting_ice_into_seawater.
+            if len(self.outstrings) > 1:
+                rl_ind = '[:%d]' % len(self.outstrings)
+            else:
+                rl_ind = ''
+
+            exec(self.runline + rl_ind, *evalargs)
             if len(self.outstrings) == 1:
-                if isinstance(eval(self.outstr), tuple):
-                    exec("%s = %s[0]" % (self.outstr, self.outstr))
-            self.outlist = [eval(s) for s in self.outstrings]
-            exec(self.testline)
-            self.result = eval(self.resultstr)
-            self.passed = len(self.result) == 0
-            self.record_details()
+                if isinstance(eval(self.outstr, *evalargs), tuple):
+                    exec("%s = %s[0]" % (self.outstr, self.outstr), *evalargs)
+            self.outlist = [eval(s, *evalargs) for s in self.outstrings]
+
+            exec(self.testline, *evalargs)
+            self.result = eval(self.resultstr, *evalargs)
+
+            self.passed = (len(self.result) == 0)
+            # The following has trouble with CT_first_derivatives
+            if self.name not in ['CT_first_derivatives',]:
+                self.record_details(evalargs)
+            # print("%s passed? %s" % (self.name, self.passed))
 
         except Exception as e:
             self.exception = e

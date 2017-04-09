@@ -35,4 +35,14 @@ pt0_ice = "Potential temperature of ice (ITS-90), degrees C",
 pt = "Potential temperature referenced to a sea pressure, degrees C",
 rho = "Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.",
 t_Ih = "In-situ temperature of ice (ITS-90), degrees C",
+z = "Depth, positive up, m",
+SA_bulk = "bulk Absolute Salinity of the seawater and ice mixture, g/kg",
+w_Ih =
+"""mass fraction of ice: the mass of ice divided by the
+sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.""",
+w_seaice =
+"""mass fraction of ice: the mass of sea-ice divided by the sum
+of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.""",
+h_bulk =  "bulk enthalpy of the seawater and ice mixture, J/kg",
+h_pot_bulk = "bulk enthalpy of the seawater and ice mixture, J/kg",
 )

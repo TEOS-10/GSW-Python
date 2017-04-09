@@ -1131,12 +1131,6 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
     return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p)
 
 @match_args_return
-def enthalpy_SSO_0(p):
-    """(no description available)
-    """
-    return _gsw_ufuncs.enthalpy_sso_0(p)
-
-@match_args_return
 def enthalpy_t_exact(SA, t, p):
     """
     Calculates the specific enthalpy of seawater.
@@ -1259,18 +1253,6 @@ def entropy_ice(t, p):
     return _gsw_ufuncs.entropy_ice(t, p)
 
 @match_args_return
-def entropy_part(SA, t, p):
-    """(no description available)
-    """
-    return _gsw_ufuncs.entropy_part(SA, t, p)
-
-@match_args_return
-def entropy_part_zerop(SA, pt0):
-    """(no description available)
-    """
-    return _gsw_ufuncs.entropy_part_zerop(SA, pt0)
-
-@match_args_return
 def entropy_second_derivatives(SA, CT):
     """
     Calculates the following three second-order partial derivatives of
@@ -1336,31 +1318,188 @@ def Fdelta(p, lon, lat):
 
 @match_args_return
 def frazil_properties(SA_bulk, h_bulk, p):
-    """(no description available)
+    """
+    Calculates the mass fraction of ice (mass of ice divided by mass of ice
+    plus seawater), w_Ih_final, which results from given values of the bulk
+    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occuring at pressure
+    p.  The final values of Absolute Salinity, SA_final, and Conservative
+    Temperature, CT_final, of the interstitial seawater phase are also
+    returned.  This code assumes that there is no dissolved air in the
+    seawater (that is, saturation_fraction is assumed to be zero
+    throughout the code).
+
+    Parameters
+    ----------
+    SA_bulk : array-like
+        bulk Absolute Salinity of the seawater and ice mixture, g/kg
+    h_bulk : array-like
+        bulk enthalpy of the seawater and ice mixture, J/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    SA_final : array-like, g/kg
+        Absolute Salinity of the seawater in the final state,
+        whether or not any ice is present.
+    CT_final : array-like, deg C
+        Conservative Temperature of the seawater in the the final
+        state, whether or not any ice is present.
+    w_Ih_final : array-like, unitless
+        mass fraction of ice in the final seawater-ice mixture.
+        If this ice mass fraction is positive, the system is at
+        thermodynamic equilibrium.  If this ice mass fraction is
+        zero there is no ice in the final state which consists
+        only of seawater which is warmer than the freezing
+        temperature.
+
+
     """
     return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p)
 
 @match_args_return
 def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
-    """(no description available)
+    """
+    Calculates the mass fraction of ice (mass of ice divided by mass of ice
+    plus seawater), w_Ih_eq, which results from given values of the bulk
+    Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
+    occuring at pressure p.  The final equilibrium values of Absolute
+    Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
+    interstitial seawater phase are also returned.  This code assumes that
+    there is no dissolved air in the seawater (that is, saturation_fraction
+    is assumed to be zero thoughout the code).
+
+    Parameters
+    ----------
+    SA_bulk : array-like
+        bulk Absolute Salinity of the seawater and ice mixture, g/kg
+    h_pot_bulk : array-like
+        bulk enthalpy of the seawater and ice mixture, J/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    SA_final : array-like, g/kg
+        Absolute Salinity of the seawater in the final state,
+        whether or not any ice is present.
+    CT_final : array-like, deg C
+        Conservative Temperature of the seawater in the the final
+        state, whether or not any ice is present.
+    w_Ih_final : array-like, unitless
+        mass fraction of ice in the final seawater-ice mixture.
+        If this ice mass fraction is positive, the system is at
+        thermodynamic equilibrium.  If this ice mass fraction is
+        zero there is no ice in the final state which consists
+        only of seawater which is warmer than the freezing
+        temperature.
+
+
     """
     return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p)
 
 @match_args_return
 def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
-    """(no description available)
+    """
+    Calculates the mass fraction of ice (mass of ice divided by mass of ice
+    plus seawater), w_Ih_eq, which results from given values of the bulk
+    Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
+    occuring at pressure p.  The final equilibrium values of Absolute
+    Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
+    interstitial seawater phase are also returned.  This code assumes that
+    there is no dissolved air in the seawater (that is, saturation_fraction
+    is assumed to be zero thoughout the code).
+
+    Parameters
+    ----------
+    SA_bulk : array-like
+        bulk Absolute Salinity of the seawater and ice mixture, g/kg
+    h_pot_bulk : array-like
+        bulk enthalpy of the seawater and ice mixture, J/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    SA_final : array-like, g/kg
+        Absolute Salinity of the seawater in the final state,
+        whether or not any ice is present.
+    CT_final : array-like, deg C
+        Conservative Temperature of the seawater in the the final
+        state, whether or not any ice is present.
+    w_Ih_final : array-like, unitless
+        mass fraction of ice in the final seawater-ice mixture.
+        If this ice mass fraction is positive, the system is at
+        thermodynamic equilibrium.  If this ice mass fraction is
+        zero there is no ice in the final state which consists
+        only of seawater which is warmer than the freezing
+        temperature.
+
+
     """
     return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p)
 
 @match_args_return
 def frazil_ratios_adiabatic(SA, p, w_Ih):
-    """(no description available)
+    """
+    Calculates the ratios of SA, CT and P changes when frazil ice forms or
+    melts in response to an adiabatic change in pressure of a mixture of
+    seawater and frazil ice crystals.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    w_Ih : array-like
+        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+
+    Returns
+    -------
+    dSA_dCT_frazil : array-like, g/(kg K)
+        the ratio of the changes in Absolute Salinity
+        to that of Conservative Temperature
+    dSA_dP_frazil : array-like, g/(kg Pa)
+        the ratio of the changes in Absolute Salinity
+        to that of pressure (in Pa)
+    dCT_dP_frazil : array-like, K/Pa
+        the ratio of the changes in Conservative Temperature
+        to that of pressure (in Pa)
+
+
     """
     return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih)
 
 @match_args_return
 def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
-    """(no description available)
+    """
+    Calculates the ratios of SA, CT and P changes when frazil ice forms or
+    melts in response to an adiabatic change in pressure of a mixture of
+    seawater and frazil ice crystals.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    w_Ih : array-like
+        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+
+    Returns
+    -------
+    dSA_dCT_frazil : array-like, g/(kg K)
+        the ratio of the changes in Absolute Salinity
+        to that of Conservative Temperature
+    dSA_dP_frazil : array-like, g/(kg Pa)
+        the ratio of the changes in Absolute Salinity
+        to that of pressure (in Pa)
+    dCT_dP_frazil : array-like, K/Pa
+        the ratio of the changes in Conservative Temperature
+        to that of pressure (in Pa)
+
+
     """
     return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih)
 
@@ -1426,12 +1565,6 @@ def gibbs_ice_pt0_pt0(pt0):
 
     """
     return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0)
-
-@match_args_return
-def gibbs_pt0_pt0(SA, pt0):
-    """(no description available)
-    """
-    return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0)
 
 @match_args_return
 def grav(lat, p):
@@ -1824,7 +1957,42 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
 
 @match_args_return
 def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
-    """(no description available)
+    """
+    Calculates the final Absolute Salinity, final Conservative Temperature
+    and final ice mass fraction that results when a given mass fraction of
+    ice melts and is mixed into seawater whose properties are (SA,CT,p).
+    This code takes the seawater to contain no dissolved air.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    w_Ih : array-like
+        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+    t_Ih : array-like
+        In-situ temperature of ice (ITS-90), degrees C
+
+    Returns
+    -------
+    SA_final : array-like, g/kg
+        Absolute Salinity of the seawater in the final state,
+        whether or not any ice is present.
+    CT_final : array-like, deg C
+        Conservative Temperature of the seawater in the the final
+        state, whether or not any ice is present.
+    w_Ih_final : array-like, unitless
+        mass fraction of ice in the final seawater-ice mixture.
+        If this ice mass fraction is positive, the system is at
+        thermodynamic equilibrium.  If this ice mass fraction is
+        zero there is no ice in the final state which consists
+        only of seawater which is warmer than the freezing
+        temperature.
+
+
     """
     return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih)
 
@@ -1954,7 +2122,37 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
 
 @match_args_return
 def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
-    """(no description available)
+    """
+    Calculates the Absolute Salinity and Conservative Temperature that
+    results when a given mass of sea ice (or ice) melts and is mixed into a
+    known mass of seawater (whose properties are (SA,CT,p)).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    w_seaice : array-like
+        mass fraction of ice: the mass of sea-ice divided by the sum of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.
+    SA_seaice : array-like
+        Absolute Salinity of sea ice: the mass fraction of salt
+        in sea ice, expressed in g of salt per kg of sea ice.
+    t_seaice : array-like
+        In-situ temperature of the sea ice at pressure p (ITS-90), degrees C
+
+    Returns
+    -------
+    SA_final : array-like, g/kg
+        Absolute Salinity of the mixture of the melted sea ice
+        (or ice) and the orignal seawater
+    CT_final : array-like, deg C
+        Conservative Temperature of the mixture of the melted
+        sea ice (or ice) and the orignal seawater
+
+
     """
     return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice)
 
@@ -2024,7 +2222,28 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
 
 @match_args_return
 def p_from_z(z, lat):
-    """(no description available)
+    """
+    Calculates sea pressure from height using computationally-efficient
+    75-term expression for density, in terms of SA, CT and p (Roquet et al.,
+    2015).  Dynamic height anomaly, geo_strf_dyn_height, if provided,
+    must be computed with its p_ref = 0 (the surface). Also if provided,
+    sea_surface_geopotental is the geopotential at zero sea pressure. This
+    function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.
+
+    Parameters
+    ----------
+    z : array-like
+        Depth, positive up, m
+    lat : array-like
+        Latitude, -90 to 90 degrees
+
+    Returns
+    -------
+    p : array-like, dbar
+        sea pressure
+        ( i.e. absolute pressure - 10.1325 dbar )
+
+
     """
     return _gsw_ufuncs.p_from_z(z, lat)
 
@@ -3701,12 +3920,6 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
 
     """
     return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p)
-
-@match_args_return
-def specvol_SSO_0(p):
-    """(no description available)
-    """
-    return _gsw_ufuncs.specvol_sso_0(p)
 
 @match_args_return
 def specvol_t_exact(SA, t, p):
