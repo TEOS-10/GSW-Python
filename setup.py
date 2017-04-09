@@ -34,7 +34,7 @@ def extract_version():
     return version
 
 LICENSE = read('LICENSE')
-long_description = read('README')
+long_description = read('README.rst')
 
 config = dict(
     name='gsw',
