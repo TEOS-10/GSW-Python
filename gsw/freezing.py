@@ -2,7 +2,7 @@
 Freezing-point functions.
 """
 
-from .._wrapped_ufuncs import (
+from ._wrapped_ufuncs import (
 CT_freezing,
 CT_freezing_first_derivatives,
 CT_freezing_first_derivatives_poly,

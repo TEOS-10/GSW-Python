@@ -11,6 +11,7 @@ Experimental GSW-Python, based on GSW-C
    :caption: Contents:
 
    gsw
+   gsw_flat
 
 
 Indices and tables
