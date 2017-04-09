@@ -1827,7 +1827,9 @@ if ~isempty(gsw_cf.Iu_sd_CT_exact)
     gsw_cf.gsw_chks = 0;
 end
 
-gsw_cf.CT_from_enthalpy_exact = gsw_CT_from_enthalpy_exact(gsw_cf.enthalpy_CT_exact,gsw_cv.SA_chck_cast,gsw_cv.p_chck_cast);
+%%% EF: fixed order of arguments in the following
+
+gsw_cf.CT_from_enthalpy_exact = gsw_CT_from_enthalpy_exact(gsw_cv.SA_chck_cast,gsw_cf.enthalpy_CT_exact,gsw_cv.p_chck_cast);
 [gsw_cf.ICT_from_enthalpy_exact] = find(abs(gsw_cv.CT_from_enthalpy_exact - gsw_cf.CT_from_enthalpy_exact) >= gsw_cv.CT_from_enthalpy_exact_ca);
 if ~isempty(gsw_cf.ICT_from_enthalpy_exact)
     fprintf(2,'gsw_CT_from_enthalpy_exact:   Failed\n');
