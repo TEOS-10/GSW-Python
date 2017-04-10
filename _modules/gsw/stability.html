@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gsw.stability &#8212; gsw 0.1-devel documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1-devel',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gsw.stability</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Vertical stability functions.</span>
+
+<span class="sd">These work with ndarrays of profiles; use the `axis` keyword</span>
+<span class="sd">argument to specify the axis along which pressure varies.</span>
+<span class="sd">For example, the default, following the Matlab versions, is</span>
+<span class="sd">`axis=0`, meaning the pressure varies along the first dimension.</span>
+<span class="sd">Use `axis=-1` if pressure varies along the last dimension--that</span>
+<span class="sd">is, along a row, as the column index increases, in the 2-D case.</span>
+
+<span class="sd">Docstrings are not yet available; they will be added later via</span>
+<span class="sd">an automated mechanism.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">._utilities</span> <span class="k">import</span> <span class="n">match_args_return</span><span class="p">,</span> <span class="n">axis_slicer</span>
+<span class="kn">from</span> <span class="nn">._gsw_ufuncs</span> <span class="k">import</span> <span class="n">grav</span><span class="p">,</span> <span class="n">specvol_alpha_beta</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Nsquared&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Turner_Rsubrho&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;IPV_vs_fNsquared_ratio&#39;</span><span class="p">,</span>
+           <span class="p">]</span>
+
+<span class="c1"># In the following, axis=0 matches the Matlab behavior.</span>
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="Nsquared"><a class="viewcode-back" href="../../gsw_flat.html#gsw.stability.Nsquared">[docs]</a><span class="k">def</span> <span class="nf">Nsquared</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">((</span><span class="n">lat</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lat is out of range&#39;</span><span class="p">)</span>
+        <span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">grav</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mf">9.7963</span>  <span class="c1"># (Griffies, 2004)</span>
+
+    <span class="n">db_to_pa</span> <span class="o">=</span> <span class="mf">1e4</span>
+    <span class="n">shallow</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+    <span class="n">deep</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">g_local</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">g_local</span> <span class="o">=</span> <span class="n">g</span>
+
+    <span class="n">dSA</span> <span class="o">=</span> <span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">-</span> <span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+    <span class="n">dCT</span> <span class="o">=</span> <span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">-</span> <span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+    <span class="n">SA_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">CT_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">p_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+
+    <span class="n">specvol_mid</span><span class="p">,</span> <span class="n">alpha_mid</span><span class="p">,</span> <span class="n">beta_mid</span> <span class="o">=</span> <span class="n">specvol_alpha_beta</span><span class="p">(</span><span class="n">SA_mid</span><span class="p">,</span>
+                                                          <span class="n">CT_mid</span><span class="p">,</span> <span class="n">p_mid</span><span class="p">)</span>
+
+    <span class="n">N2</span> <span class="o">=</span> <span class="p">((</span><span class="n">g_local</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">specvol_mid</span> <span class="o">*</span> <span class="n">db_to_pa</span> <span class="o">*</span> <span class="n">dp</span><span class="p">))</span>
+    <span class="n">N2</span> <span class="o">*=</span> <span class="p">(</span><span class="n">beta_mid</span><span class="o">*</span><span class="n">dSA</span> <span class="o">-</span> <span class="n">alpha_mid</span><span class="o">*</span><span class="n">dCT</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">N2</span><span class="p">,</span> <span class="n">p_mid</span></div>
+
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="Turner_Rsubrho"><a class="viewcode-back" href="../../gsw_flat.html#gsw.stability.Turner_Rsubrho">[docs]</a><span class="k">def</span> <span class="nf">Turner_Rsubrho</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">SA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">shallow</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+    <span class="n">deep</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+
+    <span class="n">dSA</span> <span class="o">=</span> <span class="o">-</span><span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">+</span> <span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+    <span class="n">dCT</span> <span class="o">=</span> <span class="o">-</span><span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">+</span> <span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+
+    <span class="n">SA_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">CT_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">p_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">specvol_alpha_beta</span><span class="p">(</span><span class="n">SA_mid</span><span class="p">,</span> <span class="n">CT_mid</span><span class="p">,</span> <span class="n">p_mid</span><span class="p">)</span>
+
+    <span class="n">Tu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">((</span><span class="n">alpha</span><span class="o">*</span><span class="n">dCT</span> <span class="o">+</span> <span class="n">beta</span><span class="o">*</span><span class="n">dSA</span><span class="p">),</span> <span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">dCT</span> <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">dSA</span><span class="p">))</span>
+    <span class="n">Tu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">Tu</span><span class="p">)</span>
+
+    <span class="n">igood</span> <span class="o">=</span> <span class="p">(</span><span class="n">dSA</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Rsubrho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dSA</span><span class="p">)</span>
+    <span class="n">Rsubrho</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">Rsubrho</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span><span class="o">*</span><span class="n">dCT</span><span class="p">[</span><span class="n">igood</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">beta</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span><span class="o">*</span><span class="n">dSA</span><span class="p">[</span><span class="n">igood</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">Tu</span><span class="p">,</span> <span class="n">Rsubrho</span><span class="p">,</span> <span class="n">p_mid</span></div>
+
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="IPV_vs_fNsquared_ratio"><a class="viewcode-back" href="../../gsw_flat.html#gsw.stability.IPV_vs_fNsquared_ratio">[docs]</a><span class="k">def</span> <span class="nf">IPV_vs_fNsquared_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">SA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">shallow</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+    <span class="n">deep</span> <span class="o">=</span> <span class="n">axis_slicer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">axis</span><span class="p">)</span>
+
+    <span class="n">dSA</span> <span class="o">=</span> <span class="o">-</span><span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">+</span> <span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+    <span class="n">dCT</span> <span class="o">=</span> <span class="o">-</span><span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">]</span> <span class="o">+</span> <span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span>
+
+    <span class="n">SA_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">SA</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">SA</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">CT_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">CT</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">CT</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+    <span class="n">p_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">shallow</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">deep</span><span class="p">])</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">specvol_alpha_beta</span><span class="p">(</span><span class="n">SA_mid</span><span class="p">,</span> <span class="n">CT_mid</span><span class="p">,</span> <span class="n">p_mid</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">alpha_pref</span><span class="p">,</span> <span class="n">beta_pref</span> <span class="o">=</span> <span class="n">specvol_alpha_beta</span><span class="p">(</span><span class="n">SA_mid</span><span class="p">,</span> <span class="n">CT_mid</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">)</span>
+
+    <span class="n">num</span> <span class="o">=</span> <span class="n">dCT</span><span class="o">*</span><span class="n">alpha_pref</span> <span class="o">-</span> <span class="n">dSA</span><span class="o">*</span><span class="n">beta_pref</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">dCT</span><span class="o">*</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">dSA</span><span class="o">*</span><span class="n">beta</span>
+
+    <span class="n">igood</span> <span class="o">=</span> <span class="p">(</span><span class="n">den</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">IPV_vs_fNsquared_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dSA</span><span class="p">)</span>
+    <span class="n">IPV_vs_fNsquared_ratio</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">IPV_vs_fNsquared_ratio</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span> <span class="o">/</span> <span class="n">den</span><span class="p">[</span><span class="n">igood</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">IPV_vs_fNsquared_ratio</span><span class="p">,</span> <span class="n">p_mid</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, TEOS-10 developers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

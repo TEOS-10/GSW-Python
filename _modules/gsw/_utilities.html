@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gsw._utilities &#8212; gsw 0.1-devel documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1-devel',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gsw._utilities</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">masked_to_nan</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a masked array to a float ndarray with nans; leave other</span>
+<span class="sd">    objects unchanged.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">isMaskedArray</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">arg</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">arg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arg</span>
+
+<div class="viewcode-block" id="match_args_return"><a class="viewcode-back" href="../../gsw_flat.html#gsw.match_args_return">[docs]</a><span class="k">def</span> <span class="nf">match_args_return</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator for most functions that operate on profile data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">kw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+        <span class="n">isarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+        <span class="n">ismasked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">isMaskedArray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+
+        <span class="k">def</span> <span class="nf">fixup</span><span class="p">(</span><span class="n">ret</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ismasked</span><span class="p">:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">isarray</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">ret</span>
+
+        <span class="k">if</span> <span class="n">ismasked</span><span class="p">:</span>
+            <span class="n">newargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">masked_to_nan</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newargs</span> <span class="o">=</span> <span class="n">args</span>
+
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kw</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newargs</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">newargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">retlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">fixup</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">]</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">retlist</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">fixup</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">__wrapped__</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+<span class="k">def</span> <span class="nf">axis_slicer</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sl</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return an indexing tuple for an array with `n` dimensions,</span>
+<span class="sd">    with slice `sl` taken on `axis`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">itup</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="n">itup</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">sl</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itup</span><span class="p">)</span>
+
+<span class="c1"># This is straight from pycurrents.system.  We can trim out</span>
+<span class="c1"># the parts we don&#39;t need, but there is no rush to do so.</span>
+<span class="k">class</span> <span class="nc">Bunch</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A dictionary that also provides access via attributes.</span>
+
+<span class="sd">    Additional methods update_values and update_None provide</span>
+<span class="sd">    control over whether new keys are added to the dictionary</span>
+<span class="sd">    when updating, and whether an attempt to add a new key is</span>
+<span class="sd">    ignored or raises a KeyError.</span>
+
+<span class="sd">    The Bunch also prints differently than a normal</span>
+<span class="sd">    dictionary, using str() instead of repr() for its</span>
+<span class="sd">    keys and values, and in key-sorted order.  The printing</span>
+<span class="sd">    format can be customized by subclassing with a different</span>
+<span class="sd">    str_ftm class attribute.  Do not assign directly to this</span>
+<span class="sd">    class attribute, because that would substitute an instance</span>
+<span class="sd">    attribute which would then become part of the Bunch, and</span>
+<span class="sd">    would be reported as such by the keys() method.</span>
+
+<span class="sd">    To output a string representation with</span>
+<span class="sd">    a particular format, without subclassing, use the</span>
+<span class="sd">    formatted() method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">str_fmt</span> <span class="o">=</span> <span class="s2">&quot;{0!s:&lt;</span><span class="si">{klen}</span><span class="s2">} : {1!s:&gt;</span><span class="si">{vlen}</span><span class="s2">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        *args* can be dictionaries, bunches, or sequences of</span>
+<span class="sd">        key,value tuples.  *kwargs* can be used to initialize</span>
+<span class="sd">        or add key, value pairs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;&#39;Bunch&#39; object has no attribute &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatted</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">formatted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a string with keys and/or values or types.</span>
+
+<span class="sd">        *fmt* is a format string as used in the str.format() method.</span>
+
+<span class="sd">        The str.format() method is called with key, value as positional</span>
+<span class="sd">        arguments, and klen, vlen as kwargs.  The latter are the maxima</span>
+<span class="sd">        of the string lengths for the keys and values, respectively,</span>
+<span class="sd">        up to respective maxima of 20 and 40.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">str_fmt</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="n">klens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">vlens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+            <span class="n">lenk</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">types</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="n">lenv</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+            <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="n">klens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lenk</span><span class="p">)</span>
+            <span class="n">vlens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lenv</span><span class="p">)</span>
+
+        <span class="n">klen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">klens</span><span class="p">))</span>
+        <span class="n">vlen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">vlens</span><span class="p">))</span>
+        <span class="n">slist</span> <span class="o">=</span> <span class="p">[</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">klen</span><span class="o">=</span><span class="n">klen</span><span class="p">,</span> <span class="n">vlen</span><span class="o">=</span><span class="n">vlen</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">slist</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">from_pyfile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read in variables from a python code file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># We can&#39;t simply exec the code directly, because in</span>
+        <span class="c1"># Python 3 the scoping for list comprehensions would</span>
+        <span class="c1"># lead to a NameError.  Wrapping the code in a function</span>
+        <span class="c1"># fixes this.</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;def _temp_func():</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">])</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    return(locals())</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;_temp_out = _temp_func()</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;del(_temp_func)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])</span>
+        <span class="n">codetext</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">codetext</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;exec&#39;</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;_temp_out&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">update_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arguments are dictionary-like; if present, they act as</span>
+<span class="sd">        additional sources of kwargs, with the actual kwargs</span>
+<span class="sd">        taking precedence.</span>
+
+<span class="sd">        One reserved optional kwarg is &quot;strict&quot;.  If present and</span>
+<span class="sd">        True, then any attempt to update with keys that are not</span>
+<span class="sd">        already in the Bunch instance will raise a KeyError.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">strict</span> <span class="o">=</span> <span class="n">kw</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;strict&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">newkw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">newkw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">newkw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_strict</span><span class="p">(</span><span class="n">strict</span><span class="p">,</span> <span class="n">newkw</span><span class="p">)</span>
+        <span class="n">dsub</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">newkw</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dsub</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update_None</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Similar to update_values, except that an existing value</span>
+<span class="sd">        will be updated only if it is None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">strict</span> <span class="o">=</span> <span class="n">kw</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;strict&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">newkw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">newkw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">newkw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_strict</span><span class="p">(</span><span class="n">strict</span><span class="p">,</span> <span class="n">newkw</span><span class="p">)</span>
+        <span class="n">dsub</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">newkw</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dsub</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_strict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict</span><span class="p">,</span> <span class="n">kw</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+            <span class="n">bad</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">kw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">bad</span><span class="p">:</span>
+                <span class="n">bk</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bad</span><span class="p">)</span>
+                <span class="n">bk</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+                <span class="n">ek</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                <span class="n">ek</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                    <span class="s2">&quot;Update keys </span><span class="si">%s</span><span class="s2"> don&#39;t match existing keys </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bk</span><span class="p">,</span> <span class="n">ek</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, TEOS-10 developers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>
