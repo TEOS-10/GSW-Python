@@ -37,7 +37,8 @@ install:
 
 script:
     - if [[ $TEST_TARGET == "default" ]]; then
-        cd /tmp && python -c "import gsw; print(dir(gsw))" ;
+        python setup.py build_ext -i ;
+        py.test -s -rxs -v gsw ;
       fi
 
 after_success:
