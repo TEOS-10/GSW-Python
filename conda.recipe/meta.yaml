@@ -19,8 +19,13 @@ requirements:
     - numpy x.x
 
 test:
+test:
+  source_files:
+    - gsw/tests
+  requires:
+    - pytest
   imports:
     - gsw
     - gsw.ice
   commands:
-    - python -c "import gsw; print(dir(gsw))"
+    - cd gsw && py.test -s -rxs -v tests
