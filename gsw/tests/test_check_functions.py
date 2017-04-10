@@ -10,7 +10,7 @@ from numpy.testing import assert_allclose
 
 import gsw
 from gsw._utilities import Bunch
-from gsw.tests.check_functions import parse_check_functions
+from check_functions import parse_check_functions
 
 root_path = os.path.abspath(os.path.dirname(__file__))
 

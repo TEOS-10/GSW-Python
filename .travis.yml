@@ -39,8 +39,7 @@ install:
 
 script:
     - if [[ $TEST_TARGET == "default" ]]; then
-        python setup.py build_ext -i ;
-        py.test -s -rxs -v gsw ;
+        pushd gsw && py.test -s -rxs -v tests && popd ;
       fi
 
 after_success:
