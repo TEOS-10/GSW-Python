@@ -50,3 +50,6 @@ Thumbs.db
 
 # Documentation generated files #
 #################################
+
+# pytest
+.cache

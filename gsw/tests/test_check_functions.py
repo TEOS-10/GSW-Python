@@ -1,6 +1,8 @@
 """
 Tests functions with pytest, using the machinery from check_functions.py
 """
+
+import os
 import pytest
 
 import numpy as np
@@ -9,6 +11,8 @@ from numpy.testing import assert_allclose
 import gsw
 from gsw._utilities import Bunch
 from gsw.tests.check_functions import parse_check_functions
+
+root_path = os.path.abspath(os.path.dirname(__file__))
 
 # Function checks that we can't handle automatically yet.
 blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the pattern.
@@ -20,14 +24,13 @@ blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the patter
              ]
 
 # We get an overflow from ct_from_enthalpy_exact, but the test passes.
-
-cv = Bunch(np.load('gsw_cv_v3_0.npz'))
+cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
 cf = Bunch()
 
 d = dir(gsw)
 funcnames = [name for name in d if '__' not in name]
 
-mfuncs = parse_check_functions('gsw_check_functions_save.m')
+mfuncs = parse_check_functions(os.path.join(root_path, 'gsw_check_functions_save.m'))
 mfuncs = [mf for mf in mfuncs if mf.name in d and mf.name not in blacklist]
 mfuncnames = [mf.name for mf in mfuncs]
 

@@ -19,6 +19,9 @@ matrix:
     env: TEST_TARGET=default NUMPY=1.12
   - python: 3.6
     env: TEST_TARGET=publish NUMPY=1.12
+  allow_failures:
+  - python: 3.6
+    env: TEST_TARGET=publish NUMPY=1.12
 
 before_install:
     - wget http://bit.ly/miniconda -O miniconda.sh
@@ -30,14 +33,14 @@ before_install:
     - source activate TEST
     # Install after to ensure it will be downgraded when testing an older version.
     - conda install --yes --quiet numpy=$NUMPY
-
 # Test source distribution.
 install:
     - python setup.py sdist && version=$(python setup.py --version) && pushd dist  && pip install gsw-${version}.tar.gz && popd
 
 script:
     - if [[ $TEST_TARGET == "default" ]]; then
-        cd /tmp && python -c "import gsw; print(dir(gsw))" ;
+        python setup.py build_ext -i ;
+        py.test -s -rxs -v gsw ;
       fi
 
 after_success:
