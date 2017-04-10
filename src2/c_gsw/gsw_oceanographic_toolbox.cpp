@@ -3650,7 +3650,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		p_cnt, top_pad, i, nz, ibottle, ipref, np_max, np, ibpr=0,
 		*iidata;
 	double	dp_min, dp_max, p_min, p_max, max_dp_i,
-		*b, *b_av, *dp, *dp_i, *sa_i=NULL, *ct_i, *p_i,
+		*b, *b_av, *dp, *dp_i, *sa_i=NULL, *ct_i, *p_i=NULL,
 		*geo_strf_dyn_height0;
 
 /*
@@ -3666,7 +3666,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	if ((nz = m_levels) <= 1)
 	    return (NULL);
 
-	dp = (double *)malloc(nz*sizeof (double));
+	dp = (double *) malloc(nz*sizeof (double));
 	dp_min = 11000.0;
 	dp_max = -11000.0;
 	for (i=0; i<nz-1; i++) {
@@ -3731,15 +3731,17 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	! greater than max_dp_i, and that there is a "bottle" exactly at the
 	! reference pressure.
 	*/
-	    iidata = (int *)malloc((nz+1)*sizeof (int));
+	    iidata = (int *) malloc((nz+1)*sizeof (int));
 
 	    if ((dp_max <= max_dp_i) && (ipref >= 0)) {
 	    /*
 	    ! Vertical resolution is already good (no larger than max_dp_i), and
 	    ! there is a "bottle" at exactly p_ref.
 	    */
-		sa_i = (double *) malloc(3*(nz+1)*sizeof (double));
-		ct_i = sa_i+nz+1; p_i = ct_i+nz+1;
+		sa_i = (double *) malloc(2*(nz+1)*sizeof (double));
+		ct_i = sa_i+nz+1;
+		p_i = (double *) malloc((nz+1)*sizeof (double));;
+
 	        if (p_min > 0.0) {
 		/*
 	        ! resolution is fine and there is a bottle at p_ref, but
@@ -3777,6 +3779,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	    */
 		np_max = 2*rint(p[nz-1]/max_dp_i+0.5);
 		p_i = (double *) malloc(np_max*sizeof (double));
+		/* sa_i is allocated below, when its size is known */
 
 	        if (p_min > 0.0) {
 		/*
@@ -3788,7 +3791,8 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		    */
 			p_i[0] = 0.0;
 			p_sequence(p_i[0],p_ref,max_dp_i, p_i+1,&np);
-			ibpr = p_cnt = np; p_cnt++;
+			ibpr = p_cnt = np;
+			p_cnt++;
 			p_sequence(p_ref,p_min,max_dp_i, p_i+p_cnt,&np);
 	                p_cnt += np;
 	                top_pad = p_cnt;
@@ -3821,7 +3825,8 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	            ! need to include p_ref as an interpolated pressure.
 		    */
 	                p_sequence(p[ibottle],p_ref,max_dp_i, p_i+p_cnt,&np);
-	                p_cnt += np; ibpr = p_cnt-1;
+	                p_cnt += np;
+			ibpr = p_cnt-1;
 	                p_sequence(p_ref,p[ibottle+1],max_dp_i,p_i+p_cnt,&np);
 	                p_cnt += np;
 	            } else {
@@ -3841,9 +3846,10 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		sa_i = (double *) malloc(2*p_cnt*sizeof (double));
 		ct_i = sa_i+p_cnt;
 
-		if (top_pad > 1)
+		if (top_pad > 1) {
 	            gsw_linear_interp_sa_ct(sa,ct,p,nz,
 			p_i,top_pad-1,sa_i,ct_i);
+		}
 	        gsw_rr68_interp_sa_ct(sa,ct,p,nz,p_i+top_pad-1,p_cnt-top_pad+1,
 		                      sa_i+top_pad-1,ct_i+top_pad-1);
 	    }
@@ -3872,9 +3878,13 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		dyn_height[i] = (geo_strf_dyn_height0[iidata[i]]
 				- geo_strf_dyn_height0[ibpr])*db2pa;
 
-	    free(b); free(iidata);
+	    free(b);
+	    free(iidata);
 	    if (sa_i != NULL)
 		free(sa_i);
+	    if (p_i != NULL)
+		free(p_i);
+
 	}
 	free(dp);
 	return (dyn_height);

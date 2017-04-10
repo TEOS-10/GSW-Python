@@ -3609,21 +3609,21 @@ pure function gsw_geo_strf_dyn_height (sa, ct, p, p_ref)
 !  p_ref.
 !
 !  Hence, geo_strf_dyn_height is the dynamic height anomaly with respect
-!  to a given reference pressure.  This is the geostrophic streamfunction 
-!  for the difference between the horizontal velocity at the pressure 
-!  concerned, p, and the horizontal velocity at p_ref.  Dynamic height 
-!  anomaly is the geostrophic streamfunction in an isobaric surface.  The 
-!  reference values used for the specific volume anomaly are 
-!  SSO = 35.16504 g/kg and CT = 0 deg C.  This function calculates 
-!  specific volume anomaly using the computationally efficient 
-!  expression for specific volume of Roquet et al. (2015). 
+!  to a given reference pressure.  This is the geostrophic streamfunction
+!  for the difference between the horizontal velocity at the pressure
+!  concerned, p, and the horizontal velocity at p_ref.  Dynamic height
+!  anomaly is the geostrophic streamfunction in an isobaric surface.  The
+!  reference values used for the specific volume anomaly are
+!  SSO = 35.16504 g/kg and CT = 0 deg C.  This function calculates
+!  specific volume anomaly using the computationally efficient
+!  expression for specific volume of Roquet et al. (2015).
 !
-!  This function evaluates the pressure integral of specific volume using 
-!  SA and CT interpolated with respect to pressure using the method of 
-!  Reiniger and Ross (1968).  It uses a weighted mean of (i) values 
-!  obtained from linear interpolation of the two nearest data points, and 
-!  (ii) a linear extrapolation of the pairs of data above and below.  This 
-!  "curve fitting" method resembles the use of cubic splines.  
+!  This function evaluates the pressure integral of specific volume using
+!  SA and CT interpolated with respect to pressure using the method of
+!  Reiniger and Ross (1968).  It uses a weighted mean of (i) values
+!  obtained from linear interpolation of the two nearest data points, and
+!  (ii) a linear extrapolation of the pairs of data above and below.  This
+!  "curve fitting" method resembles the use of cubic splines.
 !
 !  SA    =  Absolute Salinity                                      [ g/kg ]
 !  CT    =  Conservative Temperature (ITS-90)                     [ deg C ]
@@ -3633,8 +3633,8 @@ pure function gsw_geo_strf_dyn_height (sa, ct, p, p_ref)
 !           ( i.e. reference absolute pressure - 10.1325 dbar )
 !
 !  geo_strf_dyn_height  =  dynamic height anomaly               [ m^2/s^2 ]
-!   Note. If p_ref exceeds the pressure of the deepest bottle on a 
-!     vertical profile, the dynamic height anomaly for each bottle 
+!   Note. If p_ref exceeds the pressure of the deepest bottle on a
+!     vertical profile, the dynamic height anomaly for each bottle
 !     on the whole vertical profile is returned as NaN.
 !--------------------------------------------------------------------------
 */
@@ -3650,7 +3650,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		p_cnt, top_pad, i, nz, ibottle, ipref, np_max, np, ibpr=0,
 		*iidata;
 	double	dp_min, dp_max, p_min, p_max, max_dp_i,
-		*b, *b_av, *dp, *dp_i, *sa_i=NULL, *ct_i, *p_i,
+		*b, *b_av, *dp, *dp_i, *sa_i=NULL, *ct_i, *p_i=NULL,
 		*geo_strf_dyn_height0;
 
 /*
@@ -3738,8 +3738,10 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	    ! Vertical resolution is already good (no larger than max_dp_i), and
 	    ! there is a "bottle" at exactly p_ref.
 	    */
-		sa_i = malloc(3*(nz+1)*sizeof (double));
-		ct_i = sa_i+nz+1; p_i = ct_i+nz+1;
+		sa_i = malloc(2*(nz+1)*sizeof (double));
+		ct_i = sa_i+nz+1;
+		p_i = malloc((nz+1)*sizeof (double));;
+
 	        if (p_min > 0.0) {
 		/*
 	        ! resolution is fine and there is a bottle at p_ref, but
@@ -3777,6 +3779,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	    */
 		np_max = 2*rint(p[nz-1]/max_dp_i+0.5);
 		p_i = malloc(np_max*sizeof (double));
+		/* sa_i is allocated below, when its size is known */
 
 	        if (p_min > 0.0) {
 		/*
@@ -3788,7 +3791,8 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		    */
 			p_i[0] = 0.0;
 			p_sequence(p_i[0],p_ref,max_dp_i, p_i+1,&np);
-			ibpr = p_cnt = np; p_cnt++;
+			ibpr = p_cnt = np;
+			p_cnt++;
 			p_sequence(p_ref,p_min,max_dp_i, p_i+p_cnt,&np);
 	                p_cnt += np;
 	                top_pad = p_cnt;
@@ -3821,7 +3825,8 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 	            ! need to include p_ref as an interpolated pressure.
 		    */
 	                p_sequence(p[ibottle],p_ref,max_dp_i, p_i+p_cnt,&np);
-	                p_cnt += np; ibpr = p_cnt-1;
+	                p_cnt += np;
+			ibpr = p_cnt-1;
 	                p_sequence(p_ref,p[ibottle+1],max_dp_i,p_i+p_cnt,&np);
 	                p_cnt += np;
 	            } else {
@@ -3841,9 +3846,10 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		sa_i = malloc(2*p_cnt*sizeof (double));
 		ct_i = sa_i+p_cnt;
 
-		if (top_pad > 1)
+		if (top_pad > 1) {
 	            gsw_linear_interp_sa_ct(sa,ct,p,nz,
 			p_i,top_pad-1,sa_i,ct_i);
+		}
 	        gsw_rr68_interp_sa_ct(sa,ct,p,nz,p_i+top_pad-1,p_cnt-top_pad+1,
 		                      sa_i+top_pad-1,ct_i+top_pad-1);
 	    }
@@ -3872,9 +3878,13 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 		dyn_height[i] = (geo_strf_dyn_height0[iidata[i]]
 				- geo_strf_dyn_height0[ibpr])*db2pa;
 
-	    free(b); free(iidata);
+	    free(b);
+	    free(iidata);
 	    if (sa_i != NULL)
 		free(sa_i);
+	    if (p_i != NULL)
+		free(p_i);
+
 	}
 	free(dp);
 	return (dyn_height);
