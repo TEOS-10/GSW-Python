@@ -16,7 +16,7 @@ root_path = os.path.abspath(os.path.dirname(__file__))
 
 # Function checks that we can't handle automatically yet.
 blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the pattern.
-             'CT_from_entropy', # needs prior entropy_from_CT; don't have it in C
+             #'CT_from_entropy', # needs prior entropy_from_CT; don't have it in C
              #'CT_first_derivatives', # passes, but has trouble in "details";
                                       # see check_functions.py
              #'entropy_second_derivatives', # OK now; handling extra parens.

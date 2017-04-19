@@ -2479,6 +2479,27 @@ gsw_entropy_first_derivatives(double sa, double ct, double *eta_sa,
 	    *eta_ct = gsw_cp0/(gsw_t0 + pt);
 }
 /*
+!=========================================================================
+elemental function gsw_entropy_from_ct (sa, ct)
+!=========================================================================
+!
+!  Calculates specific entropy of seawater from Conservative Temperature.
+!
+!  SA  =  Absolute Salinity                                        [ g/kg ]
+!  CT  =  Conservative Temperature (ITS-90)                       [ deg C ]
+!
+!  entropy  =  specific entropy                                   [ deg C ]
+!--------------------------------------------------------------------------
+*/
+double
+gsw_entropy_from_ct(double sa, double ct)
+{
+	double	pt0;
+
+	pt0 = gsw_pt_from_ct(sa, ct);
+	return (-gsw_gibbs(0,1,0,sa,pt0,0));
+}
+/*
 !==========================================================================
 elemental function gsw_entropy_from_pt (sa, pt)
 !==========================================================================

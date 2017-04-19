@@ -1187,6 +1187,27 @@ def entropy_first_derivatives(SA, CT):
     return _gsw_ufuncs.entropy_first_derivatives(SA, CT)
 
 @match_args_return
+def entropy_from_CT(SA, CT):
+    """
+    Calculates specific entropy of seawater from Conservative Temperature.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+
+    Returns
+    -------
+    entropy : array-like, J/(kg*K)
+        specific entropy
+
+
+    """
+    return _gsw_ufuncs.entropy_from_ct(SA, CT)
+
+@match_args_return
 def entropy_from_pt(SA, pt):
     """
     Calculates specific entropy of seawater as a function of potential
@@ -1453,7 +1474,8 @@ def frazil_ratios_adiabatic(SA, p, w_Ih):
     p : array-like
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
     w_Ih : array-like
-        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+        mass fraction of ice: the mass of ice divided by the
+        sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
 
     Returns
     -------
@@ -1485,7 +1507,8 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
     p : array-like
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
     w_Ih : array-like
-        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+        mass fraction of ice: the mass of ice divided by the
+        sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
 
     Returns
     -------
@@ -1972,7 +1995,8 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
     p : array-like
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
     w_Ih : array-like
-        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
+        mass fraction of ice: the mass of ice divided by the
+        sum of the masses of ice and seawater. 0 <= wIh <= 1. unitless.
     t_Ih : array-like
         In-situ temperature of ice (ITS-90), degrees C
 
@@ -2136,7 +2160,8 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
     p : array-like
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
     w_seaice : array-like
-        mass fraction of ice: the mass of sea-ice divided by the sum of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.
+        mass fraction of ice: the mass of sea-ice divided by the sum
+        of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.
     SA_seaice : array-like
         Absolute Salinity of sea ice: the mass fraction of salt
         in sea ice, expressed in g of salt per kg of sea ice.

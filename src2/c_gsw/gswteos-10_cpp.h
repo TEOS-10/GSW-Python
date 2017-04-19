@@ -87,6 +87,7 @@ extern double gsw_enthalpy_sso_0(double p);
 extern double gsw_enthalpy_t_exact(double sa, double t, double p);
 extern void   gsw_entropy_first_derivatives(double sa, double ct,
 		double *eta_sa, double *eta_ct);
+extern double gsw_entropy_from_ct(double sa, double ct);
 extern double gsw_entropy_from_pt(double sa, double pt);
 extern double gsw_entropy_from_t(double sa, double t, double p);
 extern double gsw_entropy_ice(double t, double p);

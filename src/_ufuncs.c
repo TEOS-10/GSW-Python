@@ -643,6 +643,7 @@ static void *data_ct_from_entropy[] = {&gsw_ct_from_entropy};
 static void *data_ct_from_pt[] = {&gsw_ct_from_pt};
 static void *data_ct_maxdensity[] = {&gsw_ct_maxdensity};
 static void *data_enthalpy_ice[] = {&gsw_enthalpy_ice};
+static void *data_entropy_from_ct[] = {&gsw_entropy_from_ct};
 static void *data_entropy_from_pt[] = {&gsw_entropy_from_pt};
 static void *data_entropy_ice[] = {&gsw_entropy_ice};
 static void *data_entropy_part_zerop[] = {&gsw_entropy_part_zerop};
@@ -1061,6 +1062,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "enthalpy_ice", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
+                                    data_entropy_from_ct,
+                                    types_dd_d,
+                                    1, 2, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "entropy_from_ct",
+                                    "entropy_from_ct_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "entropy_from_ct", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
