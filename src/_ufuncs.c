@@ -23,10 +23,6 @@ This is python 3-only (for simplicity) to begin with.
 
 #define CONVERT_INVALID(x) ((x == GSW_INVALID_VALUE)? NAN: x)
 
-static PyMethodDef GswMethods[] = {
-        {NULL, NULL, 0, NULL}
-};
-
 
 /* 1 in, 1 out */
 static void loop1d_d_d(char **args, npy_intp *dimensions,
@@ -606,21 +602,6 @@ static char types_ddd_ddddd[] = {
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
 };
-
-
-/* The next thing is generic: */
-
-static struct PyModuleDef moduledef = {
-    PyModuleDef_HEAD_INIT,
-    "npufunc",
-    NULL,
-    -1,
-    GswMethods,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-};
 static void *data_enthalpy_sso_0[] = {&gsw_enthalpy_sso_0};
 static void *data_gibbs_ice_pt0[] = {&gsw_gibbs_ice_pt0};
 static void *data_gibbs_ice_pt0_pt0[] = {&gsw_gibbs_ice_pt0_pt0};
@@ -783,6 +764,24 @@ static void *data_melting_ice_into_seawater[] = {&gsw_melting_ice_into_seawater}
 static void *data_seaice_fraction_to_freeze_seawater[] = {&gsw_seaice_fraction_to_freeze_seawater};
 static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
 static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
+
+
+static PyMethodDef GswMethods[] = {
+        {NULL, NULL, 0, NULL}
+};
+
+static struct PyModuleDef moduledef = {
+    PyModuleDef_HEAD_INIT,
+    "npufunc",
+    NULL,
+    -1,
+    GswMethods,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+};
+
 
 PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
 {
