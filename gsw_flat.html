@@ -2417,6 +2417,34 @@ eta_CT has units of:</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="gsw.entropy_from_CT">
+<code class="descclassname">gsw.</code><code class="descname">entropy_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_CT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.entropy_from_CT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates specific entropy of seawater from Conservative Temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entropy</strong> : array-like, J/(kg*K)</p>
+<blockquote class="last">
+<div><p>specific entropy</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="gsw.entropy_from_pt">
 <code class="descclassname">gsw.</code><code class="descname">entropy_from_pt</code><span class="sig-paren">(</span><em>SA</em>, <em>pt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.entropy_from_pt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates specific entropy of seawater as a function of potential
@@ -2737,7 +2765,8 @@ seawater and frazil ice crystals.</p>
 </div></blockquote>
 <p><strong>w_Ih</strong> : array-like</p>
 <blockquote>
-<div><p>mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
+<div><p>mass fraction of ice: the mass of ice divided by the
+sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2782,7 +2811,8 @@ seawater and frazil ice crystals.</p>
 </div></blockquote>
 <p><strong>w_Ih</strong> : array-like</p>
 <blockquote>
-<div><p>mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
+<div><p>mass fraction of ice: the mass of ice divided by the
+sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3447,7 +3477,8 @@ This code takes the seawater to contain no dissolved air.</p>
 </div></blockquote>
 <p><strong>w_Ih</strong> : array-like</p>
 <blockquote>
-<div><p>mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
+<div><p>mass fraction of ice: the mass of ice divided by the
+sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </div></blockquote>
 <p><strong>t_Ih</strong> : array-like</p>
 <blockquote>
@@ -3674,7 +3705,8 @@ known mass of seawater (whose properties are (SA,CT,p)).</p>
 </div></blockquote>
 <p><strong>w_seaice</strong> : array-like</p>
 <blockquote>
-<div><p>mass fraction of ice: the mass of sea-ice divided by the sum of the masses of sea-ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
+<div><p>mass fraction of ice: the mass of sea-ice divided by the sum
+of the masses of sea-ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </div></blockquote>
 <p><strong>SA_seaice</strong> : array-like</p>
 <blockquote>

@@ -1252,6 +1252,27 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">entropy_first_derivatives</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="entropy_from_CT"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.entropy_from_CT">[docs]</a><span class="k">def</span> <span class="nf">entropy_from_CT</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates specific entropy of seawater from Conservative Temperature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SA : array-like</span>
+<span class="sd">        Absolute Salinity, g/kg</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    entropy : array-like, J/(kg*K)</span>
+<span class="sd">        specific entropy</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">entropy_from_ct</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">)</span></div>
+
+<span class="nd">@match_args_return</span>
 <div class="viewcode-block" id="entropy_from_pt"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.entropy_from_pt">[docs]</a><span class="k">def</span> <span class="nf">entropy_from_pt</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">pt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates specific entropy of seawater as a function of potential</span>
@@ -1518,7 +1539,8 @@
 <span class="sd">    p : array-like</span>
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
 <span class="sd">    w_Ih : array-like</span>
-<span class="sd">        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
+<span class="sd">        mass fraction of ice: the mass of ice divided by the</span>
+<span class="sd">        sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -1550,7 +1572,8 @@
 <span class="sd">    p : array-like</span>
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
 <span class="sd">    w_Ih : array-like</span>
-<span class="sd">        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
+<span class="sd">        mass fraction of ice: the mass of ice divided by the</span>
+<span class="sd">        sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -2037,7 +2060,8 @@
 <span class="sd">    p : array-like</span>
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
 <span class="sd">    w_Ih : array-like</span>
-<span class="sd">        mass fraction of ice: the mass of ice divided by the sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
+<span class="sd">        mass fraction of ice: the mass of ice divided by the</span>
+<span class="sd">        sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
 <span class="sd">    t_Ih : array-like</span>
 <span class="sd">        In-situ temperature of ice (ITS-90), degrees C</span>
 
@@ -2201,7 +2225,8 @@
 <span class="sd">    p : array-like</span>
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
 <span class="sd">    w_seaice : array-like</span>
-<span class="sd">        mass fraction of ice: the mass of sea-ice divided by the sum of the masses of sea-ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
+<span class="sd">        mass fraction of ice: the mass of sea-ice divided by the sum</span>
+<span class="sd">        of the masses of sea-ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</span>
 <span class="sd">    SA_seaice : array-like</span>
 <span class="sd">        Absolute Salinity of sea ice: the mass fraction of salt</span>
 <span class="sd">        in sea ice, expressed in g of salt per kg of sea ice.</span>
