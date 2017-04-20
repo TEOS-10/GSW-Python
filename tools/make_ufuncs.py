@@ -45,7 +45,10 @@ This is python 3-only (for simplicity) to begin with.
 
 modfile_middle = """
 
+#include "method_bodies.c"
+
 static PyMethodDef GswMethods[] = {
+# include "method_def_entries.c"
         {NULL, NULL, 0, NULL}
 };
 
