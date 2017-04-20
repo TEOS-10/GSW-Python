@@ -65,6 +65,43 @@ def axis_slicer(n, sl, axis):
     itup[axis] = sl
     return tuple(itup)
 
+
+def indexer(shape, axis, order='C'):
+    """
+    Generator of indexing tuples for "apply_along_axis" usage.
+
+    The generator cycles through all axes other than `axis`.
+    The numpy np.apply_along_axis function only works with functions
+    of a single array; this generator allows us work with a function
+    of more than one array.
+    """
+
+    ndim = len(shape)
+    ind_shape = list(shape)
+    ind_shape[axis] = 1      # "axis" and any dim of 1 will not be incremented
+    # list of indices, with a slice at "axis"
+    inds = [0] * ndim
+    inds[axis] = slice(None)
+    kmax = np.prod(ind_shape)
+
+    if order == 'C':
+        index_position = list(reversed(range(ndim)))
+    else:
+        index_position = list(range(ndim))
+
+    for k in range(kmax):
+        yield tuple(inds)
+
+        for i in index_position:
+            if ind_shape[i] == 1:
+                continue
+            inds[i] += 1
+            if inds[i] == ind_shape[i]:
+                inds[i] = 0
+            else:
+                break
+
+
 # This is straight from pycurrents.system.  We can trim out
 # the parts we don't need, but there is no rush to do so.
 class Bunch(dict):

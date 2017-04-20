@@ -3,7 +3,6 @@
 Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
-#from ._wrapped_ufuncs import *
 from . import _gsw_ufuncs
 from ._utilities import match_args_return
 
@@ -764,13 +763,13 @@ def CT_second_derivatives(SA, pt):
         temperature (the regular potential temperature which
         has reference sea pressure of 0 dbar).
         CT_SA_SA has units of:
-    CT_SA_pt : array-like, 
+    CT_SA_pt : array-like,
         The derivative of Conservative Temperature with
         respect to potential temperature (the regular one with
     p_ref : array-like, 1/(g/kg)
         0 dbar) and Absolute Salinity.
         CT_SA_pt has units of:
-    CT_pt_pt : array-like, 
+    CT_pt_pt : array-like,
         The second derivative of Conservative Temperature with
         respect to potential temperature (the regular one with
     p_ref : array-like, 1/K
@@ -3004,7 +3003,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     rho_SA_h : array-like, J/(kg K(g/kg))
         The second-order derivative of rho with respect to
         SA and h at constant p.
-    rho_h_h : array-like, 
+    rho_h_h : array-like,
         The second-order derivative of rho with respect to h at
         constant SA & p
 

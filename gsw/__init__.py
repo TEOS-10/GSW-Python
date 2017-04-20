@@ -34,6 +34,8 @@ original Matlab code, but with a few important differences:
 from ._wrapped_ufuncs import *
 
 from .stability import *
+from .geostrophy import *
+from . import geostrophy
 from . import stability
 from . import density
 from . import energy
