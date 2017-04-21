@@ -32,7 +32,6 @@ wrapper_head = '''
 Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
-#from ._wrapped_ufuncs import *
 from . import _gsw_ufuncs
 from ._utilities import match_args_return
 
@@ -157,13 +156,10 @@ def uf_wrapper(ufname):
     return wrapper_template % subs
 
 if __name__ == '__main__':
-    srcdir = sys.argv[1]
-    if len(sys.argv) > 2:
-        ufunclist = sys.argv[2:]
-    else:
-        with open(srcdir + '_ufuncs.list') as f:
-            ufunclist = [name.strip() for name in f.readlines()]
-            ufunclist = [name for name in ufunclist if name not in blacklist]
+    srcdir = 'src'
+    with open(srcdir + '_ufuncs.list') as f:
+        ufunclist = [name.strip() for name in f.readlines()]
+        ufunclist = [name for name in ufunclist if name not in blacklist]
 
     wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
 

@@ -39,14 +39,15 @@ MANIFEST
 ######################
 .directory
 .gdb_history
-.DS_Store?
+.DS_Store
 ehthumbs.db
-Icon?
+Icon
 Thumbs.db
 
 # Things specific to this project #
 ###################################
 *.list
+*.tmp
 
 # Documentation generated files #
 #################################

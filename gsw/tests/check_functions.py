@@ -1,17 +1,15 @@
 """
-Script to generate tests directly from our local version of
-gsw_check_functions.m.
+Module with functions and script to generate tests directly
+from our local version of gsw_check_functions.m.
 
 Usage (run from this test directory):
     python check_functions.py
 
 A primary use for this script is to see which functions are
-missing from python-gsw.
+missing from GSW-Python; they appear in the NameError category.
 
-The results are summarized at the end.  The NameError category
-includes functions that are missing entirely from python-gsw;
-the TypeError category can include functions that are incomplete
-or otherwise not functioning.
+TypeError category can include functions that are incomplete
+or otherwise not working correctly.
 
 For functions that run but yield results that fail the check,
 the error arrays are printed.
@@ -21,6 +19,9 @@ matlab script and more from our own functions.  We probably
 should not need the matlab script at all, or maybe use it only
 to extract the list of functions being tested in matlab.
 
+This module is also imported by test_check_functions.py, which
+is run by py.test.
+
 """
 
 import os
@@ -28,10 +29,6 @@ import sys
 import re
 
 import numpy as np
-
-#import gsw
-#from gsw.gibbs import *
-#from gsw.utilities import Bunch
 
 from gsw import *
 from gsw._utilities import Bunch

@@ -115,7 +115,7 @@ def docstring_from_sections(sections):
 
     for i, line in enumerate(list(doclines)):
         if line:
-            doclines[i] = '    %s\n' % line
+            doclines[i] = '    %s\n' % line.rstrip()
         else:
             doclines[i] = '\n'
 

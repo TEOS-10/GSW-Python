@@ -766,7 +766,10 @@ static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
 static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
 
 
+#include "method_bodies.c"
+
 static PyMethodDef GswMethods[] = {
+# include "method_def_entries.c"
         {NULL, NULL, 0, NULL}
 };
 

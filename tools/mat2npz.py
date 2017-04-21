@@ -24,11 +24,11 @@ from pycurrents.file.matfile import loadmatbunch
 # as its contents change.
 data_ver = 'v3_0'
 
-gsw_data_file = '../../../../gsw_matlab_v3_05_8/library/gsw_data_v3_0.mat'
+gsw_data_file = '../../../gsw_matlab_v3_05_8/library/gsw_data_v3_0.mat'
 
 gsw_data = loadmatbunch(gsw_data_file, masked=False)
 
 # Save compare values `gsw_cv` in a separate file.
 cv_vars = gsw_data['gsw_cv']
 cv_vars.gsw_data_file = gsw_data_file
-np.savez("gsw_cv_%s" % data_ver, **cv_vars)
+np.savez("../gsw/tests/gsw_cv_%s" % data_ver, **cv_vars)

@@ -2,9 +2,12 @@
 Generate the src/_ufuncs.c file to turn the scalar C functions
 into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
+
+This operates on both src and src2.
 """
 import os
 import sys
+import shutil
 
 from c_header_parser import (get_simple_sig_dict,
                             get_complex_scalar_dict_by_nargs_nreturns)
@@ -254,7 +257,12 @@ def write_modfile(modfile_name, srcdir):
         f.write('\n'.join(funcnamelist))
 
 if __name__ == '__main__':
-    srcdir = sys.argv[1]
-    modfile_name = os.path.join(basedir, srcdir, '_ufuncs.c')
+    for srcdir in ['src', 'src2']:
+        modfile_name = os.path.join(basedir, srcdir, '_ufuncs.c')
 
-    write_modfile(modfile_name, srcdir=srcdir)
+        write_modfile(modfile_name, srcdir=srcdir)
+
+    for fname in ['method_bodies.c', 'method_def_entries.c']:
+        shutil.copyfile(os.path.join('../src', fname),
+                        os.path.join('../src2', fname))
+
