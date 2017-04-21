@@ -69,8 +69,8 @@
 
 <span class="k">def</span> <span class="nf">masked_to_nan</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Convert a masked array to a float ndarray with nans; leave other</span>
-<span class="sd">    objects unchanged.</span>
+<span class="sd">    Convert a masked array to a float ndarray with nans; ensure</span>
+<span class="sd">    other arguments are float arrays or scalars.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">isMaskedArray</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span>
@@ -78,9 +78,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">arg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">arg</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
-<div class="viewcode-block" id="match_args_return"><a class="viewcode-back" href="../../gsw_flat.html#gsw.match_args_return">[docs]</a><span class="k">def</span> <span class="nf">match_args_return</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="match_args_return"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.match_args_return">[docs]</a><span class="k">def</span> <span class="nf">match_args_return</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decorator for most functions that operate on profile data.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -131,7 +131,7 @@
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itup</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="indexer"><a class="viewcode-back" href="../../gsw_flat.html#gsw.indexer">[docs]</a><span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="indexer"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.indexer">[docs]</a><span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generator of indexing tuples for &quot;apply_along_axis&quot; usage.</span>
 

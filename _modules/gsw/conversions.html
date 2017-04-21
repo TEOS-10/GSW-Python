@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gsw.conversions &#8212; gsw 0.1-devel documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1-devel',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gsw.conversions</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Conversions involving temperature, salinity, entropy, pressure,</span>
+<span class="sd">and height.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">._utilities</span> <span class="k">import</span> <span class="n">match_args_return</span>
+
+<span class="kn">from</span> <span class="nn">._wrapped_ufuncs</span> <span class="k">import</span> <span class="p">(</span>
+<span class="n">adiabatic_lapse_rate_from_CT</span><span class="p">,</span>
+<span class="n">C_from_SP</span><span class="p">,</span>
+<span class="n">CT_from_enthalpy</span><span class="p">,</span>
+<span class="n">CT_from_entropy</span><span class="p">,</span>
+<span class="n">CT_from_pt</span><span class="p">,</span>
+<span class="n">CT_from_rho</span><span class="p">,</span>
+<span class="n">CT_from_t</span><span class="p">,</span>
+<span class="n">deltaSA_from_SP</span><span class="p">,</span>
+<span class="n">entropy_from_pt</span><span class="p">,</span>
+<span class="n">entropy_from_t</span><span class="p">,</span>
+<span class="n">pt0_from_t</span><span class="p">,</span>
+<span class="n">pt_from_CT</span><span class="p">,</span>
+<span class="n">pt_from_entropy</span><span class="p">,</span>
+<span class="n">pt_from_t</span><span class="p">,</span>
+<span class="n">SA_from_rho</span><span class="p">,</span>
+<span class="n">SA_from_SP</span><span class="p">,</span>
+<span class="n">SA_from_Sstar</span><span class="p">,</span>
+<span class="n">SP_from_C</span><span class="p">,</span>
+<span class="n">SP_from_SA</span><span class="p">,</span>
+<span class="n">SP_from_SK</span><span class="p">,</span>
+<span class="n">SP_from_SR</span><span class="p">,</span>
+<span class="n">SP_from_Sstar</span><span class="p">,</span>
+<span class="n">SR_from_SP</span><span class="p">,</span>
+<span class="n">Sstar_from_SA</span><span class="p">,</span>
+<span class="n">Sstar_from_SP</span><span class="p">,</span>
+<span class="n">t_from_CT</span><span class="p">,</span>
+<span class="n">z_from_p</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="t90_from_t68"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.t90_from_t68">[docs]</a><span class="k">def</span> <span class="nf">t90_from_t68</span><span class="p">(</span><span class="n">t68</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ITS-90 temperature from IPTS-68 temperature</span>
+
+<span class="sd">    This conversion should be applied to all in-situ</span>
+<span class="sd">    data collected between 1/1/1968 and 31/12/1989.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">t68</span> <span class="o">/</span> <span class="mf">1.00024</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, TEOS-10 developers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

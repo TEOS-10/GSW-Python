@@ -108,6 +108,188 @@
                                          <span class="n">CT</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">],</span>
                                          <span class="n">pgood</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">dh</span></div>
+
+<div class="viewcode-block" id="unwrap"><a class="viewcode-back" href="../../gsw_flat.html#gsw.unwrap">[docs]</a><span class="k">def</span> <span class="nf">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unwrap a sequence of longitudes or headings in degrees.</span>
+
+<span class="sd">    Optionally center it as close to zero as possible</span>
+
+<span class="sd">    By default, return a copy; if *copy* is False, avoid a</span>
+<span class="sd">    copy when possible.</span>
+
+<span class="sd">    Returns a masked array only if the input is a masked array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># From pycurrents.data.ocean.  It could probably be simplified</span>
+    <span class="c1"># for use here.</span>
+
+    <span class="n">masked_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">isMaskedArray</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">masked_input</span><span class="p">:</span>
+        <span class="n">fill_value</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">fill_value</span>
+        <span class="c1"># masked_invalid loses the original fill_value (ma bug, 2011/01/20)</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only 1-D sequences are supported&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lon</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">compressed</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lon</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">ld</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">ld</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">ld</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">*</span> <span class="mf">360.0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">centered</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="mf">360.0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">mask</span> <span class="ow">is</span> <span class="n">ma</span><span class="o">.</span><span class="n">nomask</span><span class="p">:</span>
+        <span class="n">lon</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lon</span><span class="p">[</span><span class="o">~</span><span class="n">lon</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">if</span> <span class="n">masked_input</span><span class="p">:</span>
+        <span class="n">lon</span><span class="o">.</span><span class="n">fill_value</span> <span class="o">=</span> <span class="n">fill_value</span>
+        <span class="k">return</span> <span class="n">lon</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lon</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span></div>
+
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Great-circle distance in m between lon, lat points.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like, 1-D</span>
+<span class="sd">        Longitude, latitude, in degrees.</span>
+<span class="sd">    p : float or 1-D array-like, optional, default is 0</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    distance : 1-D array</span>
+<span class="sd">        distance in meters between adjacent points.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># This uses the algorithm from pycurrents rather than the one</span>
+    <span class="c1"># in GSW-Matlab.</span>
+
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">lat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat must be 1-D; found shapes </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span>
+                         <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat must have same 1-D shape; found </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span>
+                         <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, non-scalar p must have same 1-D shape;&#39;</span>
+                             <span class="s1">&#39; found </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span>
+                             <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">slm</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">slp</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">radius</span> <span class="o">=</span> <span class="mf">6371e3</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">p_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">slp</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">slm</span><span class="p">])</span>
+        <span class="n">lat_mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="n">slp</span><span class="p">]</span> <span class="o">+</span> <span class="n">lat</span><span class="p">[</span><span class="n">slm</span><span class="p">])</span>
+        <span class="n">z_mid</span> <span class="o">=</span> <span class="n">gsw</span><span class="o">.</span><span class="n">z_from_p</span><span class="p">(</span><span class="n">p_mid</span><span class="p">,</span> <span class="n">lat_mid</span><span class="p">)</span>
+        <span class="n">radius</span> <span class="o">+=</span> <span class="n">z_mid</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="n">slm</span><span class="p">])</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="n">slp</span><span class="p">])</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lon</span><span class="p">[</span><span class="n">slp</span><span class="p">]</span> <span class="o">-</span> <span class="n">lon</span><span class="p">[</span><span class="n">slm</span><span class="p">])</span>
+                  <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="n">slm</span><span class="p">])</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="n">slp</span><span class="p">]))</span> <span class="o">*</span> <span class="n">radius</span>
+
+    <span class="k">return</span> <span class="n">d</span></div>
+
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.f">[docs]</a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Coriolis parameter in 1/s for latitude in degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="mf">7.292115e-5</span><span class="p">;</span>                              <span class="c1">#(1/s)   (Groten, 2004)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">f</span></div>
+
+<span class="nd">@match_args_return</span>
+<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophic_velocity">[docs]</a><span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate geostrophic velocity from a streamfunction.</span>
+
+<span class="sd">    Calculates geostrophic velocity relative to the sea surface, given a</span>
+<span class="sd">    geostrophic streamfunction and the position of each station in</span>
+<span class="sd">    sequence along an ocean section.  The data can be from a single</span>
+<span class="sd">    isobaric or &quot;density&quot; surface, or from a series of such surfaces.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    geo_strf : array-like, 1-D or 2-D</span>
+<span class="sd">        geostrophic streamfunction; see Notes below.</span>
+<span class="sd">    lon : array-like, 1-D</span>
+<span class="sd">        Longitude, -360 to 360 degrees</span>
+<span class="sd">    lat : array-like, 1-D</span>
+<span class="sd">        Latitude, -90 to 90 degrees</span>
+<span class="sd">    p : float or array-like, optional</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar.</span>
+<span class="sd">        This used only for a tiny correction in the distance calculation;</span>
+<span class="sd">        it is safe to omit it.</span>
+<span class="sd">    axis : int, optional</span>
+<span class="sd">        The axis or dimension along which pressure increases in geo_strf.</span>
+<span class="sd">        If geo_strf is 1-D, it is ignored.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    velocity : array, 2-D or 1-D</span>
+<span class="sd">        Geostrophic velocity in m/s relative to the sea surface,</span>
+<span class="sd">        averaged between each successive pair of positions.</span>
+<span class="sd">    mid_lon, mid_lat : array, 1-D</span>
+<span class="sd">        Midpoints of input lon and lat.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The geostrophic streamfunction can be:</span>
+
+<span class="sd">    - geo_strf_dyn_height (in an isobaric surface)</span>
+<span class="sd">    - geo_strf_Montgomery (in a specific volume anomaly surface)</span>
+<span class="sd">    - geo_strf_Cunninhgam (in an approximately neutral surface</span>
+<span class="sd">      such as a potential density surface).</span>
+<span class="sd">    - geo_strf_isopycnal (in an approximately neutral surface</span>
+<span class="sd">      such as a potential density surface, a Neutral Density</span>
+<span class="sd">      surface, or an omega surface (Klocker et al., 2009)).</span>
+
+<span class="sd">    Only :func:`geo_strf_dyn_height` is presently implemented</span>
+<span class="sd">    in GSW-Python.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat must be 1-D and matching; found shapes&#39;</span>
+                         <span class="s1">&#39; </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">npts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">geo_strf</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;geo_strf must be 1-D or 2-d; found shape </span><span class="si">%s</span><span class="s1">&#39;</span>
+                         <span class="o">%</span> <span class="p">(</span><span class="n">geo_strf</span><span class="o">.</span><span class="n">shape</span><span class="p">,))</span>
+
+    <span class="n">laxis</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">axis</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">laxis</span><span class="p">)</span> <span class="o">/</span> <span class="n">ds</span>
+
+    <span class="n">mid_lon</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lon</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">lon</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">mid_lat</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lat</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">lon</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">mid_lon</span><span class="p">,</span> <span class="n">mid_lat</span></div>
+
+
 </pre></div>
 
           </div>
