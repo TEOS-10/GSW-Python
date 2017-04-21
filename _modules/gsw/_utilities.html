@@ -104,7 +104,7 @@
         <span class="k">if</span> <span class="n">ismasked</span><span class="p">:</span>
             <span class="n">newargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">masked_to_nan</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">newargs</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">newargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">kw</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newargs</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -129,6 +129,43 @@
     <span class="n">itup</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span>
     <span class="n">itup</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">sl</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itup</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="indexer"><a class="viewcode-back" href="../../gsw_flat.html#gsw.indexer">[docs]</a><span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generator of indexing tuples for &quot;apply_along_axis&quot; usage.</span>
+
+<span class="sd">    The generator cycles through all axes other than `axis`.</span>
+<span class="sd">    The numpy np.apply_along_axis function only works with functions</span>
+<span class="sd">    of a single array; this generator allows us work with a function</span>
+<span class="sd">    of more than one array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">ind_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">ind_shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># &quot;axis&quot; and any dim of 1 will not be incremented</span>
+    <span class="c1"># list of indices, with a slice at &quot;axis&quot;</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+    <span class="n">inds</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">ind_shape</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+        <span class="n">index_position</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">index_position</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_position</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ind_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">ind_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span></div>
+
 
 <span class="c1"># This is straight from pycurrents.system.  We can trim out</span>
 <span class="c1"># the parts we don&#39;t need, but there is no rush to do so.</span>

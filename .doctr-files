@@ -1,5 +1,6 @@
 ./_modules/gsw/_utilities.html
 ./_modules/gsw/_wrapped_ufuncs.html
+./_modules/gsw/geostrophy.html
 ./_modules/gsw/stability.html
 ./_modules/index.html
 ./_sources/gsw.rst.txt
