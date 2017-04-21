@@ -7,10 +7,21 @@ from ._utilities import match_args_return, indexer
 
 @match_args_return
 def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
+    if SA.shape != CT.shape:
+        raise ValueError('Shapes of SA and CT must match; found %s and %s'
+                         % (SA.shape, CT.shape))
+    if p.ndim == 1 and SA.ndim > 1:
+        if len(p) != SA.shape[axis]:
+            raise ValueError('With 1-D p, len(p) must be SA.shape[axis];\n'
+                             ' found %d versus %d on specified axis, %d'
+                             % (len(p), SA.shape[axis], axis))
+        ind = [np.newaxis] * SA.ndim
+        ind[axis] = slice(None)
+        p = p[tuple(ind)]
     p_ref = float(p_ref)
     if (np.diff(p, axis=axis) <= 0).any():
         raise ValueError('p must be increasing along the specified axis')
-    SA, CT, p = np.broadcast_arrays(SA, CT, p)
+    p = np.broadcast_to(p, SA.shape)
     goodmask = ~(np.isnan(SA) | np.isnan(CT) | np.isnan(p))
     dh = np.empty(SA.shape, dtype=float)
     dh.fill(np.nan)

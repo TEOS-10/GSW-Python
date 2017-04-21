@@ -39,7 +39,7 @@ def match_args_return(f):
         if ismasked:
             newargs = [masked_to_nan(a) for a in args]
         else:
-            newargs = args
+            newargs = [np.asarray(a, dtype=float) for a in args]
 
         if p is not None:
             kw['p'] = newargs.pop()
