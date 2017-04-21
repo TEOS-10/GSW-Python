@@ -2,6 +2,9 @@
 Conversions involving temperature, salinity, entropy, pressure,
 and height.
 """
+
+from ._utilities import match_args_return
+
 from ._wrapped_ufuncs import (
 adiabatic_lapse_rate_from_CT,
 C_from_SP,
@@ -31,3 +34,15 @@ Sstar_from_SP,
 t_from_CT,
 z_from_p,
 )
+
+
+@match_args_return
+def t90_from_t68(t68):
+    """
+    ITS-90 temperature from IPTS-68 temperature
+
+    This conversion should be applied to all in-situ
+    data collected between 1/1/1968 and 31/12/1989.
+
+    """
+    return t68 / 1.00024

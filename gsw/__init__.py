@@ -43,4 +43,6 @@ from . import conversions
 
 from . import ice
 
+from .conversions import t90_from_t68
+
 __version__ = "0.5.0"
