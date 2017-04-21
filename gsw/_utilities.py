@@ -4,8 +4,8 @@ import numpy as np
 
 def masked_to_nan(arg):
     """
-    Convert a masked array to a float ndarray with nans; leave other
-    objects unchanged.
+    Convert a masked array to a float ndarray with nans; ensure
+    other arguments are float arrays or scalars.
     """
     if np.ma.isMaskedArray(arg):
         if arg.dtype.kind == 'f':
@@ -13,7 +13,7 @@ def masked_to_nan(arg):
         else:
             return arg.astype(float).filled(np.nan)
     else:
-        return arg
+        return np.asarray(arg, dtype=float)
 
 def match_args_return(f):
     """

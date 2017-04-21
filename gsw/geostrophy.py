@@ -43,3 +43,58 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
                                          CT[ind][igood],
                                          pgood, p_ref)
     return dh
+
+
+@match_args_return
+def distance(lon, lat, p=0):
+    """
+    Great-circle distance in m between lon, lat points.
+
+    Parameters
+    ----------
+    lon, lat : array-like, 1-D
+        Longitude, latitude, in degrees.
+    p : float or 1-D array-like, optional, default is 0
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    distance : 1-D array
+        distance in meters between adjacent points.
+
+    """
+    # This uses the algorithm from pycurrents rather than the one
+    # in GSW-Matlab.
+
+    if lon.ndim != 1 or lat.ndim != 1:
+        raise ValueError('lon, lat must be 1-D; found shapes %s and %s'
+                         % (lon.shape, lat.shape))
+    if lon.shape != lat.shape:
+        raise ValueError('lon, lat must have same 1-D shape; found %s and %s'
+                         % (lon.shape, lat.shape))
+    if p != 0:
+        if np.iterable(p) and p.shape != lon.shape:
+            raise ValueError('lon, non-scalar p must have same 1-D shape;'
+                             ' found %s and %s'
+                             % (lon.shape, lat.shape))
+
+        p = np.broadcast_to(p, lon.shape)
+
+    slm = slice(None, -1)
+    slp = slice(1, None)
+
+    radius = 6371e3
+
+    lon = np.radians(lon)
+    lat = np.radians(lat)
+    if p != 0:
+        p_mid = 0.5 * (p[slp] + p[slm])
+        lat_mid = 0.5 * (lat[slp] + lat[slm])
+        z_mid = gsw.z_from_p(p_mid, lat_mid)
+        radius += z_mid
+
+    d = np.arccos(cos(lat[slm]) * cos(lat[slp]) * cos(lon[slp] - lon[slm])
+                  + sin(lat[slm]) * sin(lat[slp])) * radius
+
+    return d
+
