@@ -91,8 +91,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    adiabatic_lapse_rate : array-like, K/Pa</span>
 <span class="sd">        adiabatic lapse rate</span>
-<span class="sd">        Note.  The output is in unit of degress Celsius per Pa,</span>
-<span class="sd">        (or equivilently K/Pa) not in units of K/dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -114,8 +112,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    adiabatic_lapse_rate_ice : array-like, K/Pa</span>
 <span class="sd">        adiabatic lapse rate</span>
-<span class="sd">        Note.  The output is in unit of degress Celsius per Pa,</span>
-<span class="sd">        (or equivilently K/Pa) not in units of K/dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -444,7 +440,6 @@
 <span class="sd">        Absolute Salinity at constant potential temperature</span>
 <span class="sd">        (the regular potential temperature which has reference</span>
 <span class="sd">        sea pressure of 0 dbar).</span>
-<span class="sd">        The CT_SA output has units of:</span>
 <span class="sd">    CT_pt : array-like, unitless</span>
 <span class="sd">        The derivative of Conservative Temperature with respect to</span>
 <span class="sd">        potential temperature (the regular one with pr = 0 dbar)</span>
@@ -827,19 +822,16 @@
 <span class="sd">        respect to Absolute Salinity at constant potential</span>
 <span class="sd">        temperature (the regular potential temperature which</span>
 <span class="sd">        has reference sea pressure of 0 dbar).</span>
-<span class="sd">        CT_SA_SA has units of:</span>
 <span class="sd">    CT_SA_pt : array-like,</span>
 <span class="sd">        The derivative of Conservative Temperature with</span>
 <span class="sd">        respect to potential temperature (the regular one with</span>
 <span class="sd">    p_ref : array-like, 1/(g/kg)</span>
 <span class="sd">        0 dbar) and Absolute Salinity.</span>
-<span class="sd">        CT_SA_pt has units of:</span>
 <span class="sd">    CT_pt_pt : array-like,</span>
 <span class="sd">        The second derivative of Conservative Temperature with</span>
 <span class="sd">        respect to potential temperature (the regular one with</span>
 <span class="sd">    p_ref : array-like, 1/K</span>
 <span class="sd">        0 dbar) at constant SA.</span>
-<span class="sd">        CT_pt_pt has units of:</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1240,11 +1232,9 @@
 <span class="sd">        The derivative of specific entropy with respect to</span>
 <span class="sd">        Absolute Salinity (in units of g kg^-1) at constant</span>
 <span class="sd">        Conservative Temperature.</span>
-<span class="sd">        eta_SA has units of:         [ J/(kg K(g/kg))]  or</span>
 <span class="sd">    eta_CT : array-like, J/(kg K^2)</span>
 <span class="sd">        The derivative of specific entropy with respect to</span>
 <span class="sd">        Conservative Temperature at constant Absolute Salinity.</span>
-<span class="sd">        eta_CT has units of:</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1362,15 +1352,12 @@
 <span class="sd">        The second derivative of specific entropy with respect</span>
 <span class="sd">        to Absolute Salinity (in units of g kg^-1) at constant</span>
 <span class="sd">        Conservative Temperature.</span>
-<span class="sd">        eta_SA_SA has units of:</span>
 <span class="sd">    eta_SA_CT : array-like, J/(kg (g/kg) K^2)</span>
 <span class="sd">        The second derivative of specific entropy with respect</span>
 <span class="sd">        to Conservative Temperature at constant Absolute</span>
-<span class="sd">        Salinity. eta_SA_CT has units of:</span>
 <span class="sd">    eta_CT_CT : array-like, J/(kg K^3)</span>
 <span class="sd">        The second derivative of specific entropy with respect</span>
 <span class="sd">        to Conservative Temperature at constant Absolute</span>
-<span class="sd">        Salinity.  eta_CT_CT has units of:</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1852,7 +1839,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    kappa_const_t_ice : array-like, 1/Pa</span>
 <span class="sd">        isothermal compressibility</span>
-<span class="sd">        Note. The output units are 1/Pa not 1/dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1874,7 +1860,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    kappa_ice : array-like, 1/Pa</span>
 <span class="sd">        isentropic compressibility</span>
-<span class="sd">        Note. The output units are 1/Pa not 1/dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1898,7 +1883,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    kappa_t_exact : array-like, 1/Pa</span>
 <span class="sd">        isentropic compressibility</span>
-<span class="sd">        Note. The output units are 1/Pa not 1/dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2533,7 +2517,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    pressure_coefficient_ice : array-like, Pa/K</span>
 <span class="sd">        pressure coefficient of ice</span>
-<span class="sd">        Note. The output units are Pa/K NOT dbar/K.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2593,7 +2576,6 @@
 <span class="sd">    pt0 : array-like, deg C</span>
 <span class="sd">        potential temperature</span>
 <span class="sd">        with reference sea pressure (p_ref) = 0 dbar.</span>
-<span class="sd">        Note. The reference sea pressure of the output, pt0, is zero dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2698,7 +2680,6 @@
 <span class="sd">    pt : array-like, deg C</span>
 <span class="sd">        potential temperature</span>
 <span class="sd">        with reference sea pressure (p_ref) = 0 dbar.</span>
-<span class="sd">        Note. The reference sea pressure of the output, pt, is zero dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2830,16 +2811,13 @@
 <span class="sd">        regular potential temperature which has reference sea</span>
 <span class="sd">        pressure of 0 dbar) with respect to Absolute Salinity</span>
 <span class="sd">        at constant Conservative Temperature.</span>
-<span class="sd">        pt_SA_SA has units of:</span>
 <span class="sd">    pt_SA_CT : array-like, 1/(g/kg)</span>
 <span class="sd">        The derivative of potential temperature with respect</span>
 <span class="sd">        to Absolute Salinity and Conservative Temperature.</span>
-<span class="sd">        pt_SA_CT has units of:</span>
 <span class="sd">    pt_CT_CT : array-like, 1/K</span>
 <span class="sd">        The second derivative of potential temperature (the</span>
 <span class="sd">        regular one with p_ref = 0 dbar) with respect to</span>
 <span class="sd">        Conservative Temperature at constant SA.</span>
-<span class="sd">        pt_CT_CT has units of:</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3243,8 +3221,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    SA : array-like, g/kg</span>
 <span class="sd">        Absolute Salinity.</span>
-<span class="sd">        Note. This is expressed on the Reference-Composition Salinity</span>
-<span class="sd">        Scale of Millero et al. (2008).</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4393,8 +4369,6 @@
 <span class="sd">    thermobaric : array-like, 1/(K Pa)</span>
 <span class="sd">        thermobaric coefficient with</span>
 <span class="sd">        respect to Conservative Temperature.</span>
-<span class="sd">        Note. The pressure derivative is taken with respect to</span>
-<span class="sd">        pressure in Pa not dbar.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4421,9 +4395,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    z : array-like, m</span>
 <span class="sd">        height</span>
-<span class="sd">        Note. At sea level z = 0, and since z (HEIGHT) is defined to be</span>
-<span class="sd">        positive upwards, it follows that while z is positive in the</span>
-<span class="sd">        atmosphere, it is NEGATIVE in the ocean.</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>

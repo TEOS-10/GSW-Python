@@ -260,7 +260,7 @@
 <span class="sd">    lon : array-like, 1-D</span>
 <span class="sd">        Longitude, -360 to 360 degrees</span>
 <span class="sd">    lat : array-like, 1-D</span>
-<span class="sd">        Latitude, -90 to 90 degrees</span>
+<span class="sd">        Latitude, degrees</span>
 <span class="sd">    p : float or array-like, optional</span>
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar.</span>
 <span class="sd">        This used only for a tiny correction in the distance calculation;</span>
@@ -313,8 +313,6 @@
     <span class="n">mid_lat</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lat</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">lon</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 
     <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">mid_lon</span><span class="p">,</span> <span class="n">mid_lat</span></div>
-
-
 </pre></div>
 
           </div>
