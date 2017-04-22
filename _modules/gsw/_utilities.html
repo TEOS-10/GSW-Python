@@ -131,7 +131,7 @@
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itup</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="indexer"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.indexer">[docs]</a><span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generator of indexing tuples for &quot;apply_along_axis&quot; usage.</span>
 
@@ -164,7 +164,7 @@
             <span class="k">if</span> <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">ind_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
                 <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">break</span></div>
+                <span class="k">break</span>
 
 
 <span class="c1"># This is straight from pycurrents.system.  We can trim out</span>
