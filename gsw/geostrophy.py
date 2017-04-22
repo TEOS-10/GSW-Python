@@ -8,6 +8,12 @@ from . import _gsw_ufuncs
 from ._utilities import match_args_return, indexer
 
 
+__all__ = ['geo_strf_dyn_height',
+           'distance',
+           'f',
+           'geostrophic_velocity',
+           ]
+
 @match_args_return
 def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
     """

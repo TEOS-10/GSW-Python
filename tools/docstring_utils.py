@@ -33,21 +33,22 @@ def fix_one_output(lines):
     numpydoc Returns section.
     """
     units = ''  # Probably a hack; look into a better workaround.
-    for i, line in enumerate(list(lines)):
+
+    lines_orig = lines.copy()
+    lines = []
+
+    for line in lines_orig:
         match = re.search(r'(.*)\[(.*)\]', line)
         if match is not None:
             units = match.group(2).strip()
             remainder = match.group(1).strip()
-            lines[i] = remainder
+            if 'has units of' not in remainder:
+                lines.append(remainder)
         else:
-            lines[i] = line.strip()
-
-    lines_orig = lines.copy()
-    lines = []
-    for line in lines_orig:
-        if 'has units of' in line or 'Note.' in line:
-            break
-        lines.append(line)
+            line = line.strip()
+            if 'has units of' in line or line.startswith('Note'):
+                break
+            lines.append(line)
 
     outname, remainder = lines[0].split('=')
     outlines = ['%s : array-like, %s' % (outname.strip(), units)]

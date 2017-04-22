@@ -47,7 +47,7 @@ def Nsquared(SA, CT, p, lat=None, axis=0):
     Returns
     -------
     N2 : array
-        Buoyancy frequency at pressure midpoints, 1/s
+        Buoyancy frequency-squared at pressure midpoints, 1/s.
         The shape along the pressure axis dimension is one
         less than that of the inputs.
     p_mid : array
@@ -115,7 +115,7 @@ def Turner_Rsubrho(SA, CT, p, axis=0):
         The shape matches Tu.
     p_mid : array
         Pressure at midpoints of p, dbar.
-        The array shape matches N2.
+        The array shape matches Tu.
 
     """
 

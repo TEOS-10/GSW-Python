@@ -664,14 +664,8 @@ def CT_from_rho(rho, SA, p):
     -------
     CT : array-like, deg C
         Conservative Temperature  (ITS-90)
-    CT_multiple : array-like, CT,CT_multiple
+    CT_multiple : array-like, deg C
         Conservative Temperature  (ITS-90)
-        Note that at low salinities, in brackish water, there are two possible
-        Conservative Temperatures for a single density.  This programme will
-        output both valid solutions.  To see this second solution the user
-        must call the programme with two outputs (i.e.
-        there is only one possible solution and the programme has been
-        called with two outputs the second variable will be set to NaN.
 
 
     """
