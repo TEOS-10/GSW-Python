@@ -8,7 +8,7 @@ For example, the default, following the Matlab versions, is
 Use `axis=-1` if pressure varies along the last dimension--that
 is, along a row, as the column index increases, in the 2-D case.
 
-Docstrings are not yet available; they will be added later via
+Docstrings will be added later, either manually or via
 an automated mechanism.
 
 """

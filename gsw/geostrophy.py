@@ -1,3 +1,6 @@
+"""
+Functions for calculating geostrophic currents.
+"""
 
 import numpy as np
 
@@ -7,6 +10,31 @@ from ._utilities import match_args_return, indexer
 
 @match_args_return
 def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
+    """
+    Dynamic height anomaly as a function of pressure.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    p_ref : float or array-like, optional
+        Reference pressure, dbar
+    axis : int, optional
+        The index of the pressure dimension in SA and CT.
+
+    Returns
+    -------
+    dynamic_height : array
+        This is the integral of specific volume anomaly with respect
+        to pressure, from each pressure in p to the specified
+        reference pressure.  It is the geostrophic streamfunction
+        in an isobaric surface, relative to the reference surface.
+
+    """
     if SA.shape != CT.shape:
         raise ValueError('Shapes of SA and CT must match; found %s and %s'
                          % (SA.shape, CT.shape))
@@ -26,18 +54,15 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
     dh = np.empty(SA.shape, dtype=float)
     dh.fill(np.nan)
 
-    print(SA.shape)
-
     order = 'F' if SA.flags.fortran else 'C'
     for ind in indexer(SA.shape, axis, order=order):
-        print(ind)
         igood = goodmask[ind]
-        print(goodmask)
-        print(goodmask[ind])
-        print(dh.shape)
         # If p_ref is below the deepest value, skip the profile.
         pgood = p[ind][igood]
-        if pgood[-1] >= p_ref and len(pgood) > 1:
+        # The C function calls the rr68 interpolation, which
+        # requires at least 4 "bottles"; but the C function is
+        # not checking this, so we need to do so.
+        if pgood[-1] >= p_ref and len(pgood) > 3:
             dh[ind][igood] = _gsw_ufuncs.geo_strf_dyn_height(
                                          SA[ind][igood],
                                          CT[ind][igood],
@@ -175,7 +200,7 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
         This used only for a tiny correction in the distance calculation;
         it is safe to omit it.
-    axis : int, optional
+    axis : int, 0 or 1, optional
         The axis or dimension along which pressure increases in geo_strf.
         If geo_strf is 1-D, it is ignored.
 
