@@ -42,6 +42,13 @@ def fix_one_output(lines):
         else:
             lines[i] = line.strip()
 
+    lines_orig = lines.copy()
+    lines = []
+    for line in lines_orig:
+        if 'has units of' in line or 'Note.' in line:
+            break
+        lines.append(line)
+
     outname, remainder = lines[0].split('=')
     outlines = ['%s : array-like, %s' % (outname.strip(), units)]
     remainder = remainder.strip()

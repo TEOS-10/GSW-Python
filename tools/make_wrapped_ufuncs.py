@@ -115,6 +115,21 @@ def get_outname_set():
             argset.update(args)
     return argset
 
+def get_help_output_dict():
+    out = Bunch()
+    for ufname in ufunclist:
+        msig = msigdict[ufname]
+        helpdict = get_helpdict(msig['path'])
+
+        if 'OUTPUT' in helpdict:
+            raw = helpdict['OUTPUT']
+            outdoc = fix_outputs_doc(raw)
+        else:
+            raw = ''
+            outdoc = ['']
+        out[ufname] = Bunch(raw=raw, outdoc=outdoc)
+    return out
+
 
 def uf_wrapper(ufname):
     argnames = get_argnames(ufname)

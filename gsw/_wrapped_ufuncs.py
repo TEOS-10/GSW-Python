@@ -26,8 +26,6 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
     -------
     adiabatic_lapse_rate : array-like, K/Pa
         adiabatic lapse rate
-        Note.  The output is in unit of degress Celsius per Pa,
-        (or equivilently K/Pa) not in units of K/dbar.
 
 
     """
@@ -49,8 +47,6 @@ def adiabatic_lapse_rate_ice(t, p):
     -------
     adiabatic_lapse_rate_ice : array-like, K/Pa
         adiabatic lapse rate
-        Note.  The output is in unit of degress Celsius per Pa,
-        (or equivilently K/Pa) not in units of K/dbar.
 
 
     """
@@ -379,7 +375,6 @@ def CT_first_derivatives(SA, pt):
         Absolute Salinity at constant potential temperature
         (the regular potential temperature which has reference
         sea pressure of 0 dbar).
-        The CT_SA output has units of:
     CT_pt : array-like, unitless
         The derivative of Conservative Temperature with respect to
         potential temperature (the regular one with pr = 0 dbar)
@@ -762,19 +757,16 @@ def CT_second_derivatives(SA, pt):
         respect to Absolute Salinity at constant potential
         temperature (the regular potential temperature which
         has reference sea pressure of 0 dbar).
-        CT_SA_SA has units of:
     CT_SA_pt : array-like,
         The derivative of Conservative Temperature with
         respect to potential temperature (the regular one with
     p_ref : array-like, 1/(g/kg)
         0 dbar) and Absolute Salinity.
-        CT_SA_pt has units of:
     CT_pt_pt : array-like,
         The second derivative of Conservative Temperature with
         respect to potential temperature (the regular one with
     p_ref : array-like, 1/K
         0 dbar) at constant SA.
-        CT_pt_pt has units of:
 
 
     """
@@ -1175,11 +1167,9 @@ def entropy_first_derivatives(SA, CT):
         The derivative of specific entropy with respect to
         Absolute Salinity (in units of g kg^-1) at constant
         Conservative Temperature.
-        eta_SA has units of:         [ J/(kg K(g/kg))]  or
     eta_CT : array-like, J/(kg K^2)
         The derivative of specific entropy with respect to
         Conservative Temperature at constant Absolute Salinity.
-        eta_CT has units of:
 
 
     """
@@ -1297,15 +1287,12 @@ def entropy_second_derivatives(SA, CT):
         The second derivative of specific entropy with respect
         to Absolute Salinity (in units of g kg^-1) at constant
         Conservative Temperature.
-        eta_SA_SA has units of:
     eta_SA_CT : array-like, J/(kg (g/kg) K^2)
         The second derivative of specific entropy with respect
         to Conservative Temperature at constant Absolute
-        Salinity. eta_SA_CT has units of:
     eta_CT_CT : array-like, J/(kg K^3)
         The second derivative of specific entropy with respect
         to Conservative Temperature at constant Absolute
-        Salinity.  eta_CT_CT has units of:
 
 
     """
@@ -1787,7 +1774,6 @@ def kappa_const_t_ice(t, p):
     -------
     kappa_const_t_ice : array-like, 1/Pa
         isothermal compressibility
-        Note. The output units are 1/Pa not 1/dbar.
 
 
     """
@@ -1809,7 +1795,6 @@ def kappa_ice(t, p):
     -------
     kappa_ice : array-like, 1/Pa
         isentropic compressibility
-        Note. The output units are 1/Pa not 1/dbar.
 
 
     """
@@ -1833,7 +1818,6 @@ def kappa_t_exact(SA, t, p):
     -------
     kappa_t_exact : array-like, 1/Pa
         isentropic compressibility
-        Note. The output units are 1/Pa not 1/dbar.
 
 
     """
@@ -2468,7 +2452,6 @@ def pressure_coefficient_ice(t, p):
     -------
     pressure_coefficient_ice : array-like, Pa/K
         pressure coefficient of ice
-        Note. The output units are Pa/K NOT dbar/K.
 
 
     """
@@ -2528,7 +2511,6 @@ def pt0_from_t(SA, t, p):
     pt0 : array-like, deg C
         potential temperature
         with reference sea pressure (p_ref) = 0 dbar.
-        Note. The reference sea pressure of the output, pt0, is zero dbar.
 
 
     """
@@ -2633,7 +2615,6 @@ def pt_from_entropy(SA, entropy):
     pt : array-like, deg C
         potential temperature
         with reference sea pressure (p_ref) = 0 dbar.
-        Note. The reference sea pressure of the output, pt, is zero dbar.
 
 
     """
@@ -2765,16 +2746,13 @@ def pt_second_derivatives(SA, CT):
         regular potential temperature which has reference sea
         pressure of 0 dbar) with respect to Absolute Salinity
         at constant Conservative Temperature.
-        pt_SA_SA has units of:
     pt_SA_CT : array-like, 1/(g/kg)
         The derivative of potential temperature with respect
         to Absolute Salinity and Conservative Temperature.
-        pt_SA_CT has units of:
     pt_CT_CT : array-like, 1/K
         The second derivative of potential temperature (the
         regular one with p_ref = 0 dbar) with respect to
         Conservative Temperature at constant SA.
-        pt_CT_CT has units of:
 
 
     """
@@ -3178,8 +3156,6 @@ def SA_from_rho(rho, CT, p):
     -------
     SA : array-like, g/kg
         Absolute Salinity.
-        Note. This is expressed on the Reference-Composition Salinity
-        Scale of Millero et al. (2008).
 
 
     """
@@ -4328,8 +4304,6 @@ def thermobaric(SA, CT, p):
     thermobaric : array-like, 1/(K Pa)
         thermobaric coefficient with
         respect to Conservative Temperature.
-        Note. The pressure derivative is taken with respect to
-        pressure in Pa not dbar.
 
 
     """
@@ -4356,9 +4330,6 @@ def z_from_p(p, lat):
     -------
     z : array-like, m
         height
-        Note. At sea level z = 0, and since z (HEIGHT) is defined to be
-        positive upwards, it follows that while z is positive in the
-        atmosphere, it is NEGATIVE in the ocean.
 
 
     """
