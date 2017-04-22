@@ -63,7 +63,10 @@
           <div class="body" role="main">
             
   <h1>Source code for gsw.geostrophy</h1><div class="highlight"><pre>
-<span></span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions for calculating geostrophic currents.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_gsw_ufuncs</span>
@@ -71,7 +74,32 @@
 
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="geo_strf_dyn_height"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geo_strf_dyn_height">[docs]</a><span class="k">def</span> <span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="geo_strf_dyn_height"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_dyn_height">[docs]</a><span class="k">def</span> <span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dynamic height anomaly as a function of pressure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SA : array-like</span>
+<span class="sd">        Absolute Salinity, g/kg</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+<span class="sd">    p : array-like</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+<span class="sd">    p_ref : float or array-like, optional</span>
+<span class="sd">        Reference pressure, dbar</span>
+<span class="sd">    axis : int, optional</span>
+<span class="sd">        The index of the pressure dimension in SA and CT.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dynamic_height : array</span>
+<span class="sd">        This is the integral of specific volume anomaly with respect</span>
+<span class="sd">        to pressure, from each pressure in p to the specified</span>
+<span class="sd">        reference pressure.  It is the geostrophic streamfunction</span>
+<span class="sd">        in an isobaric surface, relative to the reference surface.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Shapes of SA and CT must match; found </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span>
                          <span class="o">%</span> <span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
@@ -91,25 +119,22 @@
     <span class="n">dh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">dh</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
     <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span> <span class="k">if</span> <span class="n">SA</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">fortran</span> <span class="k">else</span> <span class="s1">&#39;C&#39;</span>
     <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indexer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
         <span class="n">igood</span> <span class="o">=</span> <span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">goodmask</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">dh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="c1"># If p_ref is below the deepest value, skip the profile.</span>
         <span class="n">pgood</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">pgood</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">p_ref</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pgood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># The C function calls the rr68 interpolation, which</span>
+        <span class="c1"># requires at least 4 &quot;bottles&quot;; but the C function is</span>
+        <span class="c1"># not checking this, so we need to do so.</span>
+        <span class="k">if</span> <span class="n">pgood</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">p_ref</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pgood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">dh</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span> <span class="o">=</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">geo_strf_dyn_height</span><span class="p">(</span>
                                          <span class="n">SA</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">],</span>
                                          <span class="n">CT</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">],</span>
                                          <span class="n">pgood</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">dh</span></div>
 
-<div class="viewcode-block" id="unwrap"><a class="viewcode-back" href="../../gsw_flat.html#gsw.unwrap">[docs]</a><span class="k">def</span> <span class="nf">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="unwrap"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.unwrap">[docs]</a><span class="k">def</span> <span class="nf">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Unwrap a sequence of longitudes or headings in degrees.</span>
 
@@ -156,7 +181,7 @@
 
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Great-circle distance in m between lon, lat points.</span>
 
@@ -210,7 +235,7 @@
 
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.f">[docs]</a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.f">[docs]</a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Coriolis parameter in 1/s for latitude in degrees.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -219,7 +244,7 @@
     <span class="k">return</span> <span class="n">f</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophic_velocity">[docs]</a><span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geostrophic_velocity">[docs]</a><span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate geostrophic velocity from a streamfunction.</span>
 
@@ -240,7 +265,7 @@
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar.</span>
 <span class="sd">        This used only for a tiny correction in the distance calculation;</span>
 <span class="sd">        it is safe to omit it.</span>
-<span class="sd">    axis : int, optional</span>
+<span class="sd">    axis : int, 0 or 1, optional</span>
 <span class="sd">        The axis or dimension along which pressure increases in geo_strf.</span>
 <span class="sd">        If geo_strf is 1-D, it is ignored.</span>
 

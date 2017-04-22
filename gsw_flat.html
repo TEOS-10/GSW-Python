@@ -2874,7 +2874,45 @@ to that of pressure (in Pa)</p>
 <dl class="function">
 <dt id="gsw.geo_strf_dyn_height">
 <code class="descclassname">gsw.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geo_strf_dyn_height" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Dynamic height anomaly as a function of pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>p_ref</strong> : float or array-like, optional</p>
+<blockquote>
+<div><p>Reference pressure, dbar</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, optional</p>
+<blockquote>
+<div><p>The index of the pressure dimension in SA and CT.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dynamic_height</strong> : array</p>
+<blockquote class="last">
+<div><p>This is the integral of specific volume anomaly with respect
+to pressure, from each pressure in p to the specified
+reference pressure.  It is the geostrophic streamfunction
+in an isobaric surface, relative to the reference surface.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="gsw.geostrophic_velocity">
@@ -2906,7 +2944,7 @@ isobaric or &#8220;density&#8221; surface, or from a series of such surfaces.</p
 This used only for a tiny correction in the distance calculation;
 it is safe to omit it.</p>
 </div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
+<p><strong>axis</strong> : int, 0 or 1, optional</p>
 <blockquote>
 <div><p>The axis or dimension along which pressure increases in geo_strf.
 If geo_strf is 1-D, it is ignored.</p>

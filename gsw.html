@@ -60,6 +60,7 @@
 <li><a class="reference internal" href="#module-gsw.density">density</a></li>
 <li><a class="reference internal" href="#module-gsw.energy">energy</a></li>
 <li><a class="reference internal" href="#module-gsw.stability">stability</a></li>
+<li><a class="reference internal" href="#module-gsw.geostrophy">geostrophy</a></li>
 <li><a class="reference internal" href="#module-gsw.ice">ice</a></li>
 <li><a class="reference internal" href="#module-gsw.freezing">freezing</a></li>
 </ul>
@@ -1862,7 +1863,7 @@ For example, the default, following the Matlab versions, is
 <cite>axis=0</cite>, meaning the pressure varies along the first dimension.
 Use <cite>axis=-1</cite> if pressure varies along the last dimension&#8211;that
 is, along a row, as the column index increases, in the 2-D case.</p>
-<p>Docstrings are not yet available; they will be added later via
+<p>Docstrings will be added later, either manually or via
 an automated mechanism.</p>
 <dl class="function">
 <dt id="gsw.stability.Nsquared">
@@ -1878,6 +1879,178 @@ an automated mechanism.</p>
 <dt id="gsw.stability.IPV_vs_fNsquared_ratio">
 <code class="descclassname">gsw.stability.</code><code class="descname">IPV_vs_fNsquared_ratio</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#IPV_vs_fNsquared_ratio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.stability.IPV_vs_fNsquared_ratio" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</div>
+<div class="section" id="module-gsw.geostrophy">
+<span id="geostrophy"></span><h3>geostrophy<a class="headerlink" href="#module-gsw.geostrophy" title="Permalink to this headline">¶</a></h3>
+<p>Functions for calculating geostrophic currents.</p>
+<dl class="function">
+<dt id="gsw.geostrophy.distance">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">distance</code><span class="sig-paren">(</span><em>lon</em>, <em>lat</em>, <em>p=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Great-circle distance in m between lon, lat points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lon, lat</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Longitude, latitude, in degrees.</p>
+</div></blockquote>
+<p><strong>p</strong> : float or 1-D array-like, optional, default is 0</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : 1-D array</p>
+<blockquote class="last">
+<div><p>distance in meters between adjacent points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.f">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">f</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coriolis parameter in 1/s for latitude in degrees.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.geo_strf_dyn_height">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.geo_strf_dyn_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic height anomaly as a function of pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>p_ref</strong> : float or array-like, optional</p>
+<blockquote>
+<div><p>Reference pressure, dbar</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, optional</p>
+<blockquote>
+<div><p>The index of the pressure dimension in SA and CT.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dynamic_height</strong> : array</p>
+<blockquote class="last">
+<div><p>This is the integral of specific volume anomaly with respect
+to pressure, from each pressure in p to the specified
+reference pressure.  It is the geostrophic streamfunction
+in an isobaric surface, relative to the reference surface.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.geostrophic_velocity">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">geostrophic_velocity</code><span class="sig-paren">(</span><em>geo_strf</em>, <em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geostrophic_velocity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.geostrophic_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate geostrophic velocity from a streamfunction.</p>
+<p>Calculates geostrophic velocity relative to the sea surface, given a
+geostrophic streamfunction and the position of each station in
+sequence along an ocean section.  The data can be from a single
+isobaric or &#8220;density&#8221; surface, or from a series of such surfaces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>geo_strf</strong> : array-like, 1-D or 2-D</p>
+<blockquote>
+<div><p>geostrophic streamfunction; see Notes below.</p>
+</div></blockquote>
+<p><strong>lon</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Longitude, -360 to 360 degrees</p>
+</div></blockquote>
+<p><strong>lat</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Latitude, -90 to 90 degrees</p>
+</div></blockquote>
+<p><strong>p</strong> : float or array-like, optional</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
+This used only for a tiny correction in the distance calculation;
+it is safe to omit it.</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, 0 or 1, optional</p>
+<blockquote>
+<div><p>The axis or dimension along which pressure increases in geo_strf.
+If geo_strf is 1-D, it is ignored.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>velocity</strong> : array, 2-D or 1-D</p>
+<blockquote>
+<div><p>Geostrophic velocity in m/s relative to the sea surface,
+averaged between each successive pair of positions.</p>
+</div></blockquote>
+<p><strong>mid_lon, mid_lat</strong> : array, 1-D</p>
+<blockquote class="last">
+<div><p>Midpoints of input lon and lat.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The geostrophic streamfunction can be:</p>
+<ul class="simple">
+<li>geo_strf_dyn_height (in an isobaric surface)</li>
+<li>geo_strf_Montgomery (in a specific volume anomaly surface)</li>
+<li>geo_strf_Cunninhgam (in an approximately neutral surface
+such as a potential density surface).</li>
+<li>geo_strf_isopycnal (in an approximately neutral surface
+such as a potential density surface, a Neutral Density
+surface, or an omega surface (Klocker et al., 2009)).</li>
+</ul>
+<p>Only <a class="reference internal" href="#gsw.geostrophy.geo_strf_dyn_height" title="gsw.geostrophy.geo_strf_dyn_height"><code class="xref py py-func docutils literal"><span class="pre">geo_strf_dyn_height()</span></code></a> is presently implemented
+in GSW-Python.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.indexer">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">indexer</code><span class="sig-paren">(</span><em>shape</em>, <em>axis</em>, <em>order='C'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_utilities.html#indexer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.indexer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator of indexing tuples for &#8220;apply_along_axis&#8221; usage.</p>
+<p>The generator cycles through all axes other than <cite>axis</cite>.
+The numpy np.apply_along_axis function only works with functions
+of a single array; this generator allows us work with a function
+of more than one array.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.match_args_return">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">match_args_return</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_utilities.html#match_args_return"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.match_args_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator for most functions that operate on profile data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.geostrophy.unwrap">
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">unwrap</code><span class="sig-paren">(</span><em>lon</em>, <em>centered=True</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#unwrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophy.unwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unwrap a sequence of longitudes or headings in degrees.</p>
+<p>Optionally center it as close to zero as possible</p>
+<p>By default, return a copy; if <em>copy</em> is False, avoid a
+copy when possible.</p>
+<p>Returns a masked array only if the input is a masked array.</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-gsw.ice">

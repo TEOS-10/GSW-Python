@@ -48,6 +48,13 @@ stability
    :undoc-members:
    :imported-members:
 
+geostrophy
+~~~~~~~~~~
+.. automodule:: gsw.geostrophy
+   :members:
+   :undoc-members:
+   :imported-members:
+
 ice
 ~~~
 .. automodule:: gsw.ice
