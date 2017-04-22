@@ -195,7 +195,7 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     lon : array-like, 1-D
         Longitude, -360 to 360 degrees
     lat : array-like, 1-D
-        Latitude, -90 to 90 degrees
+        Latitude, degrees
     p : float or array-like, optional
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
         This used only for a tiny correction in the distance calculation;
@@ -248,5 +248,3 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     mid_lat = 0.5 * (lat[:-1] + lon[1:])
 
     return u, mid_lon, mid_lat
-
-

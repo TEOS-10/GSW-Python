@@ -28,6 +28,33 @@ __all__ = ['Nsquared',
 
 @match_args_return
 def Nsquared(SA, CT, p, lat=None, axis=0):
+    """
+    Calculate the square of the buoyancy frequency.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    lat : array-like, 1-D, optional
+        Latitude, degrees.
+    axis : int, optional
+        The dimension along which pressure increases.
+
+    Returns
+    -------
+    N2 : array
+        Buoyancy frequency at pressure midpoints, 1/s
+        The shape along the pressure axis dimension is one
+        less than that of the inputs.
+    p_mid : array
+        Pressure at midpoints of p, dbar.
+        The array shape matches N2.
+
+    """
     if lat is not None:
         if np.any((lat < -90) | (lat > 90)):
             raise ValueError('lat is out of range')
@@ -63,6 +90,35 @@ def Nsquared(SA, CT, p, lat=None, axis=0):
 
 @match_args_return
 def Turner_Rsubrho(SA, CT, p, axis=0):
+    """
+    Calculate the Turner Angle and the Stability Ratio.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    axis : int, optional
+        The dimension along which pressure increases.
+
+    Returns
+    -------
+    Tu : array
+        Turner Angle at pressure midpoints, degrees.
+        The shape along the pressure axis dimension is one
+        less than that of the inputs.
+    Rsubrho : array
+        Stability Ratio, dimensionless.
+        The shape matches Tu.
+    p_mid : array
+        Pressure at midpoints of p, dbar.
+        The array shape matches N2.
+
+    """
+
     SA = np.clip(SA, 0, 50)
     SA, CT, p = np.broadcast_arrays(SA, CT, p)
     shallow = axis_slicer(SA.ndim, slice(-1), axis)
@@ -90,6 +146,36 @@ def Turner_Rsubrho(SA, CT, p, axis=0):
 
 @match_args_return
 def IPV_vs_fNsquared_ratio(SA, CT, p, p_ref=0, axis=0):
+    """
+    Calculates the ratio of the vertical gradient of potential density to
+    the vertical gradient of locally-referenced potential density.  This
+    is also the ratio of the planetary Isopycnal Potential Vorticity
+    (IPV) to f times N^2, hence the name for this variable,
+    IPV_vs_fNsquared_ratio (see Eqn. (3.20.17) of IOC et al. (2010)).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    t : array-like
+        In-situ temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    p_ref : float
+        Reference pressure, dbar
+
+    Returns
+    -------
+    IPV_vs_fNsquared_ratio : array
+        The ratio of the vertical gradient of
+        potential density referenced to p_ref, to the vertical
+        gradient of locally-referenced potential density, dimensionless.
+    p_mid : array
+        Pressure at midpoints of p, dbar.
+        The array shape matches IPV_vs_fNsquared_ratio.
+
+    """
+
     SA = np.clip(SA, 0, 50)
     SA, CT, p = np.broadcast_arrays(SA, CT, p)
     shallow = axis_slicer(SA.ndim, slice(-1), axis)
