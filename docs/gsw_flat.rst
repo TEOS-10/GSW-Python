@@ -1,5 +1,5 @@
-gsw package as a flat namespace
-===============================
+All functions
+=============
 
 The following section documents all functions alphabetically.
 
