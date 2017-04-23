@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Geostrophy &mdash; gsw 0.1-devel documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
+        <link rel="up" title="Subpackages" href="gsw.html"/>
+        <link rel="next" title="Ice" href="ice.html"/>
+        <link rel="prev" title="Stability" href="stability.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gsw
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gsw.html">Subpackages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conversions.html">Conversion functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="density.html">Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="energy.html">Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stability.html">Stability</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Geostrophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ice.html">Ice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freezing.html">Freezing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsw_flat.html">All functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gsw</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
+        
+      <li>Geostrophy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/geostrophy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="geostrophy">
+<h1>Geostrophy<a class="headerlink" href="#geostrophy" title="Permalink to this headline">¶</a></h1>
+<p>Functions for calculating geostrophic currents.</p>
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Dynamic height anomaly as a function of pressure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>p_ref</strong> : float or array-like, optional</p>
+<blockquote>
+<div><p>Reference pressure, dbar</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, optional</p>
+<blockquote>
+<div><p>The index of the pressure dimension in SA and CT.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dynamic_height</strong> : array</p>
+<blockquote class="last">
+<div><p>This is the integral of specific volume anomaly with respect
+to pressure, from each pressure in p to the specified
+reference pressure.  It is the geostrophic streamfunction
+in an isobaric surface, relative to the reference surface.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">distance</code><span class="sig-paren">(</span><em>lon</em>, <em>lat</em>, <em>p=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#distance"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Great-circle distance in m between lon, lat points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lon, lat</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Longitude, latitude, in degrees.</p>
+</div></blockquote>
+<p><strong>p</strong> : float or 1-D array-like, optional, default is 0</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : 1-D array</p>
+<blockquote class="last">
+<div><p>distance in meters between adjacent points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">f</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#f"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Coriolis parameter in 1/s for latitude in degrees.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">geostrophic_velocity</code><span class="sig-paren">(</span><em>geo_strf</em>, <em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geostrophic_velocity"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculate geostrophic velocity from a streamfunction.</p>
+<p>Calculates geostrophic velocity relative to the sea surface, given a
+geostrophic streamfunction and the position of each station in
+sequence along an ocean section.  The data can be from a single
+isobaric or &#8220;density&#8221; surface, or from a series of such surfaces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>geo_strf</strong> : array-like, 1-D or 2-D</p>
+<blockquote>
+<div><p>geostrophic streamfunction; see Notes below.</p>
+</div></blockquote>
+<p><strong>lon</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Longitude, -360 to 360 degrees</p>
+</div></blockquote>
+<p><strong>lat</strong> : array-like, 1-D</p>
+<blockquote>
+<div><p>Latitude, degrees</p>
+</div></blockquote>
+<p><strong>p</strong> : float or array-like, optional</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
+This used only for a tiny correction in the distance calculation;
+it is safe to omit it.</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, 0 or 1, optional</p>
+<blockquote>
+<div><p>The axis or dimension along which pressure increases in geo_strf.
+If geo_strf is 1-D, it is ignored.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>velocity</strong> : array, 2-D or 1-D</p>
+<blockquote>
+<div><p>Geostrophic velocity in m/s relative to the sea surface,
+averaged between each successive pair of positions.</p>
+</div></blockquote>
+<p><strong>mid_lon, mid_lat</strong> : array, 1-D</p>
+<blockquote class="last">
+<div><p>Midpoints of input lon and lat.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The geostrophic streamfunction can be:</p>
+<ul class="simple">
+<li>geo_strf_dyn_height (in an isobaric surface)</li>
+<li>geo_strf_Montgomery (in a specific volume anomaly surface)</li>
+<li>geo_strf_Cunninhgam (in an approximately neutral surface
+such as a potential density surface).</li>
+<li>geo_strf_isopycnal (in an approximately neutral surface
+such as a potential density surface, a Neutral Density
+surface, or an omega surface (Klocker et al., 2009)).</li>
+</ul>
+<p>Only <code class="xref py py-func docutils literal"><span class="pre">geo_strf_dyn_height()</span></code> is presently implemented
+in GSW-Python.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ice.html" class="btn btn-neutral float-right" title="Ice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stability.html" class="btn btn-neutral" title="Stability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, TEOS-10 developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-devel',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

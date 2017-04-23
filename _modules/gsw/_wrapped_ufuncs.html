@@ -1,66 +1,162 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>gsw._wrapped_ufuncs &mdash; gsw 0.1-devel documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
     
-    <title>gsw._wrapped_ufuncs &#8212; gsw 0.1-devel documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="gsw 0.1-devel documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1-devel',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> gsw
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gsw.html">Subpackages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gsw_flat.html">All functions</a></li>
+</ul>
+
+            
+          
         </div>
       </div>
+    </nav>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">gsw</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>gsw._wrapped_ufuncs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <h1>Source code for gsw._wrapped_ufuncs</h1><div class="highlight"><pre>
 <span></span>
@@ -97,7 +193,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">adiabatic_lapse_rate_from_ct</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="adiabatic_lapse_rate_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.adiabatic_lapse_rate_ice">[docs]</a><span class="k">def</span> <span class="nf">adiabatic_lapse_rate_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="adiabatic_lapse_rate_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.adiabatic_lapse_rate_ice">[docs]</a><span class="k">def</span> <span class="nf">adiabatic_lapse_rate_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the adiabatic lapse rate of ice.</span>
 
@@ -199,7 +295,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">alpha_wrt_t_exact</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="alpha_wrt_t_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.alpha_wrt_t_ice">[docs]</a><span class="k">def</span> <span class="nf">alpha_wrt_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="alpha_wrt_t_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.alpha_wrt_t_ice">[docs]</a><span class="k">def</span> <span class="nf">alpha_wrt_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the thermal expansion coefficient of ice with respect to</span>
 <span class="sd">    in-situ temperature.</span>
@@ -328,7 +424,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">cabbeling</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="chem_potential_water_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.chem_potential_water_ice">[docs]</a><span class="k">def</span> <span class="nf">chem_potential_water_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="chem_potential_water_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.chem_potential_water_ice">[docs]</a><span class="k">def</span> <span class="nf">chem_potential_water_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the chemical potential of water in ice from in-situ</span>
 <span class="sd">    temperature and pressure.</span>
@@ -373,7 +469,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">chem_potential_water_t_exact</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="cp_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.cp_ice">[docs]</a><span class="k">def</span> <span class="nf">cp_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="cp_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.cp_ice">[docs]</a><span class="k">def</span> <span class="nf">cp_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the isobaric heat capacity of seawater.</span>
 
@@ -1085,7 +1181,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">enthalpy_first_derivatives_ct_exact</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="enthalpy_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.enthalpy_ice">[docs]</a><span class="k">def</span> <span class="nf">enthalpy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="enthalpy_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.enthalpy_ice">[docs]</a><span class="k">def</span> <span class="nf">enthalpy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the specific enthalpy of ice (h_Ih).</span>
 
@@ -1301,7 +1397,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">entropy_from_t</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="entropy_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.entropy_ice">[docs]</a><span class="k">def</span> <span class="nf">entropy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="entropy_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.entropy_ice">[docs]</a><span class="k">def</span> <span class="nf">entropy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates specific entropy of ice.</span>
 
@@ -1657,7 +1753,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">grav</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="Helmholtz_energy_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.Helmholtz_energy_ice">[docs]</a><span class="k">def</span> <span class="nf">Helmholtz_energy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="Helmholtz_energy_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.Helmholtz_energy_ice">[docs]</a><span class="k">def</span> <span class="nf">Helmholtz_energy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the Helmholtz energy of ice.</span>
 
@@ -1702,7 +1798,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">hill_ratio_at_sp2</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="ice_fraction_to_freeze_seawater"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.ice_fraction_to_freeze_seawater">[docs]</a><span class="k">def</span> <span class="nf">ice_fraction_to_freeze_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
+<div class="viewcode-block" id="ice_fraction_to_freeze_seawater"><a class="viewcode-back" href="../../ice.html#gsw.conversions.ice_fraction_to_freeze_seawater">[docs]</a><span class="k">def</span> <span class="nf">ice_fraction_to_freeze_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the mass fraction of ice (mass of ice divided by mass of ice</span>
 <span class="sd">    plus seawater), which, when melted into seawater having (SA,CT,p) causes</span>
@@ -1769,7 +1865,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">internal_energy</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="internal_energy_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.internal_energy_ice">[docs]</a><span class="k">def</span> <span class="nf">internal_energy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="internal_energy_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.internal_energy_ice">[docs]</a><span class="k">def</span> <span class="nf">internal_energy_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the specific internal energy of ice.</span>
 
@@ -1816,7 +1912,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">kappa</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="kappa_const_t_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.kappa_const_t_ice">[docs]</a><span class="k">def</span> <span class="nf">kappa_const_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="kappa_const_t_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.kappa_const_t_ice">[docs]</a><span class="k">def</span> <span class="nf">kappa_const_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates isothermal compressibility of ice.</span>
 <span class="sd">    Note. This is the compressibility of ice AT CONSTANT IN-SITU</span>
@@ -1839,7 +1935,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">kappa_const_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="kappa_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.kappa_ice">[docs]</a><span class="k">def</span> <span class="nf">kappa_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="kappa_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.kappa_ice">[docs]</a><span class="k">def</span> <span class="nf">kappa_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the isentropic compressibility of ice.</span>
 
@@ -1957,7 +2053,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">latentheat_melting</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_ice_equilibrium_SA_CT_ratio"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_ice_equilibrium_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_equilibrium_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_ice_equilibrium_SA_CT_ratio"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_ice_equilibrium_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_equilibrium_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when ice melts into seawater</span>
 <span class="sd">    with both the seawater and the seaice temperatures being almost equal to</span>
@@ -1989,7 +2085,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_ice_equilibrium_sa_ct_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_ice_equilibrium_SA_CT_ratio_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_ice_equilibrium_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_equilibrium_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_ice_equilibrium_SA_CT_ratio_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_ice_equilibrium_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_equilibrium_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when ice melts into seawater</span>
 <span class="sd">    with both the seawater and the seaice temperatures being almost equal to</span>
@@ -2021,7 +2117,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_ice_equilibrium_sa_ct_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_ice_into_seawater"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_ice_into_seawater">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_Ih</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_ice_into_seawater"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_ice_into_seawater">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_Ih</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the final Absolute Salinity, final Conservative Temperature</span>
 <span class="sd">    and final ice mass fraction that results when a given mass fraction of</span>
@@ -2063,7 +2159,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_ice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_Ih</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_ice_SA_CT_ratio"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_ice_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_ice_SA_CT_ratio"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_ice_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when ice melts into seawater.</span>
 <span class="sd">    It is assumed that a small mass of ice melts into an infinite mass of</span>
@@ -2092,7 +2188,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_ice_sa_ct_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_ice_SA_CT_ratio_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_ice_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_ice_SA_CT_ratio_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_ice_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_ice_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when ice melts into seawater.</span>
 <span class="sd">    It is assumed that a small mass of ice melts into an infinite mass of</span>
@@ -2121,7 +2217,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_ice_sa_ct_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t_Ih</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_seaice_equilibrium_SA_CT_ratio"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_seaice_equilibrium_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_equilibrium_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_seaice_equilibrium_SA_CT_ratio"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_seaice_equilibrium_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_equilibrium_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when sea ice melts into</span>
 <span class="sd">    seawater with both the seawater and the sea ice temperatures being</span>
@@ -2154,7 +2250,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_seaice_equilibrium_sa_ct_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_seaice_equilibrium_SA_CT_ratio_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_seaice_equilibrium_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_equilibrium_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_seaice_equilibrium_SA_CT_ratio_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_seaice_equilibrium_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_equilibrium_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when sea ice melts into</span>
 <span class="sd">    seawater with both the seawater and the sea ice temperatures being</span>
@@ -2187,7 +2283,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_seaice_equilibrium_sa_ct_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_seaice_into_seawater"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_seaice_into_seawater">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_seaice</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_seaice_into_seawater"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_seaice_into_seawater">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_seaice</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the Absolute Salinity and Conservative Temperature that</span>
 <span class="sd">    results when a given mass of sea ice (or ice) melts and is mixed into a</span>
@@ -2224,7 +2320,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_seaice_into_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w_seaice</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_seaice_SA_CT_ratio"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_seaice_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_seaice_SA_CT_ratio"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_seaice_SA_CT_ratio">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_SA_CT_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when sea ice melts into</span>
 <span class="sd">    seawater.  It is assumed that a small mass of sea ice melts into an</span>
@@ -2256,7 +2352,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_seaice_sa_ct_ratio</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="melting_seaice_SA_CT_ratio_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.melting_seaice_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
+<div class="viewcode-block" id="melting_seaice_SA_CT_ratio_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.melting_seaice_SA_CT_ratio_poly">[docs]</a><span class="k">def</span> <span class="nf">melting_seaice_SA_CT_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the ratio of SA to CT changes when sea ice melts into</span>
 <span class="sd">    seawater.  It is assumed that a small mass of sea ice melts into an</span>
@@ -2315,7 +2411,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pot_enthalpy_from_pt_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pot_enthalpy_from_pt_ice">[docs]</a><span class="k">def</span> <span class="nf">pot_enthalpy_from_pt_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">):</span>
+<div class="viewcode-block" id="pot_enthalpy_from_pt_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pot_enthalpy_from_pt_ice">[docs]</a><span class="k">def</span> <span class="nf">pot_enthalpy_from_pt_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the potential enthalpy of ice from potential temperature of</span>
 <span class="sd">    ice (whose reference sea pressure is zero dbar).</span>
@@ -2335,7 +2431,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pot_enthalpy_from_pt_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pot_enthalpy_from_pt_ice_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pot_enthalpy_from_pt_ice_poly">[docs]</a><span class="k">def</span> <span class="nf">pot_enthalpy_from_pt_ice_poly</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">):</span>
+<div class="viewcode-block" id="pot_enthalpy_from_pt_ice_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pot_enthalpy_from_pt_ice_poly">[docs]</a><span class="k">def</span> <span class="nf">pot_enthalpy_from_pt_ice_poly</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the potential enthalpy of ice from potential temperature of</span>
 <span class="sd">    ice (whose reference sea pressure is zero dbar).  This is a</span>
@@ -2496,7 +2592,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pot_rho_t_exact</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pressure_coefficient_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pressure_coefficient_ice">[docs]</a><span class="k">def</span> <span class="nf">pressure_coefficient_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="pressure_coefficient_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pressure_coefficient_ice">[docs]</a><span class="k">def</span> <span class="nf">pressure_coefficient_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates pressure coefficient of ice.</span>
 
@@ -2576,7 +2672,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pt0_from_t</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pt0_from_t_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pt0_from_t_ice">[docs]</a><span class="k">def</span> <span class="nf">pt0_from_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="pt0_from_t_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pt0_from_t_ice">[docs]</a><span class="k">def</span> <span class="nf">pt0_from_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates potential temperature of ice Ih with a reference pressure of</span>
 <span class="sd">    0 dbar, from in-situ temperature, t.</span>
@@ -2680,7 +2776,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pt_from_entropy</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">entropy</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pt_from_pot_enthalpy_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pt_from_pot_enthalpy_ice">[docs]</a><span class="k">def</span> <span class="nf">pt_from_pot_enthalpy_ice</span><span class="p">(</span><span class="n">pot_enthalpy_ice</span><span class="p">):</span>
+<div class="viewcode-block" id="pt_from_pot_enthalpy_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pt_from_pot_enthalpy_ice">[docs]</a><span class="k">def</span> <span class="nf">pt_from_pot_enthalpy_ice</span><span class="p">(</span><span class="n">pot_enthalpy_ice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the potential temperature of ice from the potential enthalpy</span>
 <span class="sd">    of ice.  The reference sea pressure of both the potential temperature</span>
@@ -2701,7 +2797,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pt_from_pot_enthalpy_ice</span><span class="p">(</span><span class="n">pot_enthalpy_ice</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pt_from_pot_enthalpy_ice_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pt_from_pot_enthalpy_ice_poly">[docs]</a><span class="k">def</span> <span class="nf">pt_from_pot_enthalpy_ice_poly</span><span class="p">(</span><span class="n">pot_enthalpy_ice</span><span class="p">):</span>
+<div class="viewcode-block" id="pt_from_pot_enthalpy_ice_poly"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pt_from_pot_enthalpy_ice_poly">[docs]</a><span class="k">def</span> <span class="nf">pt_from_pot_enthalpy_ice_poly</span><span class="p">(</span><span class="n">pot_enthalpy_ice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the potential temperature of ice (whose reference sea</span>
 <span class="sd">    pressure is zero dbar) from the potential enthalpy of ice.  This is a</span>
@@ -2754,7 +2850,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">pt_from_t</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="pt_from_t_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.pt_from_t_ice">[docs]</a><span class="k">def</span> <span class="nf">pt_from_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">):</span>
+<div class="viewcode-block" id="pt_from_t_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pt_from_t_ice">[docs]</a><span class="k">def</span> <span class="nf">pt_from_t_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates potential temperature of ice Ih with the general reference</span>
 <span class="sd">    pressure, p_ref, from in-situ temperature, t.</span>
@@ -2943,7 +3039,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">rho_first_derivatives_wrt_enthalpy</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="rho_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.rho_ice">[docs]</a><span class="k">def</span> <span class="nf">rho_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="rho_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.rho_ice">[docs]</a><span class="k">def</span> <span class="nf">rho_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates in-situ density of ice from in-situ temperature and pressure.</span>
 <span class="sd">    Note that the output, rho_ice, is density, not density anomaly;  that</span>
@@ -3325,7 +3421,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">saar</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="seaice_fraction_to_freeze_seawater"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.seaice_fraction_to_freeze_seawater">[docs]</a><span class="k">def</span> <span class="nf">seaice_fraction_to_freeze_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
+<div class="viewcode-block" id="seaice_fraction_to_freeze_seawater"><a class="viewcode-back" href="../../ice.html#gsw.conversions.seaice_fraction_to_freeze_seawater">[docs]</a><span class="k">def</span> <span class="nf">seaice_fraction_to_freeze_seawater</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the mass fraction of sea ice (mass of sea ice divided by mass</span>
 <span class="sd">    of sea ice plus seawater), which, when melted into seawater having the</span>
@@ -3532,7 +3628,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">sound_speed</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="sound_speed_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.sound_speed_ice">[docs]</a><span class="k">def</span> <span class="nf">sound_speed_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="sound_speed_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.sound_speed_ice">[docs]</a><span class="k">def</span> <span class="nf">sound_speed_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the compression speed of sound in ice.</span>
 
@@ -3876,7 +3972,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">specvol_first_derivatives_wrt_enthalpy</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="specvol_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.specvol_ice">[docs]</a><span class="k">def</span> <span class="nf">specvol_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="specvol_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.specvol_ice">[docs]</a><span class="k">def</span> <span class="nf">specvol_ice</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the specific volume of ice.</span>
 
@@ -4319,7 +4415,7 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">t_from_ct</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 <span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="t_from_pt0_ice"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.t_from_pt0_ice">[docs]</a><span class="k">def</span> <span class="nf">t_from_pt0_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="t_from_pt0_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.t_from_pt0_ice">[docs]</a><span class="k">def</span> <span class="nf">t_from_pt0_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates in-situ temperature from the potential temperature of ice Ih</span>
 <span class="sd">    with reference pressure, p_ref, of 0 dbar (the surface), and the</span>
@@ -4395,27 +4491,67 @@
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
 </pre></div>
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, TEOS-10 developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">gsw 0.1-devel documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, TEOS-10 developers.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1-devel',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

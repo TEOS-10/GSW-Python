@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python Module Index &mdash; gsw 0.1-devel documentation</title>
+  <title>Introduction &mdash; gsw 0.1-devel documentation</title>
   
 
   
@@ -36,13 +36,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
- 
-
-    <script type="text/javascript">
-      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
-    </script>
-
-
+        <link rel="next" title="Installation" href="install.html"/>
+        <link rel="prev" title="GSW-Python" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,8 +91,8 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsw.html">Subpackages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsw_flat.html">All functions</a></li>
@@ -145,12 +140,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Python Module Index</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -162,23 +159,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-   <h1>Python Module Index</h1>
-
-   <div class="modindex-jumpbox">
-   <a href="#cap-g"><strong>g</strong></a>
-   </div>
-
-   <table class="indextable modindextable">
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-g"><td></td><td>
-       <strong>g</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="intro.html#module-gsw"><code class="xref">gsw</code></a></td><td>
-       <em></em></td></tr>
-   </table>
+  <div class="section" id="module-gsw">
+<span id="introduction"></span><h1>Introduction<a class="headerlink" href="#module-gsw" title="Permalink to this headline">¶</a></h1>
+<p>This is a Python implementation of the Gibbs SeaWater (GSW) Oceanographic
+Toolbox of TEOS-10.  Extensive documentation is available from
+<a class="reference external" href="http://www.teos-10.org/">http://www.teos-10.org/</a>; users of this Python package are strongly
+encouraged to study the documents posted there.</p>
+<p>This implementation is based on GSW-C for core functions, with
+additional functions written in Python.  GSW-C is the
+work of Frank Delahoyde and Glenn Hyland (author of GSW-Fortran,
+on which GSW-C is based), who translated and re-implemented the
+algorithms originally written in Matlab by David Jackett,
+Trevor McDougall, and Paul Barker.</p>
+<p>The present Python library has an interface that is similar to the
+original Matlab code, but with a few important differences:</p>
+<ul class="simple">
+<li>Many functions in the GSW-Matlab toolbox are not yet available here.</li>
+<li>Taking advantage of Python namespaces, we omit the &#8220;gsw&#8221; prefix
+from the function names.</li>
+<li>Missing values may be handled using <cite>numpy.ma</cite> masked arrays, or
+using <cite>nan</cite> values.</li>
+<li>All functions follow numpy broadcasting rules; function arguments
+must be broadcastable to the dimensions of the highest-dimensioned
+argument.  Recall that with numpy broadcasting, extra dimensions
+are automatically added as needed on the left, but must be added
+explicitly as needed on the right.</li>
+<li>Functions such as <cite>Nsquared</cite> that operate on profiles rather than
+scalars have an <cite>axis</cite> keyword argument to specify the index that
+is incremented along the pressure (depth) axis.</li>
+</ul>
+</div>
 
 
            </div>
@@ -187,6 +197,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="GSW-Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

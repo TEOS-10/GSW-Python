@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Energy &mdash; gsw 0.1-devel documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
+        <link rel="up" title="Subpackages" href="gsw.html"/>
+        <link rel="next" title="Stability" href="stability.html"/>
+        <link rel="prev" title="Density" href="density.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gsw
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gsw.html">Subpackages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conversions.html">Conversion functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="density.html">Density</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stability.html">Stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geostrophy.html">Geostrophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ice.html">Ice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freezing.html">Freezing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsw_flat.html">All functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gsw</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
+        
+      <li>Energy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/energy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="energy">
+<h1>Energy<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h1>
+<p>Functions involving internal energy, enthalpy, latent heat.</p>
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.energy.</code><code class="descname">enthalpy</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#enthalpy"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates specific enthalpy of seawater using the computationally-
+efficient expression for specific volume in terms of SA, CT and p
+(Roquet et al., 2015).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>enthalpy</strong> : array-like, J/kg</p>
+<blockquote class="last">
+<div><p>specific enthalpy</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.energy.</code><code class="descname">enthalpy_diff</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p_shallow</em>, <em>p_deep</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#enthalpy_diff"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the difference of the specific enthalpy of seawater between
+two different pressures, p_deep (the deeper pressure) and p_shallow
+(the shallower pressure), at the same values of SA and CT.  This
+function uses the computationally-efficient expression for specific
+volume in terms of SA, CT and p (Roquet et al., 2015).  The output
+(enthalpy_diff) is the specific enthalpy evaluated at (SA,CT,p_deep)
+minus the specific enthalpy at (SA,CT,p_shallow).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p_shallow</strong> : array-like</p>
+<blockquote>
+<div><p>Upper sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>p_deep</strong> : array-like</p>
+<blockquote>
+<div><p>Lower sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>enthalpy_diff</strong> : array-like, J/kg</p>
+<blockquote class="last">
+<div><p>difference of specific enthalpy
+(deep minus shallow)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.energy.</code><code class="descname">internal_energy</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#internal_energy"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates specific internal energy of seawater using the
+computationally-efficient expression for specific volume in terms of SA,
+CT and p (Roquet et al., 2015).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>internal_energy</strong> : array-like, J/kg</p>
+<blockquote class="last">
+<div><p>specific internal energy</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.energy.</code><code class="descname">latentheat_evap_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#latentheat_evap_CT"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
+surface).  It is defined as a function of Absolute Salinity, SA, and
+Conservative Temperature, CT, and is valid in the ranges
+0 &lt; SA &lt; 42 g/kg and 0 &lt; CT &lt; 40 deg C.  The errors range between
+-0.4 and 0.6 J/kg.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>latentheat_evap</strong> : array-like, J/kg</p>
+<blockquote class="last">
+<div><p>latent heat of evaporation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.energy.</code><code class="descname">latentheat_evap_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#latentheat_evap_t"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
+surface).  It is defined as a function of Absolute Salinity, SA, and
+in-situ temperature, t, and is valid in the ranges 0 &lt; SA &lt; 40 g/kg
+and 0 &lt; CT &lt; 42 deg C. The errors range between -0.4 and 0.6 J/kg.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>t</strong> : array-like</p>
+<blockquote>
+<div><p>In-situ temperature (ITS-90), degrees C</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>latentheat_evap</strong> : array-like, J/kg</p>
+<blockquote class="last">
+<div><p>latent heat of evaporation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stability.html" class="btn btn-neutral float-right" title="Stability" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="density.html" class="btn btn-neutral" title="Density" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, TEOS-10 developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-devel',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
