@@ -21,6 +21,8 @@ Windows) compiler is required to build the package from source.
 **Warning:** the only *official* TEOS-10 implementations are
 provided as zipfiles at <http://www.teos-10.org/software.htm>.
 
+Documentation is provided at <https://teos-10.github.io/GSW-Python/>.
+
 For the core functionality, we use an auto-generated C extension
 module to wrap the C functions as numpy
 `ufuncs <https://docs.scipy.org/doc/numpy/reference/ufuncs.html>`__,
