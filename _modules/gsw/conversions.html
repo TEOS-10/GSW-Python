@@ -162,7 +162,47 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Conversions involving temperature, salinity, entropy, pressure,</span>
 <span class="sd">and height.</span>
+
+<span class="sd">Those most commonly used probably include:</span>
+
+<span class="sd">- :func:`gsw.CT_from_t`</span>
+<span class="sd">- :func:`gsw.SA_from_SP`</span>
+<span class="sd">- :func:`gsw.SP_from_C`</span>
+<span class="sd">- :func:`gsw.p_from_z`</span>
+<span class="sd">- :func:`gsw.z_from_p`</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;t90_from_t68&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;adiabatic_lapse_rate_from_CT&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;C_from_SP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CT_from_enthalpy&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CT_from_entropy&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CT_from_pt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CT_from_rho&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CT_from_t&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;deltaSA_from_SP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;entropy_from_pt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;entropy_from_t&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pt0_from_t&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pt_from_CT&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pt_from_entropy&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pt_from_t&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SA_from_rho&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SA_from_SP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SA_from_Sstar&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SP_from_C&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SP_from_SA&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SP_from_SK&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SP_from_SR&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SP_from_Sstar&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SR_from_SP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Sstar_from_SA&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Sstar_from_SP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;t_from_CT&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;p_from_z&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;z_from_p&#39;</span><span class="p">,</span>
+            <span class="p">]</span>
 
 <span class="kn">from</span> <span class="nn">._utilities</span> <span class="k">import</span> <span class="n">match_args_return</span>
 
@@ -193,6 +233,7 @@
 <span class="n">Sstar_from_SA</span><span class="p">,</span>
 <span class="n">Sstar_from_SP</span><span class="p">,</span>
 <span class="n">t_from_CT</span><span class="p">,</span>
+<span class="n">p_from_z</span><span class="p">,</span>
 <span class="n">z_from_p</span><span class="p">,</span>
 <span class="p">)</span>
 

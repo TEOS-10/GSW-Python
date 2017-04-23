@@ -175,6 +175,91 @@
 <h1>Conversion functions<a class="headerlink" href="#conversion-functions" title="Permalink to this headline">¶</a></h1>
 <p>Conversions involving temperature, salinity, entropy, pressure,
 and height.</p>
+<p>Those most commonly used probably include:</p>
+<ul class="simple">
+<li><a class="reference internal" href="gsw_flat.html#gsw.CT_from_t" title="gsw.CT_from_t"><code class="xref py py-func docutils literal"><span class="pre">gsw.CT_from_t()</span></code></a></li>
+<li><a class="reference internal" href="gsw_flat.html#gsw.SA_from_SP" title="gsw.SA_from_SP"><code class="xref py py-func docutils literal"><span class="pre">gsw.SA_from_SP()</span></code></a></li>
+<li><a class="reference internal" href="gsw_flat.html#gsw.SP_from_C" title="gsw.SP_from_C"><code class="xref py py-func docutils literal"><span class="pre">gsw.SP_from_C()</span></code></a></li>
+<li><a class="reference internal" href="gsw_flat.html#gsw.p_from_z" title="gsw.p_from_z"><code class="xref py py-func docutils literal"><span class="pre">gsw.p_from_z()</span></code></a></li>
+<li><a class="reference internal" href="gsw_flat.html#gsw.z_from_p" title="gsw.z_from_p"><code class="xref py py-func docutils literal"><span class="pre">gsw.z_from_p()</span></code></a></li>
+</ul>
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">t90_from_t68</code><span class="sig-paren">(</span><em>t68</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/conversions.html#t90_from_t68"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>ITS-90 temperature from IPTS-68 temperature</p>
+<p>This conversion should be applied to all in-situ
+data collected between 1/1/1968 and 31/12/1989.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">adiabatic_lapse_rate_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_from_CT"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the adiabatic lapse rate of sea water from Conservative
+Temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>adiabatic_lapse_rate</strong> : array-like, K/Pa</p>
+<blockquote class="last">
+<div><p>adiabatic lapse rate</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">C_from_SP</code><span class="sig-paren">(</span><em>SP</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#C_from_SP"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
+2 &lt; SP &lt; 42.  If the input Practical Salinity is less than 2 then a
+modified form of the Hill et al. (1986) fomula is used for Practical
+Salinity.  The modification of the Hill et al. (1986) expression is to
+ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SP</strong> : array-like</p>
+<blockquote>
+<div><p>Practical Salinity (PSS-78), unitless</p>
+</div></blockquote>
+<p><strong>t</strong> : array-like</p>
+<blockquote>
+<div><p>In-situ temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, mS/cm</p>
+<blockquote class="last">
+<div><p>conductivity</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">CT_from_enthalpy</code><span class="sig-paren">(</span><em>SA</em>, <em>h</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_enthalpy"><span class="viewcode-link">[source]</span></a></dt>
@@ -342,12 +427,10 @@ temperature.</p>
 
 <dl class="function">
 <dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">C_from_SP</code><span class="sig-paren">(</span><em>SP</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#C_from_SP"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
-2 &lt; SP &lt; 42.  If the input Practical Salinity is less than 2 then a
-modified form of the Hill et al. (1986) fomula is used for Practical
-Salinity.  The modification of the Hill et al. (1986) expression is to
-ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
+<code class="descclassname">gsw.conversions.</code><code class="descname">deltaSA_from_SP</code><span class="sig-paren">(</span><em>SP</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#deltaSA_from_SP"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
+is non-negative by definition, this function changes any negative input
+values of SP to be zero.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -355,6 +438,71 @@ ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SP</strong> : array-like</p>
 <blockquote>
 <div><p>Practical Salinity (PSS-78), unitless</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>lon</strong> : array-like</p>
+<blockquote>
+<div><p>Longitude, -360 to 360 degrees</p>
+</div></blockquote>
+<p><strong>lat</strong> : array-like</p>
+<blockquote>
+<div><p>Latitude, -90 to 90 degrees</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>deltaSA</strong> : array-like, g/kg</p>
+<blockquote class="last">
+<div><p>Absolute Salinity Anomaly</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_pt</code><span class="sig-paren">(</span><em>SA</em>, <em>pt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates specific entropy of seawater as a function of potential
+temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>pt</strong> : array-like</p>
+<blockquote>
+<div><p>Potential temperature referenced to a sea pressure, degrees C</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entropy</strong> : array-like, J/(kg*K)</p>
+<blockquote class="last">
+<div><p>specific entropy</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates specific entropy of seawater from in-situ temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
 </div></blockquote>
 <p><strong>t</strong> : array-like</p>
 <blockquote>
@@ -366,9 +514,187 @@ ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, mS/cm</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entropy</strong> : array-like, J/(kg*K)</p>
 <blockquote class="last">
-<div><p>conductivity</p>
+<div><p>specific entropy</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">pt0_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates potential temperature with reference pressure, p_ref = 0 dbar.
+The present routine is computationally faster than the more general
+function &#8220;gsw_pt_from_t(SA,t,p,p_ref)&#8221; which can be used for any
+reference pressure value.
+This subroutine calls &#8220;gsw_entropy_part(SA,t,p)&#8221;,
+&#8220;gsw_entropy_part_zerop(SA,pt0)&#8221; and &#8220;gsw_gibbs_pt0_pt0(SA,pt0)&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>t</strong> : array-like</p>
+<blockquote>
+<div><p>In-situ temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt0</strong> : array-like, deg C</p>
+<blockquote class="last">
+<div><p>potential temperature
+with reference sea pressure (p_ref) = 0 dbar.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_CT"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates potential temperature (with a reference sea pressure of
+zero dbar) from Conservative Temperature.  This function uses 1.5
+iterations through a modified Newton-Raphson (N-R) iterative solution
+proceedure, starting from a rational-function-based initial condition
+for both pt and dCT_dpt.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
+<blockquote class="last">
+<div><p>potential temperature referenced to a sea pressure
+of zero dbar (ITS-90)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_entropy</code><span class="sig-paren">(</span><em>SA</em>, <em>entropy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_entropy"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates potential temperature with reference pressure p_ref = 0 dbar
+and with entropy as an input variable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>entropy</strong> : array-like</p>
+<blockquote>
+<div><p>Specific entropy, J/(kg*K)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
+<blockquote class="last">
+<div><p>potential temperature
+with reference sea pressure (p_ref) = 0 dbar.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em>, <em>p_ref</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates potential temperature with the general reference pressure,
+p_ref, from in-situ temperature, t.  This function calls
+&#8220;gsw_entropy_part&#8221; which evaluates entropy except for the parts which
+are a function of Absolute Salinity alone.
+A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
+is &#8220;gsw_pt0_from_t(SA,t,p)&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
+<blockquote>
+<div><p>Absolute Salinity, g/kg</p>
+</div></blockquote>
+<p><strong>t</strong> : array-like</p>
+<blockquote>
+<div><p>In-situ temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+<p><strong>p_ref</strong> : array-like</p>
+<blockquote>
+<div><p>Reference pressure, dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
+<blockquote class="last">
+<div><p>potential temperature with reference pressure, p_ref, on the
+ITS-90 temperature scale</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">SA_from_rho</code><span class="sig-paren">(</span><em>rho</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_rho"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Absolute Salinity of a seawater sample, for given values
+of its density, Conservative Temperature and sea pressure (in dbar).
+This function uses the computationally-efficient 75-term expression for
+specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rho</strong> : array-like</p>
+<blockquote>
+<div><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
+</div></blockquote>
+<p><strong>CT</strong> : array-like</p>
+<blockquote>
+<div><p>Conservative Temperature (ITS-90), degrees C</p>
+</div></blockquote>
+<p><strong>p</strong> : array-like</p>
+<blockquote>
+<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like, g/kg</p>
+<blockquote class="last">
+<div><p>Absolute Salinity.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -443,41 +769,6 @@ values of SP to be zero.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like, g/kg</p>
 <blockquote class="last">
 <div><p>Absolute Salinity</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">SA_from_rho</code><span class="sig-paren">(</span><em>rho</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_rho"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates the Absolute Salinity of a seawater sample, for given values
-of its density, Conservative Temperature and sea pressure (in dbar).
-This function uses the computationally-efficient 75-term expression for
-specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rho</strong> : array-like</p>
-<blockquote>
-<div><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -745,295 +1036,6 @@ negative input values of SP to be zero.</p>
 
 <dl class="function">
 <dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">adiabatic_lapse_rate_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_from_CT"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates the adiabatic lapse rate of sea water from Conservative
-Temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>adiabatic_lapse_rate</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>adiabatic lapse rate</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">deltaSA_from_SP</code><span class="sig-paren">(</span><em>SP</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#deltaSA_from_SP"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
-is non-negative by definition, this function changes any negative input
-values of SP to be zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SP</strong> : array-like</p>
-<blockquote>
-<div><p>Practical Salinity (PSS-78), unitless</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>lon</strong> : array-like</p>
-<blockquote>
-<div><p>Longitude, -360 to 360 degrees</p>
-</div></blockquote>
-<p><strong>lat</strong> : array-like</p>
-<blockquote>
-<div><p>Latitude, -90 to 90 degrees</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>deltaSA</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity Anomaly</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_pt</code><span class="sig-paren">(</span><em>SA</em>, <em>pt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates specific entropy of seawater as a function of potential
-temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>pt</strong> : array-like</p>
-<blockquote>
-<div><p>Potential temperature referenced to a sea pressure, degrees C</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entropy</strong> : array-like, J/(kg*K)</p>
-<blockquote class="last">
-<div><p>specific entropy</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates specific entropy of seawater from in-situ temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entropy</strong> : array-like, J/(kg*K)</p>
-<blockquote class="last">
-<div><p>specific entropy</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">match_args_return</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_utilities.html#match_args_return"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Decorator for most functions that operate on profile data.</p>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">pt0_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates potential temperature with reference pressure, p_ref = 0 dbar.
-The present routine is computationally faster than the more general
-function &#8220;gsw_pt_from_t(SA,t,p,p_ref)&#8221; which can be used for any
-reference pressure value.
-This subroutine calls &#8220;gsw_entropy_part(SA,t,p)&#8221;,
-&#8220;gsw_entropy_part_zerop(SA,pt0)&#8221; and &#8220;gsw_gibbs_pt0_pt0(SA,pt0)&#8221;.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt0</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>potential temperature
-with reference sea pressure (p_ref) = 0 dbar.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_CT"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates potential temperature (with a reference sea pressure of
-zero dbar) from Conservative Temperature.  This function uses 1.5
-iterations through a modified Newton-Raphson (N-R) iterative solution
-proceedure, starting from a rational-function-based initial condition
-for both pt and dCT_dpt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>potential temperature referenced to a sea pressure
-of zero dbar (ITS-90)</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_entropy</code><span class="sig-paren">(</span><em>SA</em>, <em>entropy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_entropy"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates potential temperature with reference pressure p_ref = 0 dbar
-and with entropy as an input variable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>entropy</strong> : array-like</p>
-<blockquote>
-<div><p>Specific entropy, J/(kg*K)</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>potential temperature
-with reference sea pressure (p_ref) = 0 dbar.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em>, <em>p_ref</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Calculates potential temperature with the general reference pressure,
-p_ref, from in-situ temperature, t.  This function calls
-&#8220;gsw_entropy_part&#8221; which evaluates entropy except for the parts which
-are a function of Absolute Salinity alone.
-A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
-is &#8220;gsw_pt0_from_t(SA,t,p)&#8221;.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>p_ref</strong> : array-like</p>
-<blockquote>
-<div><p>Reference pressure, dbar</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pt</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>potential temperature with reference pressure, p_ref, on the
-ITS-90 temperature scale</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">t90_from_t68</code><span class="sig-paren">(</span><em>t68</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/conversions.html#t90_from_t68"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>ITS-90 temperature from IPTS-68 temperature</p>
-<p>This conversion should be applied to all in-situ
-data collected between 1/1/1968 and 31/12/1989.</p>
-</dd></dl>
-
-<dl class="function">
-<dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">t_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_from_CT"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates in-situ temperature from the Conservative Temperature of
 seawater.</p>
@@ -1058,6 +1060,40 @@ seawater.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>t</strong> : array-like, deg C</p>
 <blockquote class="last">
 <div><p>in-situ temperature (ITS-90)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">p_from_z</code><span class="sig-paren">(</span><em>z</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#p_from_z"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates sea pressure from height using computationally-efficient
+75-term expression for density, in terms of SA, CT and p (Roquet et al.,
+2015).  Dynamic height anomaly, geo_strf_dyn_height, if provided,
+must be computed with its p_ref = 0 (the surface). Also if provided,
+sea_surface_geopotental is the geopotential at zero sea pressure. This
+function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>z</strong> : array-like</p>
+<blockquote>
+<div><p>Depth, positive up, m</p>
+</div></blockquote>
+<p><strong>lat</strong> : array-like</p>
+<blockquote>
+<div><p>Latitude, -90 to 90 degrees</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p</strong> : array-like, dbar</p>
+<blockquote class="last">
+<div><p>sea pressure
+( i.e. absolute pressure - 10.1325 dbar )</p>
 </div></blockquote>
 </td>
 </tr>
