@@ -77,8 +77,8 @@ config = dict(
     description='Gibbs Seawater Oceanographic Package of TEOS-10',
     long_description=long_description,
     license=LICENSE,
-    # url='https://github.com/TEOS-10/GSW-python',
-    # download_url='https://pypi.python.org/pypi/gsw/',
+    url='https://github.com/TEOS-10/GSW-python',
+    download_url='https://pypi.python.org/pypi/gsw/',
     classifiers=[
         'Development Status :: 4 - alpha',
         'Environment :: Console',
