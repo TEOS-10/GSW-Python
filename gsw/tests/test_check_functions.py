@@ -47,6 +47,6 @@ def test_check_function(cfcf):
         print('\n', mfunc.name)
         print('  ', mfunc.runline)
         print('  ', mfunc.testline)
-        print("   >>>%s<<<" % mfunc.exception)
+        raise mfunc.exception
     else:
         assert mfunc.passed
