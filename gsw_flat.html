@@ -2176,23 +2176,29 @@ Salinity, that is, SA.*g_SA_SA.</p>
 
 <dl class="function">
 <dt id="gsw.distance">
-<code class="descclassname">gsw.</code><code class="descname">distance</code><span class="sig-paren">(</span><em>lon</em>, <em>lat</em>, <em>p=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.distance" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">gsw.</code><code class="descname">distance</code><span class="sig-paren">(</span><em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Great-circle distance in m between lon, lat points.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lon, lat</strong> : array-like, 1-D</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lon, lat</strong> : array-like, 1-D or 2-D (shapes must match)</p>
 <blockquote>
 <div><p>Longitude, latitude, in degrees.</p>
 </div></blockquote>
-<p><strong>p</strong> : float or 1-D array-like, optional, default is 0</p>
+<p><strong>p</strong> : array-like, scalar, 1-D or 2-D, optional, default is 0</p>
 <blockquote>
 <div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </div></blockquote>
+<p><strong>axis</strong> : int, -1, 0, 1, optional</p>
+<blockquote>
+<div><p>The axis or dimension along which <em>lat and lon</em> vary.
+This differs from most functions, for which axis is the
+dimension along which p increases.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : 1-D array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : 1-D or 2-D array</p>
 <blockquote class="last">
 <div><p>distance in meters between adjacent points.</p>
 </div></blockquote>
