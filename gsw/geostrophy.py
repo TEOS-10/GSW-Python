@@ -53,8 +53,10 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
         ind[axis] = slice(None)
         p = p[tuple(ind)]
     p_ref = float(p_ref)
-    if (np.diff(p, axis=axis) <= 0).any():
-        raise ValueError('p must be increasing along the specified axis')
+    with np.errstate(invalid='ignore'):
+        # The need for this context seems to be a bug in np.ma.any.
+        if np.ma.any(np.ma.diff(np.ma.masked_invalid(p), axis=axis) <= 0):
+            raise ValueError('p must be increasing along the specified axis')
     p = np.broadcast_to(p, SA.shape)
     goodmask = ~(np.isnan(SA) | np.isnan(CT) | np.isnan(p))
     dh = np.empty(SA.shape, dtype=float)
@@ -123,49 +125,64 @@ def unwrap(lon, centered=True, copy=True):
 
 
 @match_args_return
-def distance(lon, lat, p=0):
+def distance(lon, lat, p=0, axis=-1):
     """
     Great-circle distance in m between lon, lat points.
 
     Parameters
     ----------
-    lon, lat : array-like, 1-D
+    lon, lat : array-like, 1-D or 2-D (shapes must match)
         Longitude, latitude, in degrees.
-    p : float or 1-D array-like, optional, default is 0
+    p : array-like, scalar, 1-D or 2-D, optional, default is 0
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    axis : int, -1, 0, 1, optional
+        The axis or dimension along which *lat and lon* vary.
+        This differs from most functions, for which axis is the
+        dimension along which p increases.
 
     Returns
     -------
-    distance : 1-D array
+    distance : 1-D or 2-D array
         distance in meters between adjacent points.
 
     """
-    lon, lat, = np.atleast_2d(lon), np.atleast_2d(lat)
+    earth_radius = 6371e3
 
-    if (lon.size == 1) & (lat.size == 1):
-        raise ValueError('more than one point is needed to compute distance')
-    elif lon.ndim != lat.ndim:
-        raise ValueError('lon, lat must have the same dimension')
+    if not lon.shape == lat.shape:
+        raise ValueError('lon, lat shapes must match; found %s, %s'
+                          % (lon.shape, lat.shape))
+    if not (lon.ndim in (1, 2) and lon.shape[axis] > 1):
+        raise ValueError('lon, lat must be 1-D or 2-D with more than one point'
+                         ' along axis; found shape %s and axis %s'
+                          % (lon.shape, axis))
 
-    lon, lat, p = np.broadcast_arrays(lon, lat, p)
+    if np.all(p == 0):
+        z = 0
+    else:
+        lon, lat, p = np.broadcast_arrays(lon, lat, p)
+        if axis == 0:
+            indm = (slice(0, -1), slice(None))
+            indp = (slice(1, None), slice(None))
+        else:
+            indm = (slice(None), slice(0, -1))
+            indp = (slice(None), slice(1, None))
 
-    p_mid = 0.5 * (p[:, 0:-1] + p[:, 0:-1])
-    lat_mid = 0.5 * (lat[:, :-1] + lat[:, 1:])
+        p_mid = 0.5 * (p[indm] + p[indp])
+        lat_mid = 0.5 * (lat[indm] + lat[indp])
 
-    z = z_from_p(p_mid, lat_mid)
+        z = z_from_p(p_mid, lat_mid)
 
     lon = np.radians(lon)
     lat = np.radians(lat)
 
-    dlon = np.diff(lon)
-    dlat = np.diff(lat)
+    dlon = np.diff(lon, axis=axis)
+    dlat = np.diff(lat, axis=axis)
 
     a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1]) *
          np.cos(lat[:, 1:]) * (np.sin(dlon / 2)) ** 2)
 
     angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
 
-    earth_radius = 6371e3
     distance = (earth_radius + z) * angles
 
     return distance
