@@ -12,7 +12,7 @@ from setuptools import Extension, setup
 import numpy as np
 
 # Check Python version.
-if sys.version_info < (3, 4):
+if sys.version_info < (3, 5):
     pip_message = ('This may be due to an out of date pip. '
                    'Make sure you have pip >= 9.0.1.')
     try:
@@ -29,7 +29,7 @@ if sys.version_info < (3, 4):
         pass
 
     error = """
-Latest gsw does not support Python 2.x, 3.0, 3.1, 3.2 or 3.3.
+Latest gsw does not support Python < 3.5.
 When using Python 2.7 please install the last pure Python version
 of gsw available at PyPI (3.0.6).
 Python {py} detected.
@@ -87,7 +87,6 @@ config = dict(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
