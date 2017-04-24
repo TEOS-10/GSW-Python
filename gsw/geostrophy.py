@@ -126,66 +126,21 @@ def unwrap(lon, centered=True, copy=True):
 @match_args_return
 def distance(lon, lat, p=0):
     """
-    Calculates the distance in met res between successive points in the
-    vectors lon and lat, computed using the Haversine formula on a spherical
-    earth of radius 6,371 km, being the radius of a sphere having the same
-    volume as Earth.  For a spherical Earth of radius 6,371,000 m, one nautical
-    mile is 1,853.2488 m, thus one degree of latitude is 111,194.93 m.
-
-    Haversine formula:
-        R = earth's radius (mean radius = 6,371 km)
-
-    .. math::
-        a = \sin^2(\delta \text{lat}/2) +
-            \cos(\text{lat}_1) \cos(\text{lat}_2) \sin^2(\delta \text{lon}/2)
-
-        c = 2 \times \text{atan2}(\sqrt{a}, \sqrt{(1-a)})
-
-        d = R \times c
+    Great-circle distance in m between lon, lat points.
 
     Parameters
     ----------
-    lon : array_like
-          decimal degrees east [0..+360] or [-180 ... +180]
-    lat : array_like
-          latitude in decimal degrees north [-90..+90]
-    p : number or array_like. Default p = 0
-        pressure [dbar]
+    lon, lat : array-like, 1-D
+        Longitude, latitude, in degrees.
+    p : float or 1-D array-like, optional, default is 0
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
 
     Returns
     -------
-    dist: array_like
-          distance between points on a spherical Earth at pressure (p) [m]
-
-    Notes
-    -----
-    z is height and is negative in the oceanographic.
-
-    Distances are probably good to better than 1\% of the "true" distance on
-    the ellipsoidal earth.
-
-    Examples
-    --------
-    >>> import gsw
-    >>> lon = [159, 220]
-    >>> lat = [-35, 35]
-    >>> gsw.distance(lon, lat)
-    array([[ 10030974.652916]])
-    >>> p = [200, 1000]
-    >>> gsw.distance(lon, lat, p)
-    array([[ 10030661.63927133]])
-    >>> p = [[200], [1000]]
-    >>> gsw.distance(lon, lat, p)
-    array([[ 10030661.63927133],
-           [ 10029412.58932955]])
-
-    References
-    ----------
-    .. [1] http://www.eos.ubc.ca/~rich/map.html
+    distance : 1-D array
+        distance in meters between adjacent points.
 
     """
-    DEG2RAD = np.pi / 180
-    earth_radius = 6371000.
     lon, lat, = np.atleast_2d(lon), np.atleast_2d(lat)
 
     if (lon.size == 1) & (lat.size == 1):
@@ -195,19 +150,23 @@ def distance(lon, lat, p=0):
 
     lon, lat, p = np.broadcast_arrays(lon, lat, p, subok=True)
 
-    dlon = np.diff(lon * DEG2RAD)
-    dlat = np.diff(lat * DEG2RAD)
-
-    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1] * DEG2RAD) *
-         np.cos(lat[:, 1:] * DEG2RAD) * (np.sin(dlon / 2)) ** 2)
-
-    angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
-
     p_mid = 0.5 * (p[:, 0:-1] + p[:, 0:-1])
     lat_mid = 0.5 * (lat[:, :-1] + lat[:, 1:])
 
     z = z_from_p(p_mid, lat_mid)
 
+    lon = np.radians(lon)
+    lat = np.radians(lat)
+
+    dlon = np.diff(lon)
+    dlat = np.diff(lat)
+
+    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1]) *
+         np.cos(lat[:, 1:]) * (np.sin(dlon / 2)) ** 2)
+
+    angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
+
+    earth_radius = 6371e3
     distance = (earth_radius + z) * angles
 
     return distance
