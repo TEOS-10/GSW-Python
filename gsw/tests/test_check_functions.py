@@ -51,4 +51,5 @@ def test_check_function(cfcf):
             mfunc.exception = ValueError('Calculated values are different from the expected matlab results.')
         raise mfunc.exception
     else:
+        print(mfunc.name)
         assert mfunc.passed
