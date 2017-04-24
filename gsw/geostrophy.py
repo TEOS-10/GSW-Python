@@ -76,6 +76,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
                                          pgood, p_ref)
     return dh
 
+
 def unwrap(lon, centered=True, copy=True):
     """
     Unwrap a sequence of longitudes or headings in degrees.
@@ -125,24 +126,66 @@ def unwrap(lon, centered=True, copy=True):
 @match_args_return
 def distance(lon, lat, p=0):
     """
-    Great-circle distance in m between lon, lat points.
+    Calculates the distance in met res between successive points in the
+    vectors lon and lat, computed using the Haversine formula on a spherical
+    earth of radius 6,371 km, being the radius of a sphere having the same
+    volume as Earth.  For a spherical Earth of radius 6,371,000 m, one nautical
+    mile is 1,853.2488 m, thus one degree of latitude is 111,194.93 m.
+
+    Haversine formula:
+        R = earth's radius (mean radius = 6,371 km)
+
+    .. math::
+        a = \sin^2(\delta \text{lat}/2) +
+            \cos(\text{lat}_1) \cos(\text{lat}_2) \sin^2(\delta \text{lon}/2)
+
+        c = 2 \times \text{atan2}(\sqrt{a}, \sqrt{(1-a)})
+
+        d = R \times c
 
     Parameters
     ----------
-    lon, lat : array-like, 1-D
-        Longitude, latitude, in degrees.
-    p : float or 1-D array-like, optional, default is 0
-        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    lon : array_like
+          decimal degrees east [0..+360] or [-180 ... +180]
+    lat : array_like
+          latitude in decimal degrees north [-90..+90]
+    p : number or array_like. Default p = 0
+        pressure [dbar]
 
     Returns
     -------
-    distance : 1-D array
-        distance in meters between adjacent points.
+    dist: array_like
+          distance between points on a spherical Earth at pressure (p) [m]
+
+    Notes
+    -----
+    z is height and is negative in the oceanographic.
+
+    Distances are probably good to better than 1\% of the "true" distance on
+    the ellipsoidal earth.
+
+    Examples
+    --------
+    >>> import gsw
+    >>> lon = [159, 220]
+    >>> lat = [-35, 35]
+    >>> gsw.distance(lon, lat)
+    array([[ 10030974.652916]])
+    >>> p = [200, 1000]
+    >>> gsw.distance(lon, lat, p)
+    array([[ 10030661.63927133]])
+    >>> p = [[200], [1000]]
+    >>> gsw.distance(lon, lat, p)
+    array([[ 10030661.63927133],
+           [ 10029412.58932955]])
+
+    References
+    ----------
+    .. [1] http://www.eos.ubc.ca/~rich/map.html
 
     """
-    # This uses the algorithm from pycurrents rather than the one
-    # in GSW-Matlab.
-
+    DEG2RAD = np.pi / 180
+    earth_radius = 6371000.
     lon, lat, = np.atleast_2d(lon), np.atleast_2d(lat)
 
     if (lon.size == 1) & (lat.size == 1):
@@ -152,23 +195,22 @@ def distance(lon, lat, p=0):
 
     lon, lat, p = np.broadcast_arrays(lon, lat, p, subok=True)
 
-    slm = slice(None, -1)
-    slp = slice(1, None)
+    dlon = np.diff(lon * DEG2RAD)
+    dlat = np.diff(lat * DEG2RAD)
 
-    radius = 6371e3
+    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1] * DEG2RAD) *
+         np.cos(lat[:, 1:] * DEG2RAD) * (np.sin(dlon / 2)) ** 2)
 
-    lon = np.radians(lon)
-    lat = np.radians(lat)
-    if np.any(p):
-        p_mid = 0.5 * (p[:, slp] + p[:, slm])
-        lat_mid = 0.5 * (lat[:, slp] + lat[:, slm])
-        z_mid = z_from_p(p_mid, lat_mid)
-        radius += z_mid
+    angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
 
-    d = np.arccos(np.cos(lat[:, slm]) * np.cos(lat[:, slp]) * np.cos(lon[:, slp] - lon[:, slm])
-                  + np.sin(lat[:, slm]) * np.sin(lat[:, slp])) * radius
+    p_mid = 0.5 * (p[:, 0:-1] + p[:, 0:-1])
+    lat_mid = 0.5 * (lat[:, :-1] + lat[:, 1:])
 
-    return d
+    z = z_from_p(p_mid, lat_mid)
+
+    distance = (earth_radius + z) * angles
+
+    return distance
 
 
 @match_args_return
@@ -176,7 +218,7 @@ def f(lat):
     """
     Coriolis parameter in 1/s for latitude in degrees.
     """
-    omega = 7.292115e-5;                              #(1/s)   (Groten, 2004)
+    omega = 7.292115e-5  # (1/s)   (Groten, 2004).
     f = 2 * omega * np.sin(np.radians(lat))
     return f
 
@@ -233,9 +275,7 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     lon = unwrap(lon)
 
     if lon.shape != lat.shape or lon.ndim != 1:
-        raise ValueError('lon, lat must be 1-D and matching; found shapes'
-                         ' %s and %s' % (lon.shape, lat.shape))
-    npts = len(lon)
+        raise ValueError('lon, lat must be 1-D and matching; found shapes')
 
     if geo_strf.ndim not in (1, 2):
         raise ValueError('geo_strf must be 1-D or 2-d; found shape %s'
@@ -244,9 +284,10 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     laxis = 0 if axis else -1
 
     ds = distance(lon, lat, p)
-    u = np.diff(geo_strf, axis=laxis) / ds
 
     mid_lon = 0.5 * (lon[:-1] + lon[1:])
-    mid_lat = 0.5 * (lat[:-1] + lon[1:])
+    mid_lat = 0.5 * (lat[:-1] + lat[1:])
 
-    return u, mid_lon, mid_lat
+    u = np.diff(geo_strf, axis=laxis) / (ds * f(mid_lat))
+
+    return u, mid_lat, mid_lon
