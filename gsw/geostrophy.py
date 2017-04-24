@@ -6,7 +6,7 @@ import numpy as np
 
 from . import _gsw_ufuncs
 from ._utilities import match_args_return, indexer
-
+from .conversions import z_from_p
 
 __all__ = ['geo_strf_dyn_height',
            'distance',
@@ -75,6 +75,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
                                          pgood, p_ref)
     return dh
 
+
 def unwrap(lon, centered=True, copy=True):
     """
     Unwrap a sequence of longitudes or headings in degrees.
@@ -110,7 +111,7 @@ def unwrap(lon, centered=True, copy=True):
     if centered:
         x -= 360 * np.round(x.mean() / 360.0)
 
-    if lon.mask is ma.nomask:
+    if lon.mask is np.ma.nomask:
         lon[:] = x
     else:
         lon[~lon.mask] = x
@@ -139,40 +140,35 @@ def distance(lon, lat, p=0):
         distance in meters between adjacent points.
 
     """
-    # This uses the algorithm from pycurrents rather than the one
-    # in GSW-Matlab.
+    lon, lat, = np.atleast_2d(lon), np.atleast_2d(lat)
 
-    if lon.ndim != 1 or lat.ndim != 1:
-        raise ValueError('lon, lat must be 1-D; found shapes %s and %s'
-                         % (lon.shape, lat.shape))
-    if lon.shape != lat.shape:
-        raise ValueError('lon, lat must have same 1-D shape; found %s and %s'
-                         % (lon.shape, lat.shape))
-    if p != 0:
-        if np.iterable(p) and p.shape != lon.shape:
-            raise ValueError('lon, non-scalar p must have same 1-D shape;'
-                             ' found %s and %s'
-                             % (lon.shape, lat.shape))
+    if (lon.size == 1) & (lat.size == 1):
+        raise ValueError('more than one point is needed to compute distance')
+    elif lon.ndim != lat.ndim:
+        raise ValueError('lon, lat must have the same dimension')
 
-        p = np.broadcast_to(p, lon.shape)
+    lon, lat, p = np.broadcast_arrays(lon, lat, p)
 
-    slm = slice(None, -1)
-    slp = slice(1, None)
+    p_mid = 0.5 * (p[:, 0:-1] + p[:, 0:-1])
+    lat_mid = 0.5 * (lat[:, :-1] + lat[:, 1:])
 
-    radius = 6371e3
+    z = z_from_p(p_mid, lat_mid)
 
     lon = np.radians(lon)
     lat = np.radians(lat)
-    if p != 0:
-        p_mid = 0.5 * (p[slp] + p[slm])
-        lat_mid = 0.5 * (lat[slp] + lat[slm])
-        z_mid = gsw.z_from_p(p_mid, lat_mid)
-        radius += z_mid
 
-    d = np.arccos(cos(lat[slm]) * cos(lat[slp]) * cos(lon[slp] - lon[slm])
-                  + sin(lat[slm]) * sin(lat[slp])) * radius
+    dlon = np.diff(lon)
+    dlat = np.diff(lat)
 
-    return d
+    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1]) *
+         np.cos(lat[:, 1:]) * (np.sin(dlon / 2)) ** 2)
+
+    angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
+
+    earth_radius = 6371e3
+    distance = (earth_radius + z) * angles
+
+    return distance
 
 
 @match_args_return
@@ -180,7 +176,7 @@ def f(lat):
     """
     Coriolis parameter in 1/s for latitude in degrees.
     """
-    omega = 7.292115e-5;                              #(1/s)   (Groten, 2004)
+    omega = 7.292115e-5  # (1/s)   (Groten, 2004).
     f = 2 * omega * np.sin(np.radians(lat))
     return f
 
@@ -239,7 +235,6 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     if lon.shape != lat.shape or lon.ndim != 1:
         raise ValueError('lon, lat must be 1-D and matching; found shapes'
                          ' %s and %s' % (lon.shape, lat.shape))
-    npts = len(lon)
 
     if geo_strf.ndim not in (1, 2):
         raise ValueError('geo_strf must be 1-D or 2-d; found shape %s'
@@ -248,9 +243,10 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     laxis = 0 if axis else -1
 
     ds = distance(lon, lat, p)
-    u = np.diff(geo_strf, axis=laxis) / ds
 
     mid_lon = 0.5 * (lon[:-1] + lon[1:])
-    mid_lat = 0.5 * (lat[:-1] + lon[1:])
+    mid_lat = 0.5 * (lat[:-1] + lat[1:])
 
-    return u, mid_lon, mid_lat
+    u = np.diff(geo_strf, axis=laxis) / (ds * f(mid_lat))
+
+    return u, mid_lat, mid_lon
