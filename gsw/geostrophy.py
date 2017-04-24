@@ -143,21 +143,14 @@ def distance(lon, lat, p=0):
     # This uses the algorithm from pycurrents rather than the one
     # in GSW-Matlab.
 
-    p = np.asanyarray(p)
+    lon, lat, = np.atleast_2d(lon), np.atleast_2d(lat)
 
-    if lon.ndim != 1 or lat.ndim != 1:
-        raise ValueError('lon, lat must be 1-D; found shapes %s and %s'
-                         % (lon.shape, lat.shape))
-    if lon.shape != lat.shape:
-        raise ValueError('lon, lat must have same 1-D shape; found %s and %s'
-                         % (lon.shape, lat.shape))
-    if np.any(p):
-        if np.iterable(p) and p.shape != lon.shape:
-            raise ValueError('lon, non-scalar p must have same 1-D shape;'
-                             ' found %s and %s'
-                             % (lon.shape, p.shape))
+    if (lon.size == 1) & (lat.size == 1):
+        raise ValueError('more than one point is needed to compute distance')
+    elif lon.ndim != lat.ndim:
+        raise ValueError('lon, lat must have the same dimension')
 
-        p = np.broadcast_to(p, lon.shape)
+    lon, lat, p = np.broadcast_arrays(lon, lat, p, subok=True)
 
     slm = slice(None, -1)
     slp = slice(1, None)
@@ -167,13 +160,13 @@ def distance(lon, lat, p=0):
     lon = np.radians(lon)
     lat = np.radians(lat)
     if np.any(p):
-        p_mid = 0.5 * (p[slp] + p[slm])
-        lat_mid = 0.5 * (lat[slp] + lat[slm])
+        p_mid = 0.5 * (p[:, slp] + p[:, slm])
+        lat_mid = 0.5 * (lat[:, slp] + lat[:, slm])
         z_mid = z_from_p(p_mid, lat_mid)
         radius += z_mid
 
-    d = np.arccos(np.cos(lat[slm]) * np.cos(lat[slp]) * np.cos(lon[slp] - lon[slm])
-                  + np.sin(lat[slm]) * np.sin(lat[slp])) * radius
+    d = np.arccos(np.cos(lat[:, slm]) * np.cos(lat[:, slp]) * np.cos(lon[:, slp] - lon[:, slm])
+                  + np.sin(lat[:, slm]) * np.sin(lat[:, slp])) * radius
 
     return d
 
