@@ -43,10 +43,12 @@ def cfcf(request):
 def test_check_function(cfcf):
     cv, cf, mfunc = cfcf
     mfunc.run(locals())
-    if mfunc.exception is not None:
+    if mfunc.exception is not None or not mfunc.passed:
         print('\n', mfunc.name)
         print('  ', mfunc.runline)
         print('  ', mfunc.testline)
+        if mfunc.exception is None:
+            mfunc.exception = ValueError('Calculated values are different from the expected matlab results.')
         raise mfunc.exception
     else:
         assert mfunc.passed
