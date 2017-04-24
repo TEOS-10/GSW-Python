@@ -45,4 +45,4 @@ from . import ice
 
 from .conversions import t90_from_t68
 
-__version__ = "3.1.0"
+__version__ = "3.1.1"
