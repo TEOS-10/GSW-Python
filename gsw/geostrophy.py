@@ -3,10 +3,11 @@ Functions for calculating geostrophic currents.
 """
 
 import numpy as np
+import numpy.ma as ma
 
 from . import _gsw_ufuncs
 from ._utilities import match_args_return, indexer
-
+from .conversions import z_from_p
 
 __all__ = ['geo_strf_dyn_height',
            'distance',
@@ -142,17 +143,19 @@ def distance(lon, lat, p=0):
     # This uses the algorithm from pycurrents rather than the one
     # in GSW-Matlab.
 
+    p = np.asanyarray(p)
+
     if lon.ndim != 1 or lat.ndim != 1:
         raise ValueError('lon, lat must be 1-D; found shapes %s and %s'
                          % (lon.shape, lat.shape))
     if lon.shape != lat.shape:
         raise ValueError('lon, lat must have same 1-D shape; found %s and %s'
                          % (lon.shape, lat.shape))
-    if p != 0:
+    if np.any(p):
         if np.iterable(p) and p.shape != lon.shape:
             raise ValueError('lon, non-scalar p must have same 1-D shape;'
                              ' found %s and %s'
-                             % (lon.shape, lat.shape))
+                             % (lon.shape, p.shape))
 
         p = np.broadcast_to(p, lon.shape)
 
@@ -163,14 +166,14 @@ def distance(lon, lat, p=0):
 
     lon = np.radians(lon)
     lat = np.radians(lat)
-    if p != 0:
+    if np.any(p):
         p_mid = 0.5 * (p[slp] + p[slm])
         lat_mid = 0.5 * (lat[slp] + lat[slm])
-        z_mid = gsw.z_from_p(p_mid, lat_mid)
+        z_mid = z_from_p(p_mid, lat_mid)
         radius += z_mid
 
-    d = np.arccos(cos(lat[slm]) * cos(lat[slp]) * cos(lon[slp] - lon[slm])
-                  + sin(lat[slm]) * sin(lat[slp])) * radius
+    d = np.arccos(np.cos(lat[slm]) * np.cos(lat[slp]) * np.cos(lon[slp] - lon[slm])
+                  + np.sin(lat[slm]) * np.sin(lat[slp])) * radius
 
     return d
 
