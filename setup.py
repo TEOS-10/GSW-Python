@@ -39,7 +39,7 @@ Python {py} detected.
     print(error, file=sys.stderr)
     sys.exit(1)
 
-if sys.platform == 'win32':
+if os.name in ('nt', 'dos'):
     srcdir = 'src2'
     c_ext = 'cpp'
 else:
