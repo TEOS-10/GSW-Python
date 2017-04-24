@@ -3,7 +3,6 @@ Functions for calculating geostrophic currents.
 """
 
 import numpy as np
-import numpy.ma as ma
 
 from . import _gsw_ufuncs
 from ._utilities import match_args_return, indexer
@@ -112,7 +111,7 @@ def unwrap(lon, centered=True, copy=True):
     if centered:
         x -= 360 * np.round(x.mean() / 360.0)
 
-    if lon.mask is ma.nomask:
+    if lon.mask is np.ma.nomask:
         lon[:] = x
     else:
         lon[~lon.mask] = x
@@ -148,7 +147,7 @@ def distance(lon, lat, p=0):
     elif lon.ndim != lat.ndim:
         raise ValueError('lon, lat must have the same dimension')
 
-    lon, lat, p = np.broadcast_arrays(lon, lat, p, subok=True)
+    lon, lat, p = np.broadcast_arrays(lon, lat, p)
 
     p_mid = 0.5 * (p[:, 0:-1] + p[:, 0:-1])
     lat_mid = 0.5 * (lat[:, :-1] + lat[:, 1:])
@@ -234,7 +233,8 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     lon = unwrap(lon)
 
     if lon.shape != lat.shape or lon.ndim != 1:
-        raise ValueError('lon, lat must be 1-D and matching; found shapes')
+        raise ValueError('lon, lat must be 1-D and matching; found shapes'
+                         ' %s and %s' % (lon.shape, lat.shape))
 
     if geo_strf.ndim not in (1, 2):
         raise ValueError('geo_strf must be 1-D or 2-d; found shape %s'
