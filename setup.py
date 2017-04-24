@@ -1,11 +1,43 @@
 '''
 Minimal setup.py for building gswc.
 '''
-import os, sys
+
+from __future__ import print_function
+
+import os
+import sys
 
 from setuptools import Extension, setup
 
 import numpy as np
+
+# Check Python version.
+if sys.version_info < (3, 4):
+    pip_message = ('This may be due to an out of date pip. '
+                   'Make sure you have pip >= 9.0.1.')
+    try:
+        import pip
+        pip_version = tuple([int(x) for x in pip.__version__.split('.')[:3]])
+        if pip_version < (9, 0, 1):
+            pip_message = ('Your pip version is out of date, '
+                           'please install pip >= 9.0.1. '
+                           'pip {} detected.').format(pip.__version__)
+        else:
+            # pip is new enough - it must be something else.
+            pip_message = ''
+    except Exception:
+        pass
+
+    error = """
+Latest gsw does not support Python 2.x, 3.0, 3.1, 3.2 or 3.3.
+When using Python 2.7 please install the last pure Python version
+of gsw available at PyPI (3.0.6).
+Python {py} detected.
+{pip}
+""".format(py=sys.version_info, pip=pip_message)
+
+    print(error, file=sys.stderr)
+    sys.exit(1)
 
 if sys.platform == 'win32':
     srcdir = 'src2'
@@ -47,19 +79,19 @@ config = dict(
     license=LICENSE,
     # url='https://github.com/TEOS-10/GSW-python',
     # download_url='https://pypi.python.org/pypi/gsw/',
-    classifiers=['Development Status :: 4 - Beta',
-               'Environment :: Console',
-               'Intended Audience :: Science/Research',
-               'Intended Audience :: Developers',
-               'Intended Audience :: Education',
-               'License :: OSI Approved :: MIT License',
-               'Operating System :: OS Independent',
-               'Programming Language :: Python',
-               'Programming Language :: Python :: 3.5',
-               'Programming Language :: Python :: 3.6',
-               'Topic :: Education',
-               'Topic :: Scientific/Engineering',
-               ],
+    classifiers=[
+        'Development Status :: 4 - alpha',
+        'Environment :: Console',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3 :: Only',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Scientific/Engineering',
+    ],
     python_requires='>=3.5',
     platforms='any',
     keywords=['oceanography', 'seawater', 'TEOS-10'],
