@@ -1,6 +1,6 @@
 package:
   name: gsw
-  version: 0.5.0
+  version: {{ GIT_DESCRIBE_TAG|replace("v","") }}
 
 source:
   path: ../
@@ -18,7 +18,6 @@ requirements:
     - python
     - numpy x.x
 
-test:
 test:
   source_files:
     - gsw/tests
