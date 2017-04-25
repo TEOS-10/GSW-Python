@@ -1,6 +1,5 @@
 package:
   name: gsw
-  version: 0.5.0
 
 source:
   path: ../
