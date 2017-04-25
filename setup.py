@@ -80,7 +80,7 @@ config = dict(
     url='https://github.com/TEOS-10/GSW-python',
     download_url='https://pypi.python.org/pypi/gsw/',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
