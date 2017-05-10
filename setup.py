@@ -7,9 +7,10 @@ from __future__ import print_function
 import os
 import sys
 
+import pkg_resources
 from setuptools import Extension, setup
+from distutils.command.build_ext import build_ext as _build_ext
 
-import numpy as np
 
 # Check Python version.
 if sys.version_info < (3, 5):
@@ -65,6 +66,17 @@ def extract_version():
                 break
     return version
 
+
+class build_ext(_build_ext):
+    # Extention builder from pandas without the cython stuff
+    def build_extensions(self):
+        numpy_incl = pkg_resources.resource_filename('numpy', 'core/include')
+
+        for ext in self.extensions:
+            if hasattr(ext, 'include_dirs') and not numpy_incl in ext.include_dirs:
+                ext.include_dirs.append(numpy_incl)
+        _build_ext.build_extensions(self)
+
 LICENSE = read('LICENSE')
 long_description = read('README.rst')
 
@@ -94,14 +106,15 @@ config = dict(
     python_requires='>=3.5',
     platforms='any',
     keywords=['oceanography', 'seawater', 'TEOS-10'],
+    install_requires=['numpy'],
     setup_requires=['numpy'],
     ext_modules=[
         Extension('gsw._gsw_ufuncs',
                   [srcdir + '/_ufuncs.c',
                    srcdir + '/c_gsw/gsw_oceanographic_toolbox.' + c_ext,
                    srcdir + '/c_gsw/gsw_saar.' + c_ext])],
-    include_dirs=[np.get_include(),
-                  os.path.join(rootpath, srcdir, 'c_gsw')],
+    include_dirs=[os.path.join(rootpath, srcdir, 'c_gsw')],
+    cmdclass={'build_ext': build_ext},
 )
 
 setup(**config)
