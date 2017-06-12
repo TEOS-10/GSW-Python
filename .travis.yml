@@ -10,18 +10,18 @@ matrix:
   fast_finish: true
   include:
   - python: 3.5
-    env: TEST_TARGET=default NUMPY=1.11
+    env: TEST_TARGET=default NUMPY=1.12
   - python: 3.5
-    env: TEST_TARGET=default NUMPY=1.12
-  - python: 3.6
-    env: TEST_TARGET=default NUMPY=1.11
+    env: TEST_TARGET=default NUMPY=1.13
   - python: 3.6
     env: TEST_TARGET=default NUMPY=1.12
   - python: 3.6
-    env: TEST_TARGET=publish NUMPY=1.12
+    env: TEST_TARGET=default NUMPY=1.13
+  - python: 3.6
+    env: TEST_TARGET=publish NUMPY=1.13
   allow_failures:
   - python: 3.6
-    env: TEST_TARGET=publish NUMPY=1.12
+    env: TEST_TARGET=publish NUMPY=1.13
 
 before_install:
     - wget http://bit.ly/miniconda -O miniconda.sh
