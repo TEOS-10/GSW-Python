@@ -24,31 +24,31 @@ matrix:
     env: TEST_TARGET=publish NUMPY=1.13
 
 before_install:
-    - wget http://bit.ly/miniconda -O miniconda.sh
-    - bash miniconda.sh -b -p $HOME/miniconda
-    - export PATH="$HOME/miniconda/bin:$PATH"
-    - conda update conda --yes
-    - conda config --add channels conda-forge --force
-    - conda create --yes -n TEST python=$TRAVIS_PYTHON_VERSION --file requirements-dev.txt
-    - source activate TEST
-    # Install after to ensure it will be downgraded when testing an older version.
-    - conda install --yes --quiet numpy=$NUMPY
+  - wget http://bit.ly/miniconda -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - conda update conda --yes
+  - conda config --add channels conda-forge --force
+  - conda create --yes -n TEST python=$TRAVIS_PYTHON_VERSION --file requirements-dev.txt
+  - source activate TEST
+  # Install after to ensure it will be downgraded when testing an older version.
+  - conda install --yes --quiet numpy=$NUMPY
 
 # Test source distribution.
 install:
-    - python setup.py check
-    - python setup.py sdist && version=$(python setup.py --version) && pushd dist  && pip install gsw-${version}.tar.gz && popd
+  - python setup.py check
+  - python setup.py sdist && version=$(python setup.py --version) && pushd dist  && pip install gsw-${version}.tar.gz && popd
 
 script:
-    - if [[ $TEST_TARGET == "default" ]]; then
-        pushd gsw && py.test -s -rxs -v tests && popd ;
-      fi
+  - if [[ $TEST_TARGET == "default" ]]; then
+      pushd gsw && py.test -s -rxs -v tests && popd ;
+    fi
 
 after_success:
-    - if [[ $TEST_TARGET == "publish" ]]; then
-        set -e ;
-        pip install sphinx_rtd_theme ;
-        pip install doctr ;
-        pushd docs && make html && popd ;
-        doctr deploy --built-docs=docs/_build/html . ;
-      fi
+  - if [[ $TEST_TARGET == "publish" ]]; then
+      set -e ;
+      pip install sphinx_rtd_theme ;
+      pip install doctr ;
+      pushd docs && make html && popd ;
+      doctr deploy --built-docs=docs/_build/html . ;
+    fi
