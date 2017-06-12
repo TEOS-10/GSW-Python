@@ -179,7 +179,7 @@ Trevor McDougall, and Paul Barker.</p>
 original Matlab code, but with a few important differences:</p>
 <ul class="simple">
 <li>Many functions in the GSW-Matlab toolbox are not yet available here.</li>
-<li>Taking advantage of Python namespaces, we omit the &#8220;gsw&#8221; prefix
+<li>Taking advantage of Python namespaces, we omit the “gsw” prefix
 from the function names.</li>
 <li>Missing values may be handled using <cite>numpy.ma</cite> masked arrays, or
 using <cite>nan</cite> values.</li>
@@ -783,7 +783,7 @@ ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 <dt id="gsw.Fdelta">
 <code class="descclassname">gsw.</code><code class="descname">Fdelta</code><span class="sig-paren">(</span><em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Fdelta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.Fdelta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates Fdelta from the Absolute Salinity Anomaly Ratio (SAAR).  It
-finds SAAR by calling the function &#8220;gsw_SAAR(p,long,lat)&#8221; and then
+finds SAAR by calling the function “gsw_SAAR(p,long,lat)” and then
 simply calculates Fdelta from</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3118,7 +3118,7 @@ in an isobaric surface, relative to the reference surface.</p>
 <p>Calculates geostrophic velocity relative to the sea surface, given a
 geostrophic streamfunction and the position of each station in
 sequence along an ocean section.  The data can be from a single
-isobaric or &#8220;density&#8221; surface, or from a series of such surfaces.</p>
+isobaric or “density” surface, or from a series of such surfaces.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3209,7 +3209,7 @@ that is the outout is gibbs_ice(1,0,t,p) + S0</p>
 <dt id="gsw.gibbs_ice_pt0">
 <code class="descclassname">gsw.</code><code class="descname">gibbs_ice_pt0</code><span class="sig-paren">(</span><em>pt0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#gibbs_ice_pt0"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.gibbs_ice_pt0" title="Permalink to this definition">¶</a></dt>
 <dd><p>part of the the first temperature derivative of Gibbs energy of ice
-that is the outout is &#8220;gibbs_ice(1,0,pt0,0) + s0&#8221;</p>
+that is the outout is “gibbs_ice(1,0,pt0,0) + s0”</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4411,10 +4411,10 @@ output, pressure_freezing, is put equal to NaN.</p>
 <code class="descclassname">gsw.</code><code class="descname">pt0_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.pt0_from_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates potential temperature with reference pressure, p_ref = 0 dbar.
 The present routine is computationally faster than the more general
-function &#8220;gsw_pt_from_t(SA,t,p,p_ref)&#8221; which can be used for any
+function “gsw_pt_from_t(SA,t,p,p_ref)” which can be used for any
 reference pressure value.
-This subroutine calls &#8220;gsw_entropy_part(SA,t,p)&#8221;,
-&#8220;gsw_entropy_part_zerop(SA,pt0)&#8221; and &#8220;gsw_gibbs_pt0_pt0(SA,pt0)&#8221;.</p>
+This subroutine calls “gsw_entropy_part(SA,t,p)”,
+“gsw_entropy_part_zerop(SA,pt0)” and “gsw_gibbs_pt0_pt0(SA,pt0)”.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4636,10 +4636,10 @@ ice.</p>
 <code class="descclassname">gsw.</code><code class="descname">pt_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em>, <em>p_ref</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.pt_from_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates potential temperature with the general reference pressure,
 p_ref, from in-situ temperature, t.  This function calls
-&#8220;gsw_entropy_part&#8221; which evaluates entropy except for the parts which
+“gsw_entropy_part” which evaluates entropy except for the parts which
 are a function of Absolute Salinity alone.
 A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
-is &#8220;gsw_pt0_from_t(SA,t,p)&#8221;.</p>
+is “gsw_pt0_from_t(SA,t,p)”.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

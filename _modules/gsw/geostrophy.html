@@ -175,8 +175,8 @@
            <span class="s1">&#39;geostrophic_velocity&#39;</span><span class="p">,</span>
            <span class="p">]</span>
 
-<span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="geo_strf_dyn_height"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_dyn_height">[docs]</a><span class="k">def</span> <span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="geo_strf_dyn_height"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_dyn_height">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Dynamic height anomaly as a function of pressure.</span>
 
@@ -285,8 +285,8 @@
         <span class="k">return</span> <span class="n">lon</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
 
-<span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.distance">[docs]</a><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.distance">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Great-circle distance in m between lon, lat points.</span>
 
@@ -349,8 +349,8 @@
     <span class="k">return</span> <span class="n">distance</span></div>
 
 
-<span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.f">[docs]</a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.f">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Coriolis parameter in 1/s for latitude in degrees.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -358,8 +358,8 @@
     <span class="n">f</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">f</span></div>
 
-<span class="nd">@match_args_return</span>
-<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geostrophic_velocity">[docs]</a><span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geostrophic_velocity">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate geostrophic velocity from a streamfunction.</span>
 
