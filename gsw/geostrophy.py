@@ -155,17 +155,27 @@ def distance(lon, lat, p=0, axis=-1):
         raise ValueError('lon, lat must be 1-D or 2-D with more than one point'
                          ' along axis; found shape %s and axis %s'
                           % (lon.shape, axis))
+    if lon.ndim == 1:
+        one_d = True
+        lon = lon[np.newaxis, :]
+        lat = lat[np.newaxis, :]
+        axis = -1
+    else:
+        one_d = False
+
+    one_d = one_d and p.ndim == 1
+
+    if axis == 0:
+        indm = (slice(0, -1), slice(None))
+        indp = (slice(1, None), slice(None))
+    else:
+        indm = (slice(None), slice(0, -1))
+        indp = (slice(None), slice(1, None))
 
     if np.all(p == 0):
         z = 0
     else:
         lon, lat, p = np.broadcast_arrays(lon, lat, p)
-        if axis == 0:
-            indm = (slice(0, -1), slice(None))
-            indp = (slice(1, None), slice(None))
-        else:
-            indm = (slice(None), slice(0, -1))
-            indp = (slice(None), slice(1, None))
 
         p_mid = 0.5 * (p[indm] + p[indp])
         lat_mid = 0.5 * (lat[indm] + lat[indp])
@@ -178,12 +188,15 @@ def distance(lon, lat, p=0, axis=-1):
     dlon = np.diff(lon, axis=axis)
     dlat = np.diff(lat, axis=axis)
 
-    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[:, :-1]) *
-         np.cos(lat[:, 1:]) * (np.sin(dlon / 2)) ** 2)
+    a = ((np.sin(dlat / 2)) ** 2 + np.cos(lat[indm]) *
+         np.cos(lat[indp]) * (np.sin(dlon / 2)) ** 2)
 
     angles = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
 
     distance = (earth_radius + z) * angles
+
+    if one_d:
+        distance = distance[0]
 
     return distance
 
