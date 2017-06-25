@@ -70,7 +70,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
         # The C function calls the rr68 interpolation, which
         # requires at least 4 "bottles"; but the C function is
         # not checking this, so we need to do so.
-        if pgood[-1] >= p_ref and len(pgood) > 3:
+        if  len(pgood) > 3 and pgood[-1] >= p_ref:
             dh[ind][igood] = _gsw_ufuncs.geo_strf_dyn_height(
                                          SA[ind][igood],
                                          CT[ind][igood],
