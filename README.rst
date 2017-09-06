@@ -3,6 +3,8 @@ gsw Python package
 
 .. image:: https://travis-ci.org/TEOS-10/GSW-Python.svg?branch=master
     :target: https://travis-ci.org/TEOS-10/GSW-Python
+.. image:: https://anaconda.org/conda-forge/gsw/badges/installer/conda.svg
+    :target: https://conda.anaconda.org/conda-forge
 
 This Python implementation of the Thermodynamic Equation of
 Seawater 2010 (TEOS-10) is based primarily on numpy ufunc wrappers of
