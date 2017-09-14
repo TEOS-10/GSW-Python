@@ -16,6 +16,7 @@ root_path = os.path.abspath(os.path.dirname(__file__))
 
 # Function checks that we can't handle automatically yet.
 blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the pattern.
+             'geostrophic_velocity',  # test elsewhere; we changed the API
              #'CT_from_entropy', # needs prior entropy_from_CT; don't have it in C
              #'CT_first_derivatives', # passes, but has trouble in "details";
                                       # see check_functions.py
@@ -25,6 +26,11 @@ blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the patter
 
 # We get an overflow from ct_from_enthalpy_exact, but the test passes.
 cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
+
+# Substitute new check values for the pchip interpolation version.
+cv.geo_strf_dyn_height = np.load('geo_strf_dyn_height.npy')
+cv.geo_strf_velocity = np.load('geo_strf_velocity.npy')
+
 cf = Bunch()
 
 d = dir(gsw)
