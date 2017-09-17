@@ -10,7 +10,7 @@ root_path = os.path.abspath(os.path.dirname(__file__))
 
 cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
 # Override the original with what we calculate using pchip interp
-cv.geo_strf_velocity = np.load('geo_strf_velocity.npy')
+cv.geo_strf_velocity = np.load(os.path.join(root_path,'geo_strf_velocity.npy'))
 
 lon = [1, 2]
 lat = [45, 45]

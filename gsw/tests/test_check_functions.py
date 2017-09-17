@@ -28,8 +28,8 @@ blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the patter
 cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
 
 # Substitute new check values for the pchip interpolation version.
-cv.geo_strf_dyn_height = np.load('geo_strf_dyn_height.npy')
-cv.geo_strf_velocity = np.load('geo_strf_velocity.npy')
+cv.geo_strf_dyn_height = np.load(os.path.join(root_path,'geo_strf_dyn_height.npy'))
+cv.geo_strf_velocity = np.load(os.path.join(root_path,'geo_strf_velocity.npy'))
 
 cf = Bunch()
 

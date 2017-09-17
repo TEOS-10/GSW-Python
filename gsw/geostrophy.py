@@ -8,8 +8,7 @@ from . import _gsw_ufuncs
 from ._utilities import match_args_return, indexer
 from .conversions import z_from_p
 
-__all__ = ['geo_strf_dyn_height_bad',
-           'geo_strf_dyn_height',
+__all__ = ['geo_strf_dyn_height',
            'distance',
            'f',
            'geostrophic_velocity',
@@ -101,74 +100,6 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
                 dh[ind][igood] = dh_all
 
     return dh
-
-
-@match_args_return
-def geo_strf_dyn_height_bad(SA, CT, p, p_ref=0, axis=0):
-    """
-    Dynamic height anomaly as a function of pressure.
-
-    This is using the C-library RR68 algorithm which is buggy and will
-    go away.
-
-    Parameters
-    ----------
-    SA : array-like
-        Absolute Salinity, g/kg
-    CT : array-like
-        Conservative Temperature (ITS-90), degrees C
-    p : array-like
-        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
-    p_ref : float or array-like, optional
-        Reference pressure, dbar
-    axis : int, optional
-        The index of the pressure dimension in SA and CT.
-
-    Returns
-    -------
-    dynamic_height : array
-        This is the integral of specific volume anomaly with respect
-        to pressure, from each pressure in p to the specified
-        reference pressure.  It is the geostrophic streamfunction
-        in an isobaric surface, relative to the reference surface.
-
-    """
-    if SA.shape != CT.shape:
-        raise ValueError('Shapes of SA and CT must match; found %s and %s'
-                         % (SA.shape, CT.shape))
-    if p.ndim == 1 and SA.ndim > 1:
-        if len(p) != SA.shape[axis]:
-            raise ValueError('With 1-D p, len(p) must be SA.shape[axis];\n'
-                             ' found %d versus %d on specified axis, %d'
-                             % (len(p), SA.shape[axis], axis))
-        ind = [np.newaxis] * SA.ndim
-        ind[axis] = slice(None)
-        p = p[tuple(ind)]
-    p_ref = float(p_ref)
-    with np.errstate(invalid='ignore'):
-        # The need for this context seems to be a bug in np.ma.any.
-        if np.ma.any(np.ma.diff(np.ma.masked_invalid(p), axis=axis) <= 0):
-            raise ValueError('p must be increasing along the specified axis')
-    p = np.broadcast_to(p, SA.shape)
-    goodmask = ~(np.isnan(SA) | np.isnan(CT) | np.isnan(p))
-    dh = np.empty(SA.shape, dtype=float)
-    dh.fill(np.nan)
-
-    order = 'F' if SA.flags.fortran else 'C'
-    for ind in indexer(SA.shape, axis, order=order):
-        igood = goodmask[ind]
-        # If p_ref is below the deepest value, skip the profile.
-        pgood = p[ind][igood]
-        # The C function calls the rr68 interpolation, which
-        # requires at least 4 "bottles"; but the C function is
-        # not checking this, so we need to do so.
-        if  len(pgood) > 3 and pgood[-1] >= p_ref:
-            dh[ind][igood] = _gsw_ufuncs.geo_strf_dyn_height(
-                                         SA[ind][igood],
-                                         CT[ind][igood],
-                                         pgood, p_ref)
-    return dh
-
 
 
 def unwrap(lon, centered=True, copy=True):
