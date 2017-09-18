@@ -35,7 +35,9 @@ from ._wrapped_ufuncs import *
 
 from .stability import *
 from .geostrophy import *
+from .utility import *
 from . import geostrophy
+from . import utility
 from . import stability
 from . import density
 from . import energy

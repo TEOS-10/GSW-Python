@@ -15,7 +15,8 @@ __all__ = ['geo_strf_dyn_height',
            ]
 
 @match_args_return
-def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
+def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
+                        interp_method='pchip'):
     """
     Dynamic height anomaly as a function of pressure.
 
@@ -29,8 +30,14 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
         Sea pressure (absolute pressure minus 10.1325 dbar), dbar
     p_ref : float or array-like, optional
         Reference pressure, dbar
-    axis : int, optional
+    axis : int, optional, default is 0
         The index of the pressure dimension in SA and CT.
+    max_dp : float
+        If any pressure interval in the input p exceeds max_dp, the dynamic
+        height will be calculated after interpolating to a grid with this
+        spacing.
+    interp_method : string {'pchip', 'linear'}
+        Interpolation algorithm.
 
     Returns
     -------
@@ -41,6 +48,10 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
         in an isobaric surface, relative to the reference surface.
 
     """
+    interp_methods = {'pchip' : 2, 'linear' : 1}
+    if interp_method not in interp_methods:
+        raise ValueError('interp_method must be one of %s'
+                         % (interp_methods.keys(),))
     if SA.shape != CT.shape:
         raise ValueError('Shapes of SA and CT must match; found %s and %s'
                          % (SA.shape, CT.shape))
@@ -67,14 +78,27 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0):
         igood = goodmask[ind]
         # If p_ref is below the deepest value, skip the profile.
         pgood = p[ind][igood]
-        # The C function calls the rr68 interpolation, which
-        # requires at least 4 "bottles"; but the C function is
-        # not checking this, so we need to do so.
-        if  len(pgood) > 3 and pgood[-1] >= p_ref:
-            dh[ind][igood] = _gsw_ufuncs.geo_strf_dyn_height(
-                                         SA[ind][igood],
-                                         CT[ind][igood],
-                                         pgood, p_ref)
+        if  len(pgood) > 1 and pgood[-1] >= p_ref:
+            sa = SA[ind][igood]
+            ct = CT[ind][igood]
+            # Temporarily add a top (typically surface) point and mixed layer
+            # if p_ref is above the shallowest pressure.
+            if pgood[0] < p_ref:
+                ptop = np.arange(p_ref, pgood[0], max_dp)
+                ntop = len(ptop)
+                sa = np.hstack(([sa[0]]*ntop, sa))
+                ct = np.hstack(([ct[0]]*ntop, ct))
+                pgood = np.hstack((ptop, pgood))
+            else:
+                ntop = 0
+            dh_all = _gsw_ufuncs.geo_strf_dyn_height_1(
+                                         sa, ct, pgood, p_ref, max_dp,
+                                         interp_methods[interp_method])
+            if ntop > 0:
+                dh[ind][igood] = dh_all[ntop:]
+            else:
+                dh[ind][igood] = dh_all
+
     return dh
 
 
@@ -215,9 +239,9 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     """
     Calculate geostrophic velocity from a streamfunction.
 
-    Calculates geostrophic velocity relative to the sea surface, given a
-    geostrophic streamfunction and the position of each station in
-    sequence along an ocean section.  The data can be from a single
+    Calculates geostrophic velocity relative to a reference pressure,
+    given a geostrophic streamfunction and the position of each station
+    in sequence along an ocean section.  The data can be from a single
     isobaric or "density" surface, or from a series of such surfaces.
 
     Parameters
@@ -279,4 +303,4 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
 
     u = np.diff(geo_strf, axis=laxis) / (ds * f(mid_lat))
 
-    return u, mid_lat, mid_lon
+    return u, mid_lon, mid_lat

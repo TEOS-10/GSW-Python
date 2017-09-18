@@ -4141,7 +4141,7 @@ def t_freezing(SA, p, saturation_fraction):
 @match_args_return
 def t_freezing_first_derivatives(SA, p, saturation_fraction):
     """
-    Calculates the frist derivatives of the in-situ temperature at which
+    Calculates the first derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
     Pa).  These expressions come from differentiating the expression that
     defines the freezing temperature, namely the equality between the
