@@ -11,6 +11,8 @@ import pkg_resources
 from setuptools import Extension, setup
 from distutils.command.build_ext import build_ext as _build_ext
 
+import versioneer
+
 
 # Check Python version.
 if sys.version_info < (3, 5):
@@ -55,18 +57,6 @@ def read(*parts):
     return open(os.path.join(rootpath, *parts), 'r').read()
 
 
-def extract_version():
-    version = None
-    fname = os.path.join(rootpath, 'gsw', '__init__.py')
-    with open(fname) as f:
-        for line in f:
-            if (line.startswith('__version__')):
-                _, version = line.split('=')
-                version = version.strip()[1:-1]  # Remove quotation characters
-                break
-    return version
-
-
 class build_ext(_build_ext):
     # Extention builder from pandas without the cython stuff
     def build_extensions(self):
@@ -77,12 +67,16 @@ class build_ext(_build_ext):
                 ext.include_dirs.append(numpy_incl)
         _build_ext.build_extensions(self)
 
+
 LICENSE = read('LICENSE')
 long_description = read('README.rst')
 
+cmdclass = versioneer.get_cmdclass()
+cmdclass.update({'build_ext': build_ext})
+
 config = dict(
     name='gsw',
-    version=extract_version(),
+    version=versioneer.get_version(),
     packages=['gsw'],
     author=['Eric Firing', 'Filipe Fernandes'],
     author_email='efiring@hawaii.edu',
@@ -114,7 +108,7 @@ config = dict(
                    srcdir + '/c_gsw/gsw_oceanographic_toolbox.' + c_ext,
                    srcdir + '/c_gsw/gsw_saar.' + c_ext])],
     include_dirs=[os.path.join(rootpath, srcdir, 'c_gsw')],
-    cmdclass={'build_ext': build_ext},
+    cmdclass=cmdclass,
 )
 
 setup(**config)
