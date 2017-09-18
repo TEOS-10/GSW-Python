@@ -3070,7 +3070,7 @@ to that of pressure (in Pa)</p>
 
 <dl class="function">
 <dt id="gsw.geo_strf_dyn_height">
-<code class="descclassname">gsw.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geo_strf_dyn_height" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">gsw.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em>, <em>max_dp=1.0</em>, <em>interp_method='pchip'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geo_strf_dyn_height" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dynamic height anomaly as a function of pressure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3092,9 +3092,19 @@ to that of pressure (in Pa)</p>
 <blockquote>
 <div><p>Reference pressure, dbar</p>
 </div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
+<p><strong>axis</strong> : int, optional, default is 0</p>
 <blockquote>
 <div><p>The index of the pressure dimension in SA and CT.</p>
+</div></blockquote>
+<p><strong>max_dp</strong> : float</p>
+<blockquote>
+<div><p>If any pressure interval in the input p exceeds max_dp, the dynamic
+height will be calculated after interpolating to a grid with this
+spacing.</p>
+</div></blockquote>
+<p><strong>interp_method</strong> : string {‘pchip’, ‘linear’}</p>
+<blockquote>
+<div><p>Interpolation algorithm.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3115,9 +3125,9 @@ in an isobaric surface, relative to the reference surface.</p>
 <dt id="gsw.geostrophic_velocity">
 <code class="descclassname">gsw.</code><code class="descname">geostrophic_velocity</code><span class="sig-paren">(</span><em>geo_strf</em>, <em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geostrophic_velocity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.geostrophic_velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate geostrophic velocity from a streamfunction.</p>
-<p>Calculates geostrophic velocity relative to the sea surface, given a
-geostrophic streamfunction and the position of each station in
-sequence along an ocean section.  The data can be from a single
+<p>Calculates geostrophic velocity relative to a reference pressure,
+given a geostrophic streamfunction and the position of each station
+in sequence along an ocean section.  The data can be from a single
 isobaric or “density” surface, or from a series of such surfaces.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3340,6 +3350,16 @@ This output must be between 0 and 1.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.indexer">
+<code class="descclassname">gsw.</code><code class="descname">indexer</code><span class="sig-paren">(</span><em>shape</em>, <em>axis</em>, <em>order='C'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_utilities.html#indexer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.indexer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator of indexing tuples for “apply_along_axis” usage.</p>
+<p>The generator cycles through all axes other than <cite>axis</cite>.
+The numpy np.apply_along_axis function only works with functions
+of a single array; this generator allows us work with a function
+of more than one array.</p>
 </dd></dl>
 
 <dl class="function">
@@ -4098,6 +4118,47 @@ function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.</p>
 <blockquote class="last">
 <div><p>sea pressure
 ( i.e. absolute pressure - 10.1325 dbar )</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsw.pchip_interp">
+<code class="descclassname">gsw.</code><code class="descname">pchip_interp</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>xi</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/utility.html#pchip_interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.pchip_interp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolate using Piecewise Cubic Hermite Interpolating Polynomial</p>
+<p>This is a shape-preserving algorithm; it does not introduce new local
+extrema.  The implementation in C that is wrapped here is largely taken
+from the scipy implementation,
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.PchipInterpolator.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.PchipInterpolator.html</a>.</p>
+<p>Points outside the range of the interpolation table are filled using the
+end values in the table.  (In contrast,
+scipy.interpolate.pchip_interpolate() extrapolates using the end
+polynomials.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x, y</strong> : array-like</p>
+<blockquote>
+<div><p>Interpolation table x and y; n-dimensional, must be broadcastable to
+the same dimensions.</p>
+</div></blockquote>
+<p><strong>xi</strong> : array-like</p>
+<blockquote>
+<div><p>One-dimensional array of new x values.</p>
+</div></blockquote>
+<p><strong>axis</strong> : int, optional, default is 0</p>
+<blockquote>
+<div><p>Axis along which xi is taken.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>yi</strong> : array</p>
+<blockquote class="last">
+<div><p>Values of y interpolated to xi along the specified axis.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -5996,7 +6057,7 @@ chemical potentials of water in seawater and in ice.</p>
 <dl class="function">
 <dt id="gsw.t_freezing_first_derivatives">
 <code class="descclassname">gsw.</code><code class="descname">t_freezing_first_derivatives</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_freezing_first_derivatives"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gsw.t_freezing_first_derivatives" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the frist derivatives of the in-situ temperature at which
+<dd><p>Calculates the first derivatives of the in-situ temperature at which
 seawater freezes with respect to Absolute Salinity SA and pressure P (in
 Pa).  These expressions come from differentiating the expression that
 defines the freezing temperature, namely the equality between the

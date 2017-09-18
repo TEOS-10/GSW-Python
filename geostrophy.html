@@ -176,7 +176,7 @@
 <p>Functions for calculating geostrophic currents.</p>
 <dl class="function">
 <dt>
-<code class="descclassname">gsw.geostrophy.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descclassname">gsw.geostrophy.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em>, <em>max_dp=1.0</em>, <em>interp_method='pchip'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Dynamic height anomaly as a function of pressure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -198,9 +198,19 @@
 <blockquote>
 <div><p>Reference pressure, dbar</p>
 </div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
+<p><strong>axis</strong> : int, optional, default is 0</p>
 <blockquote>
 <div><p>The index of the pressure dimension in SA and CT.</p>
+</div></blockquote>
+<p><strong>max_dp</strong> : float</p>
+<blockquote>
+<div><p>If any pressure interval in the input p exceeds max_dp, the dynamic
+height will be calculated after interpolating to a grid with this
+spacing.</p>
+</div></blockquote>
+<p><strong>interp_method</strong> : string {‘pchip’, ‘linear’}</p>
+<blockquote>
+<div><p>Interpolation algorithm.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -261,9 +271,9 @@ dimension along which p increases.</p>
 <dt>
 <code class="descclassname">gsw.geostrophy.</code><code class="descname">geostrophic_velocity</code><span class="sig-paren">(</span><em>geo_strf</em>, <em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geostrophic_velocity"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate geostrophic velocity from a streamfunction.</p>
-<p>Calculates geostrophic velocity relative to the sea surface, given a
-geostrophic streamfunction and the position of each station in
-sequence along an ocean section.  The data can be from a single
+<p>Calculates geostrophic velocity relative to a reference pressure,
+given a geostrophic streamfunction and the position of each station
+in sequence along an ocean section.  The data can be from a single
 isobaric or “density” surface, or from a series of such surfaces.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
