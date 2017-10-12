@@ -183,6 +183,7 @@ def distance(lon, lat, p=0, axis=-1):
         one_d = True
         lon = lon[np.newaxis, :]
         lat = lat[np.newaxis, :]
+        p = np.zeros(lon.shape) if p == 0 else p[np.newaxis, :]
         axis = -1
     else:
         one_d = False
