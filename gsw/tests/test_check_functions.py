@@ -12,6 +12,10 @@ import gsw
 from gsw._utilities import Bunch
 from check_functions import parse_check_functions
 
+# Most of the tests have some nan values, so we need to suppress the warning.
+# Any more careful fix would likely require considerable effort.
+np.seterr(invalid='ignore')
+
 root_path = os.path.abspath(os.path.dirname(__file__))
 
 # Function checks that we can't handle automatically yet.
