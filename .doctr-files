@@ -25,12 +25,15 @@
 ./_static/css/badge_only.css
 ./_static/css/theme.css
 ./_static/doctools.js
+./_static/documentation_options.js
 ./_static/down-pressed.png
 ./_static/down.png
 ./_static/file.png
 ./_static/fonts/Inconsolata-Bold.ttf
 ./_static/fonts/Inconsolata-Regular.ttf
 ./_static/fonts/Lato-Bold.ttf
+./_static/fonts/Lato-BoldItalic.ttf
+./_static/fonts/Lato-Italic.ttf
 ./_static/fonts/Lato-Regular.ttf
 ./_static/fonts/RobotoSlab-Bold.ttf
 ./_static/fonts/RobotoSlab-Regular.ttf
@@ -38,7 +41,8 @@
 ./_static/fonts/fontawesome-webfont.svg
 ./_static/fonts/fontawesome-webfont.ttf
 ./_static/fonts/fontawesome-webfont.woff
-./_static/jquery-3.1.0.js
+./_static/fonts/fontawesome-webfont.woff2
+./_static/jquery-3.2.1.js
 ./_static/jquery.js
 ./_static/js/modernizr.min.js
 ./_static/js/theme.js

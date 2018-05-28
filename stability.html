@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
-        <link rel="up" title="Subpackages" href="gsw.html"/>
-        <link rel="next" title="Geostrophy" href="geostrophy.html"/>
-        <link rel="prev" title="Energy" href="energy.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Geostrophy" href="geostrophy.html" />
+    <link rel="prev" title="Energy" href="energy.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">gsw</a>
@@ -125,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,39 +183,36 @@ an automated mechanism.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>lat</strong> : array-like, 1-D, optional</p>
-<blockquote>
-<div><p>Latitude, degrees.</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
-<blockquote>
-<div><p>The dimension along which pressure increases.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D, optional</span></dt>
+<dd><p class="first last">Latitude, degrees.</p>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">The dimension along which pressure increases.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>N2</strong> : array</p>
-<blockquote>
-<div><p>Buoyancy frequency-squared at pressure midpoints, 1/s.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>N2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Buoyancy frequency-squared at pressure midpoints, 1/s.
 The shape along the pressure axis dimension is one
 less than that of the inputs.</p>
-</div></blockquote>
-<p><strong>p_mid</strong> : array</p>
-<blockquote class="last">
-<div><p>Pressure at midpoints of p, dbar.
+</dd>
+<dt><strong>p_mid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Pressure at midpoints of p, dbar.
 The array shape matches N2.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -237,40 +227,37 @@ The array shape matches N2.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
-<blockquote>
-<div><p>The dimension along which pressure increases.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">The dimension along which pressure increases.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Tu</strong> : array</p>
-<blockquote>
-<div><p>Turner Angle at pressure midpoints, degrees.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>Tu</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Turner Angle at pressure midpoints, degrees.
 The shape along the pressure axis dimension is one
 less than that of the inputs.</p>
-</div></blockquote>
-<p><strong>Rsubrho</strong> : array</p>
-<blockquote>
-<div><p>Stability Ratio, dimensionless.
+</dd>
+<dt><strong>Rsubrho</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Stability Ratio, dimensionless.
 The shape matches Tu.</p>
-</div></blockquote>
-<p><strong>p_mid</strong> : array</p>
-<blockquote class="last">
-<div><p>Pressure at midpoints of p, dbar.
+</dd>
+<dt><strong>p_mid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Pressure at midpoints of p, dbar.
 The array shape matches Tu.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -289,35 +276,33 @@ IPV_vs_fNsquared_ratio (see Eqn. (3.20.17) of IOC et al. (2010)).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>p_ref</strong> : float</p>
-<blockquote>
-<div><p>Reference pressure, dbar</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>p_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Reference pressure, dbar</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>IPV_vs_fNsquared_ratio</strong> : array</p>
-<blockquote>
-<div><p>The ratio of the vertical gradient of
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>IPV_vs_fNsquared_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">The ratio of the vertical gradient of
 potential density referenced to p_ref, to the vertical
 gradient of locally-referenced potential density, dimensionless.</p>
-</div></blockquote>
-<p><strong>p_mid</strong> : array</p>
-<blockquote class="last">
-<div><p>Pressure at midpoints of p, dbar.
+</dd>
+<dt><strong>p_mid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Pressure at midpoints of p, dbar.
 The array shape matches IPV_vs_fNsquared_ratio.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -328,9 +313,7 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -352,7 +335,7 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -371,6 +354,7 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'0.1-devel',
+            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -389,14 +373,11 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

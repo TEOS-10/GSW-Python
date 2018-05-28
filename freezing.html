@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
-        <link rel="up" title="Subpackages" href="gsw.html"/>
-        <link rel="next" title="All functions" href="gsw_flat.html"/>
-        <link rel="prev" title="Ice" href="ice.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="All functions" href="gsw_flat.html" />
+    <link rel="prev" title="Ice" href="ice.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">gsw</a>
@@ -125,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -186,26 +179,26 @@ chemical potentials of water in seawater and in ice.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>CT_freezing</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>Conservative Temperature at freezing of seawater
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>CT_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
+<dd><p class="first last">Conservative Temperature at freezing of seawater
 That is, the freezing temperature expressed in terms of
 Conservative Temperature (ITS-90).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -222,32 +215,31 @@ pressure P (in Pa).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>CTfreezing_SA</strong> : array-like, K kg/g</p>
-<blockquote>
-<div><p>the derivative of the Conservative Temperature at
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>CTfreezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K kg/g</span></dt>
+<dd><p class="first last">the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to Absolute Salinity at
 fixed pressure              [ K/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>CTfreezing_P</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the Conservative Temperature at
+</dd>
+<dt><strong>CTfreezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
+<dd><p class="first last">the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to pressure (in Pa) at
 fixed Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -265,32 +257,31 @@ freezing temperature (McDougall et al., 2014).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>CTfreezing_SA</strong> : array-like, K kg/g</p>
-<blockquote>
-<div><p>the derivative of the Conservative Temperature at
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>CTfreezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K kg/g</span></dt>
+<dd><p class="first last">the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to Absolute Salinity at
 fixed pressure              [ K/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>CTfreezing_P</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the Conservative Temperature at
+</dd>
+<dt><strong>CTfreezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
+<dd><p class="first last">the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to pressure (in Pa) at
 fixed Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -311,26 +302,26 @@ by this exact method using the function gsw_CT_freezing.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>CT_freezing</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>Conservative Temperature at freezing of seawater
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>CT_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
+<dd><p class="first last">Conservative Temperature at freezing of seawater
 That is, the freezing temperature expressed in
 terms of Conservative Temperature (ITS-90).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -351,26 +342,26 @@ which seawater is frozen, the output, SA_freezing, is made a NaN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA_freezing</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity of seawater when it freezes, for
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SA_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
+<dd><p class="first last">Absolute Salinity of seawater when it freezes, for
 given input values of its Conservative Temperature,
 pressure and air saturation fraction.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -390,26 +381,26 @@ which seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA_freezing</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity of seawater when it freezes, for
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SA_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
+<dd><p class="first last">Absolute Salinity of seawater when it freezes, for
 given input values of Conservative Temperature
 pressure and air saturation fraction.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -429,26 +420,26 @@ seawater is frozen, the output, SA_freezing, is set to NaN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA_freezing</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity of seawater when it freezes, for
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SA_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
+<dd><p class="first last">Absolute Salinity of seawater when it freezes, for
 given input values of in situ temperature, pressure and
 air saturation fraction.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -468,26 +459,26 @@ seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : array-like</p>
-<blockquote>
-<div><p>In-situ temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SA_freezing</strong> : array-like, g/kg</p>
-<blockquote class="last">
-<div><p>Absolute Salinity of seawater when it freezes, for
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>SA_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
+<dd><p class="first last">Absolute Salinity of seawater when it freezes, for
 given input values of in situ temperature, pressure and
 air saturation fraction.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -502,21 +493,22 @@ air saturation fraction.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pot_enthalpy_ice_freezing</strong> : array-like, J/kg</p>
-<blockquote class="last">
-<div><p>potential enthalpy of ice at freezing
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pot_enthalpy_ice_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
+<dd><p class="first last">potential enthalpy of ice at freezing
 of seawater</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -533,28 +525,28 @@ pressure P (in Pa).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pot_enthalpy_ice_freezing_SA</strong> : array-like, K kg/g</p>
-<blockquote>
-<div><p>the derivative of the potential enthalpy
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pot_enthalpy_ice_freezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K kg/g</span></dt>
+<dd><p class="first last">the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to Absolute
 salinity at fixed pressure  [ K/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>pot_enthalpy_ice_freezing_P</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the potential enthalpy
+</dd>
+<dt><strong>pot_enthalpy_ice_freezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
+<dd><p class="first last">the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to pressure
 (in Pa) at fixed Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -572,28 +564,28 @@ freezing potential enthalpy of ice Ih (McDougall et al., 2015).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pot_enthalpy_ice_freezing_SA</strong> : array-like, J/g</p>
-<blockquote>
-<div><p>the derivative of the potential enthalpy
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pot_enthalpy_ice_freezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/g</span></dt>
+<dd><p class="first last">the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to Absolute
 salinity at fixed pressure  [ (J/kg)/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>pot_enthalpy_ice_freezing_P</strong> : array-like, (J/kg)/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the potential enthalpy
+</dd>
+<dt><strong>pot_enthalpy_ice_freezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, (J/kg)/Pa</span></dt>
+<dd><p class="first last">the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to pressure
 (in Pa) at fixed Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -617,21 +609,22 @@ by this exact method using the function gsw_pot_enthalpy_ice_freezing.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pot_enthalpy_ice_freezing</strong> : array-like, J/kg</p>
-<blockquote class="last">
-<div><p>potential enthalpy of ice at freezing
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pot_enthalpy_ice_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
+<dd><p class="first last">potential enthalpy of ice at freezing
 of seawater</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -652,25 +645,25 @@ output, pressure_freezing, is put equal to NaN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pressure_freezing</strong> : array-like, dbar</p>
-<blockquote class="last">
-<div><p>sea pressure at which the seawater freezes
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pressure_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, dbar</span></dt>
+<dd><p class="first last">sea pressure at which the seawater freezes
 ( i.e. absolute pressure - 10.1325 dbar )</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -689,25 +682,25 @@ chemical potentials of water in seawater and in ice.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>t_freezing</strong> : array-like, deg C</p>
-<blockquote class="last">
-<div><p>in-situ temperature at which seawater freezes.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>t_freezing</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
+<dd><p class="first last">in-situ temperature at which seawater freezes.
 (ITS-90)</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -726,32 +719,31 @@ chemical potentials of water in seawater and in ice.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tfreezing_SA</strong> : array-like, K kg/g</p>
-<blockquote>
-<div><p>the derivative of the in-situ freezing temperature
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>tfreezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K kg/g</span></dt>
+<dd><p class="first last">the derivative of the in-situ freezing temperature
 (ITS-90) with respect to Absolute Salinity at fixed
 pressure                     [ K/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>tfreezing_P</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the in-situ freezing temperature
+</dd>
+<dt><strong>tfreezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
+<dd><p class="first last">the derivative of the in-situ freezing temperature
 (ITS-90) with respect to pressure (in Pa) at fixed
 Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -770,32 +762,31 @@ chemical potentials of water in seawater and in ice.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>saturation_fraction</strong> : array-like</p>
-<blockquote>
-<div><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tfreezing_SA</strong> : array-like, K kg/g</p>
-<blockquote>
-<div><p>the derivative of the in-situ freezing temperature
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>tfreezing_SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K kg/g</span></dt>
+<dd><p class="first last">the derivative of the in-situ freezing temperature
 (ITS-90) with respect to Absolute Salinity at fixed
 pressure                     [ K/(g/kg) ] i.e.</p>
-</div></blockquote>
-<p><strong>tfreezing_P</strong> : array-like, K/Pa</p>
-<blockquote class="last">
-<div><p>the derivative of the in-situ freezing temperature
+</dd>
+<dt><strong>tfreezing_P</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
+<dd><p class="first last">the derivative of the in-situ freezing temperature
 (ITS-90) with respect to pressure (in Pa) at fixed
 Absolute Salinity</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -806,9 +797,7 @@ Absolute Salinity</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -830,7 +819,7 @@ Absolute Salinity</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -849,6 +838,7 @@ Absolute Salinity</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'0.1-devel',
+            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -867,14 +857,11 @@ Absolute Salinity</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

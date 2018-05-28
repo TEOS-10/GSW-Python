@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="gsw 0.1-devel documentation" href="index.html"/>
-        <link rel="up" title="Subpackages" href="gsw.html"/>
-        <link rel="next" title="Ice" href="ice.html"/>
-        <link rel="prev" title="Stability" href="stability.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ice" href="ice.html" />
+    <link rel="prev" title="Stability" href="stability.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">gsw</a>
@@ -125,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -182,45 +175,41 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>SA</strong> : array-like</p>
-<blockquote>
-<div><p>Absolute Salinity, g/kg</p>
-</div></blockquote>
-<p><strong>CT</strong> : array-like</p>
-<blockquote>
-<div><p>Conservative Temperature (ITS-90), degrees C</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>p_ref</strong> : float or array-like, optional</p>
-<blockquote>
-<div><p>Reference pressure, dbar</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, optional, default is 0</p>
-<blockquote>
-<div><p>The index of the pressure dimension in SA and CT.</p>
-</div></blockquote>
-<p><strong>max_dp</strong> : float</p>
-<blockquote>
-<div><p>If any pressure interval in the input p exceeds max_dp, the dynamic
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>p_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or array-like, optional</span></dt>
+<dd><p class="first last">Reference pressure, dbar</p>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional, default is 0</span></dt>
+<dd><p class="first last">The index of the pressure dimension in SA and CT.</p>
+</dd>
+<dt><strong>max_dp</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">If any pressure interval in the input p exceeds max_dp, the dynamic
 height will be calculated after interpolating to a grid with this
 spacing.</p>
-</div></blockquote>
-<p><strong>interp_method</strong> : string {‘pchip’, ‘linear’}</p>
-<blockquote>
-<div><p>Interpolation algorithm.</p>
-</div></blockquote>
+</dd>
+<dt><strong>interp_method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string {‘pchip’, ‘linear’}</span></dt>
+<dd><p class="first last">Interpolation algorithm.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dynamic_height</strong> : array</p>
-<blockquote class="last">
-<div><p>This is the integral of specific volume anomaly with respect
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>dynamic_height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">This is the integral of specific volume anomaly with respect
 to pressure, from each pressure in p to the specified
 reference pressure.  It is the geostrophic streamfunction
 in an isobaric surface, relative to the reference surface.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -235,26 +224,26 @@ in an isobaric surface, relative to the reference surface.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lon, lat</strong> : array-like, 1-D or 2-D (shapes must match)</p>
-<blockquote>
-<div><p>Longitude, latitude, in degrees.</p>
-</div></blockquote>
-<p><strong>p</strong> : array-like, scalar, 1-D or 2-D, optional, default is 0</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, -1, 0, 1, optional</p>
-<blockquote>
-<div><p>The axis or dimension along which <em>lat and lon</em> vary.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>lon, lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D or 2-D (shapes must match)</span></dt>
+<dd><p class="first last">Longitude, latitude, in degrees.</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, scalar, 1-D or 2-D, optional, default is 0</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, -1, 0, 1, optional</span></dt>
+<dd><p class="first last">The axis or dimension along which <em>lat and lon</em> vary.
 This differs from most functions, for which axis is the
 dimension along which p increases.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : 1-D or 2-D array</p>
-<blockquote class="last">
-<div><p>distance in meters between adjacent points.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">1-D or 2-D array</span></dt>
+<dd><p class="first last">distance in meters between adjacent points.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -279,40 +268,37 @@ isobaric or “density” surface, or from a series of such surfaces.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>geo_strf</strong> : array-like, 1-D or 2-D</p>
-<blockquote>
-<div><p>geostrophic streamfunction; see Notes below.</p>
-</div></blockquote>
-<p><strong>lon</strong> : array-like, 1-D</p>
-<blockquote>
-<div><p>Longitude, -360 to 360 degrees</p>
-</div></blockquote>
-<p><strong>lat</strong> : array-like, 1-D</p>
-<blockquote>
-<div><p>Latitude, degrees</p>
-</div></blockquote>
-<p><strong>p</strong> : float or array-like, optional</p>
-<blockquote>
-<div><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>geo_strf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D or 2-D</span></dt>
+<dd><p class="first last">geostrophic streamfunction; see Notes below.</p>
+</dd>
+<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D</span></dt>
+<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+</dd>
+<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D</span></dt>
+<dd><p class="first last">Latitude, degrees</p>
+</dd>
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or array-like, optional</span></dt>
+<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
 This used only for a tiny correction in the distance calculation;
 it is safe to omit it.</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, 0 or 1, optional</p>
-<blockquote>
-<div><p>The axis or dimension along which pressure increases in geo_strf.
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, 0 or 1, optional</span></dt>
+<dd><p class="first last">The axis or dimension along which pressure increases in geo_strf.
 If geo_strf is 1-D, it is ignored.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>velocity</strong> : array, 2-D or 1-D</p>
-<blockquote>
-<div><p>Geostrophic velocity in m/s relative to the sea surface,
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>velocity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array, 2-D or 1-D</span></dt>
+<dd><p class="first last">Geostrophic velocity in m/s relative to the sea surface,
 averaged between each successive pair of positions.</p>
-</div></blockquote>
-<p><strong>mid_lon, mid_lat</strong> : array, 1-D</p>
-<blockquote class="last">
-<div><p>Midpoints of input lon and lat.</p>
-</div></blockquote>
+</dd>
+<dt><strong>mid_lon, mid_lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array, 1-D</span></dt>
+<dd><p class="first last">Midpoints of input lon and lat.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -328,7 +314,7 @@ such as a potential density surface).</li>
 such as a potential density surface, a Neutral Density
 surface, or an omega surface (Klocker et al., 2009)).</li>
 </ul>
-<p>Only <code class="xref py py-func docutils literal"><span class="pre">geo_strf_dyn_height()</span></code> is presently implemented
+<p>Only <code class="xref py py-func docutils literal notranslate"><span class="pre">geo_strf_dyn_height()</span></code> is presently implemented
 in GSW-Python.</p>
 </dd></dl>
 
@@ -336,9 +322,7 @@ in GSW-Python.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -360,7 +344,7 @@ in GSW-Python.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -379,6 +363,7 @@ in GSW-Python.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'0.1-devel',
+            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -397,14 +382,11 @@ in GSW-Python.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
