@@ -6,6 +6,7 @@ from __future__ import print_function
 
 import os
 import sys
+import shutil
 
 import pkg_resources
 from setuptools import Extension, setup
@@ -42,10 +43,6 @@ Python {py} detected.
     print(error, file=sys.stderr)
     sys.exit(1)
 
-if sys.platform == 'win32':
-    cext = 'cpp'
-else:
-    cext = 'c'
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
@@ -70,6 +67,21 @@ long_description = read('README.rst')
 
 cmdclass = versioneer.get_cmdclass()
 cmdclass.update({'build_ext': build_ext})
+
+# MSVC can't handle C complex, and distutils doesn't seem to be able to
+# let us force C++ compilation of .c files, so we use the following hack for
+# Windows.
+if sys.platform == 'win32':
+    cext = 'cpp'
+    shutil.copy('src/c_gsw/gsw_oceanographic_toolbox.c',
+                'src/c_gsw/gsw_oceanographic_toolbox.cpp')
+    shutil.copy('src/c_gsw/gsw_saar.c', 'src/c_gsw/gsw_saar.cpp')
+else:
+    cext = 'c'
+
+ufunc_src_list = ['src/_ufuncs.c',
+                  'src/c_gsw/gsw_oceanographic_toolbox.' + cext,
+                  'src/c_gsw/gsw_saar.' + cext]
 
 config = dict(
     name='gsw',
@@ -99,12 +111,7 @@ config = dict(
     keywords=['oceanography', 'seawater', 'TEOS-10'],
     install_requires=['numpy'],
     setup_requires=['numpy'],
-    ext_modules=[
-        Extension('gsw._gsw_ufuncs',
-                  ['src/_ufuncs.c',
-                   'src/c_gsw/gsw_oceanographic_toolbox.' + cext,
-                   'src/c_gsw/gsw_saar.' + cext],
-                  )],
+    ext_modules=[Extension('gsw._gsw_ufuncs', ufunc_src_list)],
     include_dirs=[os.path.join(rootpath, 'src', 'c_gsw')],
     cmdclass=cmdclass,
 )
