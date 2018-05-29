@@ -8,6 +8,12 @@
 #define GSWTEOS_10_H
 
 #ifdef __cplusplus
+#	include <complex>
+#else
+#   include <complex.h>
+#endif
+
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -15,7 +21,7 @@ extern "C" {
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <complex.h>
+
 #include <errno.h>
 
 #define	GSW_INVALID_VALUE	9e15	/* error return from gsw_saar et al. */

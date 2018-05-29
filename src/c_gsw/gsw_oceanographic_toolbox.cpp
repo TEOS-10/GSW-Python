@@ -46,8 +46,18 @@
 
 ==========================================================================
 */
-#include "gswteos-10_cpp.h"
+#include "gswteos-10.h"
+
+#ifdef __cplusplus
+#	define DCOMPLEX std::complex<double>
+#else
+#   define DCOMPLEX double complex
+# 	define real(x) creal(x)
+#	define log(x) clog(x)
+#endif
+
 #include "gsw_internal_const.h"
+
 
 /*
 !==========================================================================
@@ -2181,7 +2191,7 @@ gsw_enthalpy_ice(double t, double p)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	tau, dzi, g0;
-	std::complex<double> r2, sqtau_t1, sqtau_t2, g;
+	DCOMPLEX r2, sqtau_t1, sqtau_t2, g;
 
 	tau = (t + gsw_t0)*rec_tt;
 
@@ -4819,7 +4829,7 @@ gsw_gibbs_ice (int nt, int np, double t, double p)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	dzi, g0, g0p, g0pp, sqrec_pt;
-	std::complex<double>	r2, r2p, r2pp, g, sqtau_t1, sqtau_t2, tau,
+	DCOMPLEX	r2, r2p, r2pp, g, sqtau_t1, sqtau_t2, tau,
 			tau_t1, tau_t2;
 	double	s0 = -3.32733756492168e3;
 
@@ -4929,7 +4939,7 @@ gsw_gibbs_ice_part_t(double t, double p)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	dzi, tau;
-	std::complex<double>	g, tau_t1, tau_t2, r2;
+	DCOMPLEX	g, tau_t1, tau_t2, r2;
 
 	tau = (t + gsw_t0)*rec_tt;
 
@@ -4965,7 +4975,7 @@ gsw_gibbs_ice_pt0(double pt0)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	tau;
-	std::complex<double>	g, tau_t1, tau_t2;
+	DCOMPLEX	g, tau_t1, tau_t2;
 
 	tau = (pt0 + gsw_t0)*rec_tt;
 
@@ -4998,7 +5008,7 @@ gsw_gibbs_ice_pt0_pt0(double pt0)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	tau;
-	std::complex<double>	g;
+	DCOMPLEX	g;
 
 	tau = (pt0 + gsw_t0)*rec_tt;
 
@@ -6455,7 +6465,7 @@ gsw_pot_enthalpy_from_pt_ice(double pt0_ice)
 	GSW_TEOS10_CONSTANTS;
 	GSW_GIBBS_ICE_COEFFICIENTS;
 	double	tau;
-	std::complex<double>	h0_part, sqtau_t1, sqtau_t2;
+	DCOMPLEX	h0_part, sqtau_t1, sqtau_t2;
 
 	tau = (pt0_ice + gsw_t0)*rec_tt;
 

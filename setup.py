@@ -42,13 +42,10 @@ Python {py} detected.
     print(error, file=sys.stderr)
     sys.exit(1)
 
-if os.name in ('nt', 'dos'):
-    srcdir = 'src2'
-    c_ext = 'cpp'
+if sys.platform == 'win32':
+    cext = 'cpp'
 else:
-    srcdir = 'src'
-    c_ext = 'c'
-
+    cext = 'c'
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
@@ -104,10 +101,11 @@ config = dict(
     setup_requires=['numpy'],
     ext_modules=[
         Extension('gsw._gsw_ufuncs',
-                  [srcdir + '/_ufuncs.c',
-                   srcdir + '/c_gsw/gsw_oceanographic_toolbox.' + c_ext,
-                   srcdir + '/c_gsw/gsw_saar.' + c_ext])],
-    include_dirs=[os.path.join(rootpath, srcdir, 'c_gsw')],
+                  ['src/_ufuncs.c',
+                   'src/c_gsw/gsw_oceanographic_toolbox.' + cext,
+                   'src/c_gsw/gsw_saar.' + cext],
+                  )],
+    include_dirs=[os.path.join(rootpath, 'src', 'c_gsw')],
     cmdclass=cmdclass,
 )
 

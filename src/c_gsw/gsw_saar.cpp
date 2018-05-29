@@ -4,9 +4,16 @@
 **
 **  GSW TEOS-10 V3.05
 */
-#include "gswteos-10_cpp.h"
+#include "gswteos-10.h"
 #include "gsw_internal_const.h"
 #include "gsw_saar_data.c"
+
+#ifdef __cplusplus
+#	define ISNAN(x) std::isnan(x)
+#else
+#	define ISNAN(x) isnan(x)
+#endif
+
 
 static double gsw_sum(double *x, int n);
 
@@ -49,7 +56,7 @@ gsw_saar(double p, double lon, double lat)
 
 	return_value	 = GSW_INVALID_VALUE;
 
-    if (std::isnan(lat) || std::isnan(lon) || std::isnan(p))
+    if (ISNAN(lat) || ISNAN(lon) || ISNAN(p))
         return (return_value);
 
 	if (lat  <  -86.0  ||  lat  >  90.0)
@@ -167,7 +174,7 @@ gsw_deltasa_atlas(double p, double lon, double lat)
 
 	return_value	= GSW_INVALID_VALUE;
 
-    if (std::isnan(lat) || std::isnan(lon) || std::isnan(p))
+    if (ISNAN(lat) || ISNAN(lon) || ISNAN(p))
         return (return_value);
 
 	if (lat < -86.0  ||  lat  >  90.0)
