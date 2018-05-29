@@ -11104,6 +11104,7 @@ int gsw_util_pchip_interp(double *x, double *y, int n,
     err = pchip_derivs(x, y, n, d);
     if (err)
     {
+		free(d);
         return 2;
     }
 
