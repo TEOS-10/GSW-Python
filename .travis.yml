@@ -47,8 +47,6 @@ script:
 after_success:
   - if [[ $TEST_TARGET == "publish" ]]; then
       set -e ;
-      pip install sphinx_rtd_theme ;
-      pip install doctr ;
       pushd docs && make html && popd ;
       doctr deploy --built-docs=docs/_build/html . ;
     fi
