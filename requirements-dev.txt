@@ -1,3 +1,6 @@
+doctr
+numpydoc
 pytest
 sphinx
-numpydoc
+sphinx_rtd_theme
+
