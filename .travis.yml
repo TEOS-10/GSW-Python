@@ -19,6 +19,8 @@ matrix:
     env: TEST_TARGET=default NUMPY=1.14
   - python: 3.6
     env: TEST_TARGET=publish NUMPY=1.14
+  - python: 3.6
+    env: TEST_TARGET=deploy NUMPY=1.14
 
 before_install:
   - wget http://bit.ly/miniconda -O miniconda.sh
@@ -51,7 +53,6 @@ after_success:
       doctr deploy --built-docs=docs/_build/html . ;
     fi
 
-
 doctr:
   require-master: true
   sync: false
@@ -69,4 +70,4 @@ deploy:
     tags: true
     python: 3.6
     all_branches: master
-    condition: '$TEST_TARGET == "default"'
+    condition: '$TEST_TARGET == "deploy"'
