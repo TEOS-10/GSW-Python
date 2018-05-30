@@ -10,18 +10,15 @@ matrix:
   fast_finish: true
   include:
   - python: 3.5
-    env: TEST_TARGET=default NUMPY=1.12
+    env: TEST_TARGET=default NUMPY=1.11
   - python: 3.5
-    env: TEST_TARGET=default NUMPY=1.13
+    env: TEST_TARGET=default NUMPY=1.14
   - python: 3.6
-    env: TEST_TARGET=default NUMPY=1.12
+    env: TEST_TARGET=default NUMPY=1.11
   - python: 3.6
-    env: TEST_TARGET=default NUMPY=1.13
+    env: TEST_TARGET=default NUMPY=1.14
   - python: 3.6
-    env: TEST_TARGET=publish NUMPY=1.13
-  allow_failures:
-  - python: 3.6
-    env: TEST_TARGET=publish NUMPY=1.13
+    env: TEST_TARGET=publish NUMPY=1.14
 
 before_install:
   - wget http://bit.ly/miniconda -O miniconda.sh
@@ -65,7 +62,7 @@ deploy:
   user: ocefpaf
   password:
     secure: aC6ZixeGhCmxdn3a4skQJHIK9Ffj/p5O1cOjHKXZh1vhHy1t5oEfk1HayWdLq2wRwODx9+Ern6ZsWRv+jiSPiqlHgOL74SHT+ByAX/WaylhhySS5JeTN+jT0vOoB7IZRtAb1QVA7mIifbrLTyHw+jX5pUt+ue1LI5zg+M9ny3E0gFYut6t3C2zbTCACmk3S5+3DXn4BT5aXJhbnF2NKTNvEzhXuL0Vu08N8pClTIQM8ZR2fniqVcM8oCPL/Ecouf7Z6L5ofl8cqdloe9e50/01XCKQs0EUWVko8XlBiKvjOUoUn3oB1rif8hahQpHIrDWNShvBqp1LE/Sxmv2FmtC0C+WAqivMqWyLOxrtZnDpk0/0DGObQ652Ypr2WocC1E2wub7rf1KinNcWmgQGIPzQbUERUYcc2yW1pRfT2oos0QLTzWgTTGlImAeuNo1s9ds7dSYcQCL6z+M0Nq3nZ71gmir22hx/j1N0OQzLBMgxz3m6+pZz6nrNT0YQTFqs/y2A6R8yf46+vySGbzoMKS0OmTmFN6Fr0URoF0oHmztb6y+aVLvHPdtfLV/ryR7DsLKXn7j1FfHoEJNoojCecgL0EZDqWiSX6wLwdTnEkZK56ZTAJGjKPFTPtfxaNLdmc+kweGhIXINp4qacWASIYBm1vldToSC2KiRo+aPKcYRaQ=
-  distributions: sdist bdist_wheel
+  distributions: sdist
   upload_docs: no
   on:
     repo: TEOS-10/GSW-Python
