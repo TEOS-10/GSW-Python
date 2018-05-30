@@ -5,6 +5,7 @@ This file is auto-generated--do not edit it.
 This is python 3-only (for simplicity) to begin with.
 */
 
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "Python.h"
 #include "math.h"
 #include "numpy/ndarraytypes.h"
