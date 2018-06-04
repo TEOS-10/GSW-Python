@@ -24,7 +24,8 @@ from pycurrents.file.matfile import loadmatbunch
 # as its contents change.
 data_ver = 'v3_0'
 
-gsw_data_file = '../../../gsw_matlab_v3_05_8/library/gsw_data_v3_0.mat'
+# gsw_data_file = '../../../gsw_matlab_v3_05_8/library/gsw_data_v3_0.mat'
+gsw_data_file = '../../GSW-Matlab/Toolbox/library/gsw_data_v3_0.mat'
 
 gsw_data = loadmatbunch(gsw_data_file, masked=False)
 
