@@ -4,16 +4,16 @@ into numpy ufuncs.  Also writes ufuncs.list as a record of the
 ufunc names.
 
 """
-import os
+from pathlib import Path
 import sys
 import shutil
 
 from c_header_parser import (get_simple_sig_dict,
-                            get_complex_scalar_dict_by_nargs_nreturns)
+                             get_complex_scalar_dict_by_nargs_nreturns)
 
 blacklist = ['add_barrier']
 
-basedir = os.path.join(os.path.dirname(__file__), '../')
+basedir = Path('..').resolve()
 
 modfile_head_top = """
 /*
@@ -239,7 +239,7 @@ def write_modfile(modfile_name, srcdir):
 
     chunks.append(modfile_tail)
 
-    with open(modfile_name, 'w') as f:
+    with modfile_name.open('w') as f:
         f.write(''.join(chunks))
 
     funcnamelist1.sort()
@@ -257,5 +257,5 @@ def write_modfile(modfile_name, srcdir):
 
 if __name__ == '__main__':
     srcdir = 'src'
-    modfile_name = os.path.join(basedir, srcdir, '_ufuncs.c')
+    modfile_name = basedir.joinpath(srcdir, '_ufuncs.c')
     write_modfile(modfile_name, srcdir=srcdir)

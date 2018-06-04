@@ -3,17 +3,19 @@ Functions for taking apart the function declarations in gswteos-10.h.
 """
 
 import re
-import os
 
-basedir = os.path.join(os.path.dirname(__file__), '../')
+from pathlib import Path
+
+
+basedir = Path('..').resolve()
 
 def get_signatures(strip_extern=True, srcdir='src'):
     """
     Return a list of C function declarations.
     """
-    fname = os.path.join(basedir, srcdir, "c_gsw/gswteos-10.h")
+    fname = basedir.joinpath(srcdir, "c_gsw/gswteos-10.h")
 
-    with open(fname) as f:
+    with fname.open() as f:
         for line in f:
             if 'Prototypes' in line:
                 break
