@@ -47,4 +47,4 @@ gsw_data = loadmatdict(gsw_data_file)
 cv_vars = gsw_data['gsw_cv']
 cv_vars['gsw_data_file'] = str(gsw_data_file)
 fname = Path('..', 'gsw', 'tests', 'gsw_cv_%s' % data_ver)
-np.savez(fname, **cv_vars)
+np.savez(str(fname), **cv_vars)
