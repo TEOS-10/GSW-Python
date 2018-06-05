@@ -7,8 +7,9 @@ an up-to-date GSW-C github repo and the present GSW-Python repo are
 siblings in the directory tree.
 """
 
-import os
 import shutil
+from pathlib import Path
+
 
 fnames = ['gsw_oceanographic_toolbox.c',
           'gsw_saar.c',
@@ -16,12 +17,12 @@ fnames = ['gsw_oceanographic_toolbox.c',
           'gsw_internal_const.h',
           'gswteos-10.h']
 
-srcdir = '../../GSW-C'
-destdir = '../src/c_gsw'
+srcdir = Path('..', '..', 'GSW-C')
+destdir = Path('..', 'src', 'c_gsw')
 
 for fname in fnames:
-    src = os.path.join(srcdir, fname)
-    dest = os.path.join(destdir, fname)
-    if os.path.getmtime(src) > os.path.getmtime(dest):
-        shutil.copyfile(src, dest)
+    src = srcdir.joinpath(fname)
+    dest = destdir.joinpath(fname)
+    if src.stat().st_mtime > dest.stat().st_mtime:
+        shutil.copyfile(str(src), str(dest))
         print('copied %s to %s' % (src, dest))

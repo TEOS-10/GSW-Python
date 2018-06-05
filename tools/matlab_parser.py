@@ -2,13 +2,13 @@
 It may be necessary to edit the location of the GSW-Matlab directory.
 """
 
-import os
-import glob
 import re
+from pathlib import Path
 
-basedir = os.path.join(os.path.dirname(__file__), '../')
 
-gsw_matlab_dir = os.path.join(basedir, '../GSW-Matlab/Toolbox')
+basedir = Path('..').resolve()
+
+gsw_matlab_dir = basedir.joinpath('..', 'GSW-Matlab', 'Toolbox').resolve()
 gsw_matlab_subdirs = ['library', 'thermodynamics_from_t']
 
 # pattern for functions returning one variable
@@ -23,11 +23,11 @@ mfunc_topline2 = re.compile(r"^function \[(?P<output>.*)\]\s*=\s*"
 
 
 def list_functions(matdir=gsw_matlab_dir, subdir=''):
-    rawlist = glob.glob(os.path.join(matdir, '*.m'))
+    rawlist = matdir.glob('*.m')
     signatures = []
     rejects = []
     for m in rawlist:
-        with open(m, encoding='latin-1') as f:
+        with m.open(encoding='latin-1') as f:
             line = f.readline()
         _match = mfunc_topline1.match(line)
         if _match is None:
@@ -45,7 +45,7 @@ def list_functions(matdir=gsw_matlab_dir, subdir=''):
 def get_all_signatures():
     signatures, _ = list_functions()
     for subdir in gsw_matlab_subdirs:
-        path = os.path.join(gsw_matlab_dir, subdir)
+        path = gsw_matlab_dir.joinpath(subdir)
         s, _ = list_functions(path)
         signatures.extend(s)
     return signatures
@@ -87,7 +87,7 @@ def input_groups_from_signatures(signatures):
     return groups
 
 def get_help_text(fname):
-    with open(fname, encoding='latin-1') as f:
+    with fname.open(encoding='latin-1') as f:
         lines = f.readlines()
         help = []
         started = False
