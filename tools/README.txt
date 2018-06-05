@@ -32,8 +32,3 @@ Modules
     This is not used by any of the other functions or scripts, but
     was used when initially categorizing the functions for inclusion
     in submodules.
-
-
-Dependencies
-------------
-- pycurrents: Used by mat2npz.py for reading the matfile.
