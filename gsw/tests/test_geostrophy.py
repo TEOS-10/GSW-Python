@@ -69,3 +69,19 @@ def test_geostrophy():
     assert_almost_equal(geovel, cv.geo_strf_velocity)
     assert_almost_equal(midlon, cv.geo_strf_velocity_mid_long[0])
     assert_almost_equal(midlat, cv.geo_strf_velocity_mid_lat[0])
+
+def test_dyn_height_shallower_pref():
+    """
+    Check that we can handle a p_ref that is shallower than the top of the
+    cast.  To make the results from bin 1 on down independent of whether
+    bin 0 has been deleted, we need to use linear interpolation.
+    """
+    p = cv.p_chck_cast
+    CT = cv.CT_chck_cast
+    SA = cv.SA_chck_cast
+    strf0 = gsw.geo_strf_dyn_height(SA, CT, p, p_ref=0, interp_method='linear')
+    strf1 = gsw.geo_strf_dyn_height(SA[1:], CT[1:], p[1:], p_ref=0,
+                                    interp_method='linear')
+    found = strf1 - strf1[0]
+    expected = strf0[1:] - strf0[1]
+    assert_almost_equal(found, expected)
