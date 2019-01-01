@@ -83,7 +83,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
             ct = CT[ind][igood]
             # Temporarily add a top (typically surface) point and mixed layer
             # if p_ref is above the shallowest pressure.
-            if pgood[0] < p_ref:
+            if pgood[0] > p_ref:
                 ptop = np.arange(p_ref, pgood[0], max_dp)
                 ntop = len(ptop)
                 sa = np.hstack(([sa[0]]*ntop, sa))
