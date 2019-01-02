@@ -26,6 +26,10 @@ def test_1darray():
     value = gsw.distance(np.array(lon), np.array(lat), p=0, axis=-1)
     assert_almost_equal(expected, value)
 
+def test_1darray_default_p():
+    # @match_args_return doesn't see the default p.
+    value = gsw.distance(np.array(lon), np.array(lat))
+    assert_almost_equal(expected, value)
 
 def test_2dlist():
     value = gsw.distance(np.atleast_2d(lon), np.atleast_2d(lat), p=0, axis=1)
