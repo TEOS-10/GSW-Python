@@ -187,7 +187,9 @@ def distance(lon, lat, p=0, axis=-1):
     else:
         one_d = False
 
-    one_d = one_d and p.ndim == 1
+    # Handle scalar default; match_args_return doesn't see it.
+    p = np.atleast_1d(p)
+    one_d = (one_d and p.ndim == 1)
 
     if axis == 0:
         indm = (slice(0, -1), slice(None))
