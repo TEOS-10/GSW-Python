@@ -1,23 +1,23 @@
 environment:
   matrix:
     - TARGET_ARCH: x64
-      CONDA_PY: 3.5
+      CONDA_PY: 3.6
       CONDA_NPY: 1.11
       CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
 
     - TARGET_ARCH: x64
-      CONDA_PY: 3.5
-      CONDA_NPY: 1.14
+      CONDA_PY: 3.6
+      CONDA_NPY: 1.16
       CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
 
     - TARGET_ARCH: x64
-      CONDA_PY: 3.6
+      CONDA_PY: 3.7
       CONDA_NPY: 1.11
       CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
 
     - TARGET_ARCH: x64
-      CONDA_PY: 3.6
-      CONDA_NPY: 1.14
+      CONDA_PY: 3.7
+      CONDA_NPY: 1.16
       CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
 
 platform:
@@ -37,13 +37,14 @@ install:
   - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
   - cmd: conda config --set always_yes yes --set changeps1 no --set show_channel_urls true
   - cmd: conda update conda
+  - cmd: conda config --add channels conda-forge --force
   - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
 
   - cmd: set PYTHONUNBUFFERED=1
 
   - cmd: conda create --name TEST python=%CONDA_PY% numpy=%CONDA_NPY% pytest pip
+  - cmd: conda info --all
   - cmd: activate TEST
-  - cmd: conda info
 
 # Skip .NET project specific build phase.
 build: off
