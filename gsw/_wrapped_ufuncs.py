@@ -2223,6 +2223,62 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice)
 
 @match_args_return
+def O2sol(SA, CT, p, lon, lat):
+    """
+    Calculates the oxygen concentration expected at equilibrium with air at
+    an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
+    saturated water vapor.  This function uses the solubility coefficients
+    derived from the data of Benson and Krause (1984), as fitted by Garcia
+    and Gordon (1992, 1993).
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    lon : array-like
+        Longitude, -360 to 360 degrees
+    lat : array-like
+        Latitude, -90 to 90 degrees
+
+    Returns
+    -------
+    O2sol : array-like, umol/kg
+        solubility of oxygen in micro-moles per kg
+
+
+    """
+    return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat)
+
+@match_args_return
+def O2sol_SP_pt(SP, pt):
+    """
+    Calculates the oxygen concentration expected at equilibrium with air at
+    an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
+    saturated water vapor.  This function uses the solubility coefficients
+    derived from the data of Benson and Krause (1984), as fitted by Garcia
+    and Gordon (1992, 1993).
+
+    Parameters
+    ----------
+    SP : array-like
+        Practical Salinity (PSS-78), unitless
+    pt : array-like
+        Potential temperature referenced to a sea pressure, degrees C
+
+    Returns
+    -------
+    O2sol : array-like, umol/kg
+        solubility of oxygen in micro-moles per kg
+
+
+    """
+    return _gsw_ufuncs.o2sol_sp_pt(SP, pt)
+
+@match_args_return
 def p_from_z(z, lat):
     """
     Calculates sea pressure from height using computationally-efficient
@@ -3654,6 +3710,34 @@ def SP_from_Sstar(Sstar, p, lon, lat):
 
     """
     return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat)
+
+@match_args_return
+def SP_salinometer(Rt, t):
+    """
+    Calculates Practical Salinity SP from a salinometer, primarily using the
+    PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical Salinity
+    is only valid in the range 2 < SP < 42.  If the PSS-78 algorithm
+    produces a Practical Salinity that is less than 2 then the Practical
+    Salinity is recalculated with a modified form of the Hill et al. (1986)
+    formula.  The modification of the Hill et al. (1986) expression is to
+    ensure that it is exactly consistent with PSS-78 at SP = 2.
+
+    Parameters
+    ----------
+    Rt : array-like
+        C(SP,t_68,0)/C(SP=35,t_68,0), unitless
+    t : array-like
+        In-situ temperature (ITS-90), degrees C
+
+    Returns
+    -------
+    SP : array-like, unitless
+        Practical Salinity on the PSS-78 scale
+        t may have dimensions 1x1 or Mx1 or 1xN or MxN, where Rt is MxN.
+
+
+    """
+    return _gsw_ufuncs.sp_salinometer(Rt, t)
 
 @match_args_return
 def specvol(SA, CT, p):

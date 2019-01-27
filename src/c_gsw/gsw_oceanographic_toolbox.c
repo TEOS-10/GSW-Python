@@ -6391,6 +6391,115 @@ gsw_nsquared(double *sa, double *ct, double *p, double *lat, int nz,
 }
 /*
 !==========================================================================
+function gsw_o2sol(sa, ct, p, lon, lat)
+!==========================================================================
+!
+! Calculates the oxygen concentration expected at equilibrium with air at
+! an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
+! saturated water vapor.  This function uses the solubility coefficients
+! derived from the data of Benson and Krause (1984), as fitted by Garcia
+! and Gordon (1992, 1993).
+!
+! Note that this algorithm has not been approved by IOC and is not work
+! from SCOR/IAPSO Working Group 127. It is included in the GSW
+! Oceanographic Toolbox as it seems to be oceanographic best practice.
+!
+! SA  :  Absolute Salinity of seawater                           [ g/kg ]
+! CT  :  Conservative Temperature of seawater (ITS-90)           [ deg C ]
+! p   :  sea pressure at which the melting occurs                [ dbar ]
+!         ( i.e. absolute pressure - 10.1325 dbar )
+! lat : latitude                                                 [deg]
+! lon : longitude                                                [deg]
+!
+! gsw_o2sol : olubility of oxygen in micro-moles per kg          [umol/kg]
+*/
+double
+gsw_o2sol(double sa, double ct, double p, double lon, double lat)
+{
+    GSW_TEOS10_CONSTANTS;
+    double sp, pt, pt68, x, y, o2sol,
+           a0, a1, a2, a3, a4, a5, b0, b1, b2, b3, c0;
+
+    sp = gsw_sp_from_sa(sa, p, lon, lat);
+    x = sp;
+    pt = gsw_pt_from_ct(sa, ct);
+
+    pt68 = pt*1.00024;
+
+    y = log((298.15 - pt68)/(gsw_t0 + pt68));
+
+    a0 =  5.80871;
+    a1 =  3.20291;
+    a2 =  4.17887;
+    a3 =  5.10006;
+    a4 = -9.86643e-2;
+    a5 =  3.80369;
+    b0 = -7.01577e-3;
+    b1 = -7.70028e-3;
+    b2 = -1.13864e-2;
+    b3 = -9.51519e-3;
+    c0 = -2.75915e-7;
+
+    o2sol = exp(a0 + y*(a1 + y*(a2 + y*(a3 + y*(a4 + a5*y))))
+                  + x*(b0 + y*(b1 + y*(b2 + b3*y)) + c0*x));
+
+    return o2sol;
+
+}
+/*
+!==========================================================================
+function gsw_o2sol_sp_pt(sp, pt)
+!==========================================================================
+!
+! Calculates the oxygen concentration expected at equilibrium with air at
+! an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
+! saturated water vapor.  This function uses the solubility coefficients
+! derived from the data of Benson and Krause (1984), as fitted by Garcia
+! and Gordon (1992, 1993).
+!
+! Note that this algorithm has not been approved by IOC and is not work
+! from SCOR/IAPSO Working Group 127. It is included in the GSW
+! Oceanographic Toolbox as it seems to be oceanographic best practice.
+!
+! SP  :  Practical Salinity  (PSS-78)                         [ unitless ]
+! pt  :  potential temperature (ITS-90) referenced               [ dbar ]
+!         to one standard atmosphere (0 dbar).
+!
+! gsw_o2sol_sp_pt : olubility of oxygen in micro-moles per kg     [umol/kg]
+*/
+double
+gsw_o2sol_sp_pt(double sp, double pt)
+{
+    GSW_TEOS10_CONSTANTS;
+    double pt68, x, y, o2sol,
+           a0, a1, a2, a3, a4, a5, b0, b1, b2, b3, c0;
+
+    x = sp;
+
+    pt68 = pt*1.00024;
+
+    y = log((298.15 - pt68)/(gsw_t0 + pt68));
+
+    a0 =  5.80871;
+    a1 =  3.20291;
+    a2 =  4.17887;
+    a3 =  5.10006;
+    a4 = -9.86643e-2;
+    a5 =  3.80369;
+    b0 = -7.01577e-3;
+    b1 = -7.70028e-3;
+    b2 = -1.13864e-2;
+    b3 = -9.51519e-3;
+    c0 = -2.75915e-7;
+
+    o2sol = exp(a0 + y*(a1 + y*(a2 + y*(a3 + y*(a4 + a5*y))))
+                  + x*(b0 + y*(b1 + y*(b2 + b3*y)) + c0*x));
+
+    return o2sol;
+
+}
+/*
+!==========================================================================
 function gsw_p_from_z(z,lat)
 !==========================================================================
 
@@ -9510,6 +9619,66 @@ gsw_sp_from_sstar(double sstar, double p, double lon, double lat)
         if (saar == GSW_INVALID_VALUE)
             return (saar);
         return ((sstar/gsw_ups)/(1.0 - 0.35e0*saar));
+}
+/*
+!==========================================================================
+function gsw_sp_salinometer(rt,t)
+!==========================================================================
+!  Calculates Practical Salinity SP from a salinometer, primarily using the
+!  PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical Salinity
+!  is only valid in the range 2 < SP < 42.  If the PSS-78 algorithm
+!  produces a Practical Salinity that is less than 2 then the Practical
+!  Salinity is recalculated with a modified form of the Hill et al. (1986)
+!  formula.  The modification of the Hill et al. (1986) expression is to
+!  ensure that it is exactly consistent with PSS-78 at SP = 2.
+!
+!  A laboratory salinometer has the ratio of conductivities, Rt, as an
+!  output, and the present function uses this conductivity ratio and the
+!  temperature t of the salinometer bath as the two input variables.
+!
+!  rt  = C(SP,t_68,0)/C(SP=35,t_68,0)                          [ unitless ]
+!  t   = temperature of the bath of the salinometer,
+!        measured on the ITS-90 scale (ITS-90)                 [ deg C ]
+!
+!  gsw_sp_salinometer = Practical Salinity on the PSS-78 scale [ unitless ]
+*/
+double
+gsw_sp_salinometer(double rt, double t)
+{
+  GSW_SP_COEFFICIENTS;
+  double t68, ft68, rtx, sp, hill_ratio,
+         x, sqrty, part1, part2, sp_hill_raw;
+
+  if (rt < 0){
+    return NAN;
+  }
+
+  t68 = t*1.00024;
+  ft68 = (t68 - 15)/(1 + k*(t68 - 15));
+
+  rtx = sqrt(rt);
+
+  sp = a0 + (a1 + (a2 + (a3 + (a4 + a5 * rtx) * rtx) * rtx) * rtx) * rtx
+    + ft68 * (b0 + (b1 + (b2+ (b3 + (b4 + b5 * rtx) * rtx) * rtx) * rtx) * rtx);
+
+    /*
+     ! The following section of the code is designed for SP < 2 based on the
+     ! Hill et al. (1986) algorithm.  This algorithm is adjusted so that it is
+     ! exactly equal to the PSS-78 algorithm at SP = 2.
+    */
+
+   if (sp < 2) {
+       hill_ratio  = gsw_hill_ratio_at_sp2(t);
+       x           = 400e0*rt;
+       sqrty       = 10e0*rtx;
+       part1       = 1e0 + x*(1.5e0 + x);
+       part2       = 1e0 + sqrty*(1e0 + sqrty*(1e0 + sqrty));
+       sp_hill_raw = sp - a0/part1 - b0*ft68/part2;
+       sp          = hill_ratio*sp_hill_raw;
+   }
+
+  return sp;
+
 }
 /*
 !==========================================================================

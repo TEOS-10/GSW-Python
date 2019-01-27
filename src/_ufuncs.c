@@ -643,6 +643,7 @@ static void *data_melting_ice_equilibrium_sa_ct_ratio[] = {&gsw_melting_ice_equi
 static void *data_melting_ice_equilibrium_sa_ct_ratio_poly[] = {&gsw_melting_ice_equilibrium_sa_ct_ratio_poly};
 static void *data_melting_seaice_equilibrium_sa_ct_ratio[] = {&gsw_melting_seaice_equilibrium_sa_ct_ratio};
 static void *data_melting_seaice_equilibrium_sa_ct_ratio_poly[] = {&gsw_melting_seaice_equilibrium_sa_ct_ratio_poly};
+static void *data_o2sol_sp_pt[] = {&gsw_o2sol_sp_pt};
 static void *data_p_from_z[] = {&gsw_p_from_z};
 static void *data_pot_enthalpy_ice_freezing[] = {&gsw_pot_enthalpy_ice_freezing};
 static void *data_pot_enthalpy_ice_freezing_poly[] = {&gsw_pot_enthalpy_ice_freezing_poly};
@@ -657,6 +658,7 @@ static void *data_sigma2[] = {&gsw_sigma2};
 static void *data_sigma3[] = {&gsw_sigma3};
 static void *data_sigma4[] = {&gsw_sigma4};
 static void *data_sound_speed_ice[] = {&gsw_sound_speed_ice};
+static void *data_sp_salinometer[] = {&gsw_sp_salinometer};
 static void *data_specvol_ice[] = {&gsw_specvol_ice};
 static void *data_spiciness0[] = {&gsw_spiciness0};
 static void *data_spiciness1[] = {&gsw_spiciness1};
@@ -728,6 +730,7 @@ static void *data_sstar_from_sa[] = {&gsw_sstar_from_sa};
 static void *data_sstar_from_sp[] = {&gsw_sstar_from_sp};
 static void *data_melting_seaice_sa_ct_ratio[] = {&gsw_melting_seaice_sa_ct_ratio};
 static void *data_melting_seaice_sa_ct_ratio_poly[] = {&gsw_melting_seaice_sa_ct_ratio_poly};
+static void *data_o2sol[] = {&gsw_o2sol};
 static void *data_ct_first_derivatives[] = {&gsw_ct_first_derivatives};
 static void *data_entropy_first_derivatives[] = {&gsw_entropy_first_derivatives};
 static void *data_pot_enthalpy_ice_freezing_first_derivatives[] = {&gsw_pot_enthalpy_ice_freezing_first_derivatives};
@@ -1284,6 +1287,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
+                                    data_o2sol_sp_pt,
+                                    types_dd_d,
+                                    1, 2, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "o2sol_sp_pt",
+                                    "o2sol_sp_pt_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "o2sol_sp_pt", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
                                     data_p_from_z,
                                     types_dd_d,
                                     1, 2, 1,  // ndatatypes, nin, nout
@@ -1449,6 +1464,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "sound_speed_ice", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
+                                    data_sp_salinometer,
+                                    types_dd_d,
+                                    1, 2, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "sp_salinometer",
+                                    "sp_salinometer_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "sp_salinometer", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_d,
@@ -2301,6 +2328,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "melting_seaice_sa_ct_ratio_poly", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddddd_d,
+                                    data_o2sol,
+                                    types_ddddd_d,
+                                    1, 5, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "o2sol",
+                                    "o2sol_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "o2sol", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_dd,
