@@ -89,3 +89,16 @@ def test_dyn_height_shallower_pref():
     found = strf1 - strf1[0]
     expected = strf0[1:] - strf0[1]
     assert_almost_equal(found, expected)
+
+def test_pz_roundtrip():
+    """
+    The p_z conversion functions have Matlab-based checks that use
+    only the first two arguments.
+    Here we verify that the functions are also inverses when the optional
+    arguments are used.
+    """
+    z = np.array([-10, -100, -1000, -5000], dtype=float)
+    p = gsw.p_from_z(z, 30, 0.5, 0.25)
+    zz = gsw.z_from_p(p, 30, 0.5, 0.25)
+    assert_almost_equal(z, zz)
+

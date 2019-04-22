@@ -21,6 +21,8 @@ mfunc_topline2 = re.compile(r"^function \[(?P<output>.*)\]\s*=\s*"
                             r"gsw_(?P<funcname>\S+)"
                             r"\((?P<input>.*)\)")
 
+# mis-spellings: key is bad in Matlab; replace with value
+arg_fixups = dict(sea_surface_geopotental='sea_surface_geopotential',)
 
 def list_functions(matdir=gsw_matlab_dir, subdir=''):
     rawlist = matdir.glob('*.m')
@@ -36,6 +38,7 @@ def list_functions(matdir=gsw_matlab_dir, subdir=''):
             rejects.append(m)
         else:
             _input = [s.strip() for s in _match.group('input').split(',')]
+            _input = [arg_fixups.get(n, n) for n in _input]
             _output = [s.strip() for s in _match.group('output').split(',')]
             _funcname = _match.group('funcname')
             signatures.append((_funcname, _input, _output, m))
