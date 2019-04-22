@@ -45,7 +45,7 @@ __all__ = ['t90_from_t68',
 
 from ._utilities import match_args_return
 
-from ._wrapped_ufuncs import (
+from ._fixed_wrapped_ufuncs import (
 adiabatic_lapse_rate_from_CT,
 C_from_SP,
 CT_from_enthalpy,

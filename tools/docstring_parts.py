@@ -46,4 +46,8 @@ w_seaice =
 of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.""",
 h_bulk =  "bulk enthalpy of the seawater and ice mixture, J/kg",
 h_pot_bulk = "bulk enthalpy of the seawater and ice mixture, J/kg",
+geo_strf_dyn_height = """dynamic height anomaly, m^2/s^2
+    Note that the reference pressure, p_ref, of geo_strf_dyn_height must
+    be zero (0) dbar.""",
+sea_surface_geopotential = "geopotential at zero sea pressure,  m^2/s^2",
 )
