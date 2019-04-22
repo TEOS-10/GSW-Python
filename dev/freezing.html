@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Freezing &mdash; gsw 0.1-devel documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="All functions" href="gsw_flat.html" />
+    <link rel="prev" title="Ice" href="ice.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gsw
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gsw.html">Subpackages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conversions.html">Conversion functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="density.html">Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="energy.html">Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stability.html">Stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geostrophy.html">Geostrophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ice.html">Ice</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Freezing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsw_flat.html">All functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gsw</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
+        
+      <li>Freezing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/freezing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="freezing">
+<h1>Freezing<a class="headerlink" href="#freezing" title="Permalink to this headline">¶</a></h1>
+<p>Freezing-point functions.</p>
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">CT_freezing</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_freezing"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Conservative Temperature at which seawater freezes.  The
+Conservative Temperature freezing point is calculated from the exact
+in-situ freezing temperature which is found by a modified Newton-Raphson
+iteration (McDougall and Wotherspoon, 2014) of the equality of the
+chemical potentials of water in seawater and in ice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature at freezing of seawater
+That is, the freezing temperature expressed in terms of
+Conservative Temperature (ITS-90).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">CT_freezing_first_derivatives</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_freezing_first_derivatives"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the first derivatives of the Conservative Temperature at
+which seawater freezes, with respect to Absolute Salinity SA and
+pressure P (in Pa).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CTfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the Conservative Temperature at
+freezing (ITS-90) with respect to Absolute Salinity at
+fixed pressure              [ K/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>CTfreezing_P</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>the derivative of the Conservative Temperature at
+freezing (ITS-90) with respect to pressure (in Pa) at
+fixed Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">CT_freezing_first_derivatives_poly</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_freezing_first_derivatives_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the first derivatives of the Conservative Temperature at
+which seawater freezes, with respect to Absolute Salinity SA and
+pressure P (in Pa) of the comptationally efficient polynomial fit of the
+freezing temperature (McDougall et al., 2014).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CTfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the Conservative Temperature at
+freezing (ITS-90) with respect to Absolute Salinity at
+fixed pressure              [ K/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>CTfreezing_P</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>the derivative of the Conservative Temperature at
+freezing (ITS-90) with respect to pressure (in Pa) at
+fixed Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">CT_freezing_poly</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_freezing_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Conservative Temperature at which seawater freezes.
+The error of this fit ranges between -5e-4 K and 6e-4 K when compared
+with the Conservative Temperature calculated from the exact in-situ
+freezing temperature which is found by a Newton-Raphson iteration of the
+equality of the chemical potentials of water in seawater and in ice.
+Note that the Conservative Temperature freezing temperature can be found
+by this exact method using the function gsw_CT_freezing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature at freezing of seawater
+That is, the freezing temperature expressed in
+terms of Conservative Temperature (ITS-90).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">SA_freezing_from_CT</code><span class="sig-paren">(</span><em>CT</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_freezing_from_CT"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Absolute Salinity of seawater at the freezing temperature.
+That is, the output is the Absolute Salinity of seawater, with
+Conservative Temperature CT, pressure p and the fraction
+saturation_fraction of dissolved air, that is in equilibrium
+with ice at the same in situ temperature and pressure.  If the input
+values are such that there is no positive value of Absolute Salinity for
+which seawater is frozen, the output, SA_freezing, is made a NaN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
+given input values of its Conservative Temperature,
+pressure and air saturation fraction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">SA_freezing_from_CT_poly</code><span class="sig-paren">(</span><em>CT</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_freezing_from_CT_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Absolute Salinity of seawater at the freezing temperature.
+That is, the output is the Absolute Salinity of seawater, with the
+fraction saturation_fraction of dissolved air, that is in equilibrium
+with ice at Conservative Temperature CT and pressure p.  If the input
+values are such that there is no positive value of Absolute Salinity for
+which seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
+given input values of Conservative Temperature
+pressure and air saturation fraction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">SA_freezing_from_t</code><span class="sig-paren">(</span><em>t</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_freezing_from_t"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Absolute Salinity of seawater at the freezing temperature.
+That is, the output is the Absolute Salinity of seawater, with the
+fraction saturation_fraction of dissolved air, that is in equilibrium
+with ice at in-situ temperature t and pressure p.  If the input values
+are such that there is no positive value of Absolute Salinity for which
+seawater is frozen, the output, SA_freezing, is set to NaN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
+given input values of in situ temperature, pressure and
+air saturation fraction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">SA_freezing_from_t_poly</code><span class="sig-paren">(</span><em>t</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_freezing_from_t_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the Absolute Salinity of seawater at the freezing temperature.
+That is, the output is the Absolute Salinity of seawater, with the
+fraction saturation_fraction of dissolved air, that is in equilibrium
+with ice at in-situ temperature t and pressure p.  If the input values
+are such that there is no positive value of Absolute Salinity for which
+seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
+given input values of in situ temperature, pressure and
+air saturation fraction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">pot_enthalpy_ice_freezing</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the potential enthalpy of ice at which seawater freezes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice_freezing</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice at freezing
+of seawater</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">pot_enthalpy_ice_freezing_first_derivatives</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing_first_derivatives"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the first derivatives of the potential enthalpy of ice at
+which seawater freezes, with respect to Absolute Salinity SA and
+pressure P (in Pa).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice_freezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the potential enthalpy
+of ice at freezing (ITS-90) with respect to Absolute
+salinity at fixed pressure  [ K/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>pot_enthalpy_ice_freezing_P</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>the derivative of the potential enthalpy
+of ice at freezing (ITS-90) with respect to pressure
+(in Pa) at fixed Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">pot_enthalpy_ice_freezing_first_derivatives_poly</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing_first_derivatives_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the first derivatives of the potential enthalpy of ice Ih at
+which ice melts into seawater with Absolute Salinity SA and at pressure
+p.  This code uses the comptationally efficient polynomial fit of the
+freezing potential enthalpy of ice Ih (McDougall et al., 2015).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice_freezing_SA</strong><span class="classifier">array-like, J/g</span></dt><dd><p>the derivative of the potential enthalpy
+of ice at freezing (ITS-90) with respect to Absolute
+salinity at fixed pressure  [ (J/kg)/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>pot_enthalpy_ice_freezing_P</strong><span class="classifier">array-like, (J/kg)/Pa</span></dt><dd><p>the derivative of the potential enthalpy
+of ice at freezing (ITS-90) with respect to pressure
+(in Pa) at fixed Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">pot_enthalpy_ice_freezing_poly</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the potential enthalpy of ice at which seawater freezes.
+The error of this fit ranges between -2.5 and 1 J/kg with an rms of
+1.07, between SA of 0 and 120 g/kg and p between 0 and 10,000 dbar (the
+error in the fit is between -0.7 and 0.7 with an rms of
+0.3, between SA of 0 and 120 g/kg and p between 0 and 5,000 dbar) when
+compared with the potential enthalpy calculated from the exact in-situ
+freezing temperature which is found by a Newton-Raphson iteration of the
+equality of the chemical potentials of water in seawater and in ice.
+Note that the potential enthalpy at freezing can be found
+by this exact method using the function gsw_pot_enthalpy_ice_freezing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice_freezing</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice at freezing
+of seawater</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">pressure_freezing_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pressure_freezing_CT"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the pressure (in dbar) of seawater at the freezing
+temperature.  That is, the output is the pressure at which seawater,
+with Absolute Salinity SA, Conservative Temperature CT, and with
+saturation_fraction of dissolved air, freezes.  If the input values are
+such that there is no value of pressure in the range between 0 dbar and
+10,000 dbar for which seawater is at the freezing temperature, the
+output, pressure_freezing, is put equal to NaN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pressure_freezing</strong><span class="classifier">array-like, dbar</span></dt><dd><p>sea pressure at which the seawater freezes
+( i.e. absolute pressure - 10.1325 dbar )</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">t_freezing</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_freezing"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the in-situ temperature at which seawater freezes. The
+in-situ temperature freezing point is calculated from the exact
+in-situ freezing temperature which is found by a modified Newton-Raphson
+iteration (McDougall and Wotherspoon, 2013) of the equality of the
+chemical potentials of water in seawater and in ice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>t_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature at which seawater freezes.
+(ITS-90)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">t_freezing_first_derivatives</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_freezing_first_derivatives"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the first derivatives of the in-situ temperature at which
+seawater freezes with respect to Absolute Salinity SA and pressure P (in
+Pa).  These expressions come from differentiating the expression that
+defines the freezing temperature, namely the equality between the
+chemical potentials of water in seawater and in ice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>tfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the in-situ freezing temperature
+(ITS-90) with respect to Absolute Salinity at fixed
+pressure                     [ K/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>tfreezing_P</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>the derivative of the in-situ freezing temperature
+(ITS-90) with respect to pressure (in Pa) at fixed
+Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.freezing.</code><code class="descname">t_freezing_first_derivatives_poly</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>saturation_fraction</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_freezing_first_derivatives_poly"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the frist derivatives of the in-situ temperature at which
+seawater freezes with respect to Absolute Salinity SA and pressure P (in
+Pa).  These expressions come from differentiating the expression that
+defines the freezing temperature, namely the equality between the
+chemical potentials of water in seawater and in ice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>saturation_fraction</strong><span class="classifier">array-like</span></dt><dd><p>Saturation fraction of dissolved air in seawater. (0..1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>tfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the in-situ freezing temperature
+(ITS-90) with respect to Absolute Salinity at fixed
+pressure                     [ K/(g/kg) ] i.e.</p>
+</dd>
+<dt><strong>tfreezing_P</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>the derivative of the in-situ freezing temperature
+(ITS-90) with respect to pressure (in Pa) at fixed
+Absolute Salinity</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gsw_flat.html" class="btn btn-neutral float-right" title="All functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ice.html" class="btn btn-neutral float-left" title="Ice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, TEOS-10 developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
