@@ -33,6 +33,7 @@ before_install:
     source activate TEST
     # Install after to ensure it will be downgraded when testing an older version.
     conda install numpy=$NUMPY
+    conda info --all
 
 # Test source distribution.
 install:
