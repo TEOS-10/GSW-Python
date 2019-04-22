@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
     <link rel="prev" title="GSW-Python" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -168,19 +169,19 @@ Trevor McDougall, and Paul Barker.</p>
 <p>The present Python library has an interface that is similar to the
 original Matlab code, but with a few important differences:</p>
 <ul class="simple">
-<li>Many functions in the GSW-Matlab toolbox are not yet available here.</li>
-<li>Taking advantage of Python namespaces, we omit the “gsw” prefix
-from the function names.</li>
-<li>Missing values may be handled using <cite>numpy.ma</cite> masked arrays, or
-using <cite>nan</cite> values.</li>
-<li>All functions follow numpy broadcasting rules; function arguments
+<li><p>Many functions in the GSW-Matlab toolbox are not yet available here.</p></li>
+<li><p>Taking advantage of Python namespaces, we omit the “gsw” prefix
+from the function names.</p></li>
+<li><p>Missing values may be handled using <cite>numpy.ma</cite> masked arrays, or
+using <cite>nan</cite> values.</p></li>
+<li><p>All functions follow numpy broadcasting rules; function arguments
 must be broadcastable to the dimensions of the highest-dimensioned
 argument.  Recall that with numpy broadcasting, extra dimensions
 are automatically added as needed on the left, but must be added
-explicitly as needed on the right.</li>
-<li>Functions such as <cite>Nsquared</cite> that operate on profiles rather than
+explicitly as needed on the right.</p></li>
+<li><p>Functions such as <cite>Nsquared</cite> that operate on profiles rather than
 scalars have an <cite>axis</cite> keyword argument to specify the index that
-is incremented along the pressure (depth) axis.</li>
+is incremented along the pressure (depth) axis.</p></li>
 </ul>
 </div>
 
@@ -195,7 +196,7 @@ is incremented along the pressure (depth) axis.</li>
         <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="GSW-Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="GSW-Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -204,7 +205,7 @@ is incremented along the pressure (depth) axis.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, TEOS-10 developers.
+        &copy; Copyright 2017, TEOS-10 developers
 
     </p>
   </div>
@@ -221,36 +222,16 @@ is incremented along the pressure (depth) axis.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1-devel',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

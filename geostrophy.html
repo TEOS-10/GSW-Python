@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ice" href="ice.html" />
     <link rel="prev" title="Stability" href="stability.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -171,83 +172,63 @@
 <dt>
 <code class="descclassname">gsw.geostrophy.</code><code class="descname">geo_strf_dyn_height</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em>, <em>max_dp=1.0</em>, <em>interp_method='pchip'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#geo_strf_dyn_height"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Dynamic height anomaly as a function of pressure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>p_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or array-like, optional</span></dt>
-<dd><p class="first last">Reference pressure, dbar</p>
+<dt><strong>p_ref</strong><span class="classifier">float or array-like, optional</span></dt><dd><p>Reference pressure, dbar</p>
 </dd>
-<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional, default is 0</span></dt>
-<dd><p class="first last">The index of the pressure dimension in SA and CT.</p>
+<dt><strong>axis</strong><span class="classifier">int, optional, default is 0</span></dt><dd><p>The index of the pressure dimension in SA and CT.</p>
 </dd>
-<dt><strong>max_dp</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd><p class="first last">If any pressure interval in the input p exceeds max_dp, the dynamic
+<dt><strong>max_dp</strong><span class="classifier">float</span></dt><dd><p>If any pressure interval in the input p exceeds max_dp, the dynamic
 height will be calculated after interpolating to a grid with this
 spacing.</p>
 </dd>
-<dt><strong>interp_method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string {‘pchip’, ‘linear’}</span></dt>
-<dd><p class="first last">Interpolation algorithm.</p>
+<dt><strong>interp_method</strong><span class="classifier">string {‘pchip’, ‘linear’}</span></dt><dd><p>Interpolation algorithm.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>dynamic_height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd><p class="first last">This is the integral of specific volume anomaly with respect
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dynamic_height</strong><span class="classifier">array</span></dt><dd><p>This is the integral of specific volume anomaly with respect
 to pressure, from each pressure in p to the specified
 reference pressure.  It is the geostrophic streamfunction
 in an isobaric surface, relative to the reference surface.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.geostrophy.</code><code class="descname">distance</code><span class="sig-paren">(</span><em>lon</em>, <em>lat</em>, <em>p=0</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/geostrophy.html#distance"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Great-circle distance in m between lon, lat points.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>lon, lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D or 2-D (shapes must match)</span></dt>
-<dd><p class="first last">Longitude, latitude, in degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lon, lat</strong><span class="classifier">array-like, 1-D or 2-D (shapes must match)</span></dt><dd><p>Longitude, latitude, in degrees.</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, scalar, 1-D or 2-D, optional, default is 0</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like, scalar, 1-D or 2-D, optional, default is 0</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, -1, 0, 1, optional</span></dt>
-<dd><p class="first last">The axis or dimension along which <em>lat and lon</em> vary.
+<dt><strong>axis</strong><span class="classifier">int, -1, 0, 1, optional</span></dt><dd><p>The axis or dimension along which <em>lat and lon</em> vary.
 This differs from most functions, for which axis is the
 dimension along which p increases.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">1-D or 2-D array</span></dt>
-<dd><p class="first last">distance in meters between adjacent points.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>distance</strong><span class="classifier">1-D or 2-D array</span></dt><dd><p>distance in meters between adjacent points.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -264,55 +245,44 @@ dimension along which p increases.</p>
 given a geostrophic streamfunction and the position of each station
 in sequence along an ocean section.  The data can be from a single
 isobaric or “density” surface, or from a series of such surfaces.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>geo_strf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D or 2-D</span></dt>
-<dd><p class="first last">geostrophic streamfunction; see Notes below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>geo_strf</strong><span class="classifier">array-like, 1-D or 2-D</span></dt><dd><p>geostrophic streamfunction; see Notes below.</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like, 1-D</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1-D</span></dt>
-<dd><p class="first last">Latitude, degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like, 1-D</span></dt><dd><p>Latitude, degrees</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or array-like, optional</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
+<dt><strong>p</strong><span class="classifier">float or array-like, optional</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar.
 This used only for a tiny correction in the distance calculation;
 it is safe to omit it.</p>
 </dd>
-<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, 0 or 1, optional</span></dt>
-<dd><p class="first last">The axis or dimension along which pressure increases in geo_strf.
+<dt><strong>axis</strong><span class="classifier">int, 0 or 1, optional</span></dt><dd><p>The axis or dimension along which pressure increases in geo_strf.
 If geo_strf is 1-D, it is ignored.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>velocity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array, 2-D or 1-D</span></dt>
-<dd><p class="first last">Geostrophic velocity in m/s relative to the sea surface,
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>velocity</strong><span class="classifier">array, 2-D or 1-D</span></dt><dd><p>Geostrophic velocity in m/s relative to the sea surface,
 averaged between each successive pair of positions.</p>
 </dd>
-<dt><strong>mid_lon, mid_lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array, 1-D</span></dt>
-<dd><p class="first last">Midpoints of input lon and lat.</p>
+<dt><strong>mid_lon, mid_lat</strong><span class="classifier">array, 1-D</span></dt><dd><p>Midpoints of input lon and lat.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The geostrophic streamfunction can be:</p>
 <ul class="simple">
-<li>geo_strf_dyn_height (in an isobaric surface)</li>
-<li>geo_strf_Montgomery (in a specific volume anomaly surface)</li>
-<li>geo_strf_Cunninhgam (in an approximately neutral surface
-such as a potential density surface).</li>
-<li>geo_strf_isopycnal (in an approximately neutral surface
+<li><p>geo_strf_dyn_height (in an isobaric surface)</p></li>
+<li><p>geo_strf_Montgomery (in a specific volume anomaly surface)</p></li>
+<li><p>geo_strf_Cunninhgam (in an approximately neutral surface
+such as a potential density surface).</p></li>
+<li><p>geo_strf_isopycnal (in an approximately neutral surface
 such as a potential density surface, a Neutral Density
-surface, or an omega surface (Klocker et al., 2009)).</li>
+surface, or an omega surface (Klocker et al., 2009)).</p></li>
 </ul>
 <p>Only <code class="xref py py-func docutils literal notranslate"><span class="pre">geo_strf_dyn_height()</span></code> is presently implemented
 in GSW-Python.</p>
@@ -331,7 +301,7 @@ in GSW-Python.</p>
         <a href="ice.html" class="btn btn-neutral float-right" title="Ice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="stability.html" class="btn btn-neutral" title="Stability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stability.html" class="btn btn-neutral float-left" title="Stability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -340,7 +310,7 @@ in GSW-Python.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, TEOS-10 developers.
+        &copy; Copyright 2017, TEOS-10 developers
 
     </p>
   </div>
@@ -357,36 +327,16 @@ in GSW-Python.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1-devel',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

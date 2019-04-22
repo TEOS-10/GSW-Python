@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Freezing" href="freezing.html" />
     <link rel="prev" title="Geostrophy" href="geostrophy.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -171,58 +172,44 @@
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">Helmholtz_energy_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Helmholtz_energy_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the Helmholtz energy of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>Helmholtz_energy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">Helmholtz energy of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Helmholtz_energy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>Helmholtz energy of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">adiabatic_lapse_rate_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the adiabatic lapse rate of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>adiabatic_lapse_rate_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
-<dd><p class="first last">adiabatic lapse rate</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>adiabatic_lapse_rate_ice</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>adiabatic lapse rate</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -230,30 +217,23 @@
 <code class="descclassname">gsw.ice.</code><code class="descname">alpha_wrt_t_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#alpha_wrt_t_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the thermal expansion coefficient of ice with respect to
 in-situ temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>alpha_wrt_t_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1/K</span></dt>
-<dd><p class="first last">thermal expansion coefficient of ice with respect
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>alpha_wrt_t_ice</strong><span class="classifier">array-like, 1/K</span></dt><dd><p>thermal expansion coefficient of ice with respect
 to in-situ temperature</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -261,116 +241,88 @@ to in-situ temperature</p>
 <code class="descclassname">gsw.ice.</code><code class="descname">chem_potential_water_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#chem_potential_water_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the chemical potential of water in ice from in-situ
 temperature and pressure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>chem_potential_water_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">chemical potential of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>chem_potential_water_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>chemical potential of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">cp_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#cp_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the isobaric heat capacity of seawater.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>cp_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J kg^-1 K^-1</span></dt>
-<dd><p class="first last">heat capacity of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cp_ice</strong><span class="classifier">array-like, J kg^-1 K^-1</span></dt><dd><p>heat capacity of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">enthalpy_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#enthalpy_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the specific enthalpy of ice (h_Ih).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>enthalpy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">specific enthalpy of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific enthalpy of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">entropy_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates specific entropy of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>ice_entropy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J kg^-1 K^-1</span></dt>
-<dd><p class="first last">specific entropy of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ice_entropy</strong><span class="classifier">array-like, J kg^-1 K^-1</span></dt><dd><p>specific entropy of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -381,79 +333,61 @@ plus seawater), which, when melted into seawater having (SA,CT,p) causes
 the final dilute seawater to be at the freezing temperature.  The other
 outputs are the Absolute Salinity and Conservative Temperature of the
 final diluted seawater.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>t_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of ice (ITS-90), degrees C</p>
+<dt><strong>t_Ih</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA_freeze</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity of seawater after the mass fraction of
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freeze</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater after the mass fraction of
 ice, ice_fraction, at temperature t_Ih has melted into the
 original seawater, and the final mixture is at the freezing
 temperature of seawater.</p>
 </dd>
-<dt><strong>CT_freeze</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature of seawater after the mass
+<dt><strong>CT_freeze</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature of seawater after the mass
 fraction, w_Ih, of ice at temperature t_Ih has melted into
 the original seawater, and the final mixture is at the
 freezing temperature of seawater.</p>
 </dd>
-<dt><strong>w_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">mass fraction of ice, having in-situ temperature t_Ih,
+<dt><strong>w_Ih</strong><span class="classifier">array-like, unitless</span></dt><dd><p>mass fraction of ice, having in-situ temperature t_Ih,
 which, when melted into seawater at (SA,CT,p) leads to the
 final diluted seawater being at the freezing temperature.
 This output must be between 0 and 1.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">internal_energy_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#internal_energy_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the specific internal energy of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>internal_energy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">specific internal energy (u)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>internal_energy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific internal energy (u)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -462,58 +396,44 @@ This output must be between 0 and 1.</p>
 <dd><p>Calculates isothermal compressibility of ice.
 Note. This is the compressibility of ice AT CONSTANT IN-SITU
 TEMPERATURE</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>kappa_const_t_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1/Pa</span></dt>
-<dd><p class="first last">isothermal compressibility</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>kappa_const_t_ice</strong><span class="classifier">array-like, 1/Pa</span></dt><dd><p>isothermal compressibility</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">kappa_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#kappa_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the isentropic compressibility of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>kappa_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, 1/Pa</span></dt>
-<dd><p class="first last">isentropic compressibility</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>kappa_ice</strong><span class="classifier">array-like, 1/Pa</span></dt><dd><p>isentropic compressibility</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -523,36 +443,27 @@ TEMPERATURE</p>
 It is assumed that a small mass of ice melts into an infinite mass of
 seawater.  Because of the infinite mass of seawater, the ice will always
 melt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>t_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of ice (ITS-90), degrees C</p>
+<dt><strong>t_Ih</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_ice_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g kg^-1 K^-1</span></dt>
-<dd><p class="first last">the ratio of SA to CT changes when ice melts
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_ice_SA_CT_ratio</strong><span class="classifier">array-like, g kg^-1 K^-1</span></dt><dd><p>the ratio of SA to CT changes when ice melts
 into a large mass of seawater</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -562,36 +473,27 @@ into a large mass of seawater</p>
 It is assumed that a small mass of ice melts into an infinite mass of
 seawater.  Because of the infinite mass of seawater, the ice will always
 melt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>t_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of ice (ITS-90), degrees C</p>
+<dt><strong>t_Ih</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_ice_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g kg^-1 K^-1</span></dt>
-<dd><p class="first last">the ratio of SA to CT changes when ice melts
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_ice_SA_CT_ratio</strong><span class="classifier">array-like, g kg^-1 K^-1</span></dt><dd><p>the ratio of SA to CT changes when ice melts
 into a large mass of seawater</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -606,32 +508,25 @@ temperature, then no melting or freezing would occur; an imbalance
 between these three temperatures is needed for freezing or melting to
 occur (the three temperatures being (1) the seawater temperature,
 (2) the ice temperature, and (3) the freezing temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when ice melts into seawater, with
 the seawater and seaice being close to the
 freezing temperature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -646,32 +541,25 @@ temperature, then no melting or freezing would occur; an imbalance
 between these three temperatures is needed for freezing or melting to
 occur (the three temperatures being (1) the seawater temperature,
 (2) the ice temperature, and (3) the freezing temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when ice melts into seawater, with
 the seawater and seaice being close to the
 freezing temperature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -681,41 +569,31 @@ freezing temperature.</p>
 and final ice mass fraction that results when a given mass fraction of
 ice melts and is mixed into seawater whose properties are (SA,CT,p).
 This code takes the seawater to contain no dissolved air.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>w_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">mass fraction of ice: the mass of ice divided by the
+<dt><strong>w_Ih</strong><span class="classifier">array-like</span></dt><dd><p>mass fraction of ice: the mass of ice divided by the
 sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </dd>
-<dt><strong>t_Ih</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of ice (ITS-90), degrees C</p>
+<dt><strong>t_Ih</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity of the seawater in the final state,
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_final</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of the seawater in the final state,
 whether or not any ice is present.</p>
 </dd>
-<dt><strong>CT_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature of the seawater in the the final
+<dt><strong>CT_final</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature of the seawater in the the final
 state, whether or not any ice is present.</p>
 </dd>
-<dt><strong>w_Ih_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">mass fraction of ice in the final seawater-ice mixture.
+<dt><strong>w_Ih_final</strong><span class="classifier">array-like, unitless</span></dt><dd><p>mass fraction of ice in the final seawater-ice mixture.
 If this ice mass fraction is positive, the system is at
 thermodynamic equilibrium.  If this ice mass fraction is
 zero there is no ice in the final state which consists
@@ -723,10 +601,8 @@ only of seawater which is warmer than the freezing
 temperature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -736,40 +612,30 @@ temperature.</p>
 seawater.  It is assumed that a small mass of sea ice melts into an
 infinite mass of seawater.  Because of the infinite mass of seawater,
 the sea ice will always melt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>SA_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity of sea ice: the mass fraction of salt
+<dt><strong>SA_seaice</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity of sea ice: the mass fraction of salt
 in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
-<dt><strong>t_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
+<dt><strong>t_seaice</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_seaice_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT changes when
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_seaice_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT changes when
 sea ice melts into a large mass of seawater</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -779,40 +645,30 @@ sea ice melts into a large mass of seawater</p>
 seawater.  It is assumed that a small mass of sea ice melts into an
 infinite mass of seawater.  Because of the infinite mass of seawater,
 the sea ice will always melt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>SA_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity of sea ice: the mass fraction of salt
+<dt><strong>SA_seaice</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity of sea ice: the mass fraction of salt
 in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
-<dt><strong>t_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
+<dt><strong>t_seaice</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_seaice_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT changes when
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_seaice_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT changes when
 sea ice melts into a large mass of seawater</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -828,32 +684,25 @@ imbalance between these three temperatures is needed for freezing or
 melting to occur (the three temperatures being (1) the seawater
 temperature, (2) the sea ice temperature, and (3) the freezing
 temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when sea ice melts into seawater, with
 the seawater and sea ice being close to the
 freezing temperature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -869,32 +718,25 @@ imbalance between these three temperatures is needed for freezing or
 melting to occur (the three temperatures being (1) the seawater
 temperature, (2) the sea ice temperature, and (3) the freezing
 temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/(kg K)</span></dt>
-<dd><p class="first last">the ratio dSA/dCT of SA to CT
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when sea ice melts into seawater, with
 the seawater and sea ice being close to the
 freezing temperature.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -903,48 +745,36 @@ freezing temperature.</p>
 <dd><p>Calculates the Absolute Salinity and Conservative Temperature that
 results when a given mass of sea ice (or ice) melts and is mixed into a
 known mass of seawater (whose properties are (SA,CT,p)).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>w_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">mass fraction of ice: the mass of sea-ice divided by the sum
+<dt><strong>w_seaice</strong><span class="classifier">array-like</span></dt><dd><p>mass fraction of ice: the mass of sea-ice divided by the sum
 of the masses of sea-ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </dd>
-<dt><strong>SA_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity of sea ice: the mass fraction of salt
+<dt><strong>SA_seaice</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity of sea ice: the mass fraction of salt
 in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
-<dt><strong>t_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
+<dt><strong>t_seaice</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity of the mixture of the melted sea ice
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_final</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of the mixture of the melted sea ice
 (or ice) and the orignal seawater</p>
 </dd>
-<dt><strong>CT_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature of the mixture of the melted
+<dt><strong>CT_final</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature of the mixture of the melted
 sea ice (or ice) and the orignal seawater</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -952,26 +782,20 @@ sea ice (or ice) and the orignal seawater</p>
 <code class="descclassname">gsw.ice.</code><code class="descname">pot_enthalpy_from_pt_ice</code><span class="sig-paren">(</span><em>pt0_ice</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_from_pt_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the potential enthalpy of ice from potential temperature of
 ice (whose reference sea pressure is zero dbar).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential temperature of ice (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pot_enthalpy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">potential enthalpy of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -981,55 +805,42 @@ ice (whose reference sea pressure is zero dbar).</p>
 ice (whose reference sea pressure is zero dbar).  This is a
 compuationally efficient polynomial fit to the potential enthalpy of
 ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential temperature of ice (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pot_enthalpy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/kg</span></dt>
-<dd><p class="first last">potential enthalpy of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">pressure_coefficient_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pressure_coefficient_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates pressure coefficient of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pressure_coefficient_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, Pa/K</span></dt>
-<dd><p class="first last">pressure coefficient of ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pressure_coefficient_ice</strong><span class="classifier">array-like, Pa/K</span></dt><dd><p>pressure coefficient of ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1037,30 +848,23 @@ ice.</p>
 <code class="descclassname">gsw.ice.</code><code class="descname">pt0_from_t_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates potential temperature of ice Ih with a reference pressure of
 0 dbar, from in-situ temperature, t.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature of ice Ih with reference pressure of
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice Ih with reference pressure of
 zero dbar (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1069,26 +873,20 @@ zero dbar (ITS-90)</p>
 <dd><p>Calculates the potential temperature of ice from the potential enthalpy
 of ice.  The reference sea pressure of both the potential temperature
 and the potential enthalpy is zero dbar.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>pot_enthalpy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential enthalpy of ice, J/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential enthalpy of ice, J/kg</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature of ice (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1098,26 +896,20 @@ and the potential enthalpy is zero dbar.</p>
 pressure is zero dbar) from the potential enthalpy of ice.  This is a
 compuationally efficient polynomial fit to the potential enthalpy of
 ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>pot_enthalpy_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential enthalpy of ice, J/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential enthalpy of ice, J/kg</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature of ice (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1125,33 +917,25 @@ ice.</p>
 <code class="descclassname">gsw.ice.</code><code class="descname">pt_from_t_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em>, <em>p_ref</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates potential temperature of ice Ih with the general reference
 pressure, p_ref, from in-situ temperature, t.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>p_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Reference pressure, dbar</p>
+<dt><strong>p_ref</strong><span class="classifier">array-like</span></dt><dd><p>Reference pressure, dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature of ice Ih with reference pressure,
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice Ih with reference pressure,
 p_ref, on the ITS-90 temperature scale</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1160,29 +944,22 @@ p_ref, on the ITS-90 temperature scale</p>
 <dd><p>Calculates in-situ density of ice from in-situ temperature and pressure.
 Note that the output, rho_ice, is density, not density anomaly;  that
 is, 1000 kg/m^3 is not subracted from it.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>rho_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, kg/m^3</span></dt>
-<dd><p class="first last">in-situ density of ice (not density anomaly)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rho_ice</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>in-situ density of ice (not density anomaly)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1193,112 +970,86 @@ of sea ice plus seawater), which, when melted into seawater having the
 properties (SA,CT,p) causes the final seawater to be at the freezing
 temperature.  The other outputs are the Absolute Salinity and
 Conservative Temperature of the final seawater.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>SA_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity of sea ice: the mass fraction of salt
+<dt><strong>SA_seaice</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity of sea ice: the mass fraction of salt
 in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
-<dt><strong>t_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
+<dt><strong>t_seaice</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature of the sea ice at pressure p (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA_freeze</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity of seawater after the mass fraction of
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA_freeze</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater after the mass fraction of
 sea ice, w_seaice, at temperature t_seaice has melted into
 the original seawater, and the final mixture is at the
 freezing temperature of seawater.</p>
 </dd>
-<dt><strong>CT_freeze</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature of seawater after the mass
+<dt><strong>CT_freeze</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature of seawater after the mass
 fraction, w_seaice, of sea ice at temperature t_seaice has
 melted into the original seawater, and the final mixture
 is at the freezing temperature of seawater.</p>
 </dd>
-<dt><strong>w_seaice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">mass fraction of sea ice, at SA_seaice and t_seaice,
+<dt><strong>w_seaice</strong><span class="classifier">array-like, unitless</span></dt><dd><p>mass fraction of sea ice, at SA_seaice and t_seaice,
 which, when melted into seawater at (SA,CT,p) leads to the
 final mixed seawater being at the freezing temperature.
 This output is between 0 and 1.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">sound_speed_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#sound_speed_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the compression speed of sound in ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>sound_speed_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, m/s</span></dt>
-<dd><p class="first last">compression speed of sound in ice</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sound_speed_ice</strong><span class="classifier">array-like, m/s</span></dt><dd><p>compression speed of sound in ice</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.ice.</code><code class="descname">specvol_ice</code><span class="sig-paren">(</span><em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#specvol_ice"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the specific volume of ice.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>specvol_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, m^3/kg</span></dt>
-<dd><p class="first last">specific volume</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>specvol_ice</strong><span class="classifier">array-like, m^3/kg</span></dt><dd><p>specific volume</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1307,29 +1058,22 @@ This output is between 0 and 1.</p>
 <dd><p>Calculates in-situ temperature from the potential temperature of ice Ih
 with reference pressure, p_ref, of 0 dbar (the surface), and the
 in-situ pressure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>pt0_ice</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential temperature of ice (ITS-90), degrees C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">in-situ temperature (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1345,7 +1089,7 @@ in-situ pressure.</p>
         <a href="freezing.html" class="btn btn-neutral float-right" title="Freezing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="geostrophy.html" class="btn btn-neutral" title="Geostrophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="geostrophy.html" class="btn btn-neutral float-left" title="Geostrophy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1354,7 +1098,7 @@ in-situ pressure.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, TEOS-10 developers.
+        &copy; Copyright 2017, TEOS-10 developers
 
     </p>
   </div>
@@ -1371,36 +1115,16 @@ in-situ pressure.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1-devel',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -17,33 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -2374,8 +2375,64 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">melting_seaice_sa_ct_ratio_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SA_seaice</span><span class="p">,</span> <span class="n">t_seaice</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="p_from_z"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.p_from_z">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+<div class="viewcode-block" id="O2sol"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.O2sol">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">O2sol</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the oxygen concentration expected at equilibrium with air at</span>
+<span class="sd">    an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including</span>
+<span class="sd">    saturated water vapor.  This function uses the solubility coefficients</span>
+<span class="sd">    derived from the data of Benson and Krause (1984), as fitted by Garcia</span>
+<span class="sd">    and Gordon (1992, 1993).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SA : array-like</span>
+<span class="sd">        Absolute Salinity, g/kg</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+<span class="sd">    p : array-like</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+<span class="sd">    lon : array-like</span>
+<span class="sd">        Longitude, -360 to 360 degrees</span>
+<span class="sd">    lat : array-like</span>
+<span class="sd">        Latitude, -90 to 90 degrees</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    O2sol : array-like, umol/kg</span>
+<span class="sd">        solubility of oxygen in micro-moles per kg</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">o2sol</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="O2sol_SP_pt"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.O2sol_SP_pt">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">O2sol_SP_pt</span><span class="p">(</span><span class="n">SP</span><span class="p">,</span> <span class="n">pt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the oxygen concentration expected at equilibrium with air at</span>
+<span class="sd">    an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including</span>
+<span class="sd">    saturated water vapor.  This function uses the solubility coefficients</span>
+<span class="sd">    derived from the data of Benson and Krause (1984), as fitted by Garcia</span>
+<span class="sd">    and Gordon (1992, 1993).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SP : array-like</span>
+<span class="sd">        Practical Salinity (PSS-78), unitless</span>
+<span class="sd">    pt : array-like</span>
+<span class="sd">        Potential temperature referenced to a sea pressure, degrees C</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    O2sol : array-like, umol/kg</span>
+<span class="sd">        solubility of oxygen in micro-moles per kg</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">o2sol_sp_pt</span><span class="p">(</span><span class="n">SP</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span></div>
+
+<span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates sea pressure from height using computationally-efficient</span>
 <span class="sd">    75-term expression for density, in terms of SA, CT and p (Roquet et al.,</span>
@@ -2390,6 +2447,12 @@
 <span class="sd">        Depth, positive up, m</span>
 <span class="sd">    lat : array-like</span>
 <span class="sd">        Latitude, -90 to 90 degrees</span>
+<span class="sd">    geo_strf_dyn_height : array-like</span>
+<span class="sd">        dynamic height anomaly, m^2/s^2</span>
+<span class="sd">            Note that the reference pressure, p_ref, of geo_strf_dyn_height must</span>
+<span class="sd">            be zero (0) dbar.</span>
+<span class="sd">    sea_surface_geopotential : array-like</span>
+<span class="sd">        geopotential at zero sea pressure,  m^2/s^2</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -2399,7 +2462,7 @@
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">)</span>
 
 <div class="viewcode-block" id="pot_enthalpy_from_pt_ice"><a class="viewcode-back" href="../../ice.html#gsw.conversions.pot_enthalpy_from_pt_ice">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">pot_enthalpy_from_pt_ice</span><span class="p">(</span><span class="n">pt0_ice</span><span class="p">):</span>
@@ -3807,6 +3870,34 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">sp_from_sstar</span><span class="p">(</span><span class="n">Sstar</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="SP_salinometer"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.SP_salinometer">[docs]</a><span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">SP_salinometer</span><span class="p">(</span><span class="n">Rt</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates Practical Salinity SP from a salinometer, primarily using the</span>
+<span class="sd">    PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical Salinity</span>
+<span class="sd">    is only valid in the range 2 &lt; SP &lt; 42.  If the PSS-78 algorithm</span>
+<span class="sd">    produces a Practical Salinity that is less than 2 then the Practical</span>
+<span class="sd">    Salinity is recalculated with a modified form of the Hill et al. (1986)</span>
+<span class="sd">    formula.  The modification of the Hill et al. (1986) expression is to</span>
+<span class="sd">    ensure that it is exactly consistent with PSS-78 at SP = 2.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Rt : array-like</span>
+<span class="sd">        C(SP,t_68,0)/C(SP=35,t_68,0), unitless</span>
+<span class="sd">    t : array-like</span>
+<span class="sd">        In-situ temperature (ITS-90), degrees C</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    SP : array-like, unitless</span>
+<span class="sd">        Practical Salinity on the PSS-78 scale</span>
+<span class="sd">        t may have dimensions 1x1 or Mx1 or 1xN or MxN, where Rt is MxN.</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">sp_salinometer</span><span class="p">(</span><span class="n">Rt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="specvol"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.specvol">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">specvol</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -4455,8 +4546,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">thermobaric</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="z_from_p"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.z_from_p">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span> <span class="nf">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates height from sea pressure using the computationally-efficient</span>
 <span class="sd">    75-term expression for specific volume in terms of SA, CT and p</span>
@@ -4471,6 +4562,12 @@
 <span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
 <span class="sd">    lat : array-like</span>
 <span class="sd">        Latitude, -90 to 90 degrees</span>
+<span class="sd">    geo_strf_dyn_height : array-like</span>
+<span class="sd">        dynamic height anomaly, m^2/s^2</span>
+<span class="sd">            Note that the reference pressure, p_ref, of geo_strf_dyn_height must</span>
+<span class="sd">            be zero (0) dbar.</span>
+<span class="sd">    sea_surface_geopotential : array-like</span>
+<span class="sd">        geopotential at zero sea pressure,  m^2/s^2</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -4479,7 +4576,7 @@
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -4492,7 +4589,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, TEOS-10 developers.
+        &copy; Copyright 2017, TEOS-10 developers
 
     </p>
   </div>
@@ -4509,36 +4606,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.1-devel',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

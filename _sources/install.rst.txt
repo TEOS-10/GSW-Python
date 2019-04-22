@@ -14,7 +14,7 @@ Both of the methods above require building from the source code, so you will
 need an appropriate build environment.
 
 For most people, we recommend using the
-`Anaconda <https://www.continuum.io/downloads>`__ Python distribution, and then
-installing a binary package from conda-forge::
+`miniconda <https://docs.conda.io/en/latest/miniconda.html>`__ Python distribution,
+and then installing a binary package from conda-forge::
 
     conda install -c conda-forge gsw

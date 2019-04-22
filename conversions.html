@@ -17,35 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Density" href="density.html" />
     <link rel="prev" title="Subpackages" href="gsw.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -170,11 +171,11 @@
 and height.</p>
 <p>Those most commonly used probably include:</p>
 <ul class="simple">
-<li><a class="reference internal" href="gsw_flat.html#gsw.CT_from_t" title="gsw.CT_from_t"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.CT_from_t()</span></code></a></li>
-<li><a class="reference internal" href="gsw_flat.html#gsw.SA_from_SP" title="gsw.SA_from_SP"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.SA_from_SP()</span></code></a></li>
-<li><a class="reference internal" href="gsw_flat.html#gsw.SP_from_C" title="gsw.SP_from_C"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.SP_from_C()</span></code></a></li>
-<li><a class="reference internal" href="gsw_flat.html#gsw.p_from_z" title="gsw.p_from_z"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.p_from_z()</span></code></a></li>
-<li><a class="reference internal" href="gsw_flat.html#gsw.z_from_p" title="gsw.z_from_p"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.z_from_p()</span></code></a></li>
+<li><p><a class="reference internal" href="gsw_flat.html#gsw.CT_from_t" title="gsw.CT_from_t"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.CT_from_t()</span></code></a></p></li>
+<li><p><a class="reference internal" href="gsw_flat.html#gsw.SA_from_SP" title="gsw.SA_from_SP"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.SA_from_SP()</span></code></a></p></li>
+<li><p><a class="reference internal" href="gsw_flat.html#gsw.SP_from_C" title="gsw.SP_from_C"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.SP_from_C()</span></code></a></p></li>
+<li><p><a class="reference internal" href="gsw_flat.html#gsw.p_from_z" title="gsw.p_from_z"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.p_from_z()</span></code></a></p></li>
+<li><p><a class="reference internal" href="gsw_flat.html#gsw.z_from_p" title="gsw.z_from_p"><code class="xref py py-func docutils literal notranslate"><span class="pre">gsw.z_from_p()</span></code></a></p></li>
 </ul>
 <dl class="function">
 <dt>
@@ -189,32 +190,24 @@ data collected between 1/1/1968 and 31/12/1989.</p>
 <code class="descclassname">gsw.conversions.</code><code class="descname">adiabatic_lapse_rate_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_from_CT"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates the adiabatic lapse rate of sea water from Conservative
 Temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>adiabatic_lapse_rate</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, K/Pa</span></dt>
-<dd><p class="first last">adiabatic lapse rate</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>adiabatic_lapse_rate</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>adiabatic lapse rate</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -225,32 +218,24 @@ Temperature.</p>
 modified form of the Hill et al. (1986) fomula is used for Practical
 Salinity.  The modification of the Hill et al. (1986) expression is to
 ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Practical Salinity (PSS-78), unitless</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>C</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, mS/cm</span></dt>
-<dd><p class="first last">conductivity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>C</strong><span class="classifier">array-like, mS/cm</span></dt><dd><p>conductivity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -261,61 +246,46 @@ Salinity, specific enthalpy, h, and pressure p.  The specific enthalpy
 input is the one calculated from the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>h</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Specific enthalpy, J/kg</p>
+<dt><strong>h</strong><span class="classifier">array-like</span></dt><dd><p>Specific enthalpy, J/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature ( ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature ( ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">CT_from_entropy</code><span class="sig-paren">(</span><em>SA</em>, <em>entropy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_entropy"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Conservative Temperature with entropy as an input variable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>entropy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Specific entropy, J/(kg*K)</p>
+<dt><strong>entropy</strong><span class="classifier">array-like</span></dt><dd><p>Specific entropy, J/(kg*K)</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -323,29 +293,22 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 <code class="descclassname">gsw.conversions.</code><code class="descname">CT_from_pt</code><span class="sig-paren">(</span><em>SA</em>, <em>pt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_pt"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Conservative Temperature of seawater from potential
 temperature (whose reference sea pressure is zero dbar).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>pt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential temperature referenced to a sea pressure, degrees C</p>
+<dt><strong>pt</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature referenced to a sea pressure, degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -355,35 +318,26 @@ temperature (whose reference sea pressure is zero dbar).</p>
 values of its density, Absolute Salinity and sea pressure (in dbar),
 using the computationally-efficient expression for specific volume in
 terms of SA, CT and p (Roquet et al., 2015).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>rho</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rho</strong><span class="classifier">array-like</span></dt><dd><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
 </dd>
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature  (ITS-90)</p>
 </dd>
-<dt><strong>CT_multiple</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature  (ITS-90)</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature  (ITS-90)</p>
+</dd>
+<dt><strong>CT_multiple</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature  (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -391,32 +345,24 @@ terms of SA, CT and p (Roquet et al., 2015).</p>
 <code class="descclassname">gsw.conversions.</code><code class="descname">CT_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_t"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Conservative Temperature of seawater from in-situ
 temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -425,35 +371,26 @@ temperature.</p>
 <dd><p>Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
 is non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Practical Salinity (PSS-78), unitless</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>deltaSA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity Anomaly</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>deltaSA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity Anomaly</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -461,61 +398,46 @@ values of SP to be zero.</p>
 <code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_pt</code><span class="sig-paren">(</span><em>SA</em>, <em>pt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates specific entropy of seawater as a function of potential
 temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>pt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Potential temperature referenced to a sea pressure, degrees C</p>
+<dt><strong>pt</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature referenced to a sea pressure, degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>entropy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/(kg*K)</span></dt>
-<dd><p class="first last">specific entropy</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>entropy</strong><span class="classifier">array-like, J/(kg*K)</span></dt><dd><p>specific entropy</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">entropy_from_t</code><span class="sig-paren">(</span><em>SA</em>, <em>t</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates specific entropy of seawater from in-situ temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>entropy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, J/(kg*K)</span></dt>
-<dd><p class="first last">specific entropy</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>entropy</strong><span class="classifier">array-like, J/(kg*K)</span></dt><dd><p>specific entropy</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -527,33 +449,25 @@ function “gsw_pt_from_t(SA,t,p,p_ref)” which can be used for any
 reference pressure value.
 This subroutine calls “gsw_entropy_part(SA,t,p)”,
 “gsw_entropy_part_zerop(SA,pt0)” and “gsw_gibbs_pt0_pt0(SA,pt0)”.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt0</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt0</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature
 with reference sea pressure (p_ref) = 0 dbar.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -564,30 +478,23 @@ zero dbar) from Conservative Temperature.  This function uses 1.5
 iterations through a modified Newton-Raphson (N-R) iterative solution
 proceedure, starting from a rational-function-based initial condition
 for both pt and dCT_dpt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature referenced to a sea pressure
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature referenced to a sea pressure
 of zero dbar (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -595,30 +502,23 @@ of zero dbar (ITS-90)</p>
 <code class="descclassname">gsw.conversions.</code><code class="descname">pt_from_entropy</code><span class="sig-paren">(</span><em>SA</em>, <em>entropy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_entropy"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates potential temperature with reference pressure p_ref = 0 dbar
 and with entropy as an input variable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>entropy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Specific entropy, J/(kg*K)</p>
+<dt><strong>entropy</strong><span class="classifier">array-like</span></dt><dd><p>Specific entropy, J/(kg*K)</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature
 with reference sea pressure (p_ref) = 0 dbar.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -630,36 +530,27 @@ p_ref, from in-situ temperature, t.  This function calls
 are a function of Absolute Salinity alone.
 A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
 is “gsw_pt0_from_t(SA,t,p)”.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>p_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Reference pressure, dbar</p>
+<dt><strong>p_ref</strong><span class="classifier">array-like</span></dt><dd><p>Reference pressure, dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">potential temperature with reference pressure, p_ref, on the
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature with reference pressure, p_ref, on the
 ITS-90 temperature scale</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -669,32 +560,24 @@ ITS-90 temperature scale</p>
 of its density, Conservative Temperature and sea pressure (in dbar).
 This function uses the computationally-efficient 75-term expression for
 specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>rho</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rho</strong><span class="classifier">array-like</span></dt><dd><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -703,70 +586,52 @@ specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 <dd><p>Calculates Absolute Salinity from Practical Salinity.  Since SP is
 non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Practical Salinity (PSS-78), unitless</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SA_from_Sstar</code><span class="sig-paren">(</span><em>Sstar</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_Sstar"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Absolute Salinity from Preformed Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>Sstar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Preformed Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Sstar</strong><span class="classifier">array-like</span></dt><dd><p>Preformed Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Absolute Salinity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -781,215 +646,162 @@ al. (1986) formula.  The modification of the Hill et al. (1986)
 expression is to ensure that it is exactly consistent with PSS-78
 at SP = 2.  Note that the input values of conductivity need to be in
 units of mS/cm (not S/m).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>C</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conductivity, mS/cm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>C</strong><span class="classifier">array-like</span></dt><dd><p>Conductivity, mS/cm</p>
 </dd>
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">In-situ temperature (ITS-90), degrees C</p>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">Practical Salinity on the PSS-78 scale</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity on the PSS-78 scale</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SP_from_SA</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SA"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Practical Salinity from Absolute Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">Practical Salinity  (PSS-78)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SP_from_SK</code><span class="sig-paren">(</span><em>SK</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SK"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Practical Salinity from Knudsen Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SK</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Knudsen Salinity, ppt</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SK</strong><span class="classifier">array-like</span></dt><dd><p>Knudsen Salinity, ppt</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">Practical Salinity  (PSS-78)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SP_from_SR</code><span class="sig-paren">(</span><em>SR</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SR"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Practical Salinity from Reference Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SR</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Reference Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SR</strong><span class="classifier">array-like</span></dt><dd><p>Reference Salinity, g/kg</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">Practical Salinity  (PSS-78)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SP_from_Sstar</code><span class="sig-paren">(</span><em>Sstar</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_Sstar"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Practical Salinity from Preformed Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>Sstar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Preformed Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Sstar</strong><span class="classifier">array-like</span></dt><dd><p>Preformed Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, unitless</span></dt>
-<dd><p class="first last">Practical Salinity  (PSS-78)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">SR_from_SP</code><span class="sig-paren">(</span><em>SP</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SR_from_SP"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates Reference Salinity from Practical Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Practical Salinity (PSS-78), unitless</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>SR</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Reference Salinity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>SR</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Reference Salinity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descclassname">gsw.conversions.</code><code class="descname">Sstar_from_SA</code><span class="sig-paren">(</span><em>SA</em>, <em>p</em>, <em>lon</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SA"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Converts Preformed Salinity from Absolute Salinity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>Sstar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Preformed Salinity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Sstar</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Preformed Salinity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -998,35 +810,26 @@ units of mS/cm (not S/m).</p>
 <dd><p>Calculates Preformed Salinity from Absolute Salinity.
 Since SP is non-negative by definition, this function changes any
 negative input values of SP to be zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SP</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Practical Salinity (PSS-78), unitless</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lon</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Longitude, -360 to 360 degrees</p>
+<dt><strong>lon</strong><span class="classifier">array-like</span></dt><dd><p>Longitude, -360 to 360 degrees</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>Sstar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, g/kg</span></dt>
-<dd><p class="first last">Preformed Salinity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Sstar</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Preformed Salinity</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1034,101 +837,95 @@ negative input values of SP to be zero.</p>
 <code class="descclassname">gsw.conversions.</code><code class="descname">t_from_CT</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_from_CT"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates in-situ temperature from the Conservative Temperature of
 seawater.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>SA</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Absolute Salinity, g/kg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
-<dt><strong>CT</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Conservative Temperature (ITS-90), degrees C</p>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>t</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, deg C</span></dt>
-<dd><p class="first last">in-situ temperature (ITS-90)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature (ITS-90)</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">p_from_z</code><span class="sig-paren">(</span><em>z</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#p_from_z"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">p_from_z</code><span class="sig-paren">(</span><em>z</em>, <em>lat</em>, <em>geo_strf_dyn_height=0</em>, <em>sea_surface_geopotential=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_fixed_wrapped_ufuncs.html#p_from_z"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates sea pressure from height using computationally-efficient
 75-term expression for density, in terms of SA, CT and p (Roquet et al.,
 2015).  Dynamic height anomaly, geo_strf_dyn_height, if provided,
 must be computed with its p_ref = 0 (the surface). Also if provided,
 sea_surface_geopotental is the geopotential at zero sea pressure. This
 function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>z</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Depth, positive up, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>z</strong><span class="classifier">array-like</span></dt><dd><p>Depth, positive up, m</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
+</dd>
+<dt><strong>geo_strf_dyn_height</strong><span class="classifier">array-like</span></dt><dd><dl class="simple">
+<dt>dynamic height anomaly, m^2/s^2</dt><dd><p>Note that the reference pressure, p_ref, of geo_strf_dyn_height must
+be zero (0) dbar.</p>
 </dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, dbar</span></dt>
-<dd><p class="first last">sea pressure
+</dd>
+<dt><strong>sea_surface_geopotential</strong><span class="classifier">array-like</span></dt><dd><p>geopotential at zero sea pressure,  m^2/s^2</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">array-like, dbar</span></dt><dd><p>sea pressure
 ( i.e. absolute pressure - 10.1325 dbar )</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
-<code class="descclassname">gsw.conversions.</code><code class="descname">z_from_p</code><span class="sig-paren">(</span><em>p</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#z_from_p"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descclassname">gsw.conversions.</code><code class="descname">z_from_p</code><span class="sig-paren">(</span><em>p</em>, <em>lat</em>, <em>geo_strf_dyn_height=0</em>, <em>sea_surface_geopotential=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_fixed_wrapped_ufuncs.html#z_from_p"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculates height from sea pressure using the computationally-efficient
 75-term expression for specific volume in terms of SA, CT and p
 (Roquet et al., 2015).  Dynamic height anomaly, geo_strf_dyn_height, if
 provided, must be computed with its p_ref = 0 (the surface).  Also if
 provided, sea_surface_geopotental is the geopotential at zero sea
 pressure. This function solves Eqn.(3.32.3) of IOC et al. (2010).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
-<dt><strong>lat</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
-<dd><p class="first last">Latitude, -90 to 90 degrees</p>
+<dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
-</dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>z</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, m</span></dt>
-<dd><p class="first last">height</p>
+<dt><strong>geo_strf_dyn_height</strong><span class="classifier">array-like</span></dt><dd><dl class="simple">
+<dt>dynamic height anomaly, m^2/s^2</dt><dd><p>Note that the reference pressure, p_ref, of geo_strf_dyn_height must
+be zero (0) dbar.</p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt><strong>sea_surface_geopotential</strong><span class="classifier">array-like</span></dt><dd><p>geopotential at zero sea pressure,  m^2/s^2</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>z</strong><span class="classifier">array-like, m</span></dt><dd><p>height</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1144,7 +941,7 @@ pressure. This function solves Eqn.(3.32.3) of IOC et al. (2010).</p>
         <a href="density.html" class="btn btn-neutral float-right" title="Density" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gsw.html" class="btn btn-neutral" title="Subpackages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gsw.html" class="btn btn-neutral float-left" title="Subpackages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1153,7 +950,7 @@ pressure. This function solves Eqn.(3.32.3) of IOC et al. (2010).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, TEOS-10 developers.
+        &copy; Copyright 2017, TEOS-10 developers
 
     </p>
   </div>
@@ -1170,36 +967,16 @@ pressure. This function solves Eqn.(3.32.3) of IOC et al. (2010).</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1-devel',
-            LANGUAGE:'en',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
