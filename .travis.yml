@@ -17,43 +17,48 @@ matrix:
     env: TEST_TARGET=default NUMPY=1.11 PY=3.7
   - name: py37-np116
     env: TEST_TARGET=default NUMPY=1.16 PY=3.7
-  - name: publish
-    env: NUMPY=1.16 PY=3.7    
   - name: deploy
     env: NUMPY=1.16 PY=3.7
 
 before_install:
-  - wget http://bit.ly/miniconda -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - conda config --set always_yes yes --set changeps1 no --set show_channel_urls true
-  - conda update conda
-  - conda config --add channels conda-forge --force
-  - conda create --name TEST python=$PY --file requirements-dev.txt
-  - source activate TEST
-  # Install after to ensure it will be downgraded when testing an older version.
-  - conda install numpy=$NUMPY
+  - |
+    wget http://bit.ly/miniconda -O miniconda.sh
+    bash miniconda.sh -b -p $HOME/miniconda
+    export PATH="$HOME/miniconda/bin:$PATH"
+    conda config --set always_yes yes --set changeps1 no --set show_channel_urls true
+    conda update conda --quiet
+    conda config --add channels conda-forge --force
+    conda config --set channel_priority strict
+    conda create --name TEST python=$PY --file requirements-dev.txt --quiet
+    source activate TEST
+    # Install after to ensure it will be downgraded when testing an older version.
+    conda install numpy=$NUMPY
+    conda info --all
 
 # Test source distribution.
 install:
   - python setup.py check
-  - python setup.py sdist && version=$(python setup.py --version) && pushd dist  && pip install gsw-${version}.tar.gz && popd
+  - python setup.py sdist && version=$(python setup.py --version) && pushd dist && pip install --no-deps --force-reinstall gsw-${version}.tar.gz && popd
 
 script:
-  - if [[ $TRAVIS_JOB_NAME == "default" ]]; then
+  - if [[ $TEST_TARGET == "default" ]]; then
       pushd gsw && pytest -s -rxs -v tests && popd ;
     fi
 
-after_success:
-  - if [[ $TRAVIS_JOB_NAME == "publish" ]]; then
-      set -e ;
-      pushd docs && make html && popd ;
-      doctr deploy --built-docs=docs/_build/html . ;
+  - |
+    if [[ $TRAVIS_JOB_NAME == 'deploy' ]]; then
+      set -e
+      pushd docs
+      make clean html linkcheck
+      popd
+      if [[ -z "$TRAVIS_TAG" ]]; then 
+        python -m doctr deploy --build-tags --key-path github_deploy_key.enc --built-docs docs/_build/html dev
+      else
+        python -m doctr deploy --build-tags --key-path github_deploy_key.enc --built-docs docs/_build/html "version-$TRAVIS_TAG"
+        python -m doctr deploy --build-tags --key-path github_deploy_key.enc --built-docs docs/_build/html .
+      fi
     fi
 
-doctr:
-  require-master: true
-  sync: false
 
 deploy:
   skip_cleanup: true
