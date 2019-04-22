@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stability &mdash; gsw 0.1-devel documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Geostrophy" href="geostrophy.html" />
+    <link rel="prev" title="Energy" href="energy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gsw
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gsw.html">Subpackages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conversions.html">Conversion functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="density.html">Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="energy.html">Energy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geostrophy.html">Geostrophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ice.html">Ice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freezing.html">Freezing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsw_flat.html">All functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gsw</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
+        
+      <li>Stability</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stability.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stability">
+<h1>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h1>
+<p>Vertical stability functions.</p>
+<p>These work with ndarrays of profiles; use the <cite>axis</cite> keyword
+argument to specify the axis along which pressure varies.
+For example, the default, following the Matlab versions, is
+<cite>axis=0</cite>, meaning the pressure varies along the first dimension.
+Use <cite>axis=-1</cite> if pressure varies along the last dimension–that
+is, along a row, as the column index increases, in the 2-D case.</p>
+<p>Docstrings will be added later, either manually or via
+an automated mechanism.</p>
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.stability.</code><code class="descname">Nsquared</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>lat=None</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#Nsquared"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculate the square of the buoyancy frequency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>lat</strong><span class="classifier">array-like, 1-D, optional</span></dt><dd><p>Latitude, degrees.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>The dimension along which pressure increases.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>N2</strong><span class="classifier">array</span></dt><dd><p>Buoyancy frequency-squared at pressure midpoints, 1/s.
+The shape along the pressure axis dimension is one
+less than that of the inputs.</p>
+</dd>
+<dt><strong>p_mid</strong><span class="classifier">array</span></dt><dd><p>Pressure at midpoints of p, dbar.
+The array shape matches N2.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.stability.</code><code class="descname">Turner_Rsubrho</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#Turner_Rsubrho"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculate the Turner Angle and the Stability Ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>The dimension along which pressure increases.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Tu</strong><span class="classifier">array</span></dt><dd><p>Turner Angle at pressure midpoints, degrees.
+The shape along the pressure axis dimension is one
+less than that of the inputs.</p>
+</dd>
+<dt><strong>Rsubrho</strong><span class="classifier">array</span></dt><dd><p>Stability Ratio, dimensionless.
+The shape matches Tu.</p>
+</dd>
+<dt><strong>p_mid</strong><span class="classifier">array</span></dt><dd><p>Pressure at midpoints of p, dbar.
+The array shape matches Tu.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">gsw.stability.</code><code class="descname">IPV_vs_fNsquared_ratio</code><span class="sig-paren">(</span><em>SA</em>, <em>CT</em>, <em>p</em>, <em>p_ref=0</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#IPV_vs_fNsquared_ratio"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Calculates the ratio of the vertical gradient of potential density to
+the vertical gradient of locally-referenced potential density.  This
+is also the ratio of the planetary Isopycnal Potential Vorticity
+(IPV) to f times N^2, hence the name for this variable,
+IPV_vs_fNsquared_ratio (see Eqn. (3.20.17) of IOC et al. (2010)).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
+</dd>
+<dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
+</dd>
+<dt><strong>p_ref</strong><span class="classifier">float</span></dt><dd><p>Reference pressure, dbar</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>IPV_vs_fNsquared_ratio</strong><span class="classifier">array</span></dt><dd><p>The ratio of the vertical gradient of
+potential density referenced to p_ref, to the vertical
+gradient of locally-referenced potential density, dimensionless.</p>
+</dd>
+<dt><strong>p_mid</strong><span class="classifier">array</span></dt><dd><p>Pressure at midpoints of p, dbar.
+The array shape matches IPV_vs_fNsquared_ratio.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="geostrophy.html" class="btn btn-neutral float-right" title="Geostrophy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="energy.html" class="btn btn-neutral float-left" title="Energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, TEOS-10 developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
