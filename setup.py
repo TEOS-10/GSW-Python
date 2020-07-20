@@ -60,7 +60,7 @@ class build_ext(_build_ext):
         _build_ext.build_extensions(self)
 
 
-long_description = read('README.rst')
+long_description = read("README.md")
 
 # MSVC can't handle C complex, and distutils doesn't seem to be able to
 # let us force C++ compilation of .c files, so we use the following hack for
@@ -89,6 +89,7 @@ config = dict(
     author_email='efiring@hawaii.edu',
     description='Gibbs Seawater Oceanographic Package of TEOS-10',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     license="MIT",
     url='https://github.com/TEOS-10/GSW-python',
     download_url='https://pypi.python.org/pypi/gsw/',

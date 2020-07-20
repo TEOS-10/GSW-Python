@@ -1,5 +1,5 @@
 include *.txt
-include README.rst
+include README.md
 
 graft gsw
 recursive-include src *.c
