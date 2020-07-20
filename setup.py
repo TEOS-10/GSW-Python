@@ -60,7 +60,6 @@ class build_ext(_build_ext):
         _build_ext.build_extensions(self)
 
 
-LICENSE = read('LICENSE')
 long_description = read('README.rst')
 
 # MSVC can't handle C complex, and distutils doesn't seem to be able to
@@ -90,7 +89,7 @@ config = dict(
     author_email='efiring@hawaii.edu',
     description='Gibbs Seawater Oceanographic Package of TEOS-10',
     long_description=long_description,
-    license=LICENSE,
+    license="MIT",
     url='https://github.com/TEOS-10/GSW-python',
     download_url='https://pypi.python.org/pypi/gsw/',
     classifiers=[
