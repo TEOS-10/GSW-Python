@@ -10,17 +10,17 @@ matrix:
   fast_finish: true
   include:
   - name: "py36-np111"
-    env: NUMPY=1.11 PY=3.6
-  - name: "py36-np116"
-    env: NUMPY=1.19 PY=3.6
-  - name: "py37-np111"
-    env: NUMPY=1.11 PY=3.8
-  - name: "py37-np116"
-    env: NUMPY=1.19 PY=3.8
+    env: PY=3.6 NUMPY=1.11
+  - name: "py36-np119"
+    env: PY=3.6 NUMPY=1.19
+  - name: "py38-np111"
+    env: PY=3.8 NUMPY=1.11
+  - name: "py38-np119"
+    env: PY=3.8 NUMPY=1.19
   - name: "docs"
-    env: NUMPY=1 PY=3
+    env: NUMPY=1.11 PY=3.6
   - name: "tarball"
-  env: NUMPY=1 PY=3
+    env: NUMPY=1.11 PY=3.6
 
 before_install:
   - |
