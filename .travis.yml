@@ -38,6 +38,7 @@ before_install:
 # Test source distribution.
 install:
   - python setup.py check
+  - python setup.py --version
   - python setup.py sdist && version=$(python setup.py --version) && pushd dist && pip install --no-deps --force-reinstall gsw-${version}.tar.gz && popd
 
 script:

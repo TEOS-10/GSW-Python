@@ -12,8 +12,6 @@ import pkg_resources
 from setuptools import Extension, setup
 from distutils.command.build_ext import build_ext as _build_ext
 
-import versioneer
-
 
 # Check Python version.
 if sys.version_info < (3, 5):
@@ -65,9 +63,6 @@ class build_ext(_build_ext):
 LICENSE = read('LICENSE')
 long_description = read('README.rst')
 
-cmdclass = versioneer.get_cmdclass()
-cmdclass.update({'build_ext': build_ext})
-
 # MSVC can't handle C complex, and distutils doesn't seem to be able to
 # let us force C++ compilation of .c files, so we use the following hack for
 # Windows.
@@ -85,7 +80,11 @@ ufunc_src_list = ['src/_ufuncs.c',
 
 config = dict(
     name='gsw',
-    version=versioneer.get_version(),
+    use_scm_version={
+        "write_to": "gsw/_version.py",
+        "write_to_template": '__version__ = "{version}"',
+        "tag_regex": r"^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$",
+    },
     packages=['gsw'],
     author=['Eric Firing', 'Filipe Fernandes'],
     author_email='efiring@hawaii.edu',
@@ -113,7 +112,7 @@ config = dict(
     setup_requires=['numpy'],
     ext_modules=[Extension('gsw._gsw_ufuncs', ufunc_src_list)],
     include_dirs=[os.path.join(rootpath, 'src', 'c_gsw')],
-    cmdclass=cmdclass,
+    cmdclass={"build_ext": build_ext},
 )
 
 setup(**config)

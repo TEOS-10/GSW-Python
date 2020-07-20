@@ -3,4 +3,4 @@ numpydoc
 pytest
 sphinx
 sphinx_rtd_theme
-
+setuptools_scm
