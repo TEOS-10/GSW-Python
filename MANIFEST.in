@@ -1,7 +1,20 @@
-include LICENSE
+include *.txt
 include README.rst
-recursive-include src *
-recursive-include src2 *
-# recursive-include docs *
-include versioneer.py
-include gsw/_version.py
+
+graft gsw
+recursive-include src *.c
+recursive-include src *.h
+include src/c_gsw/LICENSE
+
+prune docs
+prune tests
+prune notebooks
+prune *.egg-info
+
+global-exclude *.m
+global-exclude *.so
+
+exclude *.yml
+exclude *.enc
+exclude .gitignore
+exclude .isort.cfg

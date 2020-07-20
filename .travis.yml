@@ -9,16 +9,18 @@ env:
 matrix:
   fast_finish: true
   include:
-  - name: py36-np111
-    env: TEST_TARGET=default NUMPY=1.11 PY=3.6
-  - name: py36-np116
-    env: TEST_TARGET=default NUMPY=1.16 PY=3.6
-  - name: py37-np111
-    env: TEST_TARGET=default NUMPY=1.11 PY=3.7
-  - name: py37-np116
-    env: TEST_TARGET=default NUMPY=1.16 PY=3.7
-  - name: deploy
-    env: NUMPY=1.16 PY=3.7
+  - name: "py36-np111"
+    env: NUMPY=1.11 PY=3.6
+  - name: "py36-np116"
+    env: NUMPY=1.19 PY=3.6
+  - name: "py37-np111"
+    env: NUMPY=1.11 PY=3.8
+  - name: "py37-np116"
+    env: NUMPY=1.19 PY=3.8
+  - name: "docs"
+    env: NUMPY=1 PY=3
+  - name: "tarball"
+  env: NUMPY=1 PY=3
 
 before_install:
   - |
@@ -37,17 +39,22 @@ before_install:
 
 # Test source distribution.
 install:
-  - python setup.py check
-  - python setup.py --version
-  - python setup.py sdist && version=$(python setup.py --version) && pushd dist && pip install --no-deps --force-reinstall gsw-${version}.tar.gz && popd
+  - pip install -e . --no-deps --force-reinstall
 
 script:
-  - if [[ $TEST_TARGET == "default" ]]; then
+  - |
+    if [[ $TRAVIS_JOB_NAME == 'tarball' ]]; then
+      pip wheel . -w dist --no-deps
+      check-manifest --verbose
+      twine check dist/*
+    fi
+
+  - if [[ $TRAVIS_JOB_NAME == py* ]]; then
       pushd gsw && pytest -s -rxs -v tests && popd ;
     fi
 
   - |
-    if [[ $TRAVIS_JOB_NAME == 'deploy' ]]; then
+    if [[ $TRAVIS_JOB_NAME == 'docs' ]]; then
       set -e
       pushd docs
       make clean html linkcheck

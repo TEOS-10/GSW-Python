@@ -1,6 +1,7 @@
+check-manifest
 doctr
 numpydoc
 pytest
+setuptools_scm
 sphinx
 sphinx_rtd_theme
-setuptools_scm
