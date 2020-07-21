@@ -31,7 +31,7 @@ if sys.version_info < (3, 5):
         pass
 
     error = """
-Latest gsw does not support Python < 3.5.
+Latest gsw does not support Python < 3.6.
 When using Python 2.7 please install the last pure Python version
 of gsw available at PyPI (3.0.6).
 Python {py} detected.
@@ -105,7 +105,7 @@ config = dict(
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
     ],
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     platforms='any',
     keywords=['oceanography', 'seawater', 'TEOS-10'],
     install_requires=['numpy'],
