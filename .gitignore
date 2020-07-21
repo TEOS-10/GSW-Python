@@ -35,6 +35,7 @@ dist
 # tox testing tool
 .tox
 MANIFEST
+_version.py
 
 # OS generated files #
 ######################

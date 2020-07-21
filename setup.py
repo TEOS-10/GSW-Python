@@ -12,8 +12,6 @@ import pkg_resources
 from setuptools import Extension, setup
 from distutils.command.build_ext import build_ext as _build_ext
 
-import versioneer
-
 
 # Check Python version.
 if sys.version_info < (3, 5):
@@ -33,7 +31,7 @@ if sys.version_info < (3, 5):
         pass
 
     error = """
-Latest gsw does not support Python < 3.5.
+Latest gsw does not support Python < 3.6.
 When using Python 2.7 please install the last pure Python version
 of gsw available at PyPI (3.0.6).
 Python {py} detected.
@@ -62,11 +60,7 @@ class build_ext(_build_ext):
         _build_ext.build_extensions(self)
 
 
-LICENSE = read('LICENSE')
-long_description = read('README.rst')
-
-cmdclass = versioneer.get_cmdclass()
-cmdclass.update({'build_ext': build_ext})
+long_description = read("README.md")
 
 # MSVC can't handle C complex, and distutils doesn't seem to be able to
 # let us force C++ compilation of .c files, so we use the following hack for
@@ -85,13 +79,18 @@ ufunc_src_list = ['src/_ufuncs.c',
 
 config = dict(
     name='gsw',
-    version=versioneer.get_version(),
+    use_scm_version={
+        "write_to": "gsw/_version.py",
+        "write_to_template": '__version__ = "{version}"',
+        "tag_regex": r"^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$",
+    },
     packages=['gsw'],
     author=['Eric Firing', 'Filipe Fernandes'],
     author_email='efiring@hawaii.edu',
     description='Gibbs Seawater Oceanographic Package of TEOS-10',
     long_description=long_description,
-    license=LICENSE,
+    long_description_content_type="text/markdown",
+    license="MIT",
     url='https://github.com/TEOS-10/GSW-python',
     download_url='https://pypi.python.org/pypi/gsw/',
     classifiers=[
@@ -106,14 +105,14 @@ config = dict(
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
     ],
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     platforms='any',
     keywords=['oceanography', 'seawater', 'TEOS-10'],
     install_requires=['numpy'],
     setup_requires=['numpy'],
     ext_modules=[Extension('gsw._gsw_ufuncs', ufunc_src_list)],
     include_dirs=[os.path.join(rootpath, 'src', 'c_gsw')],
-    cmdclass=cmdclass,
+    cmdclass={"build_ext": build_ext},
 )
 
 setup(**config)
