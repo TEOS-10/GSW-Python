@@ -11,7 +11,7 @@ matrix:
   include:
   - name: "py36-np111"
     env: PY=3.6 NUMPY=1.11
-  - name: "py36-np119"
+  - name: "py36-np117"
     env: PY=3.6 NUMPY=1.17
   - name: "py38-np111"
     env: PY=3.8 NUMPY=1.11
