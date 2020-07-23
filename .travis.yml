@@ -49,8 +49,12 @@ script:
       twine check dist/*
     fi
 
-  - if [[ $TRAVIS_JOB_NAME == py* ]]; then
-      pushd gsw && pytest -s -rxs -v tests && popd ;
+  - |
+    if [[ $TRAVIS_JOB_NAME == py* ]]; then
+      cp -r gsw/test /tmp
+      pushd /tmp
+      pytest -s -rxs -v tests
+      popd
     fi
 
   - |
