@@ -35,7 +35,7 @@ dist
 # tox testing tool
 .tox
 MANIFEST
-_version.py
+gsw/_version.py
 
 # OS generated files #
 ######################
