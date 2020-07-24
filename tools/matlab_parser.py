@@ -105,7 +105,7 @@ def get_help_text(fname):
         return help
 
 def help_text_to_dict(help):
-    keypat = '^([A-Z ]+):(.*)'
+    keypat = r"^([A-Z ]+):(.*)"
     hdict = dict()
     started = False
     for line in help:
