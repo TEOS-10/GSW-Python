@@ -9,10 +9,10 @@ env:
 matrix:
   fast_finish: true
   include:
-  - name: "py36-np116"
-    env: PY=3.6 NUMPY=1.16
-  - name: "py36-np117"
-    env: PY=3.6 NUMPY=1.19
+  - name: "py37-np116"
+    env: PY=3.7 NUMPY=1.16
+  - name: "py37-np119"
+    env: PY=3.7 NUMPY=1.19
   - name: "py38-np116"
     env: PY=3.8 NUMPY=1.16
   - name: "py38-np119"
