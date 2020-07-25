@@ -12,35 +12,6 @@ from setuptools import Extension, setup
 from distutils.command.build_ext import build_ext as _build_ext
 
 
-# Check Python version.
-if sys.version_info < (3, 6):
-    pip_message = ('This may be due to an out of date pip. '
-                   'Make sure you have pip >= 9.0.1.')
-    try:
-        import pip
-        pip_version = tuple((int(x) for x in pip.__version__.split('.')[:3]))
-        if pip_version < (9, 0, 1):
-            pip_message = ('Your pip version is out of date, '
-                           'please install pip >= 9.0.1. '
-                           'pip {} detected.').format(pip.__version__)
-        else:
-            # pip is new enough - it must be something else.
-            pip_message = ''
-    except Exception:
-        pass
-
-    error = """
-Latest gsw does not support Python < 3.6.
-When using Python 2.7 please install the last pure Python version
-of gsw available at PyPI (3.0.6).
-Python {py} detected.
-{pip}
-""".format(py=sys.version_info, pip=pip_message)
-
-    print(error, file=sys.stderr)
-    sys.exit(1)
-
-
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
 
