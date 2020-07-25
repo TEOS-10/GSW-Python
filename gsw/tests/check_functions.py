@@ -45,10 +45,10 @@ from gsw._utilities import Bunch
 #
 # pattern for a single test line after it has been pre-processed to
 # remove spaces, the square brackets, and semicolon
-testlinepat = "(\w+\.\w+)=find\(\w*\((\w+\.\w+)-(\w+\.\w+)\)>=(\w+\.\w+)\)"
+testlinepat = r"(\w+\.\w+)=find\(\w*\((\w+\.\w+)-(\w+\.\w+)\)>=(\w+\.\w+)\)"
 #
 # pattern for the inner test when there is a sequence separated by '|'
-testpat = "\(+\w*\((\w+\.\w+)-(\w+\.\w+)\)+>=(\w+\.\w+)\)"
+testpat = r"\(+\w*\((\w+\.\w+)-(\w+\.\w+)\)+>=(\w+\.\w+)\)"
 
 
 def find(x):
