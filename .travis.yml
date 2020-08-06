@@ -9,22 +9,24 @@ env:
 matrix:
   fast_finish: true
   include:
-  - name: "py36-np111"
-    env: PY=3.6 NUMPY=1.11
-  - name: "py36-np117"
-    env: PY=3.6 NUMPY=1.17
-  - name: "py38-np111"
-    env: PY=3.8 NUMPY=1.11
+  - name: "py37-np116"
+    env: PY=3.7 NUMPY=1.16
+  - name: "py37-np119"
+    env: PY=3.7 NUMPY=1.19
+  - name: "py38-np116"
+    env: PY=3.8 NUMPY=1.16
   - name: "py38-np119"
     env: PY=3.8 NUMPY=1.19
   - name: "docs"
-    env: NUMPY=1.11 PY=3.6
+    env: NUMPY=1 PY=3
   - name: "tarball"
-    env: NUMPY=1.11 PY=3.6
+    env: NUMPY=1 PY=3
 
 before_install:
+  # Install miniconda and create TEST env.
   - |
-    wget http://bit.ly/miniconda -O miniconda.sh
+    set -e
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     bash miniconda.sh -b -p $HOME/miniconda
     export PATH="$HOME/miniconda/bin:$PATH"
     conda config --set always_yes yes --set changeps1 no --set show_channel_urls true
@@ -49,13 +51,16 @@ script:
       twine check dist/*
     fi
 
-  - if [[ $TRAVIS_JOB_NAME == py* ]]; then
-      pushd gsw && pytest -s -rxs -v tests && popd ;
+  - |
+    if [[ $TRAVIS_JOB_NAME == py* ]]; then
+      cp -r gsw/tests /tmp
+      pushd /tmp
+      pytest -s -rxs -v tests
+      popd
     fi
 
   - |
     if [[ $TRAVIS_JOB_NAME == 'docs' ]]; then
-      set -e
       pushd docs
       make clean html linkcheck
       popd
