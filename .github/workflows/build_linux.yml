@@ -1,13 +1,9 @@
 name: linux-wheels
-# Just to test on the PR. then remove and add this
-# on:
-#   release:
-#     types:
-#       - published
+
 on:
-  pull_request:
-  push:
-    branches: [master]
+  release:
+    types:
+      - published
 
 jobs:
   packages:
