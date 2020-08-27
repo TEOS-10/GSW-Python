@@ -34,7 +34,7 @@ jobs:
     - name: Install build tools
       run: |
         python -m pip install --upgrade pip wheel setuptools setuptools_scm pep517 twine
-        python -m pip install numpy==1.16
+        python -m pip install numpy==1.18
       shell: bash
 
     - name: Build binary wheel
