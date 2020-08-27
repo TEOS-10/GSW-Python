@@ -20,11 +20,11 @@ jobs:
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       shell: bash
 
-    - uses: ./.github/workflows/actions/manylinux1_x86_64
+    - uses: ./.github/workflows/actions/manylinux2010_x86_64
     - name: copy manylinux wheels
       run: |
         mkdir dist
-        cp wheelhouse/gsw*-manylinux1_x86_64.whl dist/
+        cp wheelhouse/gsw*-manylinux2010_x86_64.whl dist/
 
     - name: CheckFiles
       run: |
