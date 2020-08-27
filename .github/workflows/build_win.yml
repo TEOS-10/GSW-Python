@@ -1,9 +1,14 @@
 name: windows-wheels
 
+# on:
+#   release:
+#     types:
+#       - published
+
 on:
-  release:
-    types:
-      - published
+  pull_request:
+  push:
+    branches: [master]
 
 jobs:
   packages:
@@ -45,12 +50,3 @@ jobs:
       with:
         name: dist_${{ matrix.os }}_${{ matrix.python-version }}
         path: dist
-
-    - name: Publish to PyPI
-      env:
-        PYPI_USERNAME: ${{ secrets.PYPI_USER }}
-        PYPI_PASSWORD: ${{ secrets.TWINE_PASS }}
-      run: |
-        pip install twine
-        python -m twine upload -u ${PYPI_USERNAME} -p ${TWINE_PASS} dist/* --verbose
-      shell: bash
