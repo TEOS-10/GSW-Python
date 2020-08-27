@@ -1,9 +1,14 @@
 name: linux-wheels
 
+# on:
+#   release:
+#     types:
+#       - published
+
 on:
-  release:
-    types:
-      - published
+  pull_request:
+  push:
+    branches: [master]
 
 jobs:
   packages:
