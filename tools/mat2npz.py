@@ -34,17 +34,26 @@ def loadmatdict(fname):
             out[k] = _structured_to_dict(xx[k])
     return out
 
-
-# We can add our own data version later; the problem is that
-# the original matfile from TEOS-10 has the same file name even
-# as its contents change.
+# This is the data version designation used in the file name; but it
+# is not a true version, because the file contents changes from one
+# matlab release to another.
 data_ver = 'v3_0'
 
-gsw_data_file = Path('..', '..', 'GSW-Matlab/Toolbox/library/gsw_data_v3_0.mat')
+# This is the version of the matlab zipfile from which we are getting
+# the data file.
+mat_zip_ver = 'v3_06_11'
+
+# The following relative path will depend on the directory layout for
+# whoever is running this utility.
+gsw_data_file = Path('..', '..', '..', 'gsw_matlab_%s' % mat_zip_ver,
+                     'library', 'gsw_data_%s.mat' % data_ver)
+print(gsw_data_file)
+
 gsw_data = loadmatdict(gsw_data_file)
 
 # Save compare values `gsw_cv` in a separate file.
 cv_vars = gsw_data['gsw_cv']
 cv_vars['gsw_data_file'] = str(gsw_data_file)
+cv_vars['mat_zip_ver'] = mat_zip_ver
 fname = Path('..', 'gsw', 'tests', 'gsw_cv_%s' % data_ver)
 np.savez(str(fname), **cv_vars)
