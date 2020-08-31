@@ -11,7 +11,6 @@ prune tools
 prune notebooks
 prune *.egg-info
 
-global-exclude *.m
 global-exclude *.so
 
 exclude *.yml
