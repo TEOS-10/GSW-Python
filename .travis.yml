@@ -46,7 +46,7 @@ install:
 script:
   - |
     if [[ $TRAVIS_JOB_NAME == 'tarball' ]]; then
-      pip wheel . -w dist --no-deps
+      python -m pep517.build --source --binary . --out-dir dist
       check-manifest --verbose
       twine check dist/*
     fi
