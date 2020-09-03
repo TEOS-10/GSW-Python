@@ -40,6 +40,14 @@ jobs:
         ls dist
       shell: bash
 
+    - name: Test wheels
+      run: |
+        python -m pip install wheel twine
+        python -m pip install pytest numpy
+        cd dist && python -m pip install gsw*.whl && python -m pytest --pyargs gsw
+        python -m twine check *
+      shell: bash
+
     - name: upload wheel
       uses: actions/upload-artifact@v1
       with:
