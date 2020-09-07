@@ -55,7 +55,7 @@ def find(x):
     """
     Numpy equivalent to Matlab find.
     """
-    return np.nonzero(x.flatten())[0]
+    return np.nonzero(np.asarray(x).flatten())[0]
 
 
 def group_or(line):

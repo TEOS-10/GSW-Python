@@ -73,7 +73,10 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
     dh = np.empty(SA.shape, dtype=float)
     dh.fill(np.nan)
 
-    order = 'F' if SA.flags.fortran else 'C'
+    try:
+        order = 'F' if SA.flags.fortran else 'C'
+    except AttributeError:
+        order = 'C'  # e.g., xarray DataArray doesn't have flags
     for ind in indexer(SA.shape, axis, order=order):
         igood = goodmask[ind]
         # If p_ref is below the deepest value, skip the profile.

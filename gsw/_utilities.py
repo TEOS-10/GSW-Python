@@ -26,20 +26,35 @@ def match_args_return(f):
             args = list(args)
             args.append(p)
 
-        isarray = np.any([hasattr(a, '__iter__') for a in args])
-        ismasked = np.any([np.ma.isMaskedArray(a) for a in args])
+        isarray = [hasattr(a, '__iter__') for a in args]
+        ismasked = [np.ma.isMaskedArray(a) for a in args]
+        isduck = [hasattr(a, '__array_ufunc__')
+                    and not isinstance(a, np.ndarray) for a in args]
+
+        hasarray = np.any(isarray)
+        hasmasked = np.any(ismasked)
+        hasduck = np.any(isduck)
 
         def fixup(ret):
-            if ismasked:
+            if hasduck:
+                return ret
+            if hasmasked:
                 ret = np.ma.masked_invalid(ret)
-            if not isarray and isinstance(ret, np.ndarray):
-                ret = ret[0]
+            if not hasarray and isinstance(ret, np.ndarray) and ret.size == 1:
+                try:
+                    ret = ret[0]
+                except IndexError:
+                    pass
             return ret
 
-        if ismasked:
-            newargs = [masked_to_nan(a) for a in args]
-        else:
-            newargs = [np.asarray(a, dtype=float) for a in args]
+        newargs = []
+        for i, arg in enumerate(args):
+            if ismasked[i]:
+                newargs.append(masked_to_nan(arg))
+            elif isduck[i]:
+                newargs.append(arg)
+            else:
+                newargs.append(np.asarray(arg, dtype=float))
 
         if p is not None:
             kw['p'] = newargs.pop()
