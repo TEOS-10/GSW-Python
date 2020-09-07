@@ -92,3 +92,52 @@ def test_dask_chunking():
 
     sa_numpy = gsw.SA_from_SP(np.full(shape, 35.0), p.values, lon, lat)
     assert_allclose(sa_dask, sa_numpy)
+
+
+# Additional tests from Graeme MacGilchrist
+# https://nbviewer.jupyter.org/github/gmacgilchrist/wmt_bgc/blob/master/notebooks/test_gsw-xarray.ipynb
+
+# Define dimensions and coordinates
+dims = ['y','z','t']
+# 2x2x2
+y = np.arange(0,2)
+z = np.arange(0,2)
+t = np.arange(0,2)
+# Define numpy arrays of salinity, temperature and pressure
+SA_vals = np.array([[[34.7,34.8],[34.9,35]],[[35.1,35.2],[35.3,35.4]]])
+CT_vals = np.array([[[7,8],[9,10]],[[11,12],[13,14]]])
+p_vals = np.array([10,20])
+lat_vals = np.array([0,10])
+# Plug in to xarray objects
+SA = xr.DataArray(SA_vals,dims=dims,coords={'y':y,'z':z,'t':t})
+CT = xr.DataArray(CT_vals,dims=dims,coords={'y':y,'z':z,'t':t})
+p = xr.DataArray(p_vals,dims=['z'],coords={'z':z})
+lat = xr.DataArray(lat_vals,dims=['y'],coords={'y':y})
+
+
+def test_xarray_with_coords():
+    pytest.importorskip('dask')
+    SA_chunk = SA.chunk(chunks={'y':1,'t':1})
+    CT_chunk = CT.chunk(chunks={'y':1,'t':1})
+    lat_chunk = lat.chunk(chunks={'y':1})
+
+    # Dimensions and cordinates match:
+    expected = gsw.sigma0(SA_vals, CT_vals)
+    xarray = gsw.sigma0(SA, CT)
+    chunked = gsw.sigma0(SA_chunk, CT_chunk)
+    assert_allclose(xarray, expected)
+    assert_allclose(chunked, expected)
+
+    # Broadcasting along dimension required (dimensions known)
+    expected = gsw.alpha(SA_vals, CT_vals, p_vals[np.newaxis, :, np.newaxis])
+    xarray = gsw.alpha(SA, CT, p)
+    chunked = gsw.alpha(SA_chunk, CT_chunk, p)
+    assert_allclose(xarray, expected)
+    assert_allclose(chunked, expected)
+
+    # Broadcasting along dimension required (dimensions unknown/exclusive)
+    expected = gsw.z_from_p(p_vals[:, np.newaxis], lat_vals[np.newaxis, :])
+    xarray = gsw.z_from_p(p, lat)
+    chunked = gsw.z_from_p(p,lat_chunk)
+    assert_allclose(xarray, expected)
+    assert_allclose(chunked, expected)
