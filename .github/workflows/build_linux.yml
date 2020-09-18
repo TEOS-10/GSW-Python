@@ -1,0 +1,41 @@
+name: linux-wheels
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get tags
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      shell: bash
+
+    - uses: ./.github/workflows/actions/manylinux2010_x86_64
+    - name: copy manylinux wheels
+      run: |
+        mkdir dist
+        cp wheelhouse/gsw*-manylinux2010_x86_64.whl dist/
+
+    - name: CheckFiles
+      run: |
+        ls dist
+      shell: bash
+    
+    - name: Test wheels
+      run: |
+        python -m pip install wheel twine
+        python -m pip install pytest numpy
+        cd dist && python -m pip install gsw*.whl && python -m pytest --pyargs gsw
+        python -m twine check *
+      shell: bash
+
+    - name: Publish a Python distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_PASSWORD }}

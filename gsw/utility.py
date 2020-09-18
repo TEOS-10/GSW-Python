@@ -59,6 +59,6 @@ def pchip_interp(x, y, xi, axis=0):
         xgood = x[ind][igood]
         ygood = y[ind][igood]
 
-        yi[ind][igood] = _gsw_ufuncs.util_pchip_interp(xgood, ygood, xi)
+        yi[ind] = _gsw_ufuncs.util_pchip_interp(xgood, ygood, xi)
 
     return yi

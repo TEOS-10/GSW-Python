@@ -31,7 +31,7 @@ original Matlab code, but with a few important differences:
 """
 
 
-from ._wrapped_ufuncs import *
+from ._fixed_wrapped_ufuncs import *
 
 from .stability import *
 from .geostrophy import *
@@ -47,6 +47,7 @@ from . import ice
 
 from .conversions import t90_from_t68
 
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
+try:
+    from ._version import __version__
+except ImportError:
+    __version__ = "unknown"

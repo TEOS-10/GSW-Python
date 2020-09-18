@@ -31,9 +31,11 @@ docs/_build
 dist
 # Egg metadata
 *.egg-info
+.eggs/
 # tox testing tool
 .tox
 MANIFEST
+gsw/_version.py
 
 # OS generated files #
 ######################
@@ -54,3 +56,4 @@ Thumbs.db
 
 # pytest
 .cache
+.pytest_cache

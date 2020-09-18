@@ -2,13 +2,13 @@
 It may be necessary to edit the location of the GSW-Matlab directory.
 """
 
-import os
-import glob
 import re
+from pathlib import Path
 
-basedir = os.path.join(os.path.dirname(__file__), '../')
 
-gsw_matlab_dir = os.path.join(basedir, '../GSW-Matlab/Toolbox')
+basedir = Path('..').resolve()
+
+gsw_matlab_dir = basedir.joinpath('..', 'GSW-Matlab', 'Toolbox').resolve()
 gsw_matlab_subdirs = ['library', 'thermodynamics_from_t']
 
 # pattern for functions returning one variable
@@ -21,13 +21,15 @@ mfunc_topline2 = re.compile(r"^function \[(?P<output>.*)\]\s*=\s*"
                             r"gsw_(?P<funcname>\S+)"
                             r"\((?P<input>.*)\)")
 
+# mis-spellings: key is bad in Matlab; replace with value
+arg_fixups = dict(sea_surface_geopotental='sea_surface_geopotential',)
 
 def list_functions(matdir=gsw_matlab_dir, subdir=''):
-    rawlist = glob.glob(os.path.join(matdir, '*.m'))
+    rawlist = matdir.glob('*.m')
     signatures = []
     rejects = []
     for m in rawlist:
-        with open(m, encoding='latin-1') as f:
+        with m.open(encoding='latin-1') as f:
             line = f.readline()
         _match = mfunc_topline1.match(line)
         if _match is None:
@@ -36,6 +38,7 @@ def list_functions(matdir=gsw_matlab_dir, subdir=''):
             rejects.append(m)
         else:
             _input = [s.strip() for s in _match.group('input').split(',')]
+            _input = [arg_fixups.get(n, n) for n in _input]
             _output = [s.strip() for s in _match.group('output').split(',')]
             _funcname = _match.group('funcname')
             signatures.append((_funcname, _input, _output, m))
@@ -45,7 +48,7 @@ def list_functions(matdir=gsw_matlab_dir, subdir=''):
 def get_all_signatures():
     signatures, _ = list_functions()
     for subdir in gsw_matlab_subdirs:
-        path = os.path.join(gsw_matlab_dir, subdir)
+        path = gsw_matlab_dir.joinpath(subdir)
         s, _ = list_functions(path)
         signatures.extend(s)
     return signatures
@@ -87,7 +90,7 @@ def input_groups_from_signatures(signatures):
     return groups
 
 def get_help_text(fname):
-    with open(fname, encoding='latin-1') as f:
+    with fname.open(encoding='latin-1') as f:
         lines = f.readlines()
         help = []
         started = False
@@ -102,7 +105,7 @@ def get_help_text(fname):
         return help
 
 def help_text_to_dict(help):
-    keypat = '^([A-Z ]+):(.*)'
+    keypat = r"^([A-Z ]+):(.*)"
     hdict = dict()
     started = False
     for line in help:

@@ -1,3 +1,8 @@
-pytest
-sphinx
+check-manifest
+doctr
 numpydoc
+pytest
+setuptools_scm
+sphinx
+sphinx_rtd_theme
+twine

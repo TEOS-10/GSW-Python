@@ -14,6 +14,7 @@ in sea ice, expressed in g of salt per kg of sea ice.""",
 t_seaice =
 "In-situ temperature of the sea ice at pressure p (ITS-90), degrees C",
 t = "In-situ temperature (ITS-90), degrees C",
+Rt = "C(SP,t_68,0)/C(SP=35,t_68,0), unitless",
 CT = "Conservative Temperature (ITS-90), degrees C",
 C = "Conductivity, mS/cm",
 p = "Sea pressure (absolute pressure minus 10.1325 dbar), dbar",
@@ -45,4 +46,8 @@ w_seaice =
 of the masses of sea-ice and seawater. 0 <= wIh <= 1. unitless.""",
 h_bulk =  "bulk enthalpy of the seawater and ice mixture, J/kg",
 h_pot_bulk = "bulk enthalpy of the seawater and ice mixture, J/kg",
+geo_strf_dyn_height = """dynamic height anomaly, m^2/s^2
+    Note that the reference pressure, p_ref, of geo_strf_dyn_height must
+    be zero (0) dbar.""",
+sea_surface_geopotential = "geopotential at zero sea pressure,  m^2/s^2",
 )

@@ -3,9 +3,9 @@ Script that generates _wrapped_ufuncs.py based on the output
 of make_ufuncs.py.
 """
 
-import os
 import sys
 import re
+from pathlib import Path
 
 from _utilities import Bunch
 
@@ -16,7 +16,7 @@ from docstring_utils import (paragraphs,
                              fix_outputs_doc,
                              docstring_from_sections)
 
-basedir = os.path.join(os.path.dirname(__file__), '../')
+basedir = Path('..').resolve()
 
 
 # Functions that are Matlab subroutines, or exclusive to
@@ -176,14 +176,14 @@ if __name__ == '__main__':
         ufunclist = [name.strip() for name in f.readlines()]
         ufunclist = [name for name in ufunclist if name not in blacklist]
 
-    wrapmod = os.path.join(basedir, 'gsw/_wrapped_ufuncs.py')
+    wrapmod = basedir.joinpath('gsw', '_wrapped_ufuncs.py')
 
     msigdict = get_complete_sigdict()
     csigdict = parse_signatures(get_signatures(srcdir=srcdir))
 
     wrapped_ufnames = []
 
-    with open(wrapmod, 'w') as f:
+    with wrapmod.open('w') as f:
         f.write(wrapper_head)
         for ufname in ufunclist:
             try:
