@@ -1,6 +1,6 @@
 # gsw Python package
 
-![https://travis-ci.org/TEOS-10/GSW-Python](https://travis-ci.org/TEOS-10/GSW-Python.svg?branch=master) ![https://conda.anaconda.org/conda-forge](https://anaconda.org/conda-forge/gsw/badges/installer/conda.svg)
+![https://travis-ci.org/TEOS-10/GSW-Python](https://travis-ci.org/TEOS-10/GSW-Python.svg?branch=master) ![https://conda.anaconda.org/conda-forge](https://anaconda.org/conda-forge/gsw/badges/installer/conda.svg) [![DOI](https://zenodo.org/badge/86503067.svg)](https://zenodo.org/badge/latestdoi/86503067)
 
 
 This Python implementation of the Thermodynamic Equation of
