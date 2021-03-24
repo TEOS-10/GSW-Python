@@ -9,14 +9,6 @@ env:
 matrix:
   fast_finish: true
   include:
-  - name: "py37-np116"
-    env: PY=3.7 NUMPY=1.16
-  - name: "py37-np119"
-    env: PY=3.7 NUMPY=1.19
-  - name: "py38-np116"
-    env: PY=3.8 NUMPY=1.16
-  - name: "py38-np119"
-    env: PY=3.8 NUMPY=1.19
   - name: "docs"
     env: NUMPY=1 PY=3
   - name: "tarball"
@@ -52,14 +44,6 @@ script:
     fi
 
   - |
-    if [[ $TRAVIS_JOB_NAME == py* ]]; then
-      cp -r gsw/tests /tmp
-      pushd /tmp
-      pytest -s -rxs -v tests
-      popd
-    fi
-
-  - |
     if [[ $TRAVIS_JOB_NAME == 'docs' ]]; then
       pushd docs
       make clean html linkcheck
@@ -71,18 +55,3 @@ script:
         python -m doctr deploy --build-tags --key-path github_deploy_key.enc --built-docs docs/_build/html .
       fi
     fi
-
-
-deploy:
-  skip_cleanup: true
-  provider: pypi
-  user: ocefpaf
-  password:
-    secure: aC6ZixeGhCmxdn3a4skQJHIK9Ffj/p5O1cOjHKXZh1vhHy1t5oEfk1HayWdLq2wRwODx9+Ern6ZsWRv+jiSPiqlHgOL74SHT+ByAX/WaylhhySS5JeTN+jT0vOoB7IZRtAb1QVA7mIifbrLTyHw+jX5pUt+ue1LI5zg+M9ny3E0gFYut6t3C2zbTCACmk3S5+3DXn4BT5aXJhbnF2NKTNvEzhXuL0Vu08N8pClTIQM8ZR2fniqVcM8oCPL/Ecouf7Z6L5ofl8cqdloe9e50/01XCKQs0EUWVko8XlBiKvjOUoUn3oB1rif8hahQpHIrDWNShvBqp1LE/Sxmv2FmtC0C+WAqivMqWyLOxrtZnDpk0/0DGObQ652Ypr2WocC1E2wub7rf1KinNcWmgQGIPzQbUERUYcc2yW1pRfT2oos0QLTzWgTTGlImAeuNo1s9ds7dSYcQCL6z+M0Nq3nZ71gmir22hx/j1N0OQzLBMgxz3m6+pZz6nrNT0YQTFqs/y2A6R8yf46+vySGbzoMKS0OmTmFN6Fr0URoF0oHmztb6y+aVLvHPdtfLV/ryR7DsLKXn7j1FfHoEJNoojCecgL0EZDqWiSX6wLwdTnEkZK56ZTAJGjKPFTPtfxaNLdmc+kweGhIXINp4qacWASIYBm1vldToSC2KiRo+aPKcYRaQ=
-  distributions: sdist
-  upload_docs: no
-  on:
-    repo: TEOS-10/GSW-Python
-    tags: true
-    all_branches: master
-    condition: '$TRAVIS_JOB_NAME == "deploy"'
