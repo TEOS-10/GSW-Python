@@ -11,8 +11,6 @@ matrix:
   include:
   - name: "docs"
     env: NUMPY=1 PY=3
-  - name: "tarball"
-    env: NUMPY=1 PY=3
 
 before_install:
   # Install miniconda and create TEST env.
@@ -36,13 +34,6 @@ install:
   - pip install -e . --no-deps --force-reinstall
 
 script:
-  - |
-    if [[ $TRAVIS_JOB_NAME == 'tarball' ]]; then
-      python -m pep517.build --source --binary . --out-dir dist
-      check-manifest --verbose
-      twine check dist/*
-    fi
-
   - |
     if [[ $TRAVIS_JOB_NAME == 'docs' ]]; then
       pushd docs
