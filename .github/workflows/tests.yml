@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9"]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        # Oldest one based on NEP-29 and latest one.
+        # See https://numpy.org/neps/nep-0029-deprecation_policy.html
+        numpy-version: ["1.17", "1.20"]
+        exclude:
+          - python-version: "3.9"
+            numpy-version: "1.17"
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Conda
+      uses: s-weigand/setup-conda@v1
+      with:
+        activate-conda: false
+        conda-channels: conda-forge
+
+    - name: Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
+      shell: bash -l {0}
+      run: |
+        conda create --name TEST python=${{ matrix.python-version }} python-build cython numpy=${{ matrix.numpy-version }} --file requirements-dev.txt
+        source activate TEST
+        pip install -e . --no-deps --force-reinstall
+        conda info --all
+        conda list
+
+    - name: Tests
+      shell: bash -l {0}
+      run: |
+        source activate TEST
+        python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
+        pytest -s -rxs -v gsw/tests

@@ -1,0 +1,34 @@
+name: Tarball tests
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Conda
+      uses: s-weigand/setup-conda@v1
+      with:
+        activate-conda: false
+        conda-channels: conda-forge
+
+    - name: Create environment
+      shell: bash -l {0}
+      run: |
+        conda create --name TEST python=3 python-build cython numpy --file requirements-dev.txt
+        source activate TEST
+        conda info --all
+        conda list
+
+    - name: Tarball
+      shell: bash -l {0}
+      run: |
+        source activate TEST
+        python -m build --skip-dependencies --sdist --wheel .
+        check-manifest --verbose
+        twine check dist/*
