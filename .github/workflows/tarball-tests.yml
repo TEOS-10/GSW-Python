@@ -29,6 +29,6 @@ jobs:
       shell: bash -l {0}
       run: |
         source activate TEST
-        python -m build --skip-dependencies --sdist --wheel .
+        python -m build --skip-dependency-check --sdist --wheel .
         check-manifest --verbose
         twine check dist/*
