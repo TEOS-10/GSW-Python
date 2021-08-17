@@ -19,7 +19,7 @@ jobs:
     - name: copy manylinux wheels
       run: |
         mkdir dist
-        cp wheelhouse/gsw*-manylinux2010_x86_64.whl dist/
+        cp wheelhouse/gsw*.whl dist/
 
     - name: CheckFiles
       run: |
