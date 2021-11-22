@@ -807,7 +807,7 @@ def deltaSA_from_SP(SP, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -1306,7 +1306,7 @@ def Fdelta(p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -3233,7 +3233,7 @@ def SA_from_SP(SP, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -3285,7 +3285,7 @@ def SA_from_Sstar(Sstar, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -3310,7 +3310,7 @@ def SAAR(p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -3617,7 +3617,7 @@ def SP_from_SA(SA, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -3706,7 +3706,7 @@ def SP_from_Sstar(Sstar, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -4137,7 +4137,7 @@ def Sstar_from_SA(SA, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
@@ -4164,7 +4164,7 @@ def Sstar_from_SP(SP, p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
