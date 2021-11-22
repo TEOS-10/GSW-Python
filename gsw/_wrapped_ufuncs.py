@@ -780,7 +780,7 @@ def deltaSA_atlas(p, lon, lat):
     lon : array-like
         Longitude, -360 to 360 degrees
     lat : array-like
-        Latitude, -90 to 90 degrees
+        Latitude, -86 to 90 degrees
 
     Returns
     -------
