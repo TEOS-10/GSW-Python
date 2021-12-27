@@ -8992,6 +8992,10 @@ gsw_sa_from_sp_baltic(double sp, double lon, double lat)
         GSW_BALTIC_DATA;
         double  xx_left, xx_right, return_value;
 
+        lon = fmod(lon, 360.0);
+        if (lon  <  0.0)
+            lon += 360.0;
+
         if (xb_left[1] < lon  && lon < xb_right[0]  && yb_left[0] < lat  &&
             lat < yb_left[2]) {
 
@@ -9534,6 +9538,10 @@ gsw_sp_from_sa_baltic(double sa, double lon, double lat)
         GSW_TEOS10_CONSTANTS;
         GSW_BALTIC_DATA;
         double  xx_left, xx_right, return_value;
+
+        lon = fmod(lon, 360.0);
+        if (lon  <  0.0)
+            lon += 360.0;
 
         if (xb_left[1] < lon  && lon < xb_right[0]  && yb_left[0] < lat  &&
             lat < yb_left[2]) {
