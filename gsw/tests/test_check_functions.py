@@ -45,13 +45,20 @@ mfuncs = [mf for mf in mfuncs if mf.name in d and mf.name not in blacklist]
 mfuncnames = [mf.name for mf in mfuncs]
 
 
-@pytest.fixture(scope='session', params=mfuncs)
-def cfcf(request):
-    return cv, cf, request.param
+@pytest.fixture(params=[-360, 0, 360])
+def lonshift(request):
+    return request.param
 
 
-def test_check_function(cfcf):
-    cv, cf, mfunc = cfcf
+@pytest.fixture(params=mfuncs, ids=mfuncnames)
+def setup(request, lonshift):
+    cvshift = Bunch(**cv)
+    cvshift.long_chck_cast = cv.long_chck_cast + lonshift
+    return cvshift, cf, request.param
+
+
+def test_check_function(setup):
+    cv, cf, mfunc = setup
     mfunc.run(locals())
     if mfunc.exception is not None or not mfunc.passed:
         print('\n', mfunc.name)

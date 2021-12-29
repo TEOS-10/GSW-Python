@@ -62,6 +62,7 @@ gsw_saar(double p, double lon, double lat)
         if (lat  <  -86.0  ||  lat  >  90.0)
             return (return_value);
 
+        lon = fmod(lon, 360.0);
         if (lon  <  0.0)
             lon += 360.0;
 
@@ -180,6 +181,7 @@ gsw_deltasa_atlas(double p, double lon, double lat)
         if (lat < -86.0  ||  lat  >  90.0)
             return (return_value);
 
+        lon = fmod(lon, 360.0);
         if (lon < 0.0)
             lon += 360.0;
 
