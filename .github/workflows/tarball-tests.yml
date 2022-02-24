@@ -20,7 +20,7 @@ jobs:
     - name: Create environment
       shell: bash -l {0}
       run: |
-        conda create --name TEST python=3 python-build cython numpy --file requirements-dev.txt
+        conda create --name TEST python=3 python-build numpy --file requirements-dev.txt
         source activate TEST
         conda info --all
         conda list
