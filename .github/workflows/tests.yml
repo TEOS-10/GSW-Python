@@ -31,7 +31,7 @@ jobs:
     - name: Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
       shell: bash -l {0}
       run: |
-        conda create --name TEST python=${{ matrix.python-version }} python-build cython numpy=${{ matrix.numpy-version }} --file requirements-dev.txt
+        conda create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt
         source activate TEST
         pip install -e . --no-deps --force-reinstall
         conda info --all
