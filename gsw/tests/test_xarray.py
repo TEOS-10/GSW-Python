@@ -121,7 +121,7 @@ def test_xarray_with_coords():
     CT_chunk = CT.chunk(chunks={'y':1,'t':1})
     lat_chunk = lat.chunk(chunks={'y':1})
 
-    # Dimensions and cordinates match:
+    # Dimensions and coordinates match:
     expected = gsw.sigma0(SA_vals, CT_vals)
     xarray = gsw.sigma0(SA, CT)
     chunked = gsw.sigma0(SA_chunk, CT_chunk)

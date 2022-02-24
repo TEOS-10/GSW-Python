@@ -1,0 +1,18 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+    - id: check-ast
+    - id: debug-statements
+    - id: check-added-large-files
+
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.1.0
+  hooks:
+    - id: codespell
+      exclude: >
+          (?x)^(
+              .*\.c
+          )$
+      args:
+        - --ignore-words-list=nin,preformed,wih,
