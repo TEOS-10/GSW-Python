@@ -46,3 +46,8 @@ modified to C++ because the MSVC C compiler does not support the
 C99 complex data type used in original GSW-C.
 
 To test, after installation, run "pytest" from the source directory.
+
+### Note for xarray users
+
+A wrapper around gsw called [gsw-xarray](https://github.com/DocOtak/gsw-xarray)
+exists for xarray. It adds CF compliant attributes when possible, units, and name.
