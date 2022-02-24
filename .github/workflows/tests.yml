@@ -15,6 +15,9 @@ jobs:
         # Oldest one based on NEP-29 and latest one.
         # See https://numpy.org/neps/nep-0029-deprecation_policy.html
         numpy-version: ["1.19", "1.22"]
+        exclude:
+          - python-version: "3.10"
+            numpy-version: "1.19"
 
     steps:
     - uses: actions/checkout@v2
