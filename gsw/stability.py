@@ -47,7 +47,7 @@ def Nsquared(SA, CT, p, lat=None, axis=0):
     Returns
     -------
     N2 : array
-        Buoyancy frequency-squared at pressure midpoints, 1/s.
+        Buoyancy frequency-squared at pressure midpoints, 1/s^2.
         The shape along the pressure axis dimension is one
         less than that of the inputs.
     p_mid : array
