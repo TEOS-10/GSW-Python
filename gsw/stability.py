@@ -51,7 +51,7 @@ def Nsquared(SA, CT, p, lat=None, axis=0):
         The shape along the pressure axis dimension is one
         less than that of the inputs.
         The units of N2 are radians2 s-2 however in may textbooks this is
-        abreviated to s-2 as radians does not have a unit.  To convert the
+        abbreviated to s-2 as radians does not have a unit.  To convert the
         frequency to hertz, cycles sec-1, divide the frequency by 2π, ie N/(2π).
     p_mid : array
         Pressure at midpoints of p, dbar.
