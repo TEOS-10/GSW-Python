@@ -15,7 +15,7 @@ jobs:
         python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Get tags
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -49,7 +49,7 @@ jobs:
       shell: bash
 
     - name: upload wheel
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: dist_${{ matrix.os }}_${{ matrix.python-version }}
         path: dist

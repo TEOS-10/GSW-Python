@@ -18,28 +18,28 @@ jobs:
         exclude:
           - python-version: "3.10"
             numpy-version: "1.19"
+      fail-fast: false
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Setup Conda
-      uses: s-weigand/setup-conda@v1
+    - name: Setup Micromamba
+      uses: mamba-org/provision-with-micromamba@main
       with:
-        activate-conda: false
-        conda-channels: conda-forge
+        environment-file: false
 
     - name: Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
       shell: bash -l {0}
       run: |
-        conda create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt
-        source activate TEST
+        micromamba create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
+        micromamba activate TEST
         pip install -e . --no-deps --force-reinstall
-        conda info --all
-        conda list
+        micromamba info --all
+        micromamba list
 
     - name: Tests
       shell: bash -l {0}
       run: |
-        source activate TEST
+        micromamba activate TEST
         python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
         pytest -s -rxs -v gsw/tests

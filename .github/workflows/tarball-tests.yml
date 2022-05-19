@@ -9,26 +9,25 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Setup Conda
-      uses: s-weigand/setup-conda@v1
+    - name: Setup Micromamba
+      uses: mamba-org/provision-with-micromamba@main
       with:
-        activate-conda: false
-        conda-channels: conda-forge
+        environment-file: false
 
     - name: Create environment
       shell: bash -l {0}
       run: |
-        conda create --name TEST python=3 python-build numpy --file requirements-dev.txt
-        source activate TEST
-        conda info --all
-        conda list
+        micromamba create --name TEST python=3 python-build numpy --file requirements-dev.txt --channel conda-forge
+        micromamba activate TEST
+        micromamba info --all
+        micromamba list
 
     - name: Tarball
       shell: bash -l {0}
       run: |
-        source activate TEST
+        micromamba activate TEST
         python -m build --skip-dependency-check --sdist --wheel .
         check-manifest --verbose
         twine check dist/*
