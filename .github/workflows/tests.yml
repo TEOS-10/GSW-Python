@@ -34,8 +34,8 @@ jobs:
         micromamba create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
         micromamba activate TEST
         pip install -e . --no-deps --force-reinstall
-        conda info --all
-        conda list
+        micromamba info --all
+        micromamba list
 
     - name: Tests
       shell: bash -l {0}

@@ -21,8 +21,8 @@ jobs:
       run: |
         micromamba create --name TEST python=3 python-build numpy --file requirements-dev.txt --channel conda-forge
         micromamba activate TEST
-        conda info --all
-        conda list
+        micromamba info --all
+        micromamba list
 
     - name: Tarball
       shell: bash -l {0}
