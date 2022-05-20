@@ -10,3 +10,4 @@ The following section documents all functions alphabetically.
    :members:
    :undoc-members:
    :imported-members:
+   :noindex:
