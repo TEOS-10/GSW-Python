@@ -184,8 +184,8 @@ def distance(lon, lat, p=0, axis=-1):
                           % (lon.shape, axis))
     if lon.ndim == 1:
         one_d = True
-        lon = lon[np.newaxis, :]
-        lat = lat[np.newaxis, :]
+        lon = np.expand_dims(lon, (0,))
+        lat = np.expand_dims(lat, (0,))
         axis = -1
     else:
         one_d = False
