@@ -30,7 +30,7 @@ def masked_array_support(f):
     If a where keyword argument is present, it will be used instead of the
     masked derived value.
 
-    All args/kwargs are then passed directly to the wrapped fuction
+    All args/kwargs are then passed directly to the wrapped function
     """
 
     @wraps(f)
