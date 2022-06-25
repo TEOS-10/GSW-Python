@@ -32,7 +32,7 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return
+from ._utilities import masked_array_support
 
 '''
 

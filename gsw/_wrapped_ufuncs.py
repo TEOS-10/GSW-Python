@@ -4,10 +4,11 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return
+from ._utilities import masked_array_support
 
 
-def adiabatic_lapse_rate_from_CT(SA, CT, p):
+@masked_array_support
+def adiabatic_lapse_rate_from_CT(SA, CT, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of sea water from Conservative
     Temperature.
@@ -37,11 +38,10 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p)
-adiabatic_lapse_rate_from_CT.types = _gsw_ufuncs.adiabatic_lapse_rate_from_ct.types
-adiabatic_lapse_rate_from_CT = match_args_return(adiabatic_lapse_rate_from_CT)
+    return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p, **kwargs)
 
-def adiabatic_lapse_rate_ice(t, p):
+@masked_array_support
+def adiabatic_lapse_rate_ice(t, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of ice.
 
@@ -1624,7 +1624,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     (1) h_SA, the derivative with respect to Absolute Salinity at
     constant CT and p, and
     (2) h_CT, derivative with respect to CT at constant SA and p.
-    Note that h_P is specific volume (1/rho) it can be calculated by calling
+    Note that h_P is specific volume (1/rho) it can be caclulated by calling
     gsw_specvol(SA,CT,p).
 
     Parameters
@@ -1692,7 +1692,7 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
     (1) h_SA, the derivative with respect to Absolute Salinity at
     constant CT and p, and
     (2) h_CT, derivative with respect to CT at constant SA and p.
-    Note that h_P is specific volume, v, it can be calculated by calling
+    Note that h_P is specific volume, v, it can be calulated by calling
     gsw_specvol_CT_exact(SA,CT,p).
 
     Parameters
@@ -2333,7 +2333,7 @@ def frazil_properties(SA_bulk, h_bulk, p):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_final, which results from given values of the bulk
-    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occurring at pressure
+    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occuring at pressure
     p.  The final values of Absolute Salinity, SA_final, and Conservative
     Temperature, CT_final, of the interstitial seawater phase are also
     returned.  This code assumes that there is no dissolved air in the
@@ -2355,7 +2355,7 @@ def frazil_properties(SA_bulk, h_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -2415,11 +2415,11 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
     Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-    occurring at pressure p.  The final equilibrium values of Absolute
+    occuring at pressure p.  The final equilibrium values of Absolute
     Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
     interstitial seawater phase are also returned.  This code assumes that
     there is no dissolved air in the seawater (that is, saturation_fraction
-    is assumed to be zero throughout the code).
+    is assumed to be zero thoughout the code).
 
     Parameters
     ----------
@@ -2436,7 +2436,7 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -2493,11 +2493,11 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
     Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-    occurring at pressure p.  The final equilibrium values of Absolute
+    occuring at pressure p.  The final equilibrium values of Absolute
     Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
     interstitial seawater phase are also returned.  This code assumes that
     there is no dissolved air in the seawater (that is, saturation_fraction
-    is assumed to be zero throughout the code).
+    is assumed to be zero thoughout the code).
 
     Parameters
     ----------
@@ -2514,7 +2514,7 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -2823,8 +2823,8 @@ gibbs_ice = match_args_return(gibbs_ice)
 
 def gibbs_ice_part_t(t, p):
     """
-    part of the first temperature derivative of Gibbs energy of ice
-    that is the output is gibbs_ice(1,0,t,p) + S0
+    part of the the first temperature derivative of Gibbs energy of ice
+    that is the outout is gibbs_ice(1,0,t,p) + S0
 
     Parameters
     ----------
@@ -2859,8 +2859,8 @@ gibbs_ice_part_t = match_args_return(gibbs_ice_part_t)
 
 def gibbs_ice_pt0(pt0):
     """
-    part of the first temperature derivative of Gibbs energy of ice
-    that is the output is "gibbs_ice(1,0,pt0,0) + s0"
+    part of the the first temperature derivative of Gibbs energy of ice
+    that is the outout is "gibbs_ice(1,0,pt0,0) + s0"
 
     Parameters
     ----------
@@ -3681,7 +3681,7 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -3987,10 +3987,10 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
     -------
     SA_final : array-like, g/kg
         Absolute Salinity of the mixture of the melted sea ice
-        (or ice) and the original seawater
+        (or ice) and the orignal seawater
     CT_final : array-like, deg C
         Conservative Temperature of the mixture of the melted
-        sea ice (or ice) and the original seawater
+        sea ice (or ice) and the orignal seawater
 
 
     Notes
@@ -4836,7 +4836,7 @@ def pt_from_CT(SA, CT):
     Calculates potential temperature (with a reference sea pressure of
     zero dbar) from Conservative Temperature.  This function uses 1.5
     iterations through a modified Newton-Raphson (N-R) iterative solution
-    procedure, starting from a rational-function-based initial condition
+    proceedure, starting from a rational-function-based initial condition
     for both pt and dCT_dpt.
 
     Parameters
@@ -5177,7 +5177,7 @@ rho = match_args_return(rho)
 
 def rho_alpha_beta(SA, CT, p):
     """
-    Calculates in-situ density, the appropriate thermal expansion coefficient
+    Calculates in-situ density, the appropiate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
     Absolute Salinity and Conservative Temperature.  This function uses the
     computationally-efficient expression for specific volume in terms of
@@ -5363,7 +5363,7 @@ def rho_ice(t, p):
     """
     Calculates in-situ density of ice from in-situ temperature and pressure.
     Note that the output, rho_ice, is density, not density anomaly;  that
-    is, 1000 kg/m^3 is not subtracted from it.
+    is, 1000 kg/m^3 is not subracted from it.
 
     Parameters
     ----------
@@ -5548,7 +5548,7 @@ def rho_t_exact(SA, t, p):
     """
     Calculates in-situ density of seawater from Absolute Salinity and
     in-situ temperature.  Note that the output, rho, is density,
-    not density anomaly; that is, 1000 kg/m^3 is not subtracted from it.
+    not density anomaly; that is, 1000 kg/m^3 is not subracted from it.
 
     Parameters
     ----------
@@ -6815,7 +6815,7 @@ specvol = match_args_return(specvol)
 
 def specvol_alpha_beta(SA, CT, p):
     """
-    Calculates specific volume, the appropriate thermal expansion coefficient
+    Calculates specific volume, the appropiate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
     Absolute Salinity and Conservative Temperature.  This function uses the
     computationally-efficient expression for specific volume in terms of
@@ -6879,9 +6879,9 @@ def specvol_anom_standard(SA, CT, p):
     Calculates specific volume anomaly from Absolute Salinity, Conservative
     Temperature and pressure. It uses the computationally-efficient
     expression for specific volume as a function of SA, CT and p (Roquet
-    et al., 2015).  The reference value to which the anomaly is calculated
+    et al., 2015).  The reference value to which the anomally is calculated
     has an Absolute Salinity of SSO and Conservative Temperature equal to
-    0 degrees C.
+    0 degress C.
 
     Parameters
     ----------
@@ -7720,7 +7720,7 @@ t_freezing_first_derivatives = match_args_return(t_freezing_first_derivatives)
 
 def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     """
-    Calculates the first derivatives of the in-situ temperature at which
+    Calculates the frist derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
     Pa).  These expressions come from differentiating the expression that
     defines the freezing temperature, namely the equality between the
