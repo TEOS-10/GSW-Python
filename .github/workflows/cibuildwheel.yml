@@ -37,7 +37,7 @@ jobs:
       uses: pypa/cibuildwheel@v2.9.0
       env:
         # Skips pypy and musllinux for now.
-        CIBW_SKIP: "pp* *-musllinux*"
+        CIBW_SKIP: "pp* cp36-* cp37-* *-musllinux*"
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_BUILD_FRONTEND: build
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
