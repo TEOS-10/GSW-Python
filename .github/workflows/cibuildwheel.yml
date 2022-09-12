@@ -1,0 +1,87 @@
+name: Wheels
+
+on:
+  pull_request:
+
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build_bdist:
+    name: "Build ${{ matrix.os }} (${{ matrix.arch }}) wheels"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        arch: ["x86_64", "arm64", "AMD64"]
+        exclude:
+        - os: ubuntu-latest
+          arch: arm64
+        - os: ubuntu-latest
+          arch: AMD64
+        - os: windows-latest
+          arch: arm64
+        - os: windows-latest
+          arch: x86_64
+        - os: macos-latest
+          arch: AMD64
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
+      uses: pypa/cibuildwheel@v2.9.0
+      env:
+        # Skips pypy and musllinux for now.
+        CIBW_SKIP: "pp* cp36-* cp37-* *-musllinux*"
+        CIBW_ARCHS: ${{ matrix.arch }}
+        CIBW_BUILD_FRONTEND: build
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+        CIBW_TEST_SKIP: "*_arm64"
+        CIBW_TEST_REQUIRES: pytest
+        CIBW_TEST_COMMAND: >
+          python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
+          python -m pytest --pyargs gsw
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: pypi-artifacts
+        path: ${{ github.workspace }}/wheelhouse/*.whl
+
+
+  show-artifacts:
+    needs: [build_bdist]
+    name: "Show artifacts"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: pypi-artifacts
+        path: ${{ github.workspace }}/dist
+
+    - shell: bash
+      run: |
+        ls -l ${{ github.workspace }}/dist
+
+
+  publish-artifacts-pypi:
+    needs: [build_bdist]
+    name: "Publish to PyPI"
+    runs-on: ubuntu-latest
+    # upload to PyPI for every tag starting with 'v'
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: pypi-artifacts
+        path: ${{ github.workspace }}/dist
+
+    - uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_PASSWORD }}
+        print_hash: true
