@@ -1,69 +1,35 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gsw._wrapped_ufuncs &mdash; gsw 0.1.dev1+g3ec4082 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>gsw._wrapped_ufuncs &mdash; gsw 0.1-devel documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> gsw
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                0.1
+                0.1.dev1+g3ec4082
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -71,18 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
@@ -90,74 +46,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../../gsw_flat.html">All functions</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">gsw</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-        
       <li>gsw._wrapped_ufuncs</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <h1>Source code for gsw._wrapped_ufuncs</h1><div class="highlight"><pre>
 <span></span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Auto-generated wrapper for C ufunc extension; do not edit!</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_gsw_ufuncs</span>
-<span class="kn">from</span> <span class="nn">._utilities</span> <span class="k">import</span> <span class="n">match_args_return</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_gsw_ufuncs</span>
+<span class="kn">from</span> <span class="nn">._utilities</span> <span class="kn">import</span> <span class="n">match_args_return</span>
 
 
 <div class="viewcode-block" id="adiabatic_lapse_rate_from_CT"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.adiabatic_lapse_rate_from_CT">[docs]</a><span class="nd">@match_args_return</span>
@@ -1113,7 +1033,7 @@
 <span class="sd">    (1) h_SA, the derivative with respect to Absolute Salinity at</span>
 <span class="sd">    constant CT and p, and</span>
 <span class="sd">    (2) h_CT, derivative with respect to CT at constant SA and p.</span>
-<span class="sd">    Note that h_P is specific volume (1/rho) it can be caclulated by calling</span>
+<span class="sd">    Note that h_P is specific volume (1/rho) it can be calculated by calling</span>
 <span class="sd">    gsw_specvol(SA,CT,p).</span>
 
 <span class="sd">    Parameters</span>
@@ -1146,7 +1066,7 @@
 <span class="sd">    (1) h_SA, the derivative with respect to Absolute Salinity at</span>
 <span class="sd">    constant CT and p, and</span>
 <span class="sd">    (2) h_CT, derivative with respect to CT at constant SA and p.</span>
-<span class="sd">    Note that h_P is specific volume, v, it can be calulated by calling</span>
+<span class="sd">    Note that h_P is specific volume, v, it can be calculated by calling</span>
 <span class="sd">    gsw_specvol_CT_exact(SA,CT,p).</span>
 
 <span class="sd">    Parameters</span>
@@ -1475,7 +1395,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the mass fraction of ice (mass of ice divided by mass of ice</span>
 <span class="sd">    plus seawater), w_Ih_final, which results from given values of the bulk</span>
-<span class="sd">    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occuring at pressure</span>
+<span class="sd">    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occurring at pressure</span>
 <span class="sd">    p.  The final values of Absolute Salinity, SA_final, and Conservative</span>
 <span class="sd">    Temperature, CT_final, of the interstitial seawater phase are also</span>
 <span class="sd">    returned.  This code assumes that there is no dissolved air in the</span>
@@ -1497,7 +1417,7 @@
 <span class="sd">        Absolute Salinity of the seawater in the final state,</span>
 <span class="sd">        whether or not any ice is present.</span>
 <span class="sd">    CT_final : array-like, deg C</span>
-<span class="sd">        Conservative Temperature of the seawater in the the final</span>
+<span class="sd">        Conservative Temperature of the seawater in the final</span>
 <span class="sd">        state, whether or not any ice is present.</span>
 <span class="sd">    w_Ih_final : array-like, unitless</span>
 <span class="sd">        mass fraction of ice in the final seawater-ice mixture.</span>
@@ -1517,11 +1437,11 @@
 <span class="sd">    Calculates the mass fraction of ice (mass of ice divided by mass of ice</span>
 <span class="sd">    plus seawater), w_Ih_eq, which results from given values of the bulk</span>
 <span class="sd">    Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,</span>
-<span class="sd">    occuring at pressure p.  The final equilibrium values of Absolute</span>
+<span class="sd">    occurring at pressure p.  The final equilibrium values of Absolute</span>
 <span class="sd">    Salinity, SA_eq, and Conservative Temperature, CT_eq, of the</span>
 <span class="sd">    interstitial seawater phase are also returned.  This code assumes that</span>
 <span class="sd">    there is no dissolved air in the seawater (that is, saturation_fraction</span>
-<span class="sd">    is assumed to be zero thoughout the code).</span>
+<span class="sd">    is assumed to be zero throughout the code).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1538,7 +1458,7 @@
 <span class="sd">        Absolute Salinity of the seawater in the final state,</span>
 <span class="sd">        whether or not any ice is present.</span>
 <span class="sd">    CT_final : array-like, deg C</span>
-<span class="sd">        Conservative Temperature of the seawater in the the final</span>
+<span class="sd">        Conservative Temperature of the seawater in the final</span>
 <span class="sd">        state, whether or not any ice is present.</span>
 <span class="sd">    w_Ih_final : array-like, unitless</span>
 <span class="sd">        mass fraction of ice in the final seawater-ice mixture.</span>
@@ -1558,11 +1478,11 @@
 <span class="sd">    Calculates the mass fraction of ice (mass of ice divided by mass of ice</span>
 <span class="sd">    plus seawater), w_Ih_eq, which results from given values of the bulk</span>
 <span class="sd">    Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,</span>
-<span class="sd">    occuring at pressure p.  The final equilibrium values of Absolute</span>
+<span class="sd">    occurring at pressure p.  The final equilibrium values of Absolute</span>
 <span class="sd">    Salinity, SA_eq, and Conservative Temperature, CT_eq, of the</span>
 <span class="sd">    interstitial seawater phase are also returned.  This code assumes that</span>
 <span class="sd">    there is no dissolved air in the seawater (that is, saturation_fraction</span>
-<span class="sd">    is assumed to be zero thoughout the code).</span>
+<span class="sd">    is assumed to be zero throughout the code).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1579,7 +1499,7 @@
 <span class="sd">        Absolute Salinity of the seawater in the final state,</span>
 <span class="sd">        whether or not any ice is present.</span>
 <span class="sd">    CT_final : array-like, deg C</span>
-<span class="sd">        Conservative Temperature of the seawater in the the final</span>
+<span class="sd">        Conservative Temperature of the seawater in the final</span>
 <span class="sd">        state, whether or not any ice is present.</span>
 <span class="sd">    w_Ih_final : array-like, unitless</span>
 <span class="sd">        mass fraction of ice in the final seawater-ice mixture.</span>
@@ -1662,8 +1582,8 @@
 <div class="viewcode-block" id="gibbs_ice_part_t"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.gibbs_ice_part_t">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">gibbs_ice_part_t</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    part of the the first temperature derivative of Gibbs energy of ice</span>
-<span class="sd">    that is the outout is gibbs_ice(1,0,t,p) + S0</span>
+<span class="sd">    part of the first temperature derivative of Gibbs energy of ice</span>
+<span class="sd">    that is the output is gibbs_ice(1,0,t,p) + S0</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1684,8 +1604,8 @@
 <div class="viewcode-block" id="gibbs_ice_pt0"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.gibbs_ice_pt0">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">gibbs_ice_pt0</span><span class="p">(</span><span class="n">pt0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    part of the the first temperature derivative of Gibbs energy of ice</span>
-<span class="sd">    that is the outout is &quot;gibbs_ice(1,0,pt0,0) + s0&quot;</span>
+<span class="sd">    part of the first temperature derivative of Gibbs energy of ice</span>
+<span class="sd">    that is the output is &quot;gibbs_ice(1,0,pt0,0) + s0&quot;</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2136,7 +2056,7 @@
 <span class="sd">        Absolute Salinity of the seawater in the final state,</span>
 <span class="sd">        whether or not any ice is present.</span>
 <span class="sd">    CT_final : array-like, deg C</span>
-<span class="sd">        Conservative Temperature of the seawater in the the final</span>
+<span class="sd">        Conservative Temperature of the seawater in the final</span>
 <span class="sd">        state, whether or not any ice is present.</span>
 <span class="sd">    w_Ih_final : array-like, unitless</span>
 <span class="sd">        mass fraction of ice in the final seawater-ice mixture.</span>
@@ -2302,10 +2222,10 @@
 <span class="sd">    -------</span>
 <span class="sd">    SA_final : array-like, g/kg</span>
 <span class="sd">        Absolute Salinity of the mixture of the melted sea ice</span>
-<span class="sd">        (or ice) and the orignal seawater</span>
+<span class="sd">        (or ice) and the original seawater</span>
 <span class="sd">    CT_final : array-like, deg C</span>
 <span class="sd">        Conservative Temperature of the mixture of the melted</span>
-<span class="sd">        sea ice (or ice) and the orignal seawater</span>
+<span class="sd">        sea ice (or ice) and the original seawater</span>
 
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2786,7 +2706,7 @@
 <span class="sd">    Calculates potential temperature (with a reference sea pressure of</span>
 <span class="sd">    zero dbar) from Conservative Temperature.  This function uses 1.5</span>
 <span class="sd">    iterations through a modified Newton-Raphson (N-R) iterative solution</span>
-<span class="sd">    proceedure, starting from a rational-function-based initial condition</span>
+<span class="sd">    procedure, starting from a rational-function-based initial condition</span>
 <span class="sd">    for both pt and dCT_dpt.</span>
 
 <span class="sd">    Parameters</span>
@@ -2995,7 +2915,7 @@
 <div class="viewcode-block" id="rho_alpha_beta"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.rho_alpha_beta">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">rho_alpha_beta</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates in-situ density, the appropiate thermal expansion coefficient</span>
+<span class="sd">    Calculates in-situ density, the appropriate thermal expansion coefficient</span>
 <span class="sd">    and the appropriate saline contraction coefficient of seawater from</span>
 <span class="sd">    Absolute Salinity and Conservative Temperature.  This function uses the</span>
 <span class="sd">    computationally-efficient expression for specific volume in terms of</span>
@@ -3097,7 +3017,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates in-situ density of ice from in-situ temperature and pressure.</span>
 <span class="sd">    Note that the output, rho_ice, is density, not density anomaly;  that</span>
-<span class="sd">    is, 1000 kg/m^3 is not subracted from it.</span>
+<span class="sd">    is, 1000 kg/m^3 is not subtracted from it.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3203,7 +3123,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates in-situ density of seawater from Absolute Salinity and</span>
 <span class="sd">    in-situ temperature.  Note that the output, rho, is density,</span>
-<span class="sd">    not density anomaly; that is, 1000 kg/m^3 is not subracted from it.</span>
+<span class="sd">    not density anomaly; that is, 1000 kg/m^3 is not subtracted from it.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3926,7 +3846,7 @@
 <div class="viewcode-block" id="specvol_alpha_beta"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.specvol_alpha_beta">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">specvol_alpha_beta</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates specific volume, the appropiate thermal expansion coefficient</span>
+<span class="sd">    Calculates specific volume, the appropriate thermal expansion coefficient</span>
 <span class="sd">    and the appropriate saline contraction coefficient of seawater from</span>
 <span class="sd">    Absolute Salinity and Conservative Temperature.  This function uses the</span>
 <span class="sd">    computationally-efficient expression for specific volume in terms of</span>
@@ -3962,9 +3882,9 @@
 <span class="sd">    Calculates specific volume anomaly from Absolute Salinity, Conservative</span>
 <span class="sd">    Temperature and pressure. It uses the computationally-efficient</span>
 <span class="sd">    expression for specific volume as a function of SA, CT and p (Roquet</span>
-<span class="sd">    et al., 2015).  The reference value to which the anomally is calculated</span>
+<span class="sd">    et al., 2015).  The reference value to which the anomaly is calculated</span>
 <span class="sd">    has an Absolute Salinity of SSO and Conservative Temperature equal to</span>
-<span class="sd">    0 degress C.</span>
+<span class="sd">    0 degrees C.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -4417,7 +4337,7 @@
 <div class="viewcode-block" id="t_freezing_first_derivatives_poly"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.t_freezing_first_derivatives_poly">[docs]</a><span class="nd">@match_args_return</span>
 <span class="k">def</span> <span class="nf">t_freezing_first_derivatives_poly</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">saturation_fraction</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates the frist derivatives of the in-situ temperature at which</span>
+<span class="sd">    Calculates the first derivatives of the in-situ temperature at which</span>
 <span class="sd">    seawater freezes with respect to Absolute Salinity SA and pressure P (in</span>
 <span class="sd">    Pa).  These expressions come from differentiating the expression that</span>
 <span class="sd">    defines the freezing temperature, namely the equality between the</span>
@@ -4580,42 +4500,30 @@
 </pre></div>
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, TEOS-10 developers
-
-    </p>
+    <p>&#169; Copyright 2017, TEOS-10 developers.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -6,7 +6,7 @@
 GSW-Python
 ==========
 This Python implementation of the Thermodynamic Equation of
-Seawater 2010 (`TEOS-10 <http://TEOS-10.org>`__) is based
+Seawater 2010 (`TEOS-10 <https://teos-10.org/>`__) is based
 primarily on numpy ufunc wrappers of
 the `GSW-C <https://github.com/TEOS-10/python-gsw/>`__ implementation.
 We expect it to replace the original
