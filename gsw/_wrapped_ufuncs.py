@@ -213,7 +213,7 @@ def C_from_SP(SP, t, p):
     """
     Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
     2 < SP < 42.  If the input Practical Salinity is less than 2 then a
-    modified form of the Hill et al. (1986) fomula is used for Practical
+    modified form of the Hill et al. (1986) formula is used for Practical
     Salinity.  The modification of the Hill et al. (1986) expression is to
     ensure that it is exactly consistent with PSS-78 at SP = 2.
 
