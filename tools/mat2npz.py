@@ -41,7 +41,7 @@ data_ver = 'v3_0'
 
 # This is the version of the matlab zipfile from which we are getting
 # the data file.
-mat_zip_ver = 'v3_06_11'
+mat_zip_ver = 'v3_06_16'
 
 # The following relative path will depend on the directory layout for
 # whoever is running this utility.

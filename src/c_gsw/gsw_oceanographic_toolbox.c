@@ -214,7 +214,7 @@ elemental function gsw_adiabatic_lapse_rate_ice (t, p)
 !  p  =  sea pressure                                              [ dbar ]
 !         ( i.e. absolute pressure - 10.1325 dbar )
 !
-!    Note.  The output is in unit of degress Celsius per Pa,
+!    Note.  The output is in unit of degrees Celsius per Pa,
 !      (or equivilently K/Pa) not in units of K/dbar.
 !--------------------------------------------------------------------------
 */
@@ -479,7 +479,7 @@ gsw_c_from_sp(double sp, double t, double p)
                 q0 = 5.540896868127855e-5,      q1 = 2.015419291097848e-1,
                 q2 = -1.445310045430192e-5,     q3 = -1.567047628411722e-2,
                 q4 = 2.464756294660119e-4,      q5 = -2.575458304732166e-7,
-                q6 = 5.071449842454419e-3,      q7 = 9.081985795339206e-5,
+                q6 = 5.071449842454419e-3,      q7 = -9.081985795339206e-5,
                 q8 = -3.635420818812898e-6,     q9 = 2.249490528450555e-8,
                 q10 = -1.143810377431888e-3,    q11 = 2.066112484281530e-5,
                 q12 = 7.482907137737503e-7,     q13 = 4.019321577844724e-8,
@@ -1656,7 +1656,7 @@ gsw_ct_maxdensity(double sa, double p)
         /*
         ! After three iterations of this modified Newton-Raphson (McDougall and
         ! Wotherspoon, 2012) iteration, the error in CT_maxdensity is typically
-        ! no larger than 1x10^-15 degress C.
+        ! no larger than 1x10^-15 degrees C.
         */
         return (ct);
 }
@@ -1701,18 +1701,23 @@ gsw_ct_second_derivatives(double sa, double pt, double *ct_sa_sa,
         double *ct_sa_pt, double *ct_pt_pt)
 {
         double  ct_pt_l, ct_pt_u, ct_sa_l, ct_sa_u, pt_l, pt_u, sa_l, sa_u,
-                dsa = 1e-3, dpt = 1e-2;
+                delta, dsa = 1e-3, dpt = 1e-2;
 
         if ((ct_sa_sa != NULL)) {
 
-            if ((sa_l = sa - dsa) < 0.0)
-                sa_l = 0.0;
             sa_u = sa + dsa;
+            sa_l = sa - dsa;
+            if (sa_l < 0.0) {
+                sa_l = 0.0;
+                delta = sa_u;
+            } else {
+                delta = 2 * dsa;
+            }
 
             gsw_ct_first_derivatives(sa_l,pt,&ct_sa_l,NULL);
             gsw_ct_first_derivatives(sa_u,pt,&ct_sa_u,NULL);
 
-            *ct_sa_sa = (ct_sa_u - ct_sa_l)/(sa_u - sa_l);
+            *ct_sa_sa = (ct_sa_u - ct_sa_l)/delta;
 
         }
 
@@ -1720,28 +1725,29 @@ gsw_ct_second_derivatives(double sa, double pt, double *ct_sa_sa,
 
             pt_l = pt - dpt;
             pt_u = pt + dpt;
+            delta = 2 * dpt;
 
             if ((ct_sa_pt != NULL) && (ct_pt_pt != NULL)) {
 
                 gsw_ct_first_derivatives(sa,pt_l,&ct_sa_l,&ct_pt_l);
                 gsw_ct_first_derivatives(sa,pt_u,&ct_sa_u,&ct_pt_u);
 
-                *ct_sa_pt = (ct_sa_u - ct_sa_l)/(pt_u - pt_l);
-                *ct_pt_pt = (ct_pt_u - ct_pt_l)/(pt_u - pt_l);
+                *ct_sa_pt = (ct_sa_u - ct_sa_l)/delta;
+                *ct_pt_pt = (ct_pt_u - ct_pt_l)/delta;
 
             } else if ((ct_sa_pt != NULL) && (ct_pt_pt == NULL)) {
 
                 gsw_ct_first_derivatives(sa,pt_l,&ct_sa_l,NULL);
                 gsw_ct_first_derivatives(sa,pt_u,&ct_sa_u,NULL);
 
-                *ct_sa_pt = (ct_sa_u - ct_sa_l)/(pt_u - pt_l);
+                *ct_sa_pt = (ct_sa_u - ct_sa_l)/delta;
 
             } else if ((ct_sa_pt == NULL) && (ct_pt_pt != NULL)) {
 
                 gsw_ct_first_derivatives(sa,pt_l,NULL,&ct_pt_l);
                 gsw_ct_first_derivatives(sa,pt_u,NULL,&ct_pt_u);
 
-                *ct_pt_pt = (ct_pt_u - ct_pt_l)/(pt_u - pt_l);
+                *ct_pt_pt = (ct_pt_u - ct_pt_l)/delta;
 
             }
         }
@@ -2005,7 +2011,7 @@ elemental subroutine gsw_enthalpy_first_derivatives (sa, ct, p, h_sa, h_ct)
 !   (1) h_SA, the derivative with respect to Absolute Salinity at
 !       constant CT and p, and
 !   (2) h_CT, derivative with respect to CT at constant SA and p.
-!  Note that h_P is specific volume (1/rho) it can be caclulated by calling
+!  Note that h_P is specific volume (1/rho) it can be calculated by calling
 !  gsw_specvol(SA,CT,p).
 !
 !  SA  =  Absolute Salinity                                        [ g/kg ]
@@ -2081,7 +2087,7 @@ elemental subroutine gsw_enthalpy_first_derivatives_ct_exact (sa, ct, p, &
 !   (1) h_SA, the derivative with respect to Absolute Salinity at
 !       constant CT and p, and
 !   (2) h_CT, derivative with respect to CT at constant SA and p.
-!  Note that h_P is specific volume (1/rho) it can be calulated by calling
+!  Note that h_P is specific volume (1/rho) it can be calculated by calling
 !  gsw_specvol_CT_exact(SA,CT,p). This function uses the full Gibbs function.
 !
 !  SA  =  Absolute Salinity                                        [ g/kg ]
@@ -2767,7 +2773,7 @@ elemental subroutine gsw_frazil_properties (sa_bulk, h_bulk, p, &
 !
 !  Calculates the mass fraction of ice (mass of ice divided by mass of ice
 !  plus seawater), w_Ih_final, which results from given values of the bulk
-!  Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occuring at pressure
+!  Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occurring at pressure
 !  p.  The final values of Absolute Salinity, SA_final, and Conservative
 !  Temperature, CT_final, of the interstitial seawater phase are also
 !  returned.  This code assumes that there is no dissolved air in the
@@ -2965,11 +2971,11 @@ elemental subroutine gsw_frazil_properties_potential (sa_bulk, h_pot_bulk,&
 !  Calculates the mass fraction of ice (mass of ice divided by mass of ice
 !  plus seawater), w_Ih_final, which results from given values of the bulk
 !  Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-!  occuring at pressure p.  The final equilibrium values of Absolute
+!  occurring at pressure p.  The final equilibrium values of Absolute
 !  Salinity, SA_final, and Conservative Temperature, CT_final, of the
 !  interstitial seawater phase are also returned.  This code assumes that
 !  there is no dissolved air in the seawater (that is, saturation_fraction
-!  is assumed to be zero thoughout the code).
+!  is assumed to be zero throughout the code).
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
 !  value, the seawater-ice mixture is at thermodynamic equlibrium.
@@ -3236,11 +3242,11 @@ elemental subroutine gsw_frazil_properties_potential_poly (sa_bulk, &
 !  Calculates the mass fraction of ice (mass of ice divided by mass of ice
 !  plus seawater), w_Ih_final, which results from given values of the bulk
 !  Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-!  occuring at pressure p.  The final equilibrium values of Absolute
+!  occurring at pressure p.  The final equilibrium values of Absolute
 !  Salinity, SA_final, and Conservative Temperature, CT_final, of the
 !  interstitial seawater phase are also returned.  This code assumes that
 !  there is no dissolved air in the seawater (that is, saturation_fraction
-!  is assumed to be zero thoughout the code).
+!  is assumed to be zero throughout the code).
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
 !  value, the seawater-ice mixture is at thermodynamic equlibrium.
@@ -3678,7 +3684,7 @@ static void p_sequence(double p1,double p2,double max_dp_i,double *pseq,
         int *nps);      /* forward reference */
 
 double  *       /* Returns NULL on error, dyn_height if okay */
-gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
+gsw_geo_strf_dyn_heightRR(double *sa, double *ct, double *p, double p_ref,
         int n_levels, double *dyn_height)
 {
         GSW_TEOS10_CONSTANTS;
@@ -3693,7 +3699,7 @@ gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
 !--------------------------------------------------------------------------
 !  This max_dp_i is the limit we choose for the evaluation of specific
 !  volume in the pressure integration.  That is, the vertical integration
-!  of specific volume with respect to pressure is perfomed with the pressure
+!  of specific volume with respect to pressure is performed with the pressure
 !  increment being no more than max_dp_i (the default value being 1 dbar).
 !--------------------------------------------------------------------------
 */
@@ -4277,6 +4283,26 @@ gsw_geo_strf_dyn_height_1(double *sa, double *ct, double *p, double p_ref,
 
     return 0;
 }
+
+/* Until additional major coding is done, we can get closer to the v3_06_11
+   check values by using the pchip option in the alternative calculation
+   above, which is also the version we presently use in GSW-Python.
+*/
+ /* returns NULL on error, dyn_height if OK */
+double *
+gsw_geo_strf_dyn_height(double *sa, double *ct, double *p, double p_ref,
+    int nz, double *dyn_height)
+{
+    int err;
+    err = gsw_geo_strf_dyn_height_1(sa, ct, p, p_ref, nz, dyn_height, 1.0, 2);
+    if (err == 0) {
+        return dyn_height;
+    }
+    return NULL;
+
+}
+
+
 /*
 !==========================================================================
 pure subroutine gsw_geo_strf_dyn_height_pc (sa, ct, delta_p, &
@@ -4287,7 +4313,7 @@ pure subroutine gsw_geo_strf_dyn_height_pc (sa, ct, delta_p, &
 !  anomaly from the the sea surface pressure (0 Pa) to the pressure p.
 !  This function, gsw_geo_strf_dyn_height_pc, is to used when the
 !  Absolute Salinity and Conservative Temperature are piecewise constant in
-!  the vertical over sucessive pressure intervals of delta_p (such as in
+!  the vertical over successive pressure intervals of delta_p (such as in
 !  a forward "z-coordinate" ocean model).  "geo_strf_dyn_height_pc" is
 !  the dynamic height anomaly with respect to the sea surface.  That is,
 !  "geo_strf_dyn_height_pc" is the geostrophic streamfunction for the
@@ -4909,7 +4935,7 @@ elemental function gsw_gibbs_ice_part_t (t, p)
 ! =========================================================================
 !
 !  part of the the first temperature derivative of Gibbs energy of ice
-!  that is the outout is gibbs_ice(1,0,t,p) + S0
+!  that is the output is gibbs_ice(1,0,t,p) + S0
 !
 !  t   =  in-situ temperature (ITS-90)                            [ deg C ]
 !  p   =  sea pressure                                             [ dbar ]
@@ -4945,7 +4971,7 @@ elemental function gsw_gibbs_ice_pt0 (pt0)
 ! =========================================================================
 !
 !  Part of the the first temperature derivative of Gibbs energy of ice
-!  that is the outout is "gibbs_ice(1,0,pt0,0) + s0"
+!  that is the output is "gibbs_ice(1,0,pt0,0) + s0"
 !
 !  pt0  =  potential temperature with reference sea pressure of zero dbar
 !                                                                 [ deg C ]
@@ -5046,7 +5072,7 @@ function gsw_grav(lat,p)
 ! Calculates acceleration due to gravity as a function of latitude and as
 !  a function of pressure in the ocean.
 !
-! lat  =  latitude in decimal degress north                [ -90 ... +90 ]
+! lat  =  latitude in decimal degrees north                [ -90 ... +90 ]
 ! p    =  sea pressure                                     [ dbar ]
 !
 ! grav : grav  =  gravitational acceleration               [ m s^-2 ]
@@ -5332,7 +5358,7 @@ subroutine gsw_ipv_vs_fnsquared_ratio(sa,ct,p,pref,nz,ipv_vs_fnsquared_ratio,p_m
 ! IPV_vs_fNsquared_ratio
 !         : The ratio of the vertical gradient of potential density
 !           referenced to p_ref, to the vertical gradient of locally-
-!           referenced potential density.  It is ouput on the same
+!           referenced potential density.  It is output on the same
 !           vertical (M-1)xN grid as p_mid.
 !           IPV_vs_fNsquared_ratio is dimensionless.          [ unitless ]
 ! p_mid   : Mid pressure between p grid  (length nz-1)           [dbar]
@@ -6092,9 +6118,9 @@ elemental subroutine gsw_melting_seaice_into_seawater (sa, ct, p, &
 !                                                                 [ deg C ]
 !
 !  SA_final  =  Absolute Salinity of the mixture of the melted sea ice
-!               (or ice) and the orignal seawater                  [ g/kg ]
+!               (or ice) and the original seawater                  [ g/kg ]
 !  CT_final  =  Conservative Temperature of the mixture of the melted
-!               sea ice (or ice) and the orignal seawater         [ deg C ]
+!               sea ice (or ice) and the original seawater         [ deg C ]
 !--------------------------------------------------------------------------
 */
 void
@@ -6980,7 +7006,7 @@ elemental function gsw_pt0_cold_ice_poly (pot_enthalpy_ice)
 !
 !  pot_enthalpy_ice  =  potential enthalpy of ice                  [ J/kg ]
 !
-!  pt0_cold_ice_poly  =  initial estimate of potential temperatur
+!  pt0_cold_ice_poly  =  initial estimate of potential temperature
 !                        of very cold ice in dgress C (not K)     [ deg C ]
 !--------------------------------------------------------------------------
 */
@@ -7411,9 +7437,9 @@ gsw_pt_from_pot_enthalpy_ice(double pot_enthalpy_ice)
             pt0_ice = pt0_cold_ice;
         }
 /*
-!The potential temerature has a maximum error as listed in the table below.
+!The potential temperature has a maximum error as listed in the table below.
 !
-!  potential temerature error (deg C)  |  @ potential temerature (deg C)
+!  potential temperature error (deg C)  |  @ potential temperature (deg C)
 !--------------------------------------|--------------------------------
 !                0.012                 |     -273.15 to -273.12
 !              4 x 10^-4               |     -232.12 to -273.0
@@ -7680,18 +7706,23 @@ gsw_pt_second_derivatives (double sa, double ct, double *pt_sa_sa,
         double *pt_sa_ct, double *pt_ct_ct)
 {
         double  ct_l, ct_u, pt_ct_l, pt_ct_u, pt_sa_l, pt_sa_u, sa_l, sa_u,
-                dct = 1e-2, dsa = 1e-3;
+                delta, dct = 1e-2, dsa = 1e-3;
 
         if (pt_sa_sa != NULL) {
 
-            if ((sa_l = sa - dsa) < 0.0)
-                 sa_l = 0.0;
             sa_u = sa + dsa;
+            sa_l = sa - dsa;
+            if (sa_l < 0.0) {
+                sa_l = 0.0;
+                delta = sa_u;
+            } else {
+                delta = 2 * dsa;
+            }
 
             gsw_pt_first_derivatives(sa_l,ct,&pt_sa_l,NULL);
             gsw_pt_first_derivatives(sa_u,ct,&pt_sa_u,NULL);
 
-            *pt_sa_sa = (pt_sa_u - pt_sa_l)/(sa_u - sa_l);
+            *pt_sa_sa = (pt_sa_u - pt_sa_l)/delta;
 
         }
 
@@ -7699,28 +7730,29 @@ gsw_pt_second_derivatives (double sa, double ct, double *pt_sa_sa,
 
             ct_l = ct - dct;
             ct_u = ct + dct;
+            delta = 2 * dct;
 
             if ((pt_sa_ct != NULL) && (pt_ct_ct != NULL)) {
 
                 gsw_pt_first_derivatives(sa,ct_l,&pt_sa_l,&pt_ct_l);
                 gsw_pt_first_derivatives(sa,ct_u,&pt_sa_u,&pt_ct_u);
 
-                *pt_sa_ct = (pt_sa_u - pt_sa_l)/(ct_u - ct_l);
-                *pt_ct_ct = (pt_ct_u - pt_ct_l)/(ct_u - ct_l);
+                *pt_sa_ct = (pt_sa_u - pt_sa_l)/delta;
+                *pt_ct_ct = (pt_ct_u - pt_ct_l)/delta;
 
             } else if ((pt_sa_ct != NULL) && (pt_ct_ct == NULL)) {
 
                 gsw_pt_first_derivatives(sa,ct_l,&pt_sa_l,NULL);
                 gsw_pt_first_derivatives(sa,ct_u,&pt_sa_u,NULL);
 
-                *pt_sa_ct = (pt_sa_u - pt_sa_l)/(ct_u - ct_l);
+                *pt_sa_ct = (pt_sa_u - pt_sa_l)/delta;
 
             } else if ((pt_sa_ct == NULL) && (pt_ct_ct != NULL)) {
 
                 gsw_pt_first_derivatives(sa,ct_l,NULL,&pt_ct_l);
                 gsw_pt_first_derivatives(sa,ct_u,NULL,&pt_ct_u);
 
-                *pt_ct_ct = (pt_ct_u - pt_ct_l)/(ct_u - ct_l);
+                *pt_ct_ct = (pt_ct_u - pt_ct_l)/delta;
             }
         }
 }
@@ -7754,7 +7786,7 @@ gsw_rho(double sa, double ct, double p)
 elemental subroutine gsw_rho_alpha_beta (sa, ct, p, rho, alpha, beta)
 !==========================================================================
 !
-!  Calculates in-situ density, the appropiate thermal expansion coefficient
+!  Calculates in-situ density, the appropriate thermal expansion coefficient
 !  and the appropriate saline contraction coefficient of seawater from
 !  Absolute Salinity and Conservative Temperature.  This function uses the
 !  computationally-efficient expression for specific volume in terms of
@@ -7996,7 +8028,7 @@ elemental function gsw_rho_ice (t, p)
 !
 !  Calculates in-situ density of ice from in-situ temperature and pressure.
 !  Note that the output, rho_ice, is density, not density anomaly;  that
-!  is, 1000 kg/m^3 is not subracted from it.
+!  is, 1000 kg/m^3 is not subtracted from it.
 !
 !  t   =  in-situ temperature (ITS-90)                            [ deg C ]
 !  p   =  sea pressure                                             [ dbar ]
@@ -8779,7 +8811,7 @@ gsw_sa_freezing_from_t(double t, double p, double saturation_fraction)
         if (t > t_freezing_zero_sa)
             return (GSW_INVALID_VALUE);
         /*
-        ! This is the inital guess of SA using a purpose-built
+        ! This is the initial guess of SA using a purpose-built
         ! polynomial in CT and p
         */
         sa = gsw_sa_freezing_estimate(p,saturation_fraction,NULL,&t);
@@ -8859,7 +8891,7 @@ gsw_sa_freezing_from_t_poly(double t, double p, double saturation_fraction)
         if (t > t_freezing_zero_sa)
             return (GSW_INVALID_VALUE);
         /*
-        ! This is the inital guess of SA using a purpose-built
+        ! This is the initial guess of SA using a purpose-built
         ! polynomial in CT and p
         */
         sa = gsw_sa_freezing_estimate(p,saturation_fraction,NULL,&t);
@@ -8993,7 +9025,7 @@ gsw_sa_from_sp_baltic(double sp, double lon, double lat)
         double  xx_left, xx_right, return_value;
 
         lon = fmod(lon, 360.0);
-        if (lon  <  0.0)
+        if (lon < 0.0)
             lon += 360.0;
 
         if (xb_left[1] < lon  && lon < xb_right[0]  && yb_left[0] < lat  &&
@@ -9540,7 +9572,7 @@ gsw_sp_from_sa_baltic(double sa, double lon, double lat)
         double  xx_left, xx_right, return_value;
 
         lon = fmod(lon, 360.0);
-        if (lon  <  0.0)
+        if (lon < 0.0)
             lon += 360.0;
 
         if (xb_left[1] < lon  && lon < xb_right[0]  && yb_left[0] < lat  &&
@@ -9743,7 +9775,7 @@ elemental subroutine gsw_specvol_alpha_beta (sa, ct, p, specvol, alpha, &
                                              beta)
 !==========================================================================
 !
-!  Calculates specific volume, the appropiate thermal expansion coefficient
+!  Calculates specific volume, the appropriate thermal expansion coefficient
 !  and the appropriate saline contraction coefficient of seawater from
 !  Absolute Salinity and Conservative Temperature.  This function uses the
 !  computationally-efficient expression for specific volume in terms of
@@ -10098,7 +10130,7 @@ gsw_specvol_second_derivatives (double sa, double ct, double p,
                 + b122*xs + b032*ys))) + z*(3.0*(b003 + b103*xs + b013*ys)
                 + 4.0*b004*z));
 
-            *v_sa_p = 1e-8*0.5*gsw_sfac*v_sa_p_part;
+            *v_sa_p = 1e-8*0.5*gsw_sfac*v_sa_p_part/xs;
 
         }
 
@@ -10188,7 +10220,7 @@ gsw_specvol_second_derivatives_wrt_enthalpy (double sa, double ct, double p,
 
             if (v_sa_sa != NULL)
                 *v_sa_sa = vct_sa_sa - (h_ct*(vct_sa_ct*h_sa
-                        - v_ct*h_sa_sa) + v_ct*h_sa*h_sa_ct)*rec_h_ct2
+                        + v_ct*h_sa_sa) - v_ct*h_sa*h_sa_ct)*rec_h_ct2
                         - h_sa*v_sa_h_part;
         }
 }
@@ -11103,7 +11135,7 @@ gsw_util_linear_interp(int nx, double *x, int ny, double *y, int nxi,
     /*
     **  This algorithm mimics the Matlab interp1q function.
     **
-    **  An explaination of this algorithm:
+    **  An explanation of this algorithm:
     **  We have points we are interpolating from (x) and
     **  points that we are interpolating to (xi).  We
     **  sort the interpolating from points, concatenate
