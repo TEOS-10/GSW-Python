@@ -1,0 +1,14 @@
+{
+  "related_identifiers": [
+    {
+      "scheme": "isbn",
+      "identifier": "978-0-646-55621-5",
+      "relation": "references"
+    },
+    {
+      "scheme": "handle",
+      "identifier": "http://hdl.handle.net/11329/286",
+      "relation": "references"
+    }
+  ]
+}
