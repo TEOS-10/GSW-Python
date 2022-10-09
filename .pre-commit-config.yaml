@@ -12,7 +12,8 @@ repos:
     - id: codespell
       exclude: >
           (?x)^(
-              .*\.c
+              .*\.c|
+              tools/fix_wrapped_ufunc_typos\.py
           )$
       args:
         - --ignore-words-list=nin,preformed,wih,

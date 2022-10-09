@@ -13,7 +13,7 @@ from pathlib import Path
 
 fnames = ['gsw_oceanographic_toolbox.c',
           'gsw_saar.c',
-          'gsw_saar_data.c',
+          'gsw_saar_data.h',
           'gsw_internal_const.h',
           'gswteos-10.h']
 
