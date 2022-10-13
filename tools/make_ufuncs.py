@@ -19,7 +19,6 @@ modfile_head_top = """
 /*
 This file is auto-generated--do not edit it.
 
-This is python 3-only (for simplicity) to begin with.
 */
 
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
@@ -99,8 +98,8 @@ def modfile_loop_entry(nin, nout):
 
     linelist = ['/* %d in, %d out */' % (nin, nout)]
     linelist.extend([
-    'static void loop1d_%s(char **args, npy_intp *dimensions,' % loop_id,
-    '                          npy_intp* steps, void* data)',
+    'static void loop1d_%s(char **args, npy_intp const *dimensions,' % loop_id,
+    '                          npy_intp const* steps, void* data)',
     '{',
     '    npy_intp i;',
     '    npy_intp n = dimensions[0];'])

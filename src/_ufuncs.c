@@ -2,7 +2,6 @@
 /*
 This file is auto-generated--do not edit it.
 
-This is python 3-only (for simplicity) to begin with.
 */
 
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
@@ -26,8 +25,8 @@ This is python 3-only (for simplicity) to begin with.
 
 
 /* 1 in, 1 out */
-static void loop1d_d_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_d_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -59,8 +58,8 @@ static char types_d_d[] = {
 };
 
 /* 2 in, 1 out */
-static void loop1d_dd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -95,8 +94,8 @@ static char types_dd_d[] = {
 };
 
 /* 3 in, 1 out */
-static void loop1d_ddd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -134,8 +133,8 @@ static char types_ddd_d[] = {
 };
 
 /* 4 in, 1 out */
-static void loop1d_dddd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dddd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -176,8 +175,8 @@ static char types_dddd_d[] = {
 };
 
 /* 5 in, 1 out */
-static void loop1d_ddddd_d(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddddd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -221,8 +220,8 @@ static char types_ddddd_d[] = {
 };
 
 /* 2 in, 2 out */
-static void loop1d_dd_dd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dd_dd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -261,8 +260,8 @@ static char types_dd_dd[] = {
 };
 
 /* 3 in, 2 out */
-static void loop1d_ddd_dd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddd_dd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -304,8 +303,8 @@ static char types_ddd_dd[] = {
 };
 
 /* 3 in, 3 out */
-static void loop1d_ddd_ddd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddd_ddd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -351,8 +350,8 @@ static char types_ddd_ddd[] = {
 };
 
 /* 6 in, 2 out */
-static void loop1d_dddddd_dd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dddddd_dd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -403,8 +402,8 @@ static char types_dddddd_dd[] = {
 };
 
 /* 2 in, 3 out */
-static void loop1d_dd_ddd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dd_ddd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -447,8 +446,8 @@ static char types_dd_ddd[] = {
 };
 
 /* 4 in, 3 out */
-static void loop1d_dddd_ddd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_dddd_ddd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -497,8 +496,8 @@ static char types_dddd_ddd[] = {
 };
 
 /* 5 in, 3 out */
-static void loop1d_ddddd_ddd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddddd_ddd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
@@ -550,8 +549,8 @@ static char types_ddddd_ddd[] = {
 };
 
 /* 3 in, 5 out */
-static void loop1d_ddd_ddddd(char **args, npy_intp *dimensions,
-                          npy_intp* steps, void* data)
+static void loop1d_ddd_ddddd(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
 {
     npy_intp i;
     npy_intp n = dimensions[0];
