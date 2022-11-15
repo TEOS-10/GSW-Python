@@ -7,7 +7,7 @@ repos:
     - id: check-added-large-files
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.1
+  rev: v2.2.2
   hooks:
     - id: codespell
       exclude: >
