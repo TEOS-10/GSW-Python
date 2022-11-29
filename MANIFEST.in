@@ -18,3 +18,4 @@ exclude *.yaml
 exclude *.enc
 exclude .gitignore
 exclude .isort.cfg
+exclude .zenodo.json
