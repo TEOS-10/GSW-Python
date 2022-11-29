@@ -10,41 +10,39 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
         os: [windows-latest, ubuntu-latest, macos-latest]
         # Oldest one based on NEP-29 and latest one.
         # See https://numpy.org/neps/nep-0029-deprecation_policy.html
-        numpy-version: ["1.19", "1.22"]
+        numpy-version: ["1.21", "1.23"]
         exclude:
-          - python-version: "3.10"
-            numpy-version: "1.19"
+          - python-version: "3.11"
+            numpy-version: "1.21"
       fail-fast: false
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Setup Micromamba
-      uses: mamba-org/provision-with-micromamba@main
+      uses: mamba-org/provision-with-micromamba@v13
       with:
         environment-file: false
 
     - name: Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
       shell: bash -l {0}
-      run: |
+      run: >
         micromamba create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
-        micromamba activate TEST
-        python -m pip install -e . --no-deps --no-build-isolation --force-reinstall
+        && micromamba activate TEST
+        && python -m pip install -e . --no-deps --no-build-isolation --force-reinstall
 
     - name: Debug
       shell: bash -l {0}
-      run: |
+      run: >
         micromamba activate TEST
-        micromamba info --all
-        micromamba list
-        python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
+        && python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
 
     - name: Tests
       shell: bash -l {0}
-      run: |
+      run: >
         micromamba activate TEST
-        pytest -s -rxs -v gsw/tests
+        && pytest -s -rxs -v gsw/tests

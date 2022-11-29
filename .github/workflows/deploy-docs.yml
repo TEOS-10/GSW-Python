@@ -20,12 +20,10 @@ jobs:
 
     - name: Create environment
       shell: bash -l {0}
-      run: |
+      run: >
         micromamba create --name TEST python=3 numpy --file requirements-dev.txt --channel conda-forge
-        micromamba activate TEST
-        pip install -e . --no-deps --force-reinstall
-        conda info --all
-        conda list
+        && micromamba activate TEST
+        && pip install -e . --no-deps --force-reinstall
 
     - name: Build documentation
       shell: bash -l {0}
