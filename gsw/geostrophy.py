@@ -78,7 +78,8 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
     except AttributeError:
         order = 'C'  # e.g., xarray DataArray doesn't have flags
     for ind in indexer(SA.shape, axis, order=order):
-        igood = np.array(goodmask[ind])
+        # this is needed to support xarray inputs for numpy < 1.23
+        igood = np.asanyarray(goodmask[ind])
         # If p_ref is below the deepest value, skip the profile.
         pgood = p[ind][igood]
         if  len(pgood) > 1 and pgood[-1] >= p_ref:
