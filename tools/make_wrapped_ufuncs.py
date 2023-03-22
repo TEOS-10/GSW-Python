@@ -33,16 +33,16 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return
+from ._utilities import masked_array_support
 
 '''
 
 wrapper_template = '''
-@match_args_return
-def %(funcname)s(%(args)s):
+@masked_array_support
+def %(funcname)s(%(args)s, **kwargs):
     """%(doc)s
     """
-    return _gsw_ufuncs.%(ufuncname)s(%(args)s)
+    return _gsw_ufuncs.%(ufuncname)s(%(args)s, **kwargs)
 '''
 
 

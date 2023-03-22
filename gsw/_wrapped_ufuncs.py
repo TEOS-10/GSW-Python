@@ -4,11 +4,11 @@ Auto-generated wrapper for C ufunc extension; do not edit!
 """
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return
+from ._utilities import masked_array_support
 
 
-@match_args_return
-def adiabatic_lapse_rate_from_CT(SA, CT, p):
+@masked_array_support
+def adiabatic_lapse_rate_from_CT(SA, CT, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of sea water from Conservative
     Temperature.
@@ -29,10 +29,10 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p)
+    return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p, **kwargs)
 
-@match_args_return
-def adiabatic_lapse_rate_ice(t, p):
+@masked_array_support
+def adiabatic_lapse_rate_ice(t, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of ice.
 
@@ -50,10 +50,10 @@ def adiabatic_lapse_rate_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p)
+    return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p, **kwargs)
 
-@match_args_return
-def alpha(SA, CT, p):
+@masked_array_support
+def alpha(SA, CT, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of seawater with respect to
     Conservative Temperature using the computationally-efficient expression
@@ -76,10 +76,10 @@ def alpha(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.alpha(SA, CT, p)
+    return _gsw_ufuncs.alpha(SA, CT, p, **kwargs)
 
-@match_args_return
-def alpha_on_beta(SA, CT, p):
+@masked_array_support
+def alpha_on_beta(SA, CT, p, **kwargs):
     """
     Calculates alpha divided by beta, where alpha is the thermal expansion
     coefficient and beta is the saline contraction coefficient of seawater
@@ -106,10 +106,10 @@ def alpha_on_beta(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.alpha_on_beta(SA, CT, p)
+    return _gsw_ufuncs.alpha_on_beta(SA, CT, p, **kwargs)
 
-@match_args_return
-def alpha_wrt_t_exact(SA, t, p):
+@masked_array_support
+def alpha_wrt_t_exact(SA, t, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of seawater with respect to
     in-situ temperature.
@@ -131,10 +131,10 @@ def alpha_wrt_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p)
+    return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def alpha_wrt_t_ice(t, p):
+@masked_array_support
+def alpha_wrt_t_ice(t, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of ice with respect to
     in-situ temperature.
@@ -154,10 +154,10 @@ def alpha_wrt_t_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.alpha_wrt_t_ice(t, p)
+    return _gsw_ufuncs.alpha_wrt_t_ice(t, p, **kwargs)
 
-@match_args_return
-def beta(SA, CT, p):
+@masked_array_support
+def beta(SA, CT, p, **kwargs):
     """
     Calculates the saline (i.e. haline) contraction coefficient of seawater
     at constant Conservative Temperature using the computationally-efficient
@@ -181,10 +181,10 @@ def beta(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.beta(SA, CT, p)
+    return _gsw_ufuncs.beta(SA, CT, p, **kwargs)
 
-@match_args_return
-def beta_const_t_exact(SA, t, p):
+@masked_array_support
+def beta_const_t_exact(SA, t, p, **kwargs):
     """
     Calculates the saline (i.e. haline) contraction coefficient of seawater
     at constant in-situ temperature.
@@ -206,10 +206,10 @@ def beta_const_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.beta_const_t_exact(SA, t, p)
+    return _gsw_ufuncs.beta_const_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def C_from_SP(SP, t, p):
+@masked_array_support
+def C_from_SP(SP, t, p, **kwargs):
     """
     Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
     2 < SP < 42.  If the input Practical Salinity is less than 2 then a
@@ -233,10 +233,10 @@ def C_from_SP(SP, t, p):
 
 
     """
-    return _gsw_ufuncs.c_from_sp(SP, t, p)
+    return _gsw_ufuncs.c_from_sp(SP, t, p, **kwargs)
 
-@match_args_return
-def cabbeling(SA, CT, p):
+@masked_array_support
+def cabbeling(SA, CT, p, **kwargs):
     """
     Calculates the cabbeling coefficient of seawater with respect to
     Conservative Temperature.  This function uses the computationally-
@@ -260,10 +260,10 @@ def cabbeling(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.cabbeling(SA, CT, p)
+    return _gsw_ufuncs.cabbeling(SA, CT, p, **kwargs)
 
-@match_args_return
-def chem_potential_water_ice(t, p):
+@masked_array_support
+def chem_potential_water_ice(t, p, **kwargs):
     """
     Calculates the chemical potential of water in ice from in-situ
     temperature and pressure.
@@ -282,10 +282,10 @@ def chem_potential_water_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.chem_potential_water_ice(t, p)
+    return _gsw_ufuncs.chem_potential_water_ice(t, p, **kwargs)
 
-@match_args_return
-def chem_potential_water_t_exact(SA, t, p):
+@masked_array_support
+def chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     Calculates the chemical potential of water in seawater.
 
@@ -305,10 +305,10 @@ def chem_potential_water_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p)
+    return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def cp_ice(t, p):
+@masked_array_support
+def cp_ice(t, p, **kwargs):
     """
     Calculates the isobaric heat capacity of seawater.
 
@@ -326,10 +326,10 @@ def cp_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.cp_ice(t, p)
+    return _gsw_ufuncs.cp_ice(t, p, **kwargs)
 
-@match_args_return
-def cp_t_exact(SA, t, p):
+@masked_array_support
+def cp_t_exact(SA, t, p, **kwargs):
     """
     Calculates the isobaric heat capacity of seawater.
 
@@ -349,10 +349,10 @@ def cp_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.cp_t_exact(SA, t, p)
+    return _gsw_ufuncs.cp_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def CT_first_derivatives(SA, pt):
+@masked_array_support
+def CT_first_derivatives(SA, pt, **kwargs):
     """
     Calculates the following two derivatives of Conservative Temperature
     (1) CT_SA, the derivative with respect to Absolute Salinity at
@@ -382,10 +382,10 @@ def CT_first_derivatives(SA, pt):
 
 
     """
-    return _gsw_ufuncs.ct_first_derivatives(SA, pt)
+    return _gsw_ufuncs.ct_first_derivatives(SA, pt, **kwargs)
 
-@match_args_return
-def CT_first_derivatives_wrt_t_exact(SA, t, p):
+@masked_array_support
+def CT_first_derivatives_wrt_t_exact(SA, t, p, **kwargs):
     """
     Calculates the following three derivatives of Conservative Temperature.
     These derivatives are done with respect to in-situ temperature t (in the
@@ -422,10 +422,10 @@ def CT_first_derivatives_wrt_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p)
+    return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def CT_freezing(SA, p, saturation_fraction):
+@masked_array_support
+def CT_freezing(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the Conservative Temperature at which seawater freezes.  The
     Conservative Temperature freezing point is calculated from the exact
@@ -451,10 +451,10 @@ def CT_freezing(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def CT_freezing_first_derivatives(SA, p, saturation_fraction):
+@masked_array_support
+def CT_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the Conservative Temperature at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -482,10 +482,10 @@ def CT_freezing_first_derivatives(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing_first_derivatives(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
+@masked_array_support
+def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the Conservative Temperature at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -514,10 +514,10 @@ def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing_first_derivatives_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def CT_freezing_poly(SA, p, saturation_fraction):
+@masked_array_support
+def CT_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the Conservative Temperature at which seawater freezes.
     The error of this fit ranges between -5e-4 K and 6e-4 K when compared
@@ -545,10 +545,10 @@ def CT_freezing_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def CT_from_enthalpy(SA, h, p):
+@masked_array_support
+def CT_from_enthalpy(SA, h, p, **kwargs):
     """
     Calculates the Conservative Temperature of seawater, given the Absolute
     Salinity, specific enthalpy, h, and pressure p.  The specific enthalpy
@@ -572,10 +572,10 @@ def CT_from_enthalpy(SA, h, p):
 
 
     """
-    return _gsw_ufuncs.ct_from_enthalpy(SA, h, p)
+    return _gsw_ufuncs.ct_from_enthalpy(SA, h, p, **kwargs)
 
-@match_args_return
-def CT_from_enthalpy_exact(SA, h, p):
+@masked_array_support
+def CT_from_enthalpy_exact(SA, h, p, **kwargs):
     """
     Calculates the Conservative Temperature of seawater, given the Absolute
     Salinity, SA, specific enthalpy, h, and pressure p.  The specific
@@ -598,10 +598,10 @@ def CT_from_enthalpy_exact(SA, h, p):
 
 
     """
-    return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p)
+    return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p, **kwargs)
 
-@match_args_return
-def CT_from_entropy(SA, entropy):
+@masked_array_support
+def CT_from_entropy(SA, entropy, **kwargs):
     """
     Calculates Conservative Temperature with entropy as an input variable.
 
@@ -619,10 +619,10 @@ def CT_from_entropy(SA, entropy):
 
 
     """
-    return _gsw_ufuncs.ct_from_entropy(SA, entropy)
+    return _gsw_ufuncs.ct_from_entropy(SA, entropy, **kwargs)
 
-@match_args_return
-def CT_from_pt(SA, pt):
+@masked_array_support
+def CT_from_pt(SA, pt, **kwargs):
     """
     Calculates Conservative Temperature of seawater from potential
     temperature (whose reference sea pressure is zero dbar).
@@ -641,10 +641,10 @@ def CT_from_pt(SA, pt):
 
 
     """
-    return _gsw_ufuncs.ct_from_pt(SA, pt)
+    return _gsw_ufuncs.ct_from_pt(SA, pt, **kwargs)
 
-@match_args_return
-def CT_from_rho(rho, SA, p):
+@masked_array_support
+def CT_from_rho(rho, SA, p, **kwargs):
     """
     Calculates the Conservative Temperature of a seawater sample, for given
     values of its density, Absolute Salinity and sea pressure (in dbar),
@@ -669,10 +669,10 @@ def CT_from_rho(rho, SA, p):
 
 
     """
-    return _gsw_ufuncs.ct_from_rho(rho, SA, p)
+    return _gsw_ufuncs.ct_from_rho(rho, SA, p, **kwargs)
 
-@match_args_return
-def CT_from_t(SA, t, p):
+@masked_array_support
+def CT_from_t(SA, t, p, **kwargs):
     """
     Calculates Conservative Temperature of seawater from in-situ
     temperature.
@@ -693,10 +693,10 @@ def CT_from_t(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.ct_from_t(SA, t, p)
+    return _gsw_ufuncs.ct_from_t(SA, t, p, **kwargs)
 
-@match_args_return
-def CT_maxdensity(SA, p):
+@masked_array_support
+def CT_maxdensity(SA, p, **kwargs):
     """
     Calculates the Conservative Temperature of maximum density of seawater.
     This function returns the Conservative temperature at which the density
@@ -721,10 +721,10 @@ def CT_maxdensity(SA, p):
 
 
     """
-    return _gsw_ufuncs.ct_maxdensity(SA, p)
+    return _gsw_ufuncs.ct_maxdensity(SA, p, **kwargs)
 
-@match_args_return
-def CT_second_derivatives(SA, pt):
+@masked_array_support
+def CT_second_derivatives(SA, pt, **kwargs):
     """
     Calculates the following three, second-order derivatives of Conservative
     Temperature
@@ -764,10 +764,10 @@ def CT_second_derivatives(SA, pt):
 
 
     """
-    return _gsw_ufuncs.ct_second_derivatives(SA, pt)
+    return _gsw_ufuncs.ct_second_derivatives(SA, pt, **kwargs)
 
-@match_args_return
-def deltaSA_atlas(p, lon, lat):
+@masked_array_support
+def deltaSA_atlas(p, lon, lat, **kwargs):
     """
     Calculates the Absolute Salinity Anomaly atlas value, SA - SR, in
     the open ocean by spatially interpolating the global reference data set
@@ -789,10 +789,10 @@ def deltaSA_atlas(p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.deltasa_atlas(p, lon, lat)
+    return _gsw_ufuncs.deltasa_atlas(p, lon, lat, **kwargs)
 
-@match_args_return
-def deltaSA_from_SP(SP, p, lon, lat):
+@masked_array_support
+def deltaSA_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
     is non-negative by definition, this function changes any negative input
@@ -816,10 +816,10 @@ def deltaSA_from_SP(SP, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat, **kwargs)
 
-@match_args_return
-def dilution_coefficient_t_exact(SA, t, p):
+@masked_array_support
+def dilution_coefficient_t_exact(SA, t, p, **kwargs):
     """
     Calculates the dilution coefficient of seawater.  The dilution
     coefficient of seawater is defined as the Absolute Salinity times the
@@ -842,10 +842,10 @@ def dilution_coefficient_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p)
+    return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def dynamic_enthalpy(SA, CT, p):
+@masked_array_support
+def dynamic_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates dynamic enthalpy of seawater using the computationally-
     efficient expression for specific volume in terms of SA, CT and p
@@ -868,10 +868,10 @@ def dynamic_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy(SA, CT, p):
+@masked_array_support
+def enthalpy(SA, CT, p, **kwargs):
     """
     Calculates specific enthalpy of seawater using the computationally-
     efficient expression for specific volume in terms of SA, CT and p
@@ -893,10 +893,10 @@ def enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy(SA, CT, p)
+    return _gsw_ufuncs.enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_CT_exact(SA, CT, p):
+@masked_array_support
+def enthalpy_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates specific enthalpy of seawater from Absolute Salinity and
     Conservative Temperature and pressure.
@@ -917,10 +917,10 @@ def enthalpy_CT_exact(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_diff(SA, CT, p_shallow, p_deep):
+@masked_array_support
+def enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs):
     """
     Calculates the difference of the specific enthalpy of seawater between
     two different pressures, p_deep (the deeper pressure) and p_shallow
@@ -949,10 +949,10 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
 
 
     """
-    return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep)
+    return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs)
 
-@match_args_return
-def enthalpy_first_derivatives(SA, CT, p):
+@masked_array_support
+def enthalpy_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following two derivatives of specific enthalpy (h) of
     seawater using the computationally-efficient expression for
@@ -984,10 +984,10 @@ def enthalpy_first_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_first_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_first_derivatives_CT_exact(SA, CT, p):
+@masked_array_support
+def enthalpy_first_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates the following two derivatives of specific enthalpy, h,
     (1) h_SA, the derivative with respect to Absolute Salinity at
@@ -1017,10 +1017,10 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_first_derivatives_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_first_derivatives_ct_exact(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_ice(t, p):
+@masked_array_support
+def enthalpy_ice(t, p, **kwargs):
     """
     Calculates the specific enthalpy of ice (h_Ih).
 
@@ -1038,10 +1038,10 @@ def enthalpy_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_ice(t, p)
+    return _gsw_ufuncs.enthalpy_ice(t, p, **kwargs)
 
-@match_args_return
-def enthalpy_second_derivatives(SA, CT, p):
+@masked_array_support
+def enthalpy_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of specific
     enthalpy (h),using the computationally-efficient expression for
@@ -1076,10 +1076,10 @@ def enthalpy_second_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_second_derivatives_CT_exact(SA, CT, p):
+@masked_array_support
+def enthalpy_second_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of specific
     enthalpy (h),
@@ -1113,10 +1113,10 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p, **kwargs)
 
-@match_args_return
-def enthalpy_t_exact(SA, t, p):
+@masked_array_support
+def enthalpy_t_exact(SA, t, p, **kwargs):
     """
     Calculates the specific enthalpy of seawater.
 
@@ -1136,10 +1136,10 @@ def enthalpy_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.enthalpy_t_exact(SA, t, p)
+    return _gsw_ufuncs.enthalpy_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def entropy_first_derivatives(SA, CT):
+@masked_array_support
+def entropy_first_derivatives(SA, CT, **kwargs):
     """
     Calculates the following two partial derivatives of specific entropy
     (eta)
@@ -1167,10 +1167,10 @@ def entropy_first_derivatives(SA, CT):
 
 
     """
-    return _gsw_ufuncs.entropy_first_derivatives(SA, CT)
+    return _gsw_ufuncs.entropy_first_derivatives(SA, CT, **kwargs)
 
-@match_args_return
-def entropy_from_CT(SA, CT):
+@masked_array_support
+def entropy_from_CT(SA, CT, **kwargs):
     """
     Calculates specific entropy of seawater from Conservative Temperature.
 
@@ -1188,10 +1188,10 @@ def entropy_from_CT(SA, CT):
 
 
     """
-    return _gsw_ufuncs.entropy_from_ct(SA, CT)
+    return _gsw_ufuncs.entropy_from_ct(SA, CT, **kwargs)
 
-@match_args_return
-def entropy_from_pt(SA, pt):
+@masked_array_support
+def entropy_from_pt(SA, pt, **kwargs):
     """
     Calculates specific entropy of seawater as a function of potential
     temperature.
@@ -1210,10 +1210,10 @@ def entropy_from_pt(SA, pt):
 
 
     """
-    return _gsw_ufuncs.entropy_from_pt(SA, pt)
+    return _gsw_ufuncs.entropy_from_pt(SA, pt, **kwargs)
 
-@match_args_return
-def entropy_from_t(SA, t, p):
+@masked_array_support
+def entropy_from_t(SA, t, p, **kwargs):
     """
     Calculates specific entropy of seawater from in-situ temperature.
 
@@ -1233,10 +1233,10 @@ def entropy_from_t(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.entropy_from_t(SA, t, p)
+    return _gsw_ufuncs.entropy_from_t(SA, t, p, **kwargs)
 
-@match_args_return
-def entropy_ice(t, p):
+@masked_array_support
+def entropy_ice(t, p, **kwargs):
     """
     Calculates specific entropy of ice.
 
@@ -1254,10 +1254,10 @@ def entropy_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.entropy_ice(t, p)
+    return _gsw_ufuncs.entropy_ice(t, p, **kwargs)
 
-@match_args_return
-def entropy_second_derivatives(SA, CT):
+@masked_array_support
+def entropy_second_derivatives(SA, CT, **kwargs):
     """
     Calculates the following three second-order partial derivatives of
     specific entropy (eta)
@@ -1290,10 +1290,10 @@ def entropy_second_derivatives(SA, CT):
 
 
     """
-    return _gsw_ufuncs.entropy_second_derivatives(SA, CT)
+    return _gsw_ufuncs.entropy_second_derivatives(SA, CT, **kwargs)
 
-@match_args_return
-def Fdelta(p, lon, lat):
+@masked_array_support
+def Fdelta(p, lon, lat, **kwargs):
     """
     Calculates Fdelta from the Absolute Salinity Anomaly Ratio (SAAR).  It
     finds SAAR by calling the function "gsw_SAAR(p,long,lat)" and then
@@ -1315,10 +1315,10 @@ def Fdelta(p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.fdelta(p, lon, lat)
+    return _gsw_ufuncs.fdelta(p, lon, lat, **kwargs)
 
-@match_args_return
-def frazil_properties(SA_bulk, h_bulk, p):
+@masked_array_support
+def frazil_properties(SA_bulk, h_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_final, which results from given values of the bulk
@@ -1344,7 +1344,7 @@ def frazil_properties(SA_bulk, h_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -1356,10 +1356,10 @@ def frazil_properties(SA_bulk, h_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p)
+    return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p, **kwargs)
 
-@match_args_return
-def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
+@masked_array_support
+def frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
@@ -1385,7 +1385,7 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -1397,10 +1397,10 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p)
+    return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs)
 
-@match_args_return
-def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
+@masked_array_support
+def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
@@ -1426,7 +1426,7 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -1438,10 +1438,10 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p)
+    return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs)
 
-@match_args_return
-def frazil_ratios_adiabatic(SA, p, w_Ih):
+@masked_array_support
+def frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs):
     """
     Calculates the ratios of SA, CT and P changes when frazil ice forms or
     melts in response to an adiabatic change in pressure of a mixture of
@@ -1471,10 +1471,10 @@ def frazil_ratios_adiabatic(SA, p, w_Ih):
 
 
     """
-    return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih)
+    return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs)
 
-@match_args_return
-def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
+@masked_array_support
+def frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs):
     """
     Calculates the ratios of SA, CT and P changes when frazil ice forms or
     melts in response to an adiabatic change in pressure of a mixture of
@@ -1504,12 +1504,12 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
 
 
     """
-    return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih)
+    return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs)
 
-@match_args_return
-def gibbs_ice_part_t(t, p):
+@masked_array_support
+def gibbs_ice_part_t(t, p, **kwargs):
     """
-    part of the first temperature derivative of Gibbs energy of ice
+    part of the the first temperature derivative of Gibbs energy of ice
     that is the output is gibbs_ice(1,0,t,p) + S0
 
     Parameters
@@ -1526,12 +1526,12 @@ def gibbs_ice_part_t(t, p):
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_part_t(t, p)
+    return _gsw_ufuncs.gibbs_ice_part_t(t, p, **kwargs)
 
-@match_args_return
-def gibbs_ice_pt0(pt0):
+@masked_array_support
+def gibbs_ice_pt0(pt0, **kwargs):
     """
-    part of the first temperature derivative of Gibbs energy of ice
+    part of the the first temperature derivative of Gibbs energy of ice
     that is the output is "gibbs_ice(1,0,pt0,0) + s0"
 
     Parameters
@@ -1546,10 +1546,10 @@ def gibbs_ice_pt0(pt0):
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_pt0(pt0)
+    return _gsw_ufuncs.gibbs_ice_pt0(pt0, **kwargs)
 
-@match_args_return
-def gibbs_ice_pt0_pt0(pt0):
+@masked_array_support
+def gibbs_ice_pt0_pt0(pt0, **kwargs):
     """
     The second temperature derivative of Gibbs energy of ice at the
     potential temperature with reference sea pressure of zero dbar.  That is
@@ -1567,10 +1567,10 @@ def gibbs_ice_pt0_pt0(pt0):
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0)
+    return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0, **kwargs)
 
-@match_args_return
-def grav(lat, p):
+@masked_array_support
+def grav(lat, p, **kwargs):
     """
     Calculates acceleration due to gravity as a function of latitude and as
     a function of pressure in the ocean.
@@ -1589,10 +1589,10 @@ def grav(lat, p):
 
 
     """
-    return _gsw_ufuncs.grav(lat, p)
+    return _gsw_ufuncs.grav(lat, p, **kwargs)
 
-@match_args_return
-def Helmholtz_energy_ice(t, p):
+@masked_array_support
+def Helmholtz_energy_ice(t, p, **kwargs):
     """
     Calculates the Helmholtz energy of ice.
 
@@ -1610,10 +1610,10 @@ def Helmholtz_energy_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.helmholtz_energy_ice(t, p)
+    return _gsw_ufuncs.helmholtz_energy_ice(t, p, **kwargs)
 
-@match_args_return
-def Hill_ratio_at_SP2(t):
+@masked_array_support
+def Hill_ratio_at_SP2(t, **kwargs):
     """
     Calculates the Hill ratio, which is the adjustment needed to apply for
     Practical Salinities smaller than 2.  This ratio is defined at a
@@ -1634,10 +1634,10 @@ def Hill_ratio_at_SP2(t):
 
 
     """
-    return _gsw_ufuncs.hill_ratio_at_sp2(t)
+    return _gsw_ufuncs.hill_ratio_at_sp2(t, **kwargs)
 
-@match_args_return
-def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
+@masked_array_support
+def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), which, when melted into seawater having (SA,CT,p) causes
@@ -1676,10 +1676,10 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
 
 
     """
-    return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs)
 
-@match_args_return
-def internal_energy(SA, CT, p):
+@masked_array_support
+def internal_energy(SA, CT, p, **kwargs):
     """
     Calculates specific internal energy of seawater using the
     computationally-efficient expression for specific volume in terms of SA,
@@ -1701,10 +1701,10 @@ def internal_energy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.internal_energy(SA, CT, p)
+    return _gsw_ufuncs.internal_energy(SA, CT, p, **kwargs)
 
-@match_args_return
-def internal_energy_ice(t, p):
+@masked_array_support
+def internal_energy_ice(t, p, **kwargs):
     """
     Calculates the specific internal energy of ice.
 
@@ -1722,10 +1722,10 @@ def internal_energy_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.internal_energy_ice(t, p)
+    return _gsw_ufuncs.internal_energy_ice(t, p, **kwargs)
 
-@match_args_return
-def kappa(SA, CT, p):
+@masked_array_support
+def kappa(SA, CT, p, **kwargs):
     """
     Calculates the isentropic compressibility of seawater.  This function
     has inputs of Absolute Salinity and Conservative Temperature.  This
@@ -1748,10 +1748,10 @@ def kappa(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.kappa(SA, CT, p)
+    return _gsw_ufuncs.kappa(SA, CT, p, **kwargs)
 
-@match_args_return
-def kappa_const_t_ice(t, p):
+@masked_array_support
+def kappa_const_t_ice(t, p, **kwargs):
     """
     Calculates isothermal compressibility of ice.
     Note. This is the compressibility of ice AT CONSTANT IN-SITU
@@ -1771,10 +1771,10 @@ def kappa_const_t_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.kappa_const_t_ice(t, p)
+    return _gsw_ufuncs.kappa_const_t_ice(t, p, **kwargs)
 
-@match_args_return
-def kappa_ice(t, p):
+@masked_array_support
+def kappa_ice(t, p, **kwargs):
     """
     Calculates the isentropic compressibility of ice.
 
@@ -1792,10 +1792,10 @@ def kappa_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.kappa_ice(t, p)
+    return _gsw_ufuncs.kappa_ice(t, p, **kwargs)
 
-@match_args_return
-def kappa_t_exact(SA, t, p):
+@masked_array_support
+def kappa_t_exact(SA, t, p, **kwargs):
     """
     Calculates the isentropic compressibility of seawater.
 
@@ -1815,10 +1815,10 @@ def kappa_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.kappa_t_exact(SA, t, p)
+    return _gsw_ufuncs.kappa_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def latentheat_evap_CT(SA, CT):
+@masked_array_support
+def latentheat_evap_CT(SA, CT, **kwargs):
     """
     Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
     surface).  It is defined as a function of Absolute Salinity, SA, and
@@ -1840,10 +1840,10 @@ def latentheat_evap_CT(SA, CT):
 
 
     """
-    return _gsw_ufuncs.latentheat_evap_ct(SA, CT)
+    return _gsw_ufuncs.latentheat_evap_ct(SA, CT, **kwargs)
 
-@match_args_return
-def latentheat_evap_t(SA, t):
+@masked_array_support
+def latentheat_evap_t(SA, t, **kwargs):
     """
     Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
     surface).  It is defined as a function of Absolute Salinity, SA, and
@@ -1864,10 +1864,10 @@ def latentheat_evap_t(SA, t):
 
 
     """
-    return _gsw_ufuncs.latentheat_evap_t(SA, t)
+    return _gsw_ufuncs.latentheat_evap_t(SA, t, **kwargs)
 
-@match_args_return
-def latentheat_melting(SA, p):
+@masked_array_support
+def latentheat_melting(SA, p, **kwargs):
     """
     Calculates latent heat, or enthalpy, of melting.  It is defined in terms
     of Absolute Salinity, SA, and sea pressure, p, and is valid in the
@@ -1889,10 +1889,10 @@ def latentheat_melting(SA, p):
 
 
     """
-    return _gsw_ufuncs.latentheat_melting(SA, p)
+    return _gsw_ufuncs.latentheat_melting(SA, p, **kwargs)
 
-@match_args_return
-def melting_ice_equilibrium_SA_CT_ratio(SA, p):
+@masked_array_support
+def melting_ice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater
     with both the seawater and the seaice temperatures being almost equal to
@@ -1921,10 +1921,10 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p)
+    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 
-@match_args_return
-def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
+@masked_array_support
+def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater
     with both the seawater and the seaice temperatures being almost equal to
@@ -1953,10 +1953,10 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p)
+    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 
-@match_args_return
-def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
+@masked_array_support
+def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs):
     """
     Calculates the final Absolute Salinity, final Conservative Temperature
     and final ice mass fraction that results when a given mass fraction of
@@ -1983,7 +1983,7 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
         Absolute Salinity of the seawater in the final state,
         whether or not any ice is present.
     CT_final : array-like, deg C
-        Conservative Temperature of the seawater in the final
+        Conservative Temperature of the seawater in the the final
         state, whether or not any ice is present.
     w_Ih_final : array-like, unitless
         mass fraction of ice in the final seawater-ice mixture.
@@ -1995,10 +1995,10 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
 
 
     """
-    return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih)
+    return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs)
 
-@match_args_return
-def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
+@masked_array_support
+def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater.
     It is assumed that a small mass of ice melts into an infinite mass of
@@ -2024,10 +2024,10 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
 
 
     """
-    return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih, **kwargs)
 
-@match_args_return
-def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
+@masked_array_support
+def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater.
     It is assumed that a small mass of ice melts into an infinite mass of
@@ -2053,10 +2053,10 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
 
 
     """
-    return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih, **kwargs)
 
-@match_args_return
-def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
+@masked_array_support
+def melting_seaice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater with both the seawater and the sea ice temperatures being
@@ -2086,10 +2086,10 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p)
+    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 
-@match_args_return
-def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
+@masked_array_support
+def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater with both the seawater and the sea ice temperatures being
@@ -2119,10 +2119,10 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p)
+    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 
-@match_args_return
-def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
+@masked_array_support
+def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the Absolute Salinity and Conservative Temperature that
     results when a given mass of sea ice (or ice) melts and is mixed into a
@@ -2156,10 +2156,10 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs)
 
-@match_args_return
-def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
+@masked_array_support
+def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater.  It is assumed that a small mass of sea ice melts into an
@@ -2188,10 +2188,10 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 
-@match_args_return
-def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
+@masked_array_support
+def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater.  It is assumed that a small mass of sea ice melts into an
@@ -2220,10 +2220,10 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 
-@match_args_return
-def O2sol(SA, CT, p, lon, lat):
+@masked_array_support
+def O2sol(SA, CT, p, lon, lat, **kwargs):
     """
     Calculates the oxygen concentration expected at equilibrium with air at
     an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
@@ -2251,10 +2251,10 @@ def O2sol(SA, CT, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat)
+    return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat, **kwargs)
 
-@match_args_return
-def O2sol_SP_pt(SP, pt):
+@masked_array_support
+def O2sol_SP_pt(SP, pt, **kwargs):
     """
     Calculates the oxygen concentration expected at equilibrium with air at
     an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
@@ -2276,10 +2276,10 @@ def O2sol_SP_pt(SP, pt):
 
 
     """
-    return _gsw_ufuncs.o2sol_sp_pt(SP, pt)
+    return _gsw_ufuncs.o2sol_sp_pt(SP, pt, **kwargs)
 
-@match_args_return
-def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
+@masked_array_support
+def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     Calculates sea pressure from height using computationally-efficient
     75-term expression for density, in terms of SA, CT and p (Roquet et al.,
@@ -2309,10 +2309,10 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
 
 
     """
-    return _gsw_ufuncs.p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential)
+    return _gsw_ufuncs.p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
 
-@match_args_return
-def pot_enthalpy_from_pt_ice(pt0_ice):
+@masked_array_support
+def pot_enthalpy_from_pt_ice(pt0_ice, **kwargs):
     """
     Calculates the potential enthalpy of ice from potential temperature of
     ice (whose reference sea pressure is zero dbar).
@@ -2329,10 +2329,10 @@ def pot_enthalpy_from_pt_ice(pt0_ice):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice)
+    return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice, **kwargs)
 
-@match_args_return
-def pot_enthalpy_from_pt_ice_poly(pt0_ice):
+@masked_array_support
+def pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs):
     """
     Calculates the potential enthalpy of ice from potential temperature of
     ice (whose reference sea pressure is zero dbar).  This is a
@@ -2351,10 +2351,10 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice)
+    return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs)
 
-@match_args_return
-def pot_enthalpy_ice_freezing(SA, p):
+@masked_array_support
+def pot_enthalpy_ice_freezing(SA, p, **kwargs):
     """
     Calculates the potential enthalpy of ice at which seawater freezes.
 
@@ -2373,10 +2373,10 @@ def pot_enthalpy_ice_freezing(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p, **kwargs)
 
-@match_args_return
-def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
+@masked_array_support
+def pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs):
     """
     Calculates the first derivatives of the potential enthalpy of ice at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -2402,10 +2402,10 @@ def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs)
 
-@match_args_return
-def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
+@masked_array_support
+def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs):
     """
     Calculates the first derivatives of the potential enthalpy of ice Ih at
     which ice melts into seawater with Absolute Salinity SA and at pressure
@@ -2432,10 +2432,10 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs)
 
-@match_args_return
-def pot_enthalpy_ice_freezing_poly(SA, p):
+@masked_array_support
+def pot_enthalpy_ice_freezing_poly(SA, p, **kwargs):
     """
     Calculates the potential enthalpy of ice at which seawater freezes.
     The error of this fit ranges between -2.5 and 1 J/kg with an rms of
@@ -2463,10 +2463,10 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p, **kwargs)
 
-@match_args_return
-def pot_rho_t_exact(SA, t, p, p_ref):
+@masked_array_support
+def pot_rho_t_exact(SA, t, p, p_ref, **kwargs):
     """
     Calculates potential density of seawater.  Note. This function outputs
     potential density, not potential density anomaly; that is, 1000 kg/m^3
@@ -2490,10 +2490,10 @@ def pot_rho_t_exact(SA, t, p, p_ref):
 
 
     """
-    return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref)
+    return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref, **kwargs)
 
-@match_args_return
-def pressure_coefficient_ice(t, p):
+@masked_array_support
+def pressure_coefficient_ice(t, p, **kwargs):
     """
     Calculates pressure coefficient of ice.
 
@@ -2511,10 +2511,10 @@ def pressure_coefficient_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.pressure_coefficient_ice(t, p)
+    return _gsw_ufuncs.pressure_coefficient_ice(t, p, **kwargs)
 
-@match_args_return
-def pressure_freezing_CT(SA, CT, saturation_fraction):
+@masked_array_support
+def pressure_freezing_CT(SA, CT, saturation_fraction, **kwargs):
     """
     Calculates the pressure (in dbar) of seawater at the freezing
     temperature.  That is, the output is the pressure at which seawater,
@@ -2541,10 +2541,10 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction)
+    return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction, **kwargs)
 
-@match_args_return
-def pt0_from_t(SA, t, p):
+@masked_array_support
+def pt0_from_t(SA, t, p, **kwargs):
     """
     Calculates potential temperature with reference pressure, p_ref = 0 dbar.
     The present routine is computationally faster than the more general
@@ -2570,10 +2570,10 @@ def pt0_from_t(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.pt0_from_t(SA, t, p)
+    return _gsw_ufuncs.pt0_from_t(SA, t, p, **kwargs)
 
-@match_args_return
-def pt0_from_t_ice(t, p):
+@masked_array_support
+def pt0_from_t_ice(t, p, **kwargs):
     """
     Calculates potential temperature of ice Ih with a reference pressure of
     0 dbar, from in-situ temperature, t.
@@ -2593,10 +2593,10 @@ def pt0_from_t_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.pt0_from_t_ice(t, p)
+    return _gsw_ufuncs.pt0_from_t_ice(t, p, **kwargs)
 
-@match_args_return
-def pt_first_derivatives(SA, CT):
+@masked_array_support
+def pt_first_derivatives(SA, CT, **kwargs):
     """
     Calculates the following two partial derivatives of potential
     temperature (the regular potential temperature whose reference sea
@@ -2625,10 +2625,10 @@ def pt_first_derivatives(SA, CT):
 
 
     """
-    return _gsw_ufuncs.pt_first_derivatives(SA, CT)
+    return _gsw_ufuncs.pt_first_derivatives(SA, CT, **kwargs)
 
-@match_args_return
-def pt_from_CT(SA, CT):
+@masked_array_support
+def pt_from_CT(SA, CT, **kwargs):
     """
     Calculates potential temperature (with a reference sea pressure of
     zero dbar) from Conservative Temperature.  This function uses 1.5
@@ -2651,10 +2651,10 @@ def pt_from_CT(SA, CT):
 
 
     """
-    return _gsw_ufuncs.pt_from_ct(SA, CT)
+    return _gsw_ufuncs.pt_from_ct(SA, CT, **kwargs)
 
-@match_args_return
-def pt_from_entropy(SA, entropy):
+@masked_array_support
+def pt_from_entropy(SA, entropy, **kwargs):
     """
     Calculates potential temperature with reference pressure p_ref = 0 dbar
     and with entropy as an input variable.
@@ -2674,10 +2674,10 @@ def pt_from_entropy(SA, entropy):
 
 
     """
-    return _gsw_ufuncs.pt_from_entropy(SA, entropy)
+    return _gsw_ufuncs.pt_from_entropy(SA, entropy, **kwargs)
 
-@match_args_return
-def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
+@masked_array_support
+def pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs):
     """
     Calculates the potential temperature of ice from the potential enthalpy
     of ice.  The reference sea pressure of both the potential temperature
@@ -2695,10 +2695,10 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
 
 
     """
-    return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice)
+    return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs)
 
-@match_args_return
-def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
+@masked_array_support
+def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs):
     """
     Calculates the potential temperature of ice (whose reference sea
     pressure is zero dbar) from the potential enthalpy of ice.  This is a
@@ -2717,10 +2717,10 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
 
 
     """
-    return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice)
+    return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs)
 
-@match_args_return
-def pt_from_t(SA, t, p, p_ref):
+@masked_array_support
+def pt_from_t(SA, t, p, p_ref, **kwargs):
     """
     Calculates potential temperature with the general reference pressure,
     p_ref, from in-situ temperature, t.  This function calls
@@ -2748,10 +2748,10 @@ def pt_from_t(SA, t, p, p_ref):
 
 
     """
-    return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref)
+    return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref, **kwargs)
 
-@match_args_return
-def pt_from_t_ice(t, p, p_ref):
+@masked_array_support
+def pt_from_t_ice(t, p, p_ref, **kwargs):
     """
     Calculates potential temperature of ice Ih with the general reference
     pressure, p_ref, from in-situ temperature, t.
@@ -2773,10 +2773,10 @@ def pt_from_t_ice(t, p, p_ref):
 
 
     """
-    return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref)
+    return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref, **kwargs)
 
-@match_args_return
-def pt_second_derivatives(SA, CT):
+@masked_array_support
+def pt_second_derivatives(SA, CT, **kwargs):
     """
     Calculates the following three second-order derivatives of potential
     temperature (the regular potential temperature which has a reference
@@ -2812,10 +2812,10 @@ def pt_second_derivatives(SA, CT):
 
 
     """
-    return _gsw_ufuncs.pt_second_derivatives(SA, CT)
+    return _gsw_ufuncs.pt_second_derivatives(SA, CT, **kwargs)
 
-@match_args_return
-def rho(SA, CT, p):
+@masked_array_support
+def rho(SA, CT, p, **kwargs):
     """
     Calculates in-situ density from Absolute Salinity and Conservative
     Temperature, using the computationally-efficient expression for
@@ -2837,10 +2837,10 @@ def rho(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho(SA, CT, p)
+    return _gsw_ufuncs.rho(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_alpha_beta(SA, CT, p):
+@masked_array_support
+def rho_alpha_beta(SA, CT, p, **kwargs):
     """
     Calculates in-situ density, the appropriate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
@@ -2870,10 +2870,10 @@ def rho_alpha_beta(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho_alpha_beta(SA, CT, p)
+    return _gsw_ufuncs.rho_alpha_beta(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_first_derivatives(SA, CT, p):
+@masked_array_support
+def rho_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the three (3) partial derivatives of in-situ density with
     respect to Absolute Salinity, Conservative Temperature and pressure.
@@ -2905,10 +2905,10 @@ def rho_first_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.rho_first_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
+@masked_array_support
+def rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following two first-order derivatives of specific
     volume (v),
@@ -2937,10 +2937,10 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_ice(t, p):
+@masked_array_support
+def rho_ice(t, p, **kwargs):
     """
     Calculates in-situ density of ice from in-situ temperature and pressure.
     Note that the output, rho_ice, is density, not density anomaly;  that
@@ -2960,10 +2960,10 @@ def rho_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.rho_ice(t, p)
+    return _gsw_ufuncs.rho_ice(t, p, **kwargs)
 
-@match_args_return
-def rho_second_derivatives(SA, CT, p):
+@masked_array_support
+def rho_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following five second-order derivatives of rho,
     (1) rho_SA_SA, second-order derivative with respect to Absolute
@@ -3006,10 +3006,10 @@ def rho_second_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.rho_second_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
+@masked_array_support
+def rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of rho with
     respect to enthalpy,
@@ -3043,10 +3043,10 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def rho_t_exact(SA, t, p):
+@masked_array_support
+def rho_t_exact(SA, t, p, **kwargs):
     """
     Calculates in-situ density of seawater from Absolute Salinity and
     in-situ temperature.  Note that the output, rho, is density,
@@ -3068,10 +3068,10 @@ def rho_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.rho_t_exact(SA, t, p)
+    return _gsw_ufuncs.rho_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def SA_freezing_from_CT(CT, p, saturation_fraction):
+@masked_array_support
+def SA_freezing_from_CT(CT, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with
@@ -3099,10 +3099,10 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
+@masked_array_support
+def SA_freezing_from_CT_poly(CT, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -3129,10 +3129,10 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def SA_freezing_from_t(t, p, saturation_fraction):
+@masked_array_support
+def SA_freezing_from_t(t, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -3159,10 +3159,10 @@ def SA_freezing_from_t(t, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def SA_freezing_from_t_poly(t, p, saturation_fraction):
+@masked_array_support
+def SA_freezing_from_t_poly(t, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -3189,10 +3189,10 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def SA_from_rho(rho, CT, p):
+@masked_array_support
+def SA_from_rho(rho, CT, p, **kwargs):
     """
     Calculates the Absolute Salinity of a seawater sample, for given values
     of its density, Conservative Temperature and sea pressure (in dbar).
@@ -3215,10 +3215,10 @@ def SA_from_rho(rho, CT, p):
 
 
     """
-    return _gsw_ufuncs.sa_from_rho(rho, CT, p)
+    return _gsw_ufuncs.sa_from_rho(rho, CT, p, **kwargs)
 
-@match_args_return
-def SA_from_SP(SP, p, lon, lat):
+@masked_array_support
+def SA_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity from Practical Salinity.  Since SP is
     non-negative by definition, this function changes any negative input
@@ -3242,10 +3242,10 @@ def SA_from_SP(SP, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat, **kwargs)
 
-@match_args_return
-def SA_from_SP_Baltic(SP, lon, lat):
+@masked_array_support
+def SA_from_SP_Baltic(SP, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity in the Baltic Sea, from Practical Salinity.
     Since SP is non-negative by definition, this function changes any
@@ -3269,10 +3269,10 @@ def SA_from_SP_Baltic(SP, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat)
+    return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat, **kwargs)
 
-@match_args_return
-def SA_from_Sstar(Sstar, p, lon, lat):
+@masked_array_support
+def SA_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity from Preformed Salinity.
 
@@ -3294,10 +3294,10 @@ def SA_from_Sstar(Sstar, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat)
+    return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat, **kwargs)
 
-@match_args_return
-def SAAR(p, lon, lat):
+@masked_array_support
+def SAAR(p, lon, lat, **kwargs):
     """
     Calculates the Absolute Salinity Anomaly Ratio, SAAR, in the open ocean
     by spatially interpolating the global reference data set of SAAR to the
@@ -3319,10 +3319,10 @@ def SAAR(p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.saar(p, lon, lat)
+    return _gsw_ufuncs.saar(p, lon, lat, **kwargs)
 
-@match_args_return
-def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
+@masked_array_support
+def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the mass fraction of sea ice (mass of sea ice divided by mass
     of sea ice plus seawater), which, when melted into seawater having the
@@ -3364,10 +3364,10 @@ def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 
-@match_args_return
-def sigma0(SA, CT):
+@masked_array_support
+def sigma0(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 0 dbar,
     this being this particular potential density minus 1000 kg/m^3.  This
@@ -3391,10 +3391,10 @@ def sigma0(SA, CT):
 
 
     """
-    return _gsw_ufuncs.sigma0(SA, CT)
+    return _gsw_ufuncs.sigma0(SA, CT, **kwargs)
 
-@match_args_return
-def sigma1(SA, CT):
+@masked_array_support
+def sigma1(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 1000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -3419,10 +3419,10 @@ def sigma1(SA, CT):
 
 
     """
-    return _gsw_ufuncs.sigma1(SA, CT)
+    return _gsw_ufuncs.sigma1(SA, CT, **kwargs)
 
-@match_args_return
-def sigma2(SA, CT):
+@masked_array_support
+def sigma2(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 2000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -3446,10 +3446,10 @@ def sigma2(SA, CT):
 
 
     """
-    return _gsw_ufuncs.sigma2(SA, CT)
+    return _gsw_ufuncs.sigma2(SA, CT, **kwargs)
 
-@match_args_return
-def sigma3(SA, CT):
+@masked_array_support
+def sigma3(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 3000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -3473,10 +3473,10 @@ def sigma3(SA, CT):
 
 
     """
-    return _gsw_ufuncs.sigma3(SA, CT)
+    return _gsw_ufuncs.sigma3(SA, CT, **kwargs)
 
-@match_args_return
-def sigma4(SA, CT):
+@masked_array_support
+def sigma4(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 4000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -3500,10 +3500,10 @@ def sigma4(SA, CT):
 
 
     """
-    return _gsw_ufuncs.sigma4(SA, CT)
+    return _gsw_ufuncs.sigma4(SA, CT, **kwargs)
 
-@match_args_return
-def sound_speed(SA, CT, p):
+@masked_array_support
+def sound_speed(SA, CT, p, **kwargs):
     """
     Calculates the speed of sound in seawater.  This function has inputs of
     Absolute Salinity and Conservative Temperature.  This function uses the
@@ -3526,10 +3526,10 @@ def sound_speed(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.sound_speed(SA, CT, p)
+    return _gsw_ufuncs.sound_speed(SA, CT, p, **kwargs)
 
-@match_args_return
-def sound_speed_ice(t, p):
+@masked_array_support
+def sound_speed_ice(t, p, **kwargs):
     """
     Calculates the compression speed of sound in ice.
 
@@ -3547,10 +3547,10 @@ def sound_speed_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.sound_speed_ice(t, p)
+    return _gsw_ufuncs.sound_speed_ice(t, p, **kwargs)
 
-@match_args_return
-def sound_speed_t_exact(SA, t, p):
+@masked_array_support
+def sound_speed_t_exact(SA, t, p, **kwargs):
     """
     Calculates the speed of sound in seawater.
 
@@ -3570,10 +3570,10 @@ def sound_speed_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.sound_speed_t_exact(SA, t, p)
+    return _gsw_ufuncs.sound_speed_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def SP_from_C(C, t, p):
+@masked_array_support
+def SP_from_C(C, t, p, **kwargs):
     """
     Calculates Practical Salinity, SP, from conductivity, C, primarily using
     the PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical
@@ -3601,10 +3601,10 @@ def SP_from_C(C, t, p):
 
 
     """
-    return _gsw_ufuncs.sp_from_c(C, t, p)
+    return _gsw_ufuncs.sp_from_c(C, t, p, **kwargs)
 
-@match_args_return
-def SP_from_SA(SA, p, lon, lat):
+@masked_array_support
+def SP_from_SA(SA, p, lon, lat, **kwargs):
     """
     Calculates Practical Salinity from Absolute Salinity.
 
@@ -3626,10 +3626,10 @@ def SP_from_SA(SA, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat)
+    return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat, **kwargs)
 
-@match_args_return
-def SP_from_SA_Baltic(SA, lon, lat):
+@masked_array_support
+def SP_from_SA_Baltic(SA, lon, lat, **kwargs):
     """
     Calculates Practical Salinity for the Baltic Sea, from a value computed
     analytically from Absolute Salinity.
@@ -3652,10 +3652,10 @@ def SP_from_SA_Baltic(SA, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat)
+    return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat, **kwargs)
 
-@match_args_return
-def SP_from_SK(SK):
+@masked_array_support
+def SP_from_SK(SK, **kwargs):
     """
     Calculates Practical Salinity from Knudsen Salinity.
 
@@ -3671,10 +3671,10 @@ def SP_from_SK(SK):
 
 
     """
-    return _gsw_ufuncs.sp_from_sk(SK)
+    return _gsw_ufuncs.sp_from_sk(SK, **kwargs)
 
-@match_args_return
-def SP_from_SR(SR):
+@masked_array_support
+def SP_from_SR(SR, **kwargs):
     """
     Calculates Practical Salinity from Reference Salinity.
 
@@ -3690,10 +3690,10 @@ def SP_from_SR(SR):
 
 
     """
-    return _gsw_ufuncs.sp_from_sr(SR)
+    return _gsw_ufuncs.sp_from_sr(SR, **kwargs)
 
-@match_args_return
-def SP_from_Sstar(Sstar, p, lon, lat):
+@masked_array_support
+def SP_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     Calculates Practical Salinity from Preformed Salinity.
 
@@ -3715,10 +3715,10 @@ def SP_from_Sstar(Sstar, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat)
+    return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat, **kwargs)
 
-@match_args_return
-def SP_salinometer(Rt, t):
+@masked_array_support
+def SP_salinometer(Rt, t, **kwargs):
     """
     Calculates Practical Salinity SP from a salinometer, primarily using the
     PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical Salinity
@@ -3743,10 +3743,10 @@ def SP_salinometer(Rt, t):
 
 
     """
-    return _gsw_ufuncs.sp_salinometer(Rt, t)
+    return _gsw_ufuncs.sp_salinometer(Rt, t, **kwargs)
 
-@match_args_return
-def specvol(SA, CT, p):
+@masked_array_support
+def specvol(SA, CT, p, **kwargs):
     """
     Calculates specific volume from Absolute Salinity, Conservative
     Temperature and pressure, using the computationally-efficient 75-term
@@ -3768,10 +3768,10 @@ def specvol(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol(SA, CT, p)
+    return _gsw_ufuncs.specvol(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_alpha_beta(SA, CT, p):
+@masked_array_support
+def specvol_alpha_beta(SA, CT, p, **kwargs):
     """
     Calculates specific volume, the appropriate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
@@ -3801,10 +3801,10 @@ def specvol_alpha_beta(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p)
+    return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_anom_standard(SA, CT, p):
+@masked_array_support
+def specvol_anom_standard(SA, CT, p, **kwargs):
     """
     Calculates specific volume anomaly from Absolute Salinity, Conservative
     Temperature and pressure. It uses the computationally-efficient
@@ -3829,10 +3829,10 @@ def specvol_anom_standard(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_anom_standard(SA, CT, p)
+    return _gsw_ufuncs.specvol_anom_standard(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_first_derivatives(SA, CT, p):
+@masked_array_support
+def specvol_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following three first-order derivatives of specific
     volume (v),
@@ -3866,10 +3866,10 @@ def specvol_first_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
+@masked_array_support
+def specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following two first-order derivatives of specific
     volume (v),
@@ -3898,10 +3898,10 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_ice(t, p):
+@masked_array_support
+def specvol_ice(t, p, **kwargs):
     """
     Calculates the specific volume of ice.
 
@@ -3919,10 +3919,10 @@ def specvol_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.specvol_ice(t, p)
+    return _gsw_ufuncs.specvol_ice(t, p, **kwargs)
 
-@match_args_return
-def specvol_second_derivatives(SA, CT, p):
+@masked_array_support
+def specvol_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following five second-order derivatives of specific
     volume (v),
@@ -3966,10 +3966,10 @@ def specvol_second_derivatives(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
+@masked_array_support
+def specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following three first-order derivatives of specific
     volume (v) with respect to enthalpy,
@@ -4003,10 +4003,10 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 
-@match_args_return
-def specvol_t_exact(SA, t, p):
+@masked_array_support
+def specvol_t_exact(SA, t, p, **kwargs):
     """
     Calculates the specific volume of seawater.
 
@@ -4026,10 +4026,10 @@ def specvol_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.specvol_t_exact(SA, t, p)
+    return _gsw_ufuncs.specvol_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def spiciness0(SA, CT):
+@masked_array_support
+def spiciness0(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 0 dbar, as described by McDougall and
@@ -4052,10 +4052,10 @@ def spiciness0(SA, CT):
 
 
     """
-    return _gsw_ufuncs.spiciness0(SA, CT)
+    return _gsw_ufuncs.spiciness0(SA, CT, **kwargs)
 
-@match_args_return
-def spiciness1(SA, CT):
+@masked_array_support
+def spiciness1(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 1000 dbar, as described by McDougall and
@@ -4077,10 +4077,10 @@ def spiciness1(SA, CT):
 
 
     """
-    return _gsw_ufuncs.spiciness1(SA, CT)
+    return _gsw_ufuncs.spiciness1(SA, CT, **kwargs)
 
-@match_args_return
-def spiciness2(SA, CT):
+@masked_array_support
+def spiciness2(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 2000 dbar, as described by McDougall and
@@ -4102,10 +4102,10 @@ def spiciness2(SA, CT):
 
 
     """
-    return _gsw_ufuncs.spiciness2(SA, CT)
+    return _gsw_ufuncs.spiciness2(SA, CT, **kwargs)
 
-@match_args_return
-def SR_from_SP(SP):
+@masked_array_support
+def SR_from_SP(SP, **kwargs):
     """
     Calculates Reference Salinity from Practical Salinity.
 
@@ -4121,10 +4121,10 @@ def SR_from_SP(SP):
 
 
     """
-    return _gsw_ufuncs.sr_from_sp(SP)
+    return _gsw_ufuncs.sr_from_sp(SP, **kwargs)
 
-@match_args_return
-def Sstar_from_SA(SA, p, lon, lat):
+@masked_array_support
+def Sstar_from_SA(SA, p, lon, lat, **kwargs):
     """
     Converts Preformed Salinity from Absolute Salinity.
 
@@ -4146,10 +4146,10 @@ def Sstar_from_SA(SA, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat)
+    return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat, **kwargs)
 
-@match_args_return
-def Sstar_from_SP(SP, p, lon, lat):
+@masked_array_support
+def Sstar_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Preformed Salinity from Absolute Salinity.
     Since SP is non-negative by definition, this function changes any
@@ -4173,10 +4173,10 @@ def Sstar_from_SP(SP, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat, **kwargs)
 
-@match_args_return
-def t_deriv_chem_potential_water_t_exact(SA, t, p):
+@masked_array_support
+def t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     Calculates the temperature derivative of the chemical potential of water
     in seawater so that it is valid at exactly SA = 0.
@@ -4198,10 +4198,10 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p)
+    return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs)
 
-@match_args_return
-def t_freezing(SA, p, saturation_fraction):
+@masked_array_support
+def t_freezing(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the in-situ temperature at which seawater freezes. The
     in-situ temperature freezing point is calculated from the exact
@@ -4226,10 +4226,10 @@ def t_freezing(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def t_freezing_first_derivatives(SA, p, saturation_fraction):
+@masked_array_support
+def t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
@@ -4259,10 +4259,10 @@ def t_freezing_first_derivatives(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing_first_derivatives(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
+@masked_array_support
+def t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
@@ -4292,10 +4292,10 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def t_freezing_poly(SA, p, saturation_fraction):
+@masked_array_support
+def t_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the in-situ temperature at which seawater freezes from a
     comptationally efficient polynomial.
@@ -4317,10 +4317,10 @@ def t_freezing_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction, **kwargs)
 
-@match_args_return
-def t_from_CT(SA, CT, p):
+@masked_array_support
+def t_from_CT(SA, CT, p, **kwargs):
     """
     Calculates in-situ temperature from the Conservative Temperature of
     seawater.
@@ -4341,10 +4341,10 @@ def t_from_CT(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.t_from_ct(SA, CT, p)
+    return _gsw_ufuncs.t_from_ct(SA, CT, p, **kwargs)
 
-@match_args_return
-def t_from_pt0_ice(pt0_ice, p):
+@masked_array_support
+def t_from_pt0_ice(pt0_ice, p, **kwargs):
     """
     Calculates in-situ temperature from the potential temperature of ice Ih
     with reference pressure, p_ref, of 0 dbar (the surface), and the
@@ -4364,10 +4364,10 @@ def t_from_pt0_ice(pt0_ice, p):
 
 
     """
-    return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p)
+    return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p, **kwargs)
 
-@match_args_return
-def thermobaric(SA, CT, p):
+@masked_array_support
+def thermobaric(SA, CT, p, **kwargs):
     """
     Calculates the thermobaric coefficient of seawater with respect to
     Conservative Temperature.  This routine is based on the
@@ -4391,10 +4391,10 @@ def thermobaric(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.thermobaric(SA, CT, p)
+    return _gsw_ufuncs.thermobaric(SA, CT, p, **kwargs)
 
-@match_args_return
-def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
+@masked_array_support
+def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     Calculates height from sea pressure using the computationally-efficient
     75-term expression for specific volume in terms of SA, CT and p
@@ -4423,4 +4423,4 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
 
 
     """
-    return _gsw_ufuncs.z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential)
+    return _gsw_ufuncs.z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
