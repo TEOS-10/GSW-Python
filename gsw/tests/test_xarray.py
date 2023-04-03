@@ -14,6 +14,9 @@ import pytest
 import numpy as np
 from numpy.testing import assert_allclose
 
+import pandas as pd
+
+
 import gsw
 from gsw._utilities import Bunch
 from check_functions import parse_check_functions
@@ -141,3 +144,13 @@ def test_xarray_with_coords():
     chunked = gsw.z_from_p(p,lat_chunk)
     assert_allclose(xarray, expected)
     assert_allclose(chunked, expected)
+
+def test_pandas_20():
+    df = pd.DataFrame(
+        {
+            "pressure": [0, 10, 20],
+            "latitude": [70, 70, 70],
+        }
+    )
+    depth = -1 * gsw.z_from_p(df["pressure"], df["latitude"])
+    assert isinstance(depth, pd.core.series.Series)
