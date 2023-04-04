@@ -77,7 +77,6 @@ select = [
     "C4", # flake8-comprehensions
     "F", # flakes
     "I", # import sorting
-    # "T20", # flake8-print
     "UP", # upgrade
 ]
 target-version = "py38"
@@ -94,6 +93,14 @@ exclude = [
 ]
 
 [tool.ruff.per-file-ignores]
-"docs/source/conf.py" = [
+"docs/conf.py" = [
   "A001",
+]
+"gsw/_fixed_wrapped_ufuncs.py" = [
+  "F403",
+  "F405",
+]
+
+"gsw/_utilities.py" = [
+  "B904",
 ]

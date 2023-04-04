@@ -3,14 +3,14 @@ Tests functions with pytest, using the machinery from check_functions.py
 """
 
 import os
-import pytest
 
 import numpy as np
+import pytest
+from check_functions import parse_check_functions
 from numpy.testing import assert_allclose
 
 import gsw
 from gsw._utilities import Bunch
-from check_functions import parse_check_functions
 
 # Most of the tests have some nan values, so we need to suppress the warning.
 # Any more careful fix would likely require considerable effort.

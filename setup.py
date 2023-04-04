@@ -4,19 +4,18 @@ Minimal setup.py for building gswc.
 
 
 import os
-import sys
 import shutil
+import sys
+from distutils.command.build_ext import build_ext as _build_ext
 
 import pkg_resources
 from setuptools import Extension, setup
-from distutils.command.build_ext import build_ext as _build_ext
-
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
 
 def read(*parts):
-    return open(os.path.join(rootpath, *parts), "r").read()
+    return open(os.path.join(rootpath, *parts)).read()
 
 
 class build_ext(_build_ext):

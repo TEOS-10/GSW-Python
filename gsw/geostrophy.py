@@ -5,7 +5,7 @@ Functions for calculating geostrophic currents.
 import numpy as np
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return, indexer
+from ._utilities import indexer, match_args_return
 from .conversions import z_from_p
 
 __all__ = ['geo_strf_dyn_height',
@@ -295,7 +295,7 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
 
     if lon.shape != lat.shape or lon.ndim != 1:
         raise ValueError('lon, lat must be 1-D and matching; found shapes'
-                         ' %s and %s' % (lon.shape, lat.shape))
+                         ' {} and {}'.format(lon.shape, lat.shape))
 
     if geo_strf.ndim not in (1, 2):
         raise ValueError('geo_strf must be 1-D or 2-d; found shape %s'

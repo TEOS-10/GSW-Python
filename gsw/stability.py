@@ -16,8 +16,8 @@ an automated mechanism.
 
 import numpy as np
 
-from ._utilities import match_args_return, axis_slicer
 from ._gsw_ufuncs import grav, specvol_alpha_beta
+from ._utilities import axis_slicer, match_args_return
 
 __all__ = ['Nsquared',
            'Turner_Rsubrho',

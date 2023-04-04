@@ -25,12 +25,12 @@ is run by py.test.
 """
 
 import os
-import sys
 import re
+import sys
 
 import numpy as np
 
-from gsw import *
+from gsw import *  # noqa
 from gsw._utilities import Bunch
 
 # If we switch to using the logging module, uncomment:
@@ -77,7 +77,7 @@ def group_or(line):
     return new
 
 
-class FunctionCheck(object):
+class FunctionCheck:
     """
     Parse the line-pair for checks in gsw_check_functions.
     """
@@ -166,14 +166,14 @@ class FunctionCheck(object):
 
         self.details = parts
 
-    def run(self, locals=None):
+    def run(self, locals_=None):
         try:
-            if locals is not None:
+            if locals_ is not None:
                 _globals = globals() #dict(**globals())
-                _globals.update(locals)
+                _globals.update(locals_)
                 evalargs = (_globals,)
             else:
-                evalargs = tuple()
+                evalargs = ()
 
             # The following is needed for melting_ice_into_seawater.
             if len(self.outstrings) > 1:
@@ -184,7 +184,7 @@ class FunctionCheck(object):
             exec(self.runline + rl_ind, *evalargs)
             if len(self.outstrings) == 1:
                 if isinstance(eval(self.outstr, *evalargs), tuple):
-                    exec("%s = %s[0]" % (self.outstr, self.outstr), *evalargs)
+                    exec(f"{self.outstr} = {self.outstr}[0]", *evalargs)
             self.outlist = [eval(s, *evalargs) for s in self.outstrings]
 
             exec(self.testline, *evalargs)
@@ -230,7 +230,7 @@ def parse_check_functions(mfile):
     Return a list of FunctionCheck instances from gsw_check_functions.m
     """
 
-    with open(mfile, 'rt') as fid:
+    with open(mfile) as fid:
         mfilelines = fid.readlines()
 
     first_pass = []
@@ -321,7 +321,7 @@ if __name__ == '__main__':
     run_problems = [f for f in checks if f.exception is not None]
 
     etypes = [NameError, UnboundLocalError, TypeError, AttributeError]
-    ex_dict = dict()
+    ex_dict = {}
     for exc in etypes:
         elist = [(f.name, f.exception) for f in checks if
                  isinstance(f.exception, exc)]
@@ -351,7 +351,7 @@ if __name__ == '__main__':
     print("\n%s exceptions were raised as follows:" % len(run_problems))
     for exc in etypes:
         print("  ", exc.__name__)
-        strings = ["     %s : %s" % e for e in ex_dict[exc]]
+        strings = ["     {} : {}".format(*e) for e in ex_dict[exc]]
         print("\n".join(strings))
         print("")
 

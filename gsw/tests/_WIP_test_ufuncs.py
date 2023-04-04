@@ -5,9 +5,8 @@ This is a WIP; it doesn't work yet for all cases, and might not be a good
 approach anyway.  For now, test_check_functions is adequate, handling the
 wrapped ufuncs via check_functions "eval" and "exec" machinery.
 """
-import pytest
-
 import numpy as np
+import pytest
 from numpy.testing import assert_allclose
 
 import gsw
@@ -44,7 +43,7 @@ def test_mechanism(cfcf):
         if b == 'cf':
             cf[name] = value
         else:
-            raise ValueError("attempting to set value in %s" % (b,))
+            raise ValueError(f"attempting to set value in {b}")
 
     func = getattr(gsw._gsw_ufuncs, mfunc.name)
     args = [eval(a) for a in mfunc.argstrings]

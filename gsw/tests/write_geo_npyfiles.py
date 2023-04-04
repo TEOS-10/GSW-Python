@@ -13,6 +13,7 @@ or we update the cast input and general check value file.
 """
 
 import numpy as np
+
 import gsw
 from gsw._utilities import Bunch
 
