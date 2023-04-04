@@ -23,6 +23,12 @@ repos:
   hooks:
     - id: pyproject-fmt
 
+
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: v0.0.260
+  hooks:
+    - id: ruff
+
 ci:
     autofix_commit_msg: |
         [pre-commit.ci] auto fixes from pre-commit.com hooks
