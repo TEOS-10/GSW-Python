@@ -42,7 +42,7 @@ jobs:
         CIBW_BUILD_FRONTEND: build
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         CIBW_TEST_SKIP: "*_arm64"
-        CIBW_TEST_REQUIRES: pytest
+        CIBW_TEST_REQUIRES: pytest xarray
         CIBW_TEST_COMMAND: >
           python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
           python -m pytest --pyargs gsw
