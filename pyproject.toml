@@ -43,9 +43,8 @@ repository = "https://github.com/TEOS-10/GSW-python"
 license-files = ["LICENSE.txt"]
 zip-safe = false
 include-package-data = true
+packages = ["gsw", "gsw.tests"]
 
-[tool.setuptools.packages.find]
-where = ["gsw"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
