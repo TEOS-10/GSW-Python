@@ -34,6 +34,9 @@ dynamic = [
   "readme",
   "version",
 ]
+dependencies = [
+  "numpy>=1.21",
+]
 [project.urls]
 documentation = "https://teos-10.github.io/GSW-Python/"
 homepage = "https://www.teos-10.org/"
