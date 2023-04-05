@@ -4,9 +4,9 @@ include README.md
 graft gsw
 recursive-include src *.c
 recursive-include src *.h
-include src/c_gsw/LICENSE
 
 prune docs
+prune .github
 prune tools
 prune notebooks
 prune *.egg-info

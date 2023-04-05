@@ -50,14 +50,6 @@ ufunc_src_list = [
 ]
 
 config = {
-    # The package metadata is specified in setup.cfg but GitHub's downstream dependency graph
-    # does not work unless we put the name this here too.
-    "name": "gsw",
-    "use_scm_version": {
-        "write_to": "gsw/_version.py",
-        "write_to_template": '__version__ = "{version}"',
-        "tag_regex": r"^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$",
-    },
     "ext_modules": [Extension("gsw._gsw_ufuncs", ufunc_src_list)],
     "include_dirs": [os.path.join(rootpath, "src", "c_gsw")],
     "cmdclass": {"build_ext": build_ext},
