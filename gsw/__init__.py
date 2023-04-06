@@ -36,6 +36,7 @@ from ._fixed_wrapped_ufuncs import *
 from .stability import *
 from .geostrophy import *
 from .utility import *
+from .gibbs_function import gibbs
 from . import geostrophy
 from . import utility
 from . import stability
