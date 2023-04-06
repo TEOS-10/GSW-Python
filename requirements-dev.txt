@@ -6,6 +6,5 @@ setuptools_scm
 sphinx
 sphinx_rtd_theme
 twine
-xarray
 pandas>=2
 dask
