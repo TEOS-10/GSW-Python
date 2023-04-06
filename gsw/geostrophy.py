@@ -50,16 +50,15 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
     """
     interp_methods = {'pchip' : 2, 'linear' : 1}
     if interp_method not in interp_methods:
-        raise ValueError('interp_method must be one of %s'
-                         % (interp_methods.keys(),))
+        raise ValueError(f'interp_method must be one of {interp_methods.keys()}')
     if SA.shape != CT.shape:
-        raise ValueError('Shapes of SA and CT must match; found %s and %s'
-                         % (SA.shape, CT.shape))
+        raise ValueError(f'Shapes of SA and CT must match; found {SA.shape} and {CT.shape}')
     if p.ndim == 1 and SA.ndim > 1:
         if len(p) != SA.shape[axis]:
-            raise ValueError('With 1-D p, len(p) must be SA.shape[axis];\n'
-                             ' found %d versus %d on specified axis, %d'
-                             % (len(p), SA.shape[axis], axis))
+            raise ValueError(
+                f'With 1-D p, len(p) must be SA.shape[axis];\n'
+                f' found {len(p)} versus {SA.shape[axis]} on specified axis, {axis}'
+                )
         ind = [np.newaxis] * SA.ndim
         ind[axis] = slice(None)
         p = p[tuple(ind)]
@@ -294,12 +293,10 @@ def geostrophic_velocity(geo_strf, lon, lat, p=0, axis=0):
     lon = unwrap(lon)
 
     if lon.shape != lat.shape or lon.ndim != 1:
-        raise ValueError('lon, lat must be 1-D and matching; found shapes'
-                         ' {} and {}'.format(lon.shape, lat.shape))
+        raise ValueError(f'lon, lat must be 1-D and matching; found shapes {lon.shape} and {lat.shape}')
 
     if geo_strf.ndim not in (1, 2):
-        raise ValueError('geo_strf must be 1-D or 2-d; found shape %s'
-                         % (geo_strf.shape,))
+        raise ValueError(f'geo_strf must be 1-D or 2-d; found shape {geo_strf.shape}')
 
     laxis = 0 if axis else -1
 
