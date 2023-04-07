@@ -31,21 +31,12 @@ original Matlab code, but with a few important differences:
 """
 
 
-from ._fixed_wrapped_ufuncs import *
-
-from .stability import *
-from .geostrophy import *
-from .utility import *
-from . import geostrophy
-from . import utility
-from . import stability
-from . import density
-from . import energy
-from . import conversions
-
-from . import ice
-
+from . import conversions, density, energy, geostrophy, ice, stability, utility
+from ._fixed_wrapped_ufuncs import *  # noqa
 from .conversions import t90_from_t68
+from .geostrophy import *  # noqa
+from .stability import *  # noqa
+from .utility import *  # noqa
 
 try:
     from ._version import __version__

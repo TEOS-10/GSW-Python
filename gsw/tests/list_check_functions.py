@@ -6,9 +6,9 @@ that are in gsw_check_functions but are not in gsw.
 import os
 
 import numpy as np
+from check_functions import parse_check_functions
 
 import gsw
-from check_functions import parse_check_functions
 
 root_path = os.path.abspath(os.path.dirname(__file__))
 

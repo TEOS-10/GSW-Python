@@ -2,6 +2,7 @@ from functools import wraps
 
 import numpy as np
 
+
 def masked_to_nan(arg):
     """
     Convert a masked array to a float ndarray with nans; ensure
@@ -104,7 +105,7 @@ def indexer(shape, axis, order='C'):
     else:
         index_position = list(range(ndim))
 
-    for k in range(kmax):
+    for _k in range(kmax):
         yield tuple(inds)
 
         for i in index_position:
@@ -158,8 +159,8 @@ class Bunch(dict):
     def __getattr__(self, name):
         try:
             return self[name]
-        except KeyError:
-            raise AttributeError("'Bunch' object has no attribute '%s'" % name)
+        except KeyError as err:
+            raise AttributeError(f"'Bunch' object has no attribute {name}. {err}")
 
     def __setattr__(self, name, value):
         self[name] = value
@@ -208,7 +209,7 @@ class Bunch(dict):
         # Python 3 the scoping for list comprehensions would
         # lead to a NameError.  Wrapping the code in a function
         # fixes this.
-        d = dict()
+        d = {}
         lines = ["def _temp_func():\n"]
         with open(filename) as f:
             lines.extend(["    " + line for line in f])
@@ -232,12 +233,12 @@ class Bunch(dict):
         already in the Bunch instance will raise a KeyError.
         """
         strict = kw.pop("strict", False)
-        newkw = dict()
+        newkw = {}
         for d in args:
             newkw.update(d)
         newkw.update(kw)
         self._check_strict(strict, newkw)
-        dsub = dict([(k, v) for (k, v) in newkw.items() if k in self])
+        dsub = {k: v for (k, v) in newkw.items() if k in self}
         self.update(dsub)
 
     def update_None(self, *args, **kw):
@@ -246,13 +247,13 @@ class Bunch(dict):
         will be updated only if it is None.
         """
         strict = kw.pop("strict", False)
-        newkw = dict()
+        newkw = {}
         for d in args:
             newkw.update(d)
         newkw.update(kw)
         self._check_strict(strict, newkw)
-        dsub = dict([(k, v) for (k, v) in newkw.items()
-                                if k in self and self[k] is None])
+        dsub = {k: v for (k, v) in newkw.items()
+                                if k in self and self[k] is None}
         self.update(dsub)
 
     def _check_strict(self, strict, kw):
@@ -264,4 +265,4 @@ class Bunch(dict):
                 ek = list(self.keys())
                 ek.sort()
                 raise KeyError(
-                    "Update keys %s don't match existing keys %s" % (bk, ek))
+                    f"Update keys {bk} don't match existing keys {ek}")

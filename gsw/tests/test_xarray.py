@@ -9,17 +9,15 @@ An additional xarray-dask test is added.
 """
 
 import os
-import pytest
 
 import numpy as np
-from numpy.testing import assert_allclose
-
 import pandas as pd
-
+import pytest
+from check_functions import parse_check_functions
+from numpy.testing import assert_allclose
 
 import gsw
 from gsw._utilities import Bunch
-from check_functions import parse_check_functions
 
 xr = pytest.importorskip('xarray')
 

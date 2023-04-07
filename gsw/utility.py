@@ -5,7 +5,8 @@ Functions not specific to the TEOS-10 realm of variables.
 import numpy as np
 
 from . import _gsw_ufuncs
-from ._utilities import match_args_return, indexer
+from ._utilities import indexer, match_args_return
+
 
 @match_args_return
 def pchip_interp(x, y, xi, axis=0):
@@ -44,7 +45,6 @@ def pchip_interp(x, y, xi, axis=0):
         raise ValueError('xi must be no more than 1-dimensional')
     nxi = xi.size
     x, y = np.broadcast_arrays(x, y)
-    shape0 = x.shape
     out_shape = list(x.shape)
     out_shape[axis] = nxi
     yi = np.empty(out_shape, dtype=float)

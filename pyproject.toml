@@ -77,16 +77,15 @@ select = [
     "C4", # flake8-comprehensions
     "F", # flakes
     "I", # import sorting
-    # "T20", # flake8-print
     "UP", # upgrade
 ]
 target-version = "py38"
 line-length = 105
 
 ignore = [
-    "F401",
-    "E501",
-    "E713",
+    "F401",  # module imported but unused
+    "E501",  # line too long
+    "E713",  # test for membership should be 'not in'
 ]
 
 exclude = [
@@ -94,6 +93,14 @@ exclude = [
 ]
 
 [tool.ruff.per-file-ignores]
-"docs/source/conf.py" = [
-  "A001",
+"docs/conf.py" = [
+  "A001",  # variable is shadowing a python builtin
+]
+"gsw/_fixed_wrapped_ufuncs.py" = [
+  "F403",  #'from x import *' used; unable to detect undefined names
+  "F405",  # 'import' may be undefined, or defined from star imports
+]
+
+"gsw/_utilities.py" = [
+  "B904",  # Within an ``except`` clause, raise exceptions with ``raise ... from err``
 ]
