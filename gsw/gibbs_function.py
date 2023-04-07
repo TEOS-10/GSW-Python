@@ -7,12 +7,20 @@ from . import _gsw_ufuncs
 from ctypes import CDLL, c_double
 
 
-def _set_gibbs():
+def _get_compiled_gibbs():
     name = "gsw_gibbs"
     libname = _gsw_ufuncs.__file__
     libobj = CDLL(libname)
     gibbs_compiled = getattr(libobj, name)
     gibbs_compiled.restype = c_double
+    return gibbs_compiled
+
+
+_gibbs_compiled = _get_compiled_gibbs()
+
+
+def _set_gibbs():
+    gibbs_compiled = _get_compiled_gibbs()
 
     def gibbs(ns, nt, np, SA, CT, p):
         """
@@ -55,4 +63,11 @@ def _set_gibbs():
     return gibbs
 
 
+def _basic_gibbs(ns, nt, np, SA, CT, p):
+    """ this doc is lost during the ufunc-ification"""
+    return _gibbs_compiled(ns, nt, np, c_double(SA), c_double(CT), c_double(p))
+
+
 gibbs = _set_gibbs()
+
+gibbs_ufunc = numpy.frompyfunc(_basic_gibbs, 6, 1)

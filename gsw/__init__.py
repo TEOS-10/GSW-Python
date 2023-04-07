@@ -36,7 +36,7 @@ from ._fixed_wrapped_ufuncs import *
 from .stability import *
 from .geostrophy import *
 from .utility import *
-from .gibbs_function import gibbs
+from .gibbs_function import gibbs, gibbs_ufunc
 from . import geostrophy
 from . import utility
 from . import stability
@@ -52,3 +52,4 @@ try:
     from ._version import __version__
 except ImportError:
     __version__ = "unknown"
+
