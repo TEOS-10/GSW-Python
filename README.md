@@ -73,7 +73,9 @@ are, and about where upstream repos are.
 
 ## Scripts
 - `copy_from_GSW-C.py`: copies the relevant .c and .h files from a
-    sibling GSW-C repo, if the latter are newer.
+    sibling [GSW-C repo](https://github.com/TEOS-10/GSW-C), if the latter are newer.
+    You'll need to clone the GSW-C repo before running this
+    and placing it one directory down the GSW-Python source.
 - `make_ufuncs.py`: Generates the src/_ufuncs.c file to turn the
     scalar C functions into numpy ufuncs.  It writes ufuncs.list
     in the current directory as a record of the ufunc names.
@@ -81,6 +83,8 @@ are, and about where upstream repos are.
     signatures, parsed from src/c_gsw/gswteos-10.h.
 - `make_wrapped_ufuncs.py`: Generates gsw/_wrapped_ufuncs.py based on
     the output of make_ufuncs.py.
+    You'll need to clone the [GSW-Matlab](https://github.com/TEOS-10/GSW-Matlab)
+    and place it on directory down the same way as GSW-C from above.
 - `mat2npz.py`: generates an npz file in gsw/tests containing the
     test data and check values from the gsw_data_v3_0.mat file
     in the sibling GSW-Matlab repo.

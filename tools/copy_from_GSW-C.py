@@ -20,6 +20,12 @@ fnames = ['gsw_oceanographic_toolbox.c',
 srcdir = Path('..', '..', 'GSW-C')
 destdir = Path('..', 'src', 'c_gsw')
 
+if not srcdir.exists():
+    raise IOError(
+        f"Could not find the GSW-C source code in {srcdir}."
+        "Please read the development notes to find how to setup your GSW-Python development environment."
+        )
+
 for fname in fnames:
     src = srcdir.joinpath(fname)
     dest = destdir.joinpath(fname)
