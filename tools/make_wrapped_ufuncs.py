@@ -27,6 +27,9 @@ blacklist = {'ct_freezing_exact',
 't_freezing_exact',
 }
 
+# Functions with integer arguments at the start of the argument list.
+first_float_dict = {"gibbs": 3, "gibbs_ice": 2}
+
 wrapper_head = '''
 """
 Auto-generated wrapper for C ufunc extension; do not edit!
@@ -139,6 +142,7 @@ def uf_wrapper(ufname):
     subs = dict(ufuncname=ufname,
                 funcname=msig['name'],
                 args=argstr,
+                first_float=first_float_dict.get(msig['name'], 0),
                 )
     helpdict = get_helpdict(msig['path'])
 

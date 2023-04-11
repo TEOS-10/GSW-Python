@@ -36,6 +36,14 @@ def match_args_return(f):
         hasmasked = np.any(ismasked)
         hasduck = np.any(isduck)
 
+        # Handle the leading integer arguments in gibbs and gibbs_ice.
+        if hasattr(f, "types"):
+            argtypes = f.types[0].split("->")[0]
+            first_double = argtypes.index("d")
+        else:
+            first_double = 0
+
+
         def fixup(ret):
             if hasduck:
                 return ret
@@ -50,7 +58,9 @@ def match_args_return(f):
 
         newargs = []
         for i, arg in enumerate(args):
-            if ismasked[i]:
+            if i < first_double:
+                newargs.append(arg)  # for gibbs and gibbs_ice
+            elif ismasked[i]:
                 newargs.append(masked_to_nan(arg))
             elif isduck[i]:
                 newargs.append(arg)

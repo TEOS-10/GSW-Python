@@ -602,6 +602,96 @@ static char types_ddd_ddddd[] = {
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
 };
+/* 2 int in, 2 double in, 1 out */
+static void loop1d_iidd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *in2 = args[2];
+    npy_intp in_step2 = steps[2];
+    char *in3 = args[3];
+    npy_intp in_step3 = steps[3];
+    char *out0 = args[4];
+    npy_intp out_step0 = steps[4];
+    double (*func)(int, int, double, double);
+    double outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in2)||isnan(*(double *)in3)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func((int)*(long long *)in0, (int)*(long long *)in1, *(double *)in2, *(double *)in3);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_iidd_d[] = {&loop1d_iidd_d};
+
+static char types_iidd_d[] = {
+        NPY_INT64, NPY_INT64, 
+        NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_DOUBLE, 
+};
+/* 3 int in, 3 double in, 1 out */
+static void loop1d_iiiddd_d(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *in2 = args[2];
+    npy_intp in_step2 = steps[2];
+    char *in3 = args[3];
+    npy_intp in_step3 = steps[3];
+    char *in4 = args[4];
+    npy_intp in_step4 = steps[4];
+    char *in5 = args[5];
+    npy_intp in_step5 = steps[5];
+    char *out0 = args[6];
+    npy_intp out_step0 = steps[6];
+    double (*func)(int, int, int, double, double, double);
+    double outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in3)||isnan(*(double *)in4)||isnan(*(double *)in5)) {
+            *((double *)out0) = NAN;
+        } else {
+            outd0 = func((int)*(long long *)in0, (int)*(long long *)in1, (int)*(long long *)in2, *(double *)in3, *(double *)in4, *(double *)in5);
+            *((double *)out0) = CONVERT_INVALID(outd0);
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        in4 += in_step4;
+        in5 += in_step5;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_iiiddd_d[] = {&loop1d_iiiddd_d};
+
+static char types_iiiddd_d[] = {
+        NPY_INT64, NPY_INT64, NPY_INT64, 
+        NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_DOUBLE, 
+};
 static void *data_enthalpy_sso_0[] = {&gsw_enthalpy_sso_0};
 static void *data_gibbs_ice_pt0[] = {&gsw_gibbs_ice_pt0};
 static void *data_gibbs_ice_pt0_pt0[] = {&gsw_gibbs_ice_pt0_pt0};
@@ -767,6 +857,8 @@ static void *data_melting_ice_into_seawater[] = {&gsw_melting_ice_into_seawater}
 static void *data_seaice_fraction_to_freeze_seawater[] = {&gsw_seaice_fraction_to_freeze_seawater};
 static void *data_rho_second_derivatives[] = {&gsw_rho_second_derivatives};
 static void *data_specvol_second_derivatives[] = {&gsw_specvol_second_derivatives};
+static void *data_gibbs_ice[] = {&gsw_gibbs_ice};
+static void *data_gibbs[] = {&gsw_gibbs};
 
 
 #include "method_bodies.c"
@@ -2785,6 +2877,32 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     PyDict_SetItemString(d, "specvol_second_derivatives", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_iidd_d,
+                                    data_gibbs_ice,
+                                    types_iidd_d,
+                                    1, 4, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "gibbs_ice",
+                                    "gibbs_ice_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "gibbs_ice", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_iiiddd_d,
+                                    data_gibbs,
+                                    types_iiiddd_d,
+                                    1, 6, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "gibbs",
+                                    "gibbs_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "gibbs", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    
 
     return m;
 }

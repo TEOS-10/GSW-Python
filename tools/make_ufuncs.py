@@ -9,7 +9,8 @@ import sys
 import shutil
 
 from c_header_parser import (get_simple_sig_dict,
-                             get_complex_scalar_dict_by_nargs_nreturns)
+                             get_complex_scalar_dict_by_nargs_nreturns,
+                             get_mixed_sigdict)
 
 blacklist = ['add_barrier']
 
@@ -163,6 +164,90 @@ def modfile_loop_entry(nin, nout):
     return '\n'.join(linelist)
 
 
+def modfile_loop_entry_from_sig(sig):
+    """
+    Special case for gibbs, gibbs_ice.
+    Assume the first half of the args are int, the remainder are double.
+    Return is a double.
+    This could all be generalized, but there is probably no need to do so.
+    It could also be simplified by stripping out the handling of nout > 1.
+    """
+    nin = len(sig["argtypes"])
+    nout = 1
+    # loop_id = f"{'i' * (nin//2)}{'d' * (nin//2)}_{'d' * nout}"
+    loop_id = sig["letter_sig"]
+    linelist = ['/* %d int in, %d double in, %d out */' % (nin//2, nin//2, nout)]
+    linelist.extend([
+    'static void loop1d_%s(char **args, npy_intp const *dimensions,' % loop_id,
+    '                          npy_intp const* steps, void* data)',
+    '{',
+    '    npy_intp i;',
+    '    npy_intp n = dimensions[0];'])
+    for i in range(nin):
+        linelist.append('    char *in%d = args[%d];' % (i, i))
+        linelist.append('    npy_intp in_step%d = steps[%d];' % (i, i))
+    for i in range(nout):
+        linelist.append('    char *out%d = args[%d];' % (i, i+nin))
+        linelist.append('    npy_intp out_step%d = steps[%d];' % (i, i+nin))
+    intypes = ', '.join(['int'] * (nin//2) + ['double'] * (nin//2))
+    if nout == 1:
+        linelist.append('    double (*func)(%s);' % (intypes,))
+    else:
+        outtypes = ', '.join(['double *'] * nout)
+        linelist.append('    void (*func)(%s, %s);' % (intypes, outtypes))
+
+    douts = []
+    for i in range(nout):
+        douts.append('outd%d' % (i,))
+    linelist.append('    double %s;' % ', '.join(douts))
+    linelist.extend([
+    '    func = data;',
+    '',
+    '    for (i = 0; i < n; i++) {'])
+    tests = []
+    args = []
+    for i in range(nin//2, nin):
+        tests.append('isnan(*(double *)in%d)' % i)
+    for i in range(nin//2):
+        args.append('(int)*(long long *)in%d' % i)
+    for i in range(nin//2, nin):
+        args.append('*(double *)in%d' % i)
+    linelist.append('        if (%s) {' % '||'.join(tests))
+    outs = []
+    for i in range(nout):
+        outs.append('*((double *)out%d) = NAN;' % i)
+    linelist.append('            %s' % ''.join(outs))
+    linelist.append('        } else {')
+    if nout > 1:
+        for i in range(nout):
+            args.append('&outd%d' % i)
+        linelist.append('            func(%s);' % ', '.join(args))
+    else:
+        linelist.append('            outd0 = func(%s);' % ', '.join(args))
+    for i in range(nout):
+        linelist.append('            *((double *)out%d)' % (i,)
+                        + ' = CONVERT_INVALID(outd%d);' % (i,))
+    linelist.append('        }')
+    for i in range(nin):
+        linelist.append('        in%d += in_step%d;' % (i, i))
+    for i in range(nout):
+        linelist.append('        out%d += out_step%d;' % (i, i))
+
+    linelist.extend(['    }', '}', ''])
+    linelist.append('static PyUFuncGenericFunction'
+                    ' funcs_%s[] = {&loop1d_%s};' % (loop_id, loop_id))
+    linelist.append('')
+    linelist.append('static char types_%s[] = {' % (loop_id,))
+
+    linelist.append('        ' + 'NPY_INT64, ' * (nin//2))
+    linelist.append('        ' + 'NPY_DOUBLE, ' * (nin//2))
+    linelist.append('        ' + 'NPY_DOUBLE, ' * nout)
+    linelist.extend(['};', ''])
+
+    return '\n'.join(linelist)
+
+
+
 
 def modfile_array_entry(funcname):
     return "static void *data_%s[] = {&gsw_%s};\n" % (funcname, funcname)
@@ -187,13 +272,36 @@ def modfile_init_entry(funcname, nin, nout):
     return _init_entry % dict(funcname=funcname, nin=nin, nout=nout,
                               ndin='d'*nin, ndout='d'*nout)
 
+def modfile_init_entry_from_sig(sig):
+    # Specialized for the gibbs functions.
+    funcname = sig["name"]
+    nin = len(sig["argtypes"])
+    nout = 1
+    letter_sig = sig["letter_sig"]
+    entry = """
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(letter_sig)s,
+                                    data_%(funcname)s,
+                                    types_%(letter_sig)s,
+                                    1, %(nin)d, %(nout)d,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "%(funcname)s",
+                                    "%(funcname)s_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "%(funcname)s", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    """
+    return entry % vars()
 
 def write_modfile(modfile_name, srcdir):
     argcategories1 = get_simple_sig_dict(srcdir=srcdir)
     argcategories2 = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
+    argcategories3 = get_mixed_sigdict(srcdir=srcdir)
 
     funcnamelist1 = []
     funcnamelist2 = []
+    funcnamelist3 = list(argcategories3.keys())
 
     nins = range(1, 6)
     artups = [(2, 2), (3, 2), (3, 3), (6, 2), (2, 3), (4, 3), (5, 3), (3, 5)]
@@ -206,6 +314,9 @@ def write_modfile(modfile_name, srcdir):
     modfile_head = '\n'.join(modfile_head_parts)
 
     chunks = [modfile_head]
+
+    for sig in argcategories3.values():
+        chunks.append(modfile_loop_entry_from_sig(sig))
 
     for nin in nins:
         for funcname in sorted(argcategories1[nin]):
@@ -221,6 +332,9 @@ def write_modfile(modfile_name, srcdir):
             chunks.append(modfile_array_entry(funcname))
             funcnamelist2.append(funcname)
 
+    for funcname in funcnamelist3:
+        chunks.append(modfile_array_entry(funcname))
+
     chunks.append(modfile_middle)
 
     for nin in nins:
@@ -235,6 +349,8 @@ def write_modfile(modfile_name, srcdir):
                 continue
             chunks.append(modfile_init_entry(funcname, *artup))
 
+    for sig in argcategories3.values():
+        chunks.append(modfile_init_entry_from_sig(sig))
 
     chunks.append(modfile_tail)
 
@@ -249,7 +365,7 @@ def write_modfile(modfile_name, srcdir):
     with open(srcdir + '_ufuncs2.list', 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
-    funcnamelist = funcnamelist1 + funcnamelist2
+    funcnamelist = funcnamelist1 + funcnamelist2 + funcnamelist3
     funcnamelist.sort()
     with open(srcdir + '_ufuncs.list', 'w') as f:
         f.write('\n'.join(funcnamelist))

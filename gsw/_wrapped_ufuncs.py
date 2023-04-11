@@ -98,7 +98,7 @@ def alpha_on_beta(SA, CT, p):
 
     Returns
     -------
-    alpha_on_beta : array-like, kg g^-1 K^-1
+    alpha_on_beta : array-like, g kg^-1 K^-1
         thermal expansion coefficient with respect to
         Conservative Temperature divided by the saline
         contraction coefficient at constant Conservative
@@ -310,7 +310,7 @@ def chem_potential_water_t_exact(SA, t, p):
 @match_args_return
 def cp_ice(t, p):
     """
-    Calculates the isobaric heat capacity of seawater.
+    Calculates the isobaric heat capacity of ice.
 
     Parameters
     ----------
@@ -1507,6 +1507,18 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
     return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih)
 
 @match_args_return
+def gibbs(ns, nt, np, SA, t, p):
+    """(no description available)
+    """
+    return _gsw_ufuncs.gibbs(ns, nt, np, SA, t, p)
+
+@match_args_return
+def gibbs_ice(nt, np, t, p):
+    """(no description available)
+    """
+    return _gsw_ufuncs.gibbs_ice(nt, np, t, p)
+
+@match_args_return
 def gibbs_ice_part_t(t, p):
     """
     part of the first temperature derivative of Gibbs energy of ice
@@ -2409,7 +2421,7 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
     """
     Calculates the first derivatives of the potential enthalpy of ice Ih at
     which ice melts into seawater with Absolute Salinity SA and at pressure
-    p.  This code uses the comptationally efficient polynomial fit of the
+    p.  This code uses the computationally efficient polynomial fit of the
     freezing potential enthalpy of ice Ih (McDougall et al., 2015).
 
     Parameters
@@ -2910,12 +2922,11 @@ def rho_first_derivatives(SA, CT, p):
 @match_args_return
 def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     """
-    Calculates the following two first-order derivatives of specific
-    volume (v),
-    (1) rho_SA, first-order derivative with respect to Absolute Salinity
-    at constant CT & p.
-    (2) rho_h, first-order derivative with respect to SA & CT at
-    constant p.
+    Calculates the following two first-order derivatives of rho,
+    (1) rho_SA_wrt_h, first-order derivative with respect to Absolute
+    Salinity at constant h & p.
+    (2) rho_h, first-order derivative with respect to h at
+    constant SA & p.
 
     Parameters
     ----------
@@ -2928,10 +2939,10 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
 
     Returns
     -------
-    rho_SA : array-like, J/(kg (g/kg)^2)
+    rho_SA_wrt_h : array-like, ((kg/m^3)(g/kg)^-1
         The first derivative of rho with respect to
         Absolute Salinity at constant CT & p.
-    rho_h : array-like, J/(kg K(g/kg))
+    rho_h : array-like, (m^3/kg)(J/kg)^-1
         The first derivative of rho with respect to
         SA and CT at constant p.
 
@@ -3031,7 +3042,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
 
     Returns
     -------
-    rho_SA_SA : array-like, J/(kg (g/kg)^2)
+    rho_SA_SA : array-like, (kg/m^3)(g/kg)^-2
         The second-order derivative of rho with respect to
         Absolute Salinity at constant h & p.
     rho_SA_h : array-like, J/(kg K(g/kg))
@@ -3889,7 +3900,7 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
 
     Returns
     -------
-    v_SA_wrt_h : array-like, (m^3/kg)(g/kg)^-1 (J/kg)^-1
+    v_SA_wrt_h : array-like, (m^3/kg)(g/kg)^-1
         The first derivative of specific volume with respect to
         Absolute Salinity at constant CT & p.
     v_h : array-like, (m^3/kg)(J/kg)^-1
@@ -3957,7 +3968,7 @@ def specvol_second_derivatives(SA, CT, p):
     v_CT_CT : array-like, (m^3/kg) K^-2)
         The second derivative of specific volume with respect to
         CT at constant SA and p.
-    v_SA_P : array-like, (m^3/kg) Pa^-1
+    v_SA_P : array-like, (m^3/kg)(g/kg)^-1 Pa^-1
         The second derivative of specific volume with respect to
         SA and P at constant CT.
     v_CT_P : array-like, (m^3/kg) K^-1 Pa^-1
@@ -3991,7 +4002,7 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
 
     Returns
     -------
-    v_SA_SA_wrt_h : array-like, (m^3/kg)(g/kg)^-2 (J/kg)^-1
+    v_SA_SA_wrt_h : array-like, (m^3/kg)(g/kg)^-2
         The second-order derivative of specific volume with
         respect to Absolute Salinity at constant h & p.
     v_SA_h : array-like, (m^3/kg)(g/kg)^-1 (J/kg)^-1
