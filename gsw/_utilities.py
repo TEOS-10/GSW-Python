@@ -37,6 +37,8 @@ def match_args_return(f):
         hasduck = np.any(isduck)
 
         # Handle the leading integer arguments in gibbs and gibbs_ice.
+        # Wrapped ufuncs are constructed with the "types" attribute from the
+        # underlying ufunc.
         if hasattr(f, "types"):
             argtypes = f.types[0].split("->")[0]
             first_double = argtypes.index("d")

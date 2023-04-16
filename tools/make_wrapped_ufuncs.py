@@ -11,7 +11,7 @@ from _utilities import Bunch
 
 from matlab_parser import get_complete_sigdict, get_helpdict
 from c_header_parser import get_signatures, parse_signatures
-from docstring_parts import parameters
+from docstring_parts import parameters, return_overrides
 from docstring_utils import (paragraphs,
                              fix_outputs_doc,
                              docstring_from_sections)
@@ -27,9 +27,6 @@ blacklist = {'ct_freezing_exact',
 't_freezing_exact',
 }
 
-# Functions with integer arguments at the start of the argument list.
-first_float_dict = {"gibbs": 3, "gibbs_ice": 2}
-
 wrapper_head = '''
 """
 Auto-generated wrapper for C ufunc extension; do not edit!
@@ -40,13 +37,38 @@ from ._utilities import match_args_return
 
 '''
 
+## Alternatives: The first was the original, but it did not provide a way to
+# tell the decorator about the signature of the ufunc. The second solved that
+# problem, but failed to provide the argument names for the signature in the
+# help function and the ipython "?" functionality.
+
+# wrapper_template = '''
+# @match_args_return
+# def %(funcname)s(%(args)s):
+#     """%(doc)s
+#     """
+#     return _gsw_ufuncs.%(ufuncname)s(%(args)s)
+# '''
+
+# wrapper_template = """
+# %(funcname)s = match_args_return(_gsw_ufuncs.%(ufuncname)s)
+# %(funcname)s.__doc__ = '''%(doc)s
+# '''
+# """
+
+# Make a Python function with the proper list of arguments; add the 'types'
+# attribute for the use of the decorator; then use the decorator in its
+# function form.
 wrapper_template = '''
-@match_args_return
 def %(funcname)s(%(args)s):
     """%(doc)s
     """
     return _gsw_ufuncs.%(ufuncname)s(%(args)s)
+%(funcname)s.types = _gsw_ufuncs.%(ufuncname)s.types
+%(funcname)s = match_args_return(%(funcname)s)
 '''
+
+
 
 
 def get_argnames(ufname):
@@ -75,6 +97,7 @@ def get_argnames(ufname):
     return argnames
 
 def get_argname_set():
+    # This is not currently used internally.
     argset = set()
     for ufname in ufunclist:
         args = get_argnames(ufname)
@@ -83,6 +106,7 @@ def get_argname_set():
     return argset
 
 def get_ufnames_by_arg():
+    # This is not currently used internally.
     argdict = dict()
     for ufname in ufunclist:
         args = get_argnames(ufname)
@@ -97,6 +121,7 @@ def get_ufnames_by_arg():
 
 
 def get_outnames(ufname):
+    # This is currently used only in get_outname_set, which is not used internally.
     try:
         msig = Bunch(msigdict[ufname])
     except KeyError:
@@ -111,6 +136,7 @@ def get_outnames(ufname):
     return outnames
 
 def get_outname_set():
+    # This is not currently used internally.
     argset = set()
     for ufname in ufunclist:
         args = get_outnames(ufname)
@@ -119,6 +145,7 @@ def get_outname_set():
     return argset
 
 def get_help_output_dict():
+    # This is not currently used internally.
     out = Bunch()
     for ufname in ufunclist:
         msig = msigdict[ufname]
@@ -130,6 +157,8 @@ def get_help_output_dict():
         else:
             raw = ''
             outdoc = ['']
+        if ufname in return_overrides:
+            outdoc = return_overrides[ufname]
         out[ufname] = Bunch(raw=raw, outdoc=outdoc)
     return out
 
@@ -142,7 +171,6 @@ def uf_wrapper(ufname):
     subs = dict(ufuncname=ufname,
                 funcname=msig['name'],
                 args=argstr,
-                first_float=first_float_dict.get(msig['name'], 0),
                 )
     helpdict = get_helpdict(msig['path'])
 
@@ -166,6 +194,8 @@ def uf_wrapper(ufname):
             outdoc = fix_outputs_doc(helpdict['OUTPUT'])
         else:
             outdoc = ['None']
+        if ufname in return_overrides:
+            outdoc = return_overrides[ufname]
         sections['Returns'] = outdoc
         doc = docstring_from_sections(sections)
     except KeyError as e:

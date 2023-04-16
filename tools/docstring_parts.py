@@ -50,4 +50,31 @@ geo_strf_dyn_height = """dynamic height anomaly, m^2/s^2
     Note that the reference pressure, p_ref, of geo_strf_dyn_height must
     be zero (0) dbar.""",
 sea_surface_geopotential = "geopotential at zero sea pressure,  m^2/s^2",
+ns = "order of SA derivative, integer in (0, 1, 2)",
+nt = "order of t derivative, integer in (0, 1, 2)",
+np = "order of p derivative, integer in (0, 1, 2)",
+)
+
+return_overrides = dict(
+    gibbs = [
+    "gibbs : array-like",
+    "    Specific Gibbs energy or its derivatives.",
+    "    The Gibbs energy (when ns = nt = np = 0) has units of J/kg.",
+    "    The Absolute Salinity derivatives are output in units of (J/kg) (g/kg)^(-ns).",
+    "    The temperature derivatives are output in units of (J/kg) (K)^(-nt).",
+    "    The pressure derivatives are output in units of (J/kg) (Pa)^(-np).",
+    "    The mixed derivatives are output in units of (J/kg) (g/kg)^(-ns) (K)^(-nt) (Pa)^(-np).",
+    "    Note: The derivatives are taken with respect to pressure in Pa, not",
+    "    withstanding that the pressure input into this routine is in dbar.",
+    ],
+    gibbs_ice = [
+    "gibbs_ice : array-like",
+    "    Specific Gibbs energy of ice or its derivatives.",
+    "    The Gibbs energy (when nt = np = 0) has units of J/kg.",
+    "    The temperature derivatives are output in units of (J/kg) (K)^(-nt).",
+    "    The pressure derivatives are output in units of (J/kg) (Pa)^(-np).",
+    "    The mixed derivatives are output in units of (J/kg) (K)^(-nt) (Pa)^(-np).",
+    "    Note. The derivatives are taken with respect to pressure in Pa, not",
+    "    withstanding that the pressure input into this routine is in dbar.",
+    ]
 )
