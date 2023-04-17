@@ -33,7 +33,7 @@ _gibbs_ice = gibbs_ice
 def gibbs_ice(nt, np, t, p):
     params = {"nt": nt, "np": np}
     for k, v in params.items():
-        u = np.unique(v)
+        u = numpy.unique(v)
         if u.min() < 0 or u.max() > 2 or u.dtype.kind != "i":
             raise ValueError("nt, np must contain integers 0, 1, or 2;"
                              f" found {k}={v}")

@@ -13,7 +13,8 @@ repos:
       exclude: >
           (?x)^(
               .*\.c|
-              tools/fix_wrapped_ufunc_typos\.py
+              tools/fix_wrapped_ufunc_typos\.py|
+              gsw/tests/test_gibbs\.py
           )$
       args:
         - --ignore-words-list=nin,preformed,wih,
