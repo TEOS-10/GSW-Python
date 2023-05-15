@@ -9,6 +9,12 @@ from pathlib import Path
 basedir = Path('..').resolve()
 
 gsw_matlab_dir = basedir.joinpath('..', 'GSW-Matlab', 'Toolbox').resolve()
+if not gsw_matlab_dir.exists():
+    raise IOError(
+        f"Could not find the GSW-Matlab source code in {gsw_matlab_dir}."
+        "Please read the development notes to find how to setup your GSW-Python development environment."
+        )
+
 gsw_matlab_subdirs = ['library', 'thermodynamics_from_t']
 
 # pattern for functions returning one variable
