@@ -105,17 +105,27 @@ def get_help_text(fname):
         return help
 
 def help_text_to_dict(help):
+    """
+    Divide the help text into blocks, using headings as delimiters, and return
+    them as a dictionary with the headings as keys.
+    """
+    # Headings ('USAGE:', 'DESCRIPTION:', etc.) start with all caps and a colon.
     keypat = r"^([A-Z ]+):(.*)"
     hdict = dict()
     started = False
     for line in help:
         keyline = re.match(keypat, line)
         if keyline:
+            # We found a new heading.
             if started:
+                # End the previous block.
                 hdict[key] = blocklines
+            # Save the name of the block.
             key = keyline.groups()[0]
             blocklines = []
             started = True
+            # If there is anything else on the heading line, start the block
+            # with it.
             _s = keyline.groups()[1].strip()
             if _s:
                 blocklines.append(_s)

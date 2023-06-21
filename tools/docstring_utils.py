@@ -38,6 +38,7 @@ def fix_one_output(lines):
     lines = []
 
     for line in lines_orig:
+        # Look for lines ending with a units spec in square brackets.
         match = re.search(r'(.*)\[(.*)\]', line)
         if match is not None:
             units = match.group(2).strip()

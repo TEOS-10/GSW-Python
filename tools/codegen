@@ -1,0 +1,5 @@
+# Source this file to run the code generation scripts in sequence.
+
+python make_ufuncs.py
+python make_wrapped_ufuncs.py
+python fix_wrapped_ufunc_typos.py
