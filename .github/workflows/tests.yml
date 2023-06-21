@@ -10,39 +10,39 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11"]
         os: [windows-latest, ubuntu-latest, macos-latest]
         # Oldest one based on NEP-29 and latest one.
         # See https://numpy.org/neps/nep-0029-deprecation_policy.html
-        numpy-version: ["1.21", "1.23"]
+        numpy-version: ["1.22", "1.25"]
         exclude:
           - python-version: "3.11"
-            numpy-version: "1.21"
+            numpy-version: "1.22"
       fail-fast: false
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Setup Micromamba
-      uses: mamba-org/provision-with-micromamba@v16
+    - name: Setup Micromamba Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
+      uses: mamba-org/setup-micromamba@v1
       with:
-        environment-file: false
+        environment-name: TEST
+        init-shell: bash
+        create-args: >-
+          python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
 
-    - name: Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
+    - name: Install gsw
       shell: bash -l {0}
-      run: >
-        micromamba create --name TEST python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
-        && micromamba activate TEST
-        && python -m pip install -e . --no-deps --no-build-isolation --force-reinstall
+      run: |
+        python -m pip install -e . --no-deps --force-reinstall
 
     - name: Debug
       shell: bash -l {0}
-      run: >
-        micromamba activate TEST
-        && python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
+      run: |
+        python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
 
     - name: Tests
       shell: bash -l {0}
-      run: >
+      run: |
         micromamba activate TEST
-        && pytest -s -rxs -v gsw/tests
+        pytest -s -rxs -v gsw/tests
