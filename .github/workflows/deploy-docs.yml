@@ -14,28 +14,28 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Setup Micromamba
-      uses: mamba-org/provision-with-micromamba@v16
+      uses: mamba-org/setup-micromamba@v1
       with:
-        environment-file: false
+        environment-name: TEST
+        init-shell: bash
+        create-args: >-
+          python=3 numpy --file requirements-dev.txt --channel conda-forge
 
-    - name: Create environment
+    - name: Install gsw
       shell: bash -l {0}
-      run: >
-        micromamba create --name TEST python=3 numpy --file requirements-dev.txt --channel conda-forge
-        && micromamba activate TEST
-        && pip install -e . --no-deps --force-reinstall
+      run: |
+        python -m pip install -e . --no-deps --force-reinstall
 
     - name: Build documentation
       shell: bash -l {0}
-      run: |
-        micromamba activate TEST
+      run: >
         set -e
-        pushd docs
-        make clean html linkcheck
-        popd
+        && pushd docs
+        && make clean html linkcheck
+        && popd
 
     - name: GitHub Pages action
-      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
+      if: success() && github.event_name == 'release'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
