@@ -18,17 +18,17 @@ authors = [
 ]
 requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Intended Audience :: Science/Research",
-    "Operating System :: OS Independent",
-    "License :: OSI Approved :: BSD License",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Topic :: Scientific/Engineering",
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering",
 ]
 dynamic = [
   "readme",
@@ -57,18 +57,6 @@ readme = {file = "README.md", content-type = "text/markdown"}
 write_to = "gsw/_version.py"
 write_to_template = "__version__ = '{version}'"
 tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
-
-[tool.check-manifest]
-ignore = [
-    "*.yml",
-    ".coveragerc",
-    "docs",
-    "docs/*",
-    "*.enc",
-    "tools",
-    "tools/*",
-    "gsw/_version.py",
-]
 
 [tool.ruff]
 select = [
@@ -103,4 +91,16 @@ exclude = [
 
 "gsw/_utilities.py" = [
   "B904",  # Within an ``except`` clause, raise exceptions with ``raise ... from err``
+]
+
+[tool.check-manifest]
+ignore = [
+    "*.yml",
+    ".coveragerc",
+    "docs",
+    "docs/*",
+    "*.enc",
+    "tools",
+    "tools/*",
+    "gsw/_version.py",
 ]
