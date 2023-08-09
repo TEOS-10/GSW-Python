@@ -179,7 +179,7 @@ def distance(lon, lat, p=0, axis=-1):
         raise ValueError(f'lon, lat shapes must match; found {lon.shape}, {lat.shape}')
     if not (lon.ndim in (1, 2) and lon.shape[axis] > 1):
         raise ValueError('lon, lat must be 1-D or 2-D with more than one point'
-                         ' along axis; found shape {} and axis {}'.format(lon.shape, axis))
+                         f' along axis; found shape {lon.shape} and axis {axis}')
     if lon.ndim == 1:
         one_d = True
         # xarray requires expand_dims() rather than [newaxis, :]

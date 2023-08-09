@@ -6,10 +6,10 @@ Minimal setup.py for building gswc.
 import os
 import shutil
 import sys
-from distutils.command.build_ext import build_ext as _build_ext
 
 import pkg_resources
 from setuptools import Extension, setup
+from setuptools.command.build_ext import build_ext as _build_ext
 
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
