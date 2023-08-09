@@ -20,13 +20,13 @@ repos:
         - --ignore-words-list=nin,preformed,wih,
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: 0.12.1
+  rev: 0.13.0
   hooks:
     - id: pyproject-fmt
 
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.0.274
+  rev: v0.0.283
   hooks:
     - id: ruff
 
