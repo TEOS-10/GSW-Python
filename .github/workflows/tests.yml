@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup Micromamba Python ${{ matrix.python-version }} numpy ${{ matrix.numpy-version }}
       uses: mamba-org/setup-micromamba@v1
