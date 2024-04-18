@@ -10,14 +10,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
         os: [windows-latest, ubuntu-latest, macos-latest]
         # Oldest one based on NEP-29 and latest one.
         # See https://numpy.org/neps/nep-0029-deprecation_policy.html
-        numpy-version: ["1.22", "1.25"]
+        numpy-version: ["1.23", "1.26"]
         exclude:
-          - python-version: "3.11"
-            numpy-version: "1.22"
+          - python-version: "3.12"
+            numpy-version: "1.23"
       fail-fast: false
 
     steps:
