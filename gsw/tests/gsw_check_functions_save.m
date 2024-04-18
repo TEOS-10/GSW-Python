@@ -32,7 +32,7 @@ load (gsw_data_file,'gsw_cv');
 gsw_ver
 
 fprintf(1,' \n');
-fprintf(1,'If you have any questions reguarding this software email help@TEOS-10.org\n');
+fprintf(1,'If you have any questions regarding this software email help@TEOS-10.org\n');
 fprintf(1,' \n');
 fprintf(1,'This function is running three stored vertical profiles through\n');
 fprintf(1,'all the functions in the GSW Oceanographic Toolbox, and then checks\n');
