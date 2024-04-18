@@ -1,5 +1,4 @@
 check-manifest
-doctr
 numpydoc
 pytest
 setuptools_scm
