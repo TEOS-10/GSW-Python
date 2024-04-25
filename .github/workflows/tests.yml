@@ -19,6 +19,9 @@ jobs:
           - python-version: "3.12"
             numpy-version: "1.23"
       fail-fast: false
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
     - uses: actions/checkout@v4
@@ -32,17 +35,19 @@ jobs:
           python=${{ matrix.python-version }} python-build numpy=${{ matrix.numpy-version }} --file requirements-dev.txt --channel conda-forge
 
     - name: Install gsw
-      shell: bash -l {0}
       run: |
         python -m pip install -e . --no-deps --force-reinstall
 
-    - name: Debug
-      shell: bash -l {0}
-      run: |
-        python -c "import numpy; print(f'Running numpy {numpy.__version__}')"
-
     - name: Tests
-      shell: bash -l {0}
       run: |
-        micromamba activate TEST
-        pytest -s -rxs -v gsw/tests
+        python -m pytest -s -rxs -v gsw/tests
+
+    - name: Install nightly version of numpy
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+      run: |
+        python -m pip install --pre --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple --extra-index-url https://pypi.org/simple numpy -U
+
+    - name: Code tests with nightly numpy
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+      run: |
+        python -m pytest -s -rxs -v gsw/tests
