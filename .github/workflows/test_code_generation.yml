@@ -1,4 +1,4 @@
-name: Tests
+name: Test code generation
 
 on:
   pull_request:
@@ -6,26 +6,27 @@ on:
     branches: [main]
 
 jobs:
-  run:
+  code-generation:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
 
     steps:
-    - uses: actions/checkout@v4
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-    - name: Setup Micromamba 
+    - name: Setup Micromamba
       uses: mamba-org/setup-micromamba@v1
       with:
         environment-name: TEST
         init-shell: bash
         create-args: >-
-          python=3.12 --file numpy requirements-dev.txt --channel conda-forge
-
-    - name: Install gsw
-      run: |
-        python -m pip install -e . --no-deps --force-reinstall
+          python=3 pip
+          --file requirements-dev.txt
+          --channel conda-forge
 
     # - name: Install nightly version of numpy
     #   run: |
@@ -34,10 +35,14 @@ jobs:
     - name: Test Code Generation
       run: >
         git clone https://github.com/TEOS-10/GSW-C.git ../GSW-C
-        && git clone https://github.com/TEOS-10/Matlab.git ../GSW-Matlab
+        && git clone https://github.com/TEOS-10/GSW-Matlab.git ../GSW-Matlab
         && python tools/copy_from_GSW-C.py
         && python tools/mat2npz.py
         && python tools/make_ufuncs.py
         && python tools/make_wrapped_ufuncs.py
-        && python tools/fix_wrapped_ufunc_typos.py        
+        && python tools/fix_wrapped_ufunc_typos.py
+
+    - name: Install gsw
+      run: >
+        python -m pip install -e . --no-deps --force-reinstall
         && python -m pytest -s -rxs -v gsw/tests
