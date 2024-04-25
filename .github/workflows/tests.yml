@@ -46,7 +46,7 @@ jobs:
         --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple/ \
         --trusted-host pypi.anaconda.org \
         --no-deps --pre --upgrade \
-        numpy;
+        numpy scipy pandas;
         python -m pip install -v -e  . --no-deps --no-build-isolation --force-reinstall
 
     - name: Install gsw
