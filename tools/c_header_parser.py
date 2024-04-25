@@ -8,7 +8,7 @@ import re
 import numpy as np
 
 
-basedir = Path('..').resolve()
+basedir = Path(__file__).parent.parent
 
 def get_signatures(strip_extern=True, srcdir='src'):
     """

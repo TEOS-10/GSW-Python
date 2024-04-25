@@ -16,7 +16,7 @@ from docstring_utils import (paragraphs,
                              fix_outputs_doc,
                              docstring_from_sections)
 
-basedir = Path('..').resolve()
+basedir = Path(__file__).parent.parent
 
 
 # Functions that are Matlab subroutines, or exclusive to
@@ -205,8 +205,8 @@ def uf_wrapper(ufname):
     return wrapper_template % subs
 
 if __name__ == '__main__':
-    srcdir = 'src'
-    with open(srcdir + '_ufuncs.list') as f:
+    srcdir = basedir.joinpath('src')
+    with open(srcdir.joinpath('_ufuncs.list')) as f:
         ufunclist = [name.strip() for name in f.readlines()]
         ufunclist = [name for name in ufunclist if name not in blacklist]
 
@@ -232,5 +232,5 @@ if __name__ == '__main__':
                 f.write(wrapped)
                 wrapped_ufnames.append(ufname)
     wrapped_ufnames.sort()
-    with open(srcdir + '_wrapped_ufuncs.list', 'w') as f:
+    with open(srcdir.joinpath('_wrapped_ufuncs.list'), 'w') as f:
         f.write('\n'.join(wrapped_ufnames) + '\n')

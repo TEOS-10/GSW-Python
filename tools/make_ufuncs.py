@@ -14,7 +14,7 @@ from c_header_parser import (get_simple_sig_dict,
 
 blacklist = ['add_barrier']
 
-basedir = Path('..').resolve()
+basedir = Path(__file__).parent.parent
 
 modfile_head_top = """
 /*
@@ -358,19 +358,19 @@ def write_modfile(modfile_name, srcdir):
         f.write(''.join(chunks))
 
     funcnamelist1.sort()
-    with open(srcdir + '_ufuncs1.list', 'w') as f:
+    with open(srcdir.joinpath('_ufuncs1.list'), 'w') as f:
         f.write('\n'.join(funcnamelist1))
 
     funcnamelist2.sort()
-    with open(srcdir + '_ufuncs2.list', 'w') as f:
+    with open(srcdir.joinpath('_ufuncs2.list'), 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
     funcnamelist = funcnamelist1 + funcnamelist2 + funcnamelist3
     funcnamelist.sort()
-    with open(srcdir + '_ufuncs.list', 'w') as f:
+    with open(srcdir.joinpath('_ufuncs.list'), 'w') as f:
         f.write('\n'.join(funcnamelist))
 
 if __name__ == '__main__':
-    srcdir = 'src'
+    srcdir = basedir.joinpath('src')
     modfile_name = basedir.joinpath(srcdir, '_ufuncs.c')
     write_modfile(modfile_name, srcdir=srcdir)

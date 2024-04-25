@@ -5,8 +5,7 @@ It may be necessary to edit the location of the GSW-Matlab directory.
 import re
 from pathlib import Path
 
-
-basedir = Path('..').resolve()
+basedir = Path(__file__).parent.parent
 
 gsw_matlab_dir = basedir.joinpath('..', 'GSW-Matlab', 'Toolbox').resolve()
 if not gsw_matlab_dir.exists():
