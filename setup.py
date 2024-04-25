@@ -7,7 +7,7 @@ import os
 import shutil
 import sys
 
-import pkg_resources
+import numpy
 from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext as _build_ext
 
@@ -21,7 +21,7 @@ def read(*parts):
 class build_ext(_build_ext):
     # Extension builder from pandas without the cython stuff
     def build_extensions(self):
-        numpy_incl = pkg_resources.resource_filename("numpy", "core/include")
+        numpy_incl = numpy.get_include()
 
         for ext in self.extensions:
             if hasattr(ext, "include_dirs") and not numpy_incl in ext.include_dirs:
