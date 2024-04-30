@@ -45,7 +45,7 @@ mfuncs = [mf for mf in mfuncs if mf.name in d and mf.name not in blacklist]
 mfuncnames = [mf.name for mf in mfuncs]
 
 
-@pytest.fixture(params=[-360, 0, 360])
+@pytest.fixture(params=[-360., 0., 360.])
 def lonshift(request):
     return request.param
 

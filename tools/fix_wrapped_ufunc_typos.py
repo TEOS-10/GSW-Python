@@ -9,7 +9,7 @@ _wrapped_ufuncs.py is copied to _wrapped_ufuncs.orig, which can be deleted.
 from pathlib import Path
 import shutil
 
-basedir = Path('..').resolve()
+basedir = Path(__file__).parent.parent
 wrapmod = basedir.joinpath('gsw', '_wrapped_ufuncs.py')
 
 orig = wrapmod.with_suffix('.orig')

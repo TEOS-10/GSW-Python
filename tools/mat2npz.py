@@ -45,8 +45,14 @@ mat_zip_ver = 'v3_06_16'
 
 # The following relative path will depend on the directory layout for
 # whoever is running this utility.
-gsw_data_file = Path('..', '..', '..', 'gsw_matlab_%s' % mat_zip_ver,
-                     'library', 'gsw_data_%s.mat' % data_ver)
+basedir = Path(__file__).parent.parent
+gsw_data_file = Path(
+    basedir.parent,
+    "GSW-Matlab",
+    "Toolbox",
+    "library",
+    f"gsw_data_{data_ver}.mat",
+    )
 print(gsw_data_file)
 
 gsw_data = loadmatdict(gsw_data_file)
@@ -55,5 +61,5 @@ gsw_data = loadmatdict(gsw_data_file)
 cv_vars = gsw_data['gsw_cv']
 cv_vars['gsw_data_file'] = str(gsw_data_file)
 cv_vars['mat_zip_ver'] = mat_zip_ver
-fname = Path('..', 'gsw', 'tests', 'gsw_cv_%s' % data_ver)
+fname = Path(basedir, "gsw", "tests", f"gsw_cv_{data_ver}")
 np.savez(str(fname), **cv_vars)
