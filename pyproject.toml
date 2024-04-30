@@ -2,7 +2,8 @@
 build-backend = "setuptools.build_meta"
 requires = [
   "build",
-  "oldest-supported-numpy",
+  'numpy<3,>=2.0.0rc1; python_version >= "3.9"',
+  'oldest-supported-numpy; python_version < "3.9"',
   "pip>9.0.1",
   "setuptools>=42",
   "setuptools_scm[toml]>=3.4",
