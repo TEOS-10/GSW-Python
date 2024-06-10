@@ -11,27 +11,33 @@ jobs:
   build_bdist:
     name: "Build ${{ matrix.os }} (${{ matrix.arch }}) wheels"
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60  # should be long enough even on tags, but let's prevent hangs
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-22.04", "windows-2022", "macos-14"]
-        arch: ["x86_64", "arm64", "AMD64"]
-        exclude:
-        - os: ubuntu-22.04
-          arch: arm64
-        - os: ubuntu-22.04
-          arch: AMD64
-        - os: windows-2022
-          arch: arm64
-        - os: windows-2022
-          arch: x86_64
-        - os: macos-14
-          arch: AMD64
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-22.04
+            arch: aarch64
+          - os: windows-2022
+            arch: AMD64
+          - os: macos-14
+            arch: arm64
+          - os: macos-13
+            arch: x86_64
 
     steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
+
+    # For aarch64 support
+    # https://cibuildwheel.pypa.io/en/stable/faq/#emulation
+    - uses: docker/setup-qemu-action@v3
+      with:
+        platforms: all
+      if: runner.os == 'Linux' && matrix.arch == 'aarch64'
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
       uses: pypa/cibuildwheel@v2.18.1
@@ -52,8 +58,26 @@ jobs:
         path: ${{ github.workspace }}/wheelhouse/*.whl
 
 
+  build_sdist:
+    name: Build source distribution
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build sdist
+        run: >
+          pip install build
+          && python -m build --sdist . --outdir dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pypi-artifacts
+          path: ${{ github.workspace }}/dist/*.tar.gz
+
   show-artifacts:
-    needs: [build_bdist]
+    needs: [build_bdist, build_sdist]
     name: "Show artifacts"
     runs-on: ubuntu-22.04
     steps:
@@ -69,7 +93,7 @@ jobs:
 
 
   publish-artifacts-pypi:
-    needs: [build_bdist]
+    needs: [build_bdist, build_sdist]
     name: "Publish to PyPI"
     runs-on: ubuntu-22.04
     # upload to PyPI for every tag starting with 'v'
