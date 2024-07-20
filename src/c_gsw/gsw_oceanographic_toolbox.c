@@ -180,6 +180,39 @@ gsw_add_mean(double *data_in, double *data_out)
 }
 /*
 !==========================================================================
+function gsw_infunnel(sa,ct,p)
+!==========================================================================
+
+! "oceanographic funnel" check for the 75-term equation
+!
+! sa     : Absolute Salinity                                 [g/kg]
+! ct     : Conservative Temperature                          [deg C]
+! p      : sea pressure                                      [dbar]
+!
+! gsw_infunnel : 0, if SA, CT and p are outside the "funnel"
+!                1, if SA, CT and p are inside the "funnel"
+!
+!  Note. The term "funnel" (McDougall et al., 2003) describes the range of
+!    SA, CT and p over which the error in the fit of the computationally
+!    efficient 75-term expression for specific volume in terms of SA, CT
+!    and p was calculated (Roquet et al., 2015).
+*/
+int
+gsw_infunnel(double sa, double ct, double p)
+{
+    return !(p > 8000 ||
+        sa < 0 ||
+        sa > 42 ||
+        (p < 500 && ct < gsw_ct_freezing(sa, p, 0)) ||
+        (p >= 500 && p < 6500 && sa < p * 5e-3 - 2.5) ||
+        (p >= 500 && p < 6500 && ct > (31.66666666666667 - p * 3.333333333333334e-3)) ||
+        (p >= 500 && ct < gsw_ct_freezing(sa, 500, 0)) ||
+        (p >= 6500 && sa < 30) ||
+        (p >= 6500 && ct > 10.0)
+    );
+}
+/*
+!==========================================================================
 function gsw_adiabatic_lapse_rate_from_ct(sa,ct,p)
 !==========================================================================
 
@@ -215,7 +248,7 @@ elemental function gsw_adiabatic_lapse_rate_ice (t, p)
 !         ( i.e. absolute pressure - 10.1325 dbar )
 !
 !    Note.  The output is in unit of degrees Celsius per Pa,
-!      (or equivilently K/Pa) not in units of K/dbar.
+!      (or equivalently K/Pa) not in units of K/dbar.
 !--------------------------------------------------------------------------
 */
 double
@@ -435,7 +468,7 @@ function gsw_c_from_sp(sp,t,p)
 
 !  Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
 !  2 < SP < 42.  If the input Practical Salinity is less than 2 then a
-!  modified form of the Hill et al. (1986) fomula is used for Practical
+!  modified form of the Hill et al. (1986) formula is used for Practical
 !  Salinity.  The modification of the Hill et al. (1986) expression is to
 !  ensure that it is exactly consistent with PSS-78 at SP = 2.
 !
@@ -2781,12 +2814,12 @@ elemental subroutine gsw_frazil_properties (sa_bulk, h_bulk, p, &
 !  throughout the code).
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
-!  value, the seawater-ice mixture is at thermodynamic equlibrium.
+!  value, the seawater-ice mixture is at thermodynamic equilibrium.
 !
 !  This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
 !  is sufficiently large (i.e. sufficiently "warm") so that there is no ice
 !  present in the final state.  In this case the final state consists of
-!  only seawater rather than being an equlibrium mixture of seawater and
+!  only seawater rather than being an equilibrium mixture of seawater and
 !  ice which occurs when w_Ih_final is positive.  Note that when
 !  w_Ih_final = 0, the final seawater is not at the freezing temperature.
 !
@@ -2978,12 +3011,12 @@ elemental subroutine gsw_frazil_properties_potential (sa_bulk, h_pot_bulk,&
 !  is assumed to be zero throughout the code).
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
-!  value, the seawater-ice mixture is at thermodynamic equlibrium.
+!  value, the seawater-ice mixture is at thermodynamic equilibrium.
 !
 !  This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
 !  is sufficiently large (i.e. sufficiently "warm") so that there is no ice
 !  present in the final state.  In this case the final state consists of
-!  only seawater rather than being an equlibrium mixture of seawater and
+!  only seawater rather than being an equilibrium mixture of seawater and
 !  ice which occurs when w_Ih_final is positive.  Note that when
 !  w_Ih_final = 0, the final seawater is not at the freezing temperature.
 !
@@ -3249,12 +3282,12 @@ elemental subroutine gsw_frazil_properties_potential_poly (sa_bulk, &
 !  is assumed to be zero throughout the code).
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
-!  value, the seawater-ice mixture is at thermodynamic equlibrium.
+!  value, the seawater-ice mixture is at thermodynamic equilibrium.
 !
 !  This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
 !  is sufficiently large (i.e. sufficiently "warm") so that there is no ice
 !  present in the final state.  In this case the final state consists of
-!  only seawater rather than being an equlibrium mixture of seawater and
+!  only seawater rather than being an equilibrium mixture of seawater and
 !  ice which occurs when w_Ih_final is positive.  Note that when
 !  w_Ih_final = 0, the final seawater is not at the freezing temperature.
 !
@@ -5803,12 +5836,12 @@ elemental subroutine gsw_melting_ice_into_seawater (sa, ct, p, w_ih, t_ih,&
 !  This code takes the seawater to contain no dissolved air.
 !
 !  When the mass fraction w_Ih_final is calculated as being a positive
-!  value, the seawater-ice mixture is at thermodynamic equlibrium.
+!  value, the seawater-ice mixture is at thermodynamic equilibrium.
 !
 !  This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
 !  is sufficiently large (i.e. sufficiently "warm") so that there is no ice
 !  present in the final state.  In this case the final state consists of
-!  only seawater rather than being an equlibrium mixture of seawater and
+!  only seawater rather than being an equilibrium mixture of seawater and
 !  ice which occurs when w_Ih_final is positive.  Note that when
 !  w_Ih_final = 0, the final seawater is not at the freezing temperature.
 !
