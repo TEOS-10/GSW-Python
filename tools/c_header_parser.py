@@ -24,7 +24,7 @@ def get_signatures(strip_extern=True, srcdir='src'):
         started = False
         for line in f:
             line = line.strip()
-            if line.startswith('extern'):
+            if line.startswith('DECLSPEC extern'):
                 sigs.append(line)
                 if not line.endswith(';'):
                     started = True
@@ -33,7 +33,7 @@ def get_signatures(strip_extern=True, srcdir='src'):
                 if line.endswith(';'):
                     started = False
     if strip_extern:
-        sigs = [s[7:].strip() for s in sigs]  # probably don't need strip()
+        sigs = [s[16:].strip() for s in sigs]  # probably don't need strip()
     return sigs
 
 
