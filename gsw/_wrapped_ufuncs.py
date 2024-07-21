@@ -1157,7 +1157,7 @@ enthalpy_second_derivatives_CT_exact = match_args_return(enthalpy_second_derivat
 
 def enthalpy_SSO_0(p):
     """
-    Library function; no description.
+    enthalpy at (SSO,CT=0,p)
 
     Parameters
     ----------
@@ -1322,7 +1322,7 @@ entropy_ice = match_args_return(entropy_ice)
 
 def entropy_part(SA, t, p):
     """
-    Library function; no description.
+    entropy minus the terms that are a function of only SA
 
     Parameters
     ----------
@@ -1344,7 +1344,7 @@ entropy_part = match_args_return(entropy_part)
 
 def entropy_part_zerop(SA, pt0):
     """
-    Library function; no description.
+    entropy_part evaluated at the sea surface
 
     Parameters
     ----------
@@ -1761,7 +1761,7 @@ gibbs_ice_pt0_pt0 = match_args_return(gibbs_ice_pt0_pt0)
 
 def gibbs_pt0_pt0(SA, pt0):
     """
-    Library function; no description.
+    gibbs_tt at (SA,pt,0)
 
     Parameters
     ----------
@@ -1894,7 +1894,7 @@ ice_fraction_to_freeze_seawater = match_args_return(ice_fraction_to_freeze_seawa
 
 def infunnel(SA, CT, p):
     """
-    Library function; no description.
+    "oceanographic funnel" check for the 75-term equation
 
     Parameters
     ----------
@@ -4327,7 +4327,7 @@ specvol_second_derivatives_wrt_enthalpy = match_args_return(specvol_second_deriv
 
 def specvol_SSO_0(p):
     """
-    Library function; no description.
+    specific volume at (SSO,CT=0,p)
 
     Parameters
     ----------

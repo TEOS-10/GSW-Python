@@ -25,6 +25,7 @@ blacklist = {'ct_freezing_exact',
 'pt0_cold_ice_poly',
 'pt_from_pot_enthalpy_ice_poly_dh',
 't_freezing_exact',
+'sa_p_inrange',
 }
 
 wrapper_head = '''
@@ -177,11 +178,8 @@ def uf_wrapper(ufname):
                 )
     helpdict = get_helpdict(msig['path'])
 
-    # Filter out minimally documented library functions.
     if 'DESCRIPTION' not in helpdict:
-        print(f"in uf_wrapper, ufname is {ufname}, DESCRIPTION is missing")
-        helpdict['DESCRIPTION'] = ["Library function; no description."]
-        # return None
+        helpdict['DESCRIPTION'] = helpdict["summary"]
 
     try:
         desclist = paragraphs(helpdict['DESCRIPTION'])[0]
