@@ -5,14 +5,15 @@ ufunc names.
 
 """
 from pathlib import Path
-import sys
-import shutil
 
-from c_header_parser import (get_simple_sig_dict,
-                             get_complex_scalar_dict_by_nargs_nreturns,
-                             get_mixed_sigdict)
+from c_header_parser import (
+    get_sigdict,
+    get_simple_name_nin_returntype,
+    get_complex_name_nin_nout,
+    mixed_sigdict,
+)
 
-blacklist = ['add_barrier']
+blacklist = ['add_barrier', 'add_mean']
 
 basedir = Path(__file__).parent.parent
 
@@ -92,7 +93,7 @@ modfile_tail = """
 """
 
 
-def modfile_loop_entry(nin, nout, out_type='d'):
+def modfile_loop_entry(nin, nout, out_type):
     if out_type == 'd':
         out_return = 'double'
         npy_out_type = 'NPY_DOUBLE'
@@ -264,8 +265,6 @@ def modfile_loop_entry_from_sig(sig):
     return '\n'.join(linelist)
 
 
-
-
 def modfile_array_entry(funcname):
     return "static void *data_%s[] = {&gsw_%s};\n" % (funcname, funcname)
 
@@ -295,97 +294,63 @@ def modfile_init_entry_from_sig(sig):
     nin = len(sig["argtypes"])
     nout = 1
     letter_sig = sig["letter_sig"]
-    entry = """
-    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_%(letter_sig)s,
-                                    data_%(funcname)s,
-                                    types_%(letter_sig)s,
-                                    1, %(nin)d, %(nout)d,  // ndatatypes, nin, nout
+    entry = f"""
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_{letter_sig:s},
+                                    data_{funcname:s},
+                                    types_{letter_sig:s},
+                                    1, {nin:d}, {nout:d},  // ndatatypes, nin, nout
                                     PyUFunc_None,
-                                    "%(funcname)s",
-                                    "%(funcname)s_docstring",
+                                    "{funcname:s}",
+                                    "{funcname:s}_docstring",
                                     0);
 
-    PyDict_SetItemString(d, "%(funcname)s", ufunc_ptr);
+    PyDict_SetItemString(d, "{funcname:s}", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     """
     return entry % vars()
 
 def write_modfile(modfile_name, srcdir):
-    argcategories1 = get_simple_sig_dict(srcdir=srcdir)
-    argcategories1i = get_simple_sig_dict(srcdir=srcdir, returntype='int')
-    argcategories2 = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
-    argcategories3 = get_mixed_sigdict(srcdir=srcdir)
-
-    funcnamelist1 = []
-    funcnamelist1i = []
-    funcnamelist2 = []
-    funcnamelist3 = list(argcategories3.keys())
-
-    nins = range(1, 6)
-    artups = [(2, 2), (3, 2), (3, 3), (6, 2), (2, 3), (4, 3), (5, 3), (3, 5)]
+    raw_sigdict = get_sigdict(srcdir=srcdir)
+    sigdict = {name: sig for name, sig in raw_sigdict.items() if name not in blacklist}
+    simple_tups = get_simple_name_nin_returntype(sigdict)
+    complex_tups = get_complex_name_nin_nout(sigdict)
+    mixed_sigs = mixed_sigdict(sigdict)
 
     modfile_head_parts = [modfile_head_top]
-    for nin in nins:
-        modfile_head_parts.append(modfile_loop_entry(nin, 1))
-        # Temporary: we are making more integer versions than we need.
-        modfile_head_parts.append(modfile_loop_entry(nin, 1, out_type='i'))
-    for artup in artups:
+    simple_artups = {(nin, 1, returntype[0]) for _, nin, returntype in simple_tups}
+    for artup in sorted(simple_artups):
         modfile_head_parts.append(modfile_loop_entry(*artup))
+
+    complex_artups = {tup[1:] for tup in complex_tups}
+    for artup in sorted(complex_artups):
+        modfile_head_parts.append(modfile_loop_entry(*artup, 'd'))
     modfile_head = '\n'.join(modfile_head_parts)
 
     chunks = [modfile_head]
 
-    for sig in argcategories3.values():
+    for sig in mixed_sigs.values():
         chunks.append(modfile_loop_entry_from_sig(sig))
 
-    for nin in nins:
-        for funcname in sorted(argcategories1[nin]):
-            if funcname in blacklist:
-                continue
-            chunks.append(modfile_array_entry(funcname))
-            funcnamelist1.append(funcname)
-        try:
-            for funcname in sorted(argcategories1i[nin]):
-                if funcname in blacklist:
-                    continue
-                chunks.append(modfile_array_entry(funcname))
-                funcnamelist1i.append(funcname)
-        except KeyError:
-            pass
+    # Array entries
+    for name, _, _ in simple_tups:
+        chunks.append(modfile_array_entry(name))
 
-    for artup in artups:
-        for funcname in sorted(argcategories2[artup]):
-            if funcname in blacklist:
-                continue
-            chunks.append(modfile_array_entry(funcname))
-            funcnamelist2.append(funcname)
+    for name, _, _ in complex_tups:
+        chunks.append(modfile_array_entry(name))
 
-    for funcname in funcnamelist3:
-        chunks.append(modfile_array_entry(funcname))
+    for name in mixed_sigs.keys():
+        chunks.append(modfile_array_entry(name))
 
     chunks.append(modfile_middle)
 
-    for nin in nins:
-        for funcname in sorted(argcategories1[nin]):
-            if funcname in blacklist:
-                continue
-            chunks.append(modfile_init_entry(funcname, nin, 1))
-        try:
-            for funcname in sorted(argcategories1i[nin]):
-                if funcname in blacklist:
-                    continue
-                chunks.append(modfile_init_entry(funcname, nin, 1, out_type='i'))
-        except KeyError:
-            pass
+    for name, nin, returntype in simple_tups:
+        chunks.append(modfile_init_entry(name, nin, 1, returntype[0]))
 
-    for artup in artups:
-        for funcname in sorted(argcategories2[artup]):
-            if funcname in blacklist:
-                continue
-            chunks.append(modfile_init_entry(funcname, *artup))
+    for name, nin, nout in complex_tups:
+        chunks.append(modfile_init_entry(name, nin, nout, 'd'))
 
-    for sig in argcategories3.values():
+    for sig in mixed_sigs.values():
         chunks.append(modfile_init_entry_from_sig(sig))
 
     chunks.append(modfile_tail)
@@ -393,19 +358,15 @@ def write_modfile(modfile_name, srcdir):
     with modfile_name.open('w') as f:
         f.write(''.join(chunks))
 
-    funcnamelist1.sort()
+    funcnamelist1 = sorted([tup[0] for tup in simple_tups])
     with open(srcdir.joinpath('_ufuncs1.list'), 'w') as f:
         f.write('\n'.join(funcnamelist1))
 
-    funcnamelist1i.sort()
-    with open(srcdir.joinpath('_ufuncs1i.list'), 'w') as f:
-        f.write('\n'.join(funcnamelist1i))
-
-    funcnamelist2.sort()
+    funcnamelist2 = sorted([tup[0] for tup in complex_tups])
     with open(srcdir.joinpath('_ufuncs2.list'), 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
-    funcnamelist = funcnamelist1 + funcnamelist1i + funcnamelist2 + funcnamelist3
+    funcnamelist = funcnamelist1 + funcnamelist2 + list(mixed_sigs.keys())
     funcnamelist.sort()
     with open(srcdir.joinpath('_ufuncs.list'), 'w') as f:
         f.write('\n'.join(funcnamelist))

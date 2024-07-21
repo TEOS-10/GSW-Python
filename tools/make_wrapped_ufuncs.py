@@ -3,8 +3,6 @@ Script that generates _wrapped_ufuncs.py based on the output
 of make_ufuncs.py.
 """
 
-import sys
-import re
 from pathlib import Path
 
 from _utilities import Bunch
