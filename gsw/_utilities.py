@@ -40,16 +40,18 @@ def match_args_return(f):
         # Wrapped ufuncs are constructed with the "types" attribute from the
         # underlying ufunc.
         if hasattr(f, "types"):
-            argtypes = f.types[0].split("->")[0]
+            argtypes, ret_types = f.types[0].split("->")
             first_double = argtypes.index("d")
+            int_return = ret_types[0] == 'i'
         else:
             first_double = 0
+            int_return = False
 
 
         def fixup(ret):
             if hasduck:
                 return ret
-            if hasmasked:
+            if hasmasked and not int_return:
                 ret = np.ma.masked_invalid(ret)
             if not hasarray and isinstance(ret, np.ndarray) and ret.size == 1:
                 try:
