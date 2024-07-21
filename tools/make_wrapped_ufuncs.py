@@ -165,6 +165,9 @@ def get_help_output_dict():
 
 def uf_wrapper(ufname):
     argnames = get_argnames(ufname)
+    if argnames is None:
+        print(f"in uf_wrapper, ufname is {ufname}, argnames is None")
+        return None
     argstr = ', '.join(argnames)
     msig = Bunch(msigdict[ufname])
 
@@ -176,7 +179,9 @@ def uf_wrapper(ufname):
 
     # Filter out minimally documented library functions.
     if 'DESCRIPTION' not in helpdict:
-        return None
+        print(f"in uf_wrapper, ufname is {ufname}, DESCRIPTION is missing")
+        helpdict['DESCRIPTION'] = ["Library function; no description."]
+        # return None
 
     try:
         desclist = paragraphs(helpdict['DESCRIPTION'])[0]

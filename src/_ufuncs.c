@@ -57,6 +57,39 @@ static char types_d_d[] = {
         NPY_DOUBLE, 
 };
 
+/* 1 in, 1 out */
+static void loop1d_d_i(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *out0 = args[1];
+    npy_intp out_step0 = steps[1];
+    int (*func)(double);
+    int outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in0)) {
+            *((int *)out0) = 0;
+        } else {
+            outd0 = func(*(double *)in0);
+            *((int *)out0) = outd0;
+        }
+        in0 += in_step0;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_d_i[] = {&loop1d_d_i};
+
+static char types_d_i[] = {
+        NPY_DOUBLE, 
+        NPY_INT, 
+};
+
 /* 2 in, 1 out */
 static void loop1d_dd_d(char **args, npy_intp const *dimensions,
                           npy_intp const* steps, void* data)
@@ -91,6 +124,42 @@ static PyUFuncGenericFunction funcs_dd_d[] = {&loop1d_dd_d};
 static char types_dd_d[] = {
         NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, 
+};
+
+/* 2 in, 1 out */
+static void loop1d_dd_i(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *out0 = args[2];
+    npy_intp out_step0 = steps[2];
+    int (*func)(double, double);
+    int outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)) {
+            *((int *)out0) = 0;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1);
+            *((int *)out0) = outd0;
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_dd_i[] = {&loop1d_dd_i};
+
+static char types_dd_i[] = {
+        NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_INT, 
 };
 
 /* 3 in, 1 out */
@@ -130,6 +199,45 @@ static PyUFuncGenericFunction funcs_ddd_d[] = {&loop1d_ddd_d};
 static char types_ddd_d[] = {
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, 
+};
+
+/* 3 in, 1 out */
+static void loop1d_ddd_i(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *in2 = args[2];
+    npy_intp in_step2 = steps[2];
+    char *out0 = args[3];
+    npy_intp out_step0 = steps[3];
+    int (*func)(double, double, double);
+    int outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)) {
+            *((int *)out0) = 0;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2);
+            *((int *)out0) = outd0;
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        in2 += in_step2;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_ddd_i[] = {&loop1d_ddd_i};
+
+static char types_ddd_i[] = {
+        NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_INT, 
 };
 
 /* 4 in, 1 out */
@@ -172,6 +280,48 @@ static PyUFuncGenericFunction funcs_dddd_d[] = {&loop1d_dddd_d};
 static char types_dddd_d[] = {
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, 
+};
+
+/* 4 in, 1 out */
+static void loop1d_dddd_i(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *in2 = args[2];
+    npy_intp in_step2 = steps[2];
+    char *in3 = args[3];
+    npy_intp in_step3 = steps[3];
+    char *out0 = args[4];
+    npy_intp out_step0 = steps[4];
+    int (*func)(double, double, double, double);
+    int outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)) {
+            *((int *)out0) = 0;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3);
+            *((int *)out0) = outd0;
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_dddd_i[] = {&loop1d_dddd_i};
+
+static char types_dddd_i[] = {
+        NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_INT, 
 };
 
 /* 5 in, 1 out */
@@ -217,6 +367,51 @@ static PyUFuncGenericFunction funcs_ddddd_d[] = {&loop1d_ddddd_d};
 static char types_ddddd_d[] = {
         NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
         NPY_DOUBLE, 
+};
+
+/* 5 in, 1 out */
+static void loop1d_ddddd_i(char **args, npy_intp const *dimensions,
+                          npy_intp const* steps, void* data)
+{
+    npy_intp i;
+    npy_intp n = dimensions[0];
+    char *in0 = args[0];
+    npy_intp in_step0 = steps[0];
+    char *in1 = args[1];
+    npy_intp in_step1 = steps[1];
+    char *in2 = args[2];
+    npy_intp in_step2 = steps[2];
+    char *in3 = args[3];
+    npy_intp in_step3 = steps[3];
+    char *in4 = args[4];
+    npy_intp in_step4 = steps[4];
+    char *out0 = args[5];
+    npy_intp out_step0 = steps[5];
+    int (*func)(double, double, double, double, double);
+    int outd0;
+    func = data;
+
+    for (i = 0; i < n; i++) {
+        if (isnan(*(double *)in0)||isnan(*(double *)in1)||isnan(*(double *)in2)||isnan(*(double *)in3)||isnan(*(double *)in4)) {
+            *((int *)out0) = 0;
+        } else {
+            outd0 = func(*(double *)in0, *(double *)in1, *(double *)in2, *(double *)in3, *(double *)in4);
+            *((int *)out0) = outd0;
+        }
+        in0 += in_step0;
+        in1 += in_step1;
+        in2 += in_step2;
+        in3 += in_step3;
+        in4 += in_step4;
+        out0 += out_step0;
+    }
+}
+
+static PyUFuncGenericFunction funcs_ddddd_i[] = {&loop1d_ddddd_i};
+
+static char types_ddddd_i[] = {
+        NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, 
+        NPY_INT, 
 };
 
 /* 2 in, 2 out */
@@ -752,6 +947,7 @@ static void *data_spiciness0[] = {&gsw_spiciness0};
 static void *data_spiciness1[] = {&gsw_spiciness1};
 static void *data_spiciness2[] = {&gsw_spiciness2};
 static void *data_t_from_pt0_ice[] = {&gsw_t_from_pt0_ice};
+static void *data_sa_p_inrange[] = {&gsw_sa_p_inrange};
 static void *data_adiabatic_lapse_rate_from_ct[] = {&gsw_adiabatic_lapse_rate_from_ct};
 static void *data_alpha[] = {&gsw_alpha};
 static void *data_alpha_on_beta[] = {&gsw_alpha_on_beta};
@@ -803,6 +999,7 @@ static void *data_t_freezing[] = {&gsw_t_freezing};
 static void *data_t_freezing_poly[] = {&gsw_t_freezing_poly};
 static void *data_t_from_ct[] = {&gsw_t_from_ct};
 static void *data_thermobaric[] = {&gsw_thermobaric};
+static void *data_infunnel[] = {&gsw_infunnel};
 static void *data_deltasa_from_sp[] = {&gsw_deltasa_from_sp};
 static void *data_enthalpy_diff[] = {&gsw_enthalpy_diff};
 static void *data_melting_ice_sa_ct_ratio[] = {&gsw_melting_ice_sa_ct_ratio};
@@ -1617,6 +1814,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
     PyDict_SetItemString(d, "t_from_pt0_ice", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dd_i,
+                                    data_sa_p_inrange,
+                                    types_dd_i,
+                                    1, 2, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "sa_p_inrange",
+                                    "sa_p_inrange_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "sa_p_inrange", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_d,
                                     data_adiabatic_lapse_rate_from_ct,
                                     types_ddd_d,
@@ -2227,6 +2436,18 @@ PyMODINIT_FUNC PyInit__gsw_ufuncs(void)
                                     0);
 
     PyDict_SetItemString(d, "thermobaric", ufunc_ptr);
+    Py_DECREF(ufunc_ptr);
+
+    ufunc_ptr = PyUFunc_FromFuncAndData(funcs_ddd_i,
+                                    data_infunnel,
+                                    types_ddd_i,
+                                    1, 3, 1,  // ndatatypes, nin, nout
+                                    PyUFunc_None,
+                                    "infunnel",
+                                    "infunnel_docstring",
+                                    0);
+
+    PyDict_SetItemString(d, "infunnel", ufunc_ptr);
     Py_DECREF(ufunc_ptr);
 
     ufunc_ptr = PyUFunc_FromFuncAndData(funcs_dddd_d,

@@ -92,9 +92,15 @@ modfile_tail = """
 """
 
 
-def modfile_loop_entry(nin, nout):
+def modfile_loop_entry(nin, nout, out_type='d'):
+    if out_type == 'd':
+        out_return = 'double'
+        npy_out_type = 'NPY_DOUBLE'
+    else:
+        out_return = 'int'
+        npy_out_type = 'NPY_INT'  # maybe change to NPY_BOOL
     ndin = 'd'*nin
-    ndout = 'd'*nout
+    ndout = out_type*nout
     loop_id = '%s_%s' % (ndin, ndout)
 
     linelist = ['/* %d in, %d out */' % (nin, nout)]
@@ -112,18 +118,20 @@ def modfile_loop_entry(nin, nout):
         linelist.append('    npy_intp out_step%d = steps[%d];' % (i, i+nin))
     intypes = ', '.join(['double'] * nin)
     if nout == 1:
-        linelist.append('    double (*func)(%s);' % (intypes,))
+        linelist.append(f'    {out_return} (*func)(%s);' % (intypes,))
     else:
+        # Multiple outputs: only double is supported here.
         outtypes = ', '.join(['double *'] * nout)
         linelist.append('    void (*func)(%s, %s);' % (intypes, outtypes))
 
+    # Declare local variables for outputs.
     douts = []
     for i in range(nout):
         douts.append('outd%d' % (i,))
-    linelist.append('    double %s;' % ', '.join(douts))
+    linelist.append(f'    {out_return} %s;' % ', '.join(douts))
     linelist.extend([
     '    func = data;',
-    '',
+    '',  # End of declarations, start the loop.
     '    for (i = 0; i < n; i++) {'])
     tests = []
     args = []
@@ -133,7 +141,10 @@ def modfile_loop_entry(nin, nout):
     linelist.append('        if (%s) {' % '||'.join(tests))
     outs = []
     for i in range(nout):
-        outs.append('*((double *)out%d) = NAN;' % i)
+        if out_type == 'd':
+            outs.append('*((double *)out%d) = NAN;' % i)
+        else:  # integer for infunnel
+            outs.append('*((int *)out0) = 0;')
     linelist.append('            %s' % ''.join(outs))
     linelist.append('        } else {')
     if nout > 1:
@@ -142,9 +153,15 @@ def modfile_loop_entry(nin, nout):
         linelist.append('            func(%s);' % ', '.join(args))
     else:
         linelist.append('            outd0 = func(%s);' % ', '.join(args))
-    for i in range(nout):
-        linelist.append('            *((double *)out%d)' % (i,)
-                        + ' = CONVERT_INVALID(outd%d);' % (i,))
+    if out_type == 'd':
+        for i in range(nout):
+            linelist.append('            *((double *)out%d)' % (i,)
+                            + ' = CONVERT_INVALID(outd%d);' % (i,))
+    else:
+        for i in range(nout):
+            linelist.append('            *((int *)out%d)' % (i,)
+                            + ' = outd%d;' % (i,))
+
     linelist.append('        }')
     for i in range(nin):
         linelist.append('        in%d += in_step%d;' % (i, i))
@@ -158,7 +175,7 @@ def modfile_loop_entry(nin, nout):
     linelist.append('static char types_%s[] = {' % (loop_id,))
 
     linelist.append('        ' + 'NPY_DOUBLE, ' * nin)
-    linelist.append('        ' + 'NPY_DOUBLE, ' * nout)
+    linelist.append('        ' + f'{npy_out_type}, ' * nout)
     linelist.extend(['};', ''])
 
     return '\n'.join(linelist)
@@ -268,9 +285,9 @@ _init_entry = """
 """
 
 
-def modfile_init_entry(funcname, nin, nout):
+def modfile_init_entry(funcname, nin, nout, out_type='d'):
     return _init_entry % dict(funcname=funcname, nin=nin, nout=nout,
-                              ndin='d'*nin, ndout='d'*nout)
+                              ndin='d'*nin, ndout=out_type*nout)
 
 def modfile_init_entry_from_sig(sig):
     # Specialized for the gibbs functions.
@@ -296,10 +313,12 @@ def modfile_init_entry_from_sig(sig):
 
 def write_modfile(modfile_name, srcdir):
     argcategories1 = get_simple_sig_dict(srcdir=srcdir)
+    argcategories1i = get_simple_sig_dict(srcdir=srcdir, returntype='int')
     argcategories2 = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
     argcategories3 = get_mixed_sigdict(srcdir=srcdir)
 
     funcnamelist1 = []
+    funcnamelist1i = []
     funcnamelist2 = []
     funcnamelist3 = list(argcategories3.keys())
 
@@ -309,6 +328,8 @@ def write_modfile(modfile_name, srcdir):
     modfile_head_parts = [modfile_head_top]
     for nin in nins:
         modfile_head_parts.append(modfile_loop_entry(nin, 1))
+        # Temporary: we are making more integer versions than we need.
+        modfile_head_parts.append(modfile_loop_entry(nin, 1, out_type='i'))
     for artup in artups:
         modfile_head_parts.append(modfile_loop_entry(*artup))
     modfile_head = '\n'.join(modfile_head_parts)
@@ -324,6 +345,14 @@ def write_modfile(modfile_name, srcdir):
                 continue
             chunks.append(modfile_array_entry(funcname))
             funcnamelist1.append(funcname)
+        try:
+            for funcname in sorted(argcategories1i[nin]):
+                if funcname in blacklist:
+                    continue
+                chunks.append(modfile_array_entry(funcname))
+                funcnamelist1i.append(funcname)
+        except KeyError:
+            pass
 
     for artup in artups:
         for funcname in sorted(argcategories2[artup]):
@@ -342,6 +371,13 @@ def write_modfile(modfile_name, srcdir):
             if funcname in blacklist:
                 continue
             chunks.append(modfile_init_entry(funcname, nin, 1))
+        try:
+            for funcname in sorted(argcategories1i[nin]):
+                if funcname in blacklist:
+                    continue
+                chunks.append(modfile_init_entry(funcname, nin, 1, out_type='i'))
+        except KeyError:
+            pass
 
     for artup in artups:
         for funcname in sorted(argcategories2[artup]):
@@ -361,11 +397,15 @@ def write_modfile(modfile_name, srcdir):
     with open(srcdir.joinpath('_ufuncs1.list'), 'w') as f:
         f.write('\n'.join(funcnamelist1))
 
+    funcnamelist1i.sort()
+    with open(srcdir.joinpath('_ufuncs1i.list'), 'w') as f:
+        f.write('\n'.join(funcnamelist1i))
+
     funcnamelist2.sort()
     with open(srcdir.joinpath('_ufuncs2.list'), 'w') as f:
         f.write('\n'.join(funcnamelist2))
 
-    funcnamelist = funcnamelist1 + funcnamelist2 + funcnamelist3
+    funcnamelist = funcnamelist1 + funcnamelist1i + funcnamelist2 + funcnamelist3
     funcnamelist.sort()
     with open(srcdir.joinpath('_ufuncs.list'), 'w') as f:
         f.write('\n'.join(funcnamelist))

@@ -89,15 +89,17 @@ def get_sigdict(srcdir="src"):
 
 # Note: some "sigdict" structures below do *not* use the name as the key.
 
-def simple_sigs(sigdict):
+def simple_sigs(sigdict, returntype='double'):
     """
     Given the dict output of parse_signatures, return a dict
     with the *number of inputs as key*, and a list of names as the value.
     Only functions with double arguments and return value are included.
     """
+    if returntype not in ["double", "int"]:
+        raise ValueError("returntype must be 'double' or 'int'")
     simple = {}
     for psig in sigdict.values():
-        if (psig['returntype'] == 'double' and
+        if (psig['returntype'] == returntype and
                 all([t == 'double' for t in psig['argtypes']])):
             n = len(psig['argtypes'])
             if n in simple:
@@ -108,8 +110,8 @@ def simple_sigs(sigdict):
         value.sort()
     return simple
 
-def get_simple_sig_dict(srcdir='src'):
-    return simple_sigs(get_sigdict(srcdir="src"))
+def get_simple_sig_dict(srcdir='src', returntype="double"):
+    return simple_sigs(get_sigdict(srcdir="src"), returntype=returntype)
 
 def complex_sigdict(sigdict):
     """

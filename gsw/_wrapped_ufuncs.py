@@ -1155,6 +1155,24 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
 enthalpy_second_derivatives_CT_exact.types = _gsw_ufuncs.enthalpy_second_derivatives_ct_exact.types
 enthalpy_second_derivatives_CT_exact = match_args_return(enthalpy_second_derivatives_CT_exact)
 
+def enthalpy_SSO_0(p):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    None
+
+    """
+    return _gsw_ufuncs.enthalpy_sso_0(p)
+enthalpy_SSO_0.types = _gsw_ufuncs.enthalpy_sso_0.types
+enthalpy_SSO_0 = match_args_return(enthalpy_SSO_0)
+
 def enthalpy_t_exact(SA, t, p):
     """
     Calculates the specific enthalpy of seawater.
@@ -1301,6 +1319,48 @@ def entropy_ice(t, p):
     return _gsw_ufuncs.entropy_ice(t, p)
 entropy_ice.types = _gsw_ufuncs.entropy_ice.types
 entropy_ice = match_args_return(entropy_ice)
+
+def entropy_part(SA, t, p):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    t : array-like
+        In-situ temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    None
+
+    """
+    return _gsw_ufuncs.entropy_part(SA, t, p)
+entropy_part.types = _gsw_ufuncs.entropy_part.types
+entropy_part = match_args_return(entropy_part)
+
+def entropy_part_zerop(SA, pt0):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    pt0 : array-like
+        Potential temperature with reference pressure of 0 dbar, degrees C
+
+    Returns
+    -------
+    None
+
+    """
+    return _gsw_ufuncs.entropy_part_zerop(SA, pt0)
+entropy_part_zerop.types = _gsw_ufuncs.entropy_part_zerop.types
+entropy_part_zerop = match_args_return(entropy_part_zerop)
 
 def entropy_second_derivatives(SA, CT):
     """
@@ -1699,6 +1759,26 @@ def gibbs_ice_pt0_pt0(pt0):
 gibbs_ice_pt0_pt0.types = _gsw_ufuncs.gibbs_ice_pt0_pt0.types
 gibbs_ice_pt0_pt0 = match_args_return(gibbs_ice_pt0_pt0)
 
+def gibbs_pt0_pt0(SA, pt0):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    pt0 : array-like
+        Potential temperature with reference pressure of 0 dbar, degrees C
+
+    Returns
+    -------
+    None
+
+    """
+    return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0)
+gibbs_pt0_pt0.types = _gsw_ufuncs.gibbs_pt0_pt0.types
+gibbs_pt0_pt0 = match_args_return(gibbs_pt0_pt0)
+
 def grav(lat, p):
     """
     Calculates acceleration due to gravity as a function of latitude and as
@@ -1811,6 +1891,31 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
     return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih)
 ice_fraction_to_freeze_seawater.types = _gsw_ufuncs.ice_fraction_to_freeze_seawater.types
 ice_fraction_to_freeze_seawater = match_args_return(ice_fraction_to_freeze_seawater)
+
+def infunnel(SA, CT, p):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    in_funnel : array-like,
+        0, if SA, CT and p are outside the "funnel"
+        =  1, if SA, CT and p are inside the "funnel"
+
+
+    """
+    return _gsw_ufuncs.infunnel(SA, CT, p)
+infunnel.types = _gsw_ufuncs.infunnel.types
+infunnel = match_args_return(infunnel)
 
 def internal_energy(SA, CT, p):
     """
@@ -4219,6 +4324,24 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p)
 specvol_second_derivatives_wrt_enthalpy.types = _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy.types
 specvol_second_derivatives_wrt_enthalpy = match_args_return(specvol_second_derivatives_wrt_enthalpy)
+
+def specvol_SSO_0(p):
+    """
+    Library function; no description.
+
+    Parameters
+    ----------
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+
+    Returns
+    -------
+    None
+
+    """
+    return _gsw_ufuncs.specvol_sso_0(p)
+specvol_SSO_0.types = _gsw_ufuncs.specvol_sso_0.types
+specvol_SSO_0 = match_args_return(specvol_SSO_0)
 
 def specvol_t_exact(SA, t, p):
     """
