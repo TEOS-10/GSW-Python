@@ -29,7 +29,13 @@ subs = [
     (' frist ', ' first '),
     (' calulated ', ' calculated '),
     (' outout ', ' output '),
-    (' degress ', ' degrees ')
+    (' degress ', ' degrees '),
+    (' specifc ', ' specific '),
+    (' avaialble ', ' available '),
+    (' equlibrium ', ' equilibrium '),
+    ('equlibrium', 'equilibrium'),
+    (' apendix ', ' appendix '),
+    (' slighty ', ' slightly '),
 ]
 
 with open(wrapmod) as f:

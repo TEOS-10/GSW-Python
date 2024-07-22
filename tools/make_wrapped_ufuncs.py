@@ -143,24 +143,6 @@ def get_outname_set():
             argset.update(args)
     return argset
 
-def get_help_output_dict():
-    # This is not currently used internally.
-    out = Bunch()
-    for ufname in ufunclist:
-        msig = msigdict[ufname]
-        helpdict = get_helpdict(msig['path'])
-
-        if 'OUTPUT' in helpdict:
-            raw = helpdict['OUTPUT']
-            outdoc = fix_outputs_doc(raw)
-        else:
-            raw = ''
-            outdoc = ['']
-        if ufname in return_overrides:
-            outdoc = return_overrides[ufname]
-        out[ufname] = Bunch(raw=raw, outdoc=outdoc)
-    return out
-
 
 def uf_wrapper(ufname):
     argnames = get_argnames(ufname)
@@ -176,32 +158,38 @@ def uf_wrapper(ufname):
                 )
     helpdict = get_helpdict(msig['path'])
 
+    sections = {}
     if 'DESCRIPTION' not in helpdict:
         helpdict['DESCRIPTION'] = helpdict["summary"]
+        sections["Notes"] = helpdict["all"]
 
-    try:
-        desclist = paragraphs(helpdict['DESCRIPTION'])[0]
-        sections = dict(Head=desclist)
-        plist = []
-        for arg in argnames:
-            plist.append('%s : array-like' % arg)
-            for line in parameters[arg].split('\n'):
-                plist.append("    %s" % line)
-        sections['Parameters'] = plist
+    description_paragraphs = paragraphs(helpdict['DESCRIPTION'])
+    sections["Head"] = description_paragraphs[0]
+    if len(description_paragraphs) > 1:
+        lines = []
+        for p in description_paragraphs[1:]:
+            lines.extend(p)
+            lines.append("\n")
+        sections["Notes"] = lines
+    plist = []
+    for arg in argnames:
+        plist.append('%s : array-like' % arg)
+        for line in parameters[arg].split('\n'):
+            plist.append("    %s" % line)
+    sections['Parameters'] = plist
 
-        # I think we can assume OUTPUT will be present, but just
-        # in case, we check for it.  Maybe remove this later.
-        if 'OUTPUT' in helpdict:
-            outdoc = fix_outputs_doc(helpdict['OUTPUT'])
-        else:
-            outdoc = ['None']
-        if ufname in return_overrides:
-            outdoc = return_overrides[ufname]
-        sections['Returns'] = outdoc
-        doc = docstring_from_sections(sections)
-    except KeyError as e:
-        print("KeyError for %s, %s" % (ufname, e))
-        doc = "(no description available)"
+    # I think we can assume OUTPUT will be present, but just
+    # in case, we check for it.  Maybe remove this later.
+    if 'OUTPUT' in helpdict:
+        outdoc = fix_outputs_doc(helpdict['OUTPUT'])
+    else:
+        outdoc = ['double, array']
+    if ufname in return_overrides:
+        outdoc = return_overrides[ufname]
+    sections['Returns'] = outdoc
+    if "REFERENCES" in helpdict:
+        sections["References"] = [line.strip() for line in helpdict["REFERENCES"]]
+    doc = docstring_from_sections(sections)
     subs['doc'] = doc
     return wrapper_template % subs
 

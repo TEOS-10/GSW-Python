@@ -149,6 +149,17 @@ def help_text_to_dict(help):
             blocklines.append(_s)
     if started and blocklines:
         hdict[key] = blocklines
+    # Library functions don't have sections; we can use the whole thing instead.
+    block = []
+    started = False
+    for line in help:
+        if line.startswith("=========="):
+            started = True
+            continue
+        block.append(line)
+        if line.startswith("VERSION"):
+            break
+    hdict['all'] = block
     return hdict
 
 
