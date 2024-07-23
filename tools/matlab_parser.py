@@ -117,8 +117,14 @@ def help_text_to_dict(help):
     # Headings ('USAGE:', 'DESCRIPTION:', etc.) start with all caps and a colon.
     keypat = r"^([A-Z ]+):(.*)"
     hdict = dict()
+    topline = help[0][2:].strip()
+    parts = topline.split(maxsplit=1)
+    if len(parts) == 2:
+        hdict["summary"] = parts[1:]
+    else:
+        hdict["summary"] = ["no summary"]
     started = False
-    for line in help:
+    for line in help[1:]:
         keyline = re.match(keypat, line)
         if keyline:
             # We found a new heading.
@@ -143,6 +149,17 @@ def help_text_to_dict(help):
             blocklines.append(_s)
     if started and blocklines:
         hdict[key] = blocklines
+    # Library functions don't have sections; we can use the whole thing instead.
+    block = []
+    started = False
+    for line in help:
+        if line.startswith("=========="):
+            started = True
+            continue
+        block.append(line)
+        if line.startswith("VERSION"):
+            break
+    hdict['all'] = block
     return hdict
 
 

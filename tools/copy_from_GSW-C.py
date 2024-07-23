@@ -7,7 +7,6 @@ an up-to-date GSW-C GitHub repo and the present GSW-Python repo are
 siblings in the directory tree.
 """
 
-import sys
 import shutil
 from pathlib import Path
 

@@ -123,9 +123,19 @@ def docstring_from_sections(sections):
             doclines.extend(sections[name])
 
     for i, line in enumerate(list(doclines)):
-        if line:
+        if line.strip():
             doclines[i] = '    %s\n' % line.rstrip()
         else:
             doclines[i] = '\n'
-
+    # Ensure there is only one blank line at the end.
+    blanks = 0
+    for line in reversed(doclines):
+        if not line.strip():
+            blanks += 1
+        else:
+            break
+    if blanks == 0:
+        doclines.append('\n')
+    if blanks > 1:
+        del doclines[-(blanks-1):]
     return ''.join(doclines)

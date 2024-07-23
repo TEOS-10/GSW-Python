@@ -14,7 +14,8 @@ from gsw._utilities import Bunch
 
 # Most of the tests have some nan values, so we need to suppress the warning.
 # Any more careful fix would likely require considerable effort.
-np.seterr(invalid='ignore')
+# We get an overflow from ct_from_enthalpy_exact, but the test passes.
+np.seterr(invalid='ignore', over='ignore')
 
 root_path = os.path.abspath(os.path.dirname(__file__))
 
@@ -28,7 +29,6 @@ blacklist = ['deltaSA_atlas',  # the test is complicated; doesn't fit the patter
              #'melting_ice_into_seawater',  # OK now; fixed nargs mismatch.
              ]
 
-# We get an overflow from ct_from_enthalpy_exact, but the test passes.
 cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
 
 # Substitute new check values for the pchip interpolation version.

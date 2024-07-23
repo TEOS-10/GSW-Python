@@ -1,7 +1,6 @@
 """
 Functions for taking apart the function declarations in gswteos-10.h.
 """
-from collections import ChainMap
 from pathlib import Path
 import re
 
@@ -87,50 +86,50 @@ def parse_signatures(sigs):
 def get_sigdict(srcdir="src"):
     return parse_signatures(get_signatures(srcdir=srcdir))
 
-# Note: some "sigdict" structures below do *not* use the name as the key.
 
-def simple_sigs(sigdict):
+def get_simple_name_nin_returntype(sigdict):
     """
-    Given the dict output of parse_signatures, return a dict
-    with the *number of inputs as key*, and a list of names as the value.
-    Only functions with double arguments and return value are included.
+    Return a list of (name, nin, returntype) tuples.
+    Include only functions with double arguments and a single return.
+    Return may be double or int.
     """
-    simple = {}
-    for psig in sigdict.values():
-        if (psig['returntype'] == 'double' and
-                all([t == 'double' for t in psig['argtypes']])):
-            n = len(psig['argtypes'])
-            if n in simple:
-                simple[n].append(psig['name'])
-            else:
-                simple[n] = [psig['name']]
-    for value in simple.values():
-        value.sort()
-    return simple
+    tups = []
+    for name, sig in sigdict.items():
+        if all([t == 'double' for t in sig['argtypes']]):
+            nin = len(sig['argtypes'])
+            if sig['returntype'] in ('double', 'int'):
+                tups.append((name, nin, sig['returntype']))
+    return tups
 
-def get_simple_sig_dict(srcdir='src'):
-    return simple_sigs(get_sigdict(srcdir="src"))
 
-def complex_sigdict(sigdict):
+def get_complex_name_nin_nout(sigdict):
     """
-    This is a name-keyed sigdict with everything that is *not* in "simple".
+    Return a list of (name, nin, nout) tuples.
+    Include only functions with multiple outputs, double only.
+    This not bullet-proof, but it works with the current set of functions.
     """
-    out = {}
-    for key, psig in sigdict.items():
-        if (psig['returntype'] == 'double' and
-                all([t == 'double' for t in psig['argtypes']])):
+    tups = []
+    simple = [tup[0] for tup in get_simple_name_nin_returntype(sigdict)]
+    for name, sig in sigdict.items():
+        if name in simple:
             continue
-        out[key] = psig
-    return out
-
-def get_complex_sigdict(srcdir='src'):
-    return complex_sigdict(get_sigdict(srcdir=srcdir))
-
+        if sig['returntype'] == 'void' and 'int' not in sig['argtypes']:
+            nin = 0
+            nout = 0
+            for arg in sig['argtuple']:
+                if '*' in arg:
+                    nout += 1
+                else:
+                    nin += 1
+            tups.append((name, nin, nout))
+    return tups
 
 def mixed_sigdict(sigdict):
     """
     This should find gibbs and gibbs_ice, with their leading int arguments.
     It is keyed by name.
+    Returns a subset of sigdict, with a "letter_sig" entry added to each
+    signature.
     """
     out1 = {k: psig for k, psig in sigdict.items() if psig['returntype'] == 'double'}
     out = {}
@@ -142,56 +141,3 @@ def mixed_sigdict(sigdict):
             psig["letter_sig"] = f"{''.join([a[0] for a in psig['argtypes']])}_d"
     return out
 
-def get_mixed_sigdict(srcdir="src"):
-    return mixed_sigdict(get_sigdict(srcdir=srcdir))
-
-def get_complex_scalar_sigdict(srcdir='src'):
-    """
-    Return a name-keyed sigdict for functions with more than one return but
-    with scalar arguments and return values.
-    """
-    # This works with the current set of functions, but it is not using a fully
-    # general criterion.  It would fail if a scalar function were added with
-    # more than one output and with integer arguments.
-    cd = get_complex_sigdict(srcdir=srcdir)
-    scalar_dict = {}
-    for k, v in cd.items():
-        if v['returntype'] == 'void' and 'int' not in v['argtypes']:
-            scalar_dict[k] = v
-    return scalar_dict
-
-def get_complex_scalar_dict_by_nargs_nreturns(srcdir='src'):
-    sd = get_complex_scalar_sigdict(srcdir=srcdir)
-    names_by_sigtup = {}
-    for k, v in sd.items():
-        nargs = 0
-        nrets = 0
-        for arg in v['argtuple']:
-            if '*' in arg:
-                nrets += 1
-            else:
-                nargs += 1
-        sigtup = (nargs, nrets)
-        if sigtup in names_by_sigtup:
-            names_by_sigtup[sigtup].append(k)
-        else:
-            names_by_sigtup[sigtup] = [k]
-    return names_by_sigtup
-
-def print_complex_names_by_nargs_nreturns(srcdir='src'):
-    d = get_complex_scalar_dict_by_nargs_nreturns(srcdir=srcdir)
-    for k, v in d.items():
-        print(k, len(v))
-        for name in v:
-            print('    %s' % name)
-
-def print_non_wrappable(srcdir='src'):
-    sigdict = get_sigdict(srcdir=srcdir)  # everything
-    csd = complex_sigdict(sigdict)        # some we wrap, some we don't
-    scd = get_complex_scalar_sigdict(srcdir=srcdir)  # we wrap these
-    mixed = mixed_sigdict(sigdict)  # and these
-    # Find the names of functions we don't wrap.
-    others = [k for k in csd if k not in ChainMap(scd, mixed)]
-    othersd = {k : csd[k] for k in others}
-    for k, v in othersd.items():
-        print(k, v['argstring'], v['returntype'])
