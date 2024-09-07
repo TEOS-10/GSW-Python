@@ -7,3 +7,5 @@
     "PCHIP interpolation"},
 {"sa_ct_interp", sa_ct_interp, METH_VARARGS,
     "SA and CT interpolation"},
+{"tracer_ct_interp", tracer_ct_interp, METH_VARARGS,
+    "Tracer and CT interpolation"},

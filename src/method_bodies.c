@@ -319,3 +319,105 @@ sa_ct_interp(PyObject *NPY_UNUSED(self), PyObject *args)
 
     return res;
 }
+
+
+static PyObject *
+tracer_ct_interp(PyObject *NPY_UNUSED(self), PyObject *args)
+{
+    PyObject *tracer_o, *ct_o, *p_o, *pi_o, *res;
+    double factor;
+    PyArrayObject *tracer_a, *ct_a, *p_a, *pi_a, *traceri_a, *cti_a;
+    int np, npi;
+    int ret = 1;    /* error (1) until set to 0 by the C function */
+
+    if (!PyArg_ParseTuple(args, "OOOOd", &tracer_o, &ct_o, &p_o, &pi_o, &factor))
+        return NULL;
+
+    tracer_a = (PyArrayObject *)PyArray_ContiguousFromAny(tracer_o, NPY_DOUBLE, 1, 1);
+    if (tracer_a == NULL)
+        return NULL;
+
+    ct_a = (PyArrayObject *)PyArray_ContiguousFromAny(ct_o, NPY_DOUBLE, 1, 1);
+    if (ct_a == NULL)
+    {
+        Py_DECREF(tracer_a);
+        return NULL;
+    }
+    p_a = (PyArrayObject *)PyArray_ContiguousFromAny(p_o, NPY_DOUBLE, 1, 1);
+    if (p_a == NULL)
+    {
+        Py_DECREF(tracer_a);
+        Py_DECREF(ct_a);
+        return NULL;
+    }
+    pi_a = (PyArrayObject *)PyArray_ContiguousFromAny(pi_o, NPY_DOUBLE, 1, 1);
+    if (pi_a == NULL)
+    {
+        Py_DECREF(tracer_a);
+        Py_DECREF(ct_a);
+        Py_DECREF(p_a);
+        return NULL;
+    }
+
+    np = PyArray_DIM(tracer_a, 0);
+    if (PyArray_DIM(ct_a, 0) != np || PyArray_DIM(p_a, 0) != np)
+    {
+        PyErr_SetString(PyExc_ValueError,
+            "Arguments tracer, CT, and p must have the same dimensions.");
+        Py_DECREF(tracer_a);
+        Py_DECREF(ct_a);
+        Py_DECREF(p_a);
+        Py_DECREF(pi_a);
+        return NULL;
+    }
+
+    npi = PyArray_DIM(pi_a, 0);
+    traceri_a = (PyArrayObject *)PyArray_NewLikeArray(pi_a, NPY_CORDER, NULL, 0);
+    if (traceri_a == NULL)
+    {
+        Py_DECREF(tracer_a);
+        Py_DECREF(ct_a);
+        Py_DECREF(p_a);
+        Py_DECREF(pi_a);
+        return NULL;
+    }
+
+    cti_a = (PyArrayObject *)PyArray_NewLikeArray(pi_a, NPY_CORDER, NULL, 0);
+    if (cti_a == NULL)
+    {
+        Py_DECREF(tracer_a);
+        Py_DECREF(ct_a);
+        Py_DECREF(p_a);
+        Py_DECREF(pi_a);
+        Py_DECREF(traceri_a);
+        return NULL;
+    }
+
+    ret = gsw_tracer_ct_interp((double *)PyArray_DATA(tracer_a),
+                               (double *)PyArray_DATA(ct_a),
+                               (double *)PyArray_DATA(p_a),
+                               np,
+                               (double *)PyArray_DATA(pi_a),
+                               npi,
+                               factor,
+                               (double *)PyArray_DATA(traceri_a),
+                               (double *)PyArray_DATA(cti_a));
+    Py_DECREF(tracer_a);
+    Py_DECREF(ct_a);
+    Py_DECREF(p_a);
+    Py_DECREF(pi_a);
+
+    if (ret)
+    {
+        PyErr_Format(PyExc_RuntimeError,
+            "gsw_tracer_ct_interp failed with code %d; check input arguments",
+                     ret);
+        Py_DECREF(traceri_a);
+        Py_DECREF(cti_a);
+        return NULL;
+    }
+
+    res = PyTuple_Pack(2, traceri_a, cti_a);
+
+    return res;
+}
