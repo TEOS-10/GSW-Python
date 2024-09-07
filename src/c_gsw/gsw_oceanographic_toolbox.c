@@ -8607,7 +8607,7 @@ subroutine gsw_SA_CT_interp (sa,ct,p,p_i)
 !
 !--------------------------------------------------------------------------
 */
-void
+int
 gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
         double *p_i, int m_i, double *sa_i, double *ct_i)
 {
@@ -8658,13 +8658,13 @@ gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
         ct_sort = (double *) malloc(m*sizeof (double));
 
         if (m < 4)
-            return; // There must be at least 4 bottles'
+            return 1; // There must be at least 4 bottles'
 
         // Check if interpolating pressure is monotonic
         for (i=0; i<m_i-1; ++i) {
             d = p_i[i + 1] - p_i[i];
             if (d < 0.) {
-                return;
+                return 1;
             }
         }
 
@@ -8695,7 +8695,7 @@ gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
         }
 
         if (prof_len < 2) {
-            return;
+            return 1;
         }
 
         p_i_tmp = (double *) malloc(m_i*sizeof (double));
@@ -8976,7 +8976,7 @@ gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
         free(i_2);
         free(i_3);
 
-        return;
+        return 0;
 }
 /*
 !==========================================================================
@@ -11329,7 +11329,7 @@ subroutine gsw_tracer_CT_interp (tracer,ct,p,p_i,factor)
 !
 !--------------------------------------------------------------------------
 */
-void
+int
 gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
         double *p_i, int m_i, double factor, double *tracer_i, double *ct_i)
 {
@@ -11378,13 +11378,13 @@ gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
         ct_sort = (double *) malloc(m*sizeof (double));
 
         if (m < 4)
-            return; // There must be at least 4 bottles'
+            return 1; // There must be at least 4 bottles'
 
         // Check if interpolating pressure is monotonic
         for (i=0; i<m_i-1; ++i) {
             d = p_i[i + 1] - p_i[i];
             if (d < 0.) {
-                return;
+                return 1;
             }
         }
 
@@ -11408,7 +11408,7 @@ gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
         }
 
         if (prof_len < 2) {
-            return;
+            return 1;
         }
 
         p_i_tmp = (double *) malloc(m_i*sizeof (double));
@@ -11638,7 +11638,7 @@ gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
         free(i_2);
         free(i_3);
 
-        return;
+        return 0;
 }
 /*
 !==========================================================================
