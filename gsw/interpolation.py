@@ -170,7 +170,7 @@ def tracer_ct_interp(tracer, CT, p, p_i, factor=9., axis=0):
         if len(pgood) > 2:
             tr = tracer[ind][igood]
             ct = CT[ind][igood]
-            tri, cti = _gsw_ufuncs.sa_ct_interp(tr, ct, pgood, pi, factor)
+            tri, cti = _gsw_ufuncs.tracer_ct_interp(tr, ct, pgood, pi, factor)
             tracer_i[ind] = tri
             CT_i[ind] = cti
 
