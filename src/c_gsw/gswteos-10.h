@@ -35,6 +35,7 @@ extern "C" {
 
 #define INTERP_METHOD_LINEAR 1
 #define INTERP_METHOD_PCHIP 2
+#define INTERP_METHOD_MRST 3
 
 /*
 **  Prototypes:

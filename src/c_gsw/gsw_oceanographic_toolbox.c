@@ -4010,8 +4010,9 @@ gsw_geo_strf_dyn_height_1(double *sa, double *ct, double *p, double p_ref,
 !
 !  This function evaluates the pressure integral of specific volume using
 !  SA and CT interpolated with respect to pressure. The interpolation method
-!  may be chosen as linear or "PCHIP", piecewise cubic Hermite using a shape-
-!  preserving algorithm for setting the derivatives.
+!  may be chosen as linear, "PCHIP" (piecewise cubic Hermite using a shape-
+!  preserving algorithm for setting the derivatives), or "MRST-PCHIP"
+!  (Multiply-Rotated Salinity–Temperature PCHIP).
 !
 !  SA    =  Absolute Salinity                                      [ g/kg ]
 !  CT    =  Conservative Temperature (ITS-90)                     [ deg C ]
@@ -4023,7 +4024,7 @@ gsw_geo_strf_dyn_height_1(double *sa, double *ct, double *p, double p_ref,
 !  geo_strf_dyn_height  =  dynamic height anomaly               [ m^2/s^2 ]
 !  max_dp_i = maximum pressure difference between points for triggering
 !              interpolation.
-!  interp_method = 1 for linear, 2 for PCHIP
+!  interp_method = 1 for linear, 2 for PCHIP, 3 for MRST-PCHIP
 !
 !   Note. If p_ref falls outside the range of a
 !     vertical profile, the dynamic height anomaly for each bottle
@@ -4269,8 +4270,13 @@ gsw_geo_strf_dyn_height_1(double *sa, double *ct, double *p, double p_ref,
         err = err || gsw_util_pchip_interp(p, ct, nz, p_i, ct_i, n_i);
         if (err) err = 6;
     }
+    else if (interp_method == INTERP_METHOD_MRST) {
+        err = gsw_sa_ct_interp(sa, ct, p, nz,
+                               p_i, n_i, sa_i, ct_i);
+        if (err) err = 7;
+    }
     else {
-        err = 7;
+        err = 8;
     }
     if (err) {
         free(p_i);
