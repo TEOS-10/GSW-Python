@@ -24,13 +24,11 @@ jobs:
         environment-name: TEST
         init-shell: bash
         create-args: >-
-          python=3 pip
+          python=3
+          python-build
+          numpy
           --file requirements-dev.txt
           --channel conda-forge
-
-    - name: Install nightly version of numpy
-      run: |
-        python -m pip install --pre --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple --extra-index-url https://pypi.org/simple numpy scipy pandas -U
 
     - name: Test Code Generation
       run: >
