@@ -36,6 +36,7 @@ subs = [
     ('equlibrium', 'equilibrium'),
     (' apendix ', ' appendix '),
     (' slighty ', ' slightly '),
+    ('rho : array-like, kg/m', 'rho : array-like, kg/m^3'),
 ]
 
 with open(wrapmod) as f:
