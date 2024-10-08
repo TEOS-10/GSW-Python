@@ -1,7 +1,7 @@
 import os
 
 import numpy as np
-from numpy.testing import assert_almost_equal, assert_array_equal
+from numpy.testing import assert_almost_equal, assert_array_equal, assert_allclose
 
 import gsw
 from gsw._utilities import Bunch
@@ -102,3 +102,14 @@ def test_pz_roundtrip():
     zz = gsw.z_from_p(p, 30, 0.5, 0.25)
     assert_almost_equal(z, zz)
 
+def test_dyn_height_mrst():
+    """
+    Tests the MRST-PCHIP interpolation method.
+    """
+    p = cv.p_chck_cast
+    CT = cv.CT_chck_cast
+    SA = cv.SA_chck_cast
+    pr = cv.pr
+    strf = gsw.geo_strf_dyn_height(SA, CT, p, p_ref=pr, interp_method='mrst')
+
+    assert_allclose(strf, cv.geo_strf_dyn_height, rtol=0, atol=cv.geo_strf_dyn_height_ca)
