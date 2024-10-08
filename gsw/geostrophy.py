@@ -36,7 +36,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
         If any pressure interval in the input p exceeds max_dp, the dynamic
         height will be calculated after interpolating to a grid with this
         spacing.
-    interp_method : string {'pchip', 'linear'}
+    interp_method : string {'mrst', 'pchip', 'linear'}
         Interpolation algorithm.
 
     Returns
@@ -48,7 +48,7 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
         in an isobaric surface, relative to the reference surface.
 
     """
-    interp_methods = {'pchip' : 2, 'linear' : 1}
+    interp_methods = {'mrst' : 3, 'pchip' : 2, 'linear' : 1}
     if interp_method not in interp_methods:
         raise ValueError(f'interp_method must be one of {interp_methods.keys()}')
     if SA.shape != CT.shape:
