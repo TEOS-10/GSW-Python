@@ -58,7 +58,7 @@ def sa_ct_interp(SA, CT, p, p_i, axis=0):
         if p.shape != SA.shape:
             raise ValueError(f'With {p.ndim}-D p, shapes of p and SA must match;\n'
                              f'found {p.shape} and {SA.shape}')
-        if any([p.shape[i] != p_i.shape[i] for i in range(p.ndim) if i != axis]):
+        if any(p.shape[i] != p_i.shape[i] for i in range(p.ndim) if i != axis):
             raise ValueError(f'With {p.ndim}-D p, p and p_i must have the same dimensions outside of axis {axis};\n'
                              f' found {p.shape} versus {p_i.shape}')
     with np.errstate(invalid='ignore'):
@@ -142,7 +142,7 @@ def tracer_ct_interp(tracer, CT, p, p_i, factor=9., axis=0):
         if p.shape != tracer.shape:
             raise ValueError(f'With {p.ndim}-D p, shapes of p and tracer must match;\n'
                              f'found {p.shape} and {tracer.shape}')
-        if any([p.shape[i] != p_i.shape[i] for i in range(p.ndim) if i != axis]):
+        if any(p.shape[i] != p_i.shape[i] for i in range(p.ndim) if i != axis):
             raise ValueError(f'With {p.ndim}-D p, p and p_i must have the same dimensions outside of axis {axis};\n'
                              f' found {p.shape} versus {p_i.shape}')
     with np.errstate(invalid='ignore'):
