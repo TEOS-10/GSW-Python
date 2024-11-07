@@ -6,7 +6,7 @@ via the index to these web pages.
 
 Subsets of functions are grouped in subpackages, each of which corresponds
 approximately to one or more of the groups in the table on pages
-16-19 of http://www.teos-10.org/pubs/Getting_Started.pdf.  These
+16-19 of https://www.teos-10.org/pubs/Getting_Started.pdf.  These
 subpackages are particularly useful for finding functions using
 tab-completion in IPython.
 
