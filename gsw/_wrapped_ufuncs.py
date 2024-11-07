@@ -32,7 +32,7 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqn. (2.22.1) of this TEOS-10 Manual.
 
 
@@ -63,7 +63,7 @@ def adiabatic_lapse_rate_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
 
     """
@@ -107,7 +107,7 @@ def alpha(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.18.3) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -165,7 +165,7 @@ def alpha_on_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -209,7 +209,7 @@ def alpha_wrt_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqn. (2.18.1) of this TEOS-10 manual.
 
 
@@ -242,7 +242,7 @@ def alpha_wrt_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqn. (2.18.1) of this TEOS-10 manual.
 
 
@@ -288,7 +288,7 @@ def beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.19.3) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -332,7 +332,7 @@ def beta_const_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.19.1) of this TEOS-10 manual.
 
 
@@ -391,7 +391,7 @@ def C_from_SP(SP, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix E of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -444,7 +444,7 @@ def cabbeling(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqns. (3.9.2) and (P.4) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -485,7 +485,7 @@ def chem_potential_water_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -517,7 +517,7 @@ def chem_potential_water_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -547,7 +547,7 @@ def cp_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -579,7 +579,7 @@ def cp_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -621,10 +621,10 @@ def CT_first_derivatives(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.12.3a,b) and (A.15.8) of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -681,11 +681,11 @@ def CT_first_derivatives_wrt_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.15.3) and (A.15.8) of this TEOS-10 Manual for
     CT_T_wrt_t and CT_SA_wrt_t respectively.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -730,7 +730,7 @@ def CT_freezing(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
@@ -775,7 +775,7 @@ def CT_freezing_first_derivatives(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
 
     """
@@ -816,7 +816,7 @@ def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -861,7 +861,7 @@ def CT_freezing_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -911,7 +911,7 @@ def CT_from_enthalpy(SA, h, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -972,7 +972,7 @@ def CT_from_enthalpy_exact(SA, h, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1014,7 +1014,7 @@ def CT_from_entropy(SA, entropy):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix  A.10 of this TEOS-10 Manual.
 
 
@@ -1046,7 +1046,7 @@ def CT_from_pt(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.3 of this TEOS-10 Manual.
 
 
@@ -1093,7 +1093,7 @@ def CT_from_rho(rho, SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -1135,7 +1135,7 @@ def CT_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.3 of this TEOS-10 Manual.
 
 
@@ -1182,7 +1182,7 @@ def CT_maxdensity(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.42 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -1243,10 +1243,10 @@ def CT_second_derivatives(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See appendix A.12 of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -1289,12 +1289,12 @@ def deltaSA_atlas(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -1330,13 +1330,13 @@ def deltaSA_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1117-1128.
-    http://www.ocean-sci.net/8/1117/2012/os-8-1117-2012.pdf
+    https://os.copernicus.org/articles/8/1117/2012/os-8-1117-2012.pdf
 
 
     """
@@ -1371,7 +1371,7 @@ def dilution_coefficient_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -1415,7 +1415,7 @@ def dynamic_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.2 of this TEOS-10 Manual.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
@@ -1477,7 +1477,7 @@ def enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.6) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1533,7 +1533,7 @@ def enthalpy_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.11 of this TEOS-10 Manual.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
@@ -1593,7 +1593,7 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqns. (3.32.2) and (A.30.6) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1661,7 +1661,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.11.18), (A.11.15) and (A.11.12) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1678,7 +1678,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -1729,7 +1729,7 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.11.18), (A.11.15) and (A.11.12) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1741,7 +1741,7 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -1771,7 +1771,7 @@ def enthalpy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -1827,7 +1827,7 @@ def enthalpy_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1843,7 +1843,7 @@ def enthalpy_second_derivatives(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -1898,7 +1898,7 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1909,7 +1909,7 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -1978,7 +1978,7 @@ def enthalpy_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -2018,10 +2018,10 @@ def entropy_first_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.12.8) and (P.14a,c) of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -2051,7 +2051,7 @@ def entropy_from_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.10 of this TEOS-10 Manual.
 
 
@@ -2083,7 +2083,7 @@ def entropy_from_pt(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.10 of this TEOS-10 Manual.
 
 
@@ -2116,7 +2116,7 @@ def entropy_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -2146,7 +2146,7 @@ def entropy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -2263,10 +2263,10 @@ def entropy_second_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (P.14b) and (P.15a,b) of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -2310,18 +2310,18 @@ def Fdelta(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
     Pawlawicz, R., D.G. Wright and F.J. Millero, 2011; The effects of
     biogeochemical processes on oceanic conductivity/salinty/density
     relationships and the characterization of real seawater. Ocean Science,
-    7, 363-387.  http://www.ocean-sci.net/7/363/2011/os-7-363-2011.pdf
+    7, 363-387.  https://os.copernicus.org/articles/7/363/2011/os-7-363-2011.pdf
 
 
     """
@@ -2390,7 +2390,7 @@ def frazil_properties(SA_bulk, h_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2468,7 +2468,7 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2547,7 +2547,7 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2611,7 +2611,7 @@ def frazil_ratios_adiabatic(SA, p, w_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -2673,7 +2673,7 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -2740,19 +2740,19 @@ def gibbs(ns, nt, np, SA, t, p):
     IAPWS, 2008: Release on the IAPWS Formulation 2008 for the
     Thermodynamic Properties of Seawater. The International Association
     for the Properties of Water and Steam. Berlin, Germany, September
-    2008, available from http://www.iapws.org.  This Release is referred
+    2008, available from https://iapws.org/.  This Release is referred
     to as IAPWS-08.
 
     IAPWS, 2009: Supplementary Release on a Computationally Efficient
     Thermodynamic Formulation for Liquid Water for Oceanographic Use.
     The International Association for the Properties of Water and Steam.
     Doorwerth, The Netherlands, September 2009, available from
-    http://www.iapws.org.  This Release is referred to as IAPWS-09.
+    https://iapws.org/.  This Release is referred to as IAPWS-09.
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.6 and appendices A.6,  G and H of this TEOS-10 Manual.
 
     Millero, F.J., R. Feistel, D.G. Wright, and T.J. McDougall, 2008:
@@ -2806,7 +2806,7 @@ def gibbs_ice(nt, np, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See appendix I.
 
     Reference page in Help browser
@@ -2848,7 +2848,7 @@ def gibbs_ice_part_t(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See appendix I.
 
 
@@ -2882,7 +2882,7 @@ def gibbs_ice_pt0(pt0):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See appendix I.
 
 
@@ -2917,7 +2917,7 @@ def gibbs_ice_pt0_pt0(pt0):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See appendix I.
 
 
@@ -2980,7 +2980,7 @@ def grav(lat, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix D of this TEOS-10 Manual.
 
     Moritz, H., 2000: Geodetic reference system 1980. J. Geodesy, 74,
@@ -3017,7 +3017,7 @@ def Helmholtz_energy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -3054,7 +3054,7 @@ def Hill_ratio_at_SP2(t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix E of this TEOS-10 Manual.
 
     McDougall T.J. and S.J. Wotherspoon, 2013: A simple modification of
@@ -3113,7 +3113,7 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2013: A simple modification of
@@ -3221,7 +3221,7 @@ def internal_energy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -3260,7 +3260,7 @@ def internal_energy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -3304,7 +3304,7 @@ def kappa(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -3346,7 +3346,7 @@ def kappa_const_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -3376,7 +3376,7 @@ def kappa_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -3408,7 +3408,7 @@ def kappa_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqns. (2.16.1) and the row for kappa in Table P.1 of appendix P
     of this TEOS-10 Manual.
 
@@ -3444,7 +3444,7 @@ def latentheat_evap_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.39 of this TEOS-10 Manual.
 
 
@@ -3478,7 +3478,7 @@ def latentheat_evap_t(SA, t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.39 of this TEOS-10 Manual.
 
 
@@ -3529,7 +3529,7 @@ def latentheat_melting(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.34 of this TEOS-10 Manual.
 
 
@@ -3578,7 +3578,7 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3637,7 +3637,7 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3710,7 +3710,7 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of ice and sea ice into seawater, and frazil ice formation.
@@ -3759,7 +3759,7 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3815,7 +3815,7 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3878,7 +3878,7 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3943,7 +3943,7 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4019,7 +4019,7 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4087,7 +4087,7 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4161,7 +4161,7 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4217,7 +4217,7 @@ def O2sol(SA, CT, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     Benson, B.B., and D. Krause, 1984: The concentration and isotopic
     fractionation of oxygen dissolved in freshwater and seawater in
@@ -4270,7 +4270,7 @@ def O2sol_SP_pt(SP, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     Benson, B.B., and D. Krause, 1984: The concentration and isotopic
     fractionation of oxygen dissolved in freshwater and seawater in
@@ -4336,7 +4336,7 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -4357,7 +4357,7 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     Saunders, P.M., 1981: Practical conversion of pressure to depth.
     Journal of Physical Oceanography, 11, pp. 573-574.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -4386,7 +4386,7 @@ def pot_enthalpy_from_pt_ice(pt0_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -4417,7 +4417,7 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -4448,7 +4448,7 @@ def pot_enthalpy_ice_freezing(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4491,7 +4491,7 @@ def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4535,7 +4535,7 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4582,7 +4582,7 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4623,7 +4623,7 @@ def pot_rho_t_exact(SA, t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.4 of this TEOS-10 Manual.
 
 
@@ -4654,7 +4654,7 @@ def pressure_coefficient_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.15.1) of this TEOS-10 Manual.
 
 
@@ -4694,7 +4694,7 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4737,7 +4737,7 @@ def pt0_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.1 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4774,7 +4774,7 @@ def pt0_from_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix I of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4820,10 +4820,10 @@ def pt_first_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.12.6), (A.12.3), (P.6) and (P.8) of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -4858,7 +4858,7 @@ def pt_from_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See sections 3.1 and 3.3 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
@@ -4895,7 +4895,7 @@ def pt_from_entropy(SA, entropy):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix  A.10 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4930,7 +4930,7 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4969,7 +4969,7 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -5009,7 +5009,7 @@ def pt_from_t(SA, t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 3.1 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -5054,7 +5054,7 @@ def pt_from_t_ice(t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix I of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
@@ -5107,10 +5107,10 @@ def pt_second_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See Eqns. (A.12.9) and (A.12.10) of this TEOS-10 Manual.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -5135,7 +5135,7 @@ def rho(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3
+    rho : array-like, kg/m^3^3^3^3
         in-situ density
 
 
@@ -5157,7 +5157,7 @@ def rho(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -5194,7 +5194,7 @@ def rho_alpha_beta(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3
+    rho : array-like, kg/m^3^3^3^3
         in-situ density
     alpha : array-like, 1/K
         thermal expansion coefficient
@@ -5222,7 +5222,7 @@ def rho_alpha_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
@@ -5280,7 +5280,7 @@ def rho_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
@@ -5340,7 +5340,7 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5351,7 +5351,7 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -5383,7 +5383,7 @@ def rho_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -5453,7 +5453,7 @@ def rho_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5464,7 +5464,7 @@ def rho_second_derivatives(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -5525,7 +5525,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5536,7 +5536,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -5570,7 +5570,7 @@ def rho_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.8 of this TEOS-10 Manual.
 
 
@@ -5611,7 +5611,7 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5659,7 +5659,7 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5707,7 +5707,7 @@ def SA_freezing_from_t(t, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5755,7 +5755,7 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5808,7 +5808,7 @@ def SA_from_rho(rho, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -5858,13 +5858,13 @@ def SA_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -5900,17 +5900,17 @@ def SA_from_SP_Baltic(SP, lon, lat):
     Feistel, R., S. Weinreben, H. Wolf, S. Seitz, P. Spitzer, B. Adel,
     G. Nausch, B. Schneider and D. G. Wright, 2010: Density and Absolute
     Salinity of the Baltic Sea 2006-2009.  Ocean Science, 6, 3-24.
-    http://www.ocean-sci.net/6/3/2010/os-6-3-2010.pdf
+    https://os.copernicus.org/articles/6/3/2010/os-6-3-2010.pdf
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -5944,12 +5944,12 @@ def SA_from_Sstar(Sstar, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -5994,12 +5994,12 @@ def SAAR(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
     See also gsw_SA_from_SP, gsw_deltaSA_atlas
 
@@ -6061,7 +6061,7 @@ def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall T.J. and S.J. Wotherspoon, 2013: A simple modification of
@@ -6116,7 +6116,7 @@ def sigma0(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6172,7 +6172,7 @@ def sigma1(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6227,7 +6227,7 @@ def sigma2(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6282,7 +6282,7 @@ def sigma3(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6337,7 +6337,7 @@ def sigma4(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6391,7 +6391,7 @@ def sound_speed(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6431,7 +6431,7 @@ def sound_speed_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -6463,7 +6463,7 @@ def sound_speed_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
 
@@ -6513,7 +6513,7 @@ def SP_from_C(C, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix E of this TEOS-10 Manual.
 
     Unesco, 1983: Algorithms for computation of fundamental properties of
@@ -6551,12 +6551,12 @@ def SP_from_SA(SA, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -6591,17 +6591,17 @@ def SP_from_SA_Baltic(SA, lon, lat):
     Feistel, R., S. Weinreben, H. Wolf, S. Seitz, P. Spitzer, B. Adel,
     G. Nausch, B. Schneider and D. G. Wright, 2010c: Density and Absolute
     Salinity of the Baltic Sea 2006-2009.  Ocean Science, 6, 3-24.
-    http://www.ocean-sci.net/6/3/2010/os-6-3-2010.pdf
+    https://os.copernicus.org/articles/6/3/2010/os-6-3-2010.pdf
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -6629,7 +6629,7 @@ def SP_from_SK(SK):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Appendix A.3 of this TEOS-10 Manual.
 
 
@@ -6658,7 +6658,7 @@ def SP_from_SR(SR):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -6692,12 +6692,12 @@ def SP_from_Sstar(Sstar, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -6749,7 +6749,7 @@ def SP_salinometer(Rt, t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix E of this TEOS-10 Manual, and in particular,
     Eqns. (E.2.1) and (E.2.6).
 
@@ -6794,7 +6794,7 @@ def specvol(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -6805,7 +6805,7 @@ def specvol(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -6856,7 +6856,7 @@ def specvol_alpha_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6912,7 +6912,7 @@ def specvol_anom_standard(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqn. (3.7.3) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6983,7 +6983,7 @@ def specvol_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -6994,7 +6994,7 @@ def specvol_first_derivatives(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -7050,7 +7050,7 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7061,7 +7061,7 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -7091,7 +7091,7 @@ def specvol_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -7162,13 +7162,13 @@ def specvol_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -7229,7 +7229,7 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7240,7 +7240,7 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
@@ -7309,7 +7309,7 @@ def specvol_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.7 of this TEOS-10 Manual.
 
 
@@ -7354,7 +7354,7 @@ def spiciness0(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7409,7 +7409,7 @@ def spiciness1(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7464,7 +7464,7 @@ def spiciness2(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7504,7 +7504,7 @@ def SR_from_SP(SP):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -7538,12 +7538,12 @@ def Sstar_from_SA(SA, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -7579,13 +7579,13 @@ def Sstar_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
+    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
@@ -7619,7 +7619,7 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
 
     """
@@ -7663,7 +7663,7 @@ def t_freezing(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall T.J., and S.J. Wotherspoon, 2013: A simple modification of
@@ -7710,7 +7710,7 @@ def t_freezing_first_derivatives(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
 
     """
@@ -7752,7 +7752,7 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -7790,7 +7790,7 @@ def t_freezing_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -7828,7 +7828,7 @@ def t_from_CT(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See sections 3.1 and 3.3 of this TEOS-10 Manual.
 
 
@@ -7861,7 +7861,7 @@ def t_from_pt0_ice(pt0_ice, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See appendix I of this TEOS-10 Manual.
 
 
@@ -7907,7 +7907,7 @@ def thermobaric(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
     See Eqns. (3.8.2) and (P.2) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -7970,7 +7970,7 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7984,7 +7984,7 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
     polynomial expressions for the density and specific volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
-    This software is available from http://www.TEOS-10.org
+    This software is available from https://www.teos-10.org/
 
 
     """
