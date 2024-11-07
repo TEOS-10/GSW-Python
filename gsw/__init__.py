@@ -1,7 +1,7 @@
 """
 This is a Python implementation of the Gibbs SeaWater (GSW) Oceanographic
 Toolbox of TEOS-10.  Extensive documentation is available from
-http://www.teos-10.org/; users of this Python package are strongly
+https://www.teos-10.org/; users of this Python package are strongly
 encouraged to study the documents posted there.
 
 This implementation is based on GSW-C for core functions, with

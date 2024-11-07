@@ -37,6 +37,13 @@ subs = [
     (' apendix ', ' appendix '),
     (' slighty ', ' slightly '),
     ('rho : array-like, kg/m', 'rho : array-like, kg/m^3'),
+    ('http://www.TEOS-10.org', 'https://www.teos-10.org/'),
+    ('http://www.ocean-sci.net/8/1117/2012/os-8-1117-2012.pdf', 'https://os.copernicus.org/articles/8/1117/2012/os-8-1117-2012.pdf'),
+    ('http://www.ocean-sci.net/6/3/2010/os-6-3-2010.pdf', 'https://os.copernicus.org/articles/6/3/2010/os-6-3-2010.pdf'),
+    ('http://www.ocean-sci.net/7/363/2011/os-7-363-2011.pdf', 'https://os.copernicus.org/articles/7/363/2011/os-7-363-2011.pdf'),
+    ('http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf', 'https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf'),
+    ('http://www.iapws.org', 'https://iapws.org/'),
+
 ]
 
 with open(wrapmod) as f:
