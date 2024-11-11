@@ -8639,7 +8639,7 @@ gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
                     1.950903220161283e-1
                 };
 
-        int i, j, k, prof_len,
+        int i, k, prof_len,
             not_monotonic, unique_count, new_len, p_all_len,
             i_min_p_obs, i_obs_plus_interp_len, i_surf_and_obs_plus_interp_len,
             i_out_len, i_2_len, i_frozen, i_shallower, i_above, i_above_i, i_below_i;
@@ -8908,9 +8908,9 @@ gsw_sa_ct_interp(double *sa, double *ct, double *p, int m,
                 break;
             }
 
-            for (i=0; i < i_2_len; ++i) {
-                if ((i_3[i] - i_frozen) <= 0) {
-                    i_shallower = i;
+            for (i_shallower=i_2_len-1; i_shallower>=0; --i_shallower) {
+                if ((i_3[i_shallower] - i_frozen) <= 0) {
+                    break;
                 }
             }
             i_above = i_2[i_shallower];
@@ -11369,13 +11369,13 @@ gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
                     1.950903220161283e-1
                 };
 
-        int i, j, k, prof_len,
+        int i, k, prof_len,
             not_monotonic, unique_count, new_len, p_all_len,
             i_min_p_obs, i_obs_plus_interp_len, i_surf_and_obs_plus_interp_len,
-            i_out_len, i_2_len;
+            i_out_len;
         int *p_idx, *p_all_idx, *i_obs_plus_interp, *i_surf_and_obs_plus_interp,
             *i_out, *i_1, *i_2, *i_3;
-        double d, ct_f, unique_p, ct_sum, tracer_sum, min_p_obs, max_p_obs;
+        double d, unique_p, ct_sum, tracer_sum, min_p_obs, max_p_obs;
         double *tracer_obs, *ct_obs, *p_obs, *p_i_tmp,
                *p_sort, *tracer_sort, *ct_sort, *p_all, *p_all_sort,
                *p_obs_plus_interp, *p_surf_and_obs_plus_interp,
@@ -11550,7 +11550,7 @@ gsw_tracer_ct_interp(double *tracer, double *ct, double *p, int m,
             }
         }
         i_out_len = gsw_util_intersect(p_i_tmp, m_i, p_surf_and_obs_plus_interp, i_surf_and_obs_plus_interp_len, i_out, i_1);
-        i_2_len = gsw_util_intersect(p_obs, prof_len, p_obs_plus_interp, i_obs_plus_interp_len, i_2, i_3);
+        gsw_util_intersect(p_obs, prof_len, p_obs_plus_interp, i_obs_plus_interp_len, i_2, i_3);
 
         independent_variable = (double *) malloc(prof_len*sizeof (double));
         independent_variable_obs_plus_interp = (double *) malloc(i_obs_plus_interp_len*sizeof (double));

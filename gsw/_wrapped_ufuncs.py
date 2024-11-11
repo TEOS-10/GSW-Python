@@ -5135,7 +5135,7 @@ def rho(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3^3^3^3
+    rho : array-like, kg/m^3
         in-situ density
 
 
@@ -5194,7 +5194,7 @@ def rho_alpha_beta(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3^3^3^3
+    rho : array-like, kg/m^3
         in-situ density
     alpha : array-like, 1/K
         thermal expansion coefficient
