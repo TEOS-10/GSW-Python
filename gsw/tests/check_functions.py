@@ -177,9 +177,9 @@ class FunctionCheck:
 
             # The following is needed for melting_ice_into_seawater.
             if len(self.outstrings) > 1:
-                rl_ind = '[:%d]' % len(self.outstrings)
+                rl_ind = f"[:{len(self.outstrings)}]"
             else:
-                rl_ind = ''
+                rl_ind = ""
 
             exec(self.runline + rl_ind, *evalargs)
             if len(self.outstrings) == 1:
@@ -327,13 +327,13 @@ if __name__ == '__main__':
                  isinstance(f.exception, exc)]
         ex_dict[exc] = elist
 
-    print("\n%s tests were translated from gsw_check_functions.m" % len(checks))
-    print("\n%s tests ran with no error and with correct output" % len(passes))
+    print(f"\n{len(checks)} tests were translated from gsw_check_functions.m")
+    print(f"\n{len(passes)} tests ran with no error and with correct output")
     if args.verbose:
         for f in passes:
             print(f.name)
 
-    print("\n%s tests had an output mismatch:" % len(failures))
+    print(f"\n{len(failures)} tests had an output mismatch:")
     for f in failures:
         print(f.name)
         print(f.runline)
@@ -348,7 +348,7 @@ if __name__ == '__main__':
 
         print('')
 
-    print("\n%s exceptions were raised as follows:" % len(run_problems))
+    print(f"\n{len(run_problems)} exceptions were raised as follows:")
     for exc in etypes:
         print("  ", exc.__name__)
         strings = ["     {} : {}".format(*e) for e in ex_dict[exc]]

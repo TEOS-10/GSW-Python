@@ -2,20 +2,20 @@
 build-backend = "setuptools.build_meta"
 requires = [
   "build",
-  'numpy<3,>=2.0.0rc1; python_version >= "3.9"',
-  'oldest-supported-numpy; python_version < "3.9"',
+  "numpy>=2.0.0rc1,<3; python_version>='3.9'",
+  "oldest-supported-numpy; python_version<'3.9'",
   "pip>9.0.1",
   "setuptools>=42",
-  "setuptools_scm[toml]>=3.4",
+  "setuptools-scm[toml]>=3.4",
   "wheel",
 ]
 
 [project]
 name = "gsw"
 description = "Gibbs Seawater Oceanographic Package of TEOS-10"
-license = {text = "BSD-3-Clause"}
+license = { text = "BSD-3-Clause" }
 authors = [
-    {name = "Eric Firing, Filipe Fernandes", email = "efiring@hawaii.edu"},
+  { name = "Eric Firing, Filipe Fernandes", email = "efiring@hawaii.edu" },
 ]
 requires-python = ">=3.8"
 classifiers = [
@@ -30,6 +30,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering",
 ]
 dynamic = [
@@ -39,21 +40,19 @@ dynamic = [
 dependencies = [
   "numpy>=1.21",
 ]
-[project.urls]
-documentation = "https://teos-10.github.io/GSW-Python/"
-homepage = "https://www.teos-10.org/"
-repository = "https://github.com/TEOS-10/GSW-python"
+urls.documentation = "https://teos-10.github.io/GSW-Python/"
+urls.homepage = "https://www.teos-10.org/"
+urls.repository = "https://github.com/TEOS-10/GSW-python"
 
 [tool.setuptools]
-license-files = ["LICENSE.txt"]
+license-files = [ "LICENSE.txt" ]
 zip-safe = false
 include-package-data = true
-packages = ["gsw", "gsw.tests"]
-
+packages = [ "gsw", "gsw.tests" ]
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-readme = {file = "README.md", content-type = "text/markdown"}
+dependencies = { file = [ "requirements.txt" ] }
+readme = { file = "README.md", content-type = "text/markdown" }
 
 [tool.setuptools_scm]
 write_to = "gsw/_version.py"
@@ -61,49 +60,47 @@ write_to_template = "__version__ = '{version}'"
 tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
 [tool.ruff]
-lint.select = [
-    "A", # flake8-builtins
-    "B", # flake8-bugbear
-    "C4", # flake8-comprehensions
-    "F", # flakes
-    "I", # import sorting
-    "UP", # upgrade
-    "NPY201",  # numpy 2.0
-]
 target-version = "py38"
 line-length = 105
-
-lint.ignore = [
-    "F401",  # module imported but unused
-    "E501",  # line too long
-    "E713",  # test for membership should be 'not in'
-]
 
 exclude = [
   "tools",
 ]
 
-[tool.ruff.lint.per-file-ignores]
-"docs/conf.py" = [
-  "A001",  # variable is shadowing a python builtin
+lint.select = [
+  "A",      # flake8-builtins
+  "B",      # flake8-bugbear
+  "C4",     # flake8-comprehensions
+  "F",      # flakes
+  "I",      # import sorting
+  "NPY201", # numpy 2.0
+  "UP",     # upgrade
 ]
-"gsw/_fixed_wrapped_ufuncs.py" = [
-  "F403",  #'from x import *' used; unable to detect undefined names
-  "F405",  # 'import' may be undefined, or defined from star imports
+lint.ignore = [
+  "E501", # line too long
+  "E713", # test for membership should be 'not in'
+  "F401", # module imported but unused
 ]
 
-"gsw/_utilities.py" = [
-  "B904",  # Within an ``except`` clause, raise exceptions with ``raise ... from err``
+lint.per-file-ignores."docs/conf.py" = [
+  "A001", # variable is shadowing a python builtin
+]
+lint.per-file-ignores."gsw/_fixed_wrapped_ufuncs.py" = [
+  "F403", #'from x import *' used; unable to detect undefined names
+  "F405", # 'import' may be undefined, or defined from star imports
+]
+lint.per-file-ignores."gsw/_utilities.py" = [
+  "B904", # Within an ``except`` clause, raise exceptions with ``raise ... from err``
 ]
 
 [tool.check-manifest]
 ignore = [
-    "*.yml",
-    ".coveragerc",
-    "docs",
-    "docs/*",
-    "*.enc",
-    "tools",
-    "tools/*",
-    "gsw/_version.py",
+  "*.yml",
+  ".coveragerc",
+  "docs",
+  "docs/*",
+  "*.enc",
+  "tools",
+  "tools/*",
+  "gsw/_version.py",
 ]
