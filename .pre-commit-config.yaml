@@ -1,13 +1,13 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
+  rev: v5.0.0
   hooks:
     - id: check-ast
     - id: debug-statements
     - id: check-added-large-files
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.6
+  rev: v2.4.1
   hooks:
     - id: codespell
       exclude: >
@@ -20,15 +20,20 @@ repos:
         - --ignore-words-list=nin,preformed,wih,
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: 1.8.0
+  rev: v2.6.0
   hooks:
     - id: pyproject-fmt
 
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.3.7
+  rev: v0.11.13
   hooks:
     - id: ruff
+
+- repo: https://github.com/woodruffw/zizmor-pre-commit
+  rev: v1.9.0
+  hooks:
+    - id: zizmor
 
 ci:
     autofix_commit_msg: |
