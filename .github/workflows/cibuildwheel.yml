@@ -106,7 +106,6 @@ jobs:
     runs-on: ubuntu-22.04
     # upload to PyPI for every tag starting with 'v'
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
-    environment: release
     steps:
     - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
       with:
@@ -114,10 +113,10 @@ jobs:
         path: ${{ github.workspace }}/dist
         merge-multiple: true
 
-    - uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc  # v1.12.4
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_PASSWORD }}
-        print_hash: true
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc  # v1.12.4
+    environment:
+      name: release
+      url: https://pypi.org/p/gsw
     permissions:
-      actions: write
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
