@@ -2,10 +2,10 @@ name: Wheels
 
 on:
   pull_request:
-
   push:
-    tags:
-      - "v*"
+  release:
+    types:
+      - published
 
 jobs:
   build_bdist:
@@ -28,19 +28,20 @@ jobs:
             arch: x86_64
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
       with:
         fetch-depth: 0
+        persist-credentials: false
 
     # For aarch64 support
     # https://cibuildwheel.pypa.io/en/stable/faq/#emulation
-    - uses: docker/setup-qemu-action@v3
+    - uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392  # v3.6.0
       with:
         platforms: all
       if: runner.os == 'Linux' && matrix.arch == 'aarch64'
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
-      uses: pypa/cibuildwheel@v3.0.0
+      uses: pypa/cibuildwheel@5f22145df44122af0f5a201f93cf0207171beca7  # v3.0.0
       env:
         # Skips pypy and musllinux for now.
         CIBW_SKIP: "pp* cp36-* cp37-* cp38-* *-musllinux*"
@@ -52,19 +53,21 @@ jobs:
           python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
           python -m pytest --pyargs gsw
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
       with:
         name: pypi-artifacts-${{ matrix.os }}-${{ matrix.arch }}
         path: ${{ github.workspace }}/wheelhouse/*.whl
-
+    permissions:
+      actions: write
 
   build_sdist:
     name: Build source distribution
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Build sdist
         run: >
@@ -73,17 +76,19 @@ jobs:
           && twine check dist/*
           && check-manifest --verbose
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: pypi-artifacts
           path: ${{ github.workspace }}/dist/*.tar.gz
+    permissions:
+      actions: write
 
   show-artifacts:
     needs: [build_bdist, build_sdist]
     name: "Show artifacts"
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
       with:
         pattern: pypi-artifacts*
         path: ${{ github.workspace }}/dist
@@ -92,7 +97,8 @@ jobs:
     - shell: bash
       run: |
         ls -l ${{ github.workspace }}/dist
-
+    permissions:
+      actions: none
 
   publish-artifacts-pypi:
     needs: [build_bdist, build_sdist]
@@ -101,14 +107,16 @@ jobs:
     # upload to PyPI for every tag starting with 'v'
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
       with:
         pattern: pypi-artifacts*
         path: ${{ github.workspace }}/dist
         merge-multiple: true
 
-    - uses: pypa/gh-action-pypi-publish@release/v1
+    - uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc  # v1.12.4
       with:
         user: __token__
         password: ${{ secrets.PYPI_PASSWORD }}
         print_hash: true
+    permissions:
+      actions: write
