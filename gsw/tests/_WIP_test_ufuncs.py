@@ -29,7 +29,7 @@ def cfcf(request):
 
 def test_mechanism(cfcf):
     cv, cf, mfunc = cfcf
-    print("<%s>" % mfunc.name)
+    print(f"<{mfunc.name}>")
     def value_from_name(vname):
         b, name = vname.split('.')
         if b == 'cf':
@@ -37,7 +37,7 @@ def test_mechanism(cfcf):
         elif b == 'cv':
             return cv[name]
         else:
-            raise ValueError("Can't find cf. or cv. in %s" % vname)
+            raise ValueError(f"Can't find cf. or cv. in {vname}")
     def set_from_name(vname, value):
         b, name = vname.split('.')
         if b == 'cf':
@@ -76,10 +76,10 @@ def test_mechanism(cfcf):
         #set_from_name(mfunc.test_varstrings[0], expected - found)
 
     else:
-        print(">>%s<<" % mfunc.testline)
+        print(f">>{mfunc.testline}<<")
         print("missing mfunc.test_varstrings")
         mfunc.run()
-        if hasattr(mfunc, 'exception'):
-            print(">>>%s<<<", mfunc.exception)
+        if hasattr(mfunc, "exception"):
+            print(f">>>{mfunc.exception}<<<")
         else:
             assert mfunc.passed
