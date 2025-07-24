@@ -41,7 +41,7 @@ jobs:
       if: runner.os == 'Linux' && matrix.arch == 'aarch64'
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
-      uses: pypa/cibuildwheel@95d2f3a92fbf80abe066b09418bbf128a8923df2  # v3.0.1
+      uses: pypa/cibuildwheel@ffd835cef18fa11522f608fc0fa973b89f5ddc87  # v3.1.0
       env:
         # Skips pypy and musllinux for now.
         CIBW_SKIP: "pp* cp36-* cp37-* cp38-* *-musllinux*"
