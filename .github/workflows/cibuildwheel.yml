@@ -41,13 +41,13 @@ jobs:
       if: runner.os == 'Linux' && matrix.arch == 'aarch64'
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
-      uses: pypa/cibuildwheel@95d2f3a92fbf80abe066b09418bbf128a8923df2  # v3.0.1
+      uses: pypa/cibuildwheel@ffd835cef18fa11522f608fc0fa973b89f5ddc87  # v3.1.0
       env:
         # Skips pypy and musllinux for now.
         CIBW_SKIP: "pp* cp36-* cp37-* cp38-* *-musllinux*"
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_BUILD_FRONTEND: build
-        CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+        CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
         CIBW_TEST_REQUIRES: pytest pandas>=2
         CIBW_TEST_COMMAND: >
           python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
