@@ -34,7 +34,7 @@ jobs:
         persist-credentials: false
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
-      uses: pypa/cibuildwheel@ffd835cef18fa11522f608fc0fa973b89f5ddc87  # v3.1.0
+      uses: pypa/cibuildwheel@352e01339f0a173aa2a3eb57f01492e341e83865  # v3.1.3
       env:
         # Skips pypy and musllinux for now.
         CIBW_SKIP: "pp* cp36-* cp37-* cp38-* *-musllinux*"
