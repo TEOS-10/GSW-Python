@@ -26,12 +26,12 @@ repos:
 
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.11.13
+  rev: v0.12.7
   hooks:
     - id: ruff
 
 - repo: https://github.com/woodruffw/zizmor-pre-commit
-  rev: v1.9.0
+  rev: v1.11.0
   hooks:
     - id: zizmor
 
