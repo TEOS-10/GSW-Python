@@ -25,6 +25,12 @@ dyn_height = gsw.geo_strf_dyn_height(cv.SA_chck_cast,
                                      cv.pr)
 np.save('geo_strf_dyn_height.npy', dyn_height)
 
+steric_height = gsw.geo_strf_steric_height(cv.SA_chck_cast,
+                                     cv.CT_chck_cast,
+                                     cv.p_chck_cast,
+                                     cv.pr)
+np.save('geo_strf_steric_height.npy', steric_height)
+
 lon = cv.long_chck_cast
 lat = cv.lat_chck_cast
 p = cv.p_chck_cast

@@ -42,6 +42,7 @@ cv = Bunch(np.load(os.path.join(root_path, 'gsw_cv_v3_0.npz')))
 
 # Substitute new check values for the pchip interpolation version.
 cv.geo_strf_dyn_height = np.load(os.path.join(root_path,'geo_strf_dyn_height.npy'))
+cv.geo_strf_steric_height = np.load(os.path.join(root_path,'geo_strf_steric_height.npy'))
 cv.geo_strf_velocity = np.load(os.path.join(root_path,'geo_strf_velocity.npy'))
 
 for name in ['SA_chck_cast', 't_chck_cast', 'p_chck_cast']:
