@@ -9,6 +9,7 @@ from ._utilities import indexer, match_args_return
 from .conversions import z_from_p
 
 __all__ = ['geo_strf_dyn_height',
+           'geo_strf_steric_height',
            'distance',
            'f',
            'geostrophic_velocity',
@@ -103,6 +104,42 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
                 dh[ind][igood] = dh_all
 
     return dh
+
+
+@match_args_return
+def geo_strf_steric_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0, interp_method="pchip"):
+    """
+    Steric height anomaly as a function of pressure.
+
+    Parameters
+    ----------
+    SA : array-like
+        Absolute Salinity, g/kg
+    CT : array-like
+        Conservative Temperature (ITS-90), degrees C
+    p : array-like
+        Sea pressure (absolute pressure minus 10.1325 dbar), dbar
+    p_ref : float or array-like, optional
+        Reference pressure, dbar
+    axis : int, optional, default is 0
+        The index of the pressure dimension in SA and CT.
+    max_dp : float
+        If any pressure interval in the input p exceeds max_dp, the dynamic
+        height will be calculated after interpolating to a grid with this
+        spacing.
+    interp_method : string {'mrst', 'pchip', 'linear'}
+        Interpolation algorithm.
+
+    Returns
+    -------
+    steric_height : array
+        Dynamic height anomaly divided by the acceleration of gravity.
+
+    """
+    return (
+        geo_strf_dyn_height(SA, CT, p, p_ref, axis=axis, max_dp=max_dp, interp_method=interp_method)
+        / 9.7963
+    )
 
 
 def unwrap(lon, centered=True, copy=True):
