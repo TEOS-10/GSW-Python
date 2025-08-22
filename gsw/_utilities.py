@@ -63,7 +63,7 @@ def masked_array_support(f):
         if has_masked_args:
             # I suspect based on __array_priority__ the returned values might
             # not be masked arrays with mixed with other array subclasses with
-            # a higher prioirty
+            # a higher priority
             #
             # masked_invalid will retain the existing mask and mask
             # any new invalid values (if e.g. the result of unmasked inputs
