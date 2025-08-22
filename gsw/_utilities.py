@@ -1,4 +1,4 @@
-from functools import wraps, reduce
+from functools import reduce, wraps
 from itertools import chain
 
 import numpy as np
