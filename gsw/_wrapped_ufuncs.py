@@ -7,7 +7,6 @@ from . import _gsw_ufuncs
 from ._utilities import masked_array_support
 
 
-@masked_array_support
 def adiabatic_lapse_rate_from_CT(SA, CT, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of sea water from Conservative
@@ -33,14 +32,15 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p, **kwargs):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqn. (2.22.1) of this TEOS-10 Manual.
 
 
     """
     return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p, **kwargs)
+adiabatic_lapse_rate_from_CT.types = _gsw_ufuncs.adiabatic_lapse_rate_from_ct.types
+adiabatic_lapse_rate_from_CT = masked_array_support(adiabatic_lapse_rate_from_CT)
 
-@masked_array_support
 def adiabatic_lapse_rate_ice(t, p, **kwargs):
     """
     Calculates the adiabatic lapse rate of ice.
@@ -63,15 +63,15 @@ def adiabatic_lapse_rate_ice(t, p, **kwargs):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
 
     """
-    return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p)
+    return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p, **kwargs)
 adiabatic_lapse_rate_ice.types = _gsw_ufuncs.adiabatic_lapse_rate_ice.types
-adiabatic_lapse_rate_ice = match_args_return(adiabatic_lapse_rate_ice)
+adiabatic_lapse_rate_ice = masked_array_support(adiabatic_lapse_rate_ice)
 
-def alpha(SA, CT, p):
+def alpha(SA, CT, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of seawater with respect to
     Conservative Temperature using the computationally-efficient expression
@@ -98,7 +98,7 @@ def alpha(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -107,7 +107,7 @@ def alpha(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.18.3) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -116,16 +116,16 @@ def alpha(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.alpha(SA, CT, p)
+    return _gsw_ufuncs.alpha(SA, CT, p, **kwargs)
 alpha.types = _gsw_ufuncs.alpha.types
-alpha = match_args_return(alpha)
+alpha = masked_array_support(alpha)
 
-def alpha_on_beta(SA, CT, p):
+def alpha_on_beta(SA, CT, p, **kwargs):
     """
     Calculates alpha divided by beta, where alpha is the thermal expansion
     coefficient and beta is the saline contraction coefficient of seawater
@@ -156,7 +156,7 @@ def alpha_on_beta(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -165,7 +165,7 @@ def alpha_on_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -174,16 +174,16 @@ def alpha_on_beta(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2014: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling.
 
 
     """
-    return _gsw_ufuncs.alpha_on_beta(SA, CT, p)
+    return _gsw_ufuncs.alpha_on_beta(SA, CT, p, **kwargs)
 alpha_on_beta.types = _gsw_ufuncs.alpha_on_beta.types
-alpha_on_beta = match_args_return(alpha_on_beta)
+alpha_on_beta = masked_array_support(alpha_on_beta)
 
-def alpha_wrt_t_exact(SA, t, p):
+def alpha_wrt_t_exact(SA, t, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of seawater with respect to
     in-situ temperature.
@@ -209,16 +209,16 @@ def alpha_wrt_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqn. (2.18.1) of this TEOS-10 manual.
 
 
     """
-    return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p)
+    return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p, **kwargs)
 alpha_wrt_t_exact.types = _gsw_ufuncs.alpha_wrt_t_exact.types
-alpha_wrt_t_exact = match_args_return(alpha_wrt_t_exact)
+alpha_wrt_t_exact = masked_array_support(alpha_wrt_t_exact)
 
-def alpha_wrt_t_ice(t, p):
+def alpha_wrt_t_ice(t, p, **kwargs):
     """
     Calculates the thermal expansion coefficient of ice with respect to
     in-situ temperature.
@@ -242,16 +242,16 @@ def alpha_wrt_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqn. (2.18.1) of this TEOS-10 manual.
 
 
     """
-    return _gsw_ufuncs.alpha_wrt_t_ice(t, p)
+    return _gsw_ufuncs.alpha_wrt_t_ice(t, p, **kwargs)
 alpha_wrt_t_ice.types = _gsw_ufuncs.alpha_wrt_t_ice.types
-alpha_wrt_t_ice = match_args_return(alpha_wrt_t_ice)
+alpha_wrt_t_ice = masked_array_support(alpha_wrt_t_ice)
 
-def beta(SA, CT, p):
+def beta(SA, CT, p, **kwargs):
     """
     Calculates the saline (i.e. haline) contraction coefficient of seawater
     at constant Conservative Temperature using the computationally-efficient
@@ -279,7 +279,7 @@ def beta(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -288,7 +288,7 @@ def beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.19.3) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -297,16 +297,16 @@ def beta(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.beta(SA, CT, p)
+    return _gsw_ufuncs.beta(SA, CT, p, **kwargs)
 beta.types = _gsw_ufuncs.beta.types
-beta = match_args_return(beta)
+beta = masked_array_support(beta)
 
-def beta_const_t_exact(SA, t, p):
+def beta_const_t_exact(SA, t, p, **kwargs):
     """
     Calculates the saline (i.e. haline) contraction coefficient of seawater
     at constant in-situ temperature.
@@ -332,20 +332,20 @@ def beta_const_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.19.1) of this TEOS-10 manual.
 
 
     """
-    return _gsw_ufuncs.beta_const_t_exact(SA, t, p)
+    return _gsw_ufuncs.beta_const_t_exact(SA, t, p, **kwargs)
 beta_const_t_exact.types = _gsw_ufuncs.beta_const_t_exact.types
-beta_const_t_exact = match_args_return(beta_const_t_exact)
+beta_const_t_exact = masked_array_support(beta_const_t_exact)
 
-def C_from_SP(SP, t, p):
+def C_from_SP(SP, t, p, **kwargs):
     """
     Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
     2 < SP < 42.  If the input Practical Salinity is less than 2 then a
-    modified form of the Hill et al. (1986) formula is used for Practical
+    modified form of the Hill et al. (1986) fomula is used for Practical
     Salinity.  The modification of the Hill et al. (1986) expression is to
     ensure that it is exactly consistent with PSS-78 at SP = 2.
 
@@ -391,7 +391,7 @@ def C_from_SP(SP, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix E of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -403,11 +403,11 @@ def C_from_SP(SP, t, p):
 
 
     """
-    return _gsw_ufuncs.c_from_sp(SP, t, p)
+    return _gsw_ufuncs.c_from_sp(SP, t, p, **kwargs)
 C_from_SP.types = _gsw_ufuncs.c_from_sp.types
-C_from_SP = match_args_return(C_from_SP)
+C_from_SP = masked_array_support(C_from_SP)
 
-def cabbeling(SA, CT, p):
+def cabbeling(SA, CT, p, **kwargs):
     """
     Calculates the cabbeling coefficient of seawater with respect to
     Conservative Temperature.  This function uses the computationally-
@@ -435,7 +435,7 @@ def cabbeling(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -444,7 +444,7 @@ def cabbeling(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqns. (3.9.2) and (P.4) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -453,16 +453,16 @@ def cabbeling(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.cabbeling(SA, CT, p)
+    return _gsw_ufuncs.cabbeling(SA, CT, p, **kwargs)
 cabbeling.types = _gsw_ufuncs.cabbeling.types
-cabbeling = match_args_return(cabbeling)
+cabbeling = masked_array_support(cabbeling)
 
-def chem_potential_water_ice(t, p):
+def chem_potential_water_ice(t, p, **kwargs):
     """
     Calculates the chemical potential of water in ice from in-situ
     temperature and pressure.
@@ -485,15 +485,15 @@ def chem_potential_water_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.chem_potential_water_ice(t, p)
+    return _gsw_ufuncs.chem_potential_water_ice(t, p, **kwargs)
 chem_potential_water_ice.types = _gsw_ufuncs.chem_potential_water_ice.types
-chem_potential_water_ice = match_args_return(chem_potential_water_ice)
+chem_potential_water_ice = masked_array_support(chem_potential_water_ice)
 
-def chem_potential_water_t_exact(SA, t, p):
+def chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     Calculates the chemical potential of water in seawater.
 
@@ -517,15 +517,15 @@ def chem_potential_water_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p)
+    return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p, **kwargs)
 chem_potential_water_t_exact.types = _gsw_ufuncs.chem_potential_water_t_exact.types
-chem_potential_water_t_exact = match_args_return(chem_potential_water_t_exact)
+chem_potential_water_t_exact = masked_array_support(chem_potential_water_t_exact)
 
-def cp_ice(t, p):
+def cp_ice(t, p, **kwargs):
     """
     Calculates the isobaric heat capacity of ice.
 
@@ -547,15 +547,15 @@ def cp_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.cp_ice(t, p)
+    return _gsw_ufuncs.cp_ice(t, p, **kwargs)
 cp_ice.types = _gsw_ufuncs.cp_ice.types
-cp_ice = match_args_return(cp_ice)
+cp_ice = masked_array_support(cp_ice)
 
-def cp_t_exact(SA, t, p):
+def cp_t_exact(SA, t, p, **kwargs):
     """
     Calculates the isobaric heat capacity of seawater.
 
@@ -579,15 +579,15 @@ def cp_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.cp_t_exact(SA, t, p)
+    return _gsw_ufuncs.cp_t_exact(SA, t, p, **kwargs)
 cp_t_exact.types = _gsw_ufuncs.cp_t_exact.types
-cp_t_exact = match_args_return(cp_t_exact)
+cp_t_exact = masked_array_support(cp_t_exact)
 
-def CT_first_derivatives(SA, pt):
+def CT_first_derivatives(SA, pt, **kwargs):
     """
     Calculates the following two derivatives of Conservative Temperature
     (1) CT_SA, the derivative with respect to Absolute Salinity at
@@ -621,18 +621,18 @@ def CT_first_derivatives(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.12.3a,b) and (A.15.8) of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.ct_first_derivatives(SA, pt)
+    return _gsw_ufuncs.ct_first_derivatives(SA, pt, **kwargs)
 CT_first_derivatives.types = _gsw_ufuncs.ct_first_derivatives.types
-CT_first_derivatives = match_args_return(CT_first_derivatives)
+CT_first_derivatives = masked_array_support(CT_first_derivatives)
 
-def CT_first_derivatives_wrt_t_exact(SA, t, p):
+def CT_first_derivatives_wrt_t_exact(SA, t, p, **kwargs):
     """
     Calculates the following three derivatives of Conservative Temperature.
     These derivatives are done with respect to in-situ temperature t (in the
@@ -681,19 +681,19 @@ def CT_first_derivatives_wrt_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.15.3) and (A.15.8) of this TEOS-10 Manual for
     CT_T_wrt_t and CT_SA_wrt_t respectively.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p)
+    return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p, **kwargs)
 CT_first_derivatives_wrt_t_exact.types = _gsw_ufuncs.ct_first_derivatives_wrt_t_exact.types
-CT_first_derivatives_wrt_t_exact = match_args_return(CT_first_derivatives_wrt_t_exact)
+CT_first_derivatives_wrt_t_exact = masked_array_support(CT_first_derivatives_wrt_t_exact)
 
-def CT_freezing(SA, p, saturation_fraction):
+def CT_freezing(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the Conservative Temperature at which seawater freezes.  The
     Conservative Temperature freezing point is calculated from the exact
@@ -730,7 +730,7 @@ def CT_freezing(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
@@ -739,11 +739,11 @@ def CT_freezing(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction, **kwargs)
 CT_freezing.types = _gsw_ufuncs.ct_freezing.types
-CT_freezing = match_args_return(CT_freezing)
+CT_freezing = masked_array_support(CT_freezing)
 
-def CT_freezing_first_derivatives(SA, p, saturation_fraction):
+def CT_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the Conservative Temperature at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -775,15 +775,15 @@ def CT_freezing_first_derivatives(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
 
     """
-    return _gsw_ufuncs.ct_freezing_first_derivatives(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 CT_freezing_first_derivatives.types = _gsw_ufuncs.ct_freezing_first_derivatives.types
-CT_freezing_first_derivatives = match_args_return(CT_freezing_first_derivatives)
+CT_freezing_first_derivatives = masked_array_support(CT_freezing_first_derivatives)
 
-def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
+def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the Conservative Temperature at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -816,7 +816,7 @@ def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -825,11 +825,11 @@ def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing_first_derivatives_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 CT_freezing_first_derivatives_poly.types = _gsw_ufuncs.ct_freezing_first_derivatives_poly.types
-CT_freezing_first_derivatives_poly = match_args_return(CT_freezing_first_derivatives_poly)
+CT_freezing_first_derivatives_poly = masked_array_support(CT_freezing_first_derivatives_poly)
 
-def CT_freezing_poly(SA, p, saturation_fraction):
+def CT_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the Conservative Temperature at which seawater freezes.
     The error of this fit ranges between -5e-4 K and 6e-4 K when compared
@@ -861,7 +861,7 @@ def CT_freezing_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -870,11 +870,11 @@ def CT_freezing_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction, **kwargs)
 CT_freezing_poly.types = _gsw_ufuncs.ct_freezing_poly.types
-CT_freezing_poly = match_args_return(CT_freezing_poly)
+CT_freezing_poly = masked_array_support(CT_freezing_poly)
 
-def CT_from_enthalpy(SA, h, p):
+def CT_from_enthalpy(SA, h, p, **kwargs):
     """
     Calculates the Conservative Temperature of seawater, given the Absolute
     Salinity, specific enthalpy, h, and pressure p.  The specific enthalpy
@@ -902,7 +902,7 @@ def CT_from_enthalpy(SA, h, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -911,7 +911,7 @@ def CT_from_enthalpy(SA, h, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -927,16 +927,16 @@ def CT_from_enthalpy(SA, h, p):
     Mathematics Letters, 29, 20-25.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.ct_from_enthalpy(SA, h, p)
+    return _gsw_ufuncs.ct_from_enthalpy(SA, h, p, **kwargs)
 CT_from_enthalpy.types = _gsw_ufuncs.ct_from_enthalpy.types
-CT_from_enthalpy = match_args_return(CT_from_enthalpy)
+CT_from_enthalpy = masked_array_support(CT_from_enthalpy)
 
-def CT_from_enthalpy_exact(SA, h, p):
+def CT_from_enthalpy_exact(SA, h, p, **kwargs):
     """
     Calculates the Conservative Temperature of seawater, given the Absolute
     Salinity, SA, specific enthalpy, h, and pressure p.  The specific
@@ -972,7 +972,7 @@ def CT_from_enthalpy_exact(SA, h, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -983,16 +983,16 @@ def CT_from_enthalpy_exact(SA, h, p):
     Mathematics Letters, 29, 20-25.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p)
+    return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p, **kwargs)
 CT_from_enthalpy_exact.types = _gsw_ufuncs.ct_from_enthalpy_exact.types
-CT_from_enthalpy_exact = match_args_return(CT_from_enthalpy_exact)
+CT_from_enthalpy_exact = masked_array_support(CT_from_enthalpy_exact)
 
-def CT_from_entropy(SA, entropy):
+def CT_from_entropy(SA, entropy, **kwargs):
     """
     Calculates Conservative Temperature with entropy as an input variable.
 
@@ -1014,16 +1014,16 @@ def CT_from_entropy(SA, entropy):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix  A.10 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.ct_from_entropy(SA, entropy)
+    return _gsw_ufuncs.ct_from_entropy(SA, entropy, **kwargs)
 CT_from_entropy.types = _gsw_ufuncs.ct_from_entropy.types
-CT_from_entropy = match_args_return(CT_from_entropy)
+CT_from_entropy = masked_array_support(CT_from_entropy)
 
-def CT_from_pt(SA, pt):
+def CT_from_pt(SA, pt, **kwargs):
     """
     Calculates Conservative Temperature of seawater from potential
     temperature (whose reference sea pressure is zero dbar).
@@ -1046,16 +1046,16 @@ def CT_from_pt(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.3 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.ct_from_pt(SA, pt)
+    return _gsw_ufuncs.ct_from_pt(SA, pt, **kwargs)
 CT_from_pt.types = _gsw_ufuncs.ct_from_pt.types
-CT_from_pt = match_args_return(CT_from_pt)
+CT_from_pt = masked_array_support(CT_from_pt)
 
-def CT_from_rho(rho, SA, p):
+def CT_from_rho(rho, SA, p, **kwargs):
     """
     Calculates the Conservative Temperature of a seawater sample, for given
     values of its density, Absolute Salinity and sea pressure (in dbar),
@@ -1084,7 +1084,7 @@ def CT_from_rho(rho, SA, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1093,7 +1093,7 @@ def CT_from_rho(rho, SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -1101,16 +1101,16 @@ def CT_from_rho(rho, SA, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.ct_from_rho(rho, SA, p)
+    return _gsw_ufuncs.ct_from_rho(rho, SA, p, **kwargs)
 CT_from_rho.types = _gsw_ufuncs.ct_from_rho.types
-CT_from_rho = match_args_return(CT_from_rho)
+CT_from_rho = masked_array_support(CT_from_rho)
 
-def CT_from_t(SA, t, p):
+def CT_from_t(SA, t, p, **kwargs):
     """
     Calculates Conservative Temperature of seawater from in-situ
     temperature.
@@ -1135,16 +1135,16 @@ def CT_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.3 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.ct_from_t(SA, t, p)
+    return _gsw_ufuncs.ct_from_t(SA, t, p, **kwargs)
 CT_from_t.types = _gsw_ufuncs.ct_from_t.types
-CT_from_t = match_args_return(CT_from_t)
+CT_from_t = masked_array_support(CT_from_t)
 
-def CT_maxdensity(SA, p):
+def CT_maxdensity(SA, p, **kwargs):
     """
     Calculates the Conservative Temperature of maximum density of seawater.
     This function returns the Conservative temperature at which the density
@@ -1173,7 +1173,7 @@ def CT_maxdensity(SA, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1182,7 +1182,7 @@ def CT_maxdensity(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.42 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -1190,16 +1190,16 @@ def CT_maxdensity(SA, p):
     Mathematics Letters, 29, 20-25.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.ct_maxdensity(SA, p)
+    return _gsw_ufuncs.ct_maxdensity(SA, p, **kwargs)
 CT_maxdensity.types = _gsw_ufuncs.ct_maxdensity.types
-CT_maxdensity = match_args_return(CT_maxdensity)
+CT_maxdensity = masked_array_support(CT_maxdensity)
 
-def CT_second_derivatives(SA, pt):
+def CT_second_derivatives(SA, pt, **kwargs):
     """
     Calculates the following three, second-order derivatives of Conservative
     Temperature
@@ -1243,18 +1243,18 @@ def CT_second_derivatives(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See appendix A.12 of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.ct_second_derivatives(SA, pt)
+    return _gsw_ufuncs.ct_second_derivatives(SA, pt, **kwargs)
 CT_second_derivatives.types = _gsw_ufuncs.ct_second_derivatives.types
-CT_second_derivatives = match_args_return(CT_second_derivatives)
+CT_second_derivatives = masked_array_support(CT_second_derivatives)
 
-def deltaSA_atlas(p, lon, lat):
+def deltaSA_atlas(p, lon, lat, **kwargs):
     """
     Calculates the Absolute Salinity Anomaly atlas value, SA - SR, in
     the open ocean by spatially interpolating the global reference data set
@@ -1289,20 +1289,20 @@ def deltaSA_atlas(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.deltasa_atlas(p, lon, lat)
+    return _gsw_ufuncs.deltasa_atlas(p, lon, lat, **kwargs)
 deltaSA_atlas.types = _gsw_ufuncs.deltasa_atlas.types
-deltaSA_atlas = match_args_return(deltaSA_atlas)
+deltaSA_atlas = masked_array_support(deltaSA_atlas)
 
-def deltaSA_from_SP(SP, p, lon, lat):
+def deltaSA_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
     is non-negative by definition, this function changes any negative input
@@ -1330,21 +1330,21 @@ def deltaSA_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1117-1128.
-    https://os.copernicus.org/articles/8/1117/2012/os-8-1117-2012.pdf
+    http://www.ocean-sci.net/8/1117/2012/os-8-1117-2012.pdf
 
 
     """
-    return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat, **kwargs)
 deltaSA_from_SP.types = _gsw_ufuncs.deltasa_from_sp.types
-deltaSA_from_SP = match_args_return(deltaSA_from_SP)
+deltaSA_from_SP = masked_array_support(deltaSA_from_SP)
 
-def dilution_coefficient_t_exact(SA, t, p):
+def dilution_coefficient_t_exact(SA, t, p, **kwargs):
     """
     Calculates the dilution coefficient of seawater.  The dilution
     coefficient of seawater is defined as the Absolute Salinity times the
@@ -1371,15 +1371,15 @@ def dilution_coefficient_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p)
+    return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p, **kwargs)
 dilution_coefficient_t_exact.types = _gsw_ufuncs.dilution_coefficient_t_exact.types
-dilution_coefficient_t_exact = match_args_return(dilution_coefficient_t_exact)
+dilution_coefficient_t_exact = masked_array_support(dilution_coefficient_t_exact)
 
-def dynamic_enthalpy(SA, CT, p):
+def dynamic_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates dynamic enthalpy of seawater using the computationally-
     efficient expression for specific volume in terms of SA, CT and p
@@ -1406,7 +1406,7 @@ def dynamic_enthalpy(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1415,7 +1415,7 @@ def dynamic_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.2 of this TEOS-10 Manual.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
@@ -1429,7 +1429,7 @@ def dynamic_enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
     Young, W.R., 2010: Dynamic enthalpy, Conservative Temperature, and the
@@ -1438,11 +1438,11 @@ def dynamic_enthalpy(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p, **kwargs)
 dynamic_enthalpy.types = _gsw_ufuncs.dynamic_enthalpy.types
-dynamic_enthalpy = match_args_return(dynamic_enthalpy)
+dynamic_enthalpy = masked_array_support(dynamic_enthalpy)
 
-def enthalpy(SA, CT, p):
+def enthalpy(SA, CT, p, **kwargs):
     """
     Calculates specific enthalpy of seawater using the computationally-
     efficient expression for specific volume in terms of SA, CT and p
@@ -1468,7 +1468,7 @@ def enthalpy(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1477,7 +1477,7 @@ def enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.6) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1491,16 +1491,16 @@ def enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.enthalpy(SA, CT, p)
+    return _gsw_ufuncs.enthalpy(SA, CT, p, **kwargs)
 enthalpy.types = _gsw_ufuncs.enthalpy.types
-enthalpy = match_args_return(enthalpy)
+enthalpy = masked_array_support(enthalpy)
 
-def enthalpy_CT_exact(SA, CT, p):
+def enthalpy_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates specific enthalpy of seawater from Absolute Salinity and
     Conservative Temperature and pressure.
@@ -1533,8 +1533,8 @@ def enthalpy_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
-    See appendix A.11 of this TEOS-10 Manual.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
+    See apendix A.11 of this TEOS-10 Manual.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1542,16 +1542,16 @@ def enthalpy_CT_exact(SA, CT, p):
     See Eqns. (18) and (22)
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p, **kwargs)
 enthalpy_CT_exact.types = _gsw_ufuncs.enthalpy_ct_exact.types
-enthalpy_CT_exact = match_args_return(enthalpy_CT_exact)
+enthalpy_CT_exact = masked_array_support(enthalpy_CT_exact)
 
-def enthalpy_diff(SA, CT, p_shallow, p_deep):
+def enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs):
     """
     Calculates the difference of the specific enthalpy of seawater between
     two different pressures, p_deep (the deeper pressure) and p_shallow
@@ -1584,7 +1584,7 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1593,7 +1593,7 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqns. (3.32.2) and (A.30.6) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1607,16 +1607,16 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep)
+    return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs)
 enthalpy_diff.types = _gsw_ufuncs.enthalpy_diff.types
-enthalpy_diff = match_args_return(enthalpy_diff)
+enthalpy_diff = masked_array_support(enthalpy_diff)
 
-def enthalpy_first_derivatives(SA, CT, p):
+def enthalpy_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following two derivatives of specific enthalpy (h) of
     seawater using the computationally-efficient expression for
@@ -1624,7 +1624,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     (1) h_SA, the derivative with respect to Absolute Salinity at
     constant CT and p, and
     (2) h_CT, derivative with respect to CT at constant SA and p.
-    Note that h_P is specific volume (1/rho) it can be calculated by calling
+    Note that h_P is specific volume (1/rho) it can be caclulated by calling
     gsw_specvol(SA,CT,p).
 
     Parameters
@@ -1652,7 +1652,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1661,7 +1661,7 @@ def enthalpy_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.11.18), (A.11.15) and (A.11.12) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1675,24 +1675,24 @@ def enthalpy_first_derivatives(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_first_derivatives(SA, CT, p, **kwargs)
 enthalpy_first_derivatives.types = _gsw_ufuncs.enthalpy_first_derivatives.types
-enthalpy_first_derivatives = match_args_return(enthalpy_first_derivatives)
+enthalpy_first_derivatives = masked_array_support(enthalpy_first_derivatives)
 
-def enthalpy_first_derivatives_CT_exact(SA, CT, p):
+def enthalpy_first_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates the following two derivatives of specific enthalpy, h,
     (1) h_SA, the derivative with respect to Absolute Salinity at
     constant CT and p, and
     (2) h_CT, derivative with respect to CT at constant SA and p.
-    Note that h_P is specific volume, v, it can be calculated by calling
+    Note that h_P is specific volume, v, it can be calulated by calling
     gsw_specvol_CT_exact(SA,CT,p).
 
     Parameters
@@ -1729,7 +1729,7 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.11.18), (A.11.15) and (A.11.12) of this TEOS-10 Manual.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
@@ -1738,18 +1738,18 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p):
     See Eqns. (18) and (22)
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_first_derivatives_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_first_derivatives_ct_exact(SA, CT, p, **kwargs)
 enthalpy_first_derivatives_CT_exact.types = _gsw_ufuncs.enthalpy_first_derivatives_ct_exact.types
-enthalpy_first_derivatives_CT_exact = match_args_return(enthalpy_first_derivatives_CT_exact)
+enthalpy_first_derivatives_CT_exact = masked_array_support(enthalpy_first_derivatives_CT_exact)
 
-def enthalpy_ice(t, p):
+def enthalpy_ice(t, p, **kwargs):
     """
     Calculates the specific enthalpy of ice (h_Ih).
 
@@ -1771,15 +1771,15 @@ def enthalpy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_ice(t, p)
+    return _gsw_ufuncs.enthalpy_ice(t, p, **kwargs)
 enthalpy_ice.types = _gsw_ufuncs.enthalpy_ice.types
-enthalpy_ice = match_args_return(enthalpy_ice)
+enthalpy_ice = masked_array_support(enthalpy_ice)
 
-def enthalpy_second_derivatives(SA, CT, p):
+def enthalpy_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of specific
     enthalpy (h),using the computationally-efficient expression for
@@ -1818,7 +1818,7 @@ def enthalpy_second_derivatives(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -1827,7 +1827,7 @@ def enthalpy_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1840,18 +1840,18 @@ def enthalpy_second_derivatives(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p, **kwargs)
 enthalpy_second_derivatives.types = _gsw_ufuncs.enthalpy_second_derivatives.types
-enthalpy_second_derivatives = match_args_return(enthalpy_second_derivatives)
+enthalpy_second_derivatives = masked_array_support(enthalpy_second_derivatives)
 
-def enthalpy_second_derivatives_CT_exact(SA, CT, p):
+def enthalpy_second_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of specific
     enthalpy (h),
@@ -1898,7 +1898,7 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T. J., 2003: Potential enthalpy: A conservative oceanic
     variable for evaluating heat content and heat fluxes. Journal of
@@ -1906,18 +1906,18 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p):
     See Eqns. (18) and (22)
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p)
+    return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p, **kwargs)
 enthalpy_second_derivatives_CT_exact.types = _gsw_ufuncs.enthalpy_second_derivatives_ct_exact.types
-enthalpy_second_derivatives_CT_exact = match_args_return(enthalpy_second_derivatives_CT_exact)
+enthalpy_second_derivatives_CT_exact = masked_array_support(enthalpy_second_derivatives_CT_exact)
 
-def enthalpy_SSO_0(p):
+def enthalpy_SSO_0(p, **kwargs):
     """
     enthalpy at (SSO,CT=0,p)
 
@@ -1945,16 +1945,16 @@ def enthalpy_SSO_0(p):
     References
     ----------
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.enthalpy_sso_0(p)
+    return _gsw_ufuncs.enthalpy_sso_0(p, **kwargs)
 enthalpy_SSO_0.types = _gsw_ufuncs.enthalpy_sso_0.types
-enthalpy_SSO_0 = match_args_return(enthalpy_SSO_0)
+enthalpy_SSO_0 = masked_array_support(enthalpy_SSO_0)
 
-def enthalpy_t_exact(SA, t, p):
+def enthalpy_t_exact(SA, t, p, **kwargs):
     """
     Calculates the specific enthalpy of seawater.
 
@@ -1978,15 +1978,15 @@ def enthalpy_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.enthalpy_t_exact(SA, t, p)
+    return _gsw_ufuncs.enthalpy_t_exact(SA, t, p, **kwargs)
 enthalpy_t_exact.types = _gsw_ufuncs.enthalpy_t_exact.types
-enthalpy_t_exact = match_args_return(enthalpy_t_exact)
+enthalpy_t_exact = masked_array_support(enthalpy_t_exact)
 
-def entropy_first_derivatives(SA, CT):
+def entropy_first_derivatives(SA, CT, **kwargs):
     """
     Calculates the following two partial derivatives of specific entropy
     (eta)
@@ -2018,18 +2018,18 @@ def entropy_first_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.12.8) and (P.14a,c) of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.entropy_first_derivatives(SA, CT)
+    return _gsw_ufuncs.entropy_first_derivatives(SA, CT, **kwargs)
 entropy_first_derivatives.types = _gsw_ufuncs.entropy_first_derivatives.types
-entropy_first_derivatives = match_args_return(entropy_first_derivatives)
+entropy_first_derivatives = masked_array_support(entropy_first_derivatives)
 
-def entropy_from_CT(SA, CT):
+def entropy_from_CT(SA, CT, **kwargs):
     """
     Calculates specific entropy of seawater from Conservative Temperature.
 
@@ -2051,16 +2051,16 @@ def entropy_from_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.10 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.entropy_from_ct(SA, CT)
+    return _gsw_ufuncs.entropy_from_ct(SA, CT, **kwargs)
 entropy_from_CT.types = _gsw_ufuncs.entropy_from_ct.types
-entropy_from_CT = match_args_return(entropy_from_CT)
+entropy_from_CT = masked_array_support(entropy_from_CT)
 
-def entropy_from_pt(SA, pt):
+def entropy_from_pt(SA, pt, **kwargs):
     """
     Calculates specific entropy of seawater as a function of potential
     temperature.
@@ -2083,16 +2083,16 @@ def entropy_from_pt(SA, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.10 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.entropy_from_pt(SA, pt)
+    return _gsw_ufuncs.entropy_from_pt(SA, pt, **kwargs)
 entropy_from_pt.types = _gsw_ufuncs.entropy_from_pt.types
-entropy_from_pt = match_args_return(entropy_from_pt)
+entropy_from_pt = masked_array_support(entropy_from_pt)
 
-def entropy_from_t(SA, t, p):
+def entropy_from_t(SA, t, p, **kwargs):
     """
     Calculates specific entropy of seawater from in-situ temperature.
 
@@ -2116,15 +2116,15 @@ def entropy_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.entropy_from_t(SA, t, p)
+    return _gsw_ufuncs.entropy_from_t(SA, t, p, **kwargs)
 entropy_from_t.types = _gsw_ufuncs.entropy_from_t.types
-entropy_from_t = match_args_return(entropy_from_t)
+entropy_from_t = masked_array_support(entropy_from_t)
 
-def entropy_ice(t, p):
+def entropy_ice(t, p, **kwargs):
     """
     Calculates specific entropy of ice.
 
@@ -2146,15 +2146,15 @@ def entropy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.entropy_ice(t, p)
+    return _gsw_ufuncs.entropy_ice(t, p, **kwargs)
 entropy_ice.types = _gsw_ufuncs.entropy_ice.types
-entropy_ice = match_args_return(entropy_ice)
+entropy_ice = masked_array_support(entropy_ice)
 
-def entropy_part(SA, t, p):
+def entropy_part(SA, t, p, **kwargs):
     """
     entropy minus the terms that are a function of only SA
 
@@ -2186,11 +2186,11 @@ def entropy_part(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.entropy_part(SA, t, p)
+    return _gsw_ufuncs.entropy_part(SA, t, p, **kwargs)
 entropy_part.types = _gsw_ufuncs.entropy_part.types
-entropy_part = match_args_return(entropy_part)
+entropy_part = masked_array_support(entropy_part)
 
-def entropy_part_zerop(SA, pt0):
+def entropy_part_zerop(SA, pt0, **kwargs):
     """
     entropy_part evaluated at the sea surface
 
@@ -2222,11 +2222,11 @@ def entropy_part_zerop(SA, pt0):
 
 
     """
-    return _gsw_ufuncs.entropy_part_zerop(SA, pt0)
+    return _gsw_ufuncs.entropy_part_zerop(SA, pt0, **kwargs)
 entropy_part_zerop.types = _gsw_ufuncs.entropy_part_zerop.types
-entropy_part_zerop = match_args_return(entropy_part_zerop)
+entropy_part_zerop = masked_array_support(entropy_part_zerop)
 
-def entropy_second_derivatives(SA, CT):
+def entropy_second_derivatives(SA, CT, **kwargs):
     """
     Calculates the following three second-order partial derivatives of
     specific entropy (eta)
@@ -2263,18 +2263,18 @@ def entropy_second_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (P.14b) and (P.15a,b) of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.entropy_second_derivatives(SA, CT)
+    return _gsw_ufuncs.entropy_second_derivatives(SA, CT, **kwargs)
 entropy_second_derivatives.types = _gsw_ufuncs.entropy_second_derivatives.types
-entropy_second_derivatives = match_args_return(entropy_second_derivatives)
+entropy_second_derivatives = masked_array_support(entropy_second_derivatives)
 
-def Fdelta(p, lon, lat):
+def Fdelta(p, lon, lat, **kwargs):
     """
     Calculates Fdelta from the Absolute Salinity Anomaly Ratio (SAAR).  It
     finds SAAR by calling the function "gsw_SAAR(p,long,lat)" and then
@@ -2302,7 +2302,7 @@ def Fdelta(p, lon, lat):
 
     with r1 being the constant 0.35 based on the work of Pawlowicz et al.
     (2011). Note that since SAAR is everywhere less than 0.001 in the global
-    ocean, Fdelta is only slightly different to 1.35*SAAR.
+    ocean, Fdelta is only slighty different to 1.35*SAAR.
 
 
     References
@@ -2310,30 +2310,30 @@ def Fdelta(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
     Pawlawicz, R., D.G. Wright and F.J. Millero, 2011; The effects of
     biogeochemical processes on oceanic conductivity/salinty/density
     relationships and the characterization of real seawater. Ocean Science,
-    7, 363-387.  https://os.copernicus.org/articles/7/363/2011/os-7-363-2011.pdf
+    7, 363-387.  http://www.ocean-sci.net/7/363/2011/os-7-363-2011.pdf
 
 
     """
-    return _gsw_ufuncs.fdelta(p, lon, lat)
+    return _gsw_ufuncs.fdelta(p, lon, lat, **kwargs)
 Fdelta.types = _gsw_ufuncs.fdelta.types
-Fdelta = match_args_return(Fdelta)
+Fdelta = masked_array_support(Fdelta)
 
-def frazil_properties(SA_bulk, h_bulk, p):
+def frazil_properties(SA_bulk, h_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_final, which results from given values of the bulk
-    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occurring at pressure
+    Absolute Salinity, SA_bulk, bulk enthalpy, h_bulk, occuring at pressure
     p.  The final values of Absolute Salinity, SA_final, and Conservative
     Temperature, CT_final, of the interstitial seawater phase are also
     returned.  This code assumes that there is no dissolved air in the
@@ -2369,12 +2369,12 @@ def frazil_properties(SA_bulk, h_bulk, p):
     Notes
     -----
     When the mass fraction w_Ih_final is calculated as being a positive
-    value, the seawater-ice mixture is at thermodynamic equilibrium.
+    value, the seawater-ice mixture is at thermodynamic equlibrium.
 
     This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
     is sufficiently large (i.e. sufficiently "warm") so that there is no ice
     present in the final state.  In this case the final state consists of
-    only seawater rather than being an equilibrium mixture of seawater and
+    only seawater rather than being an equlibrium mixture of seawater and
     ice which occurs when w_Ih_final is positive.  Note that when
     w_Ih_final = 0, the final seawater is not at the freezing temperature.
 
@@ -2390,7 +2390,7 @@ def frazil_properties(SA_bulk, h_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2406,20 +2406,20 @@ def frazil_properties(SA_bulk, h_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p)
+    return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p, **kwargs)
 frazil_properties.types = _gsw_ufuncs.frazil_properties.types
-frazil_properties = match_args_return(frazil_properties)
+frazil_properties = masked_array_support(frazil_properties)
 
-def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
+def frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
     Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-    occurring at pressure p.  The final equilibrium values of Absolute
+    occuring at pressure p.  The final equilibrium values of Absolute
     Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
     interstitial seawater phase are also returned.  This code assumes that
     there is no dissolved air in the seawater (that is, saturation_fraction
-    is assumed to be zero throughout the code).
+    is assumed to be zero thoughout the code).
 
     Parameters
     ----------
@@ -2450,12 +2450,12 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
     Notes
     -----
     When the mass fraction w_Ih_final is calculated as being a positive
-    value, the seawater-ice mixture is at thermodynamic equilibrium.
+    value, the seawater-ice mixture is at thermodynamic equlibrium.
 
     This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
     is sufficiently large (i.e. sufficiently "warm") so that there is no ice
     present in the final state.  In this case the final state consists of
-    only seawater rather than being an equilibrium mixture of seawater and
+    only seawater rather than being an equlibrium mixture of seawater and
     ice which occurs when w_Ih_final is positive.  Note that when
     w_Ih_final = 0, the final seawater is not at the freezing temperature.
 
@@ -2468,7 +2468,7 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2484,20 +2484,20 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p)
+    return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs)
 frazil_properties_potential.types = _gsw_ufuncs.frazil_properties_potential.types
-frazil_properties_potential = match_args_return(frazil_properties_potential)
+frazil_properties_potential = masked_array_support(frazil_properties_potential)
 
-def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
+def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), w_Ih_eq, which results from given values of the bulk
     Absolute Salinity, SA_bulk, bulk potential enthalpy, h_pot_bulk,
-    occurring at pressure p.  The final equilibrium values of Absolute
+    occuring at pressure p.  The final equilibrium values of Absolute
     Salinity, SA_eq, and Conservative Temperature, CT_eq, of the
     interstitial seawater phase are also returned.  This code assumes that
     there is no dissolved air in the seawater (that is, saturation_fraction
-    is assumed to be zero throughout the code).
+    is assumed to be zero thoughout the code).
 
     Parameters
     ----------
@@ -2528,12 +2528,12 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
     Notes
     -----
     When the mass fraction w_Ih_final is calculated as being a positive
-    value, the seawater-ice mixture is at thermodynamic equilibrium.
+    value, the seawater-ice mixture is at thermodynamic equlibrium.
 
     This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
     is sufficiently large (i.e. sufficiently "warm") so that there is no ice
     present in the final state.  In this case the final state consists of
-    only seawater rather than being an equilibrium mixture of seawater and
+    only seawater rather than being an equlibrium mixture of seawater and
     ice which occurs when w_Ih_final is positive.  Note that when
     w_Ih_final = 0, the final seawater is not at the freezing temperature.
 
@@ -2547,7 +2547,7 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -2563,11 +2563,11 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p):
 
 
     """
-    return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p)
+    return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs)
 frazil_properties_potential_poly.types = _gsw_ufuncs.frazil_properties_potential_poly.types
-frazil_properties_potential_poly = match_args_return(frazil_properties_potential_poly)
+frazil_properties_potential_poly = masked_array_support(frazil_properties_potential_poly)
 
-def frazil_ratios_adiabatic(SA, p, w_Ih):
+def frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs):
     """
     Calculates the ratios of SA, CT and P changes when frazil ice forms or
     melts in response to an adiabatic change in pressure of a mixture of
@@ -2611,7 +2611,7 @@ def frazil_ratios_adiabatic(SA, p, w_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -2620,11 +2620,11 @@ def frazil_ratios_adiabatic(SA, p, w_Ih):
 
 
     """
-    return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih)
+    return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs)
 frazil_ratios_adiabatic.types = _gsw_ufuncs.frazil_ratios_adiabatic.types
-frazil_ratios_adiabatic = match_args_return(frazil_ratios_adiabatic)
+frazil_ratios_adiabatic = masked_array_support(frazil_ratios_adiabatic)
 
-def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
+def frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs):
     """
     Calculates the ratios of SA, CT and P changes when frazil ice forms or
     melts in response to an adiabatic change in pressure of a mixture of
@@ -2673,7 +2673,7 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -2681,16 +2681,16 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih):
     See Eqns. (47), (48) and (49) of this manuscript.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih)
+    return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs)
 frazil_ratios_adiabatic_poly.types = _gsw_ufuncs.frazil_ratios_adiabatic_poly.types
-frazil_ratios_adiabatic_poly = match_args_return(frazil_ratios_adiabatic_poly)
+frazil_ratios_adiabatic_poly = masked_array_support(frazil_ratios_adiabatic_poly)
 
-def gibbs(ns, nt, np, SA, t, p):
+def gibbs(ns, nt, np, SA, t, p, **kwargs):
     """
     Calculates specific Gibbs energy and its derivatives up to order 3 for
     seawater.  The Gibbs function for seawater is that of TEOS-10
@@ -2740,19 +2740,19 @@ def gibbs(ns, nt, np, SA, t, p):
     IAPWS, 2008: Release on the IAPWS Formulation 2008 for the
     Thermodynamic Properties of Seawater. The International Association
     for the Properties of Water and Steam. Berlin, Germany, September
-    2008, available from https://iapws.org/.  This Release is referred
+    2008, available from http://www.iapws.org.  This Release is referred
     to as IAPWS-08.
 
     IAPWS, 2009: Supplementary Release on a Computationally Efficient
     Thermodynamic Formulation for Liquid Water for Oceanographic Use.
     The International Association for the Properties of Water and Steam.
     Doorwerth, The Netherlands, September 2009, available from
-    https://iapws.org/.  This Release is referred to as IAPWS-09.
+    http://www.iapws.org.  This Release is referred to as IAPWS-09.
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.6 and appendices A.6,  G and H of this TEOS-10 Manual.
 
     Millero, F.J., R. Feistel, D.G. Wright, and T.J. McDougall, 2008:
@@ -2767,11 +2767,11 @@ def gibbs(ns, nt, np, SA, t, p):
 
 
     """
-    return _gsw_ufuncs.gibbs(ns, nt, np, SA, t, p)
+    return _gsw_ufuncs.gibbs(ns, nt, np, SA, t, p, **kwargs)
 gibbs.types = _gsw_ufuncs.gibbs.types
-gibbs = match_args_return(gibbs)
+gibbs = masked_array_support(gibbs)
 
-def gibbs_ice(nt, np, t, p):
+def gibbs_ice(nt, np, t, p, **kwargs):
     """
     Ice specific Gibbs energy and derivatives up to order 2.
 
@@ -2806,7 +2806,7 @@ def gibbs_ice(nt, np, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See appendix I.
 
     Reference page in Help browser
@@ -2817,14 +2817,14 @@ def gibbs_ice(nt, np, t, p):
 
 
     """
-    return _gsw_ufuncs.gibbs_ice(nt, np, t, p)
+    return _gsw_ufuncs.gibbs_ice(nt, np, t, p, **kwargs)
 gibbs_ice.types = _gsw_ufuncs.gibbs_ice.types
-gibbs_ice = match_args_return(gibbs_ice)
+gibbs_ice = masked_array_support(gibbs_ice)
 
-def gibbs_ice_part_t(t, p):
+def gibbs_ice_part_t(t, p, **kwargs):
     """
     part of the the first temperature derivative of Gibbs energy of ice
-    that is the output is gibbs_ice(1,0,t,p) + S0
+    that is the outout is gibbs_ice(1,0,t,p) + S0
 
     Parameters
     ----------
@@ -2848,19 +2848,19 @@ def gibbs_ice_part_t(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See appendix I.
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_part_t(t, p)
+    return _gsw_ufuncs.gibbs_ice_part_t(t, p, **kwargs)
 gibbs_ice_part_t.types = _gsw_ufuncs.gibbs_ice_part_t.types
-gibbs_ice_part_t = match_args_return(gibbs_ice_part_t)
+gibbs_ice_part_t = masked_array_support(gibbs_ice_part_t)
 
-def gibbs_ice_pt0(pt0):
+def gibbs_ice_pt0(pt0, **kwargs):
     """
     part of the the first temperature derivative of Gibbs energy of ice
-    that is the output is "gibbs_ice(1,0,pt0,0) + s0"
+    that is the outout is "gibbs_ice(1,0,pt0,0) + s0"
 
     Parameters
     ----------
@@ -2882,16 +2882,16 @@ def gibbs_ice_pt0(pt0):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See appendix I.
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_pt0(pt0)
+    return _gsw_ufuncs.gibbs_ice_pt0(pt0, **kwargs)
 gibbs_ice_pt0.types = _gsw_ufuncs.gibbs_ice_pt0.types
-gibbs_ice_pt0 = match_args_return(gibbs_ice_pt0)
+gibbs_ice_pt0 = masked_array_support(gibbs_ice_pt0)
 
-def gibbs_ice_pt0_pt0(pt0):
+def gibbs_ice_pt0_pt0(pt0, **kwargs):
     """
     The second temperature derivative of Gibbs energy of ice at the
     potential temperature with reference sea pressure of zero dbar.  That is
@@ -2917,16 +2917,16 @@ def gibbs_ice_pt0_pt0(pt0):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See appendix I.
 
 
     """
-    return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0)
+    return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0, **kwargs)
 gibbs_ice_pt0_pt0.types = _gsw_ufuncs.gibbs_ice_pt0_pt0.types
-gibbs_ice_pt0_pt0 = match_args_return(gibbs_ice_pt0_pt0)
+gibbs_ice_pt0_pt0 = masked_array_support(gibbs_ice_pt0_pt0)
 
-def gibbs_pt0_pt0(SA, pt0):
+def gibbs_pt0_pt0(SA, pt0, **kwargs):
     """
     gibbs_tt at (SA,pt,0)
 
@@ -2953,11 +2953,11 @@ def gibbs_pt0_pt0(SA, pt0):
 
 
     """
-    return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0)
+    return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0, **kwargs)
 gibbs_pt0_pt0.types = _gsw_ufuncs.gibbs_pt0_pt0.types
-gibbs_pt0_pt0 = match_args_return(gibbs_pt0_pt0)
+gibbs_pt0_pt0 = masked_array_support(gibbs_pt0_pt0)
 
-def grav(lat, p):
+def grav(lat, p, **kwargs):
     """
     Calculates acceleration due to gravity as a function of latitude and as
     a function of pressure in the ocean.
@@ -2980,7 +2980,7 @@ def grav(lat, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix D of this TEOS-10 Manual.
 
     Moritz, H., 2000: Geodetic reference system 1980. J. Geodesy, 74,
@@ -2991,11 +2991,11 @@ def grav(lat, p):
 
 
     """
-    return _gsw_ufuncs.grav(lat, p)
+    return _gsw_ufuncs.grav(lat, p, **kwargs)
 grav.types = _gsw_ufuncs.grav.types
-grav = match_args_return(grav)
+grav = masked_array_support(grav)
 
-def Helmholtz_energy_ice(t, p):
+def Helmholtz_energy_ice(t, p, **kwargs):
     """
     Calculates the Helmholtz energy of ice.
 
@@ -3017,15 +3017,15 @@ def Helmholtz_energy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.helmholtz_energy_ice(t, p)
+    return _gsw_ufuncs.helmholtz_energy_ice(t, p, **kwargs)
 Helmholtz_energy_ice.types = _gsw_ufuncs.helmholtz_energy_ice.types
-Helmholtz_energy_ice = match_args_return(Helmholtz_energy_ice)
+Helmholtz_energy_ice = masked_array_support(Helmholtz_energy_ice)
 
-def Hill_ratio_at_SP2(t):
+def Hill_ratio_at_SP2(t, **kwargs):
     """
     Calculates the Hill ratio, which is the adjustment needed to apply for
     Practical Salinities smaller than 2.  This ratio is defined at a
@@ -3054,7 +3054,7 @@ def Hill_ratio_at_SP2(t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix E of this TEOS-10 Manual.
 
     McDougall T.J. and S.J. Wotherspoon, 2013: A simple modification of
@@ -3066,11 +3066,11 @@ def Hill_ratio_at_SP2(t):
 
 
     """
-    return _gsw_ufuncs.hill_ratio_at_sp2(t)
+    return _gsw_ufuncs.hill_ratio_at_sp2(t, **kwargs)
 Hill_ratio_at_SP2.types = _gsw_ufuncs.hill_ratio_at_sp2.types
-Hill_ratio_at_SP2 = match_args_return(Hill_ratio_at_SP2)
+Hill_ratio_at_SP2 = masked_array_support(Hill_ratio_at_SP2)
 
-def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
+def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the mass fraction of ice (mass of ice divided by mass of ice
     plus seawater), which, when melted into seawater having (SA,CT,p) causes
@@ -3113,7 +3113,7 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2013: A simple modification of
@@ -3127,11 +3127,11 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih):
 
 
     """
-    return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs)
 ice_fraction_to_freeze_seawater.types = _gsw_ufuncs.ice_fraction_to_freeze_seawater.types
-ice_fraction_to_freeze_seawater = match_args_return(ice_fraction_to_freeze_seawater)
+ice_fraction_to_freeze_seawater = masked_array_support(ice_fraction_to_freeze_seawater)
 
-def infunnel(SA, CT, p):
+def infunnel(SA, CT, p, **kwargs):
     """
     "oceanographic funnel" check for the 75-term equation
 
@@ -3182,11 +3182,11 @@ def infunnel(SA, CT, p):
 
 
     """
-    return _gsw_ufuncs.infunnel(SA, CT, p)
+    return _gsw_ufuncs.infunnel(SA, CT, p, **kwargs)
 infunnel.types = _gsw_ufuncs.infunnel.types
-infunnel = match_args_return(infunnel)
+infunnel = masked_array_support(infunnel)
 
-def internal_energy(SA, CT, p):
+def internal_energy(SA, CT, p, **kwargs):
     """
     Calculates specific internal energy of seawater using the
     computationally-efficient expression for specific volume in terms of SA,
@@ -3212,7 +3212,7 @@ def internal_energy(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -3221,7 +3221,7 @@ def internal_energy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -3229,16 +3229,16 @@ def internal_energy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.internal_energy(SA, CT, p)
+    return _gsw_ufuncs.internal_energy(SA, CT, p, **kwargs)
 internal_energy.types = _gsw_ufuncs.internal_energy.types
-internal_energy = match_args_return(internal_energy)
+internal_energy = masked_array_support(internal_energy)
 
-def internal_energy_ice(t, p):
+def internal_energy_ice(t, p, **kwargs):
     """
     Calculates the specific internal energy of ice.
 
@@ -3260,15 +3260,15 @@ def internal_energy_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.internal_energy_ice(t, p)
+    return _gsw_ufuncs.internal_energy_ice(t, p, **kwargs)
 internal_energy_ice.types = _gsw_ufuncs.internal_energy_ice.types
-internal_energy_ice = match_args_return(internal_energy_ice)
+internal_energy_ice = masked_array_support(internal_energy_ice)
 
-def kappa(SA, CT, p):
+def kappa(SA, CT, p, **kwargs):
     """
     Calculates the isentropic compressibility of seawater.  This function
     has inputs of Absolute Salinity and Conservative Temperature.  This
@@ -3295,7 +3295,7 @@ def kappa(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -3304,7 +3304,7 @@ def kappa(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -3313,16 +3313,16 @@ def kappa(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.kappa(SA, CT, p)
+    return _gsw_ufuncs.kappa(SA, CT, p, **kwargs)
 kappa.types = _gsw_ufuncs.kappa.types
-kappa = match_args_return(kappa)
+kappa = masked_array_support(kappa)
 
-def kappa_const_t_ice(t, p):
+def kappa_const_t_ice(t, p, **kwargs):
     """
     Calculates isothermal compressibility of ice.
     Note. This is the compressibility of ice AT CONSTANT IN-SITU
@@ -3346,15 +3346,15 @@ def kappa_const_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.kappa_const_t_ice(t, p)
+    return _gsw_ufuncs.kappa_const_t_ice(t, p, **kwargs)
 kappa_const_t_ice.types = _gsw_ufuncs.kappa_const_t_ice.types
-kappa_const_t_ice = match_args_return(kappa_const_t_ice)
+kappa_const_t_ice = masked_array_support(kappa_const_t_ice)
 
-def kappa_ice(t, p):
+def kappa_ice(t, p, **kwargs):
     """
     Calculates the isentropic compressibility of ice.
 
@@ -3376,15 +3376,15 @@ def kappa_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.kappa_ice(t, p)
+    return _gsw_ufuncs.kappa_ice(t, p, **kwargs)
 kappa_ice.types = _gsw_ufuncs.kappa_ice.types
-kappa_ice = match_args_return(kappa_ice)
+kappa_ice = masked_array_support(kappa_ice)
 
-def kappa_t_exact(SA, t, p):
+def kappa_t_exact(SA, t, p, **kwargs):
     """
     Calculates the isentropic compressibility of seawater.
 
@@ -3408,17 +3408,17 @@ def kappa_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqns. (2.16.1) and the row for kappa in Table P.1 of appendix P
     of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.kappa_t_exact(SA, t, p)
+    return _gsw_ufuncs.kappa_t_exact(SA, t, p, **kwargs)
 kappa_t_exact.types = _gsw_ufuncs.kappa_t_exact.types
-kappa_t_exact = match_args_return(kappa_t_exact)
+kappa_t_exact = masked_array_support(kappa_t_exact)
 
-def latentheat_evap_CT(SA, CT):
+def latentheat_evap_CT(SA, CT, **kwargs):
     """
     Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
     surface).  It is defined as a function of Absolute Salinity, SA, and
@@ -3444,16 +3444,16 @@ def latentheat_evap_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.39 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.latentheat_evap_ct(SA, CT)
+    return _gsw_ufuncs.latentheat_evap_ct(SA, CT, **kwargs)
 latentheat_evap_CT.types = _gsw_ufuncs.latentheat_evap_ct.types
-latentheat_evap_CT = match_args_return(latentheat_evap_CT)
+latentheat_evap_CT = masked_array_support(latentheat_evap_CT)
 
-def latentheat_evap_t(SA, t):
+def latentheat_evap_t(SA, t, **kwargs):
     """
     Calculates latent heat, or enthalpy, of evaporation at p = 0 (the
     surface).  It is defined as a function of Absolute Salinity, SA, and
@@ -3478,16 +3478,16 @@ def latentheat_evap_t(SA, t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.39 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.latentheat_evap_t(SA, t)
+    return _gsw_ufuncs.latentheat_evap_t(SA, t, **kwargs)
 latentheat_evap_t.types = _gsw_ufuncs.latentheat_evap_t.types
-latentheat_evap_t = match_args_return(latentheat_evap_t)
+latentheat_evap_t = masked_array_support(latentheat_evap_t)
 
-def latentheat_melting(SA, p):
+def latentheat_melting(SA, p, **kwargs):
     """
     Calculates latent heat, or enthalpy, of melting.  It is defined in terms
     of Absolute Salinity, SA, and sea pressure, p, and is valid in the
@@ -3529,16 +3529,16 @@ def latentheat_melting(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.34 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.latentheat_melting(SA, p)
+    return _gsw_ufuncs.latentheat_melting(SA, p, **kwargs)
 latentheat_melting.types = _gsw_ufuncs.latentheat_melting.types
-latentheat_melting = match_args_return(latentheat_melting)
+latentheat_melting = masked_array_support(latentheat_melting)
 
-def melting_ice_equilibrium_SA_CT_ratio(SA, p):
+def melting_ice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater
     with both the seawater and the seaice temperatures being almost equal to
@@ -3578,7 +3578,7 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3587,11 +3587,11 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p)
+    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 melting_ice_equilibrium_SA_CT_ratio.types = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio.types
-melting_ice_equilibrium_SA_CT_ratio = match_args_return(melting_ice_equilibrium_SA_CT_ratio)
+melting_ice_equilibrium_SA_CT_ratio = masked_array_support(melting_ice_equilibrium_SA_CT_ratio)
 
-def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
+def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater
     with both the seawater and the seaice temperatures being almost equal to
@@ -3628,7 +3628,7 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -3637,7 +3637,7 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3645,16 +3645,16 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p):
     See Eqn. (16) of this manuscript.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p)
+    return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 melting_ice_equilibrium_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly.types
-melting_ice_equilibrium_SA_CT_ratio_poly = match_args_return(melting_ice_equilibrium_SA_CT_ratio_poly)
+melting_ice_equilibrium_SA_CT_ratio_poly = masked_array_support(melting_ice_equilibrium_SA_CT_ratio_poly)
 
-def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
+def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs):
     """
     Calculates the final Absolute Salinity, final Conservative Temperature
     and final ice mass fraction that results when a given mass fraction of
@@ -3695,12 +3695,12 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
     Notes
     -----
     When the mass fraction w_Ih_final is calculated as being a positive
-    value, the seawater-ice mixture is at thermodynamic equilibrium.
+    value, the seawater-ice mixture is at thermodynamic equlibrium.
 
     This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
     is sufficiently large (i.e. sufficiently "warm") so that there is no ice
     present in the final state.  In this case the final state consists of
-    only seawater rather than being an equilibrium mixture of seawater and
+    only seawater rather than being an equlibrium mixture of seawater and
     ice which occurs when w_Ih_final is positive.  Note that when
     w_Ih_final = 0, the final seawater is not at the freezing temperature.
 
@@ -3710,7 +3710,7 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of ice and sea ice into seawater, and frazil ice formation.
@@ -3718,11 +3718,11 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih):
 
 
     """
-    return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih)
+    return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs)
 melting_ice_into_seawater.types = _gsw_ufuncs.melting_ice_into_seawater.types
-melting_ice_into_seawater = match_args_return(melting_ice_into_seawater)
+melting_ice_into_seawater = masked_array_support(melting_ice_into_seawater)
 
-def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
+def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater.
     It is assumed that a small mass of ice melts into an infinite mass of
@@ -3759,7 +3759,7 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3768,11 +3768,11 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih):
 
 
     """
-    return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih, **kwargs)
 melting_ice_SA_CT_ratio.types = _gsw_ufuncs.melting_ice_sa_ct_ratio.types
-melting_ice_SA_CT_ratio = match_args_return(melting_ice_SA_CT_ratio)
+melting_ice_SA_CT_ratio = masked_array_support(melting_ice_SA_CT_ratio)
 
-def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
+def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih, **kwargs):
     """
     Calculates the ratio of SA to CT changes when ice melts into seawater.
     It is assumed that a small mass of ice melts into an infinite mass of
@@ -3806,7 +3806,7 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -3815,7 +3815,7 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3823,16 +3823,16 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih):
     See Eqn. (13) of this manuscript.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih)
+    return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih, **kwargs)
 melting_ice_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_ice_sa_ct_ratio_poly.types
-melting_ice_SA_CT_ratio_poly = match_args_return(melting_ice_SA_CT_ratio_poly)
+melting_ice_SA_CT_ratio_poly = masked_array_support(melting_ice_SA_CT_ratio_poly)
 
-def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
+def melting_seaice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater with both the seawater and the sea ice temperatures being
@@ -3878,7 +3878,7 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3887,11 +3887,11 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p)
+    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 melting_seaice_equilibrium_SA_CT_ratio.types = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio.types
-melting_seaice_equilibrium_SA_CT_ratio = match_args_return(melting_seaice_equilibrium_SA_CT_ratio)
+melting_seaice_equilibrium_SA_CT_ratio = masked_array_support(melting_seaice_equilibrium_SA_CT_ratio)
 
-def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
+def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater with both the seawater and the sea ice temperatures being
@@ -3934,7 +3934,7 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -3943,7 +3943,7 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -3951,16 +3951,16 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p):
     See Eqn. (29) of this manuscript.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p)
+    return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 melting_seaice_equilibrium_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly.types
-melting_seaice_equilibrium_SA_CT_ratio_poly = match_args_return(melting_seaice_equilibrium_SA_CT_ratio_poly)
+melting_seaice_equilibrium_SA_CT_ratio_poly = masked_array_support(melting_seaice_equilibrium_SA_CT_ratio_poly)
 
-def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
+def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the Absolute Salinity and Conservative Temperature that
     results when a given mass of sea ice (or ice) melts and is mixed into a
@@ -3987,10 +3987,10 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
     -------
     SA_final : array-like, g/kg
         Absolute Salinity of the mixture of the melted sea ice
-        (or ice) and the original seawater
+        (or ice) and the orignal seawater
     CT_final : array-like, deg C
         Conservative Temperature of the mixture of the melted
-        sea ice (or ice) and the original seawater
+        sea ice (or ice) and the orignal seawater
 
 
     Notes
@@ -4019,7 +4019,7 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4028,11 +4028,11 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs)
 melting_seaice_into_seawater.types = _gsw_ufuncs.melting_seaice_into_seawater.types
-melting_seaice_into_seawater = match_args_return(melting_seaice_into_seawater)
+melting_seaice_into_seawater = masked_array_support(melting_seaice_into_seawater)
 
-def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
+def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater.  It is assumed that a small mass of sea ice melts into an
@@ -4087,7 +4087,7 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4096,11 +4096,11 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 melting_seaice_SA_CT_ratio.types = _gsw_ufuncs.melting_seaice_sa_ct_ratio.types
-melting_seaice_SA_CT_ratio = match_args_return(melting_seaice_SA_CT_ratio)
+melting_seaice_SA_CT_ratio = masked_array_support(melting_seaice_SA_CT_ratio)
 
-def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
+def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the ratio of SA to CT changes when sea ice melts into
     seawater.  It is assumed that a small mass of sea ice melts into an
@@ -4152,7 +4152,7 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -4161,7 +4161,7 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4169,16 +4169,16 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice):
     See Eqn. (31) of this manuscript.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 melting_seaice_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly.types
-melting_seaice_SA_CT_ratio_poly = match_args_return(melting_seaice_SA_CT_ratio_poly)
+melting_seaice_SA_CT_ratio_poly = masked_array_support(melting_seaice_SA_CT_ratio_poly)
 
-def O2sol(SA, CT, p, lon, lat):
+def O2sol(SA, CT, p, lon, lat, **kwargs):
     """
     Calculates the oxygen concentration expected at equilibrium with air at
     an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
@@ -4217,7 +4217,7 @@ def O2sol(SA, CT, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     Benson, B.B., and D. Krause, 1984: The concentration and isotopic
     fractionation of oxygen dissolved in freshwater and seawater in
@@ -4233,11 +4233,11 @@ def O2sol(SA, CT, p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat)
+    return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat, **kwargs)
 O2sol.types = _gsw_ufuncs.o2sol.types
-O2sol = match_args_return(O2sol)
+O2sol = masked_array_support(O2sol)
 
-def O2sol_SP_pt(SP, pt):
+def O2sol_SP_pt(SP, pt, **kwargs):
     """
     Calculates the oxygen concentration expected at equilibrium with air at
     an Absolute Pressure of 101325 Pa (sea pressure of 0 dbar) including
@@ -4270,7 +4270,7 @@ def O2sol_SP_pt(SP, pt):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     Benson, B.B., and D. Krause, 1984: The concentration and isotopic
     fractionation of oxygen dissolved in freshwater and seawater in
@@ -4286,11 +4286,11 @@ def O2sol_SP_pt(SP, pt):
 
 
     """
-    return _gsw_ufuncs.o2sol_sp_pt(SP, pt)
+    return _gsw_ufuncs.o2sol_sp_pt(SP, pt, **kwargs)
 O2sol_SP_pt.types = _gsw_ufuncs.o2sol_sp_pt.types
-O2sol_SP_pt = match_args_return(O2sol_SP_pt)
+O2sol_SP_pt = masked_array_support(O2sol_SP_pt)
 
-def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
+def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     Calculates sea pressure from height using computationally-efficient
     75-term expression for density, in terms of SA, CT and p (Roquet et al.,
@@ -4327,7 +4327,7 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -4336,7 +4336,7 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -4351,21 +4351,21 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     pp. 128-133.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
     Saunders, P.M., 1981: Practical conversion of pressure to depth.
     Journal of Physical Oceanography, 11, pp. 573-574.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential)
+    return _gsw_ufuncs.p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
 p_from_z.types = _gsw_ufuncs.p_from_z.types
-p_from_z = match_args_return(p_from_z)
+p_from_z = masked_array_support(p_from_z)
 
-def pot_enthalpy_from_pt_ice(pt0_ice):
+def pot_enthalpy_from_pt_ice(pt0_ice, **kwargs):
     """
     Calculates the potential enthalpy of ice from potential temperature of
     ice (whose reference sea pressure is zero dbar).
@@ -4386,15 +4386,15 @@ def pot_enthalpy_from_pt_ice(pt0_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice)
+    return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice, **kwargs)
 pot_enthalpy_from_pt_ice.types = _gsw_ufuncs.pot_enthalpy_from_pt_ice.types
-pot_enthalpy_from_pt_ice = match_args_return(pot_enthalpy_from_pt_ice)
+pot_enthalpy_from_pt_ice = masked_array_support(pot_enthalpy_from_pt_ice)
 
-def pot_enthalpy_from_pt_ice_poly(pt0_ice):
+def pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs):
     """
     Calculates the potential enthalpy of ice from potential temperature of
     ice (whose reference sea pressure is zero dbar).  This is a
@@ -4417,15 +4417,15 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice)
+    return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs)
 pot_enthalpy_from_pt_ice_poly.types = _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly.types
-pot_enthalpy_from_pt_ice_poly = match_args_return(pot_enthalpy_from_pt_ice_poly)
+pot_enthalpy_from_pt_ice_poly = masked_array_support(pot_enthalpy_from_pt_ice_poly)
 
-def pot_enthalpy_ice_freezing(SA, p):
+def pot_enthalpy_ice_freezing(SA, p, **kwargs):
     """
     Calculates the potential enthalpy of ice at which seawater freezes.
 
@@ -4448,7 +4448,7 @@ def pot_enthalpy_ice_freezing(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4457,11 +4457,11 @@ def pot_enthalpy_ice_freezing(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p, **kwargs)
 pot_enthalpy_ice_freezing.types = _gsw_ufuncs.pot_enthalpy_ice_freezing.types
-pot_enthalpy_ice_freezing = match_args_return(pot_enthalpy_ice_freezing)
+pot_enthalpy_ice_freezing = masked_array_support(pot_enthalpy_ice_freezing)
 
-def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
+def pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs):
     """
     Calculates the first derivatives of the potential enthalpy of ice at
     which seawater freezes, with respect to Absolute Salinity SA and
@@ -4491,7 +4491,7 @@ def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4500,11 +4500,11 @@ def pot_enthalpy_ice_freezing_first_derivatives(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_first_derivatives.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives.types
-pot_enthalpy_ice_freezing_first_derivatives = match_args_return(pot_enthalpy_ice_freezing_first_derivatives)
+pot_enthalpy_ice_freezing_first_derivatives = masked_array_support(pot_enthalpy_ice_freezing_first_derivatives)
 
-def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
+def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs):
     """
     Calculates the first derivatives of the potential enthalpy of ice Ih at
     which ice melts into seawater with Absolute Salinity SA and at pressure
@@ -4535,7 +4535,7 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4546,11 +4546,11 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_first_derivatives_poly.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly.types
-pot_enthalpy_ice_freezing_first_derivatives_poly = match_args_return(pot_enthalpy_ice_freezing_first_derivatives_poly)
+pot_enthalpy_ice_freezing_first_derivatives_poly = masked_array_support(pot_enthalpy_ice_freezing_first_derivatives_poly)
 
-def pot_enthalpy_ice_freezing_poly(SA, p):
+def pot_enthalpy_ice_freezing_poly(SA, p, **kwargs):
     """
     Calculates the potential enthalpy of ice at which seawater freezes.
     The error of this fit ranges between -2.5 and 1 J/kg with an rms of
@@ -4582,7 +4582,7 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -4591,11 +4591,11 @@ def pot_enthalpy_ice_freezing_poly(SA, p):
 
 
     """
-    return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p)
+    return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_poly.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_poly.types
-pot_enthalpy_ice_freezing_poly = match_args_return(pot_enthalpy_ice_freezing_poly)
+pot_enthalpy_ice_freezing_poly = masked_array_support(pot_enthalpy_ice_freezing_poly)
 
-def pot_rho_t_exact(SA, t, p, p_ref):
+def pot_rho_t_exact(SA, t, p, p_ref, **kwargs):
     """
     Calculates potential density of seawater.  Note. This function outputs
     potential density, not potential density anomaly; that is, 1000 kg/m^3
@@ -4623,16 +4623,16 @@ def pot_rho_t_exact(SA, t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.4 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref)
+    return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref, **kwargs)
 pot_rho_t_exact.types = _gsw_ufuncs.pot_rho_t_exact.types
-pot_rho_t_exact = match_args_return(pot_rho_t_exact)
+pot_rho_t_exact = masked_array_support(pot_rho_t_exact)
 
-def pressure_coefficient_ice(t, p):
+def pressure_coefficient_ice(t, p, **kwargs):
     """
     Calculates pressure coefficient of ice.
 
@@ -4654,16 +4654,16 @@ def pressure_coefficient_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.15.1) of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.pressure_coefficient_ice(t, p)
+    return _gsw_ufuncs.pressure_coefficient_ice(t, p, **kwargs)
 pressure_coefficient_ice.types = _gsw_ufuncs.pressure_coefficient_ice.types
-pressure_coefficient_ice = match_args_return(pressure_coefficient_ice)
+pressure_coefficient_ice = masked_array_support(pressure_coefficient_ice)
 
-def pressure_freezing_CT(SA, CT, saturation_fraction):
+def pressure_freezing_CT(SA, CT, saturation_fraction, **kwargs):
     """
     Calculates the pressure (in dbar) of seawater at the freezing
     temperature.  That is, the output is the pressure at which seawater,
@@ -4694,7 +4694,7 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4703,11 +4703,11 @@ def pressure_freezing_CT(SA, CT, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction)
+    return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction, **kwargs)
 pressure_freezing_CT.types = _gsw_ufuncs.pressure_freezing_ct.types
-pressure_freezing_CT = match_args_return(pressure_freezing_CT)
+pressure_freezing_CT = masked_array_support(pressure_freezing_CT)
 
-def pt0_from_t(SA, t, p):
+def pt0_from_t(SA, t, p, **kwargs):
     """
     Calculates potential temperature with reference pressure, p_ref = 0 dbar.
     The present routine is computationally faster than the more general
@@ -4737,7 +4737,7 @@ def pt0_from_t(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.1 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4746,11 +4746,11 @@ def pt0_from_t(SA, t, p):
 
 
     """
-    return _gsw_ufuncs.pt0_from_t(SA, t, p)
+    return _gsw_ufuncs.pt0_from_t(SA, t, p, **kwargs)
 pt0_from_t.types = _gsw_ufuncs.pt0_from_t.types
-pt0_from_t = match_args_return(pt0_from_t)
+pt0_from_t = masked_array_support(pt0_from_t)
 
-def pt0_from_t_ice(t, p):
+def pt0_from_t_ice(t, p, **kwargs):
     """
     Calculates potential temperature of ice Ih with a reference pressure of
     0 dbar, from in-situ temperature, t.
@@ -4774,7 +4774,7 @@ def pt0_from_t_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix I of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4783,11 +4783,11 @@ def pt0_from_t_ice(t, p):
 
 
     """
-    return _gsw_ufuncs.pt0_from_t_ice(t, p)
+    return _gsw_ufuncs.pt0_from_t_ice(t, p, **kwargs)
 pt0_from_t_ice.types = _gsw_ufuncs.pt0_from_t_ice.types
-pt0_from_t_ice = match_args_return(pt0_from_t_ice)
+pt0_from_t_ice = masked_array_support(pt0_from_t_ice)
 
-def pt_first_derivatives(SA, CT):
+def pt_first_derivatives(SA, CT, **kwargs):
     """
     Calculates the following two partial derivatives of potential
     temperature (the regular potential temperature whose reference sea
@@ -4820,23 +4820,23 @@ def pt_first_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.12.6), (A.12.3), (P.6) and (P.8) of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.pt_first_derivatives(SA, CT)
+    return _gsw_ufuncs.pt_first_derivatives(SA, CT, **kwargs)
 pt_first_derivatives.types = _gsw_ufuncs.pt_first_derivatives.types
-pt_first_derivatives = match_args_return(pt_first_derivatives)
+pt_first_derivatives = masked_array_support(pt_first_derivatives)
 
-def pt_from_CT(SA, CT):
+def pt_from_CT(SA, CT, **kwargs):
     """
     Calculates potential temperature (with a reference sea pressure of
     zero dbar) from Conservative Temperature.  This function uses 1.5
     iterations through a modified Newton-Raphson (N-R) iterative solution
-    procedure, starting from a rational-function-based initial condition
+    proceedure, starting from a rational-function-based initial condition
     for both pt and dCT_dpt.
 
     Parameters
@@ -4858,7 +4858,7 @@ def pt_from_CT(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See sections 3.1 and 3.3 of this TEOS-10 Manual.
 
     McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
@@ -4867,11 +4867,11 @@ def pt_from_CT(SA, CT):
 
 
     """
-    return _gsw_ufuncs.pt_from_ct(SA, CT)
+    return _gsw_ufuncs.pt_from_ct(SA, CT, **kwargs)
 pt_from_CT.types = _gsw_ufuncs.pt_from_ct.types
-pt_from_CT = match_args_return(pt_from_CT)
+pt_from_CT = masked_array_support(pt_from_CT)
 
-def pt_from_entropy(SA, entropy):
+def pt_from_entropy(SA, entropy, **kwargs):
     """
     Calculates potential temperature with reference pressure p_ref = 0 dbar
     and with entropy as an input variable.
@@ -4895,7 +4895,7 @@ def pt_from_entropy(SA, entropy):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix  A.10 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -4904,11 +4904,11 @@ def pt_from_entropy(SA, entropy):
 
 
     """
-    return _gsw_ufuncs.pt_from_entropy(SA, entropy)
+    return _gsw_ufuncs.pt_from_entropy(SA, entropy, **kwargs)
 pt_from_entropy.types = _gsw_ufuncs.pt_from_entropy.types
-pt_from_entropy = match_args_return(pt_from_entropy)
+pt_from_entropy = masked_array_support(pt_from_entropy)
 
-def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
+def pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs):
     """
     Calculates the potential temperature of ice from the potential enthalpy
     of ice.  The reference sea pressure of both the potential temperature
@@ -4930,7 +4930,7 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -4942,11 +4942,11 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice):
 
 
     """
-    return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice)
+    return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs)
 pt_from_pot_enthalpy_ice.types = _gsw_ufuncs.pt_from_pot_enthalpy_ice.types
-pt_from_pot_enthalpy_ice = match_args_return(pt_from_pot_enthalpy_ice)
+pt_from_pot_enthalpy_ice = masked_array_support(pt_from_pot_enthalpy_ice)
 
-def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
+def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs):
     """
     Calculates the potential temperature of ice (whose reference sea
     pressure is zero dbar) from the potential enthalpy of ice.  This is a
@@ -4969,15 +4969,15 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice)
+    return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs)
 pt_from_pot_enthalpy_ice_poly.types = _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly.types
-pt_from_pot_enthalpy_ice_poly = match_args_return(pt_from_pot_enthalpy_ice_poly)
+pt_from_pot_enthalpy_ice_poly = masked_array_support(pt_from_pot_enthalpy_ice_poly)
 
-def pt_from_t(SA, t, p, p_ref):
+def pt_from_t(SA, t, p, p_ref, **kwargs):
     """
     Calculates potential temperature with the general reference pressure,
     p_ref, from in-situ temperature, t.  This function calls
@@ -5009,7 +5009,7 @@ def pt_from_t(SA, t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 3.1 of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
@@ -5018,11 +5018,11 @@ def pt_from_t(SA, t, p, p_ref):
 
 
     """
-    return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref)
+    return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref, **kwargs)
 pt_from_t.types = _gsw_ufuncs.pt_from_t.types
-pt_from_t = match_args_return(pt_from_t)
+pt_from_t = masked_array_support(pt_from_t)
 
-def pt_from_t_ice(t, p, p_ref):
+def pt_from_t_ice(t, p, p_ref, **kwargs):
     """
     Calculates potential temperature of ice Ih with the general reference
     pressure, p_ref, from in-situ temperature, t.
@@ -5054,7 +5054,7 @@ def pt_from_t_ice(t, p, p_ref):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix I of this TEOS-10 Manual.
 
     McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
@@ -5063,11 +5063,11 @@ def pt_from_t_ice(t, p, p_ref):
 
 
     """
-    return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref)
+    return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref, **kwargs)
 pt_from_t_ice.types = _gsw_ufuncs.pt_from_t_ice.types
-pt_from_t_ice = match_args_return(pt_from_t_ice)
+pt_from_t_ice = masked_array_support(pt_from_t_ice)
 
-def pt_second_derivatives(SA, CT):
+def pt_second_derivatives(SA, CT, **kwargs):
     """
     Calculates the following three second-order derivatives of potential
     temperature (the regular potential temperature which has a reference
@@ -5107,18 +5107,18 @@ def pt_second_derivatives(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See Eqns. (A.12.9) and (A.12.10) of this TEOS-10 Manual.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.pt_second_derivatives(SA, CT)
+    return _gsw_ufuncs.pt_second_derivatives(SA, CT, **kwargs)
 pt_second_derivatives.types = _gsw_ufuncs.pt_second_derivatives.types
-pt_second_derivatives = match_args_return(pt_second_derivatives)
+pt_second_derivatives = masked_array_support(pt_second_derivatives)
 
-def rho(SA, CT, p):
+def rho(SA, CT, p, **kwargs):
     """
     Calculates in-situ density from Absolute Salinity and Conservative
     Temperature, using the computationally-efficient expression for
@@ -5135,7 +5135,7 @@ def rho(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3
+    rho : array-like, kg/m
         in-situ density
 
 
@@ -5148,7 +5148,7 @@ def rho(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5157,7 +5157,7 @@ def rho(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -5166,18 +5166,18 @@ def rho(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.rho(SA, CT, p)
+    return _gsw_ufuncs.rho(SA, CT, p, **kwargs)
 rho.types = _gsw_ufuncs.rho.types
-rho = match_args_return(rho)
+rho = masked_array_support(rho)
 
-def rho_alpha_beta(SA, CT, p):
+def rho_alpha_beta(SA, CT, p, **kwargs):
     """
-    Calculates in-situ density, the appropriate thermal expansion coefficient
+    Calculates in-situ density, the appropiate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
     Absolute Salinity and Conservative Temperature.  This function uses the
     computationally-efficient expression for specific volume in terms of
@@ -5194,7 +5194,7 @@ def rho_alpha_beta(SA, CT, p):
 
     Returns
     -------
-    rho : array-like, kg/m^3
+    rho : array-like, kg/m
         in-situ density
     alpha : array-like, 1/K
         thermal expansion coefficient
@@ -5213,7 +5213,7 @@ def rho_alpha_beta(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5222,20 +5222,20 @@ def rho_alpha_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.rho_alpha_beta(SA, CT, p)
+    return _gsw_ufuncs.rho_alpha_beta(SA, CT, p, **kwargs)
 rho_alpha_beta.types = _gsw_ufuncs.rho_alpha_beta.types
-rho_alpha_beta = match_args_return(rho_alpha_beta)
+rho_alpha_beta = masked_array_support(rho_alpha_beta)
 
-def rho_first_derivatives(SA, CT, p):
+def rho_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the three (3) partial derivatives of in-situ density with
     respect to Absolute Salinity, Conservative Temperature and pressure.
@@ -5271,7 +5271,7 @@ def rho_first_derivatives(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5280,20 +5280,20 @@ def rho_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.rho_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.rho_first_derivatives(SA, CT, p, **kwargs)
 rho_first_derivatives.types = _gsw_ufuncs.rho_first_derivatives.types
-rho_first_derivatives = match_args_return(rho_first_derivatives)
+rho_first_derivatives = masked_array_support(rho_first_derivatives)
 
-def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
+def rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following two first-order derivatives of rho,
     (1) rho_SA_wrt_h, first-order derivative with respect to Absolute
@@ -5331,7 +5331,7 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2010).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5340,7 +5340,7 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5348,22 +5348,22 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 rho_first_derivatives_wrt_enthalpy.types = _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy.types
-rho_first_derivatives_wrt_enthalpy = match_args_return(rho_first_derivatives_wrt_enthalpy)
+rho_first_derivatives_wrt_enthalpy = masked_array_support(rho_first_derivatives_wrt_enthalpy)
 
-def rho_ice(t, p):
+def rho_ice(t, p, **kwargs):
     """
     Calculates in-situ density of ice from in-situ temperature and pressure.
     Note that the output, rho_ice, is density, not density anomaly;  that
-    is, 1000 kg/m^3 is not subtracted from it.
+    is, 1000 kg/m^3 is not subracted from it.
 
     Parameters
     ----------
@@ -5383,15 +5383,15 @@ def rho_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.rho_ice(t, p)
+    return _gsw_ufuncs.rho_ice(t, p, **kwargs)
 rho_ice.types = _gsw_ufuncs.rho_ice.types
-rho_ice = match_args_return(rho_ice)
+rho_ice = masked_array_support(rho_ice)
 
-def rho_second_derivatives(SA, CT, p):
+def rho_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following five second-order derivatives of rho,
     (1) rho_SA_SA, second-order derivative with respect to Absolute
@@ -5444,7 +5444,7 @@ def rho_second_derivatives(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5453,7 +5453,7 @@ def rho_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5461,18 +5461,18 @@ def rho_second_derivatives(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.rho_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.rho_second_derivatives(SA, CT, p, **kwargs)
 rho_second_derivatives.types = _gsw_ufuncs.rho_second_derivatives.types
-rho_second_derivatives = match_args_return(rho_second_derivatives)
+rho_second_derivatives = masked_array_support(rho_second_derivatives)
 
-def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
+def rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following three second-order derivatives of rho with
     respect to enthalpy,
@@ -5516,7 +5516,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5525,7 +5525,7 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -5533,22 +5533,22 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 rho_second_derivatives_wrt_enthalpy.types = _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy.types
-rho_second_derivatives_wrt_enthalpy = match_args_return(rho_second_derivatives_wrt_enthalpy)
+rho_second_derivatives_wrt_enthalpy = masked_array_support(rho_second_derivatives_wrt_enthalpy)
 
-def rho_t_exact(SA, t, p):
+def rho_t_exact(SA, t, p, **kwargs):
     """
     Calculates in-situ density of seawater from Absolute Salinity and
     in-situ temperature.  Note that the output, rho, is density,
-    not density anomaly; that is, 1000 kg/m^3 is not subtracted from it.
+    not density anomaly; that is, 1000 kg/m^3 is not subracted from it.
 
     Parameters
     ----------
@@ -5570,16 +5570,16 @@ def rho_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.8 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.rho_t_exact(SA, t, p)
+    return _gsw_ufuncs.rho_t_exact(SA, t, p, **kwargs)
 rho_t_exact.types = _gsw_ufuncs.rho_t_exact.types
-rho_t_exact = match_args_return(rho_t_exact)
+rho_t_exact = masked_array_support(rho_t_exact)
 
-def SA_freezing_from_CT(CT, p, saturation_fraction):
+def SA_freezing_from_CT(CT, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with
@@ -5611,7 +5611,7 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5624,11 +5624,11 @@ def SA_freezing_from_CT(CT, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction, **kwargs)
 SA_freezing_from_CT.types = _gsw_ufuncs.sa_freezing_from_ct.types
-SA_freezing_from_CT = match_args_return(SA_freezing_from_CT)
+SA_freezing_from_CT = masked_array_support(SA_freezing_from_CT)
 
-def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
+def SA_freezing_from_CT_poly(CT, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -5659,7 +5659,7 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5672,11 +5672,11 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction, **kwargs)
 SA_freezing_from_CT_poly.types = _gsw_ufuncs.sa_freezing_from_ct_poly.types
-SA_freezing_from_CT_poly = match_args_return(SA_freezing_from_CT_poly)
+SA_freezing_from_CT_poly = masked_array_support(SA_freezing_from_CT_poly)
 
-def SA_freezing_from_t(t, p, saturation_fraction):
+def SA_freezing_from_t(t, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -5707,7 +5707,7 @@ def SA_freezing_from_t(t, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5720,11 +5720,11 @@ def SA_freezing_from_t(t, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction, **kwargs)
 SA_freezing_from_t.types = _gsw_ufuncs.sa_freezing_from_t.types
-SA_freezing_from_t = match_args_return(SA_freezing_from_t)
+SA_freezing_from_t = masked_array_support(SA_freezing_from_t)
 
-def SA_freezing_from_t_poly(t, p, saturation_fraction):
+def SA_freezing_from_t_poly(t, p, saturation_fraction, **kwargs):
     """
     Calculates the Absolute Salinity of seawater at the freezing temperature.
     That is, the output is the Absolute Salinity of seawater, with the
@@ -5755,7 +5755,7 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See section 3.33 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -5768,11 +5768,11 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction)
+    return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction, **kwargs)
 SA_freezing_from_t_poly.types = _gsw_ufuncs.sa_freezing_from_t_poly.types
-SA_freezing_from_t_poly = match_args_return(SA_freezing_from_t_poly)
+SA_freezing_from_t_poly = masked_array_support(SA_freezing_from_t_poly)
 
-def SA_from_rho(rho, CT, p):
+def SA_from_rho(rho, CT, p, **kwargs):
     """
     Calculates the Absolute Salinity of a seawater sample, for given values
     of its density, Conservative Temperature and sea pressure (in dbar).
@@ -5799,7 +5799,7 @@ def SA_from_rho(rho, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -5808,7 +5808,7 @@ def SA_from_rho(rho, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -5821,16 +5821,16 @@ def SA_from_rho(rho, CT, p):
     Reference-Composition Salinity Scale. Deep-Sea Res. I, 55, 50-72.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sa_from_rho(rho, CT, p)
+    return _gsw_ufuncs.sa_from_rho(rho, CT, p, **kwargs)
 SA_from_rho.types = _gsw_ufuncs.sa_from_rho.types
-SA_from_rho = match_args_return(SA_from_rho)
+SA_from_rho = masked_array_support(SA_from_rho)
 
-def SA_from_SP(SP, p, lon, lat):
+def SA_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity from Practical Salinity.  Since SP is
     non-negative by definition, this function changes any negative input
@@ -5858,21 +5858,21 @@ def SA_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat, **kwargs)
 SA_from_SP.types = _gsw_ufuncs.sa_from_sp.types
-SA_from_SP = match_args_return(SA_from_SP)
+SA_from_SP = masked_array_support(SA_from_SP)
 
-def SA_from_SP_Baltic(SP, lon, lat):
+def SA_from_SP_Baltic(SP, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity in the Baltic Sea, from Practical Salinity.
     Since SP is non-negative by definition, this function changes any
@@ -5900,25 +5900,25 @@ def SA_from_SP_Baltic(SP, lon, lat):
     Feistel, R., S. Weinreben, H. Wolf, S. Seitz, P. Spitzer, B. Adel,
     G. Nausch, B. Schneider and D. G. Wright, 2010: Density and Absolute
     Salinity of the Baltic Sea 2006-2009.  Ocean Science, 6, 3-24.
-    https://os.copernicus.org/articles/6/3/2010/os-6-3-2010.pdf
+    http://www.ocean-sci.net/6/3/2010/os-6-3-2010.pdf
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat)
+    return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat, **kwargs)
 SA_from_SP_Baltic.types = _gsw_ufuncs.sa_from_sp_baltic.types
-SA_from_SP_Baltic = match_args_return(SA_from_SP_Baltic)
+SA_from_SP_Baltic = masked_array_support(SA_from_SP_Baltic)
 
-def SA_from_Sstar(Sstar, p, lon, lat):
+def SA_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     Calculates Absolute Salinity from Preformed Salinity.
 
@@ -5944,20 +5944,20 @@ def SA_from_Sstar(Sstar, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat)
+    return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat, **kwargs)
 SA_from_Sstar.types = _gsw_ufuncs.sa_from_sstar.types
-SA_from_Sstar = match_args_return(SA_from_Sstar)
+SA_from_Sstar = masked_array_support(SA_from_Sstar)
 
-def SAAR(p, lon, lat):
+def SAAR(p, lon, lat, **kwargs):
     """
     Calculates the Absolute Salinity Anomaly Ratio, SAAR, in the open ocean
     by spatially interpolating the global reference data set of SAAR to the
@@ -5994,12 +5994,12 @@ def SAAR(p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
     See also gsw_SA_from_SP, gsw_deltaSA_atlas
 
@@ -6011,11 +6011,11 @@ def SAAR(p, lon, lat):
 
 
     """
-    return _gsw_ufuncs.saar(p, lon, lat)
+    return _gsw_ufuncs.saar(p, lon, lat, **kwargs)
 SAAR.types = _gsw_ufuncs.saar.types
-SAAR = match_args_return(SAAR)
+SAAR = masked_array_support(SAAR)
 
-def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
+def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     Calculates the mass fraction of sea ice (mass of sea ice divided by mass
     of sea ice plus seawater), which, when melted into seawater having the
@@ -6061,7 +6061,7 @@ def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall T.J. and S.J. Wotherspoon, 2013: A simple modification of
@@ -6075,11 +6075,11 @@ def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice):
 
 
     """
-    return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice)
+    return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 seaice_fraction_to_freeze_seawater.types = _gsw_ufuncs.seaice_fraction_to_freeze_seawater.types
-seaice_fraction_to_freeze_seawater = match_args_return(seaice_fraction_to_freeze_seawater)
+seaice_fraction_to_freeze_seawater = masked_array_support(seaice_fraction_to_freeze_seawater)
 
-def sigma0(SA, CT):
+def sigma0(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 0 dbar,
     this being this particular potential density minus 1000 kg/m^3.  This
@@ -6107,7 +6107,7 @@ def sigma0(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6116,7 +6116,7 @@ def sigma0(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6125,16 +6125,16 @@ def sigma0(SA, CT):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sigma0(SA, CT)
+    return _gsw_ufuncs.sigma0(SA, CT, **kwargs)
 sigma0.types = _gsw_ufuncs.sigma0.types
-sigma0 = match_args_return(sigma0)
+sigma0 = masked_array_support(sigma0)
 
-def sigma1(SA, CT):
+def sigma1(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 1000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -6163,7 +6163,7 @@ def sigma1(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6172,7 +6172,7 @@ def sigma1(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6181,16 +6181,16 @@ def sigma1(SA, CT):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sigma1(SA, CT)
+    return _gsw_ufuncs.sigma1(SA, CT, **kwargs)
 sigma1.types = _gsw_ufuncs.sigma1.types
-sigma1 = match_args_return(sigma1)
+sigma1 = masked_array_support(sigma1)
 
-def sigma2(SA, CT):
+def sigma2(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 2000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -6218,7 +6218,7 @@ def sigma2(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6227,7 +6227,7 @@ def sigma2(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6236,16 +6236,16 @@ def sigma2(SA, CT):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sigma2(SA, CT)
+    return _gsw_ufuncs.sigma2(SA, CT, **kwargs)
 sigma2.types = _gsw_ufuncs.sigma2.types
-sigma2 = match_args_return(sigma2)
+sigma2 = masked_array_support(sigma2)
 
-def sigma3(SA, CT):
+def sigma3(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 3000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -6273,7 +6273,7 @@ def sigma3(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6282,7 +6282,7 @@ def sigma3(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6291,16 +6291,16 @@ def sigma3(SA, CT):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sigma3(SA, CT)
+    return _gsw_ufuncs.sigma3(SA, CT, **kwargs)
 sigma3.types = _gsw_ufuncs.sigma3.types
-sigma3 = match_args_return(sigma3)
+sigma3 = masked_array_support(sigma3)
 
-def sigma4(SA, CT):
+def sigma4(SA, CT, **kwargs):
     """
     Calculates potential density anomaly with reference pressure of 4000
     dbar, this being this particular potential density minus 1000 kg/m^3.
@@ -6328,7 +6328,7 @@ def sigma4(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6337,7 +6337,7 @@ def sigma4(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (A.30.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6346,16 +6346,16 @@ def sigma4(SA, CT):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sigma4(SA, CT)
+    return _gsw_ufuncs.sigma4(SA, CT, **kwargs)
 sigma4.types = _gsw_ufuncs.sigma4.types
-sigma4 = match_args_return(sigma4)
+sigma4 = masked_array_support(sigma4)
 
-def sound_speed(SA, CT, p):
+def sound_speed(SA, CT, p, **kwargs):
     """
     Calculates the speed of sound in seawater.  This function has inputs of
     Absolute Salinity and Conservative Temperature.  This function uses the
@@ -6382,7 +6382,7 @@ def sound_speed(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6391,7 +6391,7 @@ def sound_speed(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6400,16 +6400,16 @@ def sound_speed(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.sound_speed(SA, CT, p)
+    return _gsw_ufuncs.sound_speed(SA, CT, p, **kwargs)
 sound_speed.types = _gsw_ufuncs.sound_speed.types
-sound_speed = match_args_return(sound_speed)
+sound_speed = masked_array_support(sound_speed)
 
-def sound_speed_ice(t, p):
+def sound_speed_ice(t, p, **kwargs):
     """
     Calculates the compression speed of sound in ice.
 
@@ -6431,15 +6431,15 @@ def sound_speed_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.sound_speed_ice(t, p)
+    return _gsw_ufuncs.sound_speed_ice(t, p, **kwargs)
 sound_speed_ice.types = _gsw_ufuncs.sound_speed_ice.types
-sound_speed_ice = match_args_return(sound_speed_ice)
+sound_speed_ice = masked_array_support(sound_speed_ice)
 
-def sound_speed_t_exact(SA, t, p):
+def sound_speed_t_exact(SA, t, p, **kwargs):
     """
     Calculates the speed of sound in seawater.
 
@@ -6463,16 +6463,16 @@ def sound_speed_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (2.17.1) of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.sound_speed_t_exact(SA, t, p)
+    return _gsw_ufuncs.sound_speed_t_exact(SA, t, p, **kwargs)
 sound_speed_t_exact.types = _gsw_ufuncs.sound_speed_t_exact.types
-sound_speed_t_exact = match_args_return(sound_speed_t_exact)
+sound_speed_t_exact = masked_array_support(sound_speed_t_exact)
 
-def SP_from_C(C, t, p):
+def SP_from_C(C, t, p, **kwargs):
     """
     Calculates Practical Salinity, SP, from conductivity, C, primarily using
     the PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical
@@ -6513,7 +6513,7 @@ def SP_from_C(C, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix E of this TEOS-10 Manual.
 
     Unesco, 1983: Algorithms for computation of fundamental properties of
@@ -6521,11 +6521,11 @@ def SP_from_C(C, t, p):
 
 
     """
-    return _gsw_ufuncs.sp_from_c(C, t, p)
+    return _gsw_ufuncs.sp_from_c(C, t, p, **kwargs)
 SP_from_C.types = _gsw_ufuncs.sp_from_c.types
-SP_from_C = match_args_return(SP_from_C)
+SP_from_C = masked_array_support(SP_from_C)
 
-def SP_from_SA(SA, p, lon, lat):
+def SP_from_SA(SA, p, lon, lat, **kwargs):
     """
     Calculates Practical Salinity from Absolute Salinity.
 
@@ -6551,20 +6551,20 @@ def SP_from_SA(SA, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat)
+    return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat, **kwargs)
 SP_from_SA.types = _gsw_ufuncs.sp_from_sa.types
-SP_from_SA = match_args_return(SP_from_SA)
+SP_from_SA = masked_array_support(SP_from_SA)
 
-def SP_from_SA_Baltic(SA, lon, lat):
+def SP_from_SA_Baltic(SA, lon, lat, **kwargs):
     """
     Calculates Practical Salinity for the Baltic Sea, from a value computed
     analytically from Absolute Salinity.
@@ -6591,25 +6591,25 @@ def SP_from_SA_Baltic(SA, lon, lat):
     Feistel, R., S. Weinreben, H. Wolf, S. Seitz, P. Spitzer, B. Adel,
     G. Nausch, B. Schneider and D. G. Wright, 2010c: Density and Absolute
     Salinity of the Baltic Sea 2006-2009.  Ocean Science, 6, 3-24.
-    https://os.copernicus.org/articles/6/3/2010/os-6-3-2010.pdf
+    http://www.ocean-sci.net/6/3/2010/os-6-3-2010.pdf
 
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat)
+    return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat, **kwargs)
 SP_from_SA_Baltic.types = _gsw_ufuncs.sp_from_sa_baltic.types
-SP_from_SA_Baltic = match_args_return(SP_from_SA_Baltic)
+SP_from_SA_Baltic = masked_array_support(SP_from_SA_Baltic)
 
-def SP_from_SK(SK):
+def SP_from_SK(SK, **kwargs):
     """
     Calculates Practical Salinity from Knudsen Salinity.
 
@@ -6629,16 +6629,16 @@ def SP_from_SK(SK):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Appendix A.3 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.sp_from_sk(SK)
+    return _gsw_ufuncs.sp_from_sk(SK, **kwargs)
 SP_from_SK.types = _gsw_ufuncs.sp_from_sk.types
-SP_from_SK = match_args_return(SP_from_SK)
+SP_from_SK = masked_array_support(SP_from_SK)
 
-def SP_from_SR(SR):
+def SP_from_SR(SR, **kwargs):
     """
     Calculates Practical Salinity from Reference Salinity.
 
@@ -6658,15 +6658,15 @@ def SP_from_SR(SR):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.sp_from_sr(SR)
+    return _gsw_ufuncs.sp_from_sr(SR, **kwargs)
 SP_from_SR.types = _gsw_ufuncs.sp_from_sr.types
-SP_from_SR = match_args_return(SP_from_SR)
+SP_from_SR = masked_array_support(SP_from_SR)
 
-def SP_from_Sstar(Sstar, p, lon, lat):
+def SP_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     Calculates Practical Salinity from Preformed Salinity.
 
@@ -6692,20 +6692,20 @@ def SP_from_Sstar(Sstar, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat)
+    return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat, **kwargs)
 SP_from_Sstar.types = _gsw_ufuncs.sp_from_sstar.types
-SP_from_Sstar = match_args_return(SP_from_Sstar)
+SP_from_Sstar = masked_array_support(SP_from_Sstar)
 
-def SP_salinometer(Rt, t):
+def SP_salinometer(Rt, t, **kwargs):
     """
     Calculates Practical Salinity SP from a salinometer, primarily using the
     PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical Salinity
@@ -6749,17 +6749,17 @@ def SP_salinometer(Rt, t):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix E of this TEOS-10 Manual, and in particular,
     Eqns. (E.2.1) and (E.2.6).
 
 
     """
-    return _gsw_ufuncs.sp_salinometer(Rt, t)
+    return _gsw_ufuncs.sp_salinometer(Rt, t, **kwargs)
 SP_salinometer.types = _gsw_ufuncs.sp_salinometer.types
-SP_salinometer = match_args_return(SP_salinometer)
+SP_salinometer = masked_array_support(SP_salinometer)
 
-def specvol(SA, CT, p):
+def specvol(SA, CT, p, **kwargs):
     """
     Calculates specific volume from Absolute Salinity, Conservative
     Temperature and pressure, using the computationally-efficient 75-term
@@ -6794,7 +6794,7 @@ def specvol(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -6802,20 +6802,20 @@ def specvol(SA, CT, p):
     730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol(SA, CT, p)
+    return _gsw_ufuncs.specvol(SA, CT, p, **kwargs)
 specvol.types = _gsw_ufuncs.specvol.types
-specvol = match_args_return(specvol)
+specvol = masked_array_support(specvol)
 
-def specvol_alpha_beta(SA, CT, p):
+def specvol_alpha_beta(SA, CT, p, **kwargs):
     """
-    Calculates specific volume, the appropriate thermal expansion coefficient
+    Calculates specific volume, the appropiate thermal expansion coefficient
     and the appropriate saline contraction coefficient of seawater from
     Absolute Salinity and Conservative Temperature.  This function uses the
     computationally-efficient expression for specific volume in terms of
@@ -6847,7 +6847,7 @@ def specvol_alpha_beta(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6856,7 +6856,7 @@ def specvol_alpha_beta(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix A.20 and appendix K of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6865,23 +6865,23 @@ def specvol_alpha_beta(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p)
+    return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p, **kwargs)
 specvol_alpha_beta.types = _gsw_ufuncs.specvol_alpha_beta.types
-specvol_alpha_beta = match_args_return(specvol_alpha_beta)
+specvol_alpha_beta = masked_array_support(specvol_alpha_beta)
 
-def specvol_anom_standard(SA, CT, p):
+def specvol_anom_standard(SA, CT, p, **kwargs):
     """
     Calculates specific volume anomaly from Absolute Salinity, Conservative
     Temperature and pressure. It uses the computationally-efficient
     expression for specific volume as a function of SA, CT and p (Roquet
-    et al., 2015).  The reference value to which the anomaly is calculated
+    et al., 2015).  The reference value to which the anomally is calculated
     has an Absolute Salinity of SSO and Conservative Temperature equal to
-    0 degrees C.
+    0 degress C.
 
     Parameters
     ----------
@@ -6903,7 +6903,7 @@ def specvol_anom_standard(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6912,7 +6912,7 @@ def specvol_anom_standard(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqn. (3.7.3) of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -6921,16 +6921,16 @@ def specvol_anom_standard(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.specvol_anom_standard(SA, CT, p)
+    return _gsw_ufuncs.specvol_anom_standard(SA, CT, p, **kwargs)
 specvol_anom_standard.types = _gsw_ufuncs.specvol_anom_standard.types
-specvol_anom_standard = match_args_return(specvol_anom_standard)
+specvol_anom_standard = masked_array_support(specvol_anom_standard)
 
-def specvol_first_derivatives(SA, CT, p):
+def specvol_first_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following three first-order derivatives of specific
     volume (v),
@@ -6974,7 +6974,7 @@ def specvol_first_derivatives(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2010).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -6983,7 +6983,7 @@ def specvol_first_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -6991,18 +6991,18 @@ def specvol_first_derivatives(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p)
+    return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p, **kwargs)
 specvol_first_derivatives.types = _gsw_ufuncs.specvol_first_derivatives.types
-specvol_first_derivatives = match_args_return(specvol_first_derivatives)
+specvol_first_derivatives = masked_array_support(specvol_first_derivatives)
 
-def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
+def specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following two first-order derivatives of specific
     volume (v),
@@ -7041,7 +7041,7 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2010).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7050,7 +7050,7 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7058,18 +7058,18 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 specvol_first_derivatives_wrt_enthalpy.types = _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy.types
-specvol_first_derivatives_wrt_enthalpy = match_args_return(specvol_first_derivatives_wrt_enthalpy)
+specvol_first_derivatives_wrt_enthalpy = masked_array_support(specvol_first_derivatives_wrt_enthalpy)
 
-def specvol_ice(t, p):
+def specvol_ice(t, p, **kwargs):
     """
     Calculates the specific volume of ice.
 
@@ -7091,15 +7091,15 @@ def specvol_ice(t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol_ice(t, p)
+    return _gsw_ufuncs.specvol_ice(t, p, **kwargs)
 specvol_ice.types = _gsw_ufuncs.specvol_ice.types
-specvol_ice = match_args_return(specvol_ice)
+specvol_ice = masked_array_support(specvol_ice)
 
-def specvol_second_derivatives(SA, CT, p):
+def specvol_second_derivatives(SA, CT, p, **kwargs):
     """
     Calculates the following five second-order derivatives of specific
     volume (v),
@@ -7153,7 +7153,7 @@ def specvol_second_derivatives(SA, CT, p):
     Note that the 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7162,21 +7162,21 @@ def specvol_second_derivatives(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p)
+    return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p, **kwargs)
 specvol_second_derivatives.types = _gsw_ufuncs.specvol_second_derivatives.types
-specvol_second_derivatives = match_args_return(specvol_second_derivatives)
+specvol_second_derivatives = masked_array_support(specvol_second_derivatives)
 
-def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
+def specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     Calculates the following three first-order derivatives of specific
     volume (v) with respect to enthalpy,
@@ -7220,7 +7220,7 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     This 75-term equation has been fitted in a restricted range of parameter
     space, and is most accurate inside the "oceanographic funnel" described
     in McDougall et al. (2010).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7229,7 +7229,7 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7237,18 +7237,18 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p)
+    return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 specvol_second_derivatives_wrt_enthalpy.types = _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy.types
-specvol_second_derivatives_wrt_enthalpy = match_args_return(specvol_second_derivatives_wrt_enthalpy)
+specvol_second_derivatives_wrt_enthalpy = masked_array_support(specvol_second_derivatives_wrt_enthalpy)
 
-def specvol_SSO_0(p):
+def specvol_SSO_0(p, **kwargs):
     """
     specific volume at (SSO,CT=0,p)
 
@@ -7265,7 +7265,7 @@ def specvol_SSO_0(p):
     -----
     sw_specvol_SSO_0                          specific volume at (SSO,CT=0,p)
                                                            (75-term equation)
-     This function calculates specific volume at the Standard Ocean Salinity,
+     This function calculates specifc volume at the Standard Ocean Salinity,
      SSO, and at a Conservative Temperature of zero degrees C, as a function
      of pressure, p, in dbar, using a streamlined version of the 75-term CT
      version of specific volume, that is, a streamlined version of the code
@@ -7276,16 +7276,16 @@ def specvol_SSO_0(p):
     References
     ----------
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.specvol_sso_0(p)
+    return _gsw_ufuncs.specvol_sso_0(p, **kwargs)
 specvol_SSO_0.types = _gsw_ufuncs.specvol_sso_0.types
-specvol_SSO_0 = match_args_return(specvol_SSO_0)
+specvol_SSO_0 = masked_array_support(specvol_SSO_0)
 
-def specvol_t_exact(SA, t, p):
+def specvol_t_exact(SA, t, p, **kwargs):
     """
     Calculates the specific volume of seawater.
 
@@ -7309,16 +7309,16 @@ def specvol_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.7 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.specvol_t_exact(SA, t, p)
+    return _gsw_ufuncs.specvol_t_exact(SA, t, p, **kwargs)
 specvol_t_exact.types = _gsw_ufuncs.specvol_t_exact.types
-specvol_t_exact = match_args_return(specvol_t_exact)
+specvol_t_exact = masked_array_support(specvol_t_exact)
 
-def spiciness0(SA, CT):
+def spiciness0(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 0 dbar, as described by McDougall and
@@ -7345,7 +7345,7 @@ def spiciness0(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7354,7 +7354,7 @@ def spiciness0(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7365,16 +7365,16 @@ def spiciness0(SA, CT):
     Research, 73, 141-152.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.spiciness0(SA, CT)
+    return _gsw_ufuncs.spiciness0(SA, CT, **kwargs)
 spiciness0.types = _gsw_ufuncs.spiciness0.types
-spiciness0 = match_args_return(spiciness0)
+spiciness0 = masked_array_support(spiciness0)
 
-def spiciness1(SA, CT):
+def spiciness1(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 1000 dbar, as described by McDougall and
@@ -7400,7 +7400,7 @@ def spiciness1(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7409,7 +7409,7 @@ def spiciness1(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7420,16 +7420,16 @@ def spiciness1(SA, CT):
     Research, 73, 141-152.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.spiciness1(SA, CT)
+    return _gsw_ufuncs.spiciness1(SA, CT, **kwargs)
 spiciness1.types = _gsw_ufuncs.spiciness1.types
-spiciness1 = match_args_return(spiciness1)
+spiciness1 = masked_array_support(spiciness1)
 
-def spiciness2(SA, CT):
+def spiciness2(SA, CT, **kwargs):
     """
     Calculates spiciness from Absolute Salinity and Conservative
     Temperature at a pressure of 2000 dbar, as described by McDougall and
@@ -7455,7 +7455,7 @@ def spiciness2(SA, CT):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7464,7 +7464,7 @@ def spiciness2(SA, CT):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7475,16 +7475,16 @@ def spiciness2(SA, CT):
     Research, 73, 141-152.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.spiciness2(SA, CT)
+    return _gsw_ufuncs.spiciness2(SA, CT, **kwargs)
 spiciness2.types = _gsw_ufuncs.spiciness2.types
-spiciness2 = match_args_return(spiciness2)
+spiciness2 = masked_array_support(spiciness2)
 
-def SR_from_SP(SP):
+def SR_from_SP(SP, **kwargs):
     """
     Calculates Reference Salinity from Practical Salinity.
 
@@ -7504,15 +7504,15 @@ def SR_from_SP(SP):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.sr_from_sp(SP)
+    return _gsw_ufuncs.sr_from_sp(SP, **kwargs)
 SR_from_SP.types = _gsw_ufuncs.sr_from_sp.types
-SR_from_SP = match_args_return(SR_from_SP)
+SR_from_SP = masked_array_support(SR_from_SP)
 
-def Sstar_from_SA(SA, p, lon, lat):
+def Sstar_from_SA(SA, p, lon, lat, **kwargs):
     """
     Converts Preformed Salinity from Absolute Salinity.
 
@@ -7538,20 +7538,20 @@ def Sstar_from_SA(SA, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat)
+    return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat, **kwargs)
 Sstar_from_SA.types = _gsw_ufuncs.sstar_from_sa.types
-Sstar_from_SA = match_args_return(Sstar_from_SA)
+Sstar_from_SA = masked_array_support(Sstar_from_SA)
 
-def Sstar_from_SP(SP, p, lon, lat):
+def Sstar_from_SP(SP, p, lon, lat, **kwargs):
     """
     Calculates Preformed Salinity from Absolute Salinity.
     Since SP is non-negative by definition, this function changes any
@@ -7579,21 +7579,21 @@ def Sstar_from_SP(SP, p, lon, lat):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.
 
     McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
     P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
     Ocean Science, 8, 1123-1134.
-    https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf
+    http://www.ocean-sci.net/8/1123/2012/os-8-1123-2012.pdf
 
 
     """
-    return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat)
+    return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat, **kwargs)
 Sstar_from_SP.types = _gsw_ufuncs.sstar_from_sp.types
-Sstar_from_SP = match_args_return(Sstar_from_SP)
+Sstar_from_SP = masked_array_support(Sstar_from_SP)
 
-def t_deriv_chem_potential_water_t_exact(SA, t, p):
+def t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     Calculates the temperature derivative of the chemical potential of water
     in seawater so that it is valid at exactly SA = 0.
@@ -7619,15 +7619,15 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p)
+    return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs)
 t_deriv_chem_potential_water_t_exact.types = _gsw_ufuncs.t_deriv_chem_potential_water_t_exact.types
-t_deriv_chem_potential_water_t_exact = match_args_return(t_deriv_chem_potential_water_t_exact)
+t_deriv_chem_potential_water_t_exact = masked_array_support(t_deriv_chem_potential_water_t_exact)
 
-def t_freezing(SA, p, saturation_fraction):
+def t_freezing(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the in-situ temperature at which seawater freezes. The
     in-situ temperature freezing point is calculated from the exact
@@ -7663,7 +7663,7 @@ def t_freezing(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall T.J., and S.J. Wotherspoon, 2013: A simple modification of
@@ -7672,11 +7672,11 @@ def t_freezing(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction, **kwargs)
 t_freezing.types = _gsw_ufuncs.t_freezing.types
-t_freezing = match_args_return(t_freezing)
+t_freezing = masked_array_support(t_freezing)
 
-def t_freezing_first_derivatives(SA, p, saturation_fraction):
+def t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the first derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
@@ -7710,17 +7710,17 @@ def t_freezing_first_derivatives(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
 
     """
-    return _gsw_ufuncs.t_freezing_first_derivatives(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 t_freezing_first_derivatives.types = _gsw_ufuncs.t_freezing_first_derivatives.types
-t_freezing_first_derivatives = match_args_return(t_freezing_first_derivatives)
+t_freezing_first_derivatives = masked_array_support(t_freezing_first_derivatives)
 
-def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
+def t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
-    Calculates the first derivatives of the in-situ temperature at which
+    Calculates the frist derivatives of the in-situ temperature at which
     seawater freezes with respect to Absolute Salinity SA and pressure P (in
     Pa).  These expressions come from differentiating the expression that
     defines the freezing temperature, namely the equality between the
@@ -7752,7 +7752,7 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
     Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
@@ -7760,11 +7760,11 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 t_freezing_first_derivatives_poly.types = _gsw_ufuncs.t_freezing_first_derivatives_poly.types
-t_freezing_first_derivatives_poly = match_args_return(t_freezing_first_derivatives_poly)
+t_freezing_first_derivatives_poly = masked_array_support(t_freezing_first_derivatives_poly)
 
-def t_freezing_poly(SA, p, saturation_fraction):
+def t_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     Calculates the in-situ temperature at which seawater freezes from a
     comptationally efficient polynomial.
@@ -7790,7 +7790,7 @@ def t_freezing_poly(SA, p, saturation_fraction):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/.
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org.
     See sections 3.33 and 3.34 of this TEOS-10 Manual.
 
     McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
@@ -7799,11 +7799,11 @@ def t_freezing_poly(SA, p, saturation_fraction):
 
 
     """
-    return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction)
+    return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction, **kwargs)
 t_freezing_poly.types = _gsw_ufuncs.t_freezing_poly.types
-t_freezing_poly = match_args_return(t_freezing_poly)
+t_freezing_poly = masked_array_support(t_freezing_poly)
 
-def t_from_CT(SA, CT, p):
+def t_from_CT(SA, CT, p, **kwargs):
     """
     Calculates in-situ temperature from the Conservative Temperature of
     seawater.
@@ -7828,16 +7828,16 @@ def t_from_CT(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See sections 3.1 and 3.3 of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.t_from_ct(SA, CT, p)
+    return _gsw_ufuncs.t_from_ct(SA, CT, p, **kwargs)
 t_from_CT.types = _gsw_ufuncs.t_from_ct.types
-t_from_CT = match_args_return(t_from_CT)
+t_from_CT = masked_array_support(t_from_CT)
 
-def t_from_pt0_ice(pt0_ice, p):
+def t_from_pt0_ice(pt0_ice, p, **kwargs):
     """
     Calculates in-situ temperature from the potential temperature of ice Ih
     with reference pressure, p_ref, of 0 dbar (the surface), and the
@@ -7861,16 +7861,16 @@ def t_from_pt0_ice(pt0_ice, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See appendix I of this TEOS-10 Manual.
 
 
     """
-    return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p)
+    return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p, **kwargs)
 t_from_pt0_ice.types = _gsw_ufuncs.t_from_pt0_ice.types
-t_from_pt0_ice = match_args_return(t_from_pt0_ice)
+t_from_pt0_ice = masked_array_support(t_from_pt0_ice)
 
-def thermobaric(SA, CT, p):
+def thermobaric(SA, CT, p, **kwargs):
     """
     Calculates the thermobaric coefficient of seawater with respect to
     Conservative Temperature.  This routine is based on the
@@ -7898,7 +7898,7 @@ def thermobaric(SA, CT, p):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7907,7 +7907,7 @@ def thermobaric(SA, CT, p):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
     See Eqns. (3.8.2) and (P.2) of this TEOS-10 manual.
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
@@ -7916,16 +7916,16 @@ def thermobaric(SA, CT, p):
     pp. 730-741.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.
 
 
     """
-    return _gsw_ufuncs.thermobaric(SA, CT, p)
+    return _gsw_ufuncs.thermobaric(SA, CT, p, **kwargs)
 thermobaric.types = _gsw_ufuncs.thermobaric.types
-thermobaric = match_args_return(thermobaric)
+thermobaric = masked_array_support(thermobaric)
 
-def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
+def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     Calculates height from sea pressure using the computationally-efficient
     75-term expression for specific volume in terms of SA, CT and p
@@ -7961,7 +7961,7 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
     Note that this 75-term equation has been fitted in a restricted range of
     parameter space, and is most accurate inside the "oceanographic funnel"
     described in McDougall et al. (2003).  The GSW library function
-    "gsw_infunnel(SA,CT,p)" is available to be used if one wants to test if
+    "gsw_infunnel(SA,CT,p)" is avaialble to be used if one wants to test if
     some of one's data lies outside this "funnel".
 
 
@@ -7970,7 +7970,7 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
     IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
     seawater - 2010: Calculation and use of thermodynamic properties.
     Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
-    UNESCO (English), 196 pp.  Available from https://www.teos-10.org/
+    UNESCO (English), 196 pp.  Available from http://www.TEOS-10.org
 
     McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
     Accurate and computationally efficient algorithms for potential
@@ -7981,13 +7981,13 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential):
     pp. 128-133.
 
     Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
-    polynomial expressions for the density and specific volume of seawater
+    polynomial expressions for the density and specifc volume of seawater
     using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.
 
-    This software is available from https://www.teos-10.org/
+    This software is available from http://www.TEOS-10.org
 
 
     """
-    return _gsw_ufuncs.z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential)
+    return _gsw_ufuncs.z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
 z_from_p.types = _gsw_ufuncs.z_from_p.types
-z_from_p = match_args_return(z_from_p)
+z_from_p = masked_array_support(z_from_p)

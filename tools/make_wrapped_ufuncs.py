@@ -59,12 +59,12 @@ from ._utilities import masked_array_support
 # attribute for the use of the decorator; then use the decorator in its
 # function form.
 wrapper_template = '''
-def %(funcname)s(%(args)s):
+def %(funcname)s(%(args)s, **kwargs):
     """%(doc)s
     """
-    return _gsw_ufuncs.%(ufuncname)s(%(args)s)
+    return _gsw_ufuncs.%(ufuncname)s(%(args)s, **kwargs)
 %(funcname)s.types = _gsw_ufuncs.%(ufuncname)s.types
-%(funcname)s = match_args_return(%(funcname)s)
+%(funcname)s = masked_array_support(%(funcname)s)
 '''
 
 
