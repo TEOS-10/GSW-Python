@@ -135,10 +135,15 @@ def geo_strf_steric_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0, interp_method
     steric_height : array
         This is the integral of specific volume anomaly with respect
         to pressure, from each pressure in p to the specified
-        reference pressure divided by the constant value of the gravitational 
-        acceleration, 9.7963 m s^-2. It is not exactly the height of an 
-        isobaric surface above a geopotential surface, but is an exact
-        geostrophic streamfunction.
+        reference pressure, divided by the global mean surface value of
+        gravitational acceleration, 9.7963 m s^-2. (see page 46 of Griffies, 2004) 
+        It is not exactly the height of an isobaric surface above a
+        geopotential surface, but is an exact geostrophic streamfunction.
+
+    References
+    ----------
+    Griffies, S. M., 2004: Fundamentals of Ocean Climate Models. Princeton, 
+    NJ: Princeton University Press, 518 pp + xxxiv.
 
     """
     return (
