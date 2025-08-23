@@ -113,3 +113,15 @@ def test_dyn_height_mrst():
     strf = gsw.geo_strf_dyn_height(SA, CT, p, p_ref=pr, interp_method='mrst')
 
     assert_allclose(strf, cv.geo_strf_dyn_height, rtol=0, atol=cv.geo_strf_dyn_height_ca)
+
+def test_steric_height_mrst():
+    """
+    Tests the MRST-PCHIP interpolation method.
+    """
+    p = cv.p_chck_cast
+    CT = cv.CT_chck_cast
+    SA = cv.SA_chck_cast
+    pr = cv.pr
+    strf = gsw.geo_strf_steric_height(SA, CT, p, p_ref=pr, interp_method='mrst')
+
+    assert_allclose(strf, cv.geo_strf_steric_height, rtol=0, atol=cv.geo_strf_steric_height_ca)
