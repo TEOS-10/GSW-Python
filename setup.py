@@ -14,6 +14,13 @@ from setuptools.command.build_ext import build_ext as _build_ext
 rootpath = os.path.abspath(os.path.dirname(__file__))
 
 
+DEFINE_MACROS = [
+    ("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION"),
+    # 0x030B0000 -> 3.11
+    ("Py_LIMITED_API", "0x030B0000"),
+    ("CYTHON_LIMITED_API", None),
+]
+
 def read(*parts):
     return open(os.path.join(rootpath, *parts)).read()
 
@@ -49,9 +56,15 @@ ufunc_src_list = [
 ]
 
 config = {
-    "ext_modules": [Extension("gsw._gsw_ufuncs", ufunc_src_list)],
+    "ext_modules": [
+        Extension(
+            "gsw._gsw_ufuncs",
+            ufunc_src_list,
+            define_macros=DEFINE_MACROS,
+            py_limited_api=True)],
     "include_dirs": [os.path.join(rootpath, "src", "c_gsw")],
     "cmdclass": {"build_ext": build_ext},
+    "options": {"bdist_wheel": {"py_limited_api": "cp311"}},
 }
 
 setup(**config)
