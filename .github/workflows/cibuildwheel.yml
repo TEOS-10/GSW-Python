@@ -36,8 +36,8 @@ jobs:
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
       uses: pypa/cibuildwheel@298ed2fb2c105540f5ed055e8a6ad78d82dd3a7e  # v3.3.1
       env:
-        # Skips pypy and musllinux for now.
-        CIBW_SKIP: "pp* cp36-* cp37-* cp38-* *-musllinux*"
+        CIBW_SKIP: "*-musllinux*"
+        CIBW_BUILD: "cp311-* cp314-*"
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_BUILD_FRONTEND: build
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
