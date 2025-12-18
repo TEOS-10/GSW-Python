@@ -26,14 +26,14 @@ geo_strf_dyn_height(PyObject *NPY_UNUSED(self), PyObject *args)
     ct_a = (PyArrayObject *)PyArray_ContiguousFromAny(ct_o, NPY_DOUBLE, 1, 1);
     if (ct_a == NULL)
     {
-        Py_XDECREF(sa_a);
+        Py_XDECREF((PyObject *)sa_a);
         return NULL;
     }
     p_a = (PyArrayObject *)PyArray_ContiguousFromAny(p_o, NPY_DOUBLE, 1, 1);
     if (p_a == NULL)
     {
-        Py_XDECREF(sa_a);
-        Py_XDECREF(ct_a);
+        Py_XDECREF((PyObject *)sa_a);
+        Py_XDECREF((PyObject *)ct_a);
         return NULL;
     }
     n_levels = PyArray_DIM(sa_a, 0);
@@ -41,17 +41,17 @@ geo_strf_dyn_height(PyObject *NPY_UNUSED(self), PyObject *args)
     {
         PyErr_SetString(PyExc_ValueError,
             "Arguments SA, CT, and p must have the same dimensions.");
-        Py_XDECREF(sa_a);
-        Py_XDECREF(ct_a);
-        Py_XDECREF(p_a);
+        Py_XDECREF((PyObject *)sa_a);
+        Py_XDECREF((PyObject *)ct_a);
+        Py_XDECREF((PyObject *)p_a);
         return NULL;
     }
     dh_a = (PyArrayObject *)PyArray_NewLikeArray(sa_a, NPY_CORDER, NULL, 0);
     if (dh_a == NULL)
     {
-        Py_XDECREF(sa_a);
-        Py_XDECREF(ct_a);
-        Py_XDECREF(p_a);
+        Py_XDECREF((PyObject *)sa_a);
+        Py_XDECREF((PyObject *)ct_a);
+        Py_XDECREF((PyObject *)p_a);
         return NULL;
     }
     ret = gsw_geo_strf_dyn_height((double *)PyArray_DATA(sa_a),
@@ -60,15 +60,15 @@ geo_strf_dyn_height(PyObject *NPY_UNUSED(self), PyObject *args)
                                   p_ref,
                                   n_levels,
                                   (double *)PyArray_DATA(dh_a));
-    Py_XDECREF(sa_a);
-    Py_XDECREF(ct_a);
-    Py_XDECREF(p_a);
+    Py_XDECREF((PyObject *)sa_a);
+    Py_XDECREF((PyObject *)ct_a);
+    Py_XDECREF((PyObject *)p_a);
 
     if (ret == NULL)
     {
         PyErr_SetString(PyExc_RuntimeError,
             "gws_geo_strf_dyn_height failed; check input arguments");
-        Py_XDECREF(dh_a);
+        Py_XDECREF((PyObject *)dh_a);
         return NULL;
     }
     return (PyObject *)dh_a;
