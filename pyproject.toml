@@ -2,8 +2,7 @@
 build-backend = "setuptools.build_meta"
 requires = [
   "build",
-  "numpy>=2.0.0rc1,<3; python_version>='3.9'",
-  "oldest-supported-numpy; python_version<'3.9'",
+  "numpy>=2,<3",
   "pip>9.0.1",
   "setuptools>=42",
   "setuptools-scm[toml]>=3.4",
@@ -18,15 +17,13 @@ license-files = [ "LICENSE.txt" ]
 authors = [
   { name = "Eric Firing, Filipe Fernandes", email = "efiring@hawaii.edu" },
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
@@ -38,7 +35,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "numpy>=1.21",
+  "numpy>=2",
 ]
 urls.documentation = "https://teos-10.github.io/GSW-Python/"
 urls.homepage = "https://www.teos-10.org/"

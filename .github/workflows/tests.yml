@@ -14,13 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+        python-version: [ "3.11", "3.12", "3.13", "3.14" ]
         os: [ windows-latest, ubuntu-latest, macos-latest ]
-        # https://scientific-python.org/specs/spec-0000/
-        numpy-version: ["==1.24", ">=2"]
-        exclude:
-          - python-version: "3.12"
-            numpy-version: "==1.24"
       fail-fast: false
 
     steps:
