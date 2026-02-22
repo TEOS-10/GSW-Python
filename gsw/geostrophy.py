@@ -98,6 +98,10 @@ def geo_strf_dyn_height(SA, CT, p, p_ref=0, axis=0, max_dp=1.0,
             dh_all = _gsw_ufuncs.geo_strf_dyn_height_1(
                                          sa, ct, pgood, p_ref, max_dp,
                                          interp_methods[interp_method])
+            # Force dynamic height to be exactly zero at the reference pressure
+            iref = np.where(np.isclose(pgood, p_ref))[0]
+            if len(iref) > 0:
+                dh_all = dh_all - dh_all[iref[0]]
             if ntop > 0:
                 dh[ind][igood] = dh_all[ntop:]
             else:
