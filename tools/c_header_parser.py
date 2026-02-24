@@ -59,7 +59,11 @@ def parse_signature(sig):
         argtypes.append(parts[0] + parts[1])
         argnames.append(parts[2])
 
-    retgroups = retpat.match(sig).groups()
+    try:
+        retgroups = retpat.match(sig).groups()
+    except AttributeError:
+        # For example, name doesn't start with "gsw_".
+        return None
     ret = retgroups[0] + retgroups[1]
     funcname = retgroups[2]
 
@@ -80,7 +84,8 @@ def parse_signatures(sigs):
     sigdict = {}
     for sig in sigs:
         psig = parse_signature(sig)
-        sigdict[psig['name']] = psig
+        if psig is not None:
+            sigdict[psig['name']] = psig
     return sigdict
 
 def get_sigdict(srcdir="src"):
