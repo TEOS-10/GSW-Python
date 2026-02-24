@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conversion functions &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Conversion functions &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Conversion functions</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Conversion functions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/conversions.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="conversion-functions">
-<h1>Conversion functions<a class="headerlink" href="#conversion-functions" title="Permalink to this heading"></a></h1>
+<h1>Conversion functions<a class="headerlink" href="#conversion-functions" title="Link to this heading"></a></h1>
 <p>Conversions involving temperature, salinity, entropy, pressure,
 and height.</p>
 <p>Those most commonly used probably include:</p>
@@ -105,7 +105,7 @@ input is the one calculated from the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -115,13 +115,37 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature ( ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
+variable for evaluating heat content and heat fluxes. Journal of
+Physical Oceanography, 33, 945-963.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -129,7 +153,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Conservative Temperature with entropy as an input variable.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -137,13 +161,19 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix  A.10 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -152,7 +182,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 <dd><p>Calculates Conservative Temperature of seawater from potential
 temperature (whose reference sea pressure is zero dbar).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -160,13 +190,19 @@ temperature (whose reference sea pressure is zero dbar).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.3 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -177,7 +213,7 @@ values of its density, Absolute Salinity and sea pressure (in dbar),
 using the computationally-efficient expression for specific volume in
 terms of SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>rho</strong><span class="classifier">array-like</span></dt><dd><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
 </dd>
@@ -187,7 +223,7 @@ terms of SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature  (ITS-90)</p>
 </dd>
@@ -196,6 +232,24 @@ terms of SA, CT and p (Roquet et al., 2015).</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -204,7 +258,7 @@ terms of SA, CT and p (Roquet et al., 2015).</p>
 <dd><p>Calculates Conservative Temperature of seawater from in-situ
 temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -214,13 +268,19 @@ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.3 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -232,7 +292,7 @@ modified form of the Hill et al. (1986) formula is used for Practical
 Salinity.  The modification of the Hill et al. (1986) expression is to
 ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
@@ -242,13 +302,41 @@ ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>C</strong><span class="classifier">array-like, mS/cm</span></dt><dd><p>conductivity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The conductivity ratio returned by this function is consistent with the
+input value of Practical Salinity, SP, to 2x10^-14 psu over the full
+range of input parameters (from pure fresh water up to SP = 42 psu).
+This error of 2x10^-14 psu is machine precision at typical seawater
+salinities.  This accuracy is achieved by having four different
+polynomials for the starting value of Rtx (the square root of Rt) in
+four different ranges of SP, and by using one and a half iterations of
+a computationally efficient modified Newton-Raphson technique (McDougall
+and Wotherspoon, 2013) to find the root of the equation.</p>
+<p>Note that strictly speaking PSS-78 (Unesco, 1983) defines Practical
+Salinity in terms of the conductivity ratio, R, without actually
+specifying the value of C(35,15,0) (which we currently take to be
+42.9140 mS/cm).</p>
+<p class="rubric">References</p>
+<p>Hill, K.D., T.M. Dauphinee and D.J. Woods, 1986: The extension of the
+Practical Salinity Scale 1978 to low salinities. IEEE J. Oceanic Eng.,
+OE-11, 1, 109 - 112.</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix E of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
+<p>Unesco, 1983: Algorithms for computation of fundamental properties of
+seawater. Unesco Technical Papers in Marine Science, 44, 53 pp.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -258,7 +346,7 @@ ensure that it is exactly consistent with PSS-78 at SP = 2.</p>
 non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
@@ -270,13 +358,23 @@ values of SP to be zero.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -284,7 +382,7 @@ values of SP to be zero.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Absolute Salinity from Preformed Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>Sstar</strong><span class="classifier">array-like</span></dt><dd><p>Preformed Salinity, g/kg</p>
 </dd>
@@ -296,13 +394,22 @@ values of SP to be zero.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -313,7 +420,7 @@ of its density, Conservative Temperature and sea pressure (in dbar).
 This function uses the computationally-efficient 75-term expression for
 specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>rho</strong><span class="classifier">array-like</span></dt><dd><p>Seawater density (not anomaly) in-situ, e.g., 1026 kg/m^3.</p>
 </dd>
@@ -323,13 +430,35 @@ specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 2.5 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Millero, F.J., R. Feistel, D.G. Wright, and T.J. McDougall, 2008:
+The composition of Standard Seawater and the definition of the
+Reference-Composition Salinity Scale. Deep-Sea Res. I, 55, 50-72.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -345,7 +474,7 @@ expression is to ensure that it is exactly consistent with PSS-78
 at SP = 2.  Note that the input values of conductivity need to be in
 units of mS/cm (not S/m).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>C</strong><span class="classifier">array-like</span></dt><dd><p>Conductivity, mS/cm</p>
 </dd>
@@ -355,13 +484,28 @@ units of mS/cm (not S/m).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity on the PSS-78 scale</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>Culkin and Smith, 1980:  Determination of the Concentration of Potassium
+Chloride Solution Having the Same Electrical Conductivity, at 15C and
+Infinite Frequency, as Standard Seawater of Salinity 35.0000
+(Chlorinity 19.37394), IEEE J. Oceanic Eng, 5, 22-23.</p>
+<p>Hill, K.D., T.M. Dauphinee &amp; D.J. Woods, 1986: The extension of the
+Practical Salinity Scale 1978 to low salinities. IEEE J. Oceanic Eng.,
+11, 109 - 112.</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix E of this TEOS-10 Manual.</p>
+<p>Unesco, 1983: Algorithms for computation of fundamental properties of
+seawater. Unesco Technical Papers in Marine Science, 44, 53 pp.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -369,7 +513,7 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Absolute Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -381,13 +525,22 @@ units of mS/cm (not S/m).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -395,19 +548,25 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SK</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SK"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Knudsen Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SK</strong><span class="classifier">array-like</span></dt><dd><p>Knudsen Salinity, ppt</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Appendix A.3 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -415,19 +574,24 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SR</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SR"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Reference Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SR</strong><span class="classifier">array-like</span></dt><dd><p>Reference Salinity, g/kg</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -435,7 +599,7 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Preformed Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>Sstar</strong><span class="classifier">array-like</span></dt><dd><p>Preformed Salinity, g/kg</p>
 </dd>
@@ -447,13 +611,22 @@ units of mS/cm (not S/m).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like, unitless</span></dt><dd><p>Practical Salinity  (PSS-78)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -461,19 +634,24 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SR_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SR_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Reference Salinity from Practical Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SR</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Reference Salinity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -481,7 +659,7 @@ units of mS/cm (not S/m).</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">Sstar_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Converts Preformed Salinity from Absolute Salinity.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -493,13 +671,22 @@ units of mS/cm (not S/m).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>Sstar</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Preformed Salinity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -509,7 +696,7 @@ units of mS/cm (not S/m).</p>
 Since SP is non-negative by definition, this function changes any
 negative input values of SP to be zero.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
@@ -521,13 +708,23 @@ negative input values of SP to be zero.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>Sstar</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Preformed Salinity</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1123-1134.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf">https://os.copernicus.org/articles/8/1123/2012/os-8-1123-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -536,7 +733,7 @@ negative input values of SP to be zero.</p>
 <dd><p>Calculates the adiabatic lapse rate of sea water from Conservative
 Temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -546,13 +743,19 @@ Temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>adiabatic_lapse_rate</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>adiabatic lapse rate</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See Eqn. (2.22.1) of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -562,7 +765,7 @@ Temperature.</p>
 is non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SP</strong><span class="classifier">array-like</span></dt><dd><p>Practical Salinity (PSS-78), unitless</p>
 </dd>
@@ -574,13 +777,23 @@ values of SP to be zero.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>deltaSA</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity Anomaly</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 2.5 and appendices A.4 and A.5 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, F.J. Millero, R. Pawlowicz and
+P.M. Barker, 2012: A global algorithm for estimating Absolute Salinity.
+Ocean Science, 8, 1117-1128.
+<a class="reference external" href="https://os.copernicus.org/articles/8/1117/2012/os-8-1117-2012.pdf">https://os.copernicus.org/articles/8/1117/2012/os-8-1117-2012.pdf</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -589,7 +802,7 @@ values of SP to be zero.</p>
 <dd><p>Calculates specific entropy of seawater as a function of potential
 temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -597,13 +810,19 @@ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>entropy</strong><span class="classifier">array-like, J/(kg*K)</span></dt><dd><p>specific entropy</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix A.10 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -611,7 +830,7 @@ temperature.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">entropy_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates specific entropy of seawater from in-situ temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -621,13 +840,18 @@ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>entropy</strong><span class="classifier">array-like, J/(kg*K)</span></dt><dd><p>specific entropy</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -640,7 +864,7 @@ must be computed with its p_ref = 0 (the surface). Also if provided,
 sea_surface_geopotental is the geopotential at zero sea pressure. This
 function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>z</strong><span class="classifier">array-like</span></dt><dd><p>Depth, positive up, m</p>
 </dd>
@@ -656,7 +880,7 @@ be zero (0) dbar.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>p</strong><span class="classifier">array-like, dbar</span></dt><dd><p>sea pressure
 ( i.e. absolute pressure - 10.1325 dbar )</p>
@@ -664,6 +888,34 @@ be zero (0) dbar.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note. Height (z) is NEGATIVE in the ocean.  Depth is -z.
+Depth is not used in the GSW computer software library.</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, pp. 20-25.</p>
+<p>Moritz, H., 2000: Geodetic reference system 1980. J. Geodesy, 74,
+pp. 128-133.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.</p>
+<p>Saunders, P.M., 1981: Practical conversion of pressure to depth.
+Journal of Physical Oceanography, 11, pp. 573-574.</p>
+<p>This software is available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -676,7 +928,7 @@ reference pressure value.
 This subroutine calls “gsw_entropy_part(SA,t,p)”,
 “gsw_entropy_part_zerop(SA,pt0)” and “gsw_gibbs_pt0_pt0(SA,pt0)”.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -686,7 +938,7 @@ This subroutine calls “gsw_entropy_part(SA,t,p)”,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt0</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature
 with reference sea pressure (p_ref) = 0 dbar.</p>
@@ -694,6 +946,15 @@ with reference sea pressure (p_ref) = 0 dbar.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.1 of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -705,7 +966,7 @@ iterations through a modified Newton-Raphson (N-R) iterative solution
 procedure, starting from a rational-function-based initial condition
 for both pt and dCT_dpt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -713,7 +974,7 @@ for both pt and dCT_dpt.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature referenced to a sea pressure
 of zero dbar (ITS-90)</p>
@@ -721,6 +982,15 @@ of zero dbar (ITS-90)</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See sections 3.1 and 3.3 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -729,7 +999,7 @@ of zero dbar (ITS-90)</p>
 <dd><p>Calculates potential temperature with reference pressure p_ref = 0 dbar
 and with entropy as an input variable.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -737,7 +1007,7 @@ and with entropy as an input variable.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature
 with reference sea pressure (p_ref) = 0 dbar.</p>
@@ -745,6 +1015,15 @@ with reference sea pressure (p_ref) = 0 dbar.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix  A.10 of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -757,7 +1036,7 @@ are a function of Absolute Salinity alone.
 A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
 is “gsw_pt0_from_t(SA,t,p)”.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -769,7 +1048,7 @@ is “gsw_pt0_from_t(SA,t,p)”.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature with reference pressure, p_ref, on the
 ITS-90 temperature scale</p>
@@ -777,6 +1056,15 @@ ITS-90 temperature scale</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.1 of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -793,7 +1081,7 @@ data collected between 1/1/1968 and 31/12/1989.</p>
 <dd><p>Calculates in-situ temperature from the Conservative Temperature of
 seawater.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -803,13 +1091,19 @@ seawater.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See sections 3.1 and 3.3 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -822,7 +1116,7 @@ provided, must be computed with its p_ref = 0 (the surface).  Also if
 provided, sea_surface_geopotental is the geopotential at zero sea
 pressure. This function solves Eqn.(3.32.3) of IOC et al. (2010).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>p</strong><span class="classifier">array-like</span></dt><dd><p>Sea pressure (absolute pressure minus 10.1325 dbar), dbar</p>
 </dd>
@@ -838,13 +1132,36 @@ be zero (0) dbar.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>z</strong><span class="classifier">array-like, m</span></dt><dd><p>height</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note. Height z is NEGATIVE in the ocean. i.e. Depth is -z.
+Depth is not used in the GSW computer software library.</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Moritz, H., 2000: Geodetic reference system 1980. J. Geodesy, 74,
+pp. 128-133.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.</p>
+<p>This software is available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 </section>

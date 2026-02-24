@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stability &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Stability &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Stability</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Stability</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/stability.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="stability">
-<h1>Stability<a class="headerlink" href="#stability" title="Permalink to this heading"></a></h1>
+<h1>Stability<a class="headerlink" href="#stability" title="Link to this heading"></a></h1>
 <p>Vertical stability functions.</p>
 <p>These work with ndarrays of profiles; use the <cite>axis</cite> keyword
 argument to specify the axis along which pressure varies.
@@ -104,7 +104,7 @@ is also the ratio of the planetary Isopycnal Potential Vorticity
 (IPV) to f times N^2, hence the name for this variable,
 IPV_vs_fNsquared_ratio (see Eqn. (3.20.17) of IOC et al. (2010)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -116,7 +116,7 @@ IPV_vs_fNsquared_ratio (see Eqn. (3.20.17) of IOC et al. (2010)).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>IPV_vs_fNsquared_ratio</strong><span class="classifier">array</span></dt><dd><p>The ratio of the vertical gradient of
 potential density referenced to p_ref, to the vertical
@@ -135,7 +135,7 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.stability.</span></span><span class="sig-name descname"><span class="pre">Nsquared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#Nsquared"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculate the square of the buoyancy frequency.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -149,7 +149,7 @@ The array shape matches IPV_vs_fNsquared_ratio.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>N2</strong><span class="classifier">array</span></dt><dd><p>Buoyancy frequency-squared at pressure midpoints, 1/s^2.
 The shape along the pressure axis dimension is one
@@ -169,7 +169,7 @@ The array shape matches N2.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.stability.</span></span><span class="sig-name descname"><span class="pre">Turner_Rsubrho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/stability.html#Turner_Rsubrho"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculate the Turner Angle and the Stability Ratio.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -181,7 +181,7 @@ The array shape matches N2.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>Tu</strong><span class="classifier">array</span></dt><dd><p>Turner Angle at pressure midpoints, degrees.
 The shape along the pressure axis dimension is one

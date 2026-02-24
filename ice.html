@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ice &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Ice &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Ice</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Ice</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/ice.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,14 +85,14 @@
            <div itemprop="articleBody">
              
   <section id="ice">
-<h1>Ice<a class="headerlink" href="#ice" title="Permalink to this heading"></a></h1>
+<h1>Ice<a class="headerlink" href="#ice" title="Link to this heading"></a></h1>
 <p>Functions about ice and melting, but not the freezing point.</p>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">Helmholtz_energy_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Helmholtz_energy_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the Helmholtz energy of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -100,13 +100,18 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>Helmholtz_energy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>Helmholtz energy of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -114,7 +119,7 @@
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">adiabatic_lapse_rate_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the adiabatic lapse rate of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -122,13 +127,18 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>adiabatic_lapse_rate_ice</strong><span class="classifier">array-like, K/Pa</span></dt><dd><p>adiabatic lapse rate</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -137,7 +147,7 @@
 <dd><p>Calculates the thermal expansion coefficient of ice with respect to
 in-situ temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -145,7 +155,7 @@ in-situ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>alpha_wrt_t_ice</strong><span class="classifier">array-like, 1/K</span></dt><dd><p>thermal expansion coefficient of ice with respect
 to in-situ temperature</p>
@@ -153,6 +163,12 @@ to in-situ temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See Eqn. (2.18.1) of this TEOS-10 manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -161,7 +177,7 @@ to in-situ temperature</p>
 <dd><p>Calculates the chemical potential of water in ice from in-situ
 temperature and pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -169,21 +185,26 @@ temperature and pressure.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>chem_potential_water_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>chemical potential of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">cp_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#cp_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Calculates the isobaric heat capacity of seawater.</p>
+<dd><p>Calculates the isobaric heat capacity of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -191,13 +212,18 @@ temperature and pressure.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>cp_ice</strong><span class="classifier">array-like, J kg^-1 K^-1</span></dt><dd><p>heat capacity of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -205,7 +231,7 @@ temperature and pressure.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">enthalpy_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#enthalpy_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the specific enthalpy of ice (h_Ih).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -213,13 +239,18 @@ temperature and pressure.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific enthalpy of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -227,7 +258,7 @@ temperature and pressure.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">entropy_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates specific entropy of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -235,13 +266,18 @@ temperature and pressure.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ice_entropy</strong><span class="classifier">array-like, J kg^-1 K^-1</span></dt><dd><p>specific entropy of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -253,7 +289,7 @@ the final dilute seawater to be at the freezing temperature.  The other
 outputs are the Absolute Salinity and Conservative Temperature of the
 final diluted seawater.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -265,7 +301,7 @@ final diluted seawater.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freeze</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater after the mass fraction of
 ice, ice_fraction, at temperature t_Ih has melted into the
@@ -285,6 +321,19 @@ This output must be between 0 and 1.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (9) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -292,7 +341,7 @@ This output must be between 0 and 1.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">internal_energy_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#internal_energy_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the specific internal energy of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -300,13 +349,18 @@ This output must be between 0 and 1.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>internal_energy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific internal energy (u)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -316,7 +370,7 @@ This output must be between 0 and 1.</p>
 Note. This is the compressibility of ice AT CONSTANT IN-SITU
 TEMPERATURE</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -324,13 +378,18 @@ TEMPERATURE</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>kappa_const_t_ice</strong><span class="classifier">array-like, 1/Pa</span></dt><dd><p>isothermal compressibility</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -338,7 +397,7 @@ TEMPERATURE</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">kappa_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#kappa_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the isentropic compressibility of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -346,13 +405,18 @@ TEMPERATURE</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>kappa_ice</strong><span class="classifier">array-like, 1/Pa</span></dt><dd><p>isentropic compressibility</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -363,7 +427,7 @@ It is assumed that a small mass of ice melts into an infinite mass of
 seawater.  Because of the infinite mass of seawater, the ice will always
 melt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -375,7 +439,7 @@ melt.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_ice_SA_CT_ratio</strong><span class="classifier">array-like, g kg^-1 K^-1</span></dt><dd><p>the ratio of SA to CT changes when ice melts
 into a large mass of seawater</p>
@@ -383,6 +447,19 @@ into a large mass of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The output, melting_seaice_SA_CT_ratio, is dSA/dCT rather than dCT/dSA.
+This is done so that when SA = 0, the output, dSA/dCT is zero whereas
+dCT/dSA would be infinite.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (13) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -393,7 +470,7 @@ It is assumed that a small mass of ice melts into an infinite mass of
 seawater.  Because of the infinite mass of seawater, the ice will always
 melt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -405,7 +482,7 @@ melt.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_ice_SA_CT_ratio</strong><span class="classifier">array-like, g kg^-1 K^-1</span></dt><dd><p>the ratio of SA to CT changes when ice melts
 into a large mass of seawater</p>
@@ -413,6 +490,27 @@ into a large mass of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The output, melting_seaice_SA_CT_ratio, is dSA/dCT rather than dCT/dSA.
+This is done so that when SA = 0, the output, dSA/dCT is zero whereas
+dCT/dSA would be infinite.</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (13) of this manuscript.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -428,7 +526,7 @@ between these three temperatures is needed for freezing or melting to
 occur (the three temperatures being (1) the seawater temperature,
 (2) the ice temperature, and (3) the freezing temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -436,7 +534,7 @@ occur (the three temperatures being (1) the seawater temperature,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when ice melts into seawater, with
@@ -446,6 +544,19 @@ freezing temperature.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The output, melting_ice_equilibrium_SA_CT_ratio, is dSA/dCT rather than
+dCT/dSA.  This is done so that when SA = 0, the output, dSA/dCT is zero
+whereas dCT/dSA would be infinite.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (16) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -461,7 +572,7 @@ between these three temperatures is needed for freezing or melting to
 occur (the three temperatures being (1) the seawater temperature,
 (2) the ice temperature, and (3) the freezing temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -469,7 +580,7 @@ occur (the three temperatures being (1) the seawater temperature,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_ice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when ice melts into seawater, with
@@ -479,6 +590,27 @@ freezing temperature.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The output, melting_ice_equilibrium_SA_CT_ratio, is dSA/dCT rather than
+dCT/dSA.  This is done so that when SA = 0, the output, dSA/dCT is zero
+whereas dCT/dSA would be infinite.</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (16) of this manuscript.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -489,7 +621,7 @@ and final ice mass fraction that results when a given mass fraction of
 ice melts and is mixed into seawater whose properties are (SA,CT,p).
 This code takes the seawater to contain no dissolved air.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -504,7 +636,7 @@ sum of the masses of ice and seawater. 0 &lt;= wIh &lt;= 1. unitless.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_final</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of the seawater in the final state,
 whether or not any ice is present.</p>
@@ -522,6 +654,23 @@ temperature.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>When the mass fraction w_Ih_final is calculated as being a positive
+value, the seawater-ice mixture is at thermodynamic equilibrium.</p>
+<p>This code returns w_Ih_final = 0 when the input bulk enthalpy, h_bulk,
+is sufficiently large (i.e. sufficiently “warm”) so that there is no ice
+present in the final state.  In this case the final state consists of
+only seawater rather than being an equilibrium mixture of seawater and
+ice which occurs when w_Ih_final is positive.  Note that when
+w_Ih_final = 0, the final seawater is not at the freezing temperature.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of ice and sea ice into seawater, and frazil ice formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -532,7 +681,7 @@ seawater.  It is assumed that a small mass of sea ice melts into an
 infinite mass of seawater.  Because of the infinite mass of seawater,
 the sea ice will always melt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -547,7 +696,7 @@ in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_seaice_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT changes when
 sea ice melts into a large mass of seawater</p>
@@ -555,6 +704,32 @@ sea ice melts into a large mass of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Ice formed at the sea surface (sea ice) typically contains between 2 g/kg
+and 12 g/kg of salt (defined as the mass of salt divided by the mass of
+ice Ih plus brine) and this programme returns NaN’s if the input
+SA_seaice is greater than 15 g/kg.  If the SA_seaice input is not zero,
+usually this would imply that the pressure p should be zero, as sea ice
+only occurs near the sea surface.  The code does not impose that p = 0
+if SA_seaice is non-zero.  Rather, this is left to the user.</p>
+<p>The Absolute Salinity, SA_brine, of the brine trapped in little pockets
+in the sea ice, is in thermodynamic equilibrium with the ice Ih that
+surrounds these pockets.  As the seaice temperature, t_seaice, may be
+less than the freezing temperature, SA_brine is usually greater than the
+Absolute Salinity of the seawater at the time and place when and where
+the sea ice was formed.  So usually SA_brine will be larger than SA.</p>
+<p>The output, melting_seaice_SA_CT_ratio, is dSA/dCT rather than dCT/dSA.
+This is done so that when (SA - seaice_SA) = 0, the output, dSA/dCT is
+zero whereas dCT/dSA would be infinite.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (28) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -565,7 +740,7 @@ seawater.  It is assumed that a small mass of sea ice melts into an
 infinite mass of seawater.  Because of the infinite mass of seawater,
 the sea ice will always melt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -580,7 +755,7 @@ in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_seaice_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT changes when
 sea ice melts into a large mass of seawater</p>
@@ -588,6 +763,40 @@ sea ice melts into a large mass of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Ice formed at the sea surface (sea ice) typically contains between 2 g/kg
+and 12 g/kg of salt (defined as the mass of salt divided by the mass of
+ice Ih plus brine) and this programme returns NaN’s if the input
+SA_seaice is greater than 15 g/kg.  If the SA_seaice input is not zero,
+usually this would imply that the pressure p should be zero, as sea ice
+only occurs near the sea surface.  The code does not impose that p = 0
+if SA_seaice is non-zero.  Rather, this is left to the user.</p>
+<p>The Absolute Salinity, SA_brine, of the brine trapped in little pockets
+in the sea ice, is in thermodynamic equilibrium with the ice Ih that
+surrounds these pockets.  As the seaice temperature, t_seaice, may be
+less than the freezing temperature, SA_brine is usually greater than the
+Absolute Salinity of the seawater at the time and place when and where
+the sea ice was formed.  So usually SA_brine will be larger than SA.</p>
+<p>The output, melting_seaice_SA_CT_ratio, is dSA/dCT rather than dCT/dSA.
+This is done so that when (SA - seaice_SA) = 0, the output, dSA/dCT is
+zero whereas dCT/dSA would be infinite.</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (31) of this manuscript.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -604,7 +813,7 @@ melting to occur (the three temperatures being (1) the seawater
 temperature, (2) the sea ice temperature, and (3) the freezing
 temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -612,7 +821,7 @@ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when sea ice melts into seawater, with
@@ -622,6 +831,23 @@ freezing temperature.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the output of this function, dSA/dCT is independent of the
+sea ice salinity, SA_seaice.  That is, the output applies equally to
+pure ice Ih and to sea ice with seaice salinity, SA_seaice.  This result
+is proven in McDougall et al. (2014).</p>
+<p>The output, melting_seaice_equilibrium_SA_CT_ratio, is dSA/dCT rather
+than dCT/dSA.  This is done so that when SA = 0, the output, dSA/dCT is
+zero whereas dCT/dSA would be infinite.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (29) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -638,7 +864,7 @@ melting to occur (the three temperatures being (1) the seawater
 temperature, (2) the sea ice temperature, and (3) the freezing
 temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -646,7 +872,7 @@ temperature.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>melting_seaice_equilibrium_SA_CT_ratio</strong><span class="classifier">array-like, g/(kg K)</span></dt><dd><p>the ratio dSA/dCT of SA to CT
 changes when sea ice melts into seawater, with
@@ -656,6 +882,31 @@ freezing temperature.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the output of this function, dSA/dCT is independent of the
+sea ice salinity, SA_seaice.  That is, the output applies equally to
+pure ice Ih and to sea ice with seaice salinity, SA_seaice.  This result
+is proven in McDougall et al. (2014).</p>
+<p>The output, melting_seaice_equilibrium_SA_CT_ratio, is dSA/dCT rather
+than dCT/dSA.  This is done so that when SA = 0, the output, dSA/dCT is
+zero whereas dCT/dSA would be infinite.</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (29) of this manuscript.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -665,7 +916,7 @@ freezing temperature.</p>
 results when a given mass of sea ice (or ice) melts and is mixed into a
 known mass of seawater (whose properties are (SA,CT,p)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -683,7 +934,7 @@ in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_final</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of the mixture of the melted sea ice
 (or ice) and the original seawater</p>
@@ -694,6 +945,31 @@ sea ice (or ice) and the original seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>If the ice contains no salt (e.g. if it is of glacial origin), then the
+input ‘SA_seaice’ should be set to zero.</p>
+<p>Ice formed at the sea surface (sea ice) typically contains between 2 g/kg
+and 12 g/kg of salt (defined as the mass of salt divided by the mass of
+ice Ih plus brine) and this programme returns NaN’s if the input
+SA_seaice is greater than 15 g/kg.  If the SA_seaice input is not zero,
+usually this would imply that the pressure p should be zero, as sea ice
+only occurs near the sea surface.  The code does not impose that p = 0
+if SA_seaice is non-zero.  Rather, this is left to the user.</p>
+<p>The Absolute Salinity, SA_brine, of the brine trapped in little pockets
+in the sea ice, is in thermodynamic equilibrium with the ice Ih that
+surrounds these pockets.  As the sea ice temperature, t_seaice, may be
+less than the freezing temperature, SA_brine is usually greater than the
+Absolute Salinity of the seawater at the time and place when and where
+the sea ice was formed.  So usually SA_brine will be larger than SA.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+Eqns. (8) and (9) are the simplifications when SA_seaice = 0.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -702,19 +978,24 @@ sea ice (or ice) and the original seawater</p>
 <dd><p>Calculates the potential enthalpy of ice from potential temperature of
 ice (whose reference sea pressure is zero dbar).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -725,19 +1006,24 @@ ice (whose reference sea pressure is zero dbar).  This is a
 compuationally efficient polynomial fit to the potential enthalpy of
 ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -745,7 +1031,7 @@ ice.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">pressure_coefficient_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pressure_coefficient_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates pressure coefficient of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -753,13 +1039,19 @@ ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pressure_coefficient_ice</strong><span class="classifier">array-like, Pa/K</span></dt><dd><p>pressure coefficient of ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (2.15.1) of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -768,7 +1060,7 @@ ice.</p>
 <dd><p>Calculates potential temperature of ice Ih with a reference pressure of
 0 dbar, from in-situ temperature, t.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -776,7 +1068,7 @@ ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice Ih with reference pressure of
 zero dbar (ITS-90)</p>
@@ -784,6 +1076,15 @@ zero dbar (ITS-90)</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix I of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -793,19 +1094,30 @@ zero dbar (ITS-90)</p>
 of ice.  The reference sea pressure of both the potential temperature
 and the potential enthalpy is zero dbar.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential enthalpy of ice, J/kg</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -816,19 +1128,24 @@ pressure is zero dbar) from the potential enthalpy of ice.  This is a
 compuationally efficient polynomial fit to the potential enthalpy of
 ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pot_enthalpy_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential enthalpy of ice, J/kg</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -837,7 +1154,7 @@ ice.</p>
 <dd><p>Calculates potential temperature of ice Ih with the general reference
 pressure, p_ref, from in-situ temperature, t.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -847,7 +1164,7 @@ pressure, p_ref, from in-situ temperature, t.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pt_ice</strong><span class="classifier">array-like, deg C</span></dt><dd><p>potential temperature of ice Ih with reference pressure,
 p_ref, on the ITS-90 temperature scale</p>
@@ -855,6 +1172,18 @@ p_ref, on the ITS-90 temperature scale</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>A faster gsw routine exists if p_ref is indeed zero dbar.  This routine
+is “gsw_pt0_from_t_ice(t,p)”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix I of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -864,7 +1193,7 @@ p_ref, on the ITS-90 temperature scale</p>
 Note that the output, rho_ice, is density, not density anomaly;  that
 is, 1000 kg/m^3 is not subtracted from it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -872,13 +1201,18 @@ is, 1000 kg/m^3 is not subtracted from it.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>rho_ice</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>in-situ density of ice (not density anomaly)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -890,7 +1224,7 @@ properties (SA,CT,p) causes the final seawater to be at the freezing
 temperature.  The other outputs are the Absolute Salinity and
 Conservative Temperature of the final seawater.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -905,7 +1239,7 @@ in sea ice, expressed in g of salt per kg of sea ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freeze</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater after the mass fraction of
 sea ice, w_seaice, at temperature t_seaice has melted into
@@ -925,6 +1259,19 @@ This output is between 0 and 1.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall T.J. and S.J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.
+See Eqn. (23) of this manuscript.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -932,7 +1279,7 @@ This output is between 0 and 1.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">sound_speed_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#sound_speed_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the compression speed of sound in ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -940,13 +1287,18 @@ This output is between 0 and 1.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sound_speed_ice</strong><span class="classifier">array-like, m/s</span></dt><dd><p>compression speed of sound in ice</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -954,7 +1306,7 @@ This output is between 0 and 1.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.ice.</span></span><span class="sig-name descname"><span class="pre">specvol_ice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#specvol_ice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the specific volume of ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -962,13 +1314,18 @@ This output is between 0 and 1.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>specvol_ice</strong><span class="classifier">array-like, m^3/kg</span></dt><dd><p>specific volume</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -978,7 +1335,7 @@ This output is between 0 and 1.</p>
 with reference pressure, p_ref, of 0 dbar (the surface), and the
 in-situ pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pt0_ice</strong><span class="classifier">array-like</span></dt><dd><p>Potential temperature of ice (ITS-90), degrees C</p>
 </dd>
@@ -986,13 +1343,19 @@ in-situ pressure.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature (ITS-90)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix I of this TEOS-10 Manual.</p>
 </dd></dl>
 
 </section>

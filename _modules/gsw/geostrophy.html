@@ -1,21 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gsw.geostrophy &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>gsw.geostrophy &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b536254c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -26,14 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,9 +60,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>gsw.geostrophy</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">gsw.geostrophy</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -76,22 +76,25 @@
 <span class="sd">Functions for calculating geostrophic currents.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_gsw_ufuncs</span>
-<span class="kn">from</span> <span class="nn">._utilities</span> <span class="kn">import</span> <span class="n">match_args_return</span><span class="p">,</span> <span class="n">indexer</span>
-<span class="kn">from</span> <span class="nn">.conversions</span> <span class="kn">import</span> <span class="n">z_from_p</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_gsw_ufuncs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">match_args_return</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.conversions</span><span class="w"> </span><span class="kn">import</span> <span class="n">z_from_p</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;geo_strf_dyn_height&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;geo_strf_steric_height&#39;</span><span class="p">,</span>
            <span class="s1">&#39;distance&#39;</span><span class="p">,</span>
            <span class="s1">&#39;f&#39;</span><span class="p">,</span>
            <span class="s1">&#39;geostrophic_velocity&#39;</span><span class="p">,</span>
            <span class="p">]</span>
 
-<div class="viewcode-block" id="geo_strf_dyn_height"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_dyn_height">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_dp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="geo_strf_dyn_height">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_dyn_height">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_dp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                         <span class="n">interp_method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Dynamic height anomaly as a function of pressure.</span>
 
 <span class="sd">    Parameters</span>
@@ -110,7 +113,7 @@
 <span class="sd">        If any pressure interval in the input p exceeds max_dp, the dynamic</span>
 <span class="sd">        height will be calculated after interpolating to a grid with this</span>
 <span class="sd">        spacing.</span>
-<span class="sd">    interp_method : string {&#39;pchip&#39;, &#39;linear&#39;}</span>
+<span class="sd">    interp_method : string {&#39;mrst&#39;, &#39;pchip&#39;, &#39;linear&#39;}</span>
 <span class="sd">        Interpolation algorithm.</span>
 
 <span class="sd">    Returns</span>
@@ -122,18 +125,17 @@
 <span class="sd">        in an isobaric surface, relative to the reference surface.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">interp_methods</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pchip&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="n">interp_methods</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mrst&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;pchip&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">interp_method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interp_methods</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;interp_method must be one of </span><span class="si">%s</span><span class="s1">&#39;</span>
-                         <span class="o">%</span> <span class="p">(</span><span class="n">interp_methods</span><span class="o">.</span><span class="n">keys</span><span class="p">(),))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;interp_method must be one of </span><span class="si">{</span><span class="n">interp_methods</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Shapes of SA and CT must match; found </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span>
-                         <span class="o">%</span> <span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Shapes of SA and CT must match; found </span><span class="si">{</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">SA</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;With 1-D p, len(p) must be SA.shape[axis];</span><span class="se">\n</span><span class="s1">&#39;</span>
-                             <span class="s1">&#39; found </span><span class="si">%d</span><span class="s1"> versus </span><span class="si">%d</span><span class="s1"> on specified axis, </span><span class="si">%d</span><span class="s1">&#39;</span>
-                             <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],</span> <span class="n">axis</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;With 1-D p, len(p) must be SA.shape[axis];</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="si">}</span><span class="s1"> on specified axis, </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">SA</span><span class="o">.</span><span class="n">ndim</span>
         <span class="n">ind</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
@@ -152,7 +154,8 @@
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>  <span class="c1"># e.g., xarray DataArray doesn&#39;t have flags</span>
     <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indexer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">):</span>
-        <span class="n">igood</span> <span class="o">=</span> <span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="c1"># this is needed to support xarray inputs for numpy &lt; 1.23</span>
+        <span class="n">igood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
         <span class="c1"># If p_ref is below the deepest value, skip the profile.</span>
         <span class="n">pgood</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
         <span class="k">if</span>  <span class="nb">len</span><span class="p">(</span><span class="n">pgood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pgood</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">p_ref</span><span class="p">:</span>
@@ -179,8 +182,58 @@
     <span class="k">return</span> <span class="n">dh</span></div>
 
 
-<span class="k">def</span> <span class="nf">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="geo_strf_steric_height">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geo_strf_steric_height">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">geo_strf_steric_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_dp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">interp_method</span><span class="o">=</span><span class="s2">&quot;pchip&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Steric height anomaly as a function of pressure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SA : array-like</span>
+<span class="sd">        Absolute Salinity, g/kg</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+<span class="sd">    p : array-like</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+<span class="sd">    p_ref : float or array-like, optional</span>
+<span class="sd">        Reference pressure, dbar</span>
+<span class="sd">    axis : int, optional, default is 0</span>
+<span class="sd">        The index of the pressure dimension in SA and CT.</span>
+<span class="sd">    max_dp : float</span>
+<span class="sd">        If any pressure interval in the input p exceeds max_dp, the dynamic</span>
+<span class="sd">        height will be calculated after interpolating to a grid with this</span>
+<span class="sd">        spacing.</span>
+<span class="sd">    interp_method : string {&#39;mrst&#39;, &#39;pchip&#39;, &#39;linear&#39;}</span>
+<span class="sd">        Interpolation algorithm.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    steric_height : array</span>
+<span class="sd">        This is the integral of specific volume anomaly with respect</span>
+<span class="sd">        to pressure, from each pressure in p to the specified</span>
+<span class="sd">        reference pressure, divided by the global mean surface value of</span>
+<span class="sd">        gravitational acceleration, 9.7963 m s^-2. (see page 46 of Griffies, 2004) </span>
+<span class="sd">        It is not exactly the height of an isobaric surface above a</span>
+<span class="sd">        geopotential surface, but is an exact geostrophic streamfunction.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Griffies, S. M., 2004: Fundamentals of Ocean Climate Models. Princeton, </span>
+<span class="sd">    NJ: Princeton University Press, 518 pp + xxxiv.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">geo_strf_dyn_height</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_ref</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">max_dp</span><span class="o">=</span><span class="n">max_dp</span><span class="p">,</span> <span class="n">interp_method</span><span class="o">=</span><span class="n">interp_method</span><span class="p">)</span>
+        <span class="o">/</span> <span class="mf">9.7963</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Unwrap a sequence of longitudes or headings in degrees.</span>
 
 <span class="sd">    Optionally center it as close to zero as possible</span>
@@ -225,9 +278,11 @@
         <span class="k">return</span> <span class="n">lon</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="distance"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.distance">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="distance">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.distance">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Great-circle distance in m between lon, lat points.</span>
 
 <span class="sd">    Parameters</span>
@@ -250,12 +305,10 @@
     <span class="n">earth_radius</span> <span class="o">=</span> <span class="mf">6371e3</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat shapes must match; found </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">&#39;</span>
-                          <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lon, lat shapes must match; found </span><span class="si">{</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat must be 1-D or 2-D with more than one point&#39;</span>
-                         <span class="s1">&#39; along axis; found shape </span><span class="si">%s</span><span class="s1"> and axis </span><span class="si">%s</span><span class="s1">&#39;</span>
-                          <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">))</span>
+                         <span class="sa">f</span><span class="s1">&#39; along axis; found shape </span><span class="si">{</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and axis </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">one_d</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># xarray requires expand_dims() rather than [newaxis, :]</span>
@@ -305,18 +358,24 @@
     <span class="k">return</span> <span class="n">distance</span></div>
 
 
-<div class="viewcode-block" id="f"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.f">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="f">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.f">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Coriolis parameter in 1/s for latitude in degrees.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">omega</span> <span class="o">=</span> <span class="mf">7.292115e-5</span>  <span class="c1"># (1/s)   (Groten, 2004).</span>
     <span class="n">f</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">f</span></div>
 
-<div class="viewcode-block" id="geostrophic_velocity"><a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geostrophic_velocity">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="geostrophic_velocity">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.geostrophy.geostrophic_velocity">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">geostrophic_velocity</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate geostrophic velocity from a streamfunction.</span>
 
 <span class="sd">    Calculates geostrophic velocity relative to a reference pressure,</span>
@@ -367,12 +426,10 @@
     <span class="n">lon</span> <span class="o">=</span> <span class="n">unwrap</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">lon</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;lon, lat must be 1-D and matching; found shapes&#39;</span>
-                         <span class="s1">&#39; </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lon, lat must be 1-D and matching; found shapes </span><span class="si">{</span><span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">geo_strf</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;geo_strf must be 1-D or 2-d; found shape </span><span class="si">%s</span><span class="s1">&#39;</span>
-                         <span class="o">%</span> <span class="p">(</span><span class="n">geo_strf</span><span class="o">.</span><span class="n">shape</span><span class="p">,))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;geo_strf must be 1-D or 2-d; found shape </span><span class="si">{</span><span class="n">geo_strf</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">laxis</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">axis</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 
@@ -384,6 +441,7 @@
     <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">geo_strf</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">laxis</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ds</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">mid_lat</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">mid_lon</span><span class="p">,</span> <span class="n">mid_lat</span></div>
+
 </pre></div>
 
            </div>

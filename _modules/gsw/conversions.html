@@ -1,21 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gsw.conversions &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>gsw.conversions &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b536254c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -26,14 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,9 +60,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>gsw.conversions</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">gsw.conversions</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -117,43 +117,44 @@
             <span class="s1">&#39;z_from_p&#39;</span><span class="p">,</span>
             <span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">._utilities</span> <span class="kn">import</span> <span class="n">match_args_return</span>
-
-<span class="kn">from</span> <span class="nn">._fixed_wrapped_ufuncs</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="n">adiabatic_lapse_rate_from_CT</span><span class="p">,</span>
-<span class="n">C_from_SP</span><span class="p">,</span>
-<span class="n">CT_from_enthalpy</span><span class="p">,</span>
-<span class="n">CT_from_entropy</span><span class="p">,</span>
-<span class="n">CT_from_pt</span><span class="p">,</span>
-<span class="n">CT_from_rho</span><span class="p">,</span>
-<span class="n">CT_from_t</span><span class="p">,</span>
-<span class="n">deltaSA_from_SP</span><span class="p">,</span>
-<span class="n">entropy_from_pt</span><span class="p">,</span>
-<span class="n">entropy_from_t</span><span class="p">,</span>
-<span class="n">pt0_from_t</span><span class="p">,</span>
-<span class="n">pt_from_CT</span><span class="p">,</span>
-<span class="n">pt_from_entropy</span><span class="p">,</span>
-<span class="n">pt_from_t</span><span class="p">,</span>
-<span class="n">SA_from_rho</span><span class="p">,</span>
-<span class="n">SA_from_SP</span><span class="p">,</span>
-<span class="n">SA_from_Sstar</span><span class="p">,</span>
-<span class="n">SP_from_C</span><span class="p">,</span>
-<span class="n">SP_from_SA</span><span class="p">,</span>
-<span class="n">SP_from_SK</span><span class="p">,</span>
-<span class="n">SP_from_SR</span><span class="p">,</span>
-<span class="n">SP_from_Sstar</span><span class="p">,</span>
-<span class="n">SR_from_SP</span><span class="p">,</span>
-<span class="n">Sstar_from_SA</span><span class="p">,</span>
-<span class="n">Sstar_from_SP</span><span class="p">,</span>
-<span class="n">t_from_CT</span><span class="p">,</span>
-<span class="n">p_from_z</span><span class="p">,</span>
-<span class="n">z_from_p</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._fixed_wrapped_ufuncs</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">C_from_SP</span><span class="p">,</span>
+    <span class="n">CT_from_enthalpy</span><span class="p">,</span>
+    <span class="n">CT_from_entropy</span><span class="p">,</span>
+    <span class="n">CT_from_pt</span><span class="p">,</span>
+    <span class="n">CT_from_rho</span><span class="p">,</span>
+    <span class="n">CT_from_t</span><span class="p">,</span>
+    <span class="n">SA_from_rho</span><span class="p">,</span>
+    <span class="n">SA_from_SP</span><span class="p">,</span>
+    <span class="n">SA_from_Sstar</span><span class="p">,</span>
+    <span class="n">SP_from_C</span><span class="p">,</span>
+    <span class="n">SP_from_SA</span><span class="p">,</span>
+    <span class="n">SP_from_SK</span><span class="p">,</span>
+    <span class="n">SP_from_SR</span><span class="p">,</span>
+    <span class="n">SP_from_Sstar</span><span class="p">,</span>
+    <span class="n">SR_from_SP</span><span class="p">,</span>
+    <span class="n">Sstar_from_SA</span><span class="p">,</span>
+    <span class="n">Sstar_from_SP</span><span class="p">,</span>
+    <span class="n">adiabatic_lapse_rate_from_CT</span><span class="p">,</span>
+    <span class="n">deltaSA_from_SP</span><span class="p">,</span>
+    <span class="n">entropy_from_pt</span><span class="p">,</span>
+    <span class="n">entropy_from_t</span><span class="p">,</span>
+    <span class="n">p_from_z</span><span class="p">,</span>
+    <span class="n">pt0_from_t</span><span class="p">,</span>
+    <span class="n">pt_from_CT</span><span class="p">,</span>
+    <span class="n">pt_from_entropy</span><span class="p">,</span>
+    <span class="n">pt_from_t</span><span class="p">,</span>
+    <span class="n">t_from_CT</span><span class="p">,</span>
+    <span class="n">z_from_p</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">match_args_return</span>
 
 
-<div class="viewcode-block" id="t90_from_t68"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.t90_from_t68">[docs]</a><span class="nd">@match_args_return</span>
-<span class="k">def</span> <span class="nf">t90_from_t68</span><span class="p">(</span><span class="n">t68</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="t90_from_t68">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.t90_from_t68">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t90_from_t68</span><span class="p">(</span><span class="n">t68</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ITS-90 temperature from IPTS-68 temperature</span>
 
 <span class="sd">    This conversion should be applied to all in-situ</span>
@@ -161,6 +162,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">t68</span> <span class="o">/</span> <span class="mf">1.00024</span></div>
+
 </pre></div>
 
            </div>

@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Energy &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Energy &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Energy</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Energy</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/energy.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="energy">
-<h1>Energy<a class="headerlink" href="#energy" title="Permalink to this heading"></a></h1>
+<h1>Energy<a class="headerlink" href="#energy" title="Link to this heading"></a></h1>
 <p>Functions involving internal energy, enthalpy, latent heat.</p>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -94,7 +94,7 @@
 efficient expression for specific volume in terms of SA, CT and p
 (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -104,13 +104,36 @@ efficient expression for specific volume in terms of SA, CT and p
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>enthalpy</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific enthalpy</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.6) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
+variable for evaluating heat content and heat fluxes. Journal of
+Physical Oceanography, 33, 945-963.
+See Eqns. (18) and (22)</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -124,7 +147,7 @@ volume in terms of SA, CT and p (Roquet et al., 2015).  The output
 (enthalpy_diff) is the specific enthalpy evaluated at (SA,CT,p_deep)
 minus the specific enthalpy at (SA,CT,p_shallow).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -136,7 +159,7 @@ minus the specific enthalpy at (SA,CT,p_shallow).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>enthalpy_diff</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>difference of specific enthalpy
 (deep minus shallow)</p>
@@ -144,6 +167,29 @@ minus the specific enthalpy at (SA,CT,p_shallow).</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqns. (3.32.2) and (A.30.6) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., 2003: Potential enthalpy: A conservative oceanic
+variable for evaluating heat content and heat fluxes. Journal of
+Physical Oceanography, 33, 945-963.
+See Eqns. (18) and (22)</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -153,7 +199,7 @@ minus the specific enthalpy at (SA,CT,p_shallow).</p>
 computationally-efficient expression for specific volume in terms of SA,
 CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -163,13 +209,31 @@ CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>internal_energy</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>specific internal energy</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -181,7 +245,7 @@ Conservative Temperature, CT, and is valid in the ranges
 0 &lt; SA &lt; 42 g/kg and 0 &lt; CT &lt; 40 deg C.  The errors range between
 -0.4 and 0.6 J/kg.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -189,13 +253,19 @@ Conservative Temperature, CT, and is valid in the ranges
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>latentheat_evap</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>latent heat of evaporation</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.39 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -206,7 +276,7 @@ surface).  It is defined as a function of Absolute Salinity, SA, and
 in-situ temperature, t, and is valid in the ranges 0 &lt; SA &lt; 40 g/kg
 and 0 &lt; CT &lt; 42 deg C. The errors range between -0.4 and 0.6 J/kg.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -214,13 +284,19 @@ and 0 &lt; CT &lt; 42 deg C. The errors range between -0.4 and 0.6 J/kg.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>latentheat_evap</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>latent heat of evaporation</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 3.39 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 </section>

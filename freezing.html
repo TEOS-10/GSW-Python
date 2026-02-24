@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Freezing &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Freezing &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Freezing</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Freezing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/freezing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="freezing">
-<h1>Freezing<a class="headerlink" href="#freezing" title="Permalink to this heading"></a></h1>
+<h1>Freezing<a class="headerlink" href="#freezing" title="Link to this heading"></a></h1>
 <p>Freezing-point functions.</p>
 <dl class="py function">
 <dt class="sig sig-object py">
@@ -96,7 +96,7 @@ in-situ freezing temperature which is found by a modified Newton-Raphson
 iteration (McDougall and Wotherspoon, 2014) of the equality of the
 chemical potentials of water in seawater and in ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -106,7 +106,7 @@ chemical potentials of water in seawater and in ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature at freezing of seawater
 That is, the freezing temperature expressed in terms of
@@ -115,6 +115,19 @@ Conservative Temperature (ITS-90).</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>An alternative GSW function, gsw_CT_freezing_poly, it is based on a
+computationally-efficient polynomial, and is accurate to within -5e-4 K
+and 6e-4 K, when compared with this function.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -124,7 +137,7 @@ Conservative Temperature (ITS-90).</p>
 which seawater freezes, with respect to Absolute Salinity SA and
 pressure P (in Pa).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -134,7 +147,7 @@ pressure P (in Pa).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CTfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to Absolute Salinity at
@@ -147,6 +160,11 @@ fixed Absolute Salinity</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -157,7 +175,7 @@ which seawater freezes, with respect to Absolute Salinity SA and
 pressure P (in Pa) of the comptationally efficient polynomial fit of the
 freezing temperature (McDougall et al., 2014).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -167,7 +185,7 @@ freezing temperature (McDougall et al., 2014).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CTfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the Conservative Temperature at
 freezing (ITS-90) with respect to Absolute Salinity at
@@ -180,6 +198,15 @@ fixed Absolute Salinity</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -193,7 +220,7 @@ equality of the chemical potentials of water in seawater and in ice.
 Note that the Conservative Temperature freezing temperature can be found
 by this exact method using the function gsw_CT_freezing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -203,7 +230,7 @@ by this exact method using the function gsw_CT_freezing.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CT_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>Conservative Temperature at freezing of seawater
 That is, the freezing temperature expressed in
@@ -212,6 +239,15 @@ terms of Conservative Temperature (ITS-90).</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -225,7 +261,7 @@ with ice at the same in situ temperature and pressure.  If the input
 values are such that there is no positive value of Absolute Salinity for
 which seawater is frozen, the output, SA_freezing, is made a NaN.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
@@ -235,7 +271,7 @@ which seawater is frozen, the output, SA_freezing, is made a NaN.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
 given input values of its Conservative Temperature,
@@ -244,6 +280,18 @@ pressure and air saturation fraction.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See section 3.33 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -256,7 +304,7 @@ with ice at Conservative Temperature CT and pressure p.  If the input
 values are such that there is no positive value of Absolute Salinity for
 which seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>CT</strong><span class="classifier">array-like</span></dt><dd><p>Conservative Temperature (ITS-90), degrees C</p>
 </dd>
@@ -266,7 +314,7 @@ which seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
 given input values of Conservative Temperature
@@ -275,6 +323,18 @@ pressure and air saturation fraction.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See section 3.33 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -287,7 +347,7 @@ with ice at in-situ temperature t and pressure p.  If the input values
 are such that there is no positive value of Absolute Salinity for which
 seawater is frozen, the output, SA_freezing, is set to NaN.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -297,7 +357,7 @@ seawater is frozen, the output, SA_freezing, is set to NaN.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
 given input values of in situ temperature, pressure and
@@ -306,6 +366,18 @@ air saturation fraction.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See section 3.33 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall, T.J., and S.J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -318,7 +390,7 @@ with ice at in-situ temperature t and pressure p.  If the input values
 are such that there is no positive value of Absolute Salinity for which
 seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">array-like</span></dt><dd><p>In-situ temperature (ITS-90), degrees C</p>
 </dd>
@@ -328,7 +400,7 @@ seawater is frozen, the output, SA_freezing, is put equal to NaN.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>SA_freezing</strong><span class="classifier">array-like, g/kg</span></dt><dd><p>Absolute Salinity of seawater when it freezes, for
 given input values of in situ temperature, pressure and
@@ -337,6 +409,18 @@ air saturation fraction.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See section 3.33 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2014: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -344,7 +428,7 @@ air saturation fraction.</p>
 <span class="sig-prename descclassname"><span class="pre">gsw.freezing.</span></span><span class="sig-name descname"><span class="pre">pot_enthalpy_ice_freezing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the potential enthalpy of ice at which seawater freezes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -352,7 +436,7 @@ air saturation fraction.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice_freezing</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice at freezing
 of seawater</p>
@@ -360,6 +444,15 @@ of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -369,7 +462,7 @@ of seawater</p>
 which seawater freezes, with respect to Absolute Salinity SA and
 pressure P (in Pa).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -377,7 +470,7 @@ pressure P (in Pa).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice_freezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to Absolute
@@ -390,6 +483,15 @@ of ice at freezing (ITS-90) with respect to pressure
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -397,10 +499,10 @@ of ice at freezing (ITS-90) with respect to pressure
 <span class="sig-prename descclassname"><span class="pre">gsw.freezing.</span></span><span class="sig-name descname"><span class="pre">pot_enthalpy_ice_freezing_first_derivatives_poly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pot_enthalpy_ice_freezing_first_derivatives_poly"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the first derivatives of the potential enthalpy of ice Ih at
 which ice melts into seawater with Absolute Salinity SA and at pressure
-p.  This code uses the comptationally efficient polynomial fit of the
+p.  This code uses the computationally efficient polynomial fit of the
 freezing potential enthalpy of ice Ih (McDougall et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -408,7 +510,7 @@ freezing potential enthalpy of ice Ih (McDougall et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice_freezing_SA</strong><span class="classifier">array-like, J/g</span></dt><dd><p>the derivative of the potential enthalpy
 of ice at freezing (ITS-90) with respect to Absolute
@@ -421,6 +523,16 @@ of ice at freezing (ITS-90) with respect to pressure
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
+<p>McDougall et al. 2015: A reference for this polynomial.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -437,7 +549,7 @@ equality of the chemical potentials of water in seawater and in ice.
 Note that the potential enthalpy at freezing can be found
 by this exact method using the function gsw_pot_enthalpy_ice_freezing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -445,7 +557,7 @@ by this exact method using the function gsw_pot_enthalpy_ice_freezing.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pot_enthalpy_ice_freezing</strong><span class="classifier">array-like, J/kg</span></dt><dd><p>potential enthalpy of ice at freezing
 of seawater</p>
@@ -453,6 +565,15 @@ of seawater</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -466,7 +587,7 @@ such that there is no value of pressure in the range between 0 dbar and
 10,000 dbar for which seawater is at the freezing temperature, the
 output, pressure_freezing, is put equal to NaN.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -476,7 +597,7 @@ output, pressure_freezing, is put equal to NaN.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>pressure_freezing</strong><span class="classifier">array-like, dbar</span></dt><dd><p>sea pressure at which the seawater freezes
 ( i.e. absolute pressure - 10.1325 dbar )</p>
@@ -484,6 +605,15 @@ output, pressure_freezing, is put equal to NaN.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See section 3.33 of this TEOS-10 Manual.</p>
+<p>McDougall T. J. and S. J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -495,7 +625,7 @@ in-situ freezing temperature which is found by a modified Newton-Raphson
 iteration (McDougall and Wotherspoon, 2013) of the equality of the
 chemical potentials of water in seawater and in ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -505,7 +635,7 @@ chemical potentials of water in seawater and in ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>t_freezing</strong><span class="classifier">array-like, deg C</span></dt><dd><p>in-situ temperature at which seawater freezes.
 (ITS-90)</p>
@@ -513,6 +643,19 @@ chemical potentials of water in seawater and in ice.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>An alternative GSW function, gsw_t_freezing_poly, it is based on a
+computationally-efficient polynomial, and is accurate to within -5e-4 K
+and 6e-4 K, when compared with this function.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.
+See sections 3.33 and 3.34 of this TEOS-10 Manual.</p>
+<p>McDougall T.J., and S.J. Wotherspoon, 2013: A simple modification of
+Newton’s method to achieve convergence of order 1 + sqrt(2).  Applied
+Mathematics Letters, 29, 20-25.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -524,7 +667,7 @@ Pa).  These expressions come from differentiating the expression that
 defines the freezing temperature, namely the equality between the
 chemical potentials of water in seawater and in ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -534,7 +677,7 @@ chemical potentials of water in seawater and in ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>tfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the in-situ freezing temperature
 (ITS-90) with respect to Absolute Salinity at fixed
@@ -547,6 +690,11 @@ Absolute Salinity</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -558,7 +706,7 @@ Pa).  These expressions come from differentiating the expression that
 defines the freezing temperature, namely the equality between the
 chemical potentials of water in seawater and in ice.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -568,7 +716,7 @@ chemical potentials of water in seawater and in ice.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>tfreezing_SA</strong><span class="classifier">array-like, K kg/g</span></dt><dd><p>the derivative of the in-situ freezing temperature
 (ITS-90) with respect to Absolute Salinity at fixed
@@ -581,6 +729,14 @@ Absolute Salinity</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., P.M. Barker, R. Feistel and B.K. Galton-Fenzi, 2014:
+Melting of Ice and Sea Ice into Seawater and Frazil Ice Formation.
+Journal of Physical Oceanography, 44, 1751-1775.</p>
 </dd></dl>
 
 </section>

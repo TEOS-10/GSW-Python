@@ -1,21 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gsw._fixed_wrapped_ufuncs &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>gsw._fixed_wrapped_ufuncs &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b536254c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -26,14 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,9 +60,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>gsw._fixed_wrapped_ufuncs</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">gsw._fixed_wrapped_ufuncs</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -77,20 +77,54 @@
 <span class="sd">Users should import only from non-private modules, of course.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">._wrapped_ufuncs</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">._wrapped_ufuncs</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">_p_from_z</span> <span class="o">=</span> <span class="n">p_from_z</span>
-<div class="viewcode-block" id="p_from_z"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.p_from_z">[docs]</a><span class="k">def</span> <span class="nf">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="p_from_z">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.p_from_z">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">_p_from_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">)</span></div>
+
 <span class="n">p_from_z</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_p_from_z</span><span class="o">.</span><span class="vm">__doc__</span>
 
 <span class="n">_z_from_p</span> <span class="o">=</span> <span class="n">z_from_p</span>
-<div class="viewcode-block" id="z_from_p"><a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.z_from_p">[docs]</a><span class="k">def</span> <span class="nf">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="z_from_p">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.z_from_p">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">_z_from_p</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">geo_strf_dyn_height</span><span class="p">,</span> <span class="n">sea_surface_geopotential</span><span class="p">)</span></div>
+
 <span class="n">z_from_p</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_z_from_p</span><span class="o">.</span><span class="vm">__doc__</span>
 
+<span class="n">_gibbs</span> <span class="o">=</span> <span class="n">gibbs</span>
+<div class="viewcode-block" id="gibbs">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.gibbs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gibbs</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ns&quot;</span><span class="p">:</span> <span class="n">ns</span><span class="p">,</span> <span class="s2">&quot;nt&quot;</span><span class="p">:</span> <span class="n">nt</span><span class="p">,</span> <span class="s2">&quot;np&quot;</span><span class="p">:</span> <span class="n">np</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">u</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;i&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ns, nt, np must contain integers 0, 1, or 2;&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot; found </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_gibbs</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">SA</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
+
+<span class="n">gibbs</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_gibbs</span><span class="o">.</span><span class="vm">__doc__</span>
 
 
+<span class="n">_gibbs_ice</span> <span class="o">=</span> <span class="n">gibbs_ice</span>
+<div class="viewcode-block" id="gibbs_ice">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.conversions.gibbs_ice">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gibbs_ice</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nt&quot;</span><span class="p">:</span> <span class="n">nt</span><span class="p">,</span> <span class="s2">&quot;np&quot;</span><span class="p">:</span> <span class="n">np</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">u</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;i&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;nt, np must contain integers 0, 1, or 2;&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot; found </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_gibbs_ice</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
+
+<span class="n">gibbs_ice</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_gibbs_ice</span><span class="o">.</span><span class="vm">__doc__</span>
 </pre></div>
 
            </div>

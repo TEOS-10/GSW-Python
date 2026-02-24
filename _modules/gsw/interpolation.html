@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gsw.interpolation &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b536254c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            gsw
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gsw.html">Subpackages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gsw_flat.html">All functions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">gsw</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">gsw.interpolation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for gsw.interpolation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions for vertical interpolation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_gsw_ufuncs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">match_args_return</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sa_ct_interp&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;tracer_ct_interp&#39;</span><span class="p">,</span>
+           <span class="p">]</span>
+
+<div class="viewcode-block" id="sa_ct_interp">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.sa_ct_interp">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sa_ct_interp</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_i</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interpolates vertical casts of values of Absolute Salinity</span>
+<span class="sd">    and Conservative Temperature to the arbitrary pressures p_i.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    SA : array-like</span>
+<span class="sd">        Absolute Salinity, g/kg</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+<span class="sd">    p : array-like</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+<span class="sd">    p_i : array-like</span>
+<span class="sd">        Sea pressure to interpolate on, dbar</span>
+<span class="sd">    axis : int, optional, default is 0</span>
+<span class="sd">        The index of the pressure dimension in SA and CT.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    SA_i : array</span>
+<span class="sd">        Values of SA interpolated to p_i along the specified axis.</span>
+<span class="sd">    CT_i : array</span>
+<span class="sd">        Values of CT interpolated to p_i along the specified axis.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Shapes of SA and CT must match; found </span><span class="si">{</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="n">p_i</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p and p_i must have the same number of dimensions;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">p_i</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">SA</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;With 1-D p, len(p) must be SA.shape[axis];</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="si">}</span><span class="s1"> on specified axis, </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">SA</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="n">ind</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
+        <span class="n">p_i</span> <span class="o">=</span> <span class="n">p_i</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;With </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">-D p, shapes of p and SA must match;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                             <span class="sa">f</span><span class="s1">&#39;found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">axis</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;With </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">-D p, p and p_i must have the same dimensions outside of axis </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                             <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="c1"># The need for this context seems to be a bug in np.ma.any.</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">p_i</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> \
+                <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;p and p_i must be increasing along the specified axis&#39;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">goodmask</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">SA</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">CT</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">SA_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">CT_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">SA_i</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">CT_i</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span> <span class="k">if</span> <span class="n">SA</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">fortran</span> <span class="k">else</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>  <span class="c1"># e.g., xarray DataArray doesn&#39;t have flags</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indexer</span><span class="p">(</span><span class="n">SA</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">):</span>
+        <span class="c1"># this is needed to support xarray inputs for numpy &lt; 1.23</span>
+        <span class="n">igood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+        <span class="n">pgood</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">p_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="c1"># There must be at least 2 non-NaN values for interpolation</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pgood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">sa</span> <span class="o">=</span> <span class="n">SA</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+            <span class="n">ct</span> <span class="o">=</span> <span class="n">CT</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+            <span class="n">sai</span><span class="p">,</span> <span class="n">cti</span> <span class="o">=</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">sa_ct_interp</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">pgood</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+            <span class="n">SA_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">sai</span>
+            <span class="n">CT_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">cti</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">SA_i</span><span class="p">,</span> <span class="n">CT_i</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="tracer_ct_interp">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.tracer_ct_interp">[docs]</a>
+<span class="nd">@match_args_return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">tracer_ct_interp</span><span class="p">(</span><span class="n">tracer</span><span class="p">,</span> <span class="n">CT</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p_i</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">9.</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interpolates vertical casts of values of a tracer</span>
+<span class="sd">    and Conservative Temperature to the arbitrary pressures p_i.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tracer : array-like</span>
+<span class="sd">        tracer</span>
+<span class="sd">    CT : array-like</span>
+<span class="sd">        Conservative Temperature (ITS-90), degrees C</span>
+<span class="sd">    p : array-like</span>
+<span class="sd">        Sea pressure (absolute pressure minus 10.1325 dbar), dbar</span>
+<span class="sd">    p_i : array-like</span>
+<span class="sd">        Sea pressure to interpolate on, dbar</span>
+<span class="sd">    factor: float, optional, default is 9.</span>
+<span class="sd">        Ratio between the ranges of Conservative Temperature</span>
+<span class="sd">        and tracer in the world ocean.</span>
+<span class="sd">    axis : int, optional, default is 0</span>
+<span class="sd">        The index of the pressure dimension in tracer and CT.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tracer_i : array</span>
+<span class="sd">        Values of tracer interpolated to p_i along the specified axis.</span>
+<span class="sd">    CT_i : array</span>
+<span class="sd">        Values of CT interpolated to p_i along the specified axis.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tracer</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Shapes of tracer and CT must match; found </span><span class="si">{</span><span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">CT</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="n">p_i</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p and p_i must have the same number of dimensions;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">p_i</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tracer</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;With 1-D p, len(p) must be tracer.shape[axis];</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="si">}</span><span class="s1"> on specified axis, </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">tracer</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="n">ind</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
+        <span class="n">p_i</span> <span class="o">=</span> <span class="n">p_i</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">p</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;With </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">-D p, shapes of p and tracer must match;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                             <span class="sa">f</span><span class="s1">&#39;found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">axis</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;With </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1">-D p, p and p_i must have the same dimensions outside of axis </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                             <span class="sa">f</span><span class="s1">&#39; found </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> versus </span><span class="si">{</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="c1"># The need for this context seems to be a bug in np.ma.any.</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">p_i</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> \
+                <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;p and p_i must be increasing along the specified axis&#39;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">goodmask</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">tracer</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">CT</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">tracer_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">CT_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">p_i</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">tracer_i</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">CT_i</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span> <span class="k">if</span> <span class="n">tracer</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">fortran</span> <span class="k">else</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>  <span class="c1"># e.g., xarray DataArray doesn&#39;t have flags</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">indexer</span><span class="p">(</span><span class="n">tracer</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">):</span>
+        <span class="c1"># this is needed to support xarray inputs for numpy &lt; 1.23</span>
+        <span class="n">igood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">goodmask</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+        <span class="n">pgood</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">p_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="c1"># There must be at least 2 non-NaN values for interpolation</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pgood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">tr</span> <span class="o">=</span> <span class="n">tracer</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+            <span class="n">ct</span> <span class="o">=</span> <span class="n">CT</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">igood</span><span class="p">]</span>
+            <span class="n">tri</span><span class="p">,</span> <span class="n">cti</span> <span class="o">=</span> <span class="n">_gsw_ufuncs</span><span class="o">.</span><span class="n">tracer_ct_interp</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">pgood</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+            <span class="n">tracer_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">tri</span>
+            <span class="n">CT_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">cti</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">tracer_i</span><span class="p">,</span> <span class="n">CT_i</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, TEOS-10 developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

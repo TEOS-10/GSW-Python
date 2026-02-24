@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Density &mdash; gsw 3.6.16.post1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Density &mdash; gsw 3.6.21 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> gsw
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gsw
           </a>
-              <div class="version">
-                3.6.16.post1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="gsw.html">Subpackages</a> &raquo;</li>
-      <li>Density</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gsw.html">Subpackages</a></li>
+      <li class="breadcrumb-item active">Density</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/density.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="density">
-<h1>Density<a class="headerlink" href="#density" title="Permalink to this heading"></a></h1>
+<h1>Density<a class="headerlink" href="#density" title="Link to this heading"></a></h1>
 <p>Functions related to density and specific volume.</p>
 <p>These are a subset of the TEOS-10 table category
 “specific volume, density, and enthalpy”.</p>
@@ -98,7 +98,7 @@ in their own “energy” module.</p>
 Conservative Temperature using the computationally-efficient expression
 for specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -108,7 +108,7 @@ for specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>alpha</strong><span class="classifier">array-like, 1/K</span></dt><dd><p>thermal expansion coefficient
 with respect to Conservative Temperature</p>
@@ -116,6 +116,25 @@ with respect to Conservative Temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (2.18.3) of this TEOS-10 manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -127,7 +146,7 @@ from Absolute Salinity and Conservative Temperature.  This function uses
 the computationally-efficient expression for specific volume in terms of
 SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -137,9 +156,9 @@ SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>alpha_on_beta</strong><span class="classifier">array-like, kg g^-1 K^-1</span></dt><dd><p>thermal expansion coefficient with respect to
+<dt><strong>alpha_on_beta</strong><span class="classifier">array-like, g kg^-1 K^-1</span></dt><dd><p>thermal expansion coefficient with respect to
 Conservative Temperature divided by the saline
 contraction coefficient at constant Conservative
 Temperature</p>
@@ -147,6 +166,25 @@ Temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix A.20 and appendix K of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2014: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -157,7 +195,7 @@ at constant Conservative Temperature using the computationally-efficient
 75-term expression for specific volume in terms of SA, CT and p
 (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -167,7 +205,7 @@ at constant Conservative Temperature using the computationally-efficient
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>beta</strong><span class="classifier">array-like, kg/g</span></dt><dd><p>saline contraction coefficient
 at constant Conservative Temperature</p>
@@ -175,6 +213,25 @@ at constant Conservative Temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (2.19.3) of this TEOS-10 manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -185,7 +242,7 @@ has inputs of Absolute Salinity and Conservative Temperature.  This
 function uses the computationally-efficient expression for
 specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -195,13 +252,32 @@ specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>kappa</strong><span class="classifier">array-like, 1/Pa</span></dt><dd><p>isentropic compressibility of seawater</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (2.17.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -211,7 +287,7 @@ specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 Temperature, using the computationally-efficient expression for
 specific volume in terms of SA, CT and p  (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -221,13 +297,35 @@ specific volume in terms of SA, CT and p  (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>rho</strong><span class="classifier">array-like, kg/m</span></dt><dd><p>in-situ density</p>
+<dt><strong>rho</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>in-situ density</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that potential density with respect to reference pressure, pr, is
+obtained by calling this function with the pressure argument being pr
+(i.e. “gsw_rho(SA,CT,pr)”).</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix A.20 and appendix K of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -239,7 +337,7 @@ Absolute Salinity and Conservative Temperature.  This function uses the
 computationally-efficient expression for specific volume in terms of
 SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -249,9 +347,9 @@ SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>rho</strong><span class="classifier">array-like, kg/m</span></dt><dd><p>in-situ density</p>
+<dt><strong>rho</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>in-situ density</p>
 </dd>
 <dt><strong>alpha</strong><span class="classifier">array-like, 1/K</span></dt><dd><p>thermal expansion coefficient
 with respect to Conservative Temperature</p>
@@ -262,6 +360,24 @@ coefficient at constant Conservative Temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that potential density (pot_rho) with respect to reference pressure
+p_ref is obtained by calling this function with the pressure argument
+being p_ref as in [pot_rho, ~, ~] = gsw_rho_alpha_beta(SA,CT,p_ref).</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix A.20 and appendix K of this TEOS-10 Manual.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -271,7 +387,7 @@ coefficient at constant Conservative Temperature</p>
 in-situ temperature.  Note that the output, rho, is density,
 not density anomaly; that is, 1000 kg/m^3 is not subtracted from it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -281,13 +397,19 @@ not density anomaly; that is, 1000 kg/m^3 is not subtracted from it.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>rho_t_exact</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>in-situ density (not density anomaly)</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See section 2.8 of this TEOS-10 Manual.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -299,7 +421,7 @@ function has inputs of Absolute Salinity and Conservative Temperature.
 This function uses the computationally-efficient expression for
 specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -307,7 +429,7 @@ specific volume in terms of SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sigma0</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>potential density anomaly with
 respect to a reference pressure of 0 dbar,
@@ -316,6 +438,25 @@ that is, this potential density - 1000 kg/m^3.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -328,7 +469,7 @@ Temperature.  This function uses the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -336,7 +477,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sigma1</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>potential density anomaly with
 respect to a reference pressure of 1000 dbar,
@@ -345,6 +486,25 @@ that is, this potential density - 1000 kg/m^3.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -356,7 +516,7 @@ Temperature.  This function uses the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -364,7 +524,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sigma2</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>potential density anomaly with
 respect to a reference pressure of 2000 dbar,
@@ -373,6 +533,25 @@ that is, this potential density - 1000 kg/m^3.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -384,7 +563,7 @@ Temperature.  This function uses the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -392,7 +571,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sigma3</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>potential density anomaly with
 respect to a reference pressure of 3000 dbar,
@@ -401,6 +580,25 @@ that is, this potential density - 1000 kg/m^3.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -412,7 +610,7 @@ Temperature.  This function uses the computationally-efficient
 expression for specific volume in terms of SA, CT and p (Roquet et al.,
 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -420,7 +618,7 @@ expression for specific volume in terms of SA, CT and p (Roquet et al.,
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sigma4</strong><span class="classifier">array-like, kg/m^3</span></dt><dd><p>potential density anomaly with
 respect to a reference pressure of 4000 dbar,
@@ -429,6 +627,25 @@ that is, this potential density - 1000 kg/m^3.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (A.30.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -439,7 +656,7 @@ Absolute Salinity and Conservative Temperature.  This function uses the
 computationally-efficient expression for specific volume in terms of SA,
 CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -449,13 +666,32 @@ CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sound_speed</strong><span class="classifier">array-like, m/s</span></dt><dd><p>speed of sound in seawater</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (2.17.1) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -465,7 +701,7 @@ CT and p (Roquet et al., 2015).</p>
 Temperature and pressure, using the computationally-efficient 75-term
 polynomial expression for specific volume (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -475,13 +711,32 @@ polynomial expression for specific volume (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>specvol</strong><span class="classifier">array-like, m^3/kg</span></dt><dd><p>specific volume</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that the 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmos. Ocean. Tech., 20,
+730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
+<p>This software is available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -493,7 +748,7 @@ Absolute Salinity and Conservative Temperature.  This function uses the
 computationally-efficient expression for specific volume in terms of
 SA, CT and p (Roquet et al., 2015).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -503,7 +758,7 @@ SA, CT and p (Roquet et al., 2015).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>specvol</strong><span class="classifier">array-like, m/kg</span></dt><dd><p>specific volume</p>
 </dd>
@@ -516,6 +771,25 @@ coefficient at constant Conservative Temperature</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See appendix A.20 and appendix K of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -528,7 +802,7 @@ et al., 2015).  The reference value to which the anomaly is calculated
 has an Absolute Salinity of SSO and Conservative Temperature equal to
 0 degrees C.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>SA</strong><span class="classifier">array-like</span></dt><dd><p>Absolute Salinity, g/kg</p>
 </dd>
@@ -538,13 +812,32 @@ has an Absolute Salinity of SSO and Conservative Temperature equal to
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>specvol_anom</strong><span class="classifier">array-like, m^3/kg</span></dt><dd><p>specific volume anomaly</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that this 75-term equation has been fitted in a restricted range of
+parameter space, and is most accurate inside the “oceanographic funnel”
+described in McDougall et al. (2003).  The GSW library function
+“gsw_infunnel(SA,CT,p)” is available to be used if one wants to test if
+some of one’s data lies outside this “funnel”.</p>
+<p class="rubric">References</p>
+<p>IOC, SCOR and IAPSO, 2010: The international thermodynamic equation of
+seawater - 2010: Calculation and use of thermodynamic properties.
+Intergovernmental Oceanographic Commission, Manuals and Guides No. 56,
+UNESCO (English), 196 pp.  Available from <a class="reference external" href="https://www.teos-10.org/">https://www.teos-10.org/</a>
+See Eqn. (3.7.3) of this TEOS-10 Manual.</p>
+<p>McDougall, T.J., D.R. Jackett, D.G. Wright and R. Feistel, 2003:
+Accurate and computationally efficient algorithms for potential
+temperature and density of seawater.  J. Atmosph. Ocean. Tech., 20,
+pp. 730-741.</p>
+<p>Roquet, F., G. Madec, T.J. McDougall, P.M. Barker, 2015: Accurate
+polynomial expressions for the density and specific volume of seawater
+using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 </dd></dl>
 
 </section>
