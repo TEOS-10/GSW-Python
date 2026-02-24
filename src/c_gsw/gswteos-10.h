@@ -318,6 +318,8 @@ DECLSPEC extern double gsw_z_from_p(double p, double lat, double geo_strf_dyn_he
                 double sea_surface_geopotential);
 DECLSPEC extern double gsw_p_from_z(double z, double lat, double geo_strf_dyn_height,
                 double sea_surface_geopotential);
+DECLSPEC extern int refine_grid_for_dh(double *p, double p_ref, int nz,
+                double dp, double *p_i, int ni_max, int *p_indices, int *p_ref_ind_ptr);
 
 #ifdef __cplusplus
 }

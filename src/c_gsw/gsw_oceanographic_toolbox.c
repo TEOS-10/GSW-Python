@@ -4057,7 +4057,7 @@ gsw_geo_strf_dyn_height_1(double *sa, double *ct, double *p, double p_ref,
 
     Its return argument is the number of elements used in p_i, or -1 on error.
 */
-static int refine_grid_for_dh(double *p, double p_ref, int nz,
+int refine_grid_for_dh(double *p, double p_ref, int nz,
     double dp,
     double *p_i, int ni_max,  /* size of p_i array; larger than needed */
     int *p_indices, int *p_ref_ind_ptr)
@@ -4094,10 +4094,16 @@ static int refine_grid_for_dh(double *p, double p_ref, int nz,
         /* We did not insert p_ref, so insert either p_next or p[iorig]. */
         if (p_next < p[iorig] - p_tol) {
             p_i[i] = p_next;
+            if (p_ref == p_next) {
+                *p_ref_ind_ptr = i;
+            }
             iuniform++;
         }
         else {
             p_i[i] = p[iorig];
+            if (p_ref == p[iorig]) {
+                *p_ref_ind_ptr = i;
+            }
             p_indices[iorig] = i;
             /* Skip this p_next if it is close to the point we just added. */
             if (p_next < p[iorig] + p_tol) {

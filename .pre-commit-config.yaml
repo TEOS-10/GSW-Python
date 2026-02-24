@@ -17,7 +17,7 @@ repos:
               gsw/tests/test_gibbs\.py
           )$
       args:
-        - --ignore-words-list=nin,preformed,wih,
+        - --ignore-words-list=nin,preformed,wih,pres,
 
 - repo: https://github.com/tox-dev/pyproject-fmt
   rev: v2.11.1

@@ -90,6 +90,21 @@ def test_dyn_height_shallower_pref():
     expected = strf0[1:] - strf0[1]
     assert_almost_equal(found, expected)
 
+def test_dyn_height_grid_bug():
+    """
+    The C toolbox had a bug in the interpolation grid generation, triggered
+    under specific circumstances demonstrated in issue #225.  The fix was copied
+    from https://github.com/TEOS-10/GSW-C/pull/87.
+    """
+    SA = np.array([34.17634373, 34.17633109, 34.17725485, 34.90704565])
+    CT = np.array([ 0.02005831,  0.02003146,  0.01868686, 1.7676452 ])
+    pres = np.array([  4.9000001 ,   5.69999981,  15.80000019, 995.90002441])
+    # Last 2 args: grid delta-p is 1; interp method is 3 (mrst).
+    dh1 = gsw._gsw_ufuncs.geo_strf_dyn_height_1(SA, CT, pres, pres[-1], 1, 3)
+    assert dh1[-1] == 0
+    dh2 = gsw.geo_strf_dyn_height(SA, CT, pres, p_ref = pres[-1], interp_method="mrst")
+    assert_array_equal(dh1, dh2)
+
 def test_pz_roundtrip():
     """
     The p_z conversion functions have Matlab-based checks that use
