@@ -41,10 +41,11 @@ jobs:
         CIBW_ARCHS: ${{ matrix.arch }}
         CIBW_BUILD_FRONTEND: build
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
-        CIBW_TEST_REQUIRES: pytest pandas>=2
+        CIBW_TEST_REQUIRES: abi3audit pytest pandas>=2
         CIBW_TEST_COMMAND: >
           python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
-          python -m pytest --pyargs gsw
+          python -m pytest --pyargs gsw &&
+          abi3audit ${{ github.workspace }}/wheelhouse/*.whl --summary --assume-minimum-abi3 3.11 --verbose --strict
 
     - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6.0.0
       with:
