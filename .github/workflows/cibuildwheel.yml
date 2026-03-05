@@ -47,7 +47,7 @@ jobs:
           python -m pytest --pyargs gsw &&
           abi3audit ${{ github.workspace }}/wheelhouse/*.whl --summary --assume-minimum-abi3 3.11 --verbose --strict
 
-    - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6.0.0
+    - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f  # v7.0.0
       with:
         name: pypi-artifacts-${{ matrix.os }}-${{ matrix.arch }}
         path: ${{ github.workspace }}/wheelhouse/*.whl
@@ -70,7 +70,7 @@ jobs:
           && twine check dist/*
           && check-manifest --verbose
 
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6.0.0
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f  # v7.0.0
         with:
           name: pypi-artifacts
           path: ${{ github.workspace }}/dist/*.tar.gz
