@@ -4302,7 +4302,7 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential):
     Parameters
     ----------
     z : array-like
-        Depth, positive up, m
+        Height, positive up (so z = -depth), m
     lat : array-like
         Latitude, -90 to 90 degrees
     geo_strf_dyn_height : array-like
