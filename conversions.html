@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conversion functions &mdash; gsw 3.6.21 documentation</title>
+  <title>Conversion functions &mdash; gsw 3.6.22 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=b536254c"></script>
+      <script src="_static/documentation_options.js?v=82ceaf26"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -98,7 +98,7 @@ and height.</p>
 </ul>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_enthalpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_enthalpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_enthalpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_enthalpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the Conservative Temperature of seawater, given the Absolute
 Salinity, specific enthalpy, h, and pressure p.  The specific enthalpy
 input is the one calculated from the computationally-efficient
@@ -150,7 +150,7 @@ using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Conservative Temperature with entropy as an input variable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -178,7 +178,7 @@ See appendix  A.10 of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_pt"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_pt"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Conservative Temperature of seawater from potential
 temperature (whose reference sea pressure is zero dbar).</p>
 <dl class="field-list simple">
@@ -207,7 +207,7 @@ See section 3.3 of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_rho"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_rho"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the Conservative Temperature of a seawater sample, for given
 values of its density, Absolute Salinity and sea pressure (in dbar),
 using the computationally-efficient expression for specific volume in
@@ -254,7 +254,7 @@ using the TEOS-10 standard. Ocean Modelling, 90, pp. 29-43.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">CT_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#CT_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Conservative Temperature of seawater from in-situ
 temperature.</p>
 <dl class="field-list simple">
@@ -285,7 +285,7 @@ See section 3.3 of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">C_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#C_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">C_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#C_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates conductivity, C, from (SP,t,p) using PSS-78 in the range
 2 &lt; SP &lt; 42.  If the input Practical Salinity is less than 2 then a
 modified form of the Hill et al. (1986) formula is used for Practical
@@ -341,7 +341,7 @@ seawater. Unesco Technical Papers in Marine Science, 44, 53 pp.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Absolute Salinity from Practical Salinity.  Since SP is
 non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
@@ -379,7 +379,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Absolute Salinity from Preformed Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -414,7 +414,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_rho"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SA_from_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SA_from_rho"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the Absolute Salinity of a seawater sample, for given values
 of its density, Conservative Temperature and sea pressure (in dbar).
 This function uses the computationally-efficient 75-term expression for
@@ -463,7 +463,7 @@ using the TEOS-10 standard. Ocean Modelling., 90, pp. 29-43.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_C</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_C"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_C</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_C"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity, SP, from conductivity, C, primarily using
 the PSS-78 algorithm.  Note that the PSS-78 algorithm for Practical
 Salinity is only valid in the range 2 &lt; SP &lt; 42.  If the PSS-78
@@ -510,7 +510,7 @@ seawater. Unesco Technical Papers in Marine Science, 44, 53 pp.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Absolute Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -545,7 +545,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SK</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SK"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SK</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SK"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Knudsen Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -571,7 +571,7 @@ See Appendix A.3 of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SR</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SR"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_SR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SR</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_SR"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Reference Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -596,7 +596,7 @@ UNESCO (English), 196 pp.  Available from <a class="reference external" href="ht
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SP_from_Sstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SP_from_Sstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Practical Salinity from Preformed Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -631,7 +631,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SR_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SR_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">SR_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#SR_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Reference Salinity from Practical Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -656,7 +656,7 @@ UNESCO (English), 196 pp.  Available from <a class="reference external" href="ht
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">Sstar_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">Sstar_from_SA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SA"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Converts Preformed Salinity from Absolute Salinity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -691,7 +691,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">Sstar_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">Sstar_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#Sstar_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Preformed Salinity from Absolute Salinity.
 Since SP is non-negative by definition, this function changes any
 negative input values of SP to be zero.</p>
@@ -729,7 +729,7 @@ Ocean Science, 8, 1123-1134.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">adiabatic_lapse_rate_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">adiabatic_lapse_rate_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#adiabatic_lapse_rate_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates the adiabatic lapse rate of sea water from Conservative
 Temperature.</p>
 <dl class="field-list simple">
@@ -760,7 +760,7 @@ See Eqn. (2.22.1) of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">deltaSA_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#deltaSA_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">deltaSA_from_SP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SP</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#deltaSA_from_SP"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates Absolute Salinity Anomaly from Practical Salinity.  Since SP
 is non-negative by definition, this function changes any negative input
 values of SP to be zero.</p>
@@ -798,7 +798,7 @@ Ocean Science, 8, 1117-1128.
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">entropy_from_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">entropy_from_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_pt"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates specific entropy of seawater as a function of potential
 temperature.</p>
 <dl class="field-list simple">
@@ -827,7 +827,7 @@ See appendix A.10 of this TEOS-10 Manual.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">entropy_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">entropy_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#entropy_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates specific entropy of seawater from in-situ temperature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -866,7 +866,7 @@ function solves Eqn.(3.32.3) of IOC et al. (2010) iteratively for p.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>z</strong><span class="classifier">array-like</span></dt><dd><p>Depth, positive up, m</p>
+<dt><strong>z</strong><span class="classifier">array-like</span></dt><dd><p>Height, positive up (so z = -depth), m</p>
 </dd>
 <dt><strong>lat</strong><span class="classifier">array-like</span></dt><dd><p>Latitude, -90 to 90 degrees</p>
 </dd>
@@ -920,7 +920,7 @@ Journal of Physical Oceanography, 11, pp. 573-574.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt0_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt0_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt0_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates potential temperature with reference pressure, p_ref = 0 dbar.
 The present routine is computationally faster than the more general
 function “gsw_pt_from_t(SA,t,p,p_ref)” which can be used for any
@@ -959,7 +959,7 @@ Mathematics Letters, 29, 20-25.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates potential temperature (with a reference sea pressure of
 zero dbar) from Conservative Temperature.  This function uses 1.5
 iterations through a modified Newton-Raphson (N-R) iterative solution
@@ -995,7 +995,7 @@ Mathematics Letters, 29, 20-25.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates potential temperature with reference pressure p_ref = 0 dbar
 and with entropy as an input variable.</p>
 <dl class="field-list simple">
@@ -1028,7 +1028,7 @@ Mathematics Letters, 29, 20-25.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">pt_from_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_ref</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#pt_from_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates potential temperature with the general reference pressure,
 p_ref, from in-situ temperature, t.  This function calls
 “gsw_entropy_part” which evaluates entropy except for the parts which
@@ -1077,7 +1077,7 @@ data collected between 1/1/1968 and 31/12/1989.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">t_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">gsw.conversions.</span></span><span class="sig-name descname"><span class="pre">t_from_CT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gsw/_wrapped_ufuncs.html#t_from_CT"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Calculates in-situ temperature from the Conservative Temperature of
 seawater.</p>
 <dl class="field-list simple">

@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gsw._utilities &mdash; gsw 3.6.21 documentation</title>
+  <title>gsw._utilities &mdash; gsw 3.6.22 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=b536254c"></script>
+      <script src="../../_static/documentation_options.js?v=82ceaf26"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -72,7 +72,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for gsw._utilities</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span><span class="p">,</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -89,6 +90,64 @@
             <span class="k">return</span> <span class="n">arg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<div class="viewcode-block" id="masked_array_support">
+<a class="viewcode-back" href="../../gsw_flat.html#gsw.masked_array_support">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">masked_array_support</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator which adds support for np.ma.masked_arrays to the _wrapped_ufuncs</span>
+
+<span class="sd">    When one or more masked arrays are encountered as arguments or keyword</span>
+<span class="sd">    arguments, the boolean masks are all logical ORed together then logical</span>
+<span class="sd">    NOT is applied to get the ufunc.where parameter.</span>
+<span class="sd">    </span>
+<span class="sd">    If no masked arrays are found, the ufunc is immediately called without modification</span>
+<span class="sd">    of arguments.</span>
+
+<span class="sd">    If a where keyword argument is present, it will be used instead of the</span>
+<span class="sd">    masked derived value.</span>
+
+<span class="sd">    All args/kwargs are then passed directly to the wrapped function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">has_masked_args</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">isMaskedArray</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_masked_args</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            
+        <span class="c1"># The only thing done when a masked array is encountered is to figure out the correct value to set the where argument to.</span>
+        <span class="c1"># This logic inspired by how the np.ma wrapped ufuncs work.</span>
+        <span class="c1"># https://github.com/numpy/numpy/blob/cafec60a5e28af98fb8798049edd7942720d2d74/numpy/ma/core.py#L1016-L1025</span>
+        <span class="c1"># we want getmask rather than getmaskarray for performance reasons</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">getmask</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span>
+            <span class="p">)</span>
+        <span class="n">where</span> <span class="o">=</span> <span class="o">~</span><span class="n">mask</span>
+
+        <span class="n">new_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="n">where</span><span class="p">}</span>
+        <span class="n">new_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>  <span class="c1"># Allow user override of the where kwarg if they passed it in.</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+
+        <span class="c1"># I suspect based on __array_priority__ the returned values might</span>
+        <span class="c1"># not be masked arrays when mixed with other array subclasses with</span>
+        <span class="c1"># a higher priority.</span>
+        <span class="c1">#</span>
+        <span class="c1"># masked_invalid will retain the existing mask and mask</span>
+        <span class="c1"># any new invalid values (if e.g. the result of unmasked inputs</span>
+        <span class="c1"># was nan/inf)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span> <span class="k">for</span> <span class="n">rv</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
 
 <div class="viewcode-block" id="match_args_return">
 <a class="viewcode-back" href="../../gsw_flat.html#gsw.match_args_return">[docs]</a>
