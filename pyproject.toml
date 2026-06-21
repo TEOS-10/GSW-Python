@@ -1,13 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = [
-  "build",
-  "numpy>=2,<3",
-  "pip>9.0.1",
-  "setuptools>=42",
-  "setuptools-scm[toml]>=3.4",
-  "wheel",
-]
+requires = [ "build", "numpy>=2,<3", "pip>9.0.1", "setuptools>=42", "setuptools-scm[toml]>=3.4" ]
 
 [project]
 name = "gsw"
@@ -42,27 +35,23 @@ urls.homepage = "https://www.teos-10.org/"
 urls.repository = "https://github.com/TEOS-10/GSW-python"
 
 [tool.setuptools]
-zip-safe = false
-include-package-data = true
 packages = [ "gsw", "gsw.tests" ]
-
-[tool.setuptools.dynamic]
-dependencies = { file = [ "requirements.txt" ] }
-readme = { file = "README.md", content-type = "text/markdown" }
+include-package-data = true
+dynamic.dependencies = { file = [ "requirements.txt" ] }
+dynamic.readme = { file = "README.md", content-type = "text/markdown" }
+zip-safe = false
 
 [tool.setuptools_scm]
+tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 write_to = "gsw/_version.py"
 write_to_template = "__version__ = '{version}'"
-tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
 [tool.ruff]
 target-version = "py38"
 line-length = 105
-
 exclude = [
   "tools",
 ]
-
 lint.select = [
   "A",      # flake8-builtins
   "B",      # flake8-bugbear
@@ -77,12 +66,11 @@ lint.ignore = [
   "E713", # test for membership should be 'not in'
   "F401", # module imported but unused
 ]
-
 lint.per-file-ignores."docs/conf.py" = [
   "A001", # variable is shadowing a python builtin
 ]
 lint.per-file-ignores."gsw/_fixed_wrapped_ufuncs.py" = [
-  "F403", #'from x import *' used; unable to detect undefined names
+  "F403", # 'from x import *' used; unable to detect undefined names
   "F405", # 'import' may be undefined, or defined from star imports
 ]
 lint.per-file-ignores."gsw/_utilities.py" = [
@@ -91,12 +79,12 @@ lint.per-file-ignores."gsw/_utilities.py" = [
 
 [tool.check-manifest]
 ignore = [
+  "*.enc",
   "*.yml",
   ".coveragerc",
   "docs",
   "docs/*",
-  "*.enc",
+  "gsw/_version.py",
   "tools",
   "tools/*",
-  "gsw/_version.py",
 ]

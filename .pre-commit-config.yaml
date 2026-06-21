@@ -20,18 +20,18 @@ repos:
         - --ignore-words-list=nin,preformed,wih,pres,
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.11.1
+  rev: v2.25.0
   hooks:
     - id: pyproject-fmt
 
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.15.17
+  rev: v0.15.18
   hooks:
     - id: ruff
 
 - repo: https://github.com/woodruffw/zizmor-pre-commit
-  rev: v1.25.2
+  rev: v1.26.1
   hooks:
     - id: zizmor
 
