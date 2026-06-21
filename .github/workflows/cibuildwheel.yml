@@ -7,25 +7,43 @@ on:
     types:
       - published
 
+permissions:
+  contents: read
+
+
 jobs:
   build_bdist:
-    name: "Build ${{ matrix.os }} (${{ matrix.arch }}) wheels"
+    name: "Build ${{ matrix.os }} (${{ matrix.cibw_platform }}-${{ matrix.arch }}) wheels"
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60  # should be long enough even on tags, but let's prevent hangs
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-22.04
+          - name: Linux
+            os: ubuntu-22.04
             arch: x86_64
-          - os: ubuntu-24.04-arm
+            cibw_platform: linux
+          - name: Pyodide
+            os: ubuntu-22.04
+            arch: auto
+            cibw_platform: pyodide
+          - name: Linux-arm
+            os: ubuntu-24.04-arm
             arch: aarch64
-          - os: windows-2022
+            cibw_platform: linux
+          - name: Windows
+            os: windows-2022
             arch: AMD64
-          - os: macos-15
+            cibw_platform: windows
+          - name: macOS-arm
+            os: macos-15
             arch: arm64
-          - os: macos-15-intel
+            cibw_platform: macos
+          - name: macOS-intel
+            os: macos-15-intel
             arch: x86_64
+            cibw_platform: macos
 
     steps:
     - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
@@ -36,6 +54,7 @@ jobs:
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
       uses: pypa/cibuildwheel@294735312765b09d24a2fbec22660ce817587d55  # v4.1.0
       env:
+        CIBW_PLATFORM: ${{ matrix.cibw_platform }}
         CIBW_SKIP: "*-musllinux*"
         CIBW_BUILD: "cp311-* cp314-*"
         CIBW_ARCHS: ${{ matrix.arch }}
@@ -44,7 +63,8 @@ jobs:
         CIBW_TEST_REQUIRES: abi3audit pytest pandas>=2
         CIBW_TEST_COMMAND: >
           python -c "import gsw; print(f'gsw v{gsw.__version__}')" &&
-          python -m pytest --pyargs gsw &&
+          python -m pytest --pyargs gsw
+        CIBW_TEST_COMMAND_LINUX:
           abi3audit ${{ github.workspace }}/wheelhouse/*.whl --summary --assume-minimum-abi3 3.11 --verbose --strict
 
     - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
