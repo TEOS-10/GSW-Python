@@ -31,7 +31,7 @@ repos:
     - id: ruff
 
 - repo: https://github.com/woodruffw/zizmor-pre-commit
-  rev: v1.20.0
+  rev: v1.25.2
   hooks:
     - id: zizmor
 
