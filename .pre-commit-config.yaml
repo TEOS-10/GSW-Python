@@ -20,7 +20,7 @@ repos:
         - --ignore-words-list=nin,preformed,wih,pres,
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.26.0
+  rev: v2.27.0
   hooks:
     - id: pyproject-fmt
 
