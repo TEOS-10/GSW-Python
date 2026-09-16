@@ -1,9 +1,0 @@
-dask
-numpydoc
-pandas>=2
-pytest
-scipy
-setuptools_scm
-sphinx
-sphinx_rtd_theme
-xarray

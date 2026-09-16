@@ -21,6 +21,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Scientific/Engineering",
 ]
 dynamic = [
@@ -29,6 +30,20 @@ dynamic = [
 ]
 dependencies = [
   "numpy>=2",
+]
+
+[dependency-groups]
+dev = [
+  "dask",
+  "numpydoc",
+  "pandas>=2",
+  "prek",
+  "pytest",
+  "pytest-cov",
+  "scipy",
+  "sphinx",
+  "sphinx-rtd-theme",
+  "xarray",
 ]
 urls.documentation = "https://teos-10.github.io/GSW-Python/"
 urls.homepage = "https://www.teos-10.org/"
