@@ -52,7 +52,7 @@ jobs:
         persist-credentials: false
 
     - name: "Building ${{ matrix.os }} (${{ matrix.arch }}) wheels"
-      uses: pypa/cibuildwheel@b3395e271a35f73dad77f21802abe9b986dfe299  # v4.3.1
+      uses: pypa/cibuildwheel@f11181315571b24e4a3c67f1a828532793f2df55  # v4.3.2
       env:
         CIBW_PLATFORM: ${{ matrix.cibw_platform }}
         CIBW_SKIP: "*-musllinux*"
@@ -128,7 +128,7 @@ jobs:
         merge-multiple: true
 
     - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33  # v1.14.2
+      uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086  # v1.14.3
     environment:
       name: release
       url: https://pypi.org/p/gsw
