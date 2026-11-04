@@ -51,7 +51,13 @@ def masked_array_support(f):
             )
         where = ~mask
 
-        new_kwargs = {"where": where}
+        # Values under the mask are left uninitialized, which is fine for masked
+        # arrays; passing out=None explicitly avoids numpy's "'where' used
+        # without 'out'" warning. Multi-output ufuncs need one None per output.
+        nout = len(f.types[0].split("->")[1]) if hasattr(f, "types") else 1
+        out = None if nout == 1 else (None,) * nout
+
+        new_kwargs = {"where": where, "out": out}
         new_kwargs.update(
             **kwargs
         )  # Allow user override of the where kwarg if they passed it in.
