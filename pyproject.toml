@@ -31,6 +31,9 @@ dynamic = [
 dependencies = [
   "numpy>=2",
 ]
+urls.documentation = "https://teos-10.github.io/GSW-Python/"
+urls.homepage = "https://www.teos-10.org/"
+urls.repository = "https://github.com/TEOS-10/GSW-python"
 
 [dependency-groups]
 dev = [
@@ -45,9 +48,6 @@ dev = [
   "sphinx-rtd-theme",
   "xarray",
 ]
-urls.documentation = "https://teos-10.github.io/GSW-Python/"
-urls.homepage = "https://www.teos-10.org/"
-urls.repository = "https://github.com/TEOS-10/GSW-python"
 
 [tool.setuptools]
 packages = [ "gsw", "gsw.tests" ]
