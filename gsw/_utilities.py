@@ -23,7 +23,7 @@ def masked_array_support(f):
     When one or more masked arrays are encountered as arguments or keyword
     arguments, the boolean masks are all logical ORed together then logical
     NOT is applied to get the ufunc.where parameter.
-    
+
     If no masked arrays are found, the ufunc is immediately called without modification
     of arguments.
 
@@ -40,7 +40,7 @@ def masked_array_support(f):
         )
         if not has_masked_args:
             return f(*args, **kwargs)
-            
+
         # The only thing done when a masked array is encountered is to figure out the correct value to set the where argument to.
         # This logic inspired by how the np.ma wrapped ufuncs work.
         # https://github.com/numpy/numpy/blob/cafec60a5e28af98fb8798049edd7942720d2d74/numpy/ma/core.py#L1016-L1025
@@ -51,7 +51,9 @@ def masked_array_support(f):
             )
         where = ~mask
 
-        new_kwargs = {"where": where}
+        # out: None suppresses warnings about using where without an explicit out param
+        # this results in the masked values being uninitialized data (anything/UB)
+        new_kwargs = {"where": where, "out": None}
         new_kwargs.update(
             **kwargs
         )  # Allow user override of the where kwarg if they passed it in.
