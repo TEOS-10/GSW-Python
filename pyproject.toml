@@ -103,3 +103,8 @@ ignore = [
   "tools",
   "tools/*",
 ]
+
+[tool.pytest]
+ini_options.filterwarnings = [
+  "error:::gsw.*",
+]
