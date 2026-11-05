@@ -64,6 +64,8 @@ def %(funcname)s(%(args)s, **kwargs):
     """
     return _gsw_ufuncs.%(ufuncname)s(%(args)s, **kwargs)
 %(funcname)s.types = _gsw_ufuncs.%(ufuncname)s.types
+%(funcname)s.nin = _gsw_ufuncs.%(ufuncname)s.nin
+%(funcname)s.nout = _gsw_ufuncs.%(ufuncname)s.nout
 %(funcname)s = masked_array_support(%(funcname)s)
 '''
 
