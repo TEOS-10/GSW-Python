@@ -39,6 +39,8 @@ def adiabatic_lapse_rate_from_CT(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.adiabatic_lapse_rate_from_ct(SA, CT, p, **kwargs)
 adiabatic_lapse_rate_from_CT.types = _gsw_ufuncs.adiabatic_lapse_rate_from_ct.types
+adiabatic_lapse_rate_from_CT.nin = _gsw_ufuncs.adiabatic_lapse_rate_from_ct.nin
+adiabatic_lapse_rate_from_CT.nout = _gsw_ufuncs.adiabatic_lapse_rate_from_ct.nout
 adiabatic_lapse_rate_from_CT = masked_array_support(adiabatic_lapse_rate_from_CT)
 
 def adiabatic_lapse_rate_ice(t, p, **kwargs):
@@ -69,6 +71,8 @@ def adiabatic_lapse_rate_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.adiabatic_lapse_rate_ice(t, p, **kwargs)
 adiabatic_lapse_rate_ice.types = _gsw_ufuncs.adiabatic_lapse_rate_ice.types
+adiabatic_lapse_rate_ice.nin = _gsw_ufuncs.adiabatic_lapse_rate_ice.nin
+adiabatic_lapse_rate_ice.nout = _gsw_ufuncs.adiabatic_lapse_rate_ice.nout
 adiabatic_lapse_rate_ice = masked_array_support(adiabatic_lapse_rate_ice)
 
 def alpha(SA, CT, p, **kwargs):
@@ -123,6 +127,8 @@ def alpha(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.alpha(SA, CT, p, **kwargs)
 alpha.types = _gsw_ufuncs.alpha.types
+alpha.nin = _gsw_ufuncs.alpha.nin
+alpha.nout = _gsw_ufuncs.alpha.nout
 alpha = masked_array_support(alpha)
 
 def alpha_on_beta(SA, CT, p, **kwargs):
@@ -181,6 +187,8 @@ def alpha_on_beta(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.alpha_on_beta(SA, CT, p, **kwargs)
 alpha_on_beta.types = _gsw_ufuncs.alpha_on_beta.types
+alpha_on_beta.nin = _gsw_ufuncs.alpha_on_beta.nin
+alpha_on_beta.nout = _gsw_ufuncs.alpha_on_beta.nout
 alpha_on_beta = masked_array_support(alpha_on_beta)
 
 def alpha_wrt_t_exact(SA, t, p, **kwargs):
@@ -216,6 +224,8 @@ def alpha_wrt_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.alpha_wrt_t_exact(SA, t, p, **kwargs)
 alpha_wrt_t_exact.types = _gsw_ufuncs.alpha_wrt_t_exact.types
+alpha_wrt_t_exact.nin = _gsw_ufuncs.alpha_wrt_t_exact.nin
+alpha_wrt_t_exact.nout = _gsw_ufuncs.alpha_wrt_t_exact.nout
 alpha_wrt_t_exact = masked_array_support(alpha_wrt_t_exact)
 
 def alpha_wrt_t_ice(t, p, **kwargs):
@@ -249,6 +259,8 @@ def alpha_wrt_t_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.alpha_wrt_t_ice(t, p, **kwargs)
 alpha_wrt_t_ice.types = _gsw_ufuncs.alpha_wrt_t_ice.types
+alpha_wrt_t_ice.nin = _gsw_ufuncs.alpha_wrt_t_ice.nin
+alpha_wrt_t_ice.nout = _gsw_ufuncs.alpha_wrt_t_ice.nout
 alpha_wrt_t_ice = masked_array_support(alpha_wrt_t_ice)
 
 def beta(SA, CT, p, **kwargs):
@@ -304,6 +316,8 @@ def beta(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.beta(SA, CT, p, **kwargs)
 beta.types = _gsw_ufuncs.beta.types
+beta.nin = _gsw_ufuncs.beta.nin
+beta.nout = _gsw_ufuncs.beta.nout
 beta = masked_array_support(beta)
 
 def beta_const_t_exact(SA, t, p, **kwargs):
@@ -339,6 +353,8 @@ def beta_const_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.beta_const_t_exact(SA, t, p, **kwargs)
 beta_const_t_exact.types = _gsw_ufuncs.beta_const_t_exact.types
+beta_const_t_exact.nin = _gsw_ufuncs.beta_const_t_exact.nin
+beta_const_t_exact.nout = _gsw_ufuncs.beta_const_t_exact.nout
 beta_const_t_exact = masked_array_support(beta_const_t_exact)
 
 def C_from_SP(SP, t, p, **kwargs):
@@ -405,6 +421,8 @@ def C_from_SP(SP, t, p, **kwargs):
     """
     return _gsw_ufuncs.c_from_sp(SP, t, p, **kwargs)
 C_from_SP.types = _gsw_ufuncs.c_from_sp.types
+C_from_SP.nin = _gsw_ufuncs.c_from_sp.nin
+C_from_SP.nout = _gsw_ufuncs.c_from_sp.nout
 C_from_SP = masked_array_support(C_from_SP)
 
 def cabbeling(SA, CT, p, **kwargs):
@@ -460,6 +478,8 @@ def cabbeling(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.cabbeling(SA, CT, p, **kwargs)
 cabbeling.types = _gsw_ufuncs.cabbeling.types
+cabbeling.nin = _gsw_ufuncs.cabbeling.nin
+cabbeling.nout = _gsw_ufuncs.cabbeling.nout
 cabbeling = masked_array_support(cabbeling)
 
 def chem_potential_water_ice(t, p, **kwargs):
@@ -491,6 +511,8 @@ def chem_potential_water_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.chem_potential_water_ice(t, p, **kwargs)
 chem_potential_water_ice.types = _gsw_ufuncs.chem_potential_water_ice.types
+chem_potential_water_ice.nin = _gsw_ufuncs.chem_potential_water_ice.nin
+chem_potential_water_ice.nout = _gsw_ufuncs.chem_potential_water_ice.nout
 chem_potential_water_ice = masked_array_support(chem_potential_water_ice)
 
 def chem_potential_water_t_exact(SA, t, p, **kwargs):
@@ -523,6 +545,8 @@ def chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.chem_potential_water_t_exact(SA, t, p, **kwargs)
 chem_potential_water_t_exact.types = _gsw_ufuncs.chem_potential_water_t_exact.types
+chem_potential_water_t_exact.nin = _gsw_ufuncs.chem_potential_water_t_exact.nin
+chem_potential_water_t_exact.nout = _gsw_ufuncs.chem_potential_water_t_exact.nout
 chem_potential_water_t_exact = masked_array_support(chem_potential_water_t_exact)
 
 def cp_ice(t, p, **kwargs):
@@ -553,6 +577,8 @@ def cp_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.cp_ice(t, p, **kwargs)
 cp_ice.types = _gsw_ufuncs.cp_ice.types
+cp_ice.nin = _gsw_ufuncs.cp_ice.nin
+cp_ice.nout = _gsw_ufuncs.cp_ice.nout
 cp_ice = masked_array_support(cp_ice)
 
 def cp_t_exact(SA, t, p, **kwargs):
@@ -585,6 +611,8 @@ def cp_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.cp_t_exact(SA, t, p, **kwargs)
 cp_t_exact.types = _gsw_ufuncs.cp_t_exact.types
+cp_t_exact.nin = _gsw_ufuncs.cp_t_exact.nin
+cp_t_exact.nout = _gsw_ufuncs.cp_t_exact.nout
 cp_t_exact = masked_array_support(cp_t_exact)
 
 def CT_first_derivatives(SA, pt, **kwargs):
@@ -630,6 +658,8 @@ def CT_first_derivatives(SA, pt, **kwargs):
     """
     return _gsw_ufuncs.ct_first_derivatives(SA, pt, **kwargs)
 CT_first_derivatives.types = _gsw_ufuncs.ct_first_derivatives.types
+CT_first_derivatives.nin = _gsw_ufuncs.ct_first_derivatives.nin
+CT_first_derivatives.nout = _gsw_ufuncs.ct_first_derivatives.nout
 CT_first_derivatives = masked_array_support(CT_first_derivatives)
 
 def CT_first_derivatives_wrt_t_exact(SA, t, p, **kwargs):
@@ -691,6 +721,8 @@ def CT_first_derivatives_wrt_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.ct_first_derivatives_wrt_t_exact(SA, t, p, **kwargs)
 CT_first_derivatives_wrt_t_exact.types = _gsw_ufuncs.ct_first_derivatives_wrt_t_exact.types
+CT_first_derivatives_wrt_t_exact.nin = _gsw_ufuncs.ct_first_derivatives_wrt_t_exact.nin
+CT_first_derivatives_wrt_t_exact.nout = _gsw_ufuncs.ct_first_derivatives_wrt_t_exact.nout
 CT_first_derivatives_wrt_t_exact = masked_array_support(CT_first_derivatives_wrt_t_exact)
 
 def CT_freezing(SA, p, saturation_fraction, **kwargs):
@@ -741,6 +773,8 @@ def CT_freezing(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.ct_freezing(SA, p, saturation_fraction, **kwargs)
 CT_freezing.types = _gsw_ufuncs.ct_freezing.types
+CT_freezing.nin = _gsw_ufuncs.ct_freezing.nin
+CT_freezing.nout = _gsw_ufuncs.ct_freezing.nout
 CT_freezing = masked_array_support(CT_freezing)
 
 def CT_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
@@ -781,6 +815,8 @@ def CT_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.ct_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 CT_freezing_first_derivatives.types = _gsw_ufuncs.ct_freezing_first_derivatives.types
+CT_freezing_first_derivatives.nin = _gsw_ufuncs.ct_freezing_first_derivatives.nin
+CT_freezing_first_derivatives.nout = _gsw_ufuncs.ct_freezing_first_derivatives.nout
 CT_freezing_first_derivatives = masked_array_support(CT_freezing_first_derivatives)
 
 def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
@@ -827,6 +863,8 @@ def CT_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.ct_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 CT_freezing_first_derivatives_poly.types = _gsw_ufuncs.ct_freezing_first_derivatives_poly.types
+CT_freezing_first_derivatives_poly.nin = _gsw_ufuncs.ct_freezing_first_derivatives_poly.nin
+CT_freezing_first_derivatives_poly.nout = _gsw_ufuncs.ct_freezing_first_derivatives_poly.nout
 CT_freezing_first_derivatives_poly = masked_array_support(CT_freezing_first_derivatives_poly)
 
 def CT_freezing_poly(SA, p, saturation_fraction, **kwargs):
@@ -872,6 +910,8 @@ def CT_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.ct_freezing_poly(SA, p, saturation_fraction, **kwargs)
 CT_freezing_poly.types = _gsw_ufuncs.ct_freezing_poly.types
+CT_freezing_poly.nin = _gsw_ufuncs.ct_freezing_poly.nin
+CT_freezing_poly.nout = _gsw_ufuncs.ct_freezing_poly.nout
 CT_freezing_poly = masked_array_support(CT_freezing_poly)
 
 def CT_from_enthalpy(SA, h, p, **kwargs):
@@ -934,6 +974,8 @@ def CT_from_enthalpy(SA, h, p, **kwargs):
     """
     return _gsw_ufuncs.ct_from_enthalpy(SA, h, p, **kwargs)
 CT_from_enthalpy.types = _gsw_ufuncs.ct_from_enthalpy.types
+CT_from_enthalpy.nin = _gsw_ufuncs.ct_from_enthalpy.nin
+CT_from_enthalpy.nout = _gsw_ufuncs.ct_from_enthalpy.nout
 CT_from_enthalpy = masked_array_support(CT_from_enthalpy)
 
 def CT_from_enthalpy_exact(SA, h, p, **kwargs):
@@ -990,6 +1032,8 @@ def CT_from_enthalpy_exact(SA, h, p, **kwargs):
     """
     return _gsw_ufuncs.ct_from_enthalpy_exact(SA, h, p, **kwargs)
 CT_from_enthalpy_exact.types = _gsw_ufuncs.ct_from_enthalpy_exact.types
+CT_from_enthalpy_exact.nin = _gsw_ufuncs.ct_from_enthalpy_exact.nin
+CT_from_enthalpy_exact.nout = _gsw_ufuncs.ct_from_enthalpy_exact.nout
 CT_from_enthalpy_exact = masked_array_support(CT_from_enthalpy_exact)
 
 def CT_from_entropy(SA, entropy, **kwargs):
@@ -1021,6 +1065,8 @@ def CT_from_entropy(SA, entropy, **kwargs):
     """
     return _gsw_ufuncs.ct_from_entropy(SA, entropy, **kwargs)
 CT_from_entropy.types = _gsw_ufuncs.ct_from_entropy.types
+CT_from_entropy.nin = _gsw_ufuncs.ct_from_entropy.nin
+CT_from_entropy.nout = _gsw_ufuncs.ct_from_entropy.nout
 CT_from_entropy = masked_array_support(CT_from_entropy)
 
 def CT_from_pt(SA, pt, **kwargs):
@@ -1053,6 +1099,8 @@ def CT_from_pt(SA, pt, **kwargs):
     """
     return _gsw_ufuncs.ct_from_pt(SA, pt, **kwargs)
 CT_from_pt.types = _gsw_ufuncs.ct_from_pt.types
+CT_from_pt.nin = _gsw_ufuncs.ct_from_pt.nin
+CT_from_pt.nout = _gsw_ufuncs.ct_from_pt.nout
 CT_from_pt = masked_array_support(CT_from_pt)
 
 def CT_from_rho(rho, SA, p, **kwargs):
@@ -1108,6 +1156,8 @@ def CT_from_rho(rho, SA, p, **kwargs):
     """
     return _gsw_ufuncs.ct_from_rho(rho, SA, p, **kwargs)
 CT_from_rho.types = _gsw_ufuncs.ct_from_rho.types
+CT_from_rho.nin = _gsw_ufuncs.ct_from_rho.nin
+CT_from_rho.nout = _gsw_ufuncs.ct_from_rho.nout
 CT_from_rho = masked_array_support(CT_from_rho)
 
 def CT_from_t(SA, t, p, **kwargs):
@@ -1142,6 +1192,8 @@ def CT_from_t(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.ct_from_t(SA, t, p, **kwargs)
 CT_from_t.types = _gsw_ufuncs.ct_from_t.types
+CT_from_t.nin = _gsw_ufuncs.ct_from_t.nin
+CT_from_t.nout = _gsw_ufuncs.ct_from_t.nout
 CT_from_t = masked_array_support(CT_from_t)
 
 def CT_maxdensity(SA, p, **kwargs):
@@ -1197,6 +1249,8 @@ def CT_maxdensity(SA, p, **kwargs):
     """
     return _gsw_ufuncs.ct_maxdensity(SA, p, **kwargs)
 CT_maxdensity.types = _gsw_ufuncs.ct_maxdensity.types
+CT_maxdensity.nin = _gsw_ufuncs.ct_maxdensity.nin
+CT_maxdensity.nout = _gsw_ufuncs.ct_maxdensity.nout
 CT_maxdensity = masked_array_support(CT_maxdensity)
 
 def CT_second_derivatives(SA, pt, **kwargs):
@@ -1252,6 +1306,8 @@ def CT_second_derivatives(SA, pt, **kwargs):
     """
     return _gsw_ufuncs.ct_second_derivatives(SA, pt, **kwargs)
 CT_second_derivatives.types = _gsw_ufuncs.ct_second_derivatives.types
+CT_second_derivatives.nin = _gsw_ufuncs.ct_second_derivatives.nin
+CT_second_derivatives.nout = _gsw_ufuncs.ct_second_derivatives.nout
 CT_second_derivatives = masked_array_support(CT_second_derivatives)
 
 def deltaSA_atlas(p, lon, lat, **kwargs):
@@ -1300,6 +1356,8 @@ def deltaSA_atlas(p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.deltasa_atlas(p, lon, lat, **kwargs)
 deltaSA_atlas.types = _gsw_ufuncs.deltasa_atlas.types
+deltaSA_atlas.nin = _gsw_ufuncs.deltasa_atlas.nin
+deltaSA_atlas.nout = _gsw_ufuncs.deltasa_atlas.nout
 deltaSA_atlas = masked_array_support(deltaSA_atlas)
 
 def deltaSA_from_SP(SP, p, lon, lat, **kwargs):
@@ -1342,6 +1400,8 @@ def deltaSA_from_SP(SP, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.deltasa_from_sp(SP, p, lon, lat, **kwargs)
 deltaSA_from_SP.types = _gsw_ufuncs.deltasa_from_sp.types
+deltaSA_from_SP.nin = _gsw_ufuncs.deltasa_from_sp.nin
+deltaSA_from_SP.nout = _gsw_ufuncs.deltasa_from_sp.nout
 deltaSA_from_SP = masked_array_support(deltaSA_from_SP)
 
 def dilution_coefficient_t_exact(SA, t, p, **kwargs):
@@ -1377,6 +1437,8 @@ def dilution_coefficient_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.dilution_coefficient_t_exact(SA, t, p, **kwargs)
 dilution_coefficient_t_exact.types = _gsw_ufuncs.dilution_coefficient_t_exact.types
+dilution_coefficient_t_exact.nin = _gsw_ufuncs.dilution_coefficient_t_exact.nin
+dilution_coefficient_t_exact.nout = _gsw_ufuncs.dilution_coefficient_t_exact.nout
 dilution_coefficient_t_exact = masked_array_support(dilution_coefficient_t_exact)
 
 def dynamic_enthalpy(SA, CT, p, **kwargs):
@@ -1440,6 +1502,8 @@ def dynamic_enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.dynamic_enthalpy(SA, CT, p, **kwargs)
 dynamic_enthalpy.types = _gsw_ufuncs.dynamic_enthalpy.types
+dynamic_enthalpy.nin = _gsw_ufuncs.dynamic_enthalpy.nin
+dynamic_enthalpy.nout = _gsw_ufuncs.dynamic_enthalpy.nout
 dynamic_enthalpy = masked_array_support(dynamic_enthalpy)
 
 def enthalpy(SA, CT, p, **kwargs):
@@ -1498,6 +1562,8 @@ def enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy(SA, CT, p, **kwargs)
 enthalpy.types = _gsw_ufuncs.enthalpy.types
+enthalpy.nin = _gsw_ufuncs.enthalpy.nin
+enthalpy.nout = _gsw_ufuncs.enthalpy.nout
 enthalpy = masked_array_support(enthalpy)
 
 def enthalpy_CT_exact(SA, CT, p, **kwargs):
@@ -1549,6 +1615,8 @@ def enthalpy_CT_exact(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_ct_exact(SA, CT, p, **kwargs)
 enthalpy_CT_exact.types = _gsw_ufuncs.enthalpy_ct_exact.types
+enthalpy_CT_exact.nin = _gsw_ufuncs.enthalpy_ct_exact.nin
+enthalpy_CT_exact.nout = _gsw_ufuncs.enthalpy_ct_exact.nout
 enthalpy_CT_exact = masked_array_support(enthalpy_CT_exact)
 
 def enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs):
@@ -1614,6 +1682,8 @@ def enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_diff(SA, CT, p_shallow, p_deep, **kwargs)
 enthalpy_diff.types = _gsw_ufuncs.enthalpy_diff.types
+enthalpy_diff.nin = _gsw_ufuncs.enthalpy_diff.nin
+enthalpy_diff.nout = _gsw_ufuncs.enthalpy_diff.nout
 enthalpy_diff = masked_array_support(enthalpy_diff)
 
 def enthalpy_first_derivatives(SA, CT, p, **kwargs):
@@ -1684,6 +1754,8 @@ def enthalpy_first_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_first_derivatives(SA, CT, p, **kwargs)
 enthalpy_first_derivatives.types = _gsw_ufuncs.enthalpy_first_derivatives.types
+enthalpy_first_derivatives.nin = _gsw_ufuncs.enthalpy_first_derivatives.nin
+enthalpy_first_derivatives.nout = _gsw_ufuncs.enthalpy_first_derivatives.nout
 enthalpy_first_derivatives = masked_array_support(enthalpy_first_derivatives)
 
 def enthalpy_first_derivatives_CT_exact(SA, CT, p, **kwargs):
@@ -1747,6 +1819,8 @@ def enthalpy_first_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_first_derivatives_ct_exact(SA, CT, p, **kwargs)
 enthalpy_first_derivatives_CT_exact.types = _gsw_ufuncs.enthalpy_first_derivatives_ct_exact.types
+enthalpy_first_derivatives_CT_exact.nin = _gsw_ufuncs.enthalpy_first_derivatives_ct_exact.nin
+enthalpy_first_derivatives_CT_exact.nout = _gsw_ufuncs.enthalpy_first_derivatives_ct_exact.nout
 enthalpy_first_derivatives_CT_exact = masked_array_support(enthalpy_first_derivatives_CT_exact)
 
 def enthalpy_ice(t, p, **kwargs):
@@ -1777,6 +1851,8 @@ def enthalpy_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_ice(t, p, **kwargs)
 enthalpy_ice.types = _gsw_ufuncs.enthalpy_ice.types
+enthalpy_ice.nin = _gsw_ufuncs.enthalpy_ice.nin
+enthalpy_ice.nout = _gsw_ufuncs.enthalpy_ice.nout
 enthalpy_ice = masked_array_support(enthalpy_ice)
 
 def enthalpy_second_derivatives(SA, CT, p, **kwargs):
@@ -1849,6 +1925,8 @@ def enthalpy_second_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_second_derivatives(SA, CT, p, **kwargs)
 enthalpy_second_derivatives.types = _gsw_ufuncs.enthalpy_second_derivatives.types
+enthalpy_second_derivatives.nin = _gsw_ufuncs.enthalpy_second_derivatives.nin
+enthalpy_second_derivatives.nout = _gsw_ufuncs.enthalpy_second_derivatives.nout
 enthalpy_second_derivatives = masked_array_support(enthalpy_second_derivatives)
 
 def enthalpy_second_derivatives_CT_exact(SA, CT, p, **kwargs):
@@ -1915,6 +1993,8 @@ def enthalpy_second_derivatives_CT_exact(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_second_derivatives_ct_exact(SA, CT, p, **kwargs)
 enthalpy_second_derivatives_CT_exact.types = _gsw_ufuncs.enthalpy_second_derivatives_ct_exact.types
+enthalpy_second_derivatives_CT_exact.nin = _gsw_ufuncs.enthalpy_second_derivatives_ct_exact.nin
+enthalpy_second_derivatives_CT_exact.nout = _gsw_ufuncs.enthalpy_second_derivatives_ct_exact.nout
 enthalpy_second_derivatives_CT_exact = masked_array_support(enthalpy_second_derivatives_CT_exact)
 
 def enthalpy_SSO_0(p, **kwargs):
@@ -1952,6 +2032,8 @@ def enthalpy_SSO_0(p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_sso_0(p, **kwargs)
 enthalpy_SSO_0.types = _gsw_ufuncs.enthalpy_sso_0.types
+enthalpy_SSO_0.nin = _gsw_ufuncs.enthalpy_sso_0.nin
+enthalpy_SSO_0.nout = _gsw_ufuncs.enthalpy_sso_0.nout
 enthalpy_SSO_0 = masked_array_support(enthalpy_SSO_0)
 
 def enthalpy_t_exact(SA, t, p, **kwargs):
@@ -1984,6 +2066,8 @@ def enthalpy_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.enthalpy_t_exact(SA, t, p, **kwargs)
 enthalpy_t_exact.types = _gsw_ufuncs.enthalpy_t_exact.types
+enthalpy_t_exact.nin = _gsw_ufuncs.enthalpy_t_exact.nin
+enthalpy_t_exact.nout = _gsw_ufuncs.enthalpy_t_exact.nout
 enthalpy_t_exact = masked_array_support(enthalpy_t_exact)
 
 def entropy_first_derivatives(SA, CT, **kwargs):
@@ -2027,6 +2111,8 @@ def entropy_first_derivatives(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.entropy_first_derivatives(SA, CT, **kwargs)
 entropy_first_derivatives.types = _gsw_ufuncs.entropy_first_derivatives.types
+entropy_first_derivatives.nin = _gsw_ufuncs.entropy_first_derivatives.nin
+entropy_first_derivatives.nout = _gsw_ufuncs.entropy_first_derivatives.nout
 entropy_first_derivatives = masked_array_support(entropy_first_derivatives)
 
 def entropy_from_CT(SA, CT, **kwargs):
@@ -2058,6 +2144,8 @@ def entropy_from_CT(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.entropy_from_ct(SA, CT, **kwargs)
 entropy_from_CT.types = _gsw_ufuncs.entropy_from_ct.types
+entropy_from_CT.nin = _gsw_ufuncs.entropy_from_ct.nin
+entropy_from_CT.nout = _gsw_ufuncs.entropy_from_ct.nout
 entropy_from_CT = masked_array_support(entropy_from_CT)
 
 def entropy_from_pt(SA, pt, **kwargs):
@@ -2090,6 +2178,8 @@ def entropy_from_pt(SA, pt, **kwargs):
     """
     return _gsw_ufuncs.entropy_from_pt(SA, pt, **kwargs)
 entropy_from_pt.types = _gsw_ufuncs.entropy_from_pt.types
+entropy_from_pt.nin = _gsw_ufuncs.entropy_from_pt.nin
+entropy_from_pt.nout = _gsw_ufuncs.entropy_from_pt.nout
 entropy_from_pt = masked_array_support(entropy_from_pt)
 
 def entropy_from_t(SA, t, p, **kwargs):
@@ -2122,6 +2212,8 @@ def entropy_from_t(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.entropy_from_t(SA, t, p, **kwargs)
 entropy_from_t.types = _gsw_ufuncs.entropy_from_t.types
+entropy_from_t.nin = _gsw_ufuncs.entropy_from_t.nin
+entropy_from_t.nout = _gsw_ufuncs.entropy_from_t.nout
 entropy_from_t = masked_array_support(entropy_from_t)
 
 def entropy_ice(t, p, **kwargs):
@@ -2152,6 +2244,8 @@ def entropy_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.entropy_ice(t, p, **kwargs)
 entropy_ice.types = _gsw_ufuncs.entropy_ice.types
+entropy_ice.nin = _gsw_ufuncs.entropy_ice.nin
+entropy_ice.nout = _gsw_ufuncs.entropy_ice.nout
 entropy_ice = masked_array_support(entropy_ice)
 
 def entropy_part(SA, t, p, **kwargs):
@@ -2188,6 +2282,8 @@ def entropy_part(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.entropy_part(SA, t, p, **kwargs)
 entropy_part.types = _gsw_ufuncs.entropy_part.types
+entropy_part.nin = _gsw_ufuncs.entropy_part.nin
+entropy_part.nout = _gsw_ufuncs.entropy_part.nout
 entropy_part = masked_array_support(entropy_part)
 
 def entropy_part_zerop(SA, pt0, **kwargs):
@@ -2224,6 +2320,8 @@ def entropy_part_zerop(SA, pt0, **kwargs):
     """
     return _gsw_ufuncs.entropy_part_zerop(SA, pt0, **kwargs)
 entropy_part_zerop.types = _gsw_ufuncs.entropy_part_zerop.types
+entropy_part_zerop.nin = _gsw_ufuncs.entropy_part_zerop.nin
+entropy_part_zerop.nout = _gsw_ufuncs.entropy_part_zerop.nout
 entropy_part_zerop = masked_array_support(entropy_part_zerop)
 
 def entropy_second_derivatives(SA, CT, **kwargs):
@@ -2272,6 +2370,8 @@ def entropy_second_derivatives(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.entropy_second_derivatives(SA, CT, **kwargs)
 entropy_second_derivatives.types = _gsw_ufuncs.entropy_second_derivatives.types
+entropy_second_derivatives.nin = _gsw_ufuncs.entropy_second_derivatives.nin
+entropy_second_derivatives.nout = _gsw_ufuncs.entropy_second_derivatives.nout
 entropy_second_derivatives = masked_array_support(entropy_second_derivatives)
 
 def Fdelta(p, lon, lat, **kwargs):
@@ -2327,6 +2427,8 @@ def Fdelta(p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.fdelta(p, lon, lat, **kwargs)
 Fdelta.types = _gsw_ufuncs.fdelta.types
+Fdelta.nin = _gsw_ufuncs.fdelta.nin
+Fdelta.nout = _gsw_ufuncs.fdelta.nout
 Fdelta = masked_array_support(Fdelta)
 
 def frazil_properties(SA_bulk, h_bulk, p, **kwargs):
@@ -2408,6 +2510,8 @@ def frazil_properties(SA_bulk, h_bulk, p, **kwargs):
     """
     return _gsw_ufuncs.frazil_properties(SA_bulk, h_bulk, p, **kwargs)
 frazil_properties.types = _gsw_ufuncs.frazil_properties.types
+frazil_properties.nin = _gsw_ufuncs.frazil_properties.nin
+frazil_properties.nout = _gsw_ufuncs.frazil_properties.nout
 frazil_properties = masked_array_support(frazil_properties)
 
 def frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs):
@@ -2486,6 +2590,8 @@ def frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     return _gsw_ufuncs.frazil_properties_potential(SA_bulk, h_pot_bulk, p, **kwargs)
 frazil_properties_potential.types = _gsw_ufuncs.frazil_properties_potential.types
+frazil_properties_potential.nin = _gsw_ufuncs.frazil_properties_potential.nin
+frazil_properties_potential.nout = _gsw_ufuncs.frazil_properties_potential.nout
 frazil_properties_potential = masked_array_support(frazil_properties_potential)
 
 def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs):
@@ -2565,6 +2671,8 @@ def frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs):
     """
     return _gsw_ufuncs.frazil_properties_potential_poly(SA_bulk, h_pot_bulk, p, **kwargs)
 frazil_properties_potential_poly.types = _gsw_ufuncs.frazil_properties_potential_poly.types
+frazil_properties_potential_poly.nin = _gsw_ufuncs.frazil_properties_potential_poly.nin
+frazil_properties_potential_poly.nout = _gsw_ufuncs.frazil_properties_potential_poly.nout
 frazil_properties_potential_poly = masked_array_support(frazil_properties_potential_poly)
 
 def frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs):
@@ -2622,6 +2730,8 @@ def frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs):
     """
     return _gsw_ufuncs.frazil_ratios_adiabatic(SA, p, w_Ih, **kwargs)
 frazil_ratios_adiabatic.types = _gsw_ufuncs.frazil_ratios_adiabatic.types
+frazil_ratios_adiabatic.nin = _gsw_ufuncs.frazil_ratios_adiabatic.nin
+frazil_ratios_adiabatic.nout = _gsw_ufuncs.frazil_ratios_adiabatic.nout
 frazil_ratios_adiabatic = masked_array_support(frazil_ratios_adiabatic)
 
 def frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs):
@@ -2688,6 +2798,8 @@ def frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs):
     """
     return _gsw_ufuncs.frazil_ratios_adiabatic_poly(SA, p, w_Ih, **kwargs)
 frazil_ratios_adiabatic_poly.types = _gsw_ufuncs.frazil_ratios_adiabatic_poly.types
+frazil_ratios_adiabatic_poly.nin = _gsw_ufuncs.frazil_ratios_adiabatic_poly.nin
+frazil_ratios_adiabatic_poly.nout = _gsw_ufuncs.frazil_ratios_adiabatic_poly.nout
 frazil_ratios_adiabatic_poly = masked_array_support(frazil_ratios_adiabatic_poly)
 
 def gibbs(ns, nt, np, SA, t, p, **kwargs):
@@ -2769,6 +2881,8 @@ def gibbs(ns, nt, np, SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.gibbs(ns, nt, np, SA, t, p, **kwargs)
 gibbs.types = _gsw_ufuncs.gibbs.types
+gibbs.nin = _gsw_ufuncs.gibbs.nin
+gibbs.nout = _gsw_ufuncs.gibbs.nout
 gibbs = masked_array_support(gibbs)
 
 def gibbs_ice(nt, np, t, p, **kwargs):
@@ -2819,6 +2933,8 @@ def gibbs_ice(nt, np, t, p, **kwargs):
     """
     return _gsw_ufuncs.gibbs_ice(nt, np, t, p, **kwargs)
 gibbs_ice.types = _gsw_ufuncs.gibbs_ice.types
+gibbs_ice.nin = _gsw_ufuncs.gibbs_ice.nin
+gibbs_ice.nout = _gsw_ufuncs.gibbs_ice.nout
 gibbs_ice = masked_array_support(gibbs_ice)
 
 def gibbs_ice_part_t(t, p, **kwargs):
@@ -2855,6 +2971,8 @@ def gibbs_ice_part_t(t, p, **kwargs):
     """
     return _gsw_ufuncs.gibbs_ice_part_t(t, p, **kwargs)
 gibbs_ice_part_t.types = _gsw_ufuncs.gibbs_ice_part_t.types
+gibbs_ice_part_t.nin = _gsw_ufuncs.gibbs_ice_part_t.nin
+gibbs_ice_part_t.nout = _gsw_ufuncs.gibbs_ice_part_t.nout
 gibbs_ice_part_t = masked_array_support(gibbs_ice_part_t)
 
 def gibbs_ice_pt0(pt0, **kwargs):
@@ -2889,6 +3007,8 @@ def gibbs_ice_pt0(pt0, **kwargs):
     """
     return _gsw_ufuncs.gibbs_ice_pt0(pt0, **kwargs)
 gibbs_ice_pt0.types = _gsw_ufuncs.gibbs_ice_pt0.types
+gibbs_ice_pt0.nin = _gsw_ufuncs.gibbs_ice_pt0.nin
+gibbs_ice_pt0.nout = _gsw_ufuncs.gibbs_ice_pt0.nout
 gibbs_ice_pt0 = masked_array_support(gibbs_ice_pt0)
 
 def gibbs_ice_pt0_pt0(pt0, **kwargs):
@@ -2924,6 +3044,8 @@ def gibbs_ice_pt0_pt0(pt0, **kwargs):
     """
     return _gsw_ufuncs.gibbs_ice_pt0_pt0(pt0, **kwargs)
 gibbs_ice_pt0_pt0.types = _gsw_ufuncs.gibbs_ice_pt0_pt0.types
+gibbs_ice_pt0_pt0.nin = _gsw_ufuncs.gibbs_ice_pt0_pt0.nin
+gibbs_ice_pt0_pt0.nout = _gsw_ufuncs.gibbs_ice_pt0_pt0.nout
 gibbs_ice_pt0_pt0 = masked_array_support(gibbs_ice_pt0_pt0)
 
 def gibbs_pt0_pt0(SA, pt0, **kwargs):
@@ -2955,6 +3077,8 @@ def gibbs_pt0_pt0(SA, pt0, **kwargs):
     """
     return _gsw_ufuncs.gibbs_pt0_pt0(SA, pt0, **kwargs)
 gibbs_pt0_pt0.types = _gsw_ufuncs.gibbs_pt0_pt0.types
+gibbs_pt0_pt0.nin = _gsw_ufuncs.gibbs_pt0_pt0.nin
+gibbs_pt0_pt0.nout = _gsw_ufuncs.gibbs_pt0_pt0.nout
 gibbs_pt0_pt0 = masked_array_support(gibbs_pt0_pt0)
 
 def grav(lat, p, **kwargs):
@@ -2993,6 +3117,8 @@ def grav(lat, p, **kwargs):
     """
     return _gsw_ufuncs.grav(lat, p, **kwargs)
 grav.types = _gsw_ufuncs.grav.types
+grav.nin = _gsw_ufuncs.grav.nin
+grav.nout = _gsw_ufuncs.grav.nout
 grav = masked_array_support(grav)
 
 def Helmholtz_energy_ice(t, p, **kwargs):
@@ -3023,6 +3149,8 @@ def Helmholtz_energy_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.helmholtz_energy_ice(t, p, **kwargs)
 Helmholtz_energy_ice.types = _gsw_ufuncs.helmholtz_energy_ice.types
+Helmholtz_energy_ice.nin = _gsw_ufuncs.helmholtz_energy_ice.nin
+Helmholtz_energy_ice.nout = _gsw_ufuncs.helmholtz_energy_ice.nout
 Helmholtz_energy_ice = masked_array_support(Helmholtz_energy_ice)
 
 def Hill_ratio_at_SP2(t, **kwargs):
@@ -3068,6 +3196,8 @@ def Hill_ratio_at_SP2(t, **kwargs):
     """
     return _gsw_ufuncs.hill_ratio_at_sp2(t, **kwargs)
 Hill_ratio_at_SP2.types = _gsw_ufuncs.hill_ratio_at_sp2.types
+Hill_ratio_at_SP2.nin = _gsw_ufuncs.hill_ratio_at_sp2.nin
+Hill_ratio_at_SP2.nout = _gsw_ufuncs.hill_ratio_at_sp2.nout
 Hill_ratio_at_SP2 = masked_array_support(Hill_ratio_at_SP2)
 
 def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs):
@@ -3129,6 +3259,8 @@ def ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs):
     """
     return _gsw_ufuncs.ice_fraction_to_freeze_seawater(SA, CT, p, t_Ih, **kwargs)
 ice_fraction_to_freeze_seawater.types = _gsw_ufuncs.ice_fraction_to_freeze_seawater.types
+ice_fraction_to_freeze_seawater.nin = _gsw_ufuncs.ice_fraction_to_freeze_seawater.nin
+ice_fraction_to_freeze_seawater.nout = _gsw_ufuncs.ice_fraction_to_freeze_seawater.nout
 ice_fraction_to_freeze_seawater = masked_array_support(ice_fraction_to_freeze_seawater)
 
 def infunnel(SA, CT, p, **kwargs):
@@ -3184,6 +3316,8 @@ def infunnel(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.infunnel(SA, CT, p, **kwargs)
 infunnel.types = _gsw_ufuncs.infunnel.types
+infunnel.nin = _gsw_ufuncs.infunnel.nin
+infunnel.nout = _gsw_ufuncs.infunnel.nout
 infunnel = masked_array_support(infunnel)
 
 def internal_energy(SA, CT, p, **kwargs):
@@ -3236,6 +3370,8 @@ def internal_energy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.internal_energy(SA, CT, p, **kwargs)
 internal_energy.types = _gsw_ufuncs.internal_energy.types
+internal_energy.nin = _gsw_ufuncs.internal_energy.nin
+internal_energy.nout = _gsw_ufuncs.internal_energy.nout
 internal_energy = masked_array_support(internal_energy)
 
 def internal_energy_ice(t, p, **kwargs):
@@ -3266,6 +3402,8 @@ def internal_energy_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.internal_energy_ice(t, p, **kwargs)
 internal_energy_ice.types = _gsw_ufuncs.internal_energy_ice.types
+internal_energy_ice.nin = _gsw_ufuncs.internal_energy_ice.nin
+internal_energy_ice.nout = _gsw_ufuncs.internal_energy_ice.nout
 internal_energy_ice = masked_array_support(internal_energy_ice)
 
 def kappa(SA, CT, p, **kwargs):
@@ -3320,6 +3458,8 @@ def kappa(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.kappa(SA, CT, p, **kwargs)
 kappa.types = _gsw_ufuncs.kappa.types
+kappa.nin = _gsw_ufuncs.kappa.nin
+kappa.nout = _gsw_ufuncs.kappa.nout
 kappa = masked_array_support(kappa)
 
 def kappa_const_t_ice(t, p, **kwargs):
@@ -3352,6 +3492,8 @@ def kappa_const_t_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.kappa_const_t_ice(t, p, **kwargs)
 kappa_const_t_ice.types = _gsw_ufuncs.kappa_const_t_ice.types
+kappa_const_t_ice.nin = _gsw_ufuncs.kappa_const_t_ice.nin
+kappa_const_t_ice.nout = _gsw_ufuncs.kappa_const_t_ice.nout
 kappa_const_t_ice = masked_array_support(kappa_const_t_ice)
 
 def kappa_ice(t, p, **kwargs):
@@ -3382,6 +3524,8 @@ def kappa_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.kappa_ice(t, p, **kwargs)
 kappa_ice.types = _gsw_ufuncs.kappa_ice.types
+kappa_ice.nin = _gsw_ufuncs.kappa_ice.nin
+kappa_ice.nout = _gsw_ufuncs.kappa_ice.nout
 kappa_ice = masked_array_support(kappa_ice)
 
 def kappa_t_exact(SA, t, p, **kwargs):
@@ -3416,6 +3560,8 @@ def kappa_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.kappa_t_exact(SA, t, p, **kwargs)
 kappa_t_exact.types = _gsw_ufuncs.kappa_t_exact.types
+kappa_t_exact.nin = _gsw_ufuncs.kappa_t_exact.nin
+kappa_t_exact.nout = _gsw_ufuncs.kappa_t_exact.nout
 kappa_t_exact = masked_array_support(kappa_t_exact)
 
 def latentheat_evap_CT(SA, CT, **kwargs):
@@ -3451,6 +3597,8 @@ def latentheat_evap_CT(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.latentheat_evap_ct(SA, CT, **kwargs)
 latentheat_evap_CT.types = _gsw_ufuncs.latentheat_evap_ct.types
+latentheat_evap_CT.nin = _gsw_ufuncs.latentheat_evap_ct.nin
+latentheat_evap_CT.nout = _gsw_ufuncs.latentheat_evap_ct.nout
 latentheat_evap_CT = masked_array_support(latentheat_evap_CT)
 
 def latentheat_evap_t(SA, t, **kwargs):
@@ -3485,6 +3633,8 @@ def latentheat_evap_t(SA, t, **kwargs):
     """
     return _gsw_ufuncs.latentheat_evap_t(SA, t, **kwargs)
 latentheat_evap_t.types = _gsw_ufuncs.latentheat_evap_t.types
+latentheat_evap_t.nin = _gsw_ufuncs.latentheat_evap_t.nin
+latentheat_evap_t.nout = _gsw_ufuncs.latentheat_evap_t.nout
 latentheat_evap_t = masked_array_support(latentheat_evap_t)
 
 def latentheat_melting(SA, p, **kwargs):
@@ -3536,6 +3686,8 @@ def latentheat_melting(SA, p, **kwargs):
     """
     return _gsw_ufuncs.latentheat_melting(SA, p, **kwargs)
 latentheat_melting.types = _gsw_ufuncs.latentheat_melting.types
+latentheat_melting.nin = _gsw_ufuncs.latentheat_melting.nin
+latentheat_melting.nout = _gsw_ufuncs.latentheat_melting.nout
 latentheat_melting = masked_array_support(latentheat_melting)
 
 def melting_ice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
@@ -3589,6 +3741,8 @@ def melting_ice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 melting_ice_equilibrium_SA_CT_ratio.types = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio.types
+melting_ice_equilibrium_SA_CT_ratio.nin = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio.nin
+melting_ice_equilibrium_SA_CT_ratio.nout = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio.nout
 melting_ice_equilibrium_SA_CT_ratio = masked_array_support(melting_ice_equilibrium_SA_CT_ratio)
 
 def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
@@ -3652,6 +3806,8 @@ def melting_ice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     return _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 melting_ice_equilibrium_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly.types
+melting_ice_equilibrium_SA_CT_ratio_poly.nin = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly.nin
+melting_ice_equilibrium_SA_CT_ratio_poly.nout = _gsw_ufuncs.melting_ice_equilibrium_sa_ct_ratio_poly.nout
 melting_ice_equilibrium_SA_CT_ratio_poly = masked_array_support(melting_ice_equilibrium_SA_CT_ratio_poly)
 
 def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs):
@@ -3720,6 +3876,8 @@ def melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs):
     """
     return _gsw_ufuncs.melting_ice_into_seawater(SA, CT, p, w_Ih, t_Ih, **kwargs)
 melting_ice_into_seawater.types = _gsw_ufuncs.melting_ice_into_seawater.types
+melting_ice_into_seawater.nin = _gsw_ufuncs.melting_ice_into_seawater.nin
+melting_ice_into_seawater.nout = _gsw_ufuncs.melting_ice_into_seawater.nout
 melting_ice_into_seawater = masked_array_support(melting_ice_into_seawater)
 
 def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih, **kwargs):
@@ -3770,6 +3928,8 @@ def melting_ice_SA_CT_ratio(SA, CT, p, t_Ih, **kwargs):
     """
     return _gsw_ufuncs.melting_ice_sa_ct_ratio(SA, CT, p, t_Ih, **kwargs)
 melting_ice_SA_CT_ratio.types = _gsw_ufuncs.melting_ice_sa_ct_ratio.types
+melting_ice_SA_CT_ratio.nin = _gsw_ufuncs.melting_ice_sa_ct_ratio.nin
+melting_ice_SA_CT_ratio.nout = _gsw_ufuncs.melting_ice_sa_ct_ratio.nout
 melting_ice_SA_CT_ratio = masked_array_support(melting_ice_SA_CT_ratio)
 
 def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih, **kwargs):
@@ -3830,6 +3990,8 @@ def melting_ice_SA_CT_ratio_poly(SA, CT, p, t_Ih, **kwargs):
     """
     return _gsw_ufuncs.melting_ice_sa_ct_ratio_poly(SA, CT, p, t_Ih, **kwargs)
 melting_ice_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_ice_sa_ct_ratio_poly.types
+melting_ice_SA_CT_ratio_poly.nin = _gsw_ufuncs.melting_ice_sa_ct_ratio_poly.nin
+melting_ice_SA_CT_ratio_poly.nout = _gsw_ufuncs.melting_ice_sa_ct_ratio_poly.nout
 melting_ice_SA_CT_ratio_poly = masked_array_support(melting_ice_SA_CT_ratio_poly)
 
 def melting_seaice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
@@ -3889,6 +4051,8 @@ def melting_seaice_equilibrium_SA_CT_ratio(SA, p, **kwargs):
     """
     return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio(SA, p, **kwargs)
 melting_seaice_equilibrium_SA_CT_ratio.types = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio.types
+melting_seaice_equilibrium_SA_CT_ratio.nin = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio.nin
+melting_seaice_equilibrium_SA_CT_ratio.nout = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio.nout
 melting_seaice_equilibrium_SA_CT_ratio = masked_array_support(melting_seaice_equilibrium_SA_CT_ratio)
 
 def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
@@ -3958,6 +4122,8 @@ def melting_seaice_equilibrium_SA_CT_ratio_poly(SA, p, **kwargs):
     """
     return _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly(SA, p, **kwargs)
 melting_seaice_equilibrium_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly.types
+melting_seaice_equilibrium_SA_CT_ratio_poly.nin = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly.nin
+melting_seaice_equilibrium_SA_CT_ratio_poly.nout = _gsw_ufuncs.melting_seaice_equilibrium_sa_ct_ratio_poly.nout
 melting_seaice_equilibrium_SA_CT_ratio_poly = masked_array_support(melting_seaice_equilibrium_SA_CT_ratio_poly)
 
 def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs):
@@ -4030,6 +4196,8 @@ def melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwa
     """
     return _gsw_ufuncs.melting_seaice_into_seawater(SA, CT, p, w_seaice, SA_seaice, t_seaice, **kwargs)
 melting_seaice_into_seawater.types = _gsw_ufuncs.melting_seaice_into_seawater.types
+melting_seaice_into_seawater.nin = _gsw_ufuncs.melting_seaice_into_seawater.nin
+melting_seaice_into_seawater.nout = _gsw_ufuncs.melting_seaice_into_seawater.nout
 melting_seaice_into_seawater = masked_array_support(melting_seaice_into_seawater)
 
 def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs):
@@ -4098,6 +4266,8 @@ def melting_seaice_SA_CT_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 melting_seaice_SA_CT_ratio.types = _gsw_ufuncs.melting_seaice_sa_ct_ratio.types
+melting_seaice_SA_CT_ratio.nin = _gsw_ufuncs.melting_seaice_sa_ct_ratio.nin
+melting_seaice_SA_CT_ratio.nout = _gsw_ufuncs.melting_seaice_sa_ct_ratio.nout
 melting_seaice_SA_CT_ratio = masked_array_support(melting_seaice_SA_CT_ratio)
 
 def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs):
@@ -4176,6 +4346,8 @@ def melting_seaice_SA_CT_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs):
     """
     return _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 melting_seaice_SA_CT_ratio_poly.types = _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly.types
+melting_seaice_SA_CT_ratio_poly.nin = _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly.nin
+melting_seaice_SA_CT_ratio_poly.nout = _gsw_ufuncs.melting_seaice_sa_ct_ratio_poly.nout
 melting_seaice_SA_CT_ratio_poly = masked_array_support(melting_seaice_SA_CT_ratio_poly)
 
 def O2sol(SA, CT, p, lon, lat, **kwargs):
@@ -4235,6 +4407,8 @@ def O2sol(SA, CT, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.o2sol(SA, CT, p, lon, lat, **kwargs)
 O2sol.types = _gsw_ufuncs.o2sol.types
+O2sol.nin = _gsw_ufuncs.o2sol.nin
+O2sol.nout = _gsw_ufuncs.o2sol.nout
 O2sol = masked_array_support(O2sol)
 
 def O2sol_SP_pt(SP, pt, **kwargs):
@@ -4288,6 +4462,8 @@ def O2sol_SP_pt(SP, pt, **kwargs):
     """
     return _gsw_ufuncs.o2sol_sp_pt(SP, pt, **kwargs)
 O2sol_SP_pt.types = _gsw_ufuncs.o2sol_sp_pt.types
+O2sol_SP_pt.nin = _gsw_ufuncs.o2sol_sp_pt.nin
+O2sol_SP_pt.nout = _gsw_ufuncs.o2sol_sp_pt.nout
 O2sol_SP_pt = masked_array_support(O2sol_SP_pt)
 
 def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
@@ -4363,6 +4539,8 @@ def p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     return _gsw_ufuncs.p_from_z(z, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
 p_from_z.types = _gsw_ufuncs.p_from_z.types
+p_from_z.nin = _gsw_ufuncs.p_from_z.nin
+p_from_z.nout = _gsw_ufuncs.p_from_z.nout
 p_from_z = masked_array_support(p_from_z)
 
 def pot_enthalpy_from_pt_ice(pt0_ice, **kwargs):
@@ -4392,6 +4570,8 @@ def pot_enthalpy_from_pt_ice(pt0_ice, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice(pt0_ice, **kwargs)
 pot_enthalpy_from_pt_ice.types = _gsw_ufuncs.pot_enthalpy_from_pt_ice.types
+pot_enthalpy_from_pt_ice.nin = _gsw_ufuncs.pot_enthalpy_from_pt_ice.nin
+pot_enthalpy_from_pt_ice.nout = _gsw_ufuncs.pot_enthalpy_from_pt_ice.nout
 pot_enthalpy_from_pt_ice = masked_array_support(pot_enthalpy_from_pt_ice)
 
 def pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs):
@@ -4423,6 +4603,8 @@ def pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly(pt0_ice, **kwargs)
 pot_enthalpy_from_pt_ice_poly.types = _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly.types
+pot_enthalpy_from_pt_ice_poly.nin = _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly.nin
+pot_enthalpy_from_pt_ice_poly.nout = _gsw_ufuncs.pot_enthalpy_from_pt_ice_poly.nout
 pot_enthalpy_from_pt_ice_poly = masked_array_support(pot_enthalpy_from_pt_ice_poly)
 
 def pot_enthalpy_ice_freezing(SA, p, **kwargs):
@@ -4459,6 +4641,8 @@ def pot_enthalpy_ice_freezing(SA, p, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing(SA, p, **kwargs)
 pot_enthalpy_ice_freezing.types = _gsw_ufuncs.pot_enthalpy_ice_freezing.types
+pot_enthalpy_ice_freezing.nin = _gsw_ufuncs.pot_enthalpy_ice_freezing.nin
+pot_enthalpy_ice_freezing.nout = _gsw_ufuncs.pot_enthalpy_ice_freezing.nout
 pot_enthalpy_ice_freezing = masked_array_support(pot_enthalpy_ice_freezing)
 
 def pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs):
@@ -4502,6 +4686,8 @@ def pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_first_derivatives.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives.types
+pot_enthalpy_ice_freezing_first_derivatives.nin = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives.nin
+pot_enthalpy_ice_freezing_first_derivatives.nout = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives.nout
 pot_enthalpy_ice_freezing_first_derivatives = masked_array_support(pot_enthalpy_ice_freezing_first_derivatives)
 
 def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs):
@@ -4548,6 +4734,8 @@ def pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_first_derivatives_poly.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly.types
+pot_enthalpy_ice_freezing_first_derivatives_poly.nin = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly.nin
+pot_enthalpy_ice_freezing_first_derivatives_poly.nout = _gsw_ufuncs.pot_enthalpy_ice_freezing_first_derivatives_poly.nout
 pot_enthalpy_ice_freezing_first_derivatives_poly = masked_array_support(pot_enthalpy_ice_freezing_first_derivatives_poly)
 
 def pot_enthalpy_ice_freezing_poly(SA, p, **kwargs):
@@ -4593,6 +4781,8 @@ def pot_enthalpy_ice_freezing_poly(SA, p, **kwargs):
     """
     return _gsw_ufuncs.pot_enthalpy_ice_freezing_poly(SA, p, **kwargs)
 pot_enthalpy_ice_freezing_poly.types = _gsw_ufuncs.pot_enthalpy_ice_freezing_poly.types
+pot_enthalpy_ice_freezing_poly.nin = _gsw_ufuncs.pot_enthalpy_ice_freezing_poly.nin
+pot_enthalpy_ice_freezing_poly.nout = _gsw_ufuncs.pot_enthalpy_ice_freezing_poly.nout
 pot_enthalpy_ice_freezing_poly = masked_array_support(pot_enthalpy_ice_freezing_poly)
 
 def pot_rho_t_exact(SA, t, p, p_ref, **kwargs):
@@ -4630,6 +4820,8 @@ def pot_rho_t_exact(SA, t, p, p_ref, **kwargs):
     """
     return _gsw_ufuncs.pot_rho_t_exact(SA, t, p, p_ref, **kwargs)
 pot_rho_t_exact.types = _gsw_ufuncs.pot_rho_t_exact.types
+pot_rho_t_exact.nin = _gsw_ufuncs.pot_rho_t_exact.nin
+pot_rho_t_exact.nout = _gsw_ufuncs.pot_rho_t_exact.nout
 pot_rho_t_exact = masked_array_support(pot_rho_t_exact)
 
 def pressure_coefficient_ice(t, p, **kwargs):
@@ -4661,6 +4853,8 @@ def pressure_coefficient_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.pressure_coefficient_ice(t, p, **kwargs)
 pressure_coefficient_ice.types = _gsw_ufuncs.pressure_coefficient_ice.types
+pressure_coefficient_ice.nin = _gsw_ufuncs.pressure_coefficient_ice.nin
+pressure_coefficient_ice.nout = _gsw_ufuncs.pressure_coefficient_ice.nout
 pressure_coefficient_ice = masked_array_support(pressure_coefficient_ice)
 
 def pressure_freezing_CT(SA, CT, saturation_fraction, **kwargs):
@@ -4705,6 +4899,8 @@ def pressure_freezing_CT(SA, CT, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.pressure_freezing_ct(SA, CT, saturation_fraction, **kwargs)
 pressure_freezing_CT.types = _gsw_ufuncs.pressure_freezing_ct.types
+pressure_freezing_CT.nin = _gsw_ufuncs.pressure_freezing_ct.nin
+pressure_freezing_CT.nout = _gsw_ufuncs.pressure_freezing_ct.nout
 pressure_freezing_CT = masked_array_support(pressure_freezing_CT)
 
 def pt0_from_t(SA, t, p, **kwargs):
@@ -4748,6 +4944,8 @@ def pt0_from_t(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.pt0_from_t(SA, t, p, **kwargs)
 pt0_from_t.types = _gsw_ufuncs.pt0_from_t.types
+pt0_from_t.nin = _gsw_ufuncs.pt0_from_t.nin
+pt0_from_t.nout = _gsw_ufuncs.pt0_from_t.nout
 pt0_from_t = masked_array_support(pt0_from_t)
 
 def pt0_from_t_ice(t, p, **kwargs):
@@ -4785,6 +4983,8 @@ def pt0_from_t_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.pt0_from_t_ice(t, p, **kwargs)
 pt0_from_t_ice.types = _gsw_ufuncs.pt0_from_t_ice.types
+pt0_from_t_ice.nin = _gsw_ufuncs.pt0_from_t_ice.nin
+pt0_from_t_ice.nout = _gsw_ufuncs.pt0_from_t_ice.nout
 pt0_from_t_ice = masked_array_support(pt0_from_t_ice)
 
 def pt_first_derivatives(SA, CT, **kwargs):
@@ -4829,6 +5029,8 @@ def pt_first_derivatives(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.pt_first_derivatives(SA, CT, **kwargs)
 pt_first_derivatives.types = _gsw_ufuncs.pt_first_derivatives.types
+pt_first_derivatives.nin = _gsw_ufuncs.pt_first_derivatives.nin
+pt_first_derivatives.nout = _gsw_ufuncs.pt_first_derivatives.nout
 pt_first_derivatives = masked_array_support(pt_first_derivatives)
 
 def pt_from_CT(SA, CT, **kwargs):
@@ -4869,6 +5071,8 @@ def pt_from_CT(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.pt_from_ct(SA, CT, **kwargs)
 pt_from_CT.types = _gsw_ufuncs.pt_from_ct.types
+pt_from_CT.nin = _gsw_ufuncs.pt_from_ct.nin
+pt_from_CT.nout = _gsw_ufuncs.pt_from_ct.nout
 pt_from_CT = masked_array_support(pt_from_CT)
 
 def pt_from_entropy(SA, entropy, **kwargs):
@@ -4906,6 +5110,8 @@ def pt_from_entropy(SA, entropy, **kwargs):
     """
     return _gsw_ufuncs.pt_from_entropy(SA, entropy, **kwargs)
 pt_from_entropy.types = _gsw_ufuncs.pt_from_entropy.types
+pt_from_entropy.nin = _gsw_ufuncs.pt_from_entropy.nin
+pt_from_entropy.nout = _gsw_ufuncs.pt_from_entropy.nout
 pt_from_entropy = masked_array_support(pt_from_entropy)
 
 def pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs):
@@ -4944,6 +5150,8 @@ def pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs):
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice(pot_enthalpy_ice, **kwargs)
 pt_from_pot_enthalpy_ice.types = _gsw_ufuncs.pt_from_pot_enthalpy_ice.types
+pt_from_pot_enthalpy_ice.nin = _gsw_ufuncs.pt_from_pot_enthalpy_ice.nin
+pt_from_pot_enthalpy_ice.nout = _gsw_ufuncs.pt_from_pot_enthalpy_ice.nout
 pt_from_pot_enthalpy_ice = masked_array_support(pt_from_pot_enthalpy_ice)
 
 def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs):
@@ -4975,6 +5183,8 @@ def pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs):
     """
     return _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly(pot_enthalpy_ice, **kwargs)
 pt_from_pot_enthalpy_ice_poly.types = _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly.types
+pt_from_pot_enthalpy_ice_poly.nin = _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly.nin
+pt_from_pot_enthalpy_ice_poly.nout = _gsw_ufuncs.pt_from_pot_enthalpy_ice_poly.nout
 pt_from_pot_enthalpy_ice_poly = masked_array_support(pt_from_pot_enthalpy_ice_poly)
 
 def pt_from_t(SA, t, p, p_ref, **kwargs):
@@ -5020,6 +5230,8 @@ def pt_from_t(SA, t, p, p_ref, **kwargs):
     """
     return _gsw_ufuncs.pt_from_t(SA, t, p, p_ref, **kwargs)
 pt_from_t.types = _gsw_ufuncs.pt_from_t.types
+pt_from_t.nin = _gsw_ufuncs.pt_from_t.nin
+pt_from_t.nout = _gsw_ufuncs.pt_from_t.nout
 pt_from_t = masked_array_support(pt_from_t)
 
 def pt_from_t_ice(t, p, p_ref, **kwargs):
@@ -5065,6 +5277,8 @@ def pt_from_t_ice(t, p, p_ref, **kwargs):
     """
     return _gsw_ufuncs.pt_from_t_ice(t, p, p_ref, **kwargs)
 pt_from_t_ice.types = _gsw_ufuncs.pt_from_t_ice.types
+pt_from_t_ice.nin = _gsw_ufuncs.pt_from_t_ice.nin
+pt_from_t_ice.nout = _gsw_ufuncs.pt_from_t_ice.nout
 pt_from_t_ice = masked_array_support(pt_from_t_ice)
 
 def pt_second_derivatives(SA, CT, **kwargs):
@@ -5116,6 +5330,8 @@ def pt_second_derivatives(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.pt_second_derivatives(SA, CT, **kwargs)
 pt_second_derivatives.types = _gsw_ufuncs.pt_second_derivatives.types
+pt_second_derivatives.nin = _gsw_ufuncs.pt_second_derivatives.nin
+pt_second_derivatives.nout = _gsw_ufuncs.pt_second_derivatives.nout
 pt_second_derivatives = masked_array_support(pt_second_derivatives)
 
 def rho(SA, CT, p, **kwargs):
@@ -5173,6 +5389,8 @@ def rho(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho(SA, CT, p, **kwargs)
 rho.types = _gsw_ufuncs.rho.types
+rho.nin = _gsw_ufuncs.rho.nin
+rho.nout = _gsw_ufuncs.rho.nout
 rho = masked_array_support(rho)
 
 def rho_alpha_beta(SA, CT, p, **kwargs):
@@ -5233,6 +5451,8 @@ def rho_alpha_beta(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho_alpha_beta(SA, CT, p, **kwargs)
 rho_alpha_beta.types = _gsw_ufuncs.rho_alpha_beta.types
+rho_alpha_beta.nin = _gsw_ufuncs.rho_alpha_beta.nin
+rho_alpha_beta.nout = _gsw_ufuncs.rho_alpha_beta.nout
 rho_alpha_beta = masked_array_support(rho_alpha_beta)
 
 def rho_first_derivatives(SA, CT, p, **kwargs):
@@ -5291,6 +5511,8 @@ def rho_first_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho_first_derivatives(SA, CT, p, **kwargs)
 rho_first_derivatives.types = _gsw_ufuncs.rho_first_derivatives.types
+rho_first_derivatives.nin = _gsw_ufuncs.rho_first_derivatives.nin
+rho_first_derivatives.nout = _gsw_ufuncs.rho_first_derivatives.nout
 rho_first_derivatives = masked_array_support(rho_first_derivatives)
 
 def rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
@@ -5357,6 +5579,8 @@ def rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 rho_first_derivatives_wrt_enthalpy.types = _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy.types
+rho_first_derivatives_wrt_enthalpy.nin = _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy.nin
+rho_first_derivatives_wrt_enthalpy.nout = _gsw_ufuncs.rho_first_derivatives_wrt_enthalpy.nout
 rho_first_derivatives_wrt_enthalpy = masked_array_support(rho_first_derivatives_wrt_enthalpy)
 
 def rho_ice(t, p, **kwargs):
@@ -5389,6 +5613,8 @@ def rho_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.rho_ice(t, p, **kwargs)
 rho_ice.types = _gsw_ufuncs.rho_ice.types
+rho_ice.nin = _gsw_ufuncs.rho_ice.nin
+rho_ice.nout = _gsw_ufuncs.rho_ice.nout
 rho_ice = masked_array_support(rho_ice)
 
 def rho_second_derivatives(SA, CT, p, **kwargs):
@@ -5470,6 +5696,8 @@ def rho_second_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho_second_derivatives(SA, CT, p, **kwargs)
 rho_second_derivatives.types = _gsw_ufuncs.rho_second_derivatives.types
+rho_second_derivatives.nin = _gsw_ufuncs.rho_second_derivatives.nin
+rho_second_derivatives.nout = _gsw_ufuncs.rho_second_derivatives.nout
 rho_second_derivatives = masked_array_support(rho_second_derivatives)
 
 def rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
@@ -5542,6 +5770,8 @@ def rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 rho_second_derivatives_wrt_enthalpy.types = _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy.types
+rho_second_derivatives_wrt_enthalpy.nin = _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy.nin
+rho_second_derivatives_wrt_enthalpy.nout = _gsw_ufuncs.rho_second_derivatives_wrt_enthalpy.nout
 rho_second_derivatives_wrt_enthalpy = masked_array_support(rho_second_derivatives_wrt_enthalpy)
 
 def rho_t_exact(SA, t, p, **kwargs):
@@ -5577,6 +5807,8 @@ def rho_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.rho_t_exact(SA, t, p, **kwargs)
 rho_t_exact.types = _gsw_ufuncs.rho_t_exact.types
+rho_t_exact.nin = _gsw_ufuncs.rho_t_exact.nin
+rho_t_exact.nout = _gsw_ufuncs.rho_t_exact.nout
 rho_t_exact = masked_array_support(rho_t_exact)
 
 def SA_freezing_from_CT(CT, p, saturation_fraction, **kwargs):
@@ -5626,6 +5858,8 @@ def SA_freezing_from_CT(CT, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.sa_freezing_from_ct(CT, p, saturation_fraction, **kwargs)
 SA_freezing_from_CT.types = _gsw_ufuncs.sa_freezing_from_ct.types
+SA_freezing_from_CT.nin = _gsw_ufuncs.sa_freezing_from_ct.nin
+SA_freezing_from_CT.nout = _gsw_ufuncs.sa_freezing_from_ct.nout
 SA_freezing_from_CT = masked_array_support(SA_freezing_from_CT)
 
 def SA_freezing_from_CT_poly(CT, p, saturation_fraction, **kwargs):
@@ -5674,6 +5908,8 @@ def SA_freezing_from_CT_poly(CT, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.sa_freezing_from_ct_poly(CT, p, saturation_fraction, **kwargs)
 SA_freezing_from_CT_poly.types = _gsw_ufuncs.sa_freezing_from_ct_poly.types
+SA_freezing_from_CT_poly.nin = _gsw_ufuncs.sa_freezing_from_ct_poly.nin
+SA_freezing_from_CT_poly.nout = _gsw_ufuncs.sa_freezing_from_ct_poly.nout
 SA_freezing_from_CT_poly = masked_array_support(SA_freezing_from_CT_poly)
 
 def SA_freezing_from_t(t, p, saturation_fraction, **kwargs):
@@ -5722,6 +5958,8 @@ def SA_freezing_from_t(t, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.sa_freezing_from_t(t, p, saturation_fraction, **kwargs)
 SA_freezing_from_t.types = _gsw_ufuncs.sa_freezing_from_t.types
+SA_freezing_from_t.nin = _gsw_ufuncs.sa_freezing_from_t.nin
+SA_freezing_from_t.nout = _gsw_ufuncs.sa_freezing_from_t.nout
 SA_freezing_from_t = masked_array_support(SA_freezing_from_t)
 
 def SA_freezing_from_t_poly(t, p, saturation_fraction, **kwargs):
@@ -5770,6 +6008,8 @@ def SA_freezing_from_t_poly(t, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.sa_freezing_from_t_poly(t, p, saturation_fraction, **kwargs)
 SA_freezing_from_t_poly.types = _gsw_ufuncs.sa_freezing_from_t_poly.types
+SA_freezing_from_t_poly.nin = _gsw_ufuncs.sa_freezing_from_t_poly.nin
+SA_freezing_from_t_poly.nout = _gsw_ufuncs.sa_freezing_from_t_poly.nout
 SA_freezing_from_t_poly = masked_array_support(SA_freezing_from_t_poly)
 
 def SA_from_rho(rho, CT, p, **kwargs):
@@ -5828,6 +6068,8 @@ def SA_from_rho(rho, CT, p, **kwargs):
     """
     return _gsw_ufuncs.sa_from_rho(rho, CT, p, **kwargs)
 SA_from_rho.types = _gsw_ufuncs.sa_from_rho.types
+SA_from_rho.nin = _gsw_ufuncs.sa_from_rho.nin
+SA_from_rho.nout = _gsw_ufuncs.sa_from_rho.nout
 SA_from_rho = masked_array_support(SA_from_rho)
 
 def SA_from_SP(SP, p, lon, lat, **kwargs):
@@ -5870,6 +6112,8 @@ def SA_from_SP(SP, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sa_from_sp(SP, p, lon, lat, **kwargs)
 SA_from_SP.types = _gsw_ufuncs.sa_from_sp.types
+SA_from_SP.nin = _gsw_ufuncs.sa_from_sp.nin
+SA_from_SP.nout = _gsw_ufuncs.sa_from_sp.nout
 SA_from_SP = masked_array_support(SA_from_SP)
 
 def SA_from_SP_Baltic(SP, lon, lat, **kwargs):
@@ -5916,6 +6160,8 @@ def SA_from_SP_Baltic(SP, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sa_from_sp_baltic(SP, lon, lat, **kwargs)
 SA_from_SP_Baltic.types = _gsw_ufuncs.sa_from_sp_baltic.types
+SA_from_SP_Baltic.nin = _gsw_ufuncs.sa_from_sp_baltic.nin
+SA_from_SP_Baltic.nout = _gsw_ufuncs.sa_from_sp_baltic.nout
 SA_from_SP_Baltic = masked_array_support(SA_from_SP_Baltic)
 
 def SA_from_Sstar(Sstar, p, lon, lat, **kwargs):
@@ -5955,6 +6201,8 @@ def SA_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sa_from_sstar(Sstar, p, lon, lat, **kwargs)
 SA_from_Sstar.types = _gsw_ufuncs.sa_from_sstar.types
+SA_from_Sstar.nin = _gsw_ufuncs.sa_from_sstar.nin
+SA_from_Sstar.nout = _gsw_ufuncs.sa_from_sstar.nout
 SA_from_Sstar = masked_array_support(SA_from_Sstar)
 
 def SAAR(p, lon, lat, **kwargs):
@@ -6013,6 +6261,8 @@ def SAAR(p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.saar(p, lon, lat, **kwargs)
 SAAR.types = _gsw_ufuncs.saar.types
+SAAR.nin = _gsw_ufuncs.saar.nin
+SAAR.nout = _gsw_ufuncs.saar.nout
 SAAR = masked_array_support(SAAR)
 
 def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs):
@@ -6077,6 +6327,8 @@ def seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs)
     """
     return _gsw_ufuncs.seaice_fraction_to_freeze_seawater(SA, CT, p, SA_seaice, t_seaice, **kwargs)
 seaice_fraction_to_freeze_seawater.types = _gsw_ufuncs.seaice_fraction_to_freeze_seawater.types
+seaice_fraction_to_freeze_seawater.nin = _gsw_ufuncs.seaice_fraction_to_freeze_seawater.nin
+seaice_fraction_to_freeze_seawater.nout = _gsw_ufuncs.seaice_fraction_to_freeze_seawater.nout
 seaice_fraction_to_freeze_seawater = masked_array_support(seaice_fraction_to_freeze_seawater)
 
 def sigma0(SA, CT, **kwargs):
@@ -6132,6 +6384,8 @@ def sigma0(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.sigma0(SA, CT, **kwargs)
 sigma0.types = _gsw_ufuncs.sigma0.types
+sigma0.nin = _gsw_ufuncs.sigma0.nin
+sigma0.nout = _gsw_ufuncs.sigma0.nout
 sigma0 = masked_array_support(sigma0)
 
 def sigma1(SA, CT, **kwargs):
@@ -6188,6 +6442,8 @@ def sigma1(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.sigma1(SA, CT, **kwargs)
 sigma1.types = _gsw_ufuncs.sigma1.types
+sigma1.nin = _gsw_ufuncs.sigma1.nin
+sigma1.nout = _gsw_ufuncs.sigma1.nout
 sigma1 = masked_array_support(sigma1)
 
 def sigma2(SA, CT, **kwargs):
@@ -6243,6 +6499,8 @@ def sigma2(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.sigma2(SA, CT, **kwargs)
 sigma2.types = _gsw_ufuncs.sigma2.types
+sigma2.nin = _gsw_ufuncs.sigma2.nin
+sigma2.nout = _gsw_ufuncs.sigma2.nout
 sigma2 = masked_array_support(sigma2)
 
 def sigma3(SA, CT, **kwargs):
@@ -6298,6 +6556,8 @@ def sigma3(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.sigma3(SA, CT, **kwargs)
 sigma3.types = _gsw_ufuncs.sigma3.types
+sigma3.nin = _gsw_ufuncs.sigma3.nin
+sigma3.nout = _gsw_ufuncs.sigma3.nout
 sigma3 = masked_array_support(sigma3)
 
 def sigma4(SA, CT, **kwargs):
@@ -6353,6 +6613,8 @@ def sigma4(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.sigma4(SA, CT, **kwargs)
 sigma4.types = _gsw_ufuncs.sigma4.types
+sigma4.nin = _gsw_ufuncs.sigma4.nin
+sigma4.nout = _gsw_ufuncs.sigma4.nout
 sigma4 = masked_array_support(sigma4)
 
 def sound_speed(SA, CT, p, **kwargs):
@@ -6407,6 +6669,8 @@ def sound_speed(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.sound_speed(SA, CT, p, **kwargs)
 sound_speed.types = _gsw_ufuncs.sound_speed.types
+sound_speed.nin = _gsw_ufuncs.sound_speed.nin
+sound_speed.nout = _gsw_ufuncs.sound_speed.nout
 sound_speed = masked_array_support(sound_speed)
 
 def sound_speed_ice(t, p, **kwargs):
@@ -6437,6 +6701,8 @@ def sound_speed_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.sound_speed_ice(t, p, **kwargs)
 sound_speed_ice.types = _gsw_ufuncs.sound_speed_ice.types
+sound_speed_ice.nin = _gsw_ufuncs.sound_speed_ice.nin
+sound_speed_ice.nout = _gsw_ufuncs.sound_speed_ice.nout
 sound_speed_ice = masked_array_support(sound_speed_ice)
 
 def sound_speed_t_exact(SA, t, p, **kwargs):
@@ -6470,6 +6736,8 @@ def sound_speed_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.sound_speed_t_exact(SA, t, p, **kwargs)
 sound_speed_t_exact.types = _gsw_ufuncs.sound_speed_t_exact.types
+sound_speed_t_exact.nin = _gsw_ufuncs.sound_speed_t_exact.nin
+sound_speed_t_exact.nout = _gsw_ufuncs.sound_speed_t_exact.nout
 sound_speed_t_exact = masked_array_support(sound_speed_t_exact)
 
 def SP_from_C(C, t, p, **kwargs):
@@ -6523,6 +6791,8 @@ def SP_from_C(C, t, p, **kwargs):
     """
     return _gsw_ufuncs.sp_from_c(C, t, p, **kwargs)
 SP_from_C.types = _gsw_ufuncs.sp_from_c.types
+SP_from_C.nin = _gsw_ufuncs.sp_from_c.nin
+SP_from_C.nout = _gsw_ufuncs.sp_from_c.nout
 SP_from_C = masked_array_support(SP_from_C)
 
 def SP_from_SA(SA, p, lon, lat, **kwargs):
@@ -6562,6 +6832,8 @@ def SP_from_SA(SA, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sp_from_sa(SA, p, lon, lat, **kwargs)
 SP_from_SA.types = _gsw_ufuncs.sp_from_sa.types
+SP_from_SA.nin = _gsw_ufuncs.sp_from_sa.nin
+SP_from_SA.nout = _gsw_ufuncs.sp_from_sa.nout
 SP_from_SA = masked_array_support(SP_from_SA)
 
 def SP_from_SA_Baltic(SA, lon, lat, **kwargs):
@@ -6607,6 +6879,8 @@ def SP_from_SA_Baltic(SA, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sp_from_sa_baltic(SA, lon, lat, **kwargs)
 SP_from_SA_Baltic.types = _gsw_ufuncs.sp_from_sa_baltic.types
+SP_from_SA_Baltic.nin = _gsw_ufuncs.sp_from_sa_baltic.nin
+SP_from_SA_Baltic.nout = _gsw_ufuncs.sp_from_sa_baltic.nout
 SP_from_SA_Baltic = masked_array_support(SP_from_SA_Baltic)
 
 def SP_from_SK(SK, **kwargs):
@@ -6636,6 +6910,8 @@ def SP_from_SK(SK, **kwargs):
     """
     return _gsw_ufuncs.sp_from_sk(SK, **kwargs)
 SP_from_SK.types = _gsw_ufuncs.sp_from_sk.types
+SP_from_SK.nin = _gsw_ufuncs.sp_from_sk.nin
+SP_from_SK.nout = _gsw_ufuncs.sp_from_sk.nout
 SP_from_SK = masked_array_support(SP_from_SK)
 
 def SP_from_SR(SR, **kwargs):
@@ -6664,6 +6940,8 @@ def SP_from_SR(SR, **kwargs):
     """
     return _gsw_ufuncs.sp_from_sr(SR, **kwargs)
 SP_from_SR.types = _gsw_ufuncs.sp_from_sr.types
+SP_from_SR.nin = _gsw_ufuncs.sp_from_sr.nin
+SP_from_SR.nout = _gsw_ufuncs.sp_from_sr.nout
 SP_from_SR = masked_array_support(SP_from_SR)
 
 def SP_from_Sstar(Sstar, p, lon, lat, **kwargs):
@@ -6703,6 +6981,8 @@ def SP_from_Sstar(Sstar, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sp_from_sstar(Sstar, p, lon, lat, **kwargs)
 SP_from_Sstar.types = _gsw_ufuncs.sp_from_sstar.types
+SP_from_Sstar.nin = _gsw_ufuncs.sp_from_sstar.nin
+SP_from_Sstar.nout = _gsw_ufuncs.sp_from_sstar.nout
 SP_from_Sstar = masked_array_support(SP_from_Sstar)
 
 def SP_salinometer(Rt, t, **kwargs):
@@ -6757,6 +7037,8 @@ def SP_salinometer(Rt, t, **kwargs):
     """
     return _gsw_ufuncs.sp_salinometer(Rt, t, **kwargs)
 SP_salinometer.types = _gsw_ufuncs.sp_salinometer.types
+SP_salinometer.nin = _gsw_ufuncs.sp_salinometer.nin
+SP_salinometer.nout = _gsw_ufuncs.sp_salinometer.nout
 SP_salinometer = masked_array_support(SP_salinometer)
 
 def specvol(SA, CT, p, **kwargs):
@@ -6811,6 +7093,8 @@ def specvol(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol(SA, CT, p, **kwargs)
 specvol.types = _gsw_ufuncs.specvol.types
+specvol.nin = _gsw_ufuncs.specvol.nin
+specvol.nout = _gsw_ufuncs.specvol.nout
 specvol = masked_array_support(specvol)
 
 def specvol_alpha_beta(SA, CT, p, **kwargs):
@@ -6872,6 +7156,8 @@ def specvol_alpha_beta(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_alpha_beta(SA, CT, p, **kwargs)
 specvol_alpha_beta.types = _gsw_ufuncs.specvol_alpha_beta.types
+specvol_alpha_beta.nin = _gsw_ufuncs.specvol_alpha_beta.nin
+specvol_alpha_beta.nout = _gsw_ufuncs.specvol_alpha_beta.nout
 specvol_alpha_beta = masked_array_support(specvol_alpha_beta)
 
 def specvol_anom_standard(SA, CT, p, **kwargs):
@@ -6928,6 +7214,8 @@ def specvol_anom_standard(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_anom_standard(SA, CT, p, **kwargs)
 specvol_anom_standard.types = _gsw_ufuncs.specvol_anom_standard.types
+specvol_anom_standard.nin = _gsw_ufuncs.specvol_anom_standard.nin
+specvol_anom_standard.nout = _gsw_ufuncs.specvol_anom_standard.nout
 specvol_anom_standard = masked_array_support(specvol_anom_standard)
 
 def specvol_first_derivatives(SA, CT, p, **kwargs):
@@ -7000,6 +7288,8 @@ def specvol_first_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_first_derivatives(SA, CT, p, **kwargs)
 specvol_first_derivatives.types = _gsw_ufuncs.specvol_first_derivatives.types
+specvol_first_derivatives.nin = _gsw_ufuncs.specvol_first_derivatives.nin
+specvol_first_derivatives.nout = _gsw_ufuncs.specvol_first_derivatives.nout
 specvol_first_derivatives = masked_array_support(specvol_first_derivatives)
 
 def specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
@@ -7067,6 +7357,8 @@ def specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 specvol_first_derivatives_wrt_enthalpy.types = _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy.types
+specvol_first_derivatives_wrt_enthalpy.nin = _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy.nin
+specvol_first_derivatives_wrt_enthalpy.nout = _gsw_ufuncs.specvol_first_derivatives_wrt_enthalpy.nout
 specvol_first_derivatives_wrt_enthalpy = masked_array_support(specvol_first_derivatives_wrt_enthalpy)
 
 def specvol_ice(t, p, **kwargs):
@@ -7097,6 +7389,8 @@ def specvol_ice(t, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_ice(t, p, **kwargs)
 specvol_ice.types = _gsw_ufuncs.specvol_ice.types
+specvol_ice.nin = _gsw_ufuncs.specvol_ice.nin
+specvol_ice.nout = _gsw_ufuncs.specvol_ice.nout
 specvol_ice = masked_array_support(specvol_ice)
 
 def specvol_second_derivatives(SA, CT, p, **kwargs):
@@ -7174,6 +7468,8 @@ def specvol_second_derivatives(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_second_derivatives(SA, CT, p, **kwargs)
 specvol_second_derivatives.types = _gsw_ufuncs.specvol_second_derivatives.types
+specvol_second_derivatives.nin = _gsw_ufuncs.specvol_second_derivatives.nin
+specvol_second_derivatives.nout = _gsw_ufuncs.specvol_second_derivatives.nout
 specvol_second_derivatives = masked_array_support(specvol_second_derivatives)
 
 def specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
@@ -7246,6 +7542,8 @@ def specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy(SA, CT, p, **kwargs)
 specvol_second_derivatives_wrt_enthalpy.types = _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy.types
+specvol_second_derivatives_wrt_enthalpy.nin = _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy.nin
+specvol_second_derivatives_wrt_enthalpy.nout = _gsw_ufuncs.specvol_second_derivatives_wrt_enthalpy.nout
 specvol_second_derivatives_wrt_enthalpy = masked_array_support(specvol_second_derivatives_wrt_enthalpy)
 
 def specvol_SSO_0(p, **kwargs):
@@ -7283,6 +7581,8 @@ def specvol_SSO_0(p, **kwargs):
     """
     return _gsw_ufuncs.specvol_sso_0(p, **kwargs)
 specvol_SSO_0.types = _gsw_ufuncs.specvol_sso_0.types
+specvol_SSO_0.nin = _gsw_ufuncs.specvol_sso_0.nin
+specvol_SSO_0.nout = _gsw_ufuncs.specvol_sso_0.nout
 specvol_SSO_0 = masked_array_support(specvol_SSO_0)
 
 def specvol_t_exact(SA, t, p, **kwargs):
@@ -7316,6 +7616,8 @@ def specvol_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.specvol_t_exact(SA, t, p, **kwargs)
 specvol_t_exact.types = _gsw_ufuncs.specvol_t_exact.types
+specvol_t_exact.nin = _gsw_ufuncs.specvol_t_exact.nin
+specvol_t_exact.nout = _gsw_ufuncs.specvol_t_exact.nout
 specvol_t_exact = masked_array_support(specvol_t_exact)
 
 def spiciness0(SA, CT, **kwargs):
@@ -7372,6 +7674,8 @@ def spiciness0(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.spiciness0(SA, CT, **kwargs)
 spiciness0.types = _gsw_ufuncs.spiciness0.types
+spiciness0.nin = _gsw_ufuncs.spiciness0.nin
+spiciness0.nout = _gsw_ufuncs.spiciness0.nout
 spiciness0 = masked_array_support(spiciness0)
 
 def spiciness1(SA, CT, **kwargs):
@@ -7427,6 +7731,8 @@ def spiciness1(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.spiciness1(SA, CT, **kwargs)
 spiciness1.types = _gsw_ufuncs.spiciness1.types
+spiciness1.nin = _gsw_ufuncs.spiciness1.nin
+spiciness1.nout = _gsw_ufuncs.spiciness1.nout
 spiciness1 = masked_array_support(spiciness1)
 
 def spiciness2(SA, CT, **kwargs):
@@ -7482,6 +7788,8 @@ def spiciness2(SA, CT, **kwargs):
     """
     return _gsw_ufuncs.spiciness2(SA, CT, **kwargs)
 spiciness2.types = _gsw_ufuncs.spiciness2.types
+spiciness2.nin = _gsw_ufuncs.spiciness2.nin
+spiciness2.nout = _gsw_ufuncs.spiciness2.nout
 spiciness2 = masked_array_support(spiciness2)
 
 def SR_from_SP(SP, **kwargs):
@@ -7510,6 +7818,8 @@ def SR_from_SP(SP, **kwargs):
     """
     return _gsw_ufuncs.sr_from_sp(SP, **kwargs)
 SR_from_SP.types = _gsw_ufuncs.sr_from_sp.types
+SR_from_SP.nin = _gsw_ufuncs.sr_from_sp.nin
+SR_from_SP.nout = _gsw_ufuncs.sr_from_sp.nout
 SR_from_SP = masked_array_support(SR_from_SP)
 
 def Sstar_from_SA(SA, p, lon, lat, **kwargs):
@@ -7549,6 +7859,8 @@ def Sstar_from_SA(SA, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sstar_from_sa(SA, p, lon, lat, **kwargs)
 Sstar_from_SA.types = _gsw_ufuncs.sstar_from_sa.types
+Sstar_from_SA.nin = _gsw_ufuncs.sstar_from_sa.nin
+Sstar_from_SA.nout = _gsw_ufuncs.sstar_from_sa.nout
 Sstar_from_SA = masked_array_support(Sstar_from_SA)
 
 def Sstar_from_SP(SP, p, lon, lat, **kwargs):
@@ -7591,6 +7903,8 @@ def Sstar_from_SP(SP, p, lon, lat, **kwargs):
     """
     return _gsw_ufuncs.sstar_from_sp(SP, p, lon, lat, **kwargs)
 Sstar_from_SP.types = _gsw_ufuncs.sstar_from_sp.types
+Sstar_from_SP.nin = _gsw_ufuncs.sstar_from_sp.nin
+Sstar_from_SP.nout = _gsw_ufuncs.sstar_from_sp.nout
 Sstar_from_SP = masked_array_support(Sstar_from_SP)
 
 def t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs):
@@ -7625,6 +7939,8 @@ def t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs):
     """
     return _gsw_ufuncs.t_deriv_chem_potential_water_t_exact(SA, t, p, **kwargs)
 t_deriv_chem_potential_water_t_exact.types = _gsw_ufuncs.t_deriv_chem_potential_water_t_exact.types
+t_deriv_chem_potential_water_t_exact.nin = _gsw_ufuncs.t_deriv_chem_potential_water_t_exact.nin
+t_deriv_chem_potential_water_t_exact.nout = _gsw_ufuncs.t_deriv_chem_potential_water_t_exact.nout
 t_deriv_chem_potential_water_t_exact = masked_array_support(t_deriv_chem_potential_water_t_exact)
 
 def t_freezing(SA, p, saturation_fraction, **kwargs):
@@ -7674,6 +7990,8 @@ def t_freezing(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.t_freezing(SA, p, saturation_fraction, **kwargs)
 t_freezing.types = _gsw_ufuncs.t_freezing.types
+t_freezing.nin = _gsw_ufuncs.t_freezing.nin
+t_freezing.nout = _gsw_ufuncs.t_freezing.nout
 t_freezing = masked_array_support(t_freezing)
 
 def t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
@@ -7716,6 +8034,8 @@ def t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.t_freezing_first_derivatives(SA, p, saturation_fraction, **kwargs)
 t_freezing_first_derivatives.types = _gsw_ufuncs.t_freezing_first_derivatives.types
+t_freezing_first_derivatives.nin = _gsw_ufuncs.t_freezing_first_derivatives.nin
+t_freezing_first_derivatives.nout = _gsw_ufuncs.t_freezing_first_derivatives.nout
 t_freezing_first_derivatives = masked_array_support(t_freezing_first_derivatives)
 
 def t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
@@ -7762,6 +8082,8 @@ def t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.t_freezing_first_derivatives_poly(SA, p, saturation_fraction, **kwargs)
 t_freezing_first_derivatives_poly.types = _gsw_ufuncs.t_freezing_first_derivatives_poly.types
+t_freezing_first_derivatives_poly.nin = _gsw_ufuncs.t_freezing_first_derivatives_poly.nin
+t_freezing_first_derivatives_poly.nout = _gsw_ufuncs.t_freezing_first_derivatives_poly.nout
 t_freezing_first_derivatives_poly = masked_array_support(t_freezing_first_derivatives_poly)
 
 def t_freezing_poly(SA, p, saturation_fraction, **kwargs):
@@ -7801,6 +8123,8 @@ def t_freezing_poly(SA, p, saturation_fraction, **kwargs):
     """
     return _gsw_ufuncs.t_freezing_poly(SA, p, saturation_fraction, **kwargs)
 t_freezing_poly.types = _gsw_ufuncs.t_freezing_poly.types
+t_freezing_poly.nin = _gsw_ufuncs.t_freezing_poly.nin
+t_freezing_poly.nout = _gsw_ufuncs.t_freezing_poly.nout
 t_freezing_poly = masked_array_support(t_freezing_poly)
 
 def t_from_CT(SA, CT, p, **kwargs):
@@ -7835,6 +8159,8 @@ def t_from_CT(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.t_from_ct(SA, CT, p, **kwargs)
 t_from_CT.types = _gsw_ufuncs.t_from_ct.types
+t_from_CT.nin = _gsw_ufuncs.t_from_ct.nin
+t_from_CT.nout = _gsw_ufuncs.t_from_ct.nout
 t_from_CT = masked_array_support(t_from_CT)
 
 def t_from_pt0_ice(pt0_ice, p, **kwargs):
@@ -7868,6 +8194,8 @@ def t_from_pt0_ice(pt0_ice, p, **kwargs):
     """
     return _gsw_ufuncs.t_from_pt0_ice(pt0_ice, p, **kwargs)
 t_from_pt0_ice.types = _gsw_ufuncs.t_from_pt0_ice.types
+t_from_pt0_ice.nin = _gsw_ufuncs.t_from_pt0_ice.nin
+t_from_pt0_ice.nout = _gsw_ufuncs.t_from_pt0_ice.nout
 t_from_pt0_ice = masked_array_support(t_from_pt0_ice)
 
 def thermobaric(SA, CT, p, **kwargs):
@@ -7923,6 +8251,8 @@ def thermobaric(SA, CT, p, **kwargs):
     """
     return _gsw_ufuncs.thermobaric(SA, CT, p, **kwargs)
 thermobaric.types = _gsw_ufuncs.thermobaric.types
+thermobaric.nin = _gsw_ufuncs.thermobaric.nin
+thermobaric.nout = _gsw_ufuncs.thermobaric.nout
 thermobaric = masked_array_support(thermobaric)
 
 def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
@@ -7990,4 +8320,6 @@ def z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs):
     """
     return _gsw_ufuncs.z_from_p(p, lat, geo_strf_dyn_height, sea_surface_geopotential, **kwargs)
 z_from_p.types = _gsw_ufuncs.z_from_p.types
+z_from_p.nin = _gsw_ufuncs.z_from_p.nin
+z_from_p.nout = _gsw_ufuncs.z_from_p.nout
 z_from_p = masked_array_support(z_from_p)
